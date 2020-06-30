@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">SunLightDesign</string>
+    
+    <string name="news">Новости</string>
+    
+    
+    
+    // Логин
+    <string name="login">Вход</string>
+    <string name="login_welcome">Добро пожаловать вы входите в систему \n как Спонсор Имя</string>
+    <string name="enter_phone_number">Введите ваш номер телефона:</string>
+    <string name="enter_password">Введите ваш пароль</string>
+    <string name="remember_me">Запомнить меня</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="phone_hint">+7 (747) 723 45 67</string>
+    <string name="password_hint">********</string>
+    <string name="enter">Войти</string>
+    
+    
+    // Регистрация
+    <string name="registration_partner">Регистрация - Партнера</string>
+    <string name="step_one">Шаг 1</string>
+    <string name="personal_data">Персональные данные</string>
+    <string name="indicate_your_sponsor">Укажите вашего спонсора:</string>
+    <string name="me_">Я сам</string>
+    <string name="search_iin_or">Поиск по ИИН или ФИО.</string>
+    <string name="partner">Партнер:</string>
+    <string name="fullName_partner">Ф.И.О партнера</string>
+    <string name="enter_iin">Введите ИИН:</string>
+    <string name="phone_number">Номер телефонa:</string>
+    <string name="choose_country">Выберите страну:</string>
+    <string name="choose_region">Выберите область:</string>
+    <string name="choose_city">Выберите город:</string>
+    <string name="choose_legs">Выберите ногу:</string>
+    <string name="left">Левая</string>
+    <string name="right">Правая</string>
+    <string name="upload_documents">Загрузите документы*</string>
+    <string name="requirements_documents">Требование: желательно jpg-файл с размером 1440х1440 пикселей. \n Также принимает картинки с соотношением сторон 1х1.</string>
+    <string name="upload_docs">Прекрепить документ</string>
+    <string name="next">Далее</string>
 </resources>

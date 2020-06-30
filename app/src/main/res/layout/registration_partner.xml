@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/sunlight_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:background="@drawable/ic_sunlightlogo"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_height="wrap_content"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:text="@string/registration_partner"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:text="@string/step_one"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_32dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:text="@string/personal_data"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginStart="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_32dp"
+                    />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/indicate_your_sponsor"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_22dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:button="@drawable/custom_checkbox"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:text="@string/me_"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:layout_marginTop="@dimen/dimen_22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/custom_checkbox"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextOutlined"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    app:hintEnabled="false"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/BasicEditText"
+                        android:hint="@string/search_iin_or"
+                         />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/partner"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextOutlined"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                app:hintEnabled="false"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/BasicEditText"
+                    android:hint="@string/fullName_partner"
+                     />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/enter_iin"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextOutlined"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                app:hintEnabled="false"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/BasicEditText"
+                    android:hint="@string/search_iin_or"
+             />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/phone_number"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextOutlined"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                app:hintEnabled="false"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="phone"
+                    style="@style/BasicEditText"
+                    android:hint="@string/phone_hint"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/choose_country"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_country"
+                    android:paddingStart="10dp"
+                    android:backgroundTint="@color/gray_textColor"
+                    android:textColor="@color/gray_textColor"
+                    android:textColorHint="@color/gray_textColor"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry"
+                    tools:targetApi="lollipop" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/choose_region"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_region"
+                    android:paddingStart="10dp"
+                    android:backgroundTint="@color/gray_textColor"
+                    android:textColor="@color/gray_textColor"
+                    android:textColorHint="@color/gray_textColor"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry"
+                    tools:targetApi="lollipop" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/choose_city"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_city"
+                    android:paddingStart="10dp"
+                    android:backgroundTint="@color/gray_textColor"
+                    android:textColor="@color/gray_textColor"
+                    android:textColorHint="@color/gray_textColor"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry"
+                    tools:targetApi="lollipop" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/choose_legs"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_20dp">
+
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:button="@drawable/custom_checkbox"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:text="@string/left"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    />
+
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_48dp"
+                    android:button="@drawable/custom_checkbox"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:text="@string/right"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/upload_documents"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/sunBlackColor"
+                android:layout_marginTop="@dimen/dimen_48dp"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/requirements_documents"
+                android:textSize="@dimen/dimen_9sp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/AppCompatButton"
+                android:text="@string/next"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

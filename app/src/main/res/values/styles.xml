@@ -1,13 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="BannerCardViewStyle">
+    <style name="BannerCardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/dimen_5dp</item>
         <item name="cardElevation">@dimen/dimen_5dp</item>
         <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
@@ -16,13 +16,75 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-
-    <style name="MainCardViewStyle">
+    <style name="MainCardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/dimen_5dp</item>
         <item name="cardElevation">@dimen/dimen_5dp</item>
         <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
         <item name="android:layout_height">@dimen/dimen_110dp</item>
         <item name="android:layout_width">@dimen/dimen_110dp</item>
+    </style>
+
+
+    <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_height">@dimen/dimen_30dp</item>
+        <item name="android:layout_width">@dimen/dimen_107dp</item>
+    </style>
+
+
+    <style name="AppCompatTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/sunBlackColor</item>
+    </style>
+
+    <style name="AppCompatTextViewGray" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/gray_textColor</item>
+    </style>
+
+
+    <style name="TextOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">@dimen/dimen_10dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dimen_10dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dimen_10dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dimen_10dp</item>
+        <item name="android:fontFamily">@font/rubik_light</item>
+        <item name="hintEnabled">false</item>
+        <item name='boxStrokeWidth'>1dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="boxStrokeColor">@color/secondaryFirst</item>
+    </style>
+
+
+    <style name="AppCompatButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">@dimen/dimen_343dp</item>
+        <item name="android:layout_height">@dimen/dimen_50dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="fontFamily">@font/rubik_light</item>
+    </style>
+
+
+    <style name="BasicEditText">
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_style</item>
+        <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/sunLightColor</item>
+        <item name="android:textColorHint">@color/gray_textColor</item>
+        <item name="android:textColor">@color/gray_textColor</item>
+        <item name="fontFamily">@font/rubik_light</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>
