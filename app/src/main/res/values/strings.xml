@@ -2,9 +2,15 @@
     <string name="app_name">SunLightDesign</string>
     
     <string name="news">Новости</string>
+
+    // Меню
+    <string name="home">Главная</string>
+    <string name="cabinet">Кабинет</string>
+    <string name="purse">Кошелек</string>
+    <string name="my_orders">Мои заказы</string>
+    <string name="messages">Сообщения</string>
     
-    
-    
+
     // Логин
     <string name="login">Вход</string>
     <string name="login_welcome">Добро пожаловать вы входите в систему \n как Спонсор Имя</string>
@@ -38,4 +44,24 @@
     <string name="requirements_documents">Требование: желательно jpg-файл с размером 1440х1440 пикселей. \n Также принимает картинки с соотношением сторон 1х1.</string>
     <string name="upload_docs">Прекрепить документ</string>
     <string name="next">Далее</string>
+
+
+
+    // Личный/ Кабинет
+    <string name="edit_profile">Редакитировать профиль</string>
+    <string name="status_active">Статус \n Активности</string>
+    <string name="data_registration">Дата регистрации \n пользователя</string>
+    <string name="personal_structure">Пользователей \n в структуре</string>
+    <string name="referral_reference">Реферальная ссылка</string>
+    <string name="your_reference">Ваша ссылка на страницу регистрации</string>
+    <string name="registration_referral">Регистрация реферала</string>
+    <string name="leader_structure">Лидер структуры</string>
+    <string name="leader_five_top">Лидеры структуры до 5 поколения</string>
+    <string name="invited">Приглашенные</string>
+    <string name="all">Все</string>
+    <string name="active">Активен</string>
+    <string name="not_active">Не активен</string>
+    <string name="status">Статус:</string>
+
+
 </resources>
