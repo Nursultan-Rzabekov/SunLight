@@ -7,9 +7,12 @@
     <color name="sunLightColor">#24584D</color>
     <color name="sunBlackColor">#000000</color>
     <color name="gray">#A8ADB8</color>
+    <color name="light_gray">#C4C4C4</color>
     <color name="secondaryFirst">#1E1D4C</color>
     <color name="gray_textColor">#67707A</color>
     <color name="sunlight_background">#E5E5E5</color>
     <color name="white">#fff</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="colorBrown">#857C7C</color>
 
 </resources>

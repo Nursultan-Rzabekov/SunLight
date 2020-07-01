@@ -63,5 +63,13 @@
     <string name="not_active">Не активен</string>
     <string name="status">Статус:</string>
 
+    //Регистрация
+    <string name="shag_two">Шаг 2</string>
+    <string name="vybor_paketa">Выбор пакета</string>
+    <string name="step_two_partner">Partner</string>
+    <string name="step_two_vip_partner">Partner</string>
+    <string name="step_two_client">Client</string>
+    <string name="back"><![CDATA[< Назад]]></string>
+
 
 </resources>
