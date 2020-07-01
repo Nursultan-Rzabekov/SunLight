@@ -26,6 +26,7 @@
     // Регистрация
     <string name="registration_partner">Регистрация - Партнера</string>
     <string name="step_one">Шаг 1</string>
+    <string name="registration">Регистрация</string>
     <string name="personal_data">Персональные данные</string>
     <string name="indicate_your_sponsor">Укажите вашего спонсора:</string>
     <string name="me_">Я сам</string>
@@ -45,15 +46,13 @@
     <string name="upload_docs">Прекрепить документ</string>
     <string name="next">Далее</string>
 
-
-
     // Личный/ Кабинет
     <string name="edit_profile">Редакитировать профиль</string>
     <string name="status_active">Статус \n Активности</string>
     <string name="data_registration">Дата регистрации \n пользователя</string>
     <string name="personal_structure">Пользователей \n в структуре</string>
     <string name="referral_reference">Реферальная ссылка</string>
-    <string name="your_reference">Ваша ссылка на страницу регистрации</string>
+    <string name="your_reference">Ваша ссылка на страницу \n регистрации</string>
     <string name="registration_referral">Регистрация реферала</string>
     <string name="leader_structure">Лидер структуры</string>
     <string name="leader_five_top">Лидеры структуры до 5 поколения</string>
@@ -63,5 +62,17 @@
     <string name="not_active">Не активен</string>
     <string name="status">Статус:</string>
 
+    // Кошелек
+    <string name="bonusnyi_koshelek">Бонусный кошелек</string>
+    <string name="koshelek_aktive">Кошелек активности</string>
+    <string name="arrow_left">Объем левой ветки</string>
+    <string name="arrow_right">Объем правой ветки</string>
+
+    <string name="shag_two">Шаг 2</string>
+    <string name="vybor_paketa">Выбор пакета</string>
+    <string name="step_two_partner">Partner</string>
+    <string name="step_two_vip_partner">Partner</string>
+    <string name="step_two_client">Client</string>
+    <string name="back"><![CDATA[< Назад]]></string>
 
 </resources>

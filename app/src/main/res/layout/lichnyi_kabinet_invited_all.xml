@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin = "@dimen/dimen_16dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:layout_gravity="start"
+                android:text="@string/invited"
+                android:textSize="@dimen/dimen_16sp"
+                android:fontFamily="@font/rubik_bold"
+                android:textColor="@color/sunLightColor"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:text="@string/all"
+                android:textSize="@dimen/dimen_16sp"
+                android:fontFamily="@font/rubik_bold"
+                android:textColor="@color/sunLightColor"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:layout_gravity="start"
+                    android:text="Nursultan Rzabekov"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:textColor="@color/pure_color"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:text="KAZ32423423423423"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:textSize="@dimen/dimen_14sp"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:layout_gravity="start"
+                    android:text="@string/not_active"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:textColor="@color/red"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:text="19.10.2018"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:textSize="@dimen/dimen_14sp"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_width="match_parent"
+            android:background="@color/gray"
+            android:layout_height="1dp"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

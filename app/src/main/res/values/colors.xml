@@ -11,5 +11,8 @@
     <color name="gray_textColor">#67707A</color>
     <color name="sunlight_background">#E5E5E5</color>
     <color name="white">#fff</color>
+    <color name="pure_color">#2C2A4B</color>
+    <color name="red">#CA1616</color>
+    <color name="green">#0D8040</color>
 
 </resources>
