@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    android:layout_height="@dimen/dimen_116dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dimen_16dp"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextView"
+            android:layout_gravity="start"
+            android:text="@string/registration_referral"
+            android:textSize="@dimen/dimen_16sp"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/sunLightColor"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            style="@style/AppCompatTextView"
+            android:textSize="@dimen/dimen_16sp"
+            android:textAlignment="center"
+            android:textColor="@color/sunLightColor"
+            android:text="@string/registration"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:background="@drawable/border_color_button"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

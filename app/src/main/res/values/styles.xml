@@ -35,6 +35,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">@dimen/dimen_20sp</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:textColor">@color/sunBlackColor</item>
@@ -44,6 +45,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">@dimen/dimen_16sp</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:textColor">@color/gray_textColor</item>
@@ -55,7 +57,7 @@
         <item name="boxCornerRadiusBottomStart">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusTopEnd">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusTopStart">@dimen/dimen_10dp</item>
-        <item name="android:fontFamily">@font/rubik_light</item>
+        <item name="android:fontFamily">@font/rubik_regular</item>
         <item name="hintEnabled">false</item>
         <item name='boxStrokeWidth'>1dp</item>
         <item name="android:background">@color/white</item>
@@ -69,18 +71,19 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/dimen_16sp</item>
-        <item name="fontFamily">@font/rubik_light</item>
+        <item name="fontFamily">@font/rubik_regular</item>
     </style>
 
 
     <style name="BasicEditText">
         <item name="android:singleLine">true</item>
         <item name="android:maxLines">1</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:textCursorDrawable">@drawable/cursor_style</item>
         <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/sunLightColor</item>
         <item name="android:textColorHint">@color/gray_textColor</item>
         <item name="android:textColor">@color/gray_textColor</item>
-        <item name="fontFamily">@font/rubik_light</item>
+        <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">@dimen/dimen_16sp</item>
         <item name="android:typeface">normal</item>
         <item name="android:layout_width">match_parent</item>

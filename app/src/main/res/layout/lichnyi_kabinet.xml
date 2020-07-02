@@ -5,7 +5,6 @@
     android:background="@color/sunlight_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,181 +24,20 @@
                 android:text="@string/cabinet"
                 android:layout_marginTop="@dimen/dimen_32dp"
                 />
-            
-            
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/dimen_26dp"
-                android:layout_height="@dimen/dimen_350dp">
 
+            <include layout="@layout/lichnyi_kabinet_mini_profile"/>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
+            <include layout="@layout/lichnyi_kabinet_referalnaia_ssylka"/>
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_marginStart="@dimen/dimen_16dp"
-                        android:layout_marginEnd="@dimen/dimen_16dp"
-                        android:layout_marginTop="@dimen/dimen_16dp"
-                        android:layout_height="@dimen/dimen_72dp">
-                        
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="@dimen/dimen_58dp"
-                            android:layout_marginTop="@dimen/dimen_7dp"
-                            android:src="@drawable/image"
-                            android:layout_marginStart="@dimen/dimen_8dp"
-                            android:layout_height="@dimen/dimen_58dp"/>
+            <include layout="@layout/lichnyi_kabinet_registration_referala"/>
 
+            <include layout="@layout/lichnyi_kabinet_koshelek"/>
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginStart="@dimen/dimen_24dp"
-                            android:layout_height="wrap_content">
+            <include layout="@layout/lichnyi_kabinet_leader_structure"/>
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:layout_gravity="center_horizontal"
-                                android:text="Nursultan Rzabekov"
-                                android:textSize="@dimen/dimen_14sp"
-                                android:textColor="@color/sunLightColor"
-                                />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:layout_gravity="center_horizontal"
-                                android:text="KAZ000005454545"
-                                android:textSize="@dimen/dimen_14sp"
-                                android:layout_marginTop="@dimen/dimen_4dp"
-                                />
-
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:layout_width="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_height="wrap_content">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    style="@style/AppCompatTextViewGray"
-                                    android:layout_gravity="center_horizontal"
-                                    android:text="@string/status"
-                                    android:textSize="@dimen/dimen_14sp"
-                                    android:layout_marginTop="@dimen/dimen_4dp"
-                                    />
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    style="@style/AppCompatTextView"
-                                    android:layout_gravity="center_horizontal"
-                                    android:text="@string/all"
-                                    android:textSize="@dimen/dimen_14sp"
-                                    android:layout_marginStart="4dp"
-                                    android:layout_marginTop="@dimen/dimen_4dp"
-                                    />
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_42dp"
-                        android:layout_marginStart="@dimen/dimen_16dp"
-                        android:layout_marginEnd="@dimen/dimen_16dp"
-                        android:layout_marginTop="@dimen/dimen_24dp"
-                        android:background="@drawable/border_color_button"
-                        android:textColor="@color/sunLightColor"
-                        android:textSize="@dimen/dimen_16sp"
-                        android:text="@string/edit_profile"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/gray"
-                        android:layout_marginTop="@dimen/dimen_16dp"
-                        android:layout_height="1dp"/>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:orientation="vertical"
-                        android:layout_marginStart="@dimen/dimen_16dp"
-                        android:layout_marginEnd="@dimen/dimen_16dp"
-                        android:layout_marginTop="@dimen/dimen_16dp"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_height="wrap_content">
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:text="@string/status_active"
-                                android:textSize="@dimen/dimen_14sp"
-                                />
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:textColor="@color/sunLightColor"
-                                android:layout_gravity="center"
-                                android:text="@string/active"
-                                android:textSize="@dimen/dimen_14sp"
-                                />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="@dimen/dimen_24dp"
-                            android:layout_width="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_height="wrap_content">
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:text="@string/data_registration"
-                                android:textAlignment="viewStart"
-                                android:layout_gravity="start"
-                                android:textSize="@dimen/dimen_14sp"
-                                />
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:textColor="@color/sunLightColor"
-                                android:layout_gravity="center"
-                                android:text="@string/active"
-                                android:textSize="@dimen/dimen_14sp"
-                                />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/dimen_24dp"
-                            android:layout_height="wrap_content">
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:text="@string/personal_structure"
-                                android:textAlignment="viewStart"
-                                android:layout_gravity="start"
-                                android:textSize="@dimen/dimen_14sp"
-                                />
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/AppCompatTextViewGray"
-                                android:textColor="@color/sunLightColor"
-                                android:layout_gravity="center"
-                                android:text="@string/active"
-                                android:textSize="@dimen/dimen_14sp"
-                                />
-                        </LinearLayout>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </com.google.android.material.card.MaterialCardView>
+            <include layout="@layout/lichnyi_kabinet_invited_all"/>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
