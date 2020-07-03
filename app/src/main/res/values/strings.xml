@@ -75,4 +75,12 @@
     <string name="step_two_client">Client</string>
     <string name="back"><![CDATA[< Назад]]></string>
 
+
+
+    // Профиль
+    <string name="profile">Профиль</string>
+    <string name="password">Пароль:</string>
+    <string name="birthday">День рождения</string>
+    <string name="scan_document">Сканы документов</string>
+
 </resources>
