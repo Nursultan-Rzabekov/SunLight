@@ -100,4 +100,11 @@
     <string name="ok">OK</string>
 
 
+
+    // Профиль
+    <string name="profile">Профиль</string>
+    <string name="password">Пароль:</string>
+    <string name="birthday">День рождения</string>
+    <string name="scan_document">Сканы документов</string>
+
 </resources>
