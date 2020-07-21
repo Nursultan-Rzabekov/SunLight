@@ -75,4 +75,29 @@
     <string name="step_two_client">Client</string>
     <string name="back"><![CDATA[< Назад]]></string>
 
+
+
+    // Компания
+    <string name="office_sale">Офис-продаж</string>
+    <string name="contacts_company">Казахстан, г.Алматы \n Жибек-Жолы 135 , 10 этаж 7 офис</string>
+    <string name="contacts_office">Контакты офисов</string>
+    <string name="office_gogol">Офис на Гоголя :</string>
+    <string name="phone_number_one">+7 (747) 987 - 76 -88</string>
+    <string name="office_zhibek_sholy">Офис на Жибек-Жолы:</string>
+    <string name="phone_number_two">+7 (747) 987 - 76 -88 </string>
+    <string name="office_abay">Офис на Абая:</string>
+    <string name="phone_number_third">+7 (747) 987 - 76 -88</string>
+    <string name="social_networking">Соцсети</string>
+
+    // Custom dialog
+    <string name="thanks_register">Спасибо за регистрацию!</string>
+    <string name="ups">Упс…</string>
+    <string name="common_checkout">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>
+    <string name="dialog_sponsor">У вашего спонсора к сожалению \n недостачно средтств к списанию \n попробуйте выбрать другой способ</string>
+    <string name="send_again">Отправить повторно</string>
+    <string name="dialog_temporary">Ваш временный пароль \n отправлен на номер +7 ххх ххх хххх,</string>
+    <string name="send_again_after">Отправить повторно через 00 : 29 секунд</string>
+    <string name="ok">OK</string>
+
+
 </resources>
