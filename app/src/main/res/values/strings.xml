@@ -74,5 +74,12 @@
     <string name="step_two_vip_partner">Partner</string>
     <string name="step_two_client">Client</string>
     <string name="back"><![CDATA[< Назад]]></string>
+    <string name="step_three">Шаг 3</string>
+    <string name="vybor_tovara">Выбор товара</string>
+    <string name="dostypnye_tovary_ız">Доступные товары из “VIP PACK”</string>
+    <string name="nabor_ot">Набор от Clinique</string>
+    <string name="podrobnee"><u>подробнее</u></string>
+    <string name="step_three_cardvew_200_bv">200 BV</string>
+    <string name="skvalan_s_retınolom">Сквалан с ретинолом \n 0,5% The Ordinary</string>
 
 </resources>
