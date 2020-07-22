@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/sunlight_background">
+    
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:background="@drawable/ic_sunlightlogo"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_height="wrap_content"/>
+    
+    
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:text="@string/registration_partner"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:layout_marginStart="@dimen/dimen_16dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen_12dp"
+                android:layout_marginStart="@dimen/dimen_16dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AppCompatTextView"
+                    android:text="@string/step_five"
+                    android:textSize="@dimen/dimen_16sp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AppCompatTextViewGray"
+                    android:text="@string/cposob_oplaty"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginStart="@dimen/dimen_13dp"/>
+
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppCompatTextView"
+                android:text="@string/itogo_k_oplate"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_for_line"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/oplata_cherez"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:labelFor="@id/registration_partner_step_five_payment_rg"/>
+            <RadioGroup
+                android:id="@+id/registration_partner_step_five_payment_rg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kassý"
+                    style="@style/AppCompatTextView"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="true"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/paybox"
+                    style="@style/AppCompatTextView"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_24dp"
+                    android:buttonTint="@color/colorPrimary"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bv"
+                    style="@style/AppCompatTextView"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_24dp"
+                    android:buttonTint="@color/colorPrimary"/>
+            </RadioGroup>
+
+            <include
+                layout="@layout/registration_partner_step_five_cardview" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/podtverdıt"
+                android:textSize="@dimen/dimen_16sp"
+                style="@style/AppCompatButton"
+                android:textAlignment="center"
+                android:background="@drawable/light_gray_button"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/back"
+                android:textStyle="normal"
+                android:textColor="@color/gray_textColor"
+                android:background="@color/transparent"
+                style="@style/AppCompatTextView"
+                android:textAlignment="center"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
