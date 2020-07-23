@@ -77,8 +77,14 @@
     <string name="step_two_client">Client</string>
     <string name="back"><![CDATA[< Назад]]></string>
     <string name="step_three">Шаг 3</string>
+    <string name="step_four">Шаг 4</string>
+    <string name="step_five">Шаг 5</string>
     <string name="vybor_tovara">Выбор товара</string>
+    <string name="vybor_ofısa">Выбор офиса</string>
+    <string name="cposob_oplaty"> Cпособ оплаты</string>
     <string name="dostypnye_tovary_ız">Доступные товары из “VIP PACK”</string>
+    <string name="itogo_k_oplate">Итого к оплате : 520BV = 156 000 KZT</string>
+    <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
     <string name="nabor_ot">Набор от Clinique</string>
     <string name="podrobnee"><u>подробнее</u></string>
     <string name="step_three_cardvew_200_bv">200 BV</string>
@@ -115,6 +121,25 @@
     <string name="password">Пароль:</string>
     <string name="birthday">День рождения</string>
     <string name="scan_document">Сканы документов</string>
+    <string name="nazvanıe_ofısa">Название офиса</string>
+    <string name="phone_number_step_four_cardview">+7(747) 345 67 89</string>
+    <string name="street_step_four_cardview">ул.Макатева 84</string>
+    <string name="working_hours_step_four_cardview">Закроется в 21:00</string>
+    <string name="oplata_cherez">Оплата через:</string>
+    <string name="kassý">Кассу</string>
+    <string name="paybox">Paybox</string>
+    <string name="bv">BV</string>
+    <string name="podtverdıt">Подтвердить</string>
+    <string name="vvedıte_dannye_karty">Введите данные карты:</string>
+    <string name="imıa_na_karte">Имя на карте</string>
+    <string name="vashe_ımıa_na_karte">Ваше имя на карте</string>
+    <string name="karta_deıstvıtelna">Карта действительна:</string>
+    <string name="cvv_code">СVV код</string>
+    <string name="hint_stars_for_card_nomber">************</string>
+    <string name="vvedıte_nomer_karty">Введите номер карты</string>
+    <string name="mm_string">MM</string>
+    <string name="yy_string">YY</string>
+    <string name="cvv_string">CVV</string>
 
 
 

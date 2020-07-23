@@ -66,7 +66,6 @@
                 app:layout_constraintStart_toEndOf="@id/registration_partner_step_two_shag_two_tv"/>
 
 
-            <include layout="@layout/registration_partner_step_two_pack_cardview"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/registration_partner_step_two_packs_rv"
