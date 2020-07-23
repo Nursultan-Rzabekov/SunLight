@@ -66,6 +66,8 @@
     <string name="bonusnyi_koshelek">Бонусный кошелек</string>
     <string name="koshelek_aktive">Кошелек активности</string>
     <string name="arrow_left">Объем левой ветки</string>
+    <string name="koshelek">Кошелек</string>
+    <string name="money_withdraw">Снять деньги</string>
     <string name="arrow_right">Объем правой ветки</string>
 
     <string name="shag_two">Шаг 2</string>
@@ -113,5 +115,11 @@
     <string name="password">Пароль:</string>
     <string name="birthday">День рождения</string>
     <string name="scan_document">Сканы документов</string>
+
+
+
+    // Маркет
+    <string name="buy">Купить</string>
+
 
 </resources>
