@@ -4,7 +4,7 @@ package com.example.sunlightdesign.ui.screens.tasks
 /**
  * Used with the filter spinner in the tasks list.
  */
-enum class TasksFilterType {
+enum class HomeFilterType {
     /**
      * Do not filter tasks.
      */

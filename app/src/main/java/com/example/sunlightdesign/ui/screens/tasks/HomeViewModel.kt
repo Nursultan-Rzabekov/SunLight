@@ -8,7 +8,7 @@ import javax.inject.Inject
 /**
  * ViewModel for the task list screen.
  */
-class TasksViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val tasksRepository: TasksRepository
 ) : ViewModel() {
 

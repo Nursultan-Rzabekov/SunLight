@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigate_email">
+
+<!--    <fragment android:id="@+id/homeFragment"-->
+<!--        android:name="com.akv.akvandroidapprelease.ui.main.home.HomeFragment"-->
+<!--        android:label="@string/fragment_create_blog"-->
+<!--        tools:layout="@layout/fragment_saved_booking">-->
+
+<!--        <action android:id="@+id/action_homeFragment_to_zhilyeFragment"-->
+<!--            app:destination="@id/zhilyeFragment"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            />-->
+
+<!--        <action android:id="@+id/action_homeFragment_to_searchFragment"-->
+<!--            app:destination="@id/nav_create_search"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            />-->
+
+<!--        <action android:id="@+id/action_homeFragment_to_payBoxPayWebViewFragment"-->
+<!--            app:destination="@id/payBoxPayWebViewFragment"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            />-->
+
+<!--    </fragment>-->
+
+</navigation>

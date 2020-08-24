@@ -1,18 +1,14 @@
 package com.example.sunlightdesign.ui.screens.tasks.di
 
 import androidx.lifecycle.ViewModel
-import com.example.sunlightdesign.di.ViewModelBuilderModule
 import com.example.sunlightdesign.di.ViewModelKey
-import com.example.sunlightdesign.ui.screens.tasks.TasksFragment
-import com.example.sunlightdesign.ui.screens.tasks.TasksViewModel
+import com.example.sunlightdesign.ui.screens.tasks.HomeViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class TasksModule {
+abstract class HomeModule {
 
 //    @ContributesAndroidInjector(modules = [
 //        ViewModelBuilderModule::class
@@ -21,6 +17,6 @@ abstract class TasksModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(TasksViewModel::class)
-    abstract fun bindViewModel(viewmodel: TasksViewModel): ViewModel
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindViewModel(viewmodel: HomeViewModel): ViewModel
 }

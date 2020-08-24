@@ -4,28 +4,21 @@ package com.example.sunlightdesign.ui.screens.tasks
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import com.example.sunlightdesign.BaseApplication
-import com.example.sunlightdesign.utils.setupRefreshLayout
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * Display a grid of [Task]s. User can choose to view all, active or completed tasks.
  */
-class TasksFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by viewModels<TasksViewModel> { viewModelFactory }
+    private val viewModel by viewModels<HomeViewModel> { viewModelFactory }
 
     //private val args: TasksFragmentArgs by navArgs()
 
