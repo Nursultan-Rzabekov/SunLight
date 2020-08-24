@@ -25,7 +25,6 @@ android {
 
     dataBinding {
         enabled = true
-        enabledForTests = true
     }
 
     compileOptions {
@@ -88,6 +87,7 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     // Using Dagger in androidTest and Robolectric too
+
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$daggerVersion"
 

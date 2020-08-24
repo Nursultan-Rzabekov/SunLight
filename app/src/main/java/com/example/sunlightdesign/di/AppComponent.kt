@@ -2,7 +2,7 @@ package com.example.sunlightdesign.di
 
 import android.content.Context
 import com.example.sunlightdesign.data.source.TasksRepository
-import com.example.sunlightdesign.ui.screens.tasks.di.TasksComponent
+import com.example.sunlightdesign.ui.screens.tasks.di.HomeComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -10,13 +10,12 @@ import javax.inject.Singleton
 
 /**
  * Main component for the application.
- *
- * See the `TestApplicationComponent` used in UI tests.
  */
 @Singleton
 @Component(
     modules = [
         AppModule::class,
+        NetworkModule::class,
         AppModuleBinds::class,
         ViewModelBuilderModule::class,
         SubcomponentsModule::class
@@ -32,15 +31,14 @@ interface AppComponent {
 //    fun addEditTaskComponent(): AddEditTaskComponent.Factory
 //    fun statisticsComponent(): StatisticsComponent.Factory
 //    fun taskDetailComponent(): TaskDetailComponent.Factory
-    fun tasksComponent(): TasksComponent.Factory
+    fun tasksComponent(): HomeComponent.Factory
 
-
-    //val tasksRepository: TasksRepository
+    val tasksRepository: TasksRepository
 }
 
 @Module(
     subcomponents = [
-//        TasksComponent::class,
+        HomeComponent::class
 //        AddEditTaskComponent::class,
 //        StatisticsComponent::class,
 //        TaskDetailComponent::class

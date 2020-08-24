@@ -4,35 +4,33 @@ import androidx.lifecycle.LiveData
 import com.example.sunlightdesign.data.Result
 import com.example.sunlightdesign.data.Result.Success
 import com.example.sunlightdesign.data.Task
-import com.example.sunlightdesign.utils.wrapEspressoIdlingResource
+import com.example.sunlightdesign.di.AppModule
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 /**
  * Default implementation of [TasksRepository]. Single entry point for managing tasks' data.
  */
-class DefaultTasksRepository(
-    private val tasksRemoteDataSource: TasksDataSource,
-    private val tasksLocalDataSource: TasksDataSource,
+class DefaultTasksRepository @Inject constructor(
+    @AppModule.TasksRemoteDataSource private val tasksRemoteDataSource: TasksDataSource,
+    @AppModule.TasksLocalDataSource private val tasksLocalDataSource: TasksDataSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : TasksRepository {
 
     override suspend fun getTasks(forceUpdate: Boolean): Result<List<Task>> {
         // Set app as busy while this function executes.
-        wrapEspressoIdlingResource {
-
-            if (forceUpdate) {
-                try {
-                    updateTasksFromRemoteDataSource()
-                } catch (ex: Exception) {
-                    return Result.Error(ex)
-                }
+        if (forceUpdate) {
+            try {
+                updateTasksFromRemoteDataSource()
+            } catch (ex: Exception) {
+                return Result.Error(ex)
             }
-            return tasksLocalDataSource.getTasks()
         }
+        return tasksLocalDataSource.getTasks()
     }
 
     override suspend fun refreshTasks() {
@@ -78,12 +76,10 @@ class DefaultTasksRepository(
      */
     override suspend fun getTask(taskId: String, forceUpdate: Boolean): Result<Task> {
         // Set app as busy while this function executes.
-        wrapEspressoIdlingResource {
-            if (forceUpdate) {
-                updateTaskFromRemoteDataSource(taskId)
-            }
-            return tasksLocalDataSource.getTask(taskId)
+        if (forceUpdate) {
+            updateTaskFromRemoteDataSource(taskId)
         }
+        return tasksLocalDataSource.getTask(taskId)
     }
 
     override suspend fun deleteTask(taskId: String) {

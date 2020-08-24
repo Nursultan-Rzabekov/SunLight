@@ -35,15 +35,6 @@ object AppModule {
         return TasksRemoteDataSource
     }
 
-
-    @JvmStatic
-    @Singleton
-    @TasksLocalDataSource
-    @Provides
-    fun provideTasksRepository(): TasksRepository {
-        return DefaultTasksRepository(tasksRemoteDataSource = TasksRemoteDataSource,tasksLocalDataSource = TasksRemoteDataSource,ioDispatcher = provideIoDispatcher())
-    }
-
     @JvmStatic
     @Singleton
     @TasksLocalDataSource
