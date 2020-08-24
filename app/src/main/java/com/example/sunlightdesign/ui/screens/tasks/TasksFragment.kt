@@ -31,13 +31,12 @@ class TasksFragment : Fragment() {
 
     //private lateinit var viewDataBinding: TasksFragBinding
 
-    private lateinit var listAdapter: TasksAdapter
+//    private lateinit var listAdapter: TasksAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (requireActivity().application as BaseApplication).appComponent.tasksComponent().create()
-            .inject(this)
+        (requireActivity().application as BaseApplication).appComponent.tasksComponent().create().inject(this)
     }
 
 //    override fun onCreateView(
