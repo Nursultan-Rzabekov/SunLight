@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.ui.screens.tasks
+package com.example.sunlightdesign.ui.screens.home
 
 import androidx.lifecycle.ViewModel
 import com.example.sunlightdesign.data.source.TasksRepository

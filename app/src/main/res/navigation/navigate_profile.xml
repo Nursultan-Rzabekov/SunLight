@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigate_profile">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/profileFragment"
+    android:id="@+id/navigate_profile">
+
+    <fragment android:id="@+id/profileFragment"
+        android:name="com.example.sunlightdesign.ui.screens.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/lichnyi_kabinet">
+
+    </fragment>
 
 </navigation>

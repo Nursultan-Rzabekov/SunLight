@@ -147,4 +147,12 @@
     <string name="buy">Купить</string>
 
 
+    <string name="are_you_sure">Вы уверены?</string>
+
+    <string name="text_error">Ошибка</string>
+    <string name="text_success">Успешно</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_info">Инфо</string>
+    <string name="text_yes">да</string>
 </resources>

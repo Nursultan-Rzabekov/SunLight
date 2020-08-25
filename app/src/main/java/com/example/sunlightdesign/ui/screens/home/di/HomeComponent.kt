@@ -1,6 +1,6 @@
-package com.example.sunlightdesign.ui.screens.tasks.di
+package com.example.sunlightdesign.ui.screens.home.di
 
-import com.example.sunlightdesign.ui.screens.tasks.HomeFragment
+import com.example.sunlightdesign.ui.screens.home.HomeFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [HomeModule::class])

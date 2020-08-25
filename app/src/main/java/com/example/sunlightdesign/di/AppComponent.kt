@@ -2,7 +2,11 @@ package com.example.sunlightdesign.di
 
 import android.content.Context
 import com.example.sunlightdesign.data.source.TasksRepository
-import com.example.sunlightdesign.ui.screens.tasks.di.HomeComponent
+import com.example.sunlightdesign.ui.screens.email.di.EmailComponent
+import com.example.sunlightdesign.ui.screens.home.di.HomeComponent
+import com.example.sunlightdesign.ui.screens.list.di.ListComponent
+import com.example.sunlightdesign.ui.screens.profile.di.ProfileComponent
+import com.example.sunlightdesign.ui.screens.wallet.di.WalletComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -28,20 +32,22 @@ interface AppComponent {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
 
-//    fun addEditTaskComponent(): AddEditTaskComponent.Factory
-//    fun statisticsComponent(): StatisticsComponent.Factory
-//    fun taskDetailComponent(): TaskDetailComponent.Factory
-    fun tasksComponent(): HomeComponent.Factory
+    fun addWalletComponent(): WalletComponent.Factory
+    fun addProfileComponent(): ProfileComponent.Factory
+    fun addListComponent(): ListComponent.Factory
+    fun addEmailComponent(): EmailComponent.Factory
+    fun addHomeComponent(): HomeComponent.Factory
 
     val tasksRepository: TasksRepository
 }
 
 @Module(
     subcomponents = [
-        HomeComponent::class
-//        AddEditTaskComponent::class,
-//        StatisticsComponent::class,
-//        TaskDetailComponent::class
+        HomeComponent::class,
+        WalletComponent::class,
+        ListComponent::class,
+        ProfileComponent::class,
+        EmailComponent::class
     ]
 )
 object SubcomponentsModule
