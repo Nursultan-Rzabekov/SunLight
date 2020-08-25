@@ -1,5 +1,5 @@
 
-package com.example.sunlightdesign.ui.screens.tasks
+package com.example.sunlightdesign.ui.screens.home
 
 /**
  * Used with the filter spinner in the tasks list.

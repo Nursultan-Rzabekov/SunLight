@@ -67,10 +67,8 @@ class MainActivity : StrongActivity(),
     }
 
     override fun onGraphChange() {
-        TODO("Not yet implemented")
     }
 
     override fun onReselectNavItem(navController: NavController, fragment: Fragment) {
-        TODO("Not yet implemented")
     }
 }
