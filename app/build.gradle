@@ -22,6 +22,19 @@ android {
         }
     }
 
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+            dimension "default"
+            buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz"')
+        }
+
+        dev {
+            dimension "default"
+            buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz"')
+        }
+    }
+
 
     dataBinding {
         enabled = true
@@ -97,8 +110,22 @@ dependencies {
     kaptAndroidTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
 
+    /*Network*/
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.0")
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
+    implementation("com.google.code.gson:gson:2.8.2")
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
+    /*Coroutines*/
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.3.0-RC'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.3.0-RC'
 
-
+    /*Glide*/
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.9.0"
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+    kapt "com.github.bumptech.glide:compiler:4.9.0"
 
 }

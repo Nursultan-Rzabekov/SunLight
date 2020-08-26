@@ -7,6 +7,7 @@ import com.example.sunlightdesign.data.source.TasksDataSource
 import com.example.sunlightdesign.data.source.TasksRepository
 import com.example.sunlightdesign.data.source.local.TasksLocalDataSource
 import com.example.sunlightdesign.data.source.local.ToDoDatabase
+import com.example.sunlightdesign.data.source.remote.ApiServices
 import com.example.sunlightdesign.data.source.remote.TasksRemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -31,8 +32,8 @@ object AppModule {
     @Singleton
     @TasksRemoteDataSource
     @Provides
-    fun provideTasksRemoteDataSource(): TasksDataSource {
-        return TasksRemoteDataSource
+    fun provideTasksRemoteDataSource(apiServices: ApiServices): TasksDataSource {
+        return TasksRemoteDataSource(apiServices)
     }
 
     @JvmStatic

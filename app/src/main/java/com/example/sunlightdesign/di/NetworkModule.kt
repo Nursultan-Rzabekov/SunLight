@@ -1,77 +1,57 @@
 package com.example.sunlightdesign.di
 
+import android.text.format.DateUtils
+import com.example.sunlightdesign.BuildConfig
+import com.example.sunlightdesign.data.source.remote.ApiServices
+import com.google.gson.Gson
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 object NetworkModule {
-//    private const val BASE_URL = "http://xyz/appname/"
-//
-//    @Provides
-//    @Singleton
-//    fun provideOkHttp(): OkHttpClient.Builder {
-//        return Builder()
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideRequestHeaders(): RequestHeaders {
-//        return RequestHeaders(AccessToken(), "en", "application/json")
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun providesRequestInterceptor(requestHeaders: RequestHeaders): RequestInterceptor {
-//        return RequestInterceptor(requestHeaders)
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideRetrofit(
-//        httpClient: OkHttpClient.Builder,
-//        requestInterceptor: RequestInterceptor?
-//    ): Retrofit {
-//        //add logger
-//        val logging: HttpLoggingInterceptor =
-//            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-//        httpClient.addInterceptor(logging)
-//        httpClient.addInterceptor(requestInterceptor)
-//
-//        //add retro builder
-//        val retroBuilder: Retrofit.Builder = Builder()
-//            .baseUrl(BASE_URL)
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//            .addConverterFactory(GsonConverterFactory.create())
-//        retroBuilder.client(httpClient.build())
-//
-//        //create retrofit - only this instance would be used in the entire application
-//        return retroBuilder.build()
-//    }
-//
-//    // API Services
-//    @Provides
-//    @Singleton
-//    fun provideUserServices(
-//        retrofit: Retrofit
-//    ): UserServices {
-//        return retrofit.create(UserServices::class.java)
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideAccountServices(
-//        retrofit: Retrofit
-//    ): AccountsServices {
-//        return retrofit.create(AccountsServices::class.java)
-//    }
-//
-//
-//    @Provides
-//    @Singleton
-//    fun provideSystemServices(
-//        retrofit: Retrofit
-//    ): SystemServices {
-//        return retrofit.create(SystemServices::class.java)
-//    }
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson = Gson()
+
+    @Provides
+    @Singleton
+    fun provideGsonConvertorFactory(): GsonConverterFactory = GsonConverterFactory.create()
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        val client = OkHttpClient.Builder()
+            .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+            .writeTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+            .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        client.addInterceptor(interceptor)
+        return client.build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(
+        factory: GsonConverterFactory,
+        client: OkHttpClient
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(BuildConfig.BASE_URL)
+        .addConverterFactory(factory)
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(client)
+        .build()
+
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiServices = retrofit.create(ApiServices::class.java)
 }
