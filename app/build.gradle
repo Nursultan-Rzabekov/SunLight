@@ -35,6 +35,19 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+            dimension "default"
+            buildConfigField("String", "BASE_URL", '"http://apps.yourgains.com"')
+        }
+
+        dev {
+            dimension "default"
+            buildConfigField("String", "BASE_URL", '"http://apps.yourgains.com"')
+        }
+    }
 }
 
 dependencies {
@@ -95,6 +108,22 @@ dependencies {
 
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$daggerVersion"
+
+
+
+    /*Network*/
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.0")
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
+    implementation("com.google.code.gson:gson:2.8.5")
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+
+
+    /*Coroutines*/
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.3.0-RC'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.3.0-RC'
 
 
 
