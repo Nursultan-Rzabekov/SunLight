@@ -8,12 +8,10 @@ import com.example.sunlightdesign.data.Task
 import com.example.sunlightdesign.data.source.TasksDataSource
 import kotlinx.coroutines.delay
 
-/**
- * Implementation of the data source that adds a latency simulating network.
- */
-object TasksRemoteDataSource : TasksDataSource {
 
-    private const val SERVICE_LATENCY_IN_MILLIS = 2000L
+class TasksRemoteDataSource(private val apiServices: ApiServices) : TasksDataSource {
+
+    private val SERVICE_LATENCY_IN_MILLIS = 2000L
 
     private var TASKS_SERVICE_DATA = LinkedHashMap<String, Task>(2)
 
@@ -22,7 +20,9 @@ object TasksRemoteDataSource : TasksDataSource {
 
     override suspend fun getTasks(): List<Task> {
         // Simulate network by delaying the execution.
-        val tasks = TASKS_SERVICE_DATA.values.toList()
+//        val tasks = TASKS_SERVICE_DATA.values.toList()
+
+        val tasks = apiServices.getListAsync().await()
         delay(SERVICE_LATENCY_IN_MILLIS)
         return tasks
     }
