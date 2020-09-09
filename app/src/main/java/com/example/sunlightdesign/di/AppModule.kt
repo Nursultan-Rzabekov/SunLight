@@ -13,6 +13,7 @@ import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import retrofit2.Retrofit
 import javax.inject.Qualifier
 import javax.inject.Singleton
 import kotlin.annotation.AnnotationRetention.RUNTIME
@@ -27,6 +28,11 @@ object AppModule {
     @Qualifier
     @Retention(RUNTIME)
     annotation class TasksLocalDataSource
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiServices = retrofit.create(ApiServices::class.java)
+
 
     @JvmStatic
     @Singleton
