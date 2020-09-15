@@ -33,10 +33,13 @@ class AuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.glavnaia_avtorizovannyi, container, false)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+//        viewModel.getUseCase()
 
     }
 

@@ -40,12 +40,12 @@ android {
     productFlavors {
         prod {
             dimension "default"
-            buildConfigField("String", "BASE_URL", '"http://apps.yourgains.com"')
+            buildConfigField("String", "BASE_URL", '"Test-sunlight.qsmart.kz/api"')
         }
 
         dev {
             dimension "default"
-            buildConfigField("String", "BASE_URL", '"http://apps.yourgains.com"')
+            buildConfigField("String", "BASE_URL", '"Test-sunlight.qsmart.kz/api"')
         }
     }
 }

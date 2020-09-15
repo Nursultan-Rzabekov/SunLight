@@ -1,6 +1,7 @@
 package com.example.sunlightdesign.data.source
 
 import com.example.sunlightdesign.data.Task
+import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
 import com.example.sunlightdesign.di.AppModule
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,7 @@ class DefaultTasksRepository @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : TasksRepository {
 
-    override suspend fun getTasks(forceUpdate: Boolean): List<Task> {
+    override suspend fun getTasks(forceUpdate: Boolean): List<LoginResponse> {
         // Set app as busy while this function executes.
         if (forceUpdate) {
             try {
@@ -27,11 +28,8 @@ class DefaultTasksRepository @Inject constructor(
         return tasksLocalDataSource.getTasks()
     }
 
-
-
     private suspend fun updateTasksFromRemoteDataSource() {
         tasksRemoteDataSource.getTasks()
     }
-
 
 }

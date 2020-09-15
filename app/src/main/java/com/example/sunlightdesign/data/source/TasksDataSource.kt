@@ -1,13 +1,12 @@
 
 package com.example.sunlightdesign.data.source
 
-import androidx.lifecycle.LiveData
-import com.example.sunlightdesign.data.Task
+import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
 
 /**
  * Main entry point for accessing tasks data.
  */
 interface TasksDataSource {
 
-    suspend fun getTasks(): List<Task>
+    suspend fun getTasks(): List<LoginResponse>
 }
