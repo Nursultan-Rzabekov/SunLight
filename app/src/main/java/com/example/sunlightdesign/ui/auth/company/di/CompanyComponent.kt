@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.ui.auth.company.di
 
+import com.example.sunlightdesign.ui.auth.company.CompanyActivity
 import com.example.sunlightdesign.ui.auth.company.CompanyFragment
 import dagger.Subcomponent
 
@@ -11,6 +12,6 @@ interface CompanyComponent {
         fun create(): CompanyComponent
     }
 
-    fun inject(fragment: CompanyFragment)
+    fun inject(fragment: CompanyActivity)
 
 }

@@ -22,19 +22,12 @@ import javax.inject.Inject
 
 
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
-class CompanyFragment : Fragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel by viewModels<CompanyViewModel> { viewModelFactory }
-
+class CompanyFragment : BaseCompanyFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as BaseApplication).appComponent.addCompanyComponent().create().inject(this)
-    }
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +40,6 @@ class CompanyFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setListeners()
-
 
 //        viewModel.getUseCase()
     }

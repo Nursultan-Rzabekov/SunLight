@@ -26,6 +26,7 @@ import javax.inject.Singleton
         AppModule::class,
         NetworkModule::class,
         AppModuleBinds::class,
+        ActivityBuildersModule::class,
         ViewModelBuilderModule::class,
         SubcomponentsModule::class
     ]
@@ -44,7 +45,6 @@ interface AppComponent {
     fun addHomeComponent(): HomeComponent.Factory
     fun addAuthActivityComponent(): AuthComponent.Factory
     fun addAuthComponent(): AuthFragmentComponent.Factory
-    fun addCompanyComponent(): CompanyComponent.Factory
     fun addLoginComponent(): LoginComponent.Factory
 
     val tasksRepository: TasksRepository

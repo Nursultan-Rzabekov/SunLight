@@ -7,9 +7,6 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-/**
- * ViewModel for the task list screen.
- */
 class CompanyViewModel @Inject constructor(
     private val getItemsUseCase: GetLoginAuthUseCase,
     private val tasksRepository: TasksRepository

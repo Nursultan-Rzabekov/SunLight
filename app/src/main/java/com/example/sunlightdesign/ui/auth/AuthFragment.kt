@@ -3,6 +3,7 @@
 package com.example.sunlightdesign.ui.auth
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.auth.adapter.BannerViewPagerAdapter
+import com.example.sunlightdesign.ui.auth.company.CompanyActivity
 import kotlinx.android.synthetic.main.glavnaia_avtorizovannyi.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 import javax.inject.Inject
@@ -78,7 +80,7 @@ class AuthFragment : Fragment() {
         }
 
         btn_company_cv.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_companyFragment)
+            startActivity(Intent(context,CompanyActivity::class.java))
         }
 
         btn_structure_cv.setOnClickListener {
