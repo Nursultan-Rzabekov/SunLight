@@ -9,7 +9,7 @@
 
         <fragment
                 android:id="@+id/company_fragment"
-                android:name="com.example.sunlightdesign.ui.auth.company.CompanyFragment"
+                android:name="com.example.sunlightdesign.ui.auth.company.parts.AboutCompanyFragment"
                 android:label="fragment_launcher"
                 tools:layout="@layout/glavnaia_avtorizovannyi" >
 

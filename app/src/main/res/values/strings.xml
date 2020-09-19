@@ -1,17 +1,16 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">SunLightDesign</string>
     
     <string name="news">Новости</string>
 
-    // Меню
+    <!--Меню-->
     <string name="home">Главная</string>
     <string name="cabinet">Кабинет</string>
     <string name="purse">Кошелек</string>
     <string name="my_orders">Мои заказы</string>
     <string name="messages">Сообщения</string>
-    
 
-    // Логин
+    <!--Логин-->
     <string name="login">Вход</string>
     <string name="login_welcome">Добро пожаловать вы входите в систему \n как Спонсор Имя</string>
     <string name="enter_phone_number">Введите ваш номер телефона:</string>
@@ -22,8 +21,7 @@
     <string name="password_hint">********</string>
     <string name="enter">Войти</string>
     
-    
-    // Регистрация
+    <!--Регистрация-->
     <string name="registration_partner">Регистрация - Партнера</string>
     <string name="step_one">Шаг 1</string>
     <string name="registration">Регистрация</string>
@@ -46,7 +44,7 @@
     <string name="upload_docs">Прекрепить документ</string>
     <string name="next">Далее</string>
 
-    // Личный/ Кабинет
+    <!--Личный/ Кабинет-->
     <string name="edit_profile">Редакитировать профиль</string>
     <string name="status_active">Статус \n Активности</string>
     <string name="data_registration">Дата регистрации \n пользователя</string>
@@ -62,7 +60,7 @@
     <string name="not_active">Не активен</string>
     <string name="status">Статус:</string>
 
-    // Кошелек
+    <!--Кошелек-->
     <string name="bonusnyi_koshelek">Бонусный кошелек</string>
     <string name="koshelek_aktive">Кошелек активности</string>
     <string name="arrow_left">Объем левой ветки</string>
@@ -92,7 +90,7 @@
 
 
 
-    // Компания
+    <!--Компания-->
     <string name="office_sale">Офис-продаж</string>
     <string name="contacts_company">Казахстан, г.Алматы \n Жибек-Жолы 135 , 10 этаж 7 офис</string>
     <string name="contacts_office">Контакты офисов</string>
@@ -103,20 +101,19 @@
     <string name="office_abay">Офис на Абая:</string>
     <string name="phone_number_third">+7 (747) 987 - 76 -88</string>
     <string name="social_networking">Соцсети</string>
+    <string name="random_test_text_company">-Это текст. Кликните дважды, чтобы отредактировать. Расскажите посетителям сайта о себе. Здесь будет удачно смотреться текст о вашей компании и услугах. Используйте эту возможность, чтобы выгодно представить себя и свою компанию клиентам.</string>
 
-    // Custom dialog
+    <!--Custom dialog-->
     <string name="thanks_register">Спасибо за регистрацию!</string>
     <string name="ups">Упс…</string>
     <string name="common_checkout">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>
     <string name="dialog_sponsor">У вашего спонсора к сожалению \n недостачно средтств к списанию \n попробуйте выбрать другой способ</string>
     <string name="send_again">Отправить повторно</string>
-    <string name="dialog_temporary">Ваш временный пароль \n отправлен на номер +7 ххх ххх хххх,</string>
+    <string name="dialog_temporary" tools:ignore="Typos">Ваш временный пароль \n отправлен на номер +7 ххх ххх хххх,</string>
     <string name="send_again_after">Отправить повторно через 00 : 29 секунд</string>
     <string name="ok">OK</string>
 
-
-
-    // Профиль
+    <!--Профиль-->
     <string name="profile">Профиль</string>
     <string name="password">Пароль:</string>
     <string name="birthday">День рождения</string>
@@ -141,9 +138,7 @@
     <string name="yy_string">YY</string>
     <string name="cvv_string">CVV</string>
 
-
-
-    // Маркет
+    <!--Маркет-->
     <string name="buy">Купить</string>
 
 
@@ -156,9 +151,7 @@
     <string name="text_info">Инфо</string>
     <string name="text_yes">да</string>
 
-
-
-    //Authorization
+    <!--Authorization-->
     <string name="structure">Cтруктура</string>
     <string name="market">Маркет</string>
     <string name="company">Компания</string>

@@ -1,185 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-
-    <com.google.android.material.card.MaterialCardView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="@dimen/dimen_5dp"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/dimen_16dp"
-            android:layout_height="wrap_content">
-
+            android:padding="@dimen/dimen_16dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@string/office_sale"
-                android:textSize="@dimen/dimen_18sp"
                 android:textColor="@color/sunBlackColor"
-                android:fontFamily="@font/rubik_regular"
-                />
-
+                android:textSize="@dimen/dimen_18sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
-                android:textAlignment="textStart"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@string/contacts_company"
-                android:textSize="@dimen/dimen_16sp"
-                android:layout_marginTop="@dimen/dimen_20dp"
+                android:textAlignment="textStart"
                 android:textColor="@color/gray_textColor"
-                android:fontFamily="@font/rubik_regular"
-                />
-
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_30dp"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@string/contacts_office"
-                android:textSize="@dimen/dimen_18sp"
                 android:textColor="@color/sunBlackColor"
-                android:fontFamily="@font/rubik_regular"
-                />
-
+                android:textSize="@dimen/dimen_18sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_20dp"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@string/office_gogol"
-                android:textSize="@dimen/dimen_16sp"
                 android:textColor="@color/gray_textColor"
-                android:fontFamily="@font/rubik_regular"
-                />
-
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_5dp"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@string/phone_number_one"
-                android:textSize="@dimen/dimen_16sp"
                 android:textColor="@color/sunLightColor"
-                android:fontFamily="@font/rubik_regular"
-                />
-
-
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_10dp"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@string/office_zhibek_sholy"
-                android:textSize="@dimen/dimen_16sp"
                 android:textColor="@color/gray_textColor"
-                android:fontFamily="@font/rubik_regular"
-                />
-
-
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_5dp"
-                android:text="@string/phone_number_two"
-                android:textSize="@dimen/dimen_16sp"
-                android:textColor="@color/sunLightColor"
                 android:fontFamily="@font/rubik_regular"
-                />
-
-
+                android:text="@string/phone_number_two"
+                android:textColor="@color/sunLightColor"
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_10dp"
-                android:text="@string/office_abay"
-                android:textSize="@dimen/dimen_16sp"
-                android:textColor="@color/gray_textColor"
                 android:fontFamily="@font/rubik_regular"
-                />
-
+                android:text="@string/office_abay"
+                android:textColor="@color/gray_textColor"
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_5dp"
-                android:text="@string/phone_number_third"
-                android:textSize="@dimen/dimen_16sp"
-                android:textColor="@color/sunLightColor"
                 android:fontFamily="@font/rubik_regular"
-                />
-
+                android:text="@string/phone_number_third"
+                android:textColor="@color/sunLightColor"
+                android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_gravity="start"
                 android:layout_marginTop="@dimen/dimen_30dp"
-                android:text="@string/social_networking"
-                android:textSize="@dimen/dimen_22sp"
-                android:textColor="@color/sunBlackColor"
                 android:fontFamily="@font/rubik_regular"
-                />
-
+                android:text="@string/social_networking"
+                android:textColor="@color/sunBlackColor"
+                android:textSize="@dimen/dimen_22sp" />
 
             <LinearLayout
-                android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="@dimen/dimen_58dp"
-                    android:src="@drawable/ic_youtube_icon"
-                    android:layout_height="@dimen/dimen_58dp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/dimen_58dp"
-                    android:src="@drawable/ic_vk_icon"
+                    android:layout_height="@dimen/dimen_58dp"
+                    android:src="@drawable/ic_youtube_icon" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/dimen_58dp"
+                    android:layout_height="@dimen/dimen_58dp"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:layout_height="@dimen/dimen_58dp"/>
+                    android:src="@drawable/ic_vk_icon" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/dimen_58dp"
-                    android:src="@drawable/ic_facebook_icon"
+                    android:layout_height="@dimen/dimen_58dp"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:layout_height="@dimen/dimen_58dp"/>
-
+                    android:src="@drawable/ic_facebook_icon" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/dimen_58dp"
-                    android:src="@drawable/ic_instagram_icon"
+                    android:layout_height="@dimen/dimen_58dp"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:layout_height="@dimen/dimen_58dp"/>
+                    android:src="@drawable/ic_instagram_icon" />
 
             </LinearLayout>
 
-
         </LinearLayout>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

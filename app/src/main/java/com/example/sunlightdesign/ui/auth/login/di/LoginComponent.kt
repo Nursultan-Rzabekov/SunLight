@@ -1,6 +1,5 @@
 package com.example.sunlightdesign.ui.auth.login.di
 
-import com.example.sunlightdesign.ui.auth.company.CompanyFragment
 import com.example.sunlightdesign.ui.auth.login.LoginFragment
 import dagger.Subcomponent
 

@@ -1,7 +1,6 @@
 package com.example.sunlightdesign.ui.auth.company.di
 
 import com.example.sunlightdesign.ui.auth.company.CompanyActivity
-import com.example.sunlightdesign.ui.auth.company.CompanyFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [CompanyModule::class])
