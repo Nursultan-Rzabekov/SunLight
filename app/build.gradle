@@ -127,7 +127,7 @@ dependencies {
 
 
 
-
+    implementation 'com.readystatesoftware.chuck:library:1.1.0'
 
 
 }

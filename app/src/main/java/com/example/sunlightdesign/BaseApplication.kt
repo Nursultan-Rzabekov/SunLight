@@ -1,6 +1,7 @@
 package com.example.sunlightdesign
 
 import android.app.Application
+import android.content.Context
 import com.example.sunlightdesign.di.AppComponent
 import com.example.sunlightdesign.di.DaggerAppComponent
 import timber.log.Timber
@@ -13,6 +14,8 @@ import timber.log.Timber.DebugTree
  * Also, sets up Timber in the DEBUG BuildConfig. Read Timber's documentation for production setups.
  */
 open class BaseApplication : Application() {
+
+    var context: Context = applicationContext
 
     // Instance of the AppComponent that will be used by all the Activities in the project
     val appComponent: AppComponent by lazy {

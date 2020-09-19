@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.ui.screens.home.di
 
+import com.example.sunlightdesign.ui.auth.AuthFragment
 import com.example.sunlightdesign.ui.screens.home.HomeFragment
 import dagger.Subcomponent
 
@@ -12,6 +13,4 @@ interface HomeComponent {
     }
 
     fun inject(fragment: HomeFragment)
-
-
 }

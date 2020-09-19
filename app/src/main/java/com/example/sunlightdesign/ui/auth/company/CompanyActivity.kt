@@ -9,7 +9,6 @@ import com.example.sunlightdesign.ui.base.StrongActivity
 
 class CompanyActivity : StrongActivity(), NavController.OnDestinationChangedListener
 {
-
     override val layoutId: Int
         get() = R.layout.activity_company
 
@@ -17,11 +16,6 @@ class CompanyActivity : StrongActivity(), NavController.OnDestinationChangedList
         super.onCreate(savedInstanceState)
 
         findNavController(R.id.company_nav_host_fragment).addOnDestinationChangedListener(this)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     override fun onDestinationChanged(

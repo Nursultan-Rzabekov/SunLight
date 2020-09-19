@@ -4,6 +4,7 @@ import android.text.format.DateUtils
 import com.example.sunlightdesign.BuildConfig
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -15,6 +16,7 @@ import javax.inject.Singleton
 
 @Module
 object NetworkModule {
+
     @Provides
     @Singleton
     fun provideGson(): Gson = Gson()
@@ -34,6 +36,7 @@ object NetworkModule {
         interceptor.level =
             if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         client.addInterceptor(interceptor)
+//        client.addInterceptor(ChuckInterceptor(context))
         return client.build()
     }
 
