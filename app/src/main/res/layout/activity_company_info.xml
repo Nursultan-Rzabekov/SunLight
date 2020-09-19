@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/gray_F2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/company_appbar"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
-        android:background="@color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:elevation="@dimen/dimen_0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/company_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Light">
 
             <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/AppCompatTextView"
-                android:textAlignment="center"
-                android:layout_marginStart="?android:attr/actionBarSize"
                 android:layout_marginEnd="?android:attr/actionBarSize"
-                android:text="@string/company"/>
+                android:text="@string/company"
+                android:textAlignment="center" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -33,18 +35,49 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingStart="@dimen/dimen_16dp"
+        android:paddingEnd="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/company_tablayout"
+        <androidx.cardview.widget.CardView
+            style="@style/BaseCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:layout_marginBottom="@dimen/dimen_8dp"
+            app:cardElevation="@dimen/dimen_0dp"
+            app:contentPadding="@dimen/dimen_8dp"
+            app:contentPaddingLeft="@dimen/dimen_12dp"
+            app:contentPaddingRight="@dimen/dimen_12dp">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/company_viewpager"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/company_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/tab_background_selector"
+                app:tabIndicatorHeight="@dimen/dimen_0dp"
+                app:tabPaddingBottom="@dimen/dimen_0dp"
+                app:tabPaddingTop="@dimen/dimen_0dp"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/TabLayoutTextAppearance" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/BaseCardView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            app:cardElevation="@dimen/dimen_0dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/company_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

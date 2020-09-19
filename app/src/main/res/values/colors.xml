@@ -20,5 +20,6 @@
     <color name="colorBrown">#857C7C</color>
     <color name="light_gray">#C4C4C4</color>
     <color name="gray_editTextColor">#F7F7F7</color>
+    <color name="gray_F2">#F2F2F2</color>
 
 </resources>
