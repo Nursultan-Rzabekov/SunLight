@@ -84,11 +84,11 @@ class AuthFragment : Fragment() {
         }
 
         btn_structure_cv.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_companyFragment)
+            findNavController().navigate(R.id.action_authFragment_to_loginFragment)
         }
 
         btn_market_cv.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_companyFragment)
+            findNavController().navigate(R.id.action_authFragment_to_loginFragment)
         }
     }
 
