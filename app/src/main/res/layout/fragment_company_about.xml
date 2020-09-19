@@ -6,43 +6,37 @@
     android:padding="@dimen/dimen_16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            app:cardCornerRadius="@dimen/dimen_5dp"
+            app:cardBackgroundColor="@color/colorPrimary">
 
-            <androidx.cardview.widget.CardView
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aboutBannerIv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_16dp"
-                app:cardCornerRadius="@dimen/dimen_5dp"
-                app:cardBackgroundColor="@color/colorPrimary">
+                android:scaleType="centerCrop"
+                tools:src="@drawable/test_image1" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/aboutBannerIv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/test_image1" />
+        </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/aboutCompanyTv"
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/random_test_text_company"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/aboutCompanyTv"
-                style="@style/AppCompatTextViewGray"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="@string/random_test_text_company"/>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
