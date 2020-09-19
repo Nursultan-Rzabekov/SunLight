@@ -2,13 +2,11 @@ package com.example.sunlightdesign.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.sunlightdesign.data.source.DefaultTasksRepository
-import com.example.sunlightdesign.data.source.TasksDataSource
-import com.example.sunlightdesign.data.source.TasksRepository
-import com.example.sunlightdesign.data.source.local.TasksLocalDataSource
+import com.example.sunlightdesign.data.source.AuthDataSource
+import com.example.sunlightdesign.data.source.local.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.local.ToDoDatabase
 import com.example.sunlightdesign.data.source.remote.ApiServices
-import com.example.sunlightdesign.data.source.remote.TasksRemoteDataSource
+import com.example.sunlightdesign.data.source.remote.AuthRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -38,8 +36,8 @@ object AppModule {
     @Singleton
     @TasksRemoteDataSource
     @Provides
-    fun provideTasksRemoteDataSource(apiServices: ApiServices): TasksDataSource {
-        return TasksRemoteDataSource(apiServices)
+    fun provideTasksRemoteDataSource(apiServices: ApiServices): AuthDataSource {
+        return AuthRemoteDataSource(apiServices)
     }
 
     @JvmStatic
@@ -49,8 +47,8 @@ object AppModule {
     fun provideTasksLocalDataSource(
         database: ToDoDatabase,
         ioDispatcher: CoroutineDispatcher
-    ): TasksDataSource {
-        return TasksLocalDataSource(
+    ): AuthDataSource {
+        return AuthLocalDataSource(
             database.taskDao(), ioDispatcher
         )
     }
@@ -62,7 +60,7 @@ object AppModule {
         return Room.databaseBuilder(
             context.applicationContext,
             ToDoDatabase::class.java,
-            "Tasks.db"
+            "Auth.db"
         ).build()
     }
 

@@ -9,7 +9,6 @@ import com.example.sunlightdesign.data.Task
 
 @Database(entities = [Task::class], version = 1, exportSchema = false)
 abstract class ToDoDatabase : RoomDatabase() {
-
-    abstract fun taskDao(): TasksDao
+    abstract fun taskDao(): AuthDao
 }
 

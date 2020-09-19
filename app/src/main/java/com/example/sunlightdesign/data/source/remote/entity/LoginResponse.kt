@@ -29,7 +29,7 @@ data class User(
     val level: Int,
     val middle_name: String,
     val office_id: Any,
-    val `package`: Package,
+    val package_: Package,
     val package_id: Int,
     val parent_id: Any,
     val parent_level: Int,

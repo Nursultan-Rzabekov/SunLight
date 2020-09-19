@@ -1,16 +1,14 @@
 
 package com.example.sunlightdesign.data.source.remote
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import com.example.sunlightdesign.data.Task
-import com.example.sunlightdesign.data.source.TasksDataSource
+import com.example.sunlightdesign.data.source.AuthDataSource
 import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
 import kotlinx.coroutines.delay
 
 
-class TasksRemoteDataSource(private val apiServices: ApiServices) : TasksDataSource {
+class AuthRemoteDataSource(private val apiServices: ApiServices) : AuthDataSource {
 
     private val SERVICE_LATENCY_IN_MILLIS = 2000L
 

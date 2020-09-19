@@ -19,7 +19,7 @@ class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListene
 {
 
     override val layoutId: Int
-        get() = R.layout.activity_main
+        get() = R.layout.activity_auth
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
