@@ -155,4 +155,5 @@
     <string name="structure">Cтруктура</string>
     <string name="market">Маркет</string>
     <string name="company">Компания</string>
+    <string name="about_company">О Компании</string>
 </resources>

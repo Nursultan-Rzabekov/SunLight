@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.company.BaseCompanyFragment
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_company_info.*
 
 
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
