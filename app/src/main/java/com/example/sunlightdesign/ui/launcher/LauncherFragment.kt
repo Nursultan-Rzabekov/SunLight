@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.adapter.BannerViewPagerAdapter
+import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import kotlinx.android.synthetic.main.glavnaia_avtorizovannyi.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
@@ -76,7 +77,7 @@ class LauncherFragment : Fragment() {
 
     private fun setListeners(){
         btn_enter_cv.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_loginFragment)
+            startActivity(Intent(context,AuthActivity::class.java))
         }
 
         btn_company_cv.setOnClickListener {
@@ -84,11 +85,11 @@ class LauncherFragment : Fragment() {
         }
 
         btn_structure_cv.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_loginFragment)
+
         }
 
         btn_market_cv.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_loginFragment)
+
         }
     }
 

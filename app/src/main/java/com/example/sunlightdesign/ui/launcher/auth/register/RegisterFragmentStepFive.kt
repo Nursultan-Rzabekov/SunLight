@@ -17,7 +17,7 @@ class RegisterFragmentStepFive : BaseAuthFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.glavnaia_avtorizovannyi, container, false)
+        return inflater.inflate(R.layout.registration_partner_step_five, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

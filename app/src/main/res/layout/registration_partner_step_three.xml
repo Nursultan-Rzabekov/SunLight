@@ -65,6 +65,7 @@
                 android:layout_marginTop="@dimen/dimen_24dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next_step_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/next"

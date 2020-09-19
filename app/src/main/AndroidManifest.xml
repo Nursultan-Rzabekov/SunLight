@@ -20,7 +20,7 @@
 
         <activity android:name=".ui.launcher.company.CompanyActivity"/>
 
-
+        <activity android:name=".ui.launcher.auth.AuthActivity"/>
 
         <activity android:name=".ui.launcher.LauncherActivity">
             <intent-filter>

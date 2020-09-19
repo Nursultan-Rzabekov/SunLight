@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
+import kotlinx.android.synthetic.main.registration_partner_step_four.*
 
 
 class RegisterFragmentStepFour : BaseAuthFragment() {
@@ -17,7 +19,7 @@ class RegisterFragmentStepFour : BaseAuthFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.glavnaia_avtorizovannyi, container, false)
+        return inflater.inflate(R.layout.registration_partner_step_four, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -30,7 +32,9 @@ class RegisterFragmentStepFour : BaseAuthFragment() {
 
 
     private fun setListeners(){
-
+        btn_next_step_four.setOnClickListener {
+            findNavController().navigate(R.id.action_stepFourFragment_to_stepFiveFragment)
+        }
     }
 
 }
