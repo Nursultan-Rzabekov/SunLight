@@ -32,7 +32,6 @@ class LauncherFragment : Fragment() {
 
     private val viewModel by viewModels<LauncherViewModel> { viewModelFactory }
 
-
     private val handler = Handler()
     private val delay = 3000L //milliseconds
 
@@ -69,7 +68,6 @@ class LauncherFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setListeners()
-
 
 //        viewModel.getUseCase()
     }

@@ -22,7 +22,6 @@ abstract class ActivityBuildersModule {
     )
     abstract fun contributeCompanyActivity(): CompanyActivity
 
-
     @AuthScope
     @ContributesAndroidInjector(
         modules = [AuthFragmentBuildersModule::class, AuthModule::class]

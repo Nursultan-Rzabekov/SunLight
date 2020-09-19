@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/dimen_24dp"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/btn_company_cv"
                 style="@style/MainCardViewStyle">
 
@@ -54,9 +54,9 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="@dimen/dimen_10dp"
                     />
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/btn_market_cv"
                 style="@style/MainCardViewStyle">
 
@@ -77,10 +77,10 @@
                     android:layout_marginBottom="@dimen/dimen_10dp"
                     />
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:visibility="gone"
                 android:id="@+id/btn_structure_cv"
                 style="@style/MainCardViewStyle">
@@ -102,9 +102,9 @@
                     android:layout_marginBottom="@dimen/dimen_10dp"
                     />
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/btn_enter_cv"
                 app:cardBackgroundColor="@color/sunLightColor"
                 style="@style/MainCardViewStyle">
@@ -126,7 +126,7 @@
                     android:layout_marginBottom="@dimen/dimen_10dp"
                     />
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

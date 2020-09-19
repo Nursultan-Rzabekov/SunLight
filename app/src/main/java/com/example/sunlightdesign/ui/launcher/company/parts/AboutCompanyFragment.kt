@@ -1,23 +1,15 @@
 package com.example.sunlightdesign.ui.launcher.company.parts
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.company.BaseCompanyFragment
-import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_company_info.*
 
 
-@Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 class AboutCompanyFragment : BaseCompanyFragment() {
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

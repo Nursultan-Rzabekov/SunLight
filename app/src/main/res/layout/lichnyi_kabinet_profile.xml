@@ -52,7 +52,7 @@
                 android:layout_marginTop="@dimen/dimen_26dp"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -75,7 +75,7 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
 
 

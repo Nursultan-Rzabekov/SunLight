@@ -39,7 +39,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/phone_l_et"
-            style="@style/TextOutlined"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
             android:layout_marginTop="@dimen/dimen_10dp"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dimen_350dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/dimen_10dp"
@@ -87,4 +87,4 @@
 
 
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

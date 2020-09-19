@@ -7,7 +7,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="BannerCardViewStyle" parent="Widget.MaterialComponents.CardView">
+    <style name="BannerCardViewStyle" parent="CardView">
         <item name="cardCornerRadius">@dimen/dimen_5dp</item>
         <item name="cardElevation">@dimen/dimen_5dp</item>
         <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
@@ -16,7 +16,7 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="MainCardViewStyle" parent="Widget.MaterialComponents.CardView">
+    <style name="MainCardViewStyle" parent="CardView">
         <item name="cardCornerRadius">@dimen/dimen_5dp</item>
         <item name="cardElevation">@dimen/dimen_5dp</item>
         <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
@@ -25,13 +25,13 @@
     </style>
 
 
-    <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+    <style name="ImageButton">
         <item name="android:layout_height">@dimen/dimen_30dp</item>
         <item name="android:layout_width">@dimen/dimen_107dp</item>
     </style>
 
 
-    <style name="AppCompatTextView" parent="Widget.AppCompat.TextView">
+    <style name="AppCompatTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">bold</item>
@@ -41,7 +41,7 @@
         <item name="android:textColor">@color/sunBlackColor</item>
     </style>
 
-    <style name="AppCompatTextViewGray" parent="Widget.AppCompat.TextView">
+    <style name="AppCompatTextViewGray">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">normal</item>
@@ -52,7 +52,7 @@
     </style>
 
 
-    <style name="TextOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="TextOutlined">
         <item name="boxCornerRadiusBottomEnd">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusBottomStart">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusTopEnd">@dimen/dimen_10dp</item>
@@ -65,7 +65,7 @@
     </style>
 
 
-    <style name="AppCompatButton" parent="Widget.MaterialComponents.Button">
+    <style name="AppCompatButton">
         <item name="android:layout_width">@dimen/dimen_343dp</item>
         <item name="android:layout_height">@dimen/dimen_50dp</item>
         <item name="android:layout_gravity">center</item>
@@ -74,7 +74,7 @@
         <item name="fontFamily">@font/rubik_regular</item>
     </style>
 
-    <style name="AppCompatImageButton" parent="Widget.AppCompat.ImageButton">
+    <style name="AppCompatImageButton">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>

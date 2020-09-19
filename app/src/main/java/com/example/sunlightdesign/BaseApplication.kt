@@ -2,6 +2,7 @@ package com.example.sunlightdesign
 
 import android.app.Application
 import android.content.Context
+import androidx.multidex.MultiDexApplication
 import com.example.sunlightdesign.di.AppComponent
 import com.example.sunlightdesign.di.DaggerAppComponent
 import timber.log.Timber
@@ -13,7 +14,7 @@ import timber.log.Timber.DebugTree
  *
  * Also, sets up Timber in the DEBUG BuildConfig. Read Timber's documentation for production setups.
  */
-open class BaseApplication : Application() {
+open class BaseApplication : MultiDexApplication() {
 
     companion object{
         lateinit var context: Context
