@@ -15,7 +15,9 @@ import timber.log.Timber.DebugTree
  */
 open class BaseApplication : Application() {
 
-    var context: Context = applicationContext
+    companion object{
+        lateinit var context: Context
+    }
 
     // Instance of the AppComponent that will be used by all the Activities in the project
     val appComponent: AppComponent by lazy {
@@ -31,5 +33,7 @@ open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+
+        context = applicationContext
     }
 }

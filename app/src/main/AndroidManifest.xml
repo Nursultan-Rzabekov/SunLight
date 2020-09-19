@@ -18,11 +18,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.screens.MainActivity"/>
 
-        <activity android:name=".ui.auth.company.CompanyActivity"/>
+        <activity android:name=".ui.launcher.company.CompanyActivity"/>
 
 
 
-        <activity android:name=".ui.auth.AuthActivity">
+        <activity android:name=".ui.launcher.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

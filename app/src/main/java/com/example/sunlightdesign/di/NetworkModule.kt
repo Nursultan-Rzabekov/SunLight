@@ -1,6 +1,8 @@
 package com.example.sunlightdesign.di
 
+import android.content.Context
 import android.text.format.DateUtils
+import com.example.sunlightdesign.BaseApplication.Companion.context
 import com.example.sunlightdesign.BuildConfig
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -16,6 +18,7 @@ import javax.inject.Singleton
 
 @Module
 object NetworkModule {
+
 
     @Provides
     @Singleton
@@ -36,7 +39,7 @@ object NetworkModule {
         interceptor.level =
             if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         client.addInterceptor(interceptor)
-//        client.addInterceptor(ChuckInterceptor(context))
+        client.addInterceptor(ChuckInterceptor(context))
         return client.build()
     }
 

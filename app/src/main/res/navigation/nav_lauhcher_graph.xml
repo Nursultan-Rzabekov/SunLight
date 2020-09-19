@@ -4,17 +4,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/company_fragment">
+        app:startDestination="@id/launcher_fragment">
 
 
         <fragment
-                android:id="@+id/company_fragment"
-                android:name="com.example.sunlightdesign.ui.launcher.company.parts.AboutCompanyFragment"
+                android:id="@+id/launcher_fragment"
+                android:name="com.example.sunlightdesign.ui.launcher.LauncherFragment"
                 android:label="fragment_launcher"
-                tools:layout="@layout/lichnyi_kabinet" >
+                tools:layout="@layout/glavnaia_avtorizovannyi" >
 
         </fragment>
-
-
 
 </navigation>
