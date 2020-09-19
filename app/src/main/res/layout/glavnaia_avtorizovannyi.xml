@@ -32,11 +32,10 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/dimen_24dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen_8dp"
-            android:layout_marginStart="@dimen/dimen_8dp">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_company_cv"
                 style="@style/MainCardViewStyle">
 
                 <ImageView
@@ -45,9 +44,20 @@
                     android:layout_gravity="center"
                     android:background="@drawable/ic_company_logo"
                     />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:textColor="@color/sunLightColor"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="@string/company"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_market_cv"
                 style="@style/MainCardViewStyle">
 
                 <ImageView
@@ -57,9 +67,45 @@
                     android:background="@drawable/ic_market_logo"
                     />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:textColor="@color/sunLightColor"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="@string/market"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:visibility="gone"
+                android:id="@+id/btn_structure_cv"
+                style="@style/MainCardViewStyle">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_structure_logo"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:textColor="@color/sunLightColor"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="@string/structure"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    />
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_enter_cv"
                 app:cardBackgroundColor="@color/sunLightColor"
                 style="@style/MainCardViewStyle">
 
@@ -68,6 +114,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_enter"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:textColor="@color/white"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="@string/enter"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
                     />
 
             </com.google.android.material.card.MaterialCardView>

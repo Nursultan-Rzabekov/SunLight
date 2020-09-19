@@ -155,4 +155,11 @@
     <string name="text_cancel">Cancel</string>
     <string name="text_info">Инфо</string>
     <string name="text_yes">да</string>
+
+
+
+    //Authorization
+    <string name="structure">Cтруктура</string>
+    <string name="market">Маркет</string>
+    <string name="company">Компания</string>
 </resources>

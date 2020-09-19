@@ -2,8 +2,11 @@ package com.example.sunlightdesign.di
 
 import android.content.Context
 import com.example.sunlightdesign.data.source.TasksRepository
+import com.example.sunlightdesign.ui.auth.company.di.CompanyComponent
 import com.example.sunlightdesign.ui.auth.di.AuthComponent
 import com.example.sunlightdesign.ui.auth.di.AuthFragmentComponent
+import com.example.sunlightdesign.ui.auth.login.LoginViewModel
+import com.example.sunlightdesign.ui.auth.login.di.LoginComponent
 import com.example.sunlightdesign.ui.screens.email.di.EmailComponent
 import com.example.sunlightdesign.ui.screens.home.di.HomeComponent
 import com.example.sunlightdesign.ui.screens.list.di.ListComponent
@@ -41,6 +44,8 @@ interface AppComponent {
     fun addHomeComponent(): HomeComponent.Factory
     fun addAuthActivityComponent(): AuthComponent.Factory
     fun addAuthComponent(): AuthFragmentComponent.Factory
+    fun addCompanyComponent(): CompanyComponent.Factory
+    fun addLoginComponent(): LoginComponent.Factory
 
     val tasksRepository: TasksRepository
 }

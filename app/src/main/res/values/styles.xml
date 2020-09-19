@@ -20,8 +20,8 @@
         <item name="cardCornerRadius">@dimen/dimen_5dp</item>
         <item name="cardElevation">@dimen/dimen_5dp</item>
         <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
-        <item name="android:layout_height">@dimen/dimen_110dp</item>
-        <item name="android:layout_width">@dimen/dimen_110dp</item>
+        <item name="android:layout_height">@dimen/dimen_100dp</item>
+        <item name="android:layout_width">@dimen/dimen_100dp</item>
     </style>
 
 
