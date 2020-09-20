@@ -1,13 +1,12 @@
-package com.example.sunlightdesign.data.source.remote
+package com.example.sunlightdesign.data.source.remote.auth
 
-import com.example.sunlightdesign.data.source.remote.entity.*
+import com.example.sunlightdesign.data.source.remote.auth.entity.*
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Deferred
-import okhttp3.ResponseBody
 import retrofit2.http.*
 
 
-interface ApiServices {
+interface AuthServices {
 
     @GET("/auth/login")
     fun getLoginAuth(): Deferred<List<LoginResponse>>

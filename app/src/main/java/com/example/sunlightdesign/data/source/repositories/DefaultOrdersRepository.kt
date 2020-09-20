@@ -1,9 +1,8 @@
 package com.example.sunlightdesign.data.source.repositories
 
 import com.example.sunlightdesign.data.source.AuthDataSource
-import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.data.source.OrdersRepository
-import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
+import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
 import com.example.sunlightdesign.di.AppModule
 import com.example.sunlightdesign.utils.Prefs
 import kotlinx.coroutines.CoroutineDispatcher

@@ -5,8 +5,8 @@ import androidx.room.Room
 import com.example.sunlightdesign.data.source.AuthDataSource
 import com.example.sunlightdesign.data.source.local.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.local.ToDoDatabase
-import com.example.sunlightdesign.data.source.remote.ApiServices
-import com.example.sunlightdesign.data.source.remote.AuthRemoteDataSource
+import com.example.sunlightdesign.data.source.remote.auth.AuthServices
+import com.example.sunlightdesign.data.source.remote.auth.AuthRemoteDataSource
 import com.example.sunlightdesign.utils.Prefs
 import dagger.Module
 import dagger.Provides
@@ -30,15 +30,18 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiServices = retrofit.create(ApiServices::class.java)
+    fun provideApiService(retrofit: Retrofit): AuthServices = retrofit.create(
+        AuthServices::class.java)
 
 
     @JvmStatic
     @Singleton
     @TasksRemoteDataSource
     @Provides
-    fun provideTasksRemoteDataSource(apiServices: ApiServices): AuthDataSource {
-        return AuthRemoteDataSource(apiServices)
+    fun provideTasksRemoteDataSource(apiServices: AuthServices): AuthDataSource {
+        return AuthRemoteDataSource(
+            apiServices
+        )
     }
 
     @JvmStatic

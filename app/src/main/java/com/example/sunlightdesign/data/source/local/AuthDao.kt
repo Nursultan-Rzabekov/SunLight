@@ -1,13 +1,6 @@
 package com.example.sunlightdesign.data.source.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
-import com.example.sunlightdesign.data.Task
-import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
 
 /**
  * Data Access Object for the tasks table.

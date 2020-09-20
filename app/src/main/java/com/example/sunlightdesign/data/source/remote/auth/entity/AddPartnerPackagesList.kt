@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.data.source.remote.entity
+package com.example.sunlightdesign.data.source.remote.auth.entity
 
 import com.google.gson.annotations.SerializedName
 

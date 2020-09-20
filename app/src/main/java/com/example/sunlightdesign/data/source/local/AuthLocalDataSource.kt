@@ -2,7 +2,7 @@
 package com.example.sunlightdesign.data.source.local
 
 import com.example.sunlightdesign.data.source.AuthDataSource
-import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
+import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
