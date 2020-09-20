@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
+import kotlinx.android.synthetic.main.glavnaia_avtorizovannyi.*
 import javax.inject.Inject
 
 
@@ -38,6 +39,9 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        btn_enter_cv.visibility = View.GONE
+        btn_structure_cv.visibility = View.VISIBLE
 
 
 
