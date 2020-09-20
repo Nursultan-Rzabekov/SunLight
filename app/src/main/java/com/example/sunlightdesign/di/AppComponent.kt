@@ -1,7 +1,7 @@
 package com.example.sunlightdesign.di
 
 import android.content.Context
-import com.example.sunlightdesign.data.source.TasksRepository
+import com.example.sunlightdesign.data.source.*
 import com.example.sunlightdesign.ui.launcher.di.AuthComponent
 import com.example.sunlightdesign.ui.screens.email.di.EmailComponent
 import com.example.sunlightdesign.ui.screens.home.di.HomeComponent
@@ -41,7 +41,12 @@ interface AppComponent {
     fun addHomeComponent(): HomeComponent.Factory
     fun addAuthComponent(): AuthComponent.Factory
 
-    val tasksRepository: TasksRepository
+    val authRepository: AuthRepository
+    val walletRepository: WalletRepository
+    val accountRepository: AccountRepository
+    val messengerRepository: MessengerRepository
+    val launcherRepository: LauncherRepository
+    val ordersRepository: OrdersRepository
 }
 
 @Module(

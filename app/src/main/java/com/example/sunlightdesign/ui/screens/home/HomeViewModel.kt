@@ -1,13 +1,12 @@
 package com.example.sunlightdesign.ui.screens.home
 
 import androidx.lifecycle.ViewModel
-import com.example.sunlightdesign.data.source.TasksRepository
-import timber.log.Timber
+import com.example.sunlightdesign.data.source.AuthRepository
 import javax.inject.Inject
 
 
 class HomeViewModel @Inject constructor(
-    private val tasksRepository: TasksRepository
+    private val tasksRepository: AuthRepository
 ) : ViewModel() {
 
 

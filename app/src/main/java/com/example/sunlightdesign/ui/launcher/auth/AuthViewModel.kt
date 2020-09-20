@@ -1,7 +1,7 @@
 package com.example.sunlightdesign.ui.launcher.auth
 
 import androidx.lifecycle.ViewModel
-import com.example.sunlightdesign.data.source.TasksRepository
+import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import timber.log.Timber
 import javax.inject.Inject
@@ -12,7 +12,7 @@ import javax.inject.Inject
  */
 class AuthViewModel @Inject constructor(
     private val getItemsUseCase: GetLoginAuthUseCase,
-    private val tasksRepository: TasksRepository
+    private val tasksRepository: AuthRepository
 ) : ViewModel() {
 
     fun getUseCase(){

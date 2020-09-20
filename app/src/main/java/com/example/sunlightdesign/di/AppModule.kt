@@ -7,6 +7,7 @@ import com.example.sunlightdesign.data.source.local.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.local.ToDoDatabase
 import com.example.sunlightdesign.data.source.remote.ApiServices
 import com.example.sunlightdesign.data.source.remote.AuthRemoteDataSource
+import com.example.sunlightdesign.utils.Prefs
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -62,6 +63,13 @@ object AppModule {
             ToDoDatabase::class.java,
             "Auth.db"
         ).build()
+    }
+
+
+    @Singleton
+    @Provides
+    fun providePrefs(context: Context) : Prefs {
+        return Prefs(context.applicationContext)
     }
 
     @JvmStatic
