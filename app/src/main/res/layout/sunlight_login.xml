@@ -2,33 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/sunlight_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:background="@drawable/ic_sunlightlogo"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dimen_8dp"
-            android:layout_height="wrap_content"/>
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextView"
+            android:textStyle="bold"
             android:text="@string/login"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/welcome_login_as_tv"
             style="@style/AppCompatTextViewGray"
             android:layout_marginTop="@dimen/dimen_12dp"
-            android:text="@string/login_welcome"
+            tools:text="@string/login_welcome"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -39,20 +38,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/phone_l_et"
+            style="@style/BasicTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
-            android:layout_marginTop="@dimen/dimen_10dp"
-            app:hintEnabled="false"
-            >
+            android:layout_marginTop="@dimen/dimen_10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingBottom="@dimen/dimen_16dp"
                 style="@style/BasicEditText"
-                android:hint="@string/phone_hint"
-                />
+                tools:text="+7 777 77 77" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,32 +59,30 @@
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"
             android:layout_marginTop="@dimen/dimen_24dp"
-            android:text="@string/enter_password"
-            />
+            android:text="@string/enter_password" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_l_et"
-            style="@style/TextOutlined"
+            style="@style/BasicTextInputLayout"
+            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
-            android:layout_marginTop="@dimen/dimen_18dp"
-            app:hintEnabled="false"
-            >
+            android:layout_marginTop="@dimen/dimen_18dp">
             
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_et"
                 android:inputType="textPassword"
                 style="@style/BasicEditText"
-                android:hint="@string/password_hint"
-                 />
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingBottom="@dimen/dimen_16dp"
+                tools:text="*******" />
 
         </com.google.android.material.textfield.TextInputLayout>
-        
         
         <LinearLayout
             android:layout_width="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen_33dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatCheckBox
@@ -107,9 +104,14 @@
             android:textColor="@color/sunLightColor"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_enter"
-            style="@style/AppCompatButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_16sp"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp"
+            style="@style/BasicMaterialButton"
             android:text="@string/enter"
             android:layout_marginTop="@dimen/dimen_32dp"
             />

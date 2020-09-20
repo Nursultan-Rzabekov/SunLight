@@ -28,6 +28,14 @@ class LoginFragment : BaseAuthFragment() {
         return inflater.inflate(R.layout.sunlight_login, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        welcome_login_as_tv.text = getString(R.string.login_welcome, "Спонсор Имя")
+
+        setupMask()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -58,7 +66,11 @@ class LoginFragment : BaseAuthFragment() {
 //            }
 //        }
 
-        MaskImpl(MaskUtils.createSlotsFromMask(MaskUtils.PHONE_MASK, true), true).also {
+        MaskImpl(
+            MaskUtils.createSlotsFromMask(
+                MaskUtils.PHONE_MASK,
+                true),
+            true).also {
             it.isHideHardcodedHead = true
             MaskFormatWatcher(it).apply {
                 installOn(phone_et)

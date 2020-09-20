@@ -12,12 +12,12 @@
 
     <!--Логин-->
     <string name="login">Вход</string>
-    <string name="login_welcome">Добро пожаловать вы входите в систему \n как Спонсор Имя</string>
+    <string name="login_welcome">Добро пожаловать вы входите в систему \nкак <b>%1$s</b></string>
     <string name="enter_phone_number">Введите ваш номер телефона:</string>
     <string name="enter_password">Введите ваш пароль</string>
     <string name="remember_me">Запомнить меня</string>
-    <string name="forgot_password">Забыли пароль?</string>
-    <string name="phone_hint">+7 (747) 723 45 67</string>
+    <string name="forgot_password"><u>Забыли пароль?</u></string>
+    <string name="phone_hint">+7 </string>
     <string name="password_hint">********</string>
     <string name="enter">Войти</string>
     
