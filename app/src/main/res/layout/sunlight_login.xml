@@ -101,6 +101,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"
+            android:id="@+id/forget_password_tv"
             android:text="@string/forgot_password"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:textColor="@color/sunLightColor"

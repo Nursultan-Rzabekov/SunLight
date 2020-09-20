@@ -2,6 +2,7 @@
 
 package com.example.sunlightdesign.ui.launcher.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.sunlightdesign.utils.CARD_MASK
 import com.example.sunlightdesign.utils.IIN_MASK
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.onTextFormatted
+import com.readystatesoftware.chuck.internal.ui.MainActivity
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
@@ -38,6 +40,11 @@ class LoginFragment : BaseAuthFragment() {
 
     private fun setListeners(){
         btn_enter.setOnClickListener {
+            startActivity(Intent(context,MainActivity::class.java))
+
+        }
+
+        forget_password_tv.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
