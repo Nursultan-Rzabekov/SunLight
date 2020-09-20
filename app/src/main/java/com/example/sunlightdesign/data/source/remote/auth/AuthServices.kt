@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface AuthServices {
 
     @GET("/auth/login")
-    fun getLoginAuth(): Deferred<List<LoginResponse>>
+    fun getLoginAuth(): Deferred<LoginResponse>
 
 
     @GET("/cabinet/add-partner/users-list")
