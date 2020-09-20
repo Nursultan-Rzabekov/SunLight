@@ -2,7 +2,7 @@ package com.example.sunlightdesign.data.source.remote.auth.entity
 
 
 class LoginResponse(
-    val items: List<Login>
+    val items: Login
 ): BaseResponse()
 
 

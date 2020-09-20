@@ -8,5 +8,5 @@ import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
  */
 interface AuthRepository {
 
-    suspend fun getTasks(forceUpdate: Boolean = false): List<LoginResponse>
+    suspend fun getTasks(forceUpdate: Boolean = false): LoginResponse
 }

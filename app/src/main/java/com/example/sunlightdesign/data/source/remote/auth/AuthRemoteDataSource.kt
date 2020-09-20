@@ -18,7 +18,7 @@ class AuthRemoteDataSource(private val apiServices: AuthServices) : AuthDataSour
 
     private val observableTasks = MutableLiveData<List<Task>>()
 
-    override suspend fun getTasks(): List<LoginResponse> {
+    override suspend fun getTasks(): LoginResponse {
         // Simulate network by delaying the execution.
 //        val tasks = TASKS_SERVICE_DATA.values.toList()
 

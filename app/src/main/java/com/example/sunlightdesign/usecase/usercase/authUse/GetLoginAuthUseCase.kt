@@ -9,8 +9,8 @@ import javax.inject.Inject
 
 class GetLoginAuthUseCase @Inject constructor(
     private val itemsRepository: AuthRepository
-) : BaseCoroutinesUseCase<List<LoginResponse>>() {
+) : BaseCoroutinesUseCase<LoginResponse>() {
 
-    override suspend fun executeOnBackground(): List<LoginResponse> =
+    override suspend fun executeOnBackground(): LoginResponse =
         itemsRepository.getTasks(true)
 }

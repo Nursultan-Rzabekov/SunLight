@@ -12,7 +12,7 @@ class AuthLocalDataSource internal constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AuthDataSource {
 
-    override suspend fun getTasks(): List<LoginResponse> {
+    override suspend fun getTasks(): LoginResponse {
         TODO()
     }
 }
