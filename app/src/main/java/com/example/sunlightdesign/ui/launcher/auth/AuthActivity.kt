@@ -4,19 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.di.TodoViewModelFactory
 import com.example.sunlightdesign.ui.base.StrongActivity
+import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.screens.MainActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 import javax.inject.Inject
 
 class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListener
 {
+
+    @Inject
+    lateinit var viewModelFactory: TodoViewModelFactory
+
+    lateinit var viewModel : AuthViewModel
 
     override val layoutId: Int
         get() = R.layout.activity_auth
@@ -25,6 +33,8 @@ class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListene
         super.onCreate(savedInstanceState)
         setSupportActionBar(auth_toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        viewModel = ViewModelProvider(this,viewModelFactory).get(AuthViewModel::class.java)
 
         findNavController(R.id.auth_nav_host_fragment).addOnDestinationChangedListener(this)
 

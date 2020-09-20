@@ -12,5 +12,5 @@ class GetLoginAuthUseCase @Inject constructor(
 ) : BaseCoroutinesUseCase<LoginResponse>() {
 
     override suspend fun executeOnBackground(): LoginResponse =
-        itemsRepository.getTasks(true)
+        itemsRepository.getTasks()
 }

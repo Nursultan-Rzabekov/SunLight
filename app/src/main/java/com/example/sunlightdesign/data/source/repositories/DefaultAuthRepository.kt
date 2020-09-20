@@ -17,14 +17,7 @@ class DefaultAuthRepository @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AuthRepository {
 
-    override suspend fun getTasks(forceUpdate: Boolean): LoginResponse {
-        if (forceUpdate) {
-            try {
-                tasksRemoteDataSource.getTasks()
-            } catch (ex: Exception) {
-
-            }
-        }
-        return tasksLocalDataSource.getTasks()
+    override suspend fun getTasks(): LoginResponse {
+        return tasksRemoteDataSource.getTasks()
     }
 }

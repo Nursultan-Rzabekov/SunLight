@@ -1,5 +1,7 @@
 package com.example.sunlightdesign.ui.screens
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -14,6 +16,12 @@ class MainActivity : StrongActivity(),
     BottomNavController.NavGraphProvider,
     BottomNavController.OnNavigationGraphChanged,
     BottomNavController.OnNavigationReselectedListener {
+
+    companion object{
+        fun intent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
+    }
 
     override val layoutId: Int
         get() = R.layout.activity_main

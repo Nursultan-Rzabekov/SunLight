@@ -8,5 +8,4 @@ import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
  */
 interface LauncherRepository {
 
-    suspend fun getTasks(forceUpdate: Boolean = false): List<LoginResponse>
 }

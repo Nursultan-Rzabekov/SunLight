@@ -8,5 +8,4 @@ import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
  */
 interface MessengerRepository {
 
-    suspend fun getTasks(forceUpdate: Boolean = false): List<LoginResponse>
 }

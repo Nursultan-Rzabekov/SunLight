@@ -7,12 +7,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.ui.launcher.auth.AuthState
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.utils.MaskUtils
+import com.example.sunlightdesign.utils.displayErrorDialog
 import com.example.sunlightdesign.utils.onTextFormatted
+import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
@@ -34,6 +39,7 @@ class LoginFragment : BaseAuthFragment() {
         welcome_login_as_tv.text = getString(R.string.login_welcome, "Спонсор Имя")
 
         setupMask()
+        setObservers()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -45,8 +51,7 @@ class LoginFragment : BaseAuthFragment() {
 
     private fun setListeners(){
         btn_enter.setOnClickListener {
-            startActivity(Intent(context,MainActivity::class.java))
-
+            viewModel.getUseCase()
         }
 
         forget_password_tv.setOnClickListener {
@@ -54,6 +59,19 @@ class LoginFragment : BaseAuthFragment() {
         }
     }
 
+    private fun setObservers() {
+        viewModel.authState.observe(viewLifecycleOwner, Observer{
+            progress_bar.isVisible = it is AuthState.Loading
+            when(it) {
+                is AuthState.Success -> {
+                    startActivity(MainActivity.intent(requireContext()))
+                }
+                is AuthState.Error -> {
+                    requireActivity().displayErrorDialog(it.message)
+                }
+            }
+        })
+    }
 
     private fun setupMask() {
 //        MaskImpl(MaskUtils.createSlotsFromMask(IIN_MASK, true), true).also {
@@ -74,9 +92,6 @@ class LoginFragment : BaseAuthFragment() {
             it.isHideHardcodedHead = true
             MaskFormatWatcher(it).apply {
                 installOn(phone_et)
-                onTextFormatted {
-                    //updateSignUpBtn()
-                }
             }
         }
 //

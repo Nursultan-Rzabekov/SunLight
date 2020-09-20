@@ -17,14 +17,4 @@ class DefaultLauncherRepository @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : LauncherRepository {
 
-    override suspend fun getTasks(forceUpdate: Boolean): List<LoginResponse> {
-        if (forceUpdate) {
-            try {
-                tasksRemoteDataSource.getTasks()
-            } catch (ex: Exception) {
-
-            }
-        }
-        return tasksLocalDataSource.getTasks()
-    }
 }

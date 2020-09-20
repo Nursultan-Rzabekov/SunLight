@@ -8,19 +8,10 @@ import javax.inject.Inject
 
 
 class CompanyViewModel @Inject constructor(
-    private val getItemsUseCase: GetLoginAuthUseCase,
-    private val tasksRepository: AuthRepository
+    private val getItemsUseCase: GetLoginAuthUseCase
 ) : ViewModel() {
 
-    fun getUseCase(){
-        getItemsUseCase.execute {
-            onComplete {
-                Timber.e("onComplete: %s", it.size)
-            }
-            onNetworkError { Timber.e(it.toString()) }
-            onError { Timber.e(it) }
-        }
-    }
+
 
 }
 

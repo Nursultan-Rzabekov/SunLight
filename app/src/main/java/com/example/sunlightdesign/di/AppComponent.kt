@@ -2,7 +2,7 @@ package com.example.sunlightdesign.di
 
 import android.content.Context
 import com.example.sunlightdesign.data.source.*
-import com.example.sunlightdesign.ui.launcher.di.AuthComponent
+import com.example.sunlightdesign.ui.launcher.di.LauncherComponent
 import com.example.sunlightdesign.ui.screens.email.di.EmailComponent
 import com.example.sunlightdesign.ui.screens.home.di.HomeComponent
 import com.example.sunlightdesign.ui.screens.list.di.ListComponent
@@ -39,7 +39,7 @@ interface AppComponent {
     fun addListComponent(): ListComponent.Factory
     fun addEmailComponent(): EmailComponent.Factory
     fun addHomeComponent(): HomeComponent.Factory
-    fun addAuthComponent(): AuthComponent.Factory
+    fun addLauncherComponent(): LauncherComponent.Factory
 
     val authRepository: AuthRepository
     val walletRepository: WalletRepository
@@ -55,7 +55,8 @@ interface AppComponent {
         WalletComponent::class,
         ListComponent::class,
         ProfileComponent::class,
-        EmailComponent::class
+        EmailComponent::class,
+        LauncherComponent::class
     ]
 )
 object SubcomponentsModule

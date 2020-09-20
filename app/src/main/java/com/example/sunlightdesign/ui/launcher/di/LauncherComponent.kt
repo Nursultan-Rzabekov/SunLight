@@ -1,15 +1,14 @@
 package com.example.sunlightdesign.ui.launcher.di
 
-import com.example.sunlightdesign.ui.launcher.LauncherActivity
 import com.example.sunlightdesign.ui.launcher.LauncherFragment
 import dagger.Subcomponent
 
-@Subcomponent(modules = [AuthModule::class])
-interface AuthComponent {
+@Subcomponent(modules = [LauncherModule::class])
+interface LauncherComponent {
 
     @Subcomponent.Factory
     interface Factory {
-        fun create(): AuthComponent
+        fun create(): LauncherComponent
     }
 
     fun inject(fragment: LauncherFragment)
