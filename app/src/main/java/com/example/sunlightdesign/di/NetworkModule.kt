@@ -1,6 +1,5 @@
 package com.example.sunlightdesign.di
 
-import android.content.Context
 import android.text.format.DateUtils
 import com.example.sunlightdesign.BaseApplication.Companion.context
 import com.example.sunlightdesign.BuildConfig
@@ -9,7 +8,9 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -40,6 +41,7 @@ object NetworkModule {
             if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         client.addInterceptor(interceptor)
         client.addInterceptor(ChuckInterceptor(context))
+        client.addInterceptor(HeaderInterceptor())
         return client.build()
     }
 
@@ -54,4 +56,17 @@ object NetworkModule {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(client)
         .build()
+}
+
+class HeaderInterceptor : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response = chain.run {
+        proceed(
+            request()
+                .newBuilder()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                //.addHeader("Authorization", "Bearer ${}")
+                .build()
+        )
+    }
 }

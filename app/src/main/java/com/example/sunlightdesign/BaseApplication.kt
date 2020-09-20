@@ -1,23 +1,21 @@
 package com.example.sunlightdesign
 
-import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDexApplication
+import androidx.room.Room
+import com.example.sunlightdesign.data.source.local.ToDoDatabase
 import com.example.sunlightdesign.di.AppComponent
 import com.example.sunlightdesign.di.DaggerAppComponent
+import com.example.sunlightdesign.utils.Prefs
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-/**
- * An application that lazily provides a repository. Note that this Service Locator pattern is
- * used to simplify the sample. Consider a Dependency Injection framework.
- *
- * Also, sets up Timber in the DEBUG BuildConfig. Read Timber's documentation for production setups.
- */
 open class BaseApplication : MultiDexApplication() {
 
     companion object{
         lateinit var context: Context
+        var db: ToDoDatabase? = null
+        var prefs: Prefs? = null
     }
 
     // Instance of the AppComponent that will be used by all the Activities in the project
@@ -36,5 +34,7 @@ open class BaseApplication : MultiDexApplication() {
         if (BuildConfig.DEBUG) Timber.plant(DebugTree())
 
         context = applicationContext
+        prefs = Prefs(applicationContext)
+        db = Room.databaseBuilder(applicationContext, ToDoDatabase::class.java, "roomDatabase").build()
     }
 }

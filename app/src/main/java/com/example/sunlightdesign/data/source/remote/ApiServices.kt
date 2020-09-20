@@ -1,8 +1,7 @@
 package com.example.sunlightdesign.data.source.remote
 
-import com.example.sunlightdesign.data.source.remote.entity.CountriesList
-import com.example.sunlightdesign.data.source.remote.entity.LoginResponse
-import com.example.sunlightdesign.data.source.remote.entity.UsersList
+import com.example.sunlightdesign.data.source.remote.entity.*
+import com.google.gson.JsonObject
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import retrofit2.http.*
@@ -21,11 +20,38 @@ interface ApiServices {
     @GET("/helper/register")
     fun getListCountriesRegionsCities(): Deferred<List<CountriesList>>
 
-    @FormUrlEncoded
     @POST("/cabinet/add-partner")
     fun addPartnerStepOne(
         @Header("Authorization") bearerToken: String?,
-        @Field("access_token") authKey: String?
+        @Body jsonBody: JsonObject
     ): Deferred<List<LoginResponse>>
+
+
+    @GET("/cabinet/add-partner/packages-list")
+    fun getPackagesList(): Deferred<List<PackagesList>>
+
+
+    @POST("/cabinet/set-package")
+    fun addPartnerStepTwo(
+        @Header("Authorization") bearerToken: String?,
+        @Body jsonBody: JsonObject
+    ): Deferred<List<SetPackages>>
+
+    @GET("/cabinet/add-partner/packages-list")
+    fun getPackagesIdList(
+        @Query("package_id") package_id: Int
+    ): Deferred<List<AddPartnerPackagesList>>
+
+
+    @GET("/cabinet/add-partner/offices-list")
+    fun getOfficesList(): Deferred<List<OfficesList>>
+
+    @POST("/cabinet/add-partner")
+    fun addPartner(
+        @Header("Authorization") bearerToken: String?,
+        @Body jsonBody: JsonObject
+    ): Deferred<List<AddPartnerResponse>>
+
+
 
 }
