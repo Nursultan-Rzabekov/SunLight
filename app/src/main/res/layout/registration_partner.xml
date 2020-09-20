@@ -355,7 +355,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_next_step_one"
-                style="@style/AppCompatButton"
+                style="@style/BasicButton"
                 android:text="@string/next"
                 android:layout_marginTop="@dimen/dimen_32dp"
                 />

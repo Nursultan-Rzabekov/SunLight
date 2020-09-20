@@ -3,7 +3,7 @@ package com.example.sunlightdesign.ui.launcher.company
 import android.os.Bundle
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
-import com.example.sunlightdesign.ui.launcher.auth.login.LoginFragment
+import com.example.sunlightdesign.ui.launcher.company.adapter.CompanyInfoAdapter
 import com.example.sunlightdesign.ui.launcher.company.parts.AboutCompanyFragment
 import com.example.sunlightdesign.ui.launcher.company.parts.ContactsCompanyFragment
 import com.example.sunlightdesign.ui.launcher.company.parts.MarketPlanFragment

@@ -63,7 +63,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            style="@style/AppCompatButton"
+            style="@style/BasicButton"
             android:layout_width="match_parent"
             android:text="@string/ok"
             android:layout_marginTop="@dimen/dimen_20dp"

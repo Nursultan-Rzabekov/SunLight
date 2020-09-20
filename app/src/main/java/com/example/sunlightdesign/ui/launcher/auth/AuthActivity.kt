@@ -23,6 +23,8 @@ class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(auth_toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         findNavController(R.id.auth_nav_host_fragment).addOnDestinationChangedListener(this)
 

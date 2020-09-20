@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/podtverdıt"
                 android:textSize="@dimen/dimen_16sp"
-                style="@style/AppCompatButton"
+                style="@style/BasicButton"
                 android:textAlignment="center"
                 android:background="@drawable/light_gray_button"
                 android:textColor="@color/white"

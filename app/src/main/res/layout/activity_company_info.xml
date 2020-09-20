@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/transparent"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Light"
         app:elevation="@dimen/dimen_0dp">
 
         <androidx.appcompat.widget.Toolbar
@@ -54,12 +54,15 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/company_tablayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 app:tabBackground="@drawable/tab_background_selector"
                 app:tabIndicatorHeight="@dimen/dimen_0dp"
-                app:tabPaddingBottom="@dimen/dimen_0dp"
-                app:tabPaddingTop="@dimen/dimen_0dp"
+                app:tabPaddingBottom="-12dp"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabPaddingTop="-12dp"
                 app:tabRippleColor="@null"
+                android:clipToPadding="true"
                 app:tabSelectedTextColor="@color/white"
                 app:tabTextAppearance="@style/TabLayoutTextAppearance" />
 
