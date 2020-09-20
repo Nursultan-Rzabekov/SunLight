@@ -7,15 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
-import com.example.sunlightdesign.utils.CARD_MASK
-import com.example.sunlightdesign.utils.IIN_MASK
+import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.onTextFormatted
-import com.readystatesoftware.chuck.internal.ui.MainActivity
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
