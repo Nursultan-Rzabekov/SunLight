@@ -65,7 +65,6 @@ class LauncherFragment : Fragment() {
 
         //BaseApplication.prefs.bearerToken = "HelloEveryOne"
         //println("token ${BaseApplication.prefs.bearerToken}")
-//        viewModel.getUseCase()
     }
 
 

@@ -11,7 +11,7 @@ interface AuthServices {
     @POST("auth/login")
     fun getLoginAuth(
         @Body jsonBody: JsonObject
-    ): Deferred<LoginResponse>
+    ): Deferred<Login>
 
 
     @GET("/cabinet/add-partner/users-list")
@@ -25,7 +25,7 @@ interface AuthServices {
     fun addPartnerStepOne(
         @Header("Authorization") bearerToken: String?,
         @Body jsonBody: JsonObject
-    ): Deferred<List<LoginResponse>>
+    ): Deferred<List<Login>>
 
 
     @GET("cabinet/add-partner/packages-list")

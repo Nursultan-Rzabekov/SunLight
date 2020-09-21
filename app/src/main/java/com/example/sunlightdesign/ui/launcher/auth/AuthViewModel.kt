@@ -3,9 +3,7 @@ package com.example.sunlightdesign.ui.launcher.auth
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.data.source.remote.auth.entity.Login
-import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import timber.log.Timber
@@ -28,13 +26,13 @@ class AuthViewModel constructor(
 
         getItemsUseCase.execute {
             onComplete {
-                Timber.e("onComplete: %s", it?.login)
+                Timber.e("onComplete: %s", it)
                 it?.errors?.let {errors ->
                     if (errors.isNotEmpty())
                         _authState.postValue(AuthState.Error(errors.first()))
                 }
-                it?.login?.let {login ->
-                    _authState.postValue(AuthState.Success(login))
+                it?.let {
+                    _authState.postValue(AuthState.Success(it))
                 }
             }
             onNetworkError {

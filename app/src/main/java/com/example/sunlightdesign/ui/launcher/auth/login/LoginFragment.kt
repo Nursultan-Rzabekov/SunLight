@@ -2,33 +2,25 @@
 
 package com.example.sunlightdesign.ui.launcher.auth.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.auth.AuthState
-import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.displayErrorDialog
-import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.sunlight_login.*
-import org.koin.androidx.viewmodel.compat.SharedViewModelCompat.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 
 class LoginFragment : BaseAuthFragment() {
-
-    override val viewModel: AuthViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

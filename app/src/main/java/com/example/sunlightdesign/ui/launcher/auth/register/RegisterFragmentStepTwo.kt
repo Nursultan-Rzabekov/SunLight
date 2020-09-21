@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.registration_partner_step_two.*
 
 
 class RegisterFragmentStepTwo : BaseAuthFragment() {
-    override val viewModel: AuthViewModel by activityViewModels()
+//     val viewModel: AuthViewModel by activityViewModels()
 
 
     override fun onCreateView(

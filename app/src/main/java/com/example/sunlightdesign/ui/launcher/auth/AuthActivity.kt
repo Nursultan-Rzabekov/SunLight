@@ -29,7 +29,7 @@ class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListene
         super.onCreate(savedInstanceState)
         setSupportActionBar(auth_toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
+        viewModel.authState
         findNavController(R.id.auth_nav_host_fragment).addOnDestinationChangedListener(this)
 
     }

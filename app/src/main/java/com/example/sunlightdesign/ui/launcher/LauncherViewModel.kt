@@ -17,25 +17,6 @@ class LauncherViewModel  constructor(
 ) : ViewModel() {
 
 
-    fun getUseCase(){
-        getItemsUseCase.setData(SetLogin("70000000001","123123"))
-
-        getItemsUseCase.execute {
-            onComplete {
-                Timber.e("onComplete: %s", it?.login)
-                it?.errors?.let {errors ->
-                }
-                it?.login?.let {login ->
-                }
-            }
-            onNetworkError {
-                Timber.e(it.toString()) }
-            onError {
-                Timber.e(it) }
-        }
-    }
-
-
 }
 
 

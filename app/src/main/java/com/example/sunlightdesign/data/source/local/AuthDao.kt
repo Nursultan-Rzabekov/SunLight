@@ -31,7 +31,7 @@ interface AuthDao {
 //     * @return all tasks.
 //     */
 //    @Query("SELECT * FROM Tasks")
-//    suspend fun getTasks(): List<LoginResponse>
+//    suspend fun getTasks(): List<Login>
 //
 //    /**
 //     * Select a task by id.

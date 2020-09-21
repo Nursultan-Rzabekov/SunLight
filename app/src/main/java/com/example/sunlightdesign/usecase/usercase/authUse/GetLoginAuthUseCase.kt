@@ -2,14 +2,14 @@ package com.example.sunlightdesign.usecase.usercase.authUse
 
 
 import com.example.sunlightdesign.data.source.AuthRepository
-import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
+import com.example.sunlightdesign.data.source.remote.auth.entity.Login
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 
 
 class GetLoginAuthUseCase  constructor(
     private val itemsRepository: AuthRepository
-) : BaseCoroutinesUseCase<LoginResponse?>() {
+) : BaseCoroutinesUseCase<Login?>() {
 
     private var model: SetLogin? = null
 
@@ -17,7 +17,7 @@ class GetLoginAuthUseCase  constructor(
         this.model = model
     }
 
-    override suspend fun executeOnBackground(): LoginResponse? =
+    override suspend fun executeOnBackground(): Login? =
         this.model?.let { itemsRepository.getTasks(it) }
 }
 

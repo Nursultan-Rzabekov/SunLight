@@ -7,6 +7,7 @@ import com.example.sunlightdesign.BaseApplication.Companion.context
 import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.data.source.AuthDataSource
 import com.example.sunlightdesign.data.source.AuthRepository
+import com.example.sunlightdesign.data.source.local.AuthDao
 import com.example.sunlightdesign.data.source.local.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.local.ToDoDatabase
 import com.example.sunlightdesign.data.source.remote.auth.AuthRemoteDataSource
@@ -14,6 +15,7 @@ import com.example.sunlightdesign.data.source.remote.auth.AuthServices
 import com.example.sunlightdesign.data.source.repositories.DefaultAuthRepository
 import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
+import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.utils.Prefs
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -36,11 +38,8 @@ import java.util.concurrent.TimeUnit
 
 val module = module {
 
-    single{ Gson() }
-
-    single { GsonConverterFactory.create() as GsonConverterFactory }
-
-    single { val client = OkHttpClient.Builder()
+    single {
+        val client = OkHttpClient.Builder()
         .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
         .writeTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
         .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
@@ -50,43 +49,66 @@ val module = module {
         client.addInterceptor(interceptor)
         client.addInterceptor(ChuckInterceptor(BaseApplication.context))
         client.addInterceptor(HeaderInterceptor())
-        client.build() as OkHttpClient }
+        client.build() as OkHttpClient
+    }
 
-
-    single { Retrofit.Builder()
+    single {
+        Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(get())
+        .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(get())
-        .build() }
-
+        .build()
+    }
 
     single(named("authService")) {
         get<Retrofit>().create(AuthServices::class.java)
     }
 
-    single(named("authService2")) {
-        get<Retrofit>().create(AuthServices::class.java)
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            ToDoDatabase::class.java,
+            "Auth.db")
+            .build()
     }
 
-    single { Room.databaseBuilder(
-        androidContext(),
-        ToDoDatabase::class.java,
-        "Auth.db"
-    ).build() }
-
-
-    single { Dispatchers.IO }
+    single { get<ToDoDatabase>().taskDao() }
 
     single { Prefs(androidContext()) }
 
-    single<AuthDataSource>(named("RemoteDataSource")) { AuthRemoteDataSource(get(named("authService"))) }
+    single<AuthDataSource>(named("RemoteDataSource")) {
+        AuthRemoteDataSource(
+            apiServices = get(named("authService"))
+        )
+    }
 
-    single<AuthDataSource>(named("LocalDataSource")) { AuthLocalDataSource(get(), get()) }
+    single<AuthDataSource>(named("LocalDataSource")) {
+        AuthLocalDataSource(
+            tasksDao = get(),
+            ioDispatcher = Dispatchers.IO)
+    }
 
-    single<AuthRepository> { DefaultAuthRepository(get(),get(),get(),get()) }
+    single<AuthRepository> {
+        DefaultAuthRepository(
+            tasksLocalDataSource = get(named("LocalDataSource")),
+            tasksRemoteDataSource = get(named("RemoteDataSource")),
+            prefs = get(),
+            ioDispatcher = Dispatchers.IO
+        )
+    }
 
-    viewModel { AuthViewModel(get()) }
+    factory {
+        GetLoginAuthUseCase(
+            itemsRepository = get()
+        )
+    }
+
+    viewModel {
+        AuthViewModel(
+            getItemsUseCase = get()
+        )
+    }
 }
 
 

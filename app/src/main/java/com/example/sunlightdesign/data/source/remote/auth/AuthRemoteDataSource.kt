@@ -5,7 +5,7 @@ import android.provider.Settings
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.Task
 import com.example.sunlightdesign.data.source.AuthDataSource
-import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
+import com.example.sunlightdesign.data.source.remote.auth.entity.Login
 import com.example.sunlightdesign.data.source.remote.auth.AuthServices
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.google.gson.JsonObject
@@ -24,7 +24,7 @@ class AuthRemoteDataSource(private val apiServices: AuthServices) : AuthDataSour
 
     private val observableTasks = MutableLiveData<List<Task>>()
 
-    override suspend fun getTasks(model: SetLogin): LoginResponse {
+    override suspend fun getTasks(model: SetLogin): Login {
         // Simulate network by delaying the execution.
 //        val tasks = TASKS_SERVICE_DATA.values.toList()
 

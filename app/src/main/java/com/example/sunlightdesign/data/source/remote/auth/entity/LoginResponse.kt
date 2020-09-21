@@ -1,18 +1,12 @@
 package com.example.sunlightdesign.data.source.remote.auth.entity
 
 
-class LoginResponse(
-    val login: Login?
-): BaseResponse()
-
-
 data class Login(
-    val message: String?,
     val role: String?,
     val token: String?,
     val token_type: String?,
     val user: User?
-)
+) : BaseResponse()
 
 data class User(
     val birthday: String?,

@@ -14,7 +14,7 @@ import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 
 class RegisterFragmentStepFive : BaseAuthFragment() {
 
-    override val viewModel: AuthViewModel by activityViewModels()
+//     val viewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
