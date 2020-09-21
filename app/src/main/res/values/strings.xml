@@ -18,7 +18,6 @@
     <string name="remember_me">Запомнить меня</string>
     <string name="forgot_password"><u>Забыли пароль?</u></string>
     <string name="phone_hint">+7 </string>
-    <string name="password_hint">********</string>
     <string name="enter">Войти</string>
     
     <!--Регистрация-->
@@ -41,7 +40,6 @@
     <string name="right">Правая</string>
     <string name="upload_documents">Загрузите документы*</string>
     <string name="requirements_documents">Требование: желательно jpg-файл с размером 1440х1440 пикселей. \n Также принимает картинки с соотношением сторон 1х1.</string>
-    <string name="upload_docs">Прекрепить документ</string>
     <string name="next">Далее</string>
 
     <!--Личный/ Кабинет-->
@@ -70,9 +68,6 @@
 
     <string name="shag_two">Шаг 2</string>
     <string name="vybor_paketa">Выбор пакета</string>
-    <string name="step_two_partner">Partner</string>
-    <string name="step_two_vip_partner">Partner</string>
-    <string name="step_two_client">Client</string>
     <string name="back"><![CDATA[< Назад]]></string>
     <string name="step_three">Шаг 3</string>
     <string name="step_four">Шаг 4</string>
@@ -83,11 +78,6 @@
     <string name="dostypnye_tovary_ız">Доступные товары из “VIP PACK”</string>
     <string name="itogo_k_oplate">Итого к оплате : 520BV = 156 000 KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
-    <string name="nabor_ot">Набор от Clinique</string>
-    <string name="podrobnee"><u>подробнее</u></string>
-    <string name="step_three_cardvew_200_bv">200 BV</string>
-    <string name="skvalan_s_retınolom">Сквалан с ретинолом \n 0,5% The Ordinary</string>
-
 
 
     <!--Компания-->
@@ -104,20 +94,9 @@
     <string name="random_test_text_company">-Это текст. Кликните дважды, чтобы отредактировать. Расскажите посетителям сайта о себе. Здесь будет удачно смотреться текст о вашей компании и услугах. Используйте эту возможность, чтобы выгодно представить себя и свою компанию клиентам.</string>
 
     <!--Custom dialog-->
-    <string name="thanks_register">Спасибо за регистрацию!</string>
-    <string name="ups">Упс…</string>
-    <string name="common_checkout">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>
-    <string name="dialog_sponsor">У вашего спонсора к сожалению \n недостачно средтств к списанию \n попробуйте выбрать другой способ</string>
-    <string name="send_again">Отправить повторно</string>
-    <string name="dialog_temporary" tools:ignore="Typos">Ваш временный пароль \n отправлен на номер +7 ххх ххх хххх,</string>
-    <string name="send_again_after">Отправить повторно через 00 : 29 секунд</string>
-    <string name="ok">OK</string>
 
     <!--Профиль-->
     <string name="profile">Профиль</string>
-    <string name="password">Пароль:</string>
-    <string name="birthday">День рождения</string>
-    <string name="scan_document">Сканы документов</string>
     <string name="nazvanıe_ofısa">Название офиса</string>
     <string name="phone_number_step_four_cardview">+7(747) 345 67 89</string>
     <string name="street_step_four_cardview">ул.Макатева 84</string>
@@ -139,7 +118,6 @@
     <string name="cvv_string">CVV</string>
 
     <!--Маркет-->
-    <string name="buy">Купить</string>
 
 
     <string name="are_you_sure">Вы уверены?</string>

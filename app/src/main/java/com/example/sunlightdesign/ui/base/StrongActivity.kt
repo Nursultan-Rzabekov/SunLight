@@ -8,7 +8,6 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.areYouSureDialog
 import com.example.sunlightdesign.utils.displayInfoDialog
 import com.example.sunlightdesign.utils.displayToast
-import dagger.android.support.DaggerAppCompatActivity
 
 abstract class StrongActivity: AppCompatActivity(), UICommunicationListener {
 

@@ -13,11 +13,9 @@
     <color name="white">#fff</color>
     <color name="pure_color">#2C2A4B</color>
     <color name="red">#CA1616</color>
-    <color name="green">#0D8040</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="gray_for_line">#DADCE1</color>
     <color name="white_gray">#ECECEC</color>
-    <color name="colorBrown">#857C7C</color>
     <color name="light_gray">#C4C4C4</color>
     <color name="gray_editTextColor">#F7F7F7</color>
     <color name="gray_F2">#F2F2F2</color>

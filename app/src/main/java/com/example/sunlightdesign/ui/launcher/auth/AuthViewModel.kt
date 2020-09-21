@@ -7,14 +7,15 @@ import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.data.source.remote.auth.entity.Login
 import com.example.sunlightdesign.data.source.remote.auth.entity.LoginResponse
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
+import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import timber.log.Timber
-import javax.inject.Inject
+
 
 
 /**
  * ViewModel for the task list screen.
  */
-class AuthViewModel @Inject constructor(
+class AuthViewModel constructor(
     private val getItemsUseCase: GetLoginAuthUseCase
 ) : ViewModel() {
 
@@ -23,14 +24,16 @@ class AuthViewModel @Inject constructor(
 
     fun getUseCase(){
         _authState.postValue(AuthState.Loading)
+        getItemsUseCase.setData(SetLogin("70000000001","123123"))
+
         getItemsUseCase.execute {
             onComplete {
-                Timber.e("onComplete: %s", it.login)
-                it.errors?.let {errors ->
+                Timber.e("onComplete: %s", it?.login)
+                it?.errors?.let {errors ->
                     if (errors.isNotEmpty())
                         _authState.postValue(AuthState.Error(errors.first()))
                 }
-                it.login?.let {login ->
+                it?.login?.let {login ->
                     _authState.postValue(AuthState.Success(login))
                 }
             }

@@ -21,16 +21,11 @@ import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import kotlinx.android.synthetic.main.glavnaia_avtorizovannyi.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
-import javax.inject.Inject
+
 
 
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 class LauncherFragment : Fragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel by viewModels<LauncherViewModel> { viewModelFactory }
 
     private val handler = Handler()
     private val delay = 3000L //milliseconds
@@ -53,7 +48,6 @@ class LauncherFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as BaseApplication).appComponent.addLauncherComponent().create().inject(this)
     }
 
     override fun onCreateView(

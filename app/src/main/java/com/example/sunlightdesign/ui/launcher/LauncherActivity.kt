@@ -13,7 +13,7 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
 import com.example.sunlightdesign.ui.screens.MainActivity
 import kotlinx.android.synthetic.main.activity_auth.*
-import javax.inject.Inject
+
 
 class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedListener
 {

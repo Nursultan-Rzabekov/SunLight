@@ -6,13 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import kotlinx.android.synthetic.main.registration_partner_step_two.*
 
 
 class RegisterFragmentStepTwo : BaseAuthFragment() {
+    override val viewModel: AuthViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

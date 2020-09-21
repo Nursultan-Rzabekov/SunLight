@@ -9,7 +9,7 @@ import com.example.sunlightdesign.ui.launcher.company.parts.ContactsCompanyFragm
 import com.example.sunlightdesign.ui.launcher.company.parts.MarketPlanFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_company_info.*
-import javax.inject.Inject
+
 
 class CompanyActivity : StrongActivity()
 {
