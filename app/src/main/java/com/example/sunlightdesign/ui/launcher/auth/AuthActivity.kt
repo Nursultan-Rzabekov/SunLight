@@ -15,14 +15,12 @@ import com.example.sunlightdesign.ui.base.StrongActivity
 import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.screens.MainActivity
 import kotlinx.android.synthetic.main.activity_auth.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListener
 {
-//    lateinit var viewModel : AuthViewModel
-
-    val myViewModel: AuthViewModel by viewModel()
+    private val viewModel: AuthViewModel by viewModel()
 
     override val layoutId: Int
         get() = R.layout.activity_auth
@@ -31,8 +29,6 @@ class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListene
         super.onCreate(savedInstanceState)
         setSupportActionBar(auth_toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        //viewModel = ViewModelProvider(this,viewModelFactory).get(AuthViewModel::class.java)
 
         findNavController(R.id.auth_nav_host_fragment).addOnDestinationChangedListener(this)
 

@@ -18,14 +18,15 @@ import com.example.sunlightdesign.utils.Prefs
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
+import io.reactivex.schedulers.Schedulers.single
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.compat.ScopeCompat.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -35,12 +36,9 @@ import java.util.concurrent.TimeUnit
 
 val module = module {
 
-
     single{ Gson() }
 
-
     single { GsonConverterFactory.create() as GsonConverterFactory }
-
 
     single { val client = OkHttpClient.Builder()
         .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
@@ -70,8 +68,6 @@ val module = module {
     single(named("authService2")) {
         get<Retrofit>().create(AuthServices::class.java)
     }
-
-
 
     single { Room.databaseBuilder(
         androidContext(),

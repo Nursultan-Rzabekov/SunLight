@@ -18,16 +18,17 @@ import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.displayErrorDialog
-import com.example.sunlightdesign.utils.onTextFormatted
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.sunlight_login.*
+import org.koin.androidx.viewmodel.compat.SharedViewModelCompat.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 
 class LoginFragment : BaseAuthFragment() {
 
-    override val viewModel: AuthViewModel by activityViewModels()
+    override val viewModel: AuthViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

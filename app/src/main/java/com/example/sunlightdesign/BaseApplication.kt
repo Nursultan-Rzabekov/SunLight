@@ -5,7 +5,6 @@ import androidx.multidex.MultiDexApplication
 import com.example.sunlightdesign.koin.module
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import org.koin.core.module.Module
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
