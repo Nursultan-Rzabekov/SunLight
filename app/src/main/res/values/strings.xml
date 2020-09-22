@@ -136,7 +136,9 @@
     <string name="about_company">О Компании</string>
     <string name="market_plan">Маркетинг план</string>
     <string name="сontacts">Контакты</string>
-
+    <string name="wrong_phone_number">Неверный номер телефона</string>
+    <string name="password_hint">*******</string>
+    <string name="phone_mask_hint">+7 (_ _ _) _ _ _ _ _ _ _</string>
 
 
 </resources>

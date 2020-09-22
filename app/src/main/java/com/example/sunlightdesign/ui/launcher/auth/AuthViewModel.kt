@@ -20,9 +20,9 @@ class AuthViewModel constructor(
     private val _authState = MutableLiveData<AuthState<Login>>()
     val authState: LiveData<AuthState<Login>> get() = _authState
 
-    fun getUseCase(){
+    fun getUseCase(setLogin: SetLogin){
         _authState.postValue(AuthState.Loading)
-        getItemsUseCase.setData(SetLogin("70000000001","123123"))
+        getItemsUseCase.setData(setLogin)
 
         getItemsUseCase.execute {
             onComplete {
@@ -42,6 +42,11 @@ class AuthViewModel constructor(
                 _authState.postValue(AuthState.Error(it.localizedMessage?:"Error"))
                 Timber.e(it) }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        getItemsUseCase.unsubscribe()
     }
 
 }

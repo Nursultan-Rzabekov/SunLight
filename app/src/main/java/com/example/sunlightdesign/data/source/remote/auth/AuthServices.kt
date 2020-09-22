@@ -13,6 +13,9 @@ interface AuthServices {
         @Body jsonBody: JsonObject
     ): Deferred<Login>
 
+    @GET("/refreshToken")
+    fun refreshToken(): Login
+
     @GET("/cabinet/add-partner/users-list")
     fun getUsersList(): Deferred<List<UsersList>>
 

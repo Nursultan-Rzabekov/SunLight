@@ -136,6 +136,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/iin_et"
                     style="@style/BasicEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -159,6 +160,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone_et"
                     style="@style/BasicEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,6 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
+                    android:enabled="false"
                     android:paddingTop="@dimen/dimen_12dp"
                     android:paddingBottom="@dimen/dimen_12dp"
                     android:hint="@string/choose_country"
@@ -213,6 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
+                    android:enabled="false"
                     android:paddingTop="@dimen/dimen_12dp"
                     android:paddingBottom="@dimen/dimen_12dp"
                     android:hint="@string/choose_region"
@@ -239,6 +243,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
+                    android:enabled="false"
                     android:paddingTop="@dimen/dimen_12dp"
                     android:paddingBottom="@dimen/dimen_12dp"
                     android:hint="@string/choose_city"

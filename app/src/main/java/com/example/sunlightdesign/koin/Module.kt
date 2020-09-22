@@ -2,32 +2,30 @@ package com.example.sunlightdesign.koin
 
 import android.text.format.DateUtils
 import androidx.room.Room
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.example.sunlightdesign.BaseApplication
-import com.example.sunlightdesign.BaseApplication.Companion.context
 import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.data.source.AuthDataSource
 import com.example.sunlightdesign.data.source.AuthRepository
-import com.example.sunlightdesign.data.source.local.AuthDao
 import com.example.sunlightdesign.data.source.local.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.local.ToDoDatabase
 import com.example.sunlightdesign.data.source.remote.auth.AuthRemoteDataSource
 import com.example.sunlightdesign.data.source.remote.auth.AuthServices
 import com.example.sunlightdesign.data.source.repositories.DefaultAuthRepository
-import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
+import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
+import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
-import com.example.sunlightdesign.utils.Prefs
-import com.google.gson.Gson
+import com.example.sunlightdesign.utils.HeaderInterceptor
+import com.example.sunlightdesign.utils.SecureSharedPreferences
+import com.example.sunlightdesign.utils.TokenAuthenticator
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
-import io.reactivex.schedulers.Schedulers.single
 import kotlinx.coroutines.Dispatchers
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Response
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.compat.ScopeCompat.viewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -39,10 +37,30 @@ import java.util.concurrent.TimeUnit
 val module = module {
 
     single {
+        val preferences = "shared"
+        val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        EncryptedSharedPreferences.create(
+            preferences,
+            masterKeyAlias,
+            androidContext(),
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+    }
+
+    single {
+        SecureSharedPreferences(
+            sharedPreferences = get()
+        )
+    }
+
+    single {
         val client = OkHttpClient.Builder()
-        .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
-        .writeTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
-        .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+            .authenticator(TokenAuthenticator())
+            .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+            .writeTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+            .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
+
         val interceptor = HttpLoggingInterceptor()
         interceptor.level =
             if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
@@ -69,13 +87,11 @@ val module = module {
         Room.databaseBuilder(
             androidContext(),
             ToDoDatabase::class.java,
-            "Auth.db")
-            .build()
+            "Auth.db"
+        ).build()
     }
 
     single { get<ToDoDatabase>().taskDao() }
-
-    single { Prefs(androidContext()) }
 
     single<AuthDataSource>(named("RemoteDataSource")) {
         AuthRemoteDataSource(
@@ -86,7 +102,8 @@ val module = module {
     single<AuthDataSource>(named("LocalDataSource")) {
         AuthLocalDataSource(
             tasksDao = get(),
-            ioDispatcher = Dispatchers.IO)
+            ioDispatcher = Dispatchers.IO
+        )
     }
 
     single<AuthRepository> {
@@ -104,6 +121,18 @@ val module = module {
         )
     }
 
+    factory {
+        SharedUseCase(
+            secureSharedPreferences = get()
+        )
+    }
+
+    viewModel {
+        LauncherViewModel(
+            sharedUseCase = get()
+        )
+    }
+
     viewModel {
         AuthViewModel(
             getItemsUseCase = get()
@@ -111,16 +140,3 @@ val module = module {
     }
 }
 
-
-class HeaderInterceptor : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response = chain.run {
-        proceed(
-            request()
-                .newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Accept", "application/json")
-                //.addHeader("Authorization", "Bearer ${}")
-                .build()
-        )
-    }
-}

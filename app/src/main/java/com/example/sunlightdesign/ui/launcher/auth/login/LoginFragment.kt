@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.launcher.auth.login
 
 import android.os.Bundle
@@ -12,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.auth.AuthState
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
+import com.example.sunlightdesign.ui.launcher.auth.register.isPhoneValid
 import com.example.sunlightdesign.ui.screens.MainActivity
+import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.displayErrorDialog
 import kotlinx.android.synthetic.main.sunlight_login.*
@@ -48,7 +48,8 @@ class LoginFragment : BaseAuthFragment() {
 
     private fun setListeners(){
         btn_enter.setOnClickListener {
-            viewModel.getUseCase()
+            if(setCheckers())
+            viewModel.getUseCase(SetLogin(MaskUtils.unMaskValue(MaskUtils.PHONE_MASK, phone_et.text.toString()), password_et.text.toString()))
         }
 
         forget_password_tv.setOnClickListener {
@@ -70,17 +71,15 @@ class LoginFragment : BaseAuthFragment() {
         })
     }
 
-    private fun setupMask() {
-//        MaskImpl(MaskUtils.createSlotsFromMask(IIN_MASK, true), true).also {
-//            it.isHideHardcodedHead = false
-//            MaskFormatWatcher(it).apply {
-//                installOn(edit_iin)
-//                onTextFormatted {
-//                    if (isIinValid()) edit_phone.requestFocus()
-//                }
-//            }
-//        }
+    private fun setCheckers() : Boolean {
+        if(!isPhoneValid(phone_et)){
+            phone_et.error = getString(R.string.wrong_phone_number)
+            return false
+        }
+        return true
+    }
 
+    private fun setupMask() {
         MaskImpl(
             MaskUtils.createSlotsFromMask(
                 MaskUtils.PHONE_MASK,
@@ -91,26 +90,14 @@ class LoginFragment : BaseAuthFragment() {
                 installOn(phone_et)
             }
         }
-//
-//
-//        MaskImpl(MaskUtils.createSlotsFromMask(CARD_MASK, true), true).also {
-//            it.isHideHardcodedHead = false
-//            MaskFormatWatcher(it).apply {
-//                installOn(edit_card_number)
-//                onTextFormatted { updateSignUpBtn() }
-//            }
-//        }
 
-
+        phone_et.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                phone_et.hint = getString(R.string.phone_mask_hint)
+            } else {
+                phone_et.hint = ""
+            }
+        }
     }
-
-//    private fun updateSignUpBtn() {
-//        btn_enter.isEnabled = if (isPhoneValid() && isIinValid() && (isCardValid() || isIbanValid())) {
-//            activity?.closeKeyboard()
-//            true
-//        } else {
-//            false
-//        }
-//    }
 
 }

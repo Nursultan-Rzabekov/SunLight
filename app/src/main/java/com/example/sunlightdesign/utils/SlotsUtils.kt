@@ -1,5 +1,8 @@
 package com.example.sunlightdesign.utils
 
+import android.app.Activity
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import ru.tinkoff.decoro.slots.PredefinedSlots
 import ru.tinkoff.decoro.slots.Slot
 
@@ -15,7 +18,7 @@ val LOGIN_PHONE_MASK = "+7 (___) ___ __ __"
 private fun hardcodedSlot(value: Char) = Slot(Slot.RULE_INPUT_MOVES_INPUT, value, null);
 
 object MaskUtils {
-    val PHONE_MASK = "+7 (###) ### ## ##"
+    val PHONE_MASK = "+# (###) ### ## ##"
     fun createSlotsFromMask(mask: String, onlyDigits: Boolean = true, digitSymbol: Char = '#'): Array<Slot> {
         return mutableListOf<Slot>().apply {
             mask.forEach {
@@ -74,3 +77,6 @@ object MaskUtils {
         return builder.toString().trim()
     }
 }
+
+
+
