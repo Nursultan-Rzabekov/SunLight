@@ -13,10 +13,8 @@ interface AuthServices {
         @Body jsonBody: JsonObject
     ): Deferred<Login>
 
-
     @GET("/cabinet/add-partner/users-list")
     fun getUsersList(): Deferred<List<UsersList>>
-
 
     @GET("helper/register")
     fun getListCountriesRegionsCities(): Deferred<List<CountriesList>>
@@ -27,10 +25,8 @@ interface AuthServices {
         @Body jsonBody: JsonObject
     ): Deferred<List<Login>>
 
-
     @GET("cabinet/add-partner/packages-list")
     fun getPackagesList(): Deferred<List<PackagesList>>
-
 
     @POST("cabinet/set-package")
     fun addPartnerStepTwo(
@@ -43,7 +39,6 @@ interface AuthServices {
         @Query("package_id") package_id: Int
     ): Deferred<List<AddPartnerPackagesList>>
 
-
     @GET("cabinet/add-partner/offices-list")
     fun getOfficesList(): Deferred<List<OfficesList>>
 
@@ -52,7 +47,5 @@ interface AuthServices {
         @Header("Authorization") bearerToken: String?,
         @Body jsonBody: JsonObject
     ): Deferred<List<AddPartnerResponse>>
-
-
 
 }

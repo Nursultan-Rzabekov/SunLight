@@ -6,6 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="displayOptions">showHome|useLogo</item>
+        <item name="popupMenuStyle">@style/Widget.MaterialComponents.PopupMenu</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.MaterialComponents.PopupMenu.Overflow</item>
     </style>
 
     <style name="BaseCardView" parent="CardView">
@@ -39,7 +41,6 @@
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">@dimen/dimen_20sp</item>
-        <item name="android:textAlignment">textStart</item>
         <item name="android:textColor">@color/sunBlackColor</item>
     </style>
 
@@ -97,6 +98,16 @@
     </style>
 
     <style name="BasicTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dimen_5dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dimen_5dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dimen_5dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dimen_5dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeColor">@color/transparent</item>
+    </style>
+
+    <style name="BasicDropDownInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/dimen_5dp</item>
         <item name="boxCornerRadiusBottomStart">@dimen/dimen_5dp</item>
