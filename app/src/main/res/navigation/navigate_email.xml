@@ -8,7 +8,7 @@
     <fragment android:id="@+id/emailFragment"
         android:name="com.example.sunlightdesign.ui.screens.email.EmailFragment"
         android:label="@string/home"
-        tools:layout="@layout/koshelek">
+        tools:layout="@layout/wallet">
 
     </fragment>
 

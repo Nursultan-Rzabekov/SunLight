@@ -11,7 +11,7 @@
                 android:id="@+id/launcher_fragment"
                 android:name="com.example.sunlightdesign.ui.launcher.LauncherFragment"
                 android:label="fragment_launcher"
-                tools:layout="@layout/glavnaia_avtorizovannyi" >
+                tools:layout="@layout/launcher_authenticated" >
 
         </fragment>
 

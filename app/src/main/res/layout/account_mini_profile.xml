@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <include layout="@layout/lichnyi_kabinet_base_profile_cardview"/>
+        <include layout="@layout/account_base_profile_cardview"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"

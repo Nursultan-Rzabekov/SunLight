@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">SunLightDesign</string>
     
     <string name="news">Новости</string>
@@ -39,7 +39,7 @@
     <string name="left">Левая</string>
     <string name="right">Правая</string>
     <string name="upload_documents">Загрузите документы*</string>
-    <string name="requirements_documents">Требование: желательно jpg-файл с размером 1440х1440 пикселей. \n Также принимает картинки с соотношением сторон 1х1.</string>
+    <string name="requirements_documents">Требование: желательно jpg-файл с размером <b>1440х1440 пикселей</b>. \nТакже принимает картинки с <b>соотношением сторон 1х1.</b></string>
     <string name="next">Далее</string>
 
     <!--Личный/ Кабинет-->
@@ -139,6 +139,12 @@
     <string name="wrong_phone_number">Неверный номер телефона</string>
     <string name="password_hint">*******</string>
     <string name="phone_mask_hint">+7 (_ _ _) _ _ _ _ _ _ _</string>
+    <string name="attach_file">Прекрепить документ</string>
+    <string name="delete">Удалить</string>
+    <string name="ten_thousand_bv">10000 BV</string>
+    <string name="twelve_thousand_bv">12000 BV</string>
+    <string name="two_thousand_bv">2000 BV</string>
+    <string name="five_thousand_bv">5000 BV</string>
 
 
 </resources>

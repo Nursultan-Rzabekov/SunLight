@@ -15,6 +15,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:contentDescription="@string/app_name"
             android:layout_width="wrap_content"
             android:background="@drawable/ic_sunlightlogo"
             android:layout_gravity="center_horizontal"
@@ -39,6 +40,7 @@
                 style="@style/MainCardViewStyle">
 
                 <ImageView
+                    android:contentDescription="@string/company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -61,6 +63,7 @@
                 style="@style/MainCardViewStyle">
 
                 <ImageView
+                    android:contentDescription="@string/market"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -86,6 +89,7 @@
                 style="@style/MainCardViewStyle">
 
                 <ImageView
+                    android:contentDescription="@string/structure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -110,6 +114,7 @@
                 style="@style/MainCardViewStyle">
 
                 <ImageView
+                    android:contentDescription="@string/enter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

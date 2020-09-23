@@ -8,11 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
-import kotlinx.android.synthetic.main.glavnaia_avtorizovannyi.*
+import kotlinx.android.synthetic.main.launcher_authenticated.*
 
 
 
@@ -30,7 +27,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.glavnaia_avtorizovannyi, container, false)
+        return inflater.inflate(R.layout.launcher_authenticated, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

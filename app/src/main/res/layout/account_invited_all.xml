@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginTop="@dimen/dimen_16dp"
     android:layout_height="wrap_content">
 
@@ -56,7 +56,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/AppCompatTextView"
                     android:layout_gravity="start"
-                    android:text="Nursultan Rzabekov"
+                    tools:text="Nursultan Rzabekov"
                     android:textSize="@dimen/dimen_14sp"
                     android:fontFamily="@font/rubik_bold"
                     android:textColor="@color/pure_color"
@@ -64,7 +64,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/AppCompatTextViewGray"
-                    android:text="KAZ32423423423423"
+                    tools:text="KAZ32423423423423"
                     android:layout_marginTop="@dimen/dimen_12dp"
                     android:textSize="@dimen/dimen_14sp"
                     />
@@ -92,7 +92,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/AppCompatTextViewGray"
-                    android:text="19.10.2018"
+                    tools:text="19.10.2018"
                     android:layout_marginTop="@dimen/dimen_12dp"
                     android:textSize="@dimen/dimen_14sp"
                     />

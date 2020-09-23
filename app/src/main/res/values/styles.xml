@@ -28,7 +28,6 @@
         <item name="android:layout_width">@dimen/dimen_100dp</item>
     </style>
 
-
     <style name="ImageButton">
         <item name="android:layout_height">@dimen/dimen_30dp</item>
         <item name="android:layout_width">@dimen/dimen_107dp</item>
@@ -54,7 +53,6 @@
         <item name="android:textColor">@color/gray_textColor</item>
     </style>
 
-
     <style name="TextOutlined">
         <item name="boxCornerRadiusBottomEnd">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusBottomStart">@dimen/dimen_10dp</item>
@@ -66,7 +64,6 @@
         <item name="android:background">@color/white</item>
         <item name="boxStrokeColor">@color/secondaryFirst</item>
     </style>
-
 
     <style name="BasicButton" parent="TextAppearance.AppCompat.Widget.Button">
         <item name="android:gravity">center</item>
@@ -81,6 +78,21 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="BasicOutlinedMaterialButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/dimen_5dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="strokeColor">@color/gray_DA</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="BasicOutlinedCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerRadius">@dimen/dimen_5dp</item>
+        <item name="strokeColor">@color/gray_DA</item>
+        <item name="contentPadding">@dimen/dimen_16dp</item>
+        <item name="cardBackgroundColor">@color/transparent</item>
+    </style>
 
     <style name="BasicEditText">
         <item name="android:singleLine">true</item>

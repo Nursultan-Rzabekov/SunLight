@@ -8,7 +8,7 @@
     <fragment android:id="@+id/profileFragment"
         android:name="com.example.sunlightdesign.ui.screens.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/lichnyi_kabinet">
+        tools:layout="@layout/fragment_account">
 
     </fragment>
 

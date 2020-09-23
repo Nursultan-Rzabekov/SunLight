@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_marginStart="@dimen/dimen_16dp"
     android:layout_marginEnd="@dimen/dimen_16dp"
@@ -25,7 +25,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"
             android:layout_gravity="center_horizontal"
-            android:text="Nursultan Rzabekov"
+            tools:text="Nursultan Rzabekov"
             android:textSize="@dimen/dimen_14sp"
             android:textColor="@color/sunLightColor"
             />
@@ -33,7 +33,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"
             android:layout_gravity="center_horizontal"
-            android:text="KAZ000005454545"
+            tools:text="KAZ000005454545"
             android:textSize="@dimen/dimen_14sp"
             android:layout_marginTop="@dimen/dimen_4dp"
             />

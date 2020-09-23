@@ -25,17 +25,17 @@
                 android:layout_marginTop="@dimen/dimen_32dp"
                 />
 
-            <include layout="@layout/lichnyi_kabinet_mini_profile"/>
+            <include layout="@layout/account_mini_profile"/>
 
-            <include layout="@layout/lichnyi_kabinet_referalnaia_ssylka"/>
+            <include layout="@layout/account_referral_link"/>
 
-            <include layout="@layout/lichnyi_kabinet_registration_referala"/>
+            <include layout="@layout/account_registration_referral"/>
 
-            <include layout="@layout/lichnyi_kabinet_koshelek"/>
+            <include layout="@layout/account_wallet"/>
 
-            <include layout="@layout/lichnyi_kabinet_leader_structure"/>
+            <include layout="@layout/account_leader_structure"/>
 
-            <include layout="@layout/lichnyi_kabinet_invited_all"/>
+            <include layout="@layout/account_invited_all"/>
 
         </LinearLayout>
 

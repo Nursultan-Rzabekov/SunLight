@@ -8,9 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
 
 
@@ -29,7 +26,7 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.lichnyi_kabinet, container, false)
+        return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

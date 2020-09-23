@@ -10,16 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
-import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.adapter.BannerViewPagerAdapter
 import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
-import kotlinx.android.synthetic.main.glavnaia_avtorizovannyi.*
+import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
 
@@ -55,7 +51,7 @@ class LauncherFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.glavnaia_avtorizovannyi, container, false)
+        return inflater.inflate(R.layout.launcher_authenticated, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

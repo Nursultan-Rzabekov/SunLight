@@ -8,7 +8,7 @@
     <fragment android:id="@+id/homeFragment"
         android:name="com.example.sunlightdesign.ui.screens.home.HomeFragment"
         android:label="@string/home"
-        tools:layout="@layout/glavnaia_avtorizovannyi">
+        tools:layout="@layout/launcher_authenticated">
 
     </fragment>
 

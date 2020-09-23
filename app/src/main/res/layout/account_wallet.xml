@@ -19,7 +19,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_koshelek_bonus"
+                    android:src="@drawable/ic_wallet_bonus"
                     android:layout_height="wrap_content"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -40,7 +40,7 @@
                     style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="10000 BV"
+                    android:text="@string/ten_thousand_bv"
                     android:textSize="@dimen/dimen_16sp"
                     android:fontFamily="@font/rubik_regular"
                     />
@@ -60,7 +60,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_koshelek_yellow_active"
+                    android:src="@drawable/ic_wallet_yellow_active"
                     android:layout_height="wrap_content"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -81,7 +81,7 @@
                     style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="12000 BV"
+                    android:text="@string/twelve_thousand_bv"
                     android:textSize="@dimen/dimen_16sp"
                     android:fontFamily="@font/rubik_regular"
                     />
@@ -102,7 +102,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_koshelek_gray_arrow"
+                    android:src="@drawable/ic_wallet_gray_arrow"
                     android:layout_height="wrap_content"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -123,7 +123,7 @@
                     style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="2000 BV"
+                    android:text="@string/two_thousand_bv"
                     android:textSize="@dimen/dimen_16sp"
                     android:fontFamily="@font/rubik_regular"
                     />
@@ -145,7 +145,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_koshelek_gray_arrow_forward"
+                    android:src="@drawable/ic_wallet_gray_arrow_forward"
                     android:layout_height="wrap_content"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -166,7 +166,7 @@
                     style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="5000 BV"
+                    android:text="@string/five_thousand_bv"
                     android:textSize="@dimen/dimen_16sp"
                     android:fontFamily="@font/rubik_regular"
                     />
