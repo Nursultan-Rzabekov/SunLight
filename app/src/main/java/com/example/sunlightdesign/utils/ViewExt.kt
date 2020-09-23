@@ -6,10 +6,14 @@ package com.example.sunlightdesign.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
@@ -20,6 +24,8 @@ import com.example.sunlightdesign.Event
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.AreYouSureCallback
 import com.google.android.material.snackbar.Snackbar
+import timber.log.Timber
+import kotlin.reflect.KClass
 
 /**
  * Transforms static java function Snackbar.make() to an extension function on View.
@@ -118,4 +124,43 @@ fun Activity.closeKeyboard(){
         imm?.hideSoftInputFromWindow(v.windowToken, 0)
     }
 }
+
+
+fun showMessage(context: Context, title: String? = null, message: String,
+                btnNegative: String? = null, btnPositive: String = "OK",
+                btnNegativeEvent: DialogInterface.OnClickListener? = null,
+                btnPositiveEvent: DialogInterface.OnClickListener? = null,
+                setCancelable: Boolean = true)
+{
+    var dialog: AlertDialog? = null
+    val builder = AlertDialog.Builder(context)
+    builder.setTitle(title?:"")
+    builder.setMessage(message)
+    builder.setCancelable(setCancelable)
+    if (btnNegative != null) {
+        if (btnNegativeEvent != null)
+            builder.setNegativeButton(btnNegative, btnNegativeEvent)
+        else
+            builder.setNegativeButton(btnNegative) { _, _ ->
+                dialog?.dismiss()
+            }
+    }
+    builder.setPositiveButton(btnPositive, btnPositiveEvent)
+    try
+    {
+        dialog = builder.create()
+        dialog.show()
+    }
+    catch (ex: Throwable)
+    {
+        Timber.e("showMessage method; line 335: ${ex.localizedMessage?:"unknown"}")
+    }
+}
+
+fun <T : Activity> Activity.startNewActivity(activityClass: KClass<T>, block: Intent.() -> Unit = {}){
+    val intent = Intent(this, activityClass.java)
+    intent.block()
+    this.startActivity(intent)
+}
+
 

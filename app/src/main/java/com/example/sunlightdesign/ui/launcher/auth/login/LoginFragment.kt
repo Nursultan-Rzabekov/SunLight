@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.ui.launcher.auth.AuthState
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
-import com.example.sunlightdesign.ui.launcher.auth.register.isPhoneValid
-import com.example.sunlightdesign.ui.screens.MainActivity
+import com.example.sunlightdesign.ui.screens.profile.register.isPhoneValid
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
-import com.example.sunlightdesign.utils.displayErrorDialog
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
@@ -25,22 +20,22 @@ class LoginFragment : BaseAuthFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceViewState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.sunlight_login, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceViewState: Bundle?) {
+        super.onViewCreated(view, savedInstanceViewState)
 
         welcome_login_as_tv.text = getString(R.string.login_welcome, "Спонсор Имя")
 
         setupMask()
-        setObservers()
+        configViewModel()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onActivityCreated(savedInstanceViewState: Bundle?) {
+        super.onActivityCreated(savedInstanceViewState)
 
         setListeners()
     }
@@ -52,23 +47,16 @@ class LoginFragment : BaseAuthFragment() {
             viewModel.getUseCase(SetLogin(MaskUtils.unMaskValue(MaskUtils.PHONE_MASK, phone_et.text.toString()), password_et.text.toString()))
         }
 
-        forget_password_tv.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-        }
+        forget_password_tv.setOnClickListener {}
     }
 
-    private fun setObservers() {
-        viewModel.authState.observe(viewLifecycleOwner, Observer{
-            progress_bar.isVisible = it is AuthState.Loading
-            when(it) {
-                is AuthState.Success -> {
-                    startActivity(MainActivity.intent(requireContext()))
-                }
-                is AuthState.Error -> {
-                    requireActivity().displayErrorDialog(it.message)
-                }
-            }
-        })
+    private fun configViewModel() {
+        viewModel.apply {
+            progress.observe(viewLifecycleOwner, Observer {
+                progress_bar.visibility = if (it==true) View.VISIBLE else View.GONE
+            })
+        }
+
     }
 
     private fun setCheckers() : Boolean {

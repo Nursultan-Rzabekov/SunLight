@@ -25,23 +25,12 @@ class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListene
     override val layoutId: Int
         get() = R.layout.activity_auth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceViewState: Bundle?) {
+        super.onCreate(savedInstanceViewState)
         setSupportActionBar(auth_toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        viewModel.authState
         findNavController(R.id.auth_nav_host_fragment).addOnDestinationChangedListener(this)
 
-    }
-
-    fun navMainActivity(){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun onFinishCheckPreviousAuthUser(){
-        fragment_container.visibility = View.VISIBLE
     }
 
     override fun onDestinationChanged(

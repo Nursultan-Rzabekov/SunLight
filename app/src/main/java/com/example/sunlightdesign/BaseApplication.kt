@@ -2,6 +2,8 @@ package com.example.sunlightdesign
 
 import android.content.Context
 import androidx.multidex.MultiDexApplication
+import com.example.sunlightdesign.koin.accountModule
+import com.example.sunlightdesign.koin.authModule
 import com.example.sunlightdesign.koin.module
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -25,7 +27,7 @@ open class BaseApplication : MultiDexApplication() {
             printLogger()
             androidContext(this@BaseApplication)
             // declare modules
-            modules(module)
+            modules(module, authModule, accountModule)
         }
 
 

@@ -2,12 +2,8 @@ package com.example.sunlightdesign.ui.launcher
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.sunlightdesign.data.source.AuthRepository
-import com.example.sunlightdesign.ui.launcher.auth.AuthState
+import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
-import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
-import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
-import timber.log.Timber
 
 /**
  * ViewModel for the task list screen.
@@ -15,7 +11,7 @@ import timber.log.Timber
 
 class LauncherViewModel  constructor(
     private val sharedUseCase: SharedUseCase
-) : ViewModel() {
+) : StrongViewModel() {
 
     private var _bearerToken = MutableLiveData<Boolean>(false)
     val bearerToken get() = _bearerToken

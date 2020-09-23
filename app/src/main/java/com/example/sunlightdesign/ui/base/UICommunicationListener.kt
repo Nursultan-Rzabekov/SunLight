@@ -1,7 +1,5 @@
 package com.example.sunlightdesign.ui.base
 
-import android.app.Activity
-
 interface UICommunicationListener {
 
     fun onUIMessageReceived(uiMessage: UIMessage)

@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.ui.launcher.auth.register
+package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
+import com.example.sunlightdesign.ui.screens.profile.BaseProfileFragment
 import com.example.sunlightdesign.utils.IIN_MASK
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.closeKeyboard
@@ -17,23 +18,26 @@ import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 
-class RegisterFragmentStepOne : BaseAuthFragment() {
+class RegisterFragmentStepOne : BaseProfileFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceViewState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.registration_partner, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onActivityCreated(savedInstanceViewState: Bundle?) {
+        super.onActivityCreated(savedInstanceViewState)
 
         setListeners()
         setupMask()
 
+        viewModel.getCountriesList()
+
     }
+
 
     private fun setupMask() {
         MaskImpl(

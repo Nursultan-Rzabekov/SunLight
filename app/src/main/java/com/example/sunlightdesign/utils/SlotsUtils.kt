@@ -1,8 +1,5 @@
 package com.example.sunlightdesign.utils
 
-import android.app.Activity
-import android.content.Context
-import android.view.inputmethod.InputMethodManager
 import ru.tinkoff.decoro.slots.PredefinedSlots
 import ru.tinkoff.decoro.slots.Slot
 

@@ -6,12 +6,14 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.BuildConfig
-import com.example.sunlightdesign.data.source.AuthDataSource
+import com.example.sunlightdesign.data.source.AccountRepository
+import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.AuthRepository
-import com.example.sunlightdesign.data.source.local.AuthLocalDataSource
-import com.example.sunlightdesign.data.source.local.ToDoDatabase
-import com.example.sunlightdesign.data.source.remote.auth.AuthRemoteDataSource
-import com.example.sunlightdesign.data.source.remote.auth.AuthServices
+import com.example.sunlightdesign.data.source.dataSource.local.auth.AuthLocalDataSource
+import com.example.sunlightdesign.data.source.dataSource.local.ToDoDatabase
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthRemoteDataSource
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices
+import com.example.sunlightdesign.data.source.repositories.DefaultAccountRepository
 import com.example.sunlightdesign.data.source.repositories.DefaultAuthRepository
 import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
@@ -65,7 +67,7 @@ val module = module {
         interceptor.level =
             if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         client.addInterceptor(interceptor)
-        client.addInterceptor(ChuckInterceptor(BaseApplication.context))
+        client.addInterceptor(ChuckInterceptor(androidContext()))
         client.addInterceptor(HeaderInterceptor())
         client.build() as OkHttpClient
     }
@@ -79,47 +81,16 @@ val module = module {
         .build()
     }
 
-    single(named("authService")) {
-        get<Retrofit>().create(AuthServices::class.java)
-    }
 
     single {
         Room.databaseBuilder(
             androidContext(),
             ToDoDatabase::class.java,
-            "Auth.db"
+            "Database.db"
         ).build()
     }
 
     single { get<ToDoDatabase>().taskDao() }
-
-    single<AuthDataSource>(named("RemoteDataSource")) {
-        AuthRemoteDataSource(
-            apiServices = get(named("authService"))
-        )
-    }
-
-    single<AuthDataSource>(named("LocalDataSource")) {
-        AuthLocalDataSource(
-            tasksDao = get(),
-            ioDispatcher = Dispatchers.IO
-        )
-    }
-
-    single<AuthRepository> {
-        DefaultAuthRepository(
-            tasksLocalDataSource = get(named("LocalDataSource")),
-            tasksRemoteDataSource = get(named("RemoteDataSource")),
-            prefs = get(),
-            ioDispatcher = Dispatchers.IO
-        )
-    }
-
-    factory {
-        GetLoginAuthUseCase(
-            itemsRepository = get()
-        )
-    }
 
     factory {
         SharedUseCase(
@@ -127,16 +98,5 @@ val module = module {
         )
     }
 
-    viewModel {
-        LauncherViewModel(
-            sharedUseCase = get()
-        )
-    }
-
-    viewModel {
-        AuthViewModel(
-            getItemsUseCase = get()
-        )
-    }
 }
 
