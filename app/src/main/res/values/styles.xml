@@ -74,7 +74,7 @@
     <style name="BasicMaterialButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:gravity">center</item>
         <item name="cornerRadius">@dimen/dimen_5dp</item>
-        <item name="backgroundColor">@color/colorPrimary</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
@@ -85,6 +85,14 @@
         <item name="strokeColor">@color/gray_DA</item>
         <item name="strokeWidth">2dp</item>
         <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="BasicTextMaterialButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="fontFamily">@font/rubik_regular</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
     <style name="BasicOutlinedCardView" parent="Widget.MaterialComponents.CardView">

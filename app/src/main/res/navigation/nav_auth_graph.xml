@@ -27,7 +27,7 @@
         android:id="@+id/register_fragment_step_one"
         android:name="com.example.sunlightdesign.ui.launcher.auth.register.RegisterFragmentStepOne"
         android:label="fragment_launcher"
-        tools:layout="@layout/registration_partner" >
+        tools:layout="@layout/registration_partner_step_one" >
 
         <action
             android:id="@+id/action_stepOneFragment_to_stepTwoFragment"

@@ -12,7 +12,7 @@ import com.example.sunlightdesign.utils.IIN_MASK
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.closeKeyboard
 import com.example.sunlightdesign.utils.onTextFormatted
-import kotlinx.android.synthetic.main.registration_partner.*
+import kotlinx.android.synthetic.main.registration_partner_step_one.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
@@ -24,7 +24,7 @@ class RegisterFragmentStepOne : BaseAuthFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.registration_partner, container, false)
+        return inflater.inflate(R.layout.registration_partner_step_one, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
