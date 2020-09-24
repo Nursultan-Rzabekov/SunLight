@@ -21,6 +21,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_partner_btn"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             style="@style/AppCompatTextView"

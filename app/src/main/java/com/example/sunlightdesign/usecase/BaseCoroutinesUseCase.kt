@@ -1,6 +1,6 @@
 package com.example.sunlightdesign.usecase
 
-import com.example.sunlightdesign.data.source.remote.ErrorResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.ErrorResponse
 import com.example.sunlightdesign.usecase.blocks.CompletionBlock
 import com.example.sunlightdesign.utils.NetworkErrorUiModel
 import com.google.gson.Gson

@@ -21,8 +21,8 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
     override val layoutId: Int
         get() = R.layout.activity_launcher
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceViewState: Bundle?) {
+        super.onCreate(savedInstanceViewState)
 
         findNavController(R.id.launcher_nav_host_fragment).addOnDestinationChangedListener(this)
 

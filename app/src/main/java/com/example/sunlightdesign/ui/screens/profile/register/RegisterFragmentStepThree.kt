@@ -1,33 +1,32 @@
 
 
-package com.example.sunlightdesign.ui.launcher.auth.register
+package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
+import com.example.sunlightdesign.ui.screens.profile.BaseProfileFragment
 import kotlinx.android.synthetic.main.registration_partner_step_three.*
 
 
-class RegisterFragmentStepThree : BaseAuthFragment() {
+class RegisterFragmentStepThree : BaseProfileFragment() {
 
 //     val viewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceViewState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.registration_partner_step_three, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onActivityCreated(savedInstanceViewState: Bundle?) {
+        super.onActivityCreated(savedInstanceViewState)
 
         setListeners()
 

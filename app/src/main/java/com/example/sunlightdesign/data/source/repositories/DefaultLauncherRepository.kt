@@ -1,6 +1,6 @@
 package com.example.sunlightdesign.data.source.repositories
 
-import com.example.sunlightdesign.data.source.AuthDataSource
+import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.LauncherRepository
 
 import com.example.sunlightdesign.utils.SecureSharedPreferences

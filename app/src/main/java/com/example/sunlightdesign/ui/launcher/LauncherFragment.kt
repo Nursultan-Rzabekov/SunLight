@@ -17,11 +17,13 @@ import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
-
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 class LauncherFragment : Fragment() {
+
+    private val viewModel: LauncherViewModel by sharedViewModel()
 
     private val handler = Handler()
     private val delay = 3000L //milliseconds
@@ -49,18 +51,15 @@ class LauncherFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceViewState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.launcher_authenticated, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onActivityCreated(savedInstanceViewState: Bundle?) {
+        super.onActivityCreated(savedInstanceViewState)
 
         setListeners()
-
-        //BaseApplication.prefs.bearerToken = "HelloEveryOne"
-        //println("token ${BaseApplication.prefs.bearerToken}")
     }
 
 

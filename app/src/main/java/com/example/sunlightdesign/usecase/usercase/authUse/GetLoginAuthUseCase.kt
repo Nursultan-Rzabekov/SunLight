@@ -2,7 +2,7 @@ package com.example.sunlightdesign.usecase.usercase.authUse
 
 
 import com.example.sunlightdesign.data.source.AuthRepository
-import com.example.sunlightdesign.data.source.remote.auth.entity.Login
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 
