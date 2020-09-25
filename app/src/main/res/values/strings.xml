@@ -75,7 +75,7 @@
     <string name="vybor_tovara">Выбор товара</string>
     <string name="vybor_ofısa">Выбор офиса</string>
     <string name="cposob_oplaty"> Cпособ оплаты</string>
-    <string name="dostypnye_tovary_ız">Доступные товары из “VIP PACK”</string>
+    <string name="available_products_from">Доступные товары из <b>“%1$s”</b></string>
     <string name="itogo_k_oplate">Итого к оплате : 520BV = 156 000 KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
 
