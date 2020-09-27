@@ -74,7 +74,7 @@
     <style name="BasicMaterialButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:gravity">center</item>
         <item name="cornerRadius">@dimen/dimen_5dp</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">@drawable/button_color_selector</item>
         <item name="android:textAllCaps">false</item>
     </style>
 

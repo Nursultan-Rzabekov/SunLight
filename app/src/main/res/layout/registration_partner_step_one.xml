@@ -327,7 +327,7 @@
                     android:id="@+id/document_rear_side_card"
                     android:padding="@dimen/dimen_16dp"
                     android:layout_marginBottom="@dimen/dimen_16dp"
-                    android:background="@drawable/document_card_border"
+                    android:background="@drawable/card_border_gray_da"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -389,7 +389,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/document_back_side_card"
                     android:padding="@dimen/dimen_16dp"
-                    android:background="@drawable/document_card_border"
+                    android:background="@drawable/card_border_gray_da"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
