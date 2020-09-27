@@ -12,15 +12,9 @@ import timber.log.Timber.DebugTree
 
 open class BaseApplication : MultiDexApplication() {
 
-    companion object{
-        lateinit var context: Context
-    }
-
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) Timber.plant(DebugTree())
-
-        context = applicationContext
 
         startKoin {
             // use Koin logger
