@@ -76,9 +76,8 @@
     <string name="vybor_ofısa">Выбор офиса</string>
     <string name="cposob_oplaty"> Cпособ оплаты</string>
     <string name="available_products_from">Доступные товары из <b>“%1$s”</b></string>
-    <string name="itogo_k_oplate">Итого к оплате : 520BV = 156 000 KZT</string>
+    <string name="itogo_k_oplate">Итого к оплате : %1$dBV = %2$s KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
-
 
     <!--Компания-->
     <string name="office_sale">Офис-продаж</string>
@@ -105,10 +104,10 @@
     <string name="kassý">Кассу</string>
     <string name="paybox">Paybox</string>
     <string name="bv">BV</string>
-    <string name="podtverdıt">Подтвердить</string>
+    <string name="submit">Подтвердить</string>
     <string name="vvedıte_dannye_karty">Введите данные карты:</string>
     <string name="imıa_na_karte">Имя на карте</string>
-    <string name="vashe_ımıa_na_karte">Ваше имя на карте</string>
+    <string name="input_name_in_credit_card">Ваше имя на карте</string>
     <string name="karta_deıstvıtelna">Карта действительна:</string>
     <string name="cvv_code">СVV код</string>
     <string name="hint_stars_for_card_nomber">************</string>
@@ -148,6 +147,11 @@
 
 
     <string name="more_info"><u>подробнее</u></string>
+    <string name="in_balance">На вашем балансе:</string>
+    <string name="amount_bv">%1$d BV</string>
+    <string name="income">Доход</string>
+    <string name="consumption">Расход</string>
+    <string name="income_amount_bv">+%1$d BV</string>
 
 
 </resources>

@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
-                tools:listitem="@layout/registration_partner_step_four_cardview"
+                tools:listitem="@layout/office_departments_item"
                 tools:itemCount="3"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout

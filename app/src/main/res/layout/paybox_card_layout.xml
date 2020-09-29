@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:contentPadding="@dimen/dimen_16dp"
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/dimen_0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vvedıte_dannye_karty"
+            style="@style/AppCompatTextViewGray"
+            android:textSize="@dimen/dimen_16sp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:text="@string/imıa_na_karte"
+            android:textSize="@dimen/dimen_14sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BasicTextInputLayout"
+            app:boxBackgroundColor="@color/gray_editTextColor"
+            android:layout_marginTop="@dimen/dimen_12dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                style="@style/BasicEditText"
+                android:paddingStart="@dimen/dimen_24dp"
+                android:paddingEnd="@dimen/dimen_24dp"
+                android:paddingTop="@dimen/dimen_12dp"
+                android:paddingBottom="@dimen/dimen_12dp"
+                android:hint="@string/input_name_in_credit_card"
+                android:textSize="@dimen/dimen_16sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:paddingBottom="@dimen/dimen_24dp"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:paddingStart="@dimen/dimen_24dp"
+            android:paddingEnd="@dimen/dimen_24dp"
+            android:background="@drawable/rounded_border_transparent_gray">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_visa_mastercard"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/card_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/vvedıte_nomer_karty"
+                android:textSize="@dimen/dimen_14sp"
+                style="@style/AppCompatTextViewGray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/card_number_et_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BasicTextInputLayout"
+                app:boxBackgroundColor="@color/gray_editTextColor"
+                app:layout_constraintTop_toBottomOf="@id/card_number_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/dimen_12dp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    style="@style/BasicEditText"
+                    android:id="@+id/card_number_et"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp"
+                    android:paddingStart="@dimen/dimen_24dp"
+                    android:paddingEnd="@dimen/dimen_24dp"
+                    android:hint="@string/hint_stars_for_card_nomber"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/card_validation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/karta_deıstvıtelna"
+                style="@style/AppCompatTextViewGray"
+                android:textSize="@dimen/dimen_14sp"
+                app:layout_constraintTop_toBottomOf="@id/card_number_et_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dimen_24dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/registration_partner_step_five_cvv_code_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cvv_code"
+                style="@style/AppCompatTextViewGray"
+                android:textSize="@dimen/dimen_14sp"
+                app:layout_constraintTop_toTopOf="@id/card_validation_tv"
+                app:layout_constraintStart_toEndOf="@id/card_validation_tv"
+                android:layout_marginStart="@dimen/dimen_40dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/card_validation_month_et_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/BasicTextInputLayout"
+                app:boxBackgroundColor="@color/gray_editTextColor"
+                app:layout_constraintStart_toStartOf="@id/card_validation_tv"
+                app:layout_constraintTop_toBottomOf="@id/card_validation_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="@dimen/dimen_12dp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    style="@style/BasicEditText"
+                    android:id="@+id/card_validation_month_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/dimen_24dp"
+                    android:paddingEnd="@dimen/dimen_24dp"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp"
+                    android:hint="@string/mm_string"
+                    android:gravity="center"
+                    android:maxLength="2"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/card_validation_year_et_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/BasicTextInputLayout"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                app:boxBackgroundColor="@color/gray_editTextColor"
+                app:layout_constraintBottom_toBottomOf="@+id/card_validation_month_et_layout"
+                app:layout_constraintStart_toEndOf="@id/card_validation_month_et_layout"
+                app:layout_constraintTop_toTopOf="@id/card_validation_month_et_layout">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    style="@style/BasicEditText"
+                    android:id="@+id/card_validation_year_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/dimen_24dp"
+                    android:paddingEnd="@dimen/dimen_24dp"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp"
+                    android:gravity="center"
+                    android:hint="@string/yy_string"
+                    android:maxLength="2"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/card_validation_cvv_code_et_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/BasicTextInputLayout"
+                app:boxBackgroundColor="@color/gray_editTextColor"
+                app:layout_constraintTop_toTopOf="@id/card_validation_year_et_layout"
+                app:layout_constraintStart_toStartOf="@id/registration_partner_step_five_cvv_code_tv">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/card_validation_cvv_code_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cvv_string"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/dimen_24dp"
+                    android:paddingEnd="@dimen/dimen_24dp"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp"
+                    android:maxLength="3"
+                    android:gravity="center"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
