@@ -7,10 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.ui.screens.profile.BaseProfileFragment
+import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 
 
-class RegisterFragmentStepFive : BaseProfileFragment() {
+class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
 //     val viewModel: AuthViewModel by activityViewModels()
 

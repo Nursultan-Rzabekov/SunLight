@@ -7,7 +7,8 @@ import com.example.sunlightdesign.data.source.dataSource.remote.account.AccountR
 import com.example.sunlightdesign.data.source.dataSource.remote.account.AccountServices
 import com.example.sunlightdesign.data.source.repositories.DefaultAccountRepository
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
-import com.example.sunlightdesign.usecase.usercase.accountUse.GetAccountUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.GetAccountCountriesUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.GetAccountUsersListUseCase
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -36,14 +37,21 @@ val accountModule = module {
     }
 
     factory {
-        GetAccountUseCase(
+        GetAccountCountriesUseCase(
+            itemsRepository = get()
+        )
+    }
+
+    factory {
+        GetAccountUsersListUseCase(
             itemsRepository = get()
         )
     }
 
     viewModel {
         ProfileViewModel(
-            getAccountUseCase = get()
+            getAccountCountriesUseCase = get(),
+            getAccountUsersListUseCase = get()
         )
     }
 }

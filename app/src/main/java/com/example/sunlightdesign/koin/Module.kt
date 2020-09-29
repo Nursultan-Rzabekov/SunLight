@@ -22,6 +22,7 @@ import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.utils.HeaderInterceptor
 import com.example.sunlightdesign.utils.SecureSharedPreferences
 import com.example.sunlightdesign.utils.TokenAuthenticator
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
 import kotlinx.coroutines.Dispatchers
@@ -72,10 +73,11 @@ val module = module {
         client.build() as OkHttpClient
     }
 
+
     single {
         Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(get())
         .build()
