@@ -22,10 +22,8 @@ class VmAction(
     }
 }
 
-open class StrongViewModel : ViewModel(), KoinComponent {
+open class StrongViewModel : ViewModel(){
     val activityActionBehavior = SingleLiveEvent<VmAction>()
-
-    private val context : Context by inject()
 
     fun VmAction.invokeAction() {
         val isUiThread =
@@ -41,10 +39,10 @@ open class StrongViewModel : ViewModel(), KoinComponent {
         withActivity {
             showMessage(
                 context = it,
-                title = context.resources.getString(R.string.text_error),
+                title = it.resources.getString(R.string.text_error),
                 message = errorMessage ?: throwable?.localizedMessage.toString(),
                 setCancelable = false,
-                btnPositive = context.resources.getString(R.string.text_error),
+                btnPositive = it.resources.getString(R.string.text_ok),
                 btnPositiveEvent = DialogInterface.OnClickListener { dialog, _ ->
                     dialog.dismiss()
                 }

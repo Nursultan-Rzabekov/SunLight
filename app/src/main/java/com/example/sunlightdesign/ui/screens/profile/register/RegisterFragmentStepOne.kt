@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import com.example.sunlightdesign.ui.screens.profile.BaseProfileFragment
 import com.example.sunlightdesign.utils.IIN_MASK
 import com.example.sunlightdesign.utils.MaskUtils

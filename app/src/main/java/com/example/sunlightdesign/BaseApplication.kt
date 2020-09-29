@@ -10,7 +10,7 @@ import org.koin.core.context.startKoin
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-open class BaseApplication : MultiDexApplication() {
+class BaseApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -23,7 +23,5 @@ open class BaseApplication : MultiDexApplication() {
             // declare modules
             modules(module, authModule, accountModule)
         }
-
-
     }
 }

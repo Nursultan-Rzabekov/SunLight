@@ -14,8 +14,8 @@ class ProfileViewModel  constructor(
     fun getCountriesList(){
         getAccountUseCase.execute {
             onComplete {  }
-            onNetworkError { handleError(errorMessage = it.message) }
-            onError { handleError(throwable = it)}
+            onNetworkError {  }
+            onError { }
         }
     }
 }

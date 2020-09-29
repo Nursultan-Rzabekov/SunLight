@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import com.example.sunlightdesign.ui.screens.profile.BaseProfileFragment
 import kotlinx.android.synthetic.main.registration_partner_step_four.*
 

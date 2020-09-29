@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.ui.launcher.auth.BaseAuthFragment
 import com.example.sunlightdesign.ui.screens.profile.BaseProfileFragment
 import kotlinx.android.synthetic.main.registration_partner_step_three.*
 
@@ -35,7 +34,7 @@ class RegisterFragmentStepThree : BaseProfileFragment() {
 
 
     private fun setListeners(){
-        btn_next_step_three.setOnClickListener {
+        next_step_three_btn.setOnClickListener {
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
     }

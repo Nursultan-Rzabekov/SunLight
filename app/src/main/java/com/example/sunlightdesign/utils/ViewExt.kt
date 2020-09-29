@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -133,7 +134,7 @@ fun showMessage(context: Context, title: String? = null, message: String,
                 setCancelable: Boolean = true)
 {
     var dialog: AlertDialog? = null
-    val builder = AlertDialog.Builder(context)
+    val builder = AlertDialog.Builder(context,R.style.myDialogError)
     builder.setTitle(title?:"")
     builder.setMessage(message)
     builder.setCancelable(setCancelable)
@@ -146,15 +147,8 @@ fun showMessage(context: Context, title: String? = null, message: String,
             }
     }
     builder.setPositiveButton(btnPositive, btnPositiveEvent)
-    try
-    {
-        dialog = builder.create()
-        dialog.show()
-    }
-    catch (ex: Throwable)
-    {
-        Timber.e("showMessage method; line 335: ${ex.localizedMessage?:"unknown"}")
-    }
+    dialog = builder.create()
+    dialog.show()
 }
 
 fun <T : Activity> Activity.startNewActivity(activityClass: KClass<T>, block: Intent.() -> Unit = {}){

@@ -16,11 +16,14 @@ import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.screens.MainActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 
 class AuthActivity : StrongActivity(), NavController.OnDestinationChangedListener
 {
-    private val viewModel: AuthViewModel by viewModel()
+    private val viewModel: AuthViewModel by viewModel{
+        parametersOf(this)
+    }
 
     override val layoutId: Int
         get() = R.layout.activity_auth
