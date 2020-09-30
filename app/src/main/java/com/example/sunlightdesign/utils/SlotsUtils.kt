@@ -31,27 +31,27 @@ object MaskUtils {
             }
         }.toTypedArray()
     }
+
     fun unMaskValue(mask: String, value: String): String {
         if (mask.isEmpty()){
             return value
         }
 
         val builder = StringBuilder(value)
-        var value = value
+        var tempValue = value
         var offset = 0
 
         mask.forEachIndexed { index, c ->
-            val vI = value.indexOfFirst { it == c }
+            val vI = tempValue.indexOfFirst { it == c }
             if ((vI+offset) == index){
                 builder.deleteCharAt(vI)
-                value = builder.toString()
+                tempValue = builder.toString()
                 offset++
             }
         }
 
         return builder.toString().trim()
     }
-
 
     fun maskValue(mask: String, value: String, maskSymbol: Char = '#'): String {
         if (mask.isEmpty()){
