@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
-import kotlinx.android.synthetic.main.registration_partner_step_four.*
+import kotlinx.android.synthetic.main.fragment_register_partner_step_four.*
 
 
 class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
@@ -22,7 +22,7 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
         container: ViewGroup?,
         savedInstanceViewState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.registration_partner_step_four, container, false)
+        return inflater.inflate(R.layout.fragment_register_partner_step_four, container, false)
     }
 
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {
