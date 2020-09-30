@@ -19,7 +19,7 @@ class RegisterFragmentStepFive : BaseProfileFragment() {
         container: ViewGroup?,
         savedInstanceViewState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.registration_partner_step_five, container, false)
+        return inflater.inflate(R.layout.fragment_register_partner_step_five, container, false)
     }
 
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {

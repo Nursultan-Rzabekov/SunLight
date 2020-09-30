@@ -152,6 +152,11 @@
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
     <string name="income_amount_bv">+%1$d BV</string>
+    <string name="greeting_for_payment">Спасибо за оплату!</string>
+    <string name="your_password_was_send_to">Ваш временный пароль \nотправлен на номер <b>%1$s</b></string>
+    <string name="send_again_after">Отправить повторно через <b>%1$s секунд</b></string>
+    <string name="send_again">Отправить повторно</string>
+    <string name="come_up_to_till">Подойдите к кассе, чтобы оплатить \nи получить инструкцию \nдальнейших действий.</string>
 
 
 </resources>

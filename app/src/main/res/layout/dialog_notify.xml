@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dimen_16dp"
+        android:paddingTop="@dimen/dimen_24dp"
+        android:paddingEnd="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_24dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/notify_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_32dp"
+            android:src="@drawable/ic_success"
+            app:layout_constraintBottom_toTopOf="@+id/notify_title_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/notify_title_tv"
+            style="@style/AppCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="@string/greeting_for_payment"
+            android:textSize="@dimen/dimen_22sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/notify_desc_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notify_icon_iv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/notify_desc_tv"
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            tools:text="@string/come_up_to_till"
+            android:textSize="@dimen/dimen_14sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/notify_icon_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notify_title_tv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/notify_ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BasicMaterialButton"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp"
+            android:text="@string/text_ok"
+            android:layout_marginTop="@dimen/dimen_58dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notify_desc_tv"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

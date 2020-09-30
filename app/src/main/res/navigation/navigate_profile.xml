@@ -26,7 +26,7 @@
         android:id="@+id/register_fragment_step_one"
         android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne"
         android:label="fragment_launcher"
-        tools:layout="@layout/registration_partner" >
+        tools:layout="@layout/fragment_register_partner_step_one" >
 
         <action
             android:id="@+id/action_stepOneFragment_to_stepTwoFragment"
@@ -43,7 +43,7 @@
         android:id="@+id/register_fragment_step_two"
         android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepTwo"
         android:label="fragment_launcher"
-        tools:layout="@layout/registration_partner_step_two" >
+        tools:layout="@layout/fragment_register_partner_step_two" >
 
         <action
             android:id="@+id/action_stepTwoFragment_to_stepThreeFragment"
@@ -60,7 +60,7 @@
         android:id="@+id/register_fragment_step_three"
         android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepThree"
         android:label="fragment_launcher"
-        tools:layout="@layout/registration_partner_step_three" >
+        tools:layout="@layout/fragment_register_partner_step_three" >
 
         <action
             android:id="@+id/action_stepThreeFragment_to_stepFourFragment"
@@ -77,7 +77,7 @@
         android:id="@+id/register_fragment_step_four"
         android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepFour"
         android:label="fragment_launcher"
-        tools:layout="@layout/registration_partner_step_four" >
+        tools:layout="@layout/fragment_register_partner_step_four" >
 
         <action
             android:id="@+id/action_stepFourFragment_to_stepFiveFragment"
@@ -95,7 +95,7 @@
         android:id="@+id/register_fragment_step_five"
         android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepFive"
         android:label="fragment_launcher"
-        tools:layout="@layout/registration_partner_step_five" >
+        tools:layout="@layout/fragment_register_partner_step_five" >
 
 
     </fragment>
