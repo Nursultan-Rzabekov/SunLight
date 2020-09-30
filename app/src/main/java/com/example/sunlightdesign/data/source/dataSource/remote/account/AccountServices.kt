@@ -1,5 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.account
 
+import com.example.sunlightdesign.data.source.dataSource.AddPartner
+import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Deferred
@@ -16,19 +18,21 @@ interface AccountServices {
     fun getListCountriesRegionsCities(
     ): Deferred<CountriesList>
 
+    @FormUrlEncoded
     @POST("cabinet/add-partner")
     fun addPartnerStepOne(
-        @Body jsonBody: JsonObject
-    ): Deferred<List<Login>>
+        @Body addPartner: AddPartner
+    ): Deferred<Login>
 
     @GET("cabinet/add-partner/packages-list")
     fun getPackagesList(
-    ): Deferred<List<PackagesList>>
+    ): Deferred<PackagesList>
 
     @POST("cabinet/set-package")
     fun addPartnerStepTwo(
-        @Body jsonBody: JsonObject
-    ): Deferred<List<SetPackages>>
+        @Field("package_id") package_id: Int,
+        @Field("user_id") user_id:Int
+    ): Deferred<User>
 
     @GET("cabinet/add-partner/packages-list")
     fun getPackagesIdList(
@@ -37,11 +41,11 @@ interface AccountServices {
 
     @GET("cabinet/add-partner/offices-list")
     fun getOfficesList(
-    ): Deferred<List<OfficesList>>
+    ): Deferred<OfficesList>
 
     @POST("cabinet/add-partner")
-    fun addPartner(
-        @Body jsonBody: JsonObject
-    ): Deferred<List<AddPartnerResponse>>
+    fun createOrder(
+        @Body createOrderPartner: CreateOrderPartner
+    ): Deferred<AddPartnerResponse>
 
 }

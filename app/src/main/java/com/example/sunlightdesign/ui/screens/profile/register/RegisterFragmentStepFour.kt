@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_register_partner_step_four.*
 
 class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
-//     val viewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

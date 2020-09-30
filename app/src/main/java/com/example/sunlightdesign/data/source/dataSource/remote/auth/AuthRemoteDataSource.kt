@@ -16,21 +16,21 @@ class AuthRemoteDataSource(private val apiServices: AuthServices) :
 
     override suspend fun getTasks(model: SetLogin): Login {
         // Simulate network by delaying the execution.
-        return apiServices.getLoginAuth(apiJsonMap(model.phone, model.password)).await()
+        return apiServices.getLoginAuth(model.phone, model.password).await()
     }
 
-    private fun apiJsonMap(phone: String, password: String): JsonObject {
-        var gsonObject = JsonObject()
-        try {
-            val jsonObj = JSONObject()
-            jsonObj.put("phone",phone)
-            jsonObj.put("password",password)
-            val jsonParser = JsonParser()
-            gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-        return gsonObject
-    }
+//    private fun apiJsonMap(phone: String, password: String): JsonObject {
+//        var gsonObject = JsonObject()
+//        try {
+//            val jsonObj = JSONObject()
+//            jsonObj.put("phone",phone)
+//            jsonObj.put("password",password)
+//            val jsonParser = JsonParser()
+//            gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
+//        } catch (e: JSONException) {
+//            e.printStackTrace()
+//        }
+//        return gsonObject
+//    }
 
 }

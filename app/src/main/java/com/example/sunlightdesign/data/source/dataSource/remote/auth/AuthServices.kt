@@ -10,7 +10,8 @@ interface AuthServices {
 
     @POST("auth/login")
     fun getLoginAuth(
-        @Body jsonBody: JsonObject
+        @Field("phone") phone: String,
+        @Field("password") password: String
     ): Deferred<Login>
 
     @GET("/refreshToken")
