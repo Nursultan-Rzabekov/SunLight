@@ -1,5 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.auth.entity
 
+
+
 data class CountriesList(
     val cities: List<City>?,
     val countries: List<Country>?,

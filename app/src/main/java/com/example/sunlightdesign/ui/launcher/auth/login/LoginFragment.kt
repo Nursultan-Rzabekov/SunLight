@@ -57,7 +57,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
     private fun configViewModel() {
         viewModel.apply {
             progress.observe(viewLifecycleOwner, Observer {
-                progress_bar.visibility = if (it==true) View.VISIBLE else View.GONE
+                progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
         }
 

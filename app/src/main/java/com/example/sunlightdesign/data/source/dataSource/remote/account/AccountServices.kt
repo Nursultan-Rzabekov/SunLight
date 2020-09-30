@@ -10,11 +10,11 @@ interface AccountServices {
 
     @GET("/cabinet/add-partner/users-list")
     fun getUsersList(
-    ): Deferred<List<UsersList>>
+    ): Deferred<UsersList>
 
     @GET("helper/register")
     fun getListCountriesRegionsCities(
-    ): Deferred<List<CountriesList>>
+    ): Deferred<CountriesList>
 
     @POST("cabinet/add-partner")
     fun addPartnerStepOne(
