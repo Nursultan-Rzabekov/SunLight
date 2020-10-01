@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListPopupWindow
 import androidx.lifecycle.Observer
@@ -12,10 +13,7 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
-import com.example.sunlightdesign.utils.IIN_MASK
-import com.example.sunlightdesign.utils.MaskUtils
-import com.example.sunlightdesign.utils.closeKeyboard
-import com.example.sunlightdesign.utils.onTextFormatted
+import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
@@ -24,10 +22,10 @@ import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
 
-    private lateinit var customAdapter: CustomPopupAdapter
-    private val countriesArrayList = arrayListOf<Country>()
-    private val citiesArrayList = arrayListOf<City>()
-    private val regionsArrayList = arrayListOf<Region>()
+    private lateinit var customAdapter: CustomPopupAdapter<*>
+    private var countriesArrayList = arrayListOf<Country>()
+    private var citiesArrayList = arrayListOf<City>()
+    private var regionsArrayList = arrayListOf<Region>()
     private val usersArrayList = arrayListOf<Users>()
 
 
@@ -51,14 +49,12 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     }
 
-
     private fun setListeners(){
         btn_next_step_one.setOnClickListener {
             findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
         }
-        country_drop_down.setEndIconOnClickListener {
-            showCountriesList(it)
-        }
+
+        setCountriesList()
 
         region_drop_down.setEndIconOnClickListener {
             showRegionsList(it)
@@ -77,9 +73,9 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             })
 
             countriesList.observe(viewLifecycleOwner, Observer {
-                it.countries?.let { it1 -> countriesArrayList.addAll(it1) }
-                it.regions?.let { it1 -> regionsArrayList.addAll(it1) }
-                it.cities?.let { it1 -> citiesArrayList.addAll(it1) }
+                it.countries?.let { it1 -> countriesArrayList = ArrayList(it1) }
+                it.regions?.let { it1 -> regionsArrayList = ArrayList(it1) }
+                it.cities?.let { it1 -> citiesArrayList = ArrayList(it1) }
             })
 
             usersList.observe(viewLifecycleOwner, Observer {
@@ -89,43 +85,33 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     }
 
-    private fun showCountriesList(view: View){
-        val listPopupWindow = ListPopupWindow(requireContext())
-        customAdapter = CustomPopupAdapter(requireContext())
-        customAdapter.setItems(countriesArrayList)
-        listPopupWindow.setAdapter(customAdapter)
-        listPopupWindow.anchorView = view
-        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
-            country_drop_down_tv.setText(countriesArrayList[i].country_name)
-            listPopupWindow.dismiss()
-        }
-        listPopupWindow.show()
+    private fun setCountriesList(){
+        customAdapter = CustomPopupAdapter<Country>(requireContext(), countriesArrayList)
+        country_drop_down_tv.setAdapter(customAdapter)
     }
 
     private fun showCitiesList(view: View){
         val listPopupWindow = ListPopupWindow(requireContext())
-        customAdapter = CustomPopupAdapter(requireContext())
-        customAdapter.setItems(citiesArrayList)
-        listPopupWindow.setAdapter(customAdapter)
-        listPopupWindow.anchorView = view
-        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
-            city_drop_down_tv.setText(citiesArrayList[i].city_name)
-            listPopupWindow.dismiss()
-        }
-        listPopupWindow.show()
+        customAdapter = CustomPopupAdapter(requireContext(), citiesArrayList)
+//        listPopupWindow.setAdapter(customAdapter)
+//        listPopupWindow.anchorView = view
+//        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
+//            city_drop_down_tv.setText(citiesArrayList[i].city_name)
+//            listPopupWindow.dismiss()
+//        }
+//        listPopupWindow.show()
     }
 
     private fun showRegionsList(view: View){
         val listPopupWindow = ListPopupWindow(requireContext())
-        customAdapter = CustomPopupAdapter(requireContext())
-        customAdapter.setItems(regionsArrayList)
-        listPopupWindow.setAdapter(customAdapter)
-        listPopupWindow.anchorView = view
-        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
-            region_drop_down_tv.setText(regionsArrayList[i].region_name)
-            listPopupWindow.dismiss()
-        }
-        listPopupWindow.show()
+        customAdapter = CustomPopupAdapter(requireContext(), citiesArrayList)
+//        listPopupWindow.setAdapter(customAdapter)
+//        listPopupWindow.anchorView = view
+//        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
+//            region_drop_down_tv.setText(regionsArrayList[i].region_name)
+//            listPopupWindow.dismiss()
+//        }
+//        listPopupWindow.show()
     }
 
 
@@ -136,7 +122,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             MaskFormatWatcher(it).apply {
                 installOn(iin_et)
                 onTextFormatted {
-                    if (isIinValid()) phone_et.requestFocus()
+                    if (isIinValid(iin_et.text.toString())) phone_et.requestFocus()
                 }
             }
         }
@@ -151,17 +137,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
     }
 
-    private fun isIinValid() = iin_et.length() == 12
-
-
-
     private fun updateSignUpBtn() {
-        btn_next_step_one.isEnabled = if (isPhoneValid(phone_et) && isIinValid()) {
+        btn_next_step_one.isEnabled = if (isPhoneValid(phone_et) && isIinValid(iin_et.text.toString())) {
             activity?.closeKeyboard()
             true
         } else false
     }
 
 }
-
-fun isPhoneValid(phone_et: EditText) = MaskUtils.unMaskValue(MaskUtils.PHONE_MASK,phone_et.text.toString()).length == 11

@@ -215,8 +215,7 @@
                 style="@style/BasicDropDownInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                app:hintEnabled="false">
+                android:layout_marginTop="@dimen/dimen_16dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/region_drop_down_tv"
@@ -224,7 +223,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:enabled="false"
                     android:paddingTop="@dimen/dimen_12dp"
                     android:paddingBottom="@dimen/dimen_12dp"
                     android:hint="@string/choose_region"

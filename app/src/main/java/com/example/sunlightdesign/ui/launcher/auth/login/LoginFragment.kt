@@ -9,9 +9,9 @@ import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
-import com.example.sunlightdesign.ui.screens.profile.register.isPhoneValid
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
+import com.example.sunlightdesign.utils.isPhoneValid
 import kotlinx.android.synthetic.main.sunlight_login.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.core.parameter.parametersOf
