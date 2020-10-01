@@ -87,8 +87,13 @@ val accountModule = module {
 
     viewModel {
         ProfileViewModel(
-            getAccountCountriesUseCase = get(),
-            getAccountUsersListUseCase = get()
+            accountCountriesUseCase = get(),
+            accountUsersListUseCase = get(),
+            accountPackagesListUseCase = get(),
+            accountOfficesListUseCase = get(),
+            accountSetPackagesUseCase = get(),
+            accountAddPartnerUseCase = get(),
+            accountCreateOrderUseCase = get()
         )
     }
 }

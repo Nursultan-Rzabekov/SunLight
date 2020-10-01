@@ -6,15 +6,26 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Coun
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.UsersList
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountOfficesListUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountPackagesListUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountUsersListUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPartnerUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
 
 
 /**
  * ViewModel for the task list screen.
  */
 class ProfileViewModel  constructor(
-    private val getAccountCountriesUseCase: AccountCountriesUseCase,
-    private val getAccountUsersListUseCase: AccountUsersListUseCase
+    private val accountCountriesUseCase: AccountCountriesUseCase,
+    private val accountUsersListUseCase: AccountUsersListUseCase,
+    private val accountPackagesListUseCase: AccountPackagesListUseCase,
+    private val accountOfficesListUseCase: AccountOfficesListUseCase,
+    private val accountSetPackagesUseCase: AccountSetPackagesUseCase,
+    private val accountAddPartnerUseCase: AccountAddPartnerUseCase,
+    private val accountCreateOrderUseCase: AccountCreateOrderUseCase
+
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -27,7 +38,7 @@ class ProfileViewModel  constructor(
 
     fun getCountriesList(){
         progress.postValue(true)
-        getAccountCountriesUseCase.execute {
+        accountCountriesUseCase.execute {
             onComplete {
                 progress.postValue(false)
                 _countriesList.postValue(it)
@@ -45,7 +56,7 @@ class ProfileViewModel  constructor(
 
     fun getUsersList(){
         progress.postValue(true)
-        getAccountUsersListUseCase.execute {
+        accountUsersListUseCase.execute {
             onComplete {
                 progress.postValue(false)
                 _usersList.postValue(it)
@@ -60,6 +71,44 @@ class ProfileViewModel  constructor(
             }
         }
     }
+
+    fun getPackagesList(){
+        progress.postValue(true)
+        accountPackagesListUseCase.execute {
+            onComplete {  }
+            onNetworkError {  }
+            onError {  }
+        }
+    }
+
+    fun getOfficesList(){
+        progress.postValue(true)
+        accountOfficesListUseCase.execute {
+            onComplete {  }
+            onNetworkError {  }
+            onError {  }
+        }
+    }
+
+    fun createOrder(){
+        progress.postValue(true)
+        accountCreateOrderUseCase.execute {
+            onComplete {  }
+            onNetworkError {  }
+            onError {  }
+        }
+    }
+
+    fun setPackages(){
+        progress.postValue(true)
+        accountSetPackagesUseCase.execute {
+            onComplete {  }
+            onNetworkError {  }
+            onError {  }
+        }
+    }
+
+
 
 
 }
