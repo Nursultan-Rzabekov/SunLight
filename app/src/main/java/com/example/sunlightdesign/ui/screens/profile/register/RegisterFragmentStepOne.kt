@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ListPopupWindow
+import android.widget.Filter
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
@@ -17,17 +16,15 @@ import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
 
     private lateinit var customAdapter: CustomPopupAdapter<*>
-    private var countriesArrayList = arrayListOf<Country>()
-    private var citiesArrayList = arrayListOf<City>()
-    private var regionsArrayList = arrayListOf<Region>()
     private val usersArrayList = arrayListOf<Users>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,25 +42,13 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         setObservers()
 
         viewModel.getCountriesList()
-        //viewModel.getUsersList()
-
+        viewModel.getUsersList()
     }
 
     private fun setListeners(){
         btn_next_step_one.setOnClickListener {
             findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
         }
-
-        setCountriesList()
-
-        region_drop_down.setEndIconOnClickListener {
-            showRegionsList(it)
-        }
-
-        city_drop_down.setEndIconOnClickListener {
-            showCitiesList(it)
-        }
-
     }
 
     private fun setObservers(){
@@ -73,9 +58,9 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             })
 
             countriesList.observe(viewLifecycleOwner, Observer {
-                it.countries?.let { it1 -> countriesArrayList = ArrayList(it1) }
-                it.regions?.let { it1 -> regionsArrayList = ArrayList(it1) }
-                it.cities?.let { it1 -> citiesArrayList = ArrayList(it1) }
+                it.countries?.let { it1 -> setCountriesList(ArrayList(it1)) }
+                it.regions?.let { it1 -> setRegionsList(ArrayList(it1)) }
+                it.cities?.let { it1 -> setCitiesList(ArrayList(it1)) }
             })
 
             usersList.observe(viewLifecycleOwner, Observer {
@@ -85,35 +70,46 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     }
 
-    private fun setCountriesList(){
-        customAdapter = CustomPopupAdapter<Country>(requireContext(), countriesArrayList)
-        country_drop_down_tv.setAdapter(customAdapter)
+    private fun setCountriesList(list: ArrayList<Country>){
+        val countryAdapter = ArrayAdapter<String>(
+            requireContext(),
+            R.layout.item_popup,
+            list.map { it.country_name }
+        )
+        country_drop_down_tv.setAdapter(countryAdapter)
     }
 
-    private fun showCitiesList(view: View){
-        val listPopupWindow = ListPopupWindow(requireContext())
-        customAdapter = CustomPopupAdapter(requireContext(), citiesArrayList)
-//        listPopupWindow.setAdapter(customAdapter)
-//        listPopupWindow.anchorView = view
-//        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
-//            city_drop_down_tv.setText(citiesArrayList[i].city_name)
-//            listPopupWindow.dismiss()
-//        }
-//        listPopupWindow.show()
+    private fun setCitiesList(list: ArrayList<City>){
+        val customCitiesAdapter = CustomPopupAdapter(
+            context = requireContext(),
+            items = list,
+            valueChecker = object: CustomPopupAdapter.ValueChecker<City, String> {
+                override fun contains(value: City, subvalue: String): Boolean {
+                    val v = value.city_name.toString()
+                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue)
+                }
+
+                override fun toString(value: City?): String {
+                    return value?.city_name.toString()
+                }
+
+                override fun toLong(value: City?): Long {
+                    return value?.id?.toLong() ?: -1
+                }
+
+            }
+        )
+        city_drop_down_tv.setAdapter(customCitiesAdapter)
     }
 
-    private fun showRegionsList(view: View){
-        val listPopupWindow = ListPopupWindow(requireContext())
-        customAdapter = CustomPopupAdapter(requireContext(), citiesArrayList)
-//        listPopupWindow.setAdapter(customAdapter)
-//        listPopupWindow.anchorView = view
-//        listPopupWindow.setOnItemClickListener { _, _, i, _ ->
-//            region_drop_down_tv.setText(regionsArrayList[i].region_name)
-//            listPopupWindow.dismiss()
-//        }
-//        listPopupWindow.show()
+    private fun setRegionsList(list: ArrayList<Region>){
+        val citiesAdapter = ArrayAdapter<String>(
+            requireContext(),
+            R.layout.item_popup,
+            list.map { it.region_name }
+        )
+        region_drop_down_tv.setAdapter(citiesAdapter)
     }
-
 
     private fun setupMask() {
         MaskImpl(
