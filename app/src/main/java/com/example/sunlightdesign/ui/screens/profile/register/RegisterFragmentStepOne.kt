@@ -84,8 +84,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             context = requireContext(),
             items = list,
             valueChecker = object: CustomPopupAdapter.ValueChecker<City, String> {
-                override fun contains(value: City, subvalue: String): Boolean {
+                override fun filter(value: City, subvalue: String?): Boolean {
                     val v = value.city_name.toString()
+                    if (subvalue == null || subvalue.isBlank())
+                        return true
                     return v.toLowerCase(Locale.getDefault()).startsWith(subvalue)
                 }
 
