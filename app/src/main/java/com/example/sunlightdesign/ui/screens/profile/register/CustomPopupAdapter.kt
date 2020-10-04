@@ -36,6 +36,8 @@ class CustomPopupAdapter<T>(
 
     override fun getFilter(): Filter = mFilter
 
+    fun callFiltering(str: String) = mFilter.filter(str)
+
     private fun getItemValue(any: T?): String? {
         return valueChecker.toString(any)
     }
