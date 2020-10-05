@@ -2,18 +2,13 @@ package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.City
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Country
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Region
 import kotlinx.android.synthetic.main.item_popup.view.*
 import java.util.*
-import kotlin.Comparator
 
 class CustomPopupAdapter<T>(
     private val context: Context,
@@ -41,6 +36,8 @@ class CustomPopupAdapter<T>(
 
     override fun getFilter(): Filter = mFilter
 
+    fun callFiltering(str: String) = mFilter.filter(str)
+
     private fun getItemValue(any: T?): String? {
         return valueChecker.toString(any)
     }
@@ -56,29 +53,16 @@ class CustomPopupAdapter<T>(
             if (dataListAllItems == null) {
                 synchronized(lock) { dataListAllItems = items }
             }
-            if (prefix == null || prefix.isEmpty()) {
-                synchronized(lock) {
-                    results.values = dataListAllItems
-                    results.count = dataListAllItems?.size ?: 0
+            val matchValues = ArrayList<T>()
+            val searchStrLowerCase = prefix?.toString()?.toLowerCase(Locale.getDefault())
+            dataListAllItems?.let{
+                for (dataItem in it) {
+                    if (valueChecker.filter(dataItem, searchStrLowerCase))
+                        matchValues.add(dataItem)
                 }
-            } else {
-                val searchStrLowerCase = prefix.toString().toLowerCase(Locale.getDefault())
-                val matchValues = ArrayList<T>()
-                dataListAllItems?.let {
-                    for (dataItem in it) {
-                        /*
-                        val value = getItemValue(dataItem) ?: ""
-                        if (value.toLowerCase(Locale.getDefault()).startsWith(searchStrLowerCase)) {
-                            matchValues.add(dataItem)
-                        }*/
-                        if (valueChecker.contains(dataItem, searchStrLowerCase)){
-                            matchValues.add(dataItem)
-                        }
-                    }
-                }
-                results.values = matchValues
-                results.count = matchValues.size
             }
+            results.values = matchValues
+            results.count = matchValues.size
             return results
         }
 
@@ -96,7 +80,7 @@ class CustomPopupAdapter<T>(
     }
 
     interface ValueChecker<T, K>{
-        fun contains(value: T, subvalue: K): Boolean
+        fun filter(value: T, subvalue: K?): Boolean
         fun toString(value: T?): String
         fun toLong(value: T?): Long
     }
