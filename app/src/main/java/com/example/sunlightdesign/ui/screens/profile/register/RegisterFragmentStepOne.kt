@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -67,6 +68,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     sponsor_name_drop_down.isEndIconCheckable = true
                 }
             }
+        }
+
+        attach_document_btn.setOnClickListener {
+            viewModel.onAttachDocument()
         }
     }
 

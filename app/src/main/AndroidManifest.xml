@@ -22,7 +22,6 @@
         <activity android:name=".ui.launcher.company.CompanyActivity">
 
 
-
         </activity>
 
         <activity android:name=".ui.launcher.auth.AuthActivity"/>

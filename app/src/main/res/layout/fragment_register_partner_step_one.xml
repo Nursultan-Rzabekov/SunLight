@@ -340,6 +340,7 @@
                 android:textSize="@dimen/dimen_9sp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/attach_document_btn"
                 style="@style/BasicOutlinedMaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
