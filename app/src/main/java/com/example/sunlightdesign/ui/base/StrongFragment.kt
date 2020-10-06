@@ -20,7 +20,6 @@ open class StrongFragment<T: StrongViewModel>(clazz: KClass<T>) : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Timber.d("readred")
         super.onActivityResult(requestCode, resultCode, data)
         viewModel.onActivityResult(requestCode, resultCode, data)
     }

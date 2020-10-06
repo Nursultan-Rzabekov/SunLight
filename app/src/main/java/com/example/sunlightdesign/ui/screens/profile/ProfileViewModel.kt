@@ -2,6 +2,7 @@ package com.example.sunlightdesign.ui.screens.profile
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
@@ -10,6 +11,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.accountUse.GetAccountCountriesUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.GetAccountUsersListUseCase
+import com.example.sunlightdesign.utils.Constants.Companion.ACTION_IMAGE_CONTENT_INTENT_CODE
 import timber.log.Timber
 
 
@@ -28,6 +30,12 @@ class ProfileViewModel  constructor(
 
     private var _usersList = MutableLiveData<UsersList>()
     val usersList: LiveData<UsersList> get() = _usersList
+
+    private var _rearDocument = MutableLiveData<Uri?>()
+    val rearDocument: LiveData<Uri?> get() = _rearDocument
+
+    private var _backDocument = MutableLiveData<Uri?>()
+    val backDocument: LiveData<Uri?> get() = _backDocument
 
     fun getCountriesList(){
         progress.postValue(true)
@@ -67,20 +75,28 @@ class ProfileViewModel  constructor(
 
     fun onAttachDocument() {
         withActivity{
-            Timber.d("Attach Document")
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            it.startActivityForResult(intent, 5)
+            it.startActivityForResult(intent, ACTION_IMAGE_CONTENT_INTENT_CODE)
         }
+    }
+
+    fun onRearDocumentInvalidate() {
+        _rearDocument.postValue(null)
+    }
+
+    fun onBackDocumentInvalidate() {
+        _backDocument.postValue(null)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("--- onActivity Result ---")
-        if(resultCode == Activity.RESULT_OK){
+        if(resultCode == Activity.RESULT_OK && data != null){
             when(requestCode) {
-                5 -> {
-                    Timber.d("Image path: ${data?.data}")
+                ACTION_IMAGE_CONTENT_INTENT_CODE -> {
+                    Timber.d("Image path: ${data.data}")
+                    if (_rearDocument.value != null) _backDocument.postValue(data.data)
+                    else _rearDocument.postValue(data.data)
                 }
             }
         }

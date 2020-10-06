@@ -68,11 +68,11 @@
                     android:id="@+id/sponsor_name_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:checkedButton="@id/sponsor_itself_rbtn"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/sponsor_itself_rbtn"
@@ -90,10 +90,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toEndOf="@id/sponsor_name_group"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/sponsor_name_group"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextView"
@@ -118,9 +118,9 @@
                             style="@style/AppCompatTextViewGray"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:enabled="false"
                             android:hint="@string/search_iin_or"
                             android:labelFor="@id/sponsor_name_drop_down"
-                            android:enabled="false"
                             android:paddingTop="@dimen/dimen_12dp"
                             android:paddingBottom="@dimen/dimen_12dp" />
 
@@ -362,7 +362,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dimen_16dp"
                     android:background="@drawable/card_border_gray_da"
-                    android:padding="@dimen/dimen_16dp">
+                    android:padding="@dimen/dimen_16dp"
+                    android:visibility="gone">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/document_rear_side_iv_container"
@@ -386,7 +387,9 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/document_rear_side_name_tv"
                         style="@style/AppCompatTextViewGray"
+                        android:layout_width="@dimen/dimen_0dp"
                         android:layout_marginTop="@dimen/dimen_16dp"
+                        android:layout_marginEnd="@dimen/dimen_16dp"
                         android:ellipsize="end"
                         android:lines="1"
                         android:textSize="@dimen/dimen_14sp"
@@ -423,9 +426,9 @@
                     android:id="@+id/document_back_side_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:background="@drawable/card_border_gray_da"
-                    android:padding="@dimen/dimen_16dp">
+                    android:padding="@dimen/dimen_16dp"
+                    android:visibility="gone">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/document_back_side_iv_container"
@@ -449,7 +452,9 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/document_back_side_name_tv"
                         style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
                         android:layout_marginTop="@dimen/dimen_16dp"
+                        android:layout_marginEnd="@dimen/dimen_16dp"
                         android:ellipsize="end"
                         android:lines="1"
                         android:textSize="@dimen/dimen_14sp"

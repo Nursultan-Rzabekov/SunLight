@@ -1,6 +1,7 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -73,6 +74,14 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         attach_document_btn.setOnClickListener {
             viewModel.onAttachDocument()
         }
+
+        document_back_side_remove_tv.setOnClickListener {
+            invalidateBackDocument()
+        }
+
+        document_rear_side_remove_tv.setOnClickListener {
+            invalidateRearDocument()
+        }
     }
 
     private fun setObservers(){
@@ -89,6 +98,14 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
             usersList.observe(viewLifecycleOwner, Observer {
                 it.users?.let { it1 -> setUsersList(ArrayList(it1)) }
+            })
+
+            rearDocument.observe(viewLifecycleOwner, Observer {
+                it?.let { setRearDocument(it) }
+            })
+
+            backDocument.observe(viewLifecycleOwner, Observer {
+                it?.let{ setBackDocument(it) }
             })
         }
 
@@ -234,6 +251,34 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 onTextFormatted { updateSignUpBtn() }
             }
         }
+    }
+
+    private fun setRearDocument(uri: Uri) {
+        document_rear_side_card.visibility = View.VISIBLE
+        document_rear_side_iv.invalidate()
+        document_rear_side_iv.setImageURI(uri)
+        document_rear_side_name_tv.text = getFileName(requireContext(), uri)
+        document_rear_side_size_tv.text = getFileSizeInLong(requireContext(), uri).toString()
+    }
+
+    private fun invalidateRearDocument() {
+        document_rear_side_card.visibility = View.GONE
+        document_rear_side_iv.invalidate()
+        viewModel.onRearDocumentInvalidate()
+    }
+
+    private fun setBackDocument(uri: Uri) {
+        document_back_side_card.visibility = View.VISIBLE
+        document_back_side_iv.invalidate()
+        document_back_side_iv.setImageURI(uri)
+        document_back_side_name_tv.text = getFileName(requireContext(), uri)
+        document_back_side_size_tv.text = getFileSizeInLong(requireContext(), uri).toString()
+    }
+
+    private fun invalidateBackDocument() {
+        document_back_side_card.visibility = View.GONE
+        document_back_side_iv.invalidate()
+        viewModel.onBackDocumentInvalidate()
     }
 
     private fun updateSignUpBtn() {

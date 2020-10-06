@@ -82,9 +82,4 @@ class MainActivity : StrongActivity(),
 
     override fun onReselectNavItem(navController: NavController, fragment: Fragment) {
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("sdfsdf")
-    }
 }

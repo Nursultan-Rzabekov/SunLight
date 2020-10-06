@@ -15,7 +15,7 @@ abstract class StrongActivity: AppCompatActivity() {
     open val fragmentContainerId get() = R.id.fragment_container
     open val layoutId = R.layout.fragment_activity
 
-    val FragmentManager.currentNavigationFragment: Fragment?
+    private val FragmentManager.currentNavigationFragment: Fragment?
         get() = findFragmentById(fragmentContainerId)?.childFragmentManager?.fragments?.first()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,6 @@ abstract class StrongActivity: AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("string activity onactivity result: ${supportFragmentManager.currentNavigationFragment is StrongFragment<*>}")
         val fragment = supportFragmentManager.currentNavigationFragment ?: return
         fragment.onActivityResult(requestCode, resultCode, data)
     }
