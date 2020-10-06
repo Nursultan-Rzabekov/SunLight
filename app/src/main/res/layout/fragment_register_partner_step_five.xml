@@ -103,7 +103,6 @@
 
         </RadioGroup>
 
-        <include layout="@layout/paybox_card_layout" />
 
         <include
             android:layout_width="match_parent"

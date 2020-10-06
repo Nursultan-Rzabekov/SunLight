@@ -5,10 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.PackagesList
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.UsersList
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountOfficesListUseCase
@@ -54,6 +51,9 @@ class ProfileViewModel  constructor(
 
     private var _productsList = MutableLiveData<List<Product>?>()
     val productsList: LiveData<List<Product>?> get() = _productsList
+
+    private var _officesList = MutableLiveData<OfficesList>()
+    val officeList: LiveData<OfficesList> get() = _officesList
 
 
     fun getCountriesList(){
@@ -113,9 +113,18 @@ class ProfileViewModel  constructor(
     fun getOfficesList(){
         progress.postValue(true)
         accountOfficesListUseCase.execute {
-            onComplete {  }
-            onNetworkError {  }
-            onError {  }
+            onComplete {
+                progress.postValue(false)
+                _officesList.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
         }
     }
 

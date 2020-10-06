@@ -40,7 +40,6 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
         setLayoutManager(recyclerView = registration_partner_step_two_packs_rv)
         registration_partner_step_two_packs_rv.adapter = packageRecyclerAdapter
 
-
         viewModel.getPackagesList()
     }
 

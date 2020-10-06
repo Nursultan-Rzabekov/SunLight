@@ -64,35 +64,12 @@
                 android:textSize="@dimen/dimen_16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_register_partner_step_four_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
                 tools:listitem="@layout/office_departments_item"
                 tools:itemCount="3"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_border_transparent">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/rectangle_38"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:scaleType="fitXY"/>
-
-                <ImageButton
-                    android:contentDescription="@string/imıa_na_karte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_maps_item"
-                    android:layout_marginEnd="@dimen/dimen_16dp"
-                    android:layout_marginBottom="@dimen/dimen_16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_next_step_four"
