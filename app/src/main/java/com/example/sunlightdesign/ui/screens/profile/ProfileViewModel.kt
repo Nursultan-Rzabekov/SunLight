@@ -1,5 +1,8 @@
 package com.example.sunlightdesign.ui.screens.profile
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
@@ -13,6 +16,8 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountUsersLi
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPartnerUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
+import com.example.sunlightdesign.utils.Constants
+import timber.log.Timber
 
 
 /**
@@ -39,6 +44,12 @@ class ProfileViewModel  constructor(
 
     private var _packageList = MutableLiveData<PackagesList>()
     val packageList: LiveData<PackagesList> get() = _packageList
+
+    private var _backDocument = MutableLiveData<Uri?>()
+    val backDocument: LiveData<Uri?> get() = _backDocument
+
+    private var _rearDocument = MutableLiveData<Uri?>()
+    val rearDocument: LiveData<Uri?> get() = _rearDocument
 
 
     fun getCountriesList(){
@@ -119,6 +130,36 @@ class ProfileViewModel  constructor(
             onComplete {  }
             onNetworkError {  }
             onError {  }
+        }
+    }
+
+
+    fun onAttachDocument() {
+        withActivity{
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            it.startActivityForResult(intent, Constants.ACTION_IMAGE_CONTENT_INTENT_CODE)
+        }
+    }
+
+    fun onRearDocumentInvalidate() {
+        _rearDocument.postValue(null)
+    }
+
+    fun onBackDocumentInvalidate() {
+        _backDocument.postValue(null)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK && data != null){
+            when(requestCode) {
+                Constants.ACTION_IMAGE_CONTENT_INTENT_CODE -> {
+                    Timber.d("Image path: ${data.data}")
+                    if (_rearDocument.value != null) _backDocument.postValue(data.data)
+                    else _rearDocument.postValue(data.data)
+                }
+            }
         }
     }
 
