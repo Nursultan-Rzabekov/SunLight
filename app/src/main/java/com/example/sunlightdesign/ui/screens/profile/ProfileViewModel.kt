@@ -3,6 +3,7 @@ package com.example.sunlightdesign.ui.screens.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.PackagesList
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.UsersList
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
@@ -35,6 +36,10 @@ class ProfileViewModel  constructor(
 
     private var _usersList = MutableLiveData<UsersList>()
     val usersList: LiveData<UsersList> get() = _usersList
+
+    private var _packageList = MutableLiveData<PackagesList>()
+    val packageList: LiveData<PackagesList> get() = _packageList
+
 
     fun getCountriesList(){
         progress.postValue(true)
@@ -75,9 +80,18 @@ class ProfileViewModel  constructor(
     fun getPackagesList(){
         progress.postValue(true)
         accountPackagesListUseCase.execute {
-            onComplete {  }
-            onNetworkError {  }
-            onError {  }
+            onComplete {
+                progress.postValue(false)
+                _packageList.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
         }
     }
 

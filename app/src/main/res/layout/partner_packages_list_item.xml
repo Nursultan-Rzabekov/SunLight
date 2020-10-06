@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.radiobutton.MaterialRadioButton
-        android:id="@+id/package_item_name_tv"
+        android:id="@+id/package_item_name_radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
         app:cardCornerRadius="@dimen/dimen_5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/package_item_name_tv">
+        app:layout_constraintTop_toBottomOf="@id/package_item_name_radio">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -30,6 +30,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/package_item_card_name_tv"
                 style="@style/AppCompatTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
                 tools:text="VIP-Partner" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/package_price_tv"
                 style="@style/AppCompatTextViewGray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

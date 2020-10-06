@@ -8,6 +8,7 @@ import retrofit2.http.*
 
 interface AuthServices {
 
+    @FormUrlEncoded
     @POST("auth/login")
     fun getLoginAuth(
         @Field("phone") phone: String,

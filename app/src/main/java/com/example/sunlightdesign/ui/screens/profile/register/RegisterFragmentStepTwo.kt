@@ -6,16 +6,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Package
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
+import com.example.sunlightdesign.ui.screens.profile.register.adapters.PackageRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_register_partner_step_two.*
 
 
 class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
-//     val viewModel: AuthViewModel by activityViewModels()
 
+    private val packageRecyclerAdapter : PackageRecyclerAdapter by lazy {
+        return@lazy PackageRecyclerAdapter(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,8 +36,27 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
         super.onActivityCreated(savedInstanceViewState)
 
         setListeners()
+        setObservers()
+        setLayoutManager(recyclerView = registration_partner_step_two_packs_rv)
+        registration_partner_step_two_packs_rv.adapter = packageRecyclerAdapter
 
-//        viewModel.getUseCase()
+
+        viewModel.getPackagesList()
+    }
+
+    private fun setObservers(){
+        viewModel.apply {
+            packageList.observe(viewLifecycleOwner, Observer {
+                it?.let {packagesList ->
+                    packageRecyclerAdapter.setItems(packagesList.packages as ArrayList<Package>)
+                }
+
+            })
+        }
+    }
+
+    private fun setLayoutManager(recyclerView: RecyclerView){
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
 
