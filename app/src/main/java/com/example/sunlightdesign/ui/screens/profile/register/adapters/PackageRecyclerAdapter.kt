@@ -9,7 +9,10 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Package
 import kotlinx.android.synthetic.main.partner_packages_list_item.view.*
 
-class PackageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<PackageRecyclerAdapter.PackageViewHolder>() {
+class PackageRecyclerAdapter(
+    private val context: Context,
+    private val packageSelector: PackageSelector
+) : RecyclerView.Adapter<PackageRecyclerAdapter.PackageViewHolder>() {
 
     private var items = arrayListOf<Package>()
 
@@ -21,7 +24,7 @@ class PackageRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PackageViewHolder {
         val view =  LayoutInflater.from(context).inflate(R.layout.partner_packages_list_item,parent,false)
-        return PackageViewHolder(view)
+        return PackageViewHolder(view, packageSelector)
     }
 
     override fun getItemCount(): Int = items.size
@@ -30,10 +33,21 @@ class PackageRecyclerAdapter(private val context: Context) : RecyclerView.Adapte
         holder.bind(item = items[position])
     }
 
-    class PackageViewHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView){
+    class PackageViewHolder constructor(
+        itemView: View,
+        private val packageSelector: PackageSelector
+    ): RecyclerView.ViewHolder(itemView){
         fun bind(item: Package) = with(itemView){
             itemView.package_item_card_name_tv.text = item.package_name
             itemView.package_price_tv.text = item.package_price.toString()
+
+            itemView.package_item_card.setOnClickListener {
+                packageSelector.onPackageSelected(adapterPosition)
+            }
         }
+    }
+
+    interface PackageSelector{
+        fun onPackageSelected(id : Int)
     }
 }

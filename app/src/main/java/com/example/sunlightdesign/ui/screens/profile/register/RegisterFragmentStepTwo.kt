@@ -18,10 +18,10 @@ import com.example.sunlightdesign.ui.screens.profile.register.adapters.PackageRe
 import kotlinx.android.synthetic.main.fragment_register_partner_step_two.*
 
 
-class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
+class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewModel::class), PackageRecyclerAdapter.PackageSelector {
 
     private val packageRecyclerAdapter : PackageRecyclerAdapter by lazy {
-        return@lazy PackageRecyclerAdapter(requireContext())
+        return@lazy PackageRecyclerAdapter(requireContext(), this)
     }
 
     override fun onCreateView(
@@ -44,6 +44,10 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
         viewModel.getPackagesList()
     }
 
+    override fun onPackageSelected(id: Int) {
+        viewModel.onPackageSelected(id)
+    }
+
     private fun setObservers(){
         viewModel.apply {
             packageList.observe(viewLifecycleOwner, Observer {
@@ -58,7 +62,6 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
     private fun setLayoutManager(recyclerView: RecyclerView){
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
-
 
     private fun setListeners(){
         registration_partner_step_two_next_button.setOnClickListener {

@@ -5,7 +5,6 @@ data class PackagesList(
     val packages: List<Package>?
 )
 
-
 data class Product(
     val created_at: String?,
     val deleted_at: String?,
@@ -21,6 +20,7 @@ data class Product(
     val product_quantity: Int?,
     val product_short_description: String?,
     val product_type: Int?,
-    val updated_at: String?
+    val updated_at: String?,
+    var isChecked: Boolean = false
 )
 
