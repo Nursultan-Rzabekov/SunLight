@@ -50,7 +50,9 @@ open class StrongViewModel : ViewModel(){
         }
     }
 
-    open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
+    open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    }
+
     open fun onPermissionActivityResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {}
 
     fun Single<VmAction>.invoiceAction() = doOnSuccess { it.invokeAction() }

@@ -60,56 +60,75 @@
                 android:text="@string/indicate_your_sponsor"
                 android:textSize="@dimen/dimen_16sp" />
 
-            <RadioGroup
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/sponsor_name_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_16dp"
-                    android:orientation="horizontal">
+                    android:checkedButton="@id/sponsor_itself_rbtn"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/AppCompatTextView"
-                        android:text="@string/me_"
-                        android:textAlignment="viewStart"
-                        android:textSize="@dimen/dimen_16sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/sponsor_itself_rbtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/sponsor_other_rbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/sponsor_name_group"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/AppCompatTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/me_"
+                        android:textSize="@dimen/dimen_16sp" />
+
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/BasicTextInputLayout"
+                        android:id="@+id/sponsor_name_drop_down"
+                        style="@style/BasicDropDownInputLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:endIconCheckable="false"
                         app:hintEnabled="false">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            style="@style/BasicEditText"
+                        <AutoCompleteTextView
+                            android:id="@+id/sponsor_name_tv"
+                            style="@style/AppCompatTextViewGray"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:enabled="false"
                             android:hint="@string/search_iin_or"
+                            android:labelFor="@id/sponsor_name_drop_down"
                             android:paddingTop="@dimen/dimen_12dp"
                             android:paddingBottom="@dimen/dimen_12dp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
-            </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
@@ -321,6 +340,7 @@
                 android:textSize="@dimen/dimen_9sp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/attach_document_btn"
                 style="@style/BasicOutlinedMaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -342,7 +362,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dimen_16dp"
                     android:background="@drawable/card_border_gray_da"
-                    android:padding="@dimen/dimen_16dp">
+                    android:padding="@dimen/dimen_16dp"
+                    android:visibility="gone">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/document_rear_side_iv_container"
@@ -366,7 +387,9 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/document_rear_side_name_tv"
                         style="@style/AppCompatTextViewGray"
+                        android:layout_width="@dimen/dimen_0dp"
                         android:layout_marginTop="@dimen/dimen_16dp"
+                        android:layout_marginEnd="@dimen/dimen_16dp"
                         android:ellipsize="end"
                         android:lines="1"
                         android:textSize="@dimen/dimen_14sp"
@@ -404,7 +427,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/card_border_gray_da"
-                    android:padding="@dimen/dimen_16dp">
+                    android:padding="@dimen/dimen_16dp"
+                    android:visibility="gone">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/document_back_side_iv_container"
@@ -421,14 +445,16 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:contentDescription="@string/upload_documents"
-                            android:src="@drawable/test_document" />
+                            tools:src="@drawable/test_document" />
 
                     </com.google.android.material.card.MaterialCardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/document_back_side_name_tv"
                         style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
                         android:layout_marginTop="@dimen/dimen_16dp"
+                        android:layout_marginEnd="@dimen/dimen_16dp"
                         android:ellipsize="end"
                         android:lines="1"
                         android:textSize="@dimen/dimen_14sp"

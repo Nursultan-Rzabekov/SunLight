@@ -1,5 +1,7 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,7 +28,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private lateinit var countriesAdapter: CustomPopupAdapter<Country>
     private lateinit var regionsAdapter: CustomPopupAdapter<Region>
-    private val usersArrayList = arrayListOf<Users>()
+    private lateinit var citiesAdapter: CustomPopupAdapter<City>
 
     private var countryId: Int = -1
     private var regionId: Int = -1
@@ -55,6 +57,31 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         btn_next_step_one.setOnClickListener {
             findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
         }
+
+        sponsor_name_group.setOnCheckedChangeListener { _, checkedId ->
+            when(checkedId) {
+                sponsor_itself_rbtn.id -> {
+                    sponsor_name_tv.isEnabled = false
+                    sponsor_name_drop_down.isEndIconCheckable = false
+                }
+                sponsor_other_rbtn.id -> {
+                    sponsor_name_tv.isEnabled = true
+                    sponsor_name_drop_down.isEndIconCheckable = true
+                }
+            }
+        }
+
+        attach_document_btn.setOnClickListener {
+            viewModel.onAttachDocument()
+        }
+
+        document_back_side_remove_tv.setOnClickListener {
+            invalidateBackDocument()
+        }
+
+        document_rear_side_remove_tv.setOnClickListener {
+            invalidateRearDocument()
+        }
     }
 
     private fun setObservers(){
@@ -70,7 +97,15 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             })
 
             usersList.observe(viewLifecycleOwner, Observer {
-                it.users?.let { it1 -> usersArrayList.addAll(it1) }
+                it.users?.let { it1 -> setUsersList(ArrayList(it1)) }
+            })
+
+            rearDocument.observe(viewLifecycleOwner, Observer {
+                it?.let { setRearDocument(it) }
+            })
+
+            backDocument.observe(viewLifecycleOwner, Observer {
+                it?.let{ setBackDocument(it) }
             })
         }
 
@@ -105,7 +140,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun setCitiesList(list: ArrayList<City>){
-        val customCitiesAdapter = CustomPopupAdapter(
+        citiesAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
             valueChecker = object: CustomPopupAdapter.ValueChecker<City, String> {
@@ -128,7 +163,13 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             }
         )
         city_drop_down_tv.threshold = 1
-        city_drop_down_tv.setAdapter(customCitiesAdapter)
+        city_drop_down_tv.setAdapter(citiesAdapter)
+        city_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
+            val adapter = city_drop_down_tv.adapter
+            val c = adapter.getItem(position) as City
+            cityId = c.id ?: -1
+            Timber.d("cityID: $cityId")
+        }
     }
 
     private fun setRegionsList(list: ArrayList<Region>){
@@ -157,6 +198,37 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         )
         region_drop_down_tv.threshold = 1
         region_drop_down_tv.setAdapter(regionsAdapter)
+        region_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
+            val adapter = region_drop_down_tv.adapter
+            val r = adapter.getItem(position) as Region
+            regionId = r.id ?: -1
+            citiesAdapter.callFiltering("")
+            Timber.d("regionID: $regionId")
+        }
+    }
+
+    private fun setUsersList(list: ArrayList<Users>) {
+        val usersAdapter = CustomPopupAdapter(
+            context = requireContext(),
+            items = list,
+            valueChecker = object: CustomPopupAdapter.ValueChecker<Users, String>{
+                override fun filter(value: Users, subvalue: String?): Boolean {
+                    if (subvalue == null || subvalue.isBlank())
+                        return true
+                    return value.first_name?.contains(subvalue) ?: false ||
+                            value.last_name?.contains(subvalue) ?: false
+                }
+
+                override fun toString(value: Users?): String =
+                    "${value?.first_name} ${value?.last_name}"
+
+                override fun toLong(value: Users?): Long =
+                    value?.id?.toLong() ?: -1
+
+            }
+        )
+        sponsor_name_tv.threshold = 1
+        sponsor_name_tv.setAdapter(usersAdapter)
     }
 
     private fun setupMask() {
@@ -179,6 +251,34 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 onTextFormatted { updateSignUpBtn() }
             }
         }
+    }
+
+    private fun setRearDocument(uri: Uri) {
+        document_rear_side_card.visibility = View.VISIBLE
+        document_rear_side_iv.invalidate()
+        document_rear_side_iv.setImageURI(uri)
+        document_rear_side_name_tv.text = getFileName(requireContext(), uri)
+        document_rear_side_size_tv.text = getFileSizeInLong(requireContext(), uri).toString()
+    }
+
+    private fun invalidateRearDocument() {
+        document_rear_side_card.visibility = View.GONE
+        document_rear_side_iv.invalidate()
+        viewModel.onRearDocumentInvalidate()
+    }
+
+    private fun setBackDocument(uri: Uri) {
+        document_back_side_card.visibility = View.VISIBLE
+        document_back_side_iv.invalidate()
+        document_back_side_iv.setImageURI(uri)
+        document_back_side_name_tv.text = getFileName(requireContext(), uri)
+        document_back_side_size_tv.text = getFileSizeInLong(requireContext(), uri).toString()
+    }
+
+    private fun invalidateBackDocument() {
+        document_back_side_card.visibility = View.GONE
+        document_back_side_iv.invalidate()
+        viewModel.onBackDocumentInvalidate()
     }
 
     private fun updateSignUpBtn() {

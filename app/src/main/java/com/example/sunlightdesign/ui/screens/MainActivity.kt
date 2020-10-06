@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
+import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.utils.BottomNavController
 import com.example.sunlightdesign.utils.setUpNavigation
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 
 class MainActivity : StrongActivity(),
@@ -31,7 +34,7 @@ class MainActivity : StrongActivity(),
     private val bottomNavController by lazy(LazyThreadSafetyMode.NONE) {
         BottomNavController(
             this,
-            R.id.main_nav_host_fragment,
+            R.id.fragment_container,
             R.id.nav_home,
             this,
             this)
