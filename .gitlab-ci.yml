@@ -1,0 +1,64 @@
+# Post about configuring gitlab ci file: https://android.jlelse.eu/android-gitlab-ci-cd-sign-deploy-3ad66a8f24bf#398b
+
+image: jangrewe/gitlab-ci-android
+
+variables:
+  APP_NAME: "SunLight"
+  ANDROID_COMPILE_SDK: "29"
+  ANDROID_BUILD_TOOLS: "29.0.3"
+  ANDROID_SDK_TOOLS:   "6200805"
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+    - .m2/
+    - .gradle/
+
+stages:
+  - checkCode
+  - build
+
+before_script:
+  - export GRADLE_USER_HOME=$(pwd)/.gradle
+  - chmod +x ./gradlew
+  - apt-get update -y && apt-get install wget -y
+
+checkCode:
+  stage: checkCode
+  cache:
+    key: gradle_cache
+    paths:
+      - .gradle/wrapper/
+      - .gradle/caches/
+    policy: push
+  script:
+    - ./gradlew checkCode
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 20 mins
+
+.build_template: &build
+  stage: build
+  artifacts:
+    expire_in: 4 hours
+    paths:
+      - app/build/outputs/
+
+build:develop:
+  <<: *build
+  only:
+    - master # TODO move to develop
+  script:
+    - ./gradlew assembleDebug
+
+build:release:
+  <<: *build
+  only:
+    - develop
+    - koin
+  script:
+    - ./gradlew assembleRelease
+
+after_script:
+  - echo "End CI"
