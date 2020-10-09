@@ -49,8 +49,6 @@ build:develop:
   <<: *build
   only:
     - develop
-    - koin
-    - master
   script:
     - ./gradlew assembleDebug
 
@@ -58,8 +56,6 @@ build:release:
   <<: *build
   only:
     - develop
-    - koin
-    - master
   script:
     - ./gradlew assembleRelease
 
