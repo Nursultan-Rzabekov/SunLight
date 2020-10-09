@@ -48,7 +48,9 @@ checkCode:
 build:develop:
   <<: *build
   only:
-    - master # TODO move to develop
+    - develop
+    - koin
+    - master
   script:
     - ./gradlew assembleDebug
 
@@ -57,6 +59,7 @@ build:release:
   only:
     - develop
     - koin
+    - master
   script:
     - ./gradlew assembleRelease
 
