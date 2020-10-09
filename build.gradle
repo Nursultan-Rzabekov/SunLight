@@ -28,6 +28,9 @@ task clean(type: Delete) {
 }
 
 
+task checkCode
+
+
 // Define versions in a single place
 ext {
     // Sdk and tools
