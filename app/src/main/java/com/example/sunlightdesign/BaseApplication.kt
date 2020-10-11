@@ -19,7 +19,7 @@ class BaseApplication : MultiDexApplication() {
             printLogger()
             androidContext(this@BaseApplication)
             // declare modules
-            modules(module, authModule, accountModule, announcementsModule, ordersModule)
+            modules(module, authModule, accountModule, announcementsModule, ordersModule, profileModule)
         }
     }
 }
