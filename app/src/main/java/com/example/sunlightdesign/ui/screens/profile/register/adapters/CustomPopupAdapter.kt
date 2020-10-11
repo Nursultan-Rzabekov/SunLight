@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.ui.screens.profile.register
+package com.example.sunlightdesign.ui.screens.profile.register.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context

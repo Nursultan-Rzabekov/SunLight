@@ -9,9 +9,11 @@
     android:layout_height="@dimen/dimen_72dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userAvatarCircleImageView"
         android:layout_width="@dimen/dimen_58dp"
         android:layout_marginTop="@dimen/dimen_7dp"
         android:src="@drawable/image"
+        android:adjustViewBounds="true"
         android:layout_marginStart="@dimen/dimen_8dp"
         android:layout_height="@dimen/dimen_58dp"/>
 
@@ -23,6 +25,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/userFullNameTextView"
             style="@style/AppCompatTextViewGray"
             android:layout_gravity="center_horizontal"
             tools:text="Nursultan Rzabekov"
@@ -31,6 +34,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/userIinTextView"
             style="@style/AppCompatTextViewGray"
             android:layout_gravity="center_horizontal"
             tools:text="KAZ000005454545"
@@ -53,6 +57,7 @@
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userStatusTextView"
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center_horizontal"
                 tools:text="@string/all"
