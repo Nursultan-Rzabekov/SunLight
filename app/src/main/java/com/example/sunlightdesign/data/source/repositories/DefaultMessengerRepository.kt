@@ -1,20 +1,19 @@
 package com.example.sunlightdesign.data.source.repositories
 
-import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.MessengerRepository
-
-import com.example.sunlightdesign.utils.SecureSharedPreferences
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-
+import com.example.sunlightdesign.data.source.dataSource.remote.email.AnnouncementsServices
+import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Announcements
 
 
 class DefaultMessengerRepository  constructor(
-    private val tasksRemoteDataSource: AuthDataSource,
-    private val tasksLocalDataSource: AuthDataSource,
-    private val prefs: SecureSharedPreferences,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val announcementsServices: AnnouncementsServices
 ) : MessengerRepository {
+
+    override suspend fun getAnnouncements(): Announcements = announcementsServices.getAnnouncements().await()
+
+    override suspend fun showAnnouncementsDetail(id: Int): Announcements = announcementsServices.showAnnouncementsDetail(id).await()
+
+    override suspend fun deleteAnnouncement(id: Int): Announcements = announcementsServices.deleteAnnouncement(id).await()
 
 
 }

@@ -9,11 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.ui.base.StrongFragment
 
 
-
-class EmailFragment : Fragment() {
-
+class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class) {
 
 
     override fun onAttach(context: Context) {
