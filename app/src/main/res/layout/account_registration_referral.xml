@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/dimen_16dp"
-    android:layout_height="@dimen/dimen_116dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16dp"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextView"
             android:layout_gravity="start"
-            android:text="@string/registration_referral"
-            android:textSize="@dimen/dimen_16sp"
             android:fontFamily="@font/rubik_regular"
+            android:text="@string/registration_referral"
             android:textColor="@color/sunLightColor"
-            />
+            android:textSize="@dimen/dimen_16sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/register_partner_btn"
+            style="@style/BasicOutlinedMaterialButton"
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            style="@style/AppCompatTextView"
-            android:textSize="@dimen/dimen_16sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:paddingTop="@dimen/dimen_12dp"
+            android:paddingBottom="@dimen/dimen_12dp"
+            android:text="@string/registration"
             android:textAlignment="center"
             android:textColor="@color/sunLightColor"
-            android:text="@string/registration"
-            android:layout_margin="@dimen/dimen_16dp"
-            android:background="@drawable/border_color_button"
-            android:layout_height="wrap_content"/>
+            android:textSize="@dimen/dimen_16sp"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="1dp" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

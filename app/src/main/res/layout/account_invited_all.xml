@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/dimen_16dp"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_margin = "@dimen/dimen_16dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/dimen_16dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextView"
                 android:layout_gravity="start"
-                android:text="@string/invited"
-                android:textSize="@dimen/dimen_16sp"
                 android:fontFamily="@font/rubik_bold"
+                android:text="@string/invited"
                 android:textColor="@color/sunLightColor"
-                />
+                android:textSize="@dimen/dimen_16sp" />
 
             <View
                 android:layout_width="0dp"
@@ -34,79 +35,19 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center"
-                android:text="@string/all"
-                android:textSize="@dimen/dimen_16sp"
                 android:fontFamily="@font/rubik_bold"
+                android:text="@string/all"
                 android:textColor="@color/sunLightColor"
-                />
+                android:textSize="@dimen/dimen_16sp" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_invited_recycler_view"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/dimen_16dp"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
-                    android:layout_gravity="start"
-                    tools:text="Nursultan Rzabekov"
-                    android:textSize="@dimen/dimen_14sp"
-                    android:fontFamily="@font/rubik_bold"
-                    android:textColor="@color/pure_color"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextViewGray"
-                    tools:text="KAZ32423423423423"
-                    android:layout_marginTop="@dimen/dimen_12dp"
-                    android:textSize="@dimen/dimen_14sp"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
-                    android:layout_gravity="start"
-                    android:text="@string/not_active"
-                    android:textSize="@dimen/dimen_14sp"
-                    android:fontFamily="@font/rubik_bold"
-                    android:textColor="@color/red"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextViewGray"
-                    tools:text="19.10.2018"
-                    android:layout_marginTop="@dimen/dimen_12dp"
-                    android:textSize="@dimen/dimen_14sp"
-                    />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_marginEnd="@dimen/dimen_16dp"
-            android:layout_width="match_parent"
-            android:background="@color/gray"
-            android:layout_height="1dp"/>
+            android:layout_height="wrap_content"
+            tools:itemCount="5"
+            tools:listitem="@layout/invited_list_item" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

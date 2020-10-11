@@ -55,7 +55,8 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/all"
+                tools:text="@string/all"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/dimen_14sp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="@dimen/dimen_4dp"

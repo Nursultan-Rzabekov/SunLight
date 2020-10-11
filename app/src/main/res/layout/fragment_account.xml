@@ -17,12 +17,12 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
-
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/cabinet"
                 android:layout_marginTop="@dimen/dimen_32dp"
+                android:layout_marginBottom="@dimen/dimen_32dp"
                 />
 
             <include layout="@layout/account_mini_profile"/>
@@ -32,8 +32,6 @@
             <include layout="@layout/account_registration_referral"/>
 
             <include layout="@layout/account_wallet"/>
-
-            <include layout="@layout/account_leader_structure"/>
 
             <include layout="@layout/account_invited_all"/>
 
