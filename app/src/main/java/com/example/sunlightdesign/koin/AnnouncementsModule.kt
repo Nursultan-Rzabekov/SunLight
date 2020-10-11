@@ -13,18 +13,25 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val announcementsModule = module {
+
     single(named("announcementsService")) {
         get<Retrofit>().create(AnnouncementsServices::class.java)
     }
 
     single<MessengerRepository>{
         DefaultMessengerRepository(
-            announcementsServices = get()
+            announcementsServices = get(named("announcementsService"))
         )
     }
 
     factory {
         GetAnnouncementsUseCase(
+            itemsRepository = get()
+        )
+    }
+
+    factory {
+        ShowAnnouncementsDetailsUseCase(
             itemsRepository = get()
         )
     }
@@ -36,12 +43,6 @@ val announcementsModule = module {
         )
     }
 
-    factory {
-        ShowAnnouncementsDetailsUseCase(
-            itemsRepository = get()
-        )
-    }
-
     viewModel {
         EmailViewModel(
             getAnnouncementsUseCase = get(),
@@ -49,6 +50,4 @@ val announcementsModule = module {
             deleteAnnouncementUseCase = get()
         )
     }
-
-
 }
