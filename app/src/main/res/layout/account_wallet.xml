@@ -1,177 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet_bonus" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/dimen_16dp"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/ic_wallet_bonus"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/bonusnyi_koshelek"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/ten_thousand_bv"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/bonusnyi_koshelek"
+                android:textSize="@dimen/dimen_16sp" />
 
             <View
-                android:layout_width="match_parent"
-                android:background="@color/gray"
-                android:layout_height="1dp"/>
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/dimen_16dp"
-                android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/ten_thousand_bv"
+                android:textSize="@dimen/dimen_16sp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/ic_wallet_yellow_active"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/koshelek_aktive"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/twelve_thousand_bv"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-            </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/gray"
-                android:layout_height="1dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/dimen_16dp"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/ic_wallet_gray_arrow"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/arrow_left"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/two_thousand_bv"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-            </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:background="@color/gray"
-                android:layout_height="1dp"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/dimen_16dp"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/ic_wallet_gray_arrow_forward"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/arrow_right"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_16dp"
-                    android:text="@string/five_thousand_bv"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:fontFamily="@font/rubik_regular"
-                    />
-
-            </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet_yellow_active" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/koshelek_aktive"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/twelve_thousand_bv"
+                android:textSize="@dimen/dimen_16sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet_gray_arrow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/arrow_left"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/two_thousand_bv"
+                android:textSize="@dimen/dimen_16sp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet_gray_arrow_forward" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/arrow_right"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/five_thousand_bv"
+                android:textSize="@dimen/dimen_16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
