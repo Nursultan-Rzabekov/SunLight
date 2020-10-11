@@ -6,13 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Data
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.email.adapters.AnnouncementsRecyclerAdapter
 import kotlinx.android.synthetic.main.announcements.*
+import kotlinx.android.synthetic.main.announcements.progress_bar
+import kotlinx.android.synthetic.main.sunlight_login.*
 
 
 class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class), AnnouncementsRecyclerAdapter.AnnouncementSelector {
@@ -30,15 +34,26 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class), Ann
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        configViewModel()
         viewModel.getAnnouncementsList()
+
     }
 
-    override fun onAnnouncementSelected(id: Int) {
+    private fun configViewModel(){
         viewModel.apply {
+            progress.observe(viewLifecycleOwner, Observer {
+                progress_bar.visibility = if (it) View.VISIBLE else View.GONE
+            })
+
             announcementList.observe(viewLifecycleOwner, Observer {
                 initRecyclerView(items = it.announcements?.data ?: listOf())
             })
         }
+    }
+
+    override fun onAnnouncementSelected(id: Int) {
+        val bundle = bundleOf("itemId" to id)
+        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsFragment,bundle)
     }
 
     private fun initRecyclerView(items: List<Data>){

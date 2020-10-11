@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Data
@@ -37,7 +38,11 @@ class AnnouncementsRecyclerAdapter(
             itemView.messageBodyTextView.text = item.message_body
 
             itemView.setOnClickListener {
-                announcementSelector.onAnnouncementSelected(adapterPosition)
+                item.id?.let { it1 -> announcementSelector.onAnnouncementSelected(it1) }
+                itemView.itemViewConstraintLayout.background = ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.announcement_item_shape_read,
+                null)
             }
         }
     }

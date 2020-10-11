@@ -6,7 +6,7 @@
     android:id="@+id/navigate_list">
 
     <fragment android:id="@+id/listFragment"
-        android:name="com.example.sunlightdesign.ui.screens.list.ListFragment"
+        android:name="com.example.sunlightdesign.ui.screens.order.OrdersFragment"
         android:label="@string/home"
         tools:layout="@layout/wallet">
 

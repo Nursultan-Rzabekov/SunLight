@@ -8,7 +8,20 @@
     <fragment android:id="@+id/emailFragment"
         android:name="com.example.sunlightdesign.ui.screens.email.EmailFragment"
         android:label="@string/home"
-        tools:layout="@layout/wallet">
+        tools:layout="@layout/announcements">
+
+        <action
+            android:id="@+id/action_emailFragment_to_emailDetailsFragment"
+            app:destination="@id/emailDetailsFragment"
+            app:popUpTo="@id/emailFragment" />
+
+    </fragment>
+
+
+    <fragment android:id="@+id/emailDetailsFragment"
+        android:name="com.example.sunlightdesign.ui.screens.email.EmailDetailsFragment"
+        android:label="@string/home"
+        tools:layout="@layout/announcement_detail_item">
 
     </fragment>
 

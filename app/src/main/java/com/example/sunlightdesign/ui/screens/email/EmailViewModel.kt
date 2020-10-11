@@ -1,8 +1,10 @@
 package com.example.sunlightdesign.ui.screens.email
 
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Announcements
 import com.example.sunlightdesign.ui.base.StrongViewModel
@@ -30,7 +32,6 @@ class EmailViewModel  constructor(
             onComplete {
                 progress.postValue(false)
                 _announcementList.postValue(it)
-
             }
             onNetworkError {
                 progress.postValue(false)
@@ -45,8 +46,14 @@ class EmailViewModel  constructor(
         progress.postValue(true)
         showAnnouncementsDetailsUseCase.setData(id)
         showAnnouncementsDetailsUseCase.execute {
-            onComplete {
+            onComplete { announcementItem ->
                 progress.postValue(false)
+                withActivity {
+                    (it.findViewById(R.id.itemBodyTextView) as TextView).text = announcementItem?.announcement?.message_body
+                    (it.findViewById(R.id.itemTitleTextView) as TextView).text = announcementItem?.announcement?.message_title
+                    (it.findViewById(R.id.dateTextView) as TextView).text = announcementItem?.announcement?.created_at
+                    (it.findViewById(R.id.toNameTextView) as TextView).text = announcementItem?.announcement?.author?.first_name
+                }
             }
             onNetworkError {
                 progress.postValue(false)
