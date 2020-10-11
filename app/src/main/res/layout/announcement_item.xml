@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginStart="@dimen/dimen_16dp"
+    android:layout_marginEnd="@dimen/dimen_16dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/announcement_item_shape"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:layout_marginBottom="@dimen/dimen_12dp"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dataTextView"
+            style="@style/AppCompatTextViewGray"
+            android:textSize="@dimen/dimen_14sp"
+            tools:text = "02.05.2019 / 17:11"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/messageTitleTextView"
+            style="@style/AppCompatTextView"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:textSize="@dimen/dimen_14sp"
+            tools:text = "Всем пользователям"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/messageBodyTextView"
+            style="@style/AppCompatTextViewGray"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:textSize="@dimen/dimen_14sp"
+            tools:text = "Добрый день дорогой партнер GTC ! Хотим напомнить что 11-12 мая... "/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
