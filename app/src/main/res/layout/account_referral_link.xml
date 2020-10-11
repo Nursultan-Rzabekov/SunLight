@@ -43,6 +43,7 @@
             android:layout_height="@dimen/dimen_50dp"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/dimen_30dp"
+            android:foreground="?attr/selectableItemBackground"
             android:background="@drawable/border_color_copy_referal"
             android:src="@drawable/ic_copy_referal" />
 
@@ -51,6 +52,7 @@
             android:layout_height="@dimen/dimen_50dp"
             android:layout_gravity="center"
             android:layout_marginStart="-1dp"
+            android:foreground="?attr/selectableItemBackground"
             android:background="@drawable/border_color_share_referal"
             android:src="@drawable/ic_share_referal" />
 

@@ -51,6 +51,9 @@ class ProfileViewModel  constructor(
     private var _rearDocument = MutableLiveData<Uri?>()
     val rearDocument: LiveData<Uri?> get() = _rearDocument
 
+    private var _avatarImage = MutableLiveData<Uri?>()
+    val avatarImage: LiveData<Uri?> get() = _avatarImage
+
     private var _productsList = MutableLiveData<List<Product>?>()
     val productsList: LiveData<List<Product>?> get() = _productsList
 
@@ -169,11 +172,11 @@ class ProfileViewModel  constructor(
     }
 
 
-    fun onAttachDocument() {
+    fun onAttachDocument(requestCode: Int = Constants.ACTION_IMAGE_CONTENT_INTENT_CODE) {
         withActivity{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            it.startActivityForResult(intent, Constants.ACTION_IMAGE_CONTENT_INTENT_CODE)
+            it.startActivityForResult(intent, requestCode)
         }
     }
 
@@ -199,6 +202,10 @@ class ProfileViewModel  constructor(
                     Timber.d("Image path: ${data.data}")
                     if (_rearDocument.value != null) _backDocument.postValue(data.data)
                     else _rearDocument.postValue(data.data)
+                }
+                Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE -> {
+                    Timber.d("Image path: ${data.data}")
+                    _avatarImage.postValue(data.data)
                 }
             }
         }

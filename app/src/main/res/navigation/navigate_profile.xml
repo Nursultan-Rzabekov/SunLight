@@ -18,6 +18,14 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"/>
 
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+
 
     </fragment>
 
@@ -98,6 +106,17 @@
         tools:layout="@layout/fragment_register_partner_step_five" >
 
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <argument
+            android:name="shortenedUserInfo"
+            app:argType="com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo"
+            app:nullable="true" />
     </fragment>
 
 </navigation>

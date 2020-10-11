@@ -157,6 +157,10 @@
     <string name="send_again_after">Отправить повторно через <b>%1$s секунд</b></string>
     <string name="send_again">Отправить повторно</string>
     <string name="come_up_to_till">Подойдите к кассе, чтобы оплатить \nи получить инструкцию \nдальнейших действий.</string>
+    <string name="birthday">День рождения</string>
+    <string name="sponsor">Спонсор</string>
+    <string name="password_two_dots">Пароль :</string>
+    <string name="documents_scans">Сканы документов</string>
 
 
 </resources>

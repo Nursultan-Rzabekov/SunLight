@@ -2,10 +2,7 @@ package com.example.sunlightdesign
 
 import android.content.Context
 import androidx.multidex.MultiDexApplication
-import com.example.sunlightdesign.koin.accountModule
-import com.example.sunlightdesign.koin.authModule
-import com.example.sunlightdesign.koin.module
-import com.example.sunlightdesign.koin.profileModule
+import com.example.sunlightdesign.koin.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -22,7 +19,7 @@ class BaseApplication : MultiDexApplication() {
             printLogger()
             androidContext(this@BaseApplication)
             // declare modules
-            modules(module, authModule, accountModule, profileModule)
+            modules(module, authModule, accountModule, profileModule, announcementsModule)
         }
     }
 }

@@ -21,6 +21,7 @@
             android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/invitedFullNameTextView"
                 style="@style/AppCompatTextView"
                 tools:text="Чекембаева Жамиля"
                 android:textSize="@dimen/dimen_14sp"
@@ -28,6 +29,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/invitedUuidTextView"
                 style="@style/AppCompatTextViewGray"
                 tools:text="KAZ0031809196501"
                 android:layout_marginTop="@dimen/dimen_12dp"
@@ -45,6 +47,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/invitedActivityTextView"
                 style="@style/AppCompatTextViewGray"
                 tools:text="Не активен"
                 android:textSize="@dimen/dimen_14sp"
@@ -52,8 +55,11 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/invitedDateTextView"
                 style="@style/AppCompatTextViewGray"
                 tools:text="19.10.2018"
+                android:lines="1"
+                android:ellipsize="end"
                 android:textSize="@dimen/dimen_14sp"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 android:layout_width="wrap_content"

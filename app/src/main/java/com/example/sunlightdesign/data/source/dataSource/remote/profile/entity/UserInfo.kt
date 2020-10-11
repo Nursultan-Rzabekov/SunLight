@@ -1,7 +1,10 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.profile.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class UserInfo(
-    val children: List<Any>?,
+    val children: List<Child>?,
     val lastAnnouncement: LastAnnouncement?,
     val parent: Parent?,
     val user: User?,
@@ -11,7 +14,7 @@ data class UserInfo(
 data class LastAnnouncement(
     val announcement_id: Int?,
     val created_at: String?,
-    val deleted_at: Any?,
+    val deleted_at: String?,
     val id: Int?,
     val is_archived: Int?,
     val is_read: Int?,
@@ -20,7 +23,7 @@ data class LastAnnouncement(
 )
 
 data class Parent(
-    val birthday: Any?,
+    val birthday: String?,
     val block_status: Int?,
     val childs: Int?,
     val city_id: Int?,
@@ -30,14 +33,14 @@ data class Parent(
     val direct_level: Int?,
     val document_back_path: String?,
     val document_front_path: String?,
-    val email: Any?,
+    val email: String?,
     val first_name: String?,
     val id: Int?,
     val iin: String?,
     val is_active: Int?,
-    val last_login: Any?,
+    val last_login: String?,
     val last_name: String?,
-    val left_children: Any?,
+    val left_children: List<Child>?,
     val left_total: String?,
     val level: Int?,
     val middle_name: String?,
@@ -64,8 +67,44 @@ data class Parent(
     val who: Any?
 )
 
+data class Child(
+    val block_status: Int?,
+    val childs: Int?,
+    val city_id: Int?,
+    val country_id: Int?,
+    val created_at: String?,
+    val direct_id: Int?,
+    val direct_level: Int?,
+    val document_back_path: String?,
+    val document_front_path: String?,
+    val first_name: String?,
+    val id: Int?,
+    val iin: String?,
+    val is_active: Int?,
+    val last_name: String?,
+    val left_total: String?,
+    val level: Int?,
+    val middle_name: String?,
+    val office_id: Int?,
+    val package_id: Int?,
+    val parent_id: Int?,
+    val parent_level: Int?,
+    val phone: String?,
+    val phone_verified_at: String?,
+    val position: String?,
+    val referral_link: String?,
+    val region_id: Int?,
+    val register_by: Int?,
+    val right_total: String?,
+    val status_id: Int?,
+    val step: Int?,
+    val system_status: Int?,
+    val uuid: String?,
+    val wallet_main_wallet: Int?
+)
+
 data class User(
-    val birthday: Any?,
+    val birthday: String?,
     val block_status: Int?,
     val childs: Any?,
     val city: City?,
@@ -183,3 +222,17 @@ data class Wallet(
     val updated_at: String?,
     val user_id: Int?
 )
+
+@Parcelize
+data class ShortenedUserInfo(
+    val birthday: String?,
+    val cityName: String?,
+    val countryName: String?,
+    val regionName: String?,
+    val fullName: String?,
+    val uuid: String?,
+    val status: String?,
+    val phone: String?,
+    val document_back_path: String?,
+    val document_front_path: String?
+): Parcelable
