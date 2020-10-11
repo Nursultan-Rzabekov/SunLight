@@ -1,20 +1,17 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Filter
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
+import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import ru.tinkoff.decoro.MaskImpl

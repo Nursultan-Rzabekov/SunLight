@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/dimen_16dp">
@@ -34,12 +35,13 @@
                 android:layout_weight="1" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bonusWalletTextView"
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dimen_16dp"
                 android:fontFamily="@font/rubik_regular"
-                android:text="@string/ten_thousand_bv"
-                android:textSize="@dimen/dimen_16sp" />
+                android:textSize="@dimen/dimen_16sp"
+                tools:text="@string/ten_thousand_bv" />
 
         </LinearLayout>
 
@@ -73,6 +75,7 @@
                 android:layout_weight="1" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activityWalletTextView"
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dimen_16dp"
@@ -113,6 +116,7 @@
                 android:layout_weight="1" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/leftBranchTotalTextView"
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dimen_16dp"
@@ -154,6 +158,7 @@
                 android:layout_weight="1" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rightBranchTotalTextView"
                 style="@style/AppCompatTextView"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dimen_16dp"

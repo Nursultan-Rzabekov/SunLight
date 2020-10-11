@@ -5,6 +5,7 @@ package com.example.sunlightdesign.data.source
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 
 /**
  * Interface to the data layer.

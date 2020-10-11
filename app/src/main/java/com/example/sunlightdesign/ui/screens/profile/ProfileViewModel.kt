@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountOfficesListUseCase
@@ -14,6 +15,7 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountUsersLi
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPartnerUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.ProfileInfoUseCase
 import com.example.sunlightdesign.utils.Constants
 import timber.log.Timber
 
@@ -28,8 +30,8 @@ class ProfileViewModel  constructor(
     private val accountOfficesListUseCase: AccountOfficesListUseCase,
     private val accountSetPackagesUseCase: AccountSetPackagesUseCase,
     private val accountAddPartnerUseCase: AccountAddPartnerUseCase,
-    private val accountCreateOrderUseCase: AccountCreateOrderUseCase
-
+    private val accountCreateOrderUseCase: AccountCreateOrderUseCase,
+    private val profileInfoUseCase: ProfileInfoUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -49,12 +51,17 @@ class ProfileViewModel  constructor(
     private var _rearDocument = MutableLiveData<Uri?>()
     val rearDocument: LiveData<Uri?> get() = _rearDocument
 
+    private var _avatarImage = MutableLiveData<Uri?>()
+    val avatarImage: LiveData<Uri?> get() = _avatarImage
+
     private var _productsList = MutableLiveData<List<Product>?>()
     val productsList: LiveData<List<Product>?> get() = _productsList
 
     private var _officesList = MutableLiveData<OfficesList>()
     val officeList: LiveData<OfficesList> get() = _officesList
 
+    private var _profileInfo = MutableLiveData<UserInfo>()
+    val profileInfo: LiveData<UserInfo> get() = _profileInfo
 
     fun getCountriesList(){
         progress.postValue(true)
@@ -128,6 +135,24 @@ class ProfileViewModel  constructor(
         }
     }
 
+    fun getProfileInfo(){
+        progress.postValue(true)
+        profileInfoUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _profileInfo.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
     fun createOrder(){
         progress.postValue(true)
         accountCreateOrderUseCase.execute {
@@ -147,11 +172,11 @@ class ProfileViewModel  constructor(
     }
 
 
-    fun onAttachDocument() {
+    fun onAttachDocument(requestCode: Int = Constants.ACTION_IMAGE_CONTENT_INTENT_CODE) {
         withActivity{
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            it.startActivityForResult(intent, Constants.ACTION_IMAGE_CONTENT_INTENT_CODE)
+            it.startActivityForResult(intent, requestCode)
         }
     }
 
@@ -178,13 +203,13 @@ class ProfileViewModel  constructor(
                     if (_rearDocument.value != null) _backDocument.postValue(data.data)
                     else _rearDocument.postValue(data.data)
                 }
+                Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE -> {
+                    Timber.d("Image path: ${data.data}")
+                    _avatarImage.postValue(data.data)
+                }
             }
         }
     }
-
-
-
-
 }
 
 

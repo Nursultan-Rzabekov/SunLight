@@ -128,6 +128,10 @@
         <item name="hintEnabled">false</item>
     </style>
 
+    <style name="BasicTextInputLayout.Reverse">
+        <item name="boxBackgroundColor">@color/sunlight_background</item>
+    </style>
+
     <style name="BasicDropDownInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/dimen_5dp</item>
@@ -136,6 +140,10 @@
         <item name="boxCornerRadiusTopStart">@dimen/dimen_5dp</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeColor">@color/transparent</item>
+    </style>
+
+    <style name="BasicDropDownInputLayout.Reverse">
+        <item name="boxBackgroundColor">@color/sunlight_background</item>
     </style>
 
     <style name="TabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
