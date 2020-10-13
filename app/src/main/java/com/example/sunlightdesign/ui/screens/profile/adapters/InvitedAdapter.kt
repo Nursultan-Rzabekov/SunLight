@@ -37,7 +37,7 @@ class InvitedAdapter(
             itemView.invitedFullNameTextView.text = ("${item.first_name} ${item.last_name}")
             itemView.invitedUuidTextView.text = item.uuid
             itemView.invitedActivityTextView.text =
-                if (item.is_active == 1)
+                if (item.is_active == 1.0)
                     itemView.context.getString(R.string.active)
                 else
                     itemView.context.getString(R.string.not_active)

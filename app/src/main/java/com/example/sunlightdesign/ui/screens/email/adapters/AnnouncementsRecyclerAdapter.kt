@@ -39,11 +39,6 @@ class AnnouncementsRecyclerAdapter(
 
             itemView.setOnClickListener {
                 item.id?.let { it1 -> announcementSelector.onAnnouncementSelected(it1) }
-                itemView.itemViewConstraintLayout.background = ResourcesCompat.getDrawable(
-                    resources,
-                    R.drawable.announcement_item_shape_read,
-                    null
-                )
             }
         }
     }

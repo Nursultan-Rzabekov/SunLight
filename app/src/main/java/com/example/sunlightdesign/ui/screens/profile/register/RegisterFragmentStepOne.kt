@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.City
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Country
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Region
@@ -17,6 +18,9 @@ import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
+import kotlinx.android.synthetic.main.fragment_register_partner_step_one.phone_et
+import kotlinx.android.synthetic.main.fragment_register_partner_step_one.progress_bar
+import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 import timber.log.Timber
@@ -55,6 +59,21 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun setListeners() {
         btn_next_step_one.setOnClickListener {
+//            viewModel.createOrder(AddPartner(
+//                first_name = "",
+//                last_name = "",
+//                phone = MaskUtils.unMaskValue(
+//                    MaskUtils.PHONE_MASK,
+//                    phone_et.text.toString()
+//                ),
+//                email = "",
+//                country_id = 1,
+//                city_id = 1,
+//                iin = "",
+//                register_by = 1,
+//                position = ""
+//            ))
+
             findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
         }
 

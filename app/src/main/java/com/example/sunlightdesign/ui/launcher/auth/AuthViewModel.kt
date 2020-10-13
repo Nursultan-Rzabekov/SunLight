@@ -35,7 +35,6 @@ class AuthViewModel constructor(
                 }
             }
             onNetworkError {
-                println("Course Name 12")
                 it.message?.let { message ->
                     progress.value = false
                     handleError(errorMessage = message)

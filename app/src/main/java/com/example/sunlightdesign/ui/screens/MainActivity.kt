@@ -38,19 +38,14 @@ class MainActivity : StrongActivity(),
         )
     }
 
-    //    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        Locale.setDefault(Locale.forLanguageTag("ru"))
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
         bottomNavigationView.setUpNavigation(bottomNavController, this)
         if (savedInstanceState == null) {
             bottomNavController.onNavigationItemSelected()
         }
-
-        //subscribeObservers()
 
     }
 

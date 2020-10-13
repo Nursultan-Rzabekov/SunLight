@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
@@ -153,12 +154,21 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun createOrder() {
+    fun createOrder(addPartner: AddPartner) {
         progress.postValue(true)
+        accountCreateOrderUseCase.setData(addPartner)
         accountCreateOrderUseCase.execute {
-            onComplete { }
-            onNetworkError { }
-            onError { }
+            onComplete {
+                progress.postValue(false)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
         }
     }
 

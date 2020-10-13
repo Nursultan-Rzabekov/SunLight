@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_marginTop="@dimen/dimen_32dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageCardView"
+        android:layout_width="60dp"
+        android:elevation="@dimen/dimen_5dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <ImageView
+            android:id="@+id/productImageView"
+            android:layout_width="match_parent"
+            tools:src="@drawable/product_test"
+            android:layout_height="match_parent"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/orderNameTextView"
+        style="@style/AppCompatTextView"
+        tools:text="Набор Clinique"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/dimen_14sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bvCountTextView"
+        style="@style/AppCompatTextView"
+        tools:text="990 BV"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/dimen_14sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/codeTextView"
+        style="@style/AppCompatTextViewGray"
+        tools:text="Код : 10223423234234"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/orderNameTextView"
+        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/countTextView"
+        style="@style/AppCompatTextViewGray"
+        tools:text="Количество : 1"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/codeTextView"
+        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+        android:textSize="@dimen/dimen_14sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bvTextView"
+        style="@style/AppCompatTextView"
+        tools:text="990 BV"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/statusTextView"
+        style="@style/AppCompatTextViewGray"
+        android:text="@string/status"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bvTextView"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/statusLevelTextView"
+        style="@style/AppCompatTextViewGray"
+        tools:text="Завершен"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusTextView"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

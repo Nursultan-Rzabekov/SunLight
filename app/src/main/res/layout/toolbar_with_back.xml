@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_16sp"
         android:textColor="@color/colorPrimary"
-        android:text="@string/back"/>
+        tools:text="@string/back"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/titleTextView"

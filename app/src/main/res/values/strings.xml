@@ -59,7 +59,7 @@
     <string name="status">Статус:</string>
 
     <!--Кошелек-->
-    <string name="bonusnyi_koshelek">Бонусный кошелек</string>
+    <string name="bonusnyi_koshelek">Основной кошелек</string>
     <string name="koshelek_aktive">Кошелек активности</string>
     <string name="arrow_left">Объем левой ветки</string>
     <string name="koshelek">Кошелек</string>
@@ -164,5 +164,11 @@
     <string name="sponsor">Спонсор</string>
     <string name="password_two_dots">Пароль :</string>
     <string name="documents_scans">Сканы документов</string>
+    <string name="go_to_market">Перейти в маркет</string>
+    <string name="payTo">К оплате</string>
+    <string name="order">Заказ #</string>
+    <string name="created_at">Дата заказа</string>
+    <string name="amount">Количество</string>
+    <string name="detail_order">Детали заказа</string>
 
 </resources>

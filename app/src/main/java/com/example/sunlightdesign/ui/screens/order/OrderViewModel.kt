@@ -1,6 +1,8 @@
 package com.example.sunlightdesign.ui.screens.order
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrderByIdUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrdersUseCase
@@ -19,12 +21,14 @@ class OrderViewModel constructor(
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
+    private var _orders = MutableLiveData<Orders>()
+    val orders: LiveData<Orders> get() = _orders
 
     fun getMyOrders() {
         progress.postValue(true)
         getOrdersUseCase.execute {
             onComplete {
-
+                _orders.postValue(it)
             }
             onNetworkError {
 
