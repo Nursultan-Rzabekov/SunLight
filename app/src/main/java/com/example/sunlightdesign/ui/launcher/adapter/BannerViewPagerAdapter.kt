@@ -12,14 +12,14 @@ import com.example.sunlightdesign.R
 
 
 class BannerViewPagerAdapter(
-        private var context: Context,
-        private var onPageSelected: OnPageSelected
+    private var context: Context,
+    private var onPageSelected: OnPageSelected
 ) : PagerAdapter() {
 
     override fun destroyItem(
-            container: ViewGroup,
-            position: Int,
-            arg1: Any
+        container: ViewGroup,
+        position: Int,
+        arg1: Any
     ) = Unit
 
     override fun getCount(): Int {
@@ -33,7 +33,7 @@ class BannerViewPagerAdapter(
     @SuppressLint("InflateParams")
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
         val inflater = collection.context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = inflater.inflate(R.layout.banner_image_item, null)
         val imageView = view.findViewById<ImageView>(R.id.image_set)
 
@@ -45,7 +45,7 @@ class BannerViewPagerAdapter(
         return view
     }
 
-    interface OnPageSelected{
+    interface OnPageSelected {
         fun onPageSelectedByPosition(position: Int)
     }
 }

@@ -4,8 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.sunlightdesign.data.source.AuthRepository
 
 
-
-class HomeViewModel  constructor(
+class HomeViewModel constructor(
     private val tasksRepository: AuthRepository
 ) : ViewModel() {
 

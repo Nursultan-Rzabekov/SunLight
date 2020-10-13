@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.os.Bundle
@@ -43,7 +41,7 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         setObservers()
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         next_step_three_btn.setOnClickListener {
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
@@ -55,7 +53,7 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         })
     }
 
-    private fun initRecycler(items: List<Product>){
+    private fun initRecycler(items: List<Product>) {
         products_recycler_view.apply {
             productsAdapter = ProductsRecyclerAdapter(items)
             layoutManager = GridLayoutManager(requireContext(), spanCount)

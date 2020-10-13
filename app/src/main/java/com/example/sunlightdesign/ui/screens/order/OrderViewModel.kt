@@ -1,7 +1,6 @@
 package com.example.sunlightdesign.ui.screens.order
 
 import androidx.lifecycle.MutableLiveData
-import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrderByIdUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrdersUseCase
@@ -12,7 +11,7 @@ import com.example.sunlightdesign.usecase.usercase.orders.get.GetProductListUseC
 /**
  * ViewModel for the task list screen.
  */
-class OrderViewModel  constructor(
+class OrderViewModel constructor(
     private val getOrdersUseCase: GetOrdersUseCase,
     private val getProductListUseCase: GetProductListUseCase,
     private val getOrderByIdUseCase: GetOrderByIdUseCase,
@@ -21,7 +20,7 @@ class OrderViewModel  constructor(
 
     var progress = MutableLiveData<Boolean>(false)
 
-    fun getMyOrders(){
+    fun getMyOrders() {
         progress.postValue(true)
         getOrdersUseCase.execute {
             onComplete {
@@ -36,7 +35,7 @@ class OrderViewModel  constructor(
         }
     }
 
-    fun getProductList(){
+    fun getProductList() {
         progress.postValue(true)
         getProductListUseCase.execute {
             onComplete {
@@ -51,7 +50,7 @@ class OrderViewModel  constructor(
         }
     }
 
-    fun getOrderByID(){
+    fun getOrderByID() {
         progress.postValue(true)
         getOrderByIdUseCase.execute {
             onComplete {
@@ -66,7 +65,7 @@ class OrderViewModel  constructor(
         }
     }
 
-    fun getProductByID(){
+    fun getProductByID() {
         progress.postValue(true)
         getProductByIdUseCase.execute {
             onComplete {

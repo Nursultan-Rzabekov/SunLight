@@ -10,11 +10,11 @@ import kotlinx.android.synthetic.main.invited_list_item.view.*
 
 class InvitedAdapter(
     private var items: ArrayList<Child> = arrayListOf()
-): RecyclerView.Adapter<InvitedAdapter.InvitedViewHolder>() {
+) : RecyclerView.Adapter<InvitedAdapter.InvitedViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvitedViewHolder {
-        val view =  LayoutInflater.from(parent.context)
-            .inflate(R.layout.invited_list_item, parent,false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.invited_list_item, parent, false)
         return InvitedViewHolder(view)
     }
 
@@ -32,7 +32,7 @@ class InvitedAdapter(
 
     class InvitedViewHolder(
         view: View
-    ): RecyclerView.ViewHolder(view){
+    ) : RecyclerView.ViewHolder(view) {
         fun bind(item: Child) {
             itemView.invitedFullNameTextView.text = ("${item.first_name} ${item.last_name}")
             itemView.invitedUuidTextView.text = item.uuid

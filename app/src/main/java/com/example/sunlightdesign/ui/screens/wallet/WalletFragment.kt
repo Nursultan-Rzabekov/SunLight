@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.wallet
 
 import android.content.Context
@@ -11,9 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.sunlightdesign.R
 
 
-
 class WalletFragment : Fragment() {
-
 
 
     override fun onAttach(context: Context) {

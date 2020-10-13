@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.email
 
 import android.os.Bundle
@@ -15,11 +13,10 @@ import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Dat
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.email.adapters.AnnouncementsRecyclerAdapter
 import kotlinx.android.synthetic.main.announcements.*
-import kotlinx.android.synthetic.main.announcements.progress_bar
-import kotlinx.android.synthetic.main.sunlight_login.*
 
 
-class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class), AnnouncementsRecyclerAdapter.AnnouncementSelector {
+class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class),
+    AnnouncementsRecyclerAdapter.AnnouncementSelector {
 
     private lateinit var announcementsRecyclerAdapter: AnnouncementsRecyclerAdapter
 
@@ -39,7 +36,7 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class), Ann
 
     }
 
-    private fun configViewModel(){
+    private fun configViewModel() {
         viewModel.apply {
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
@@ -53,12 +50,16 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class), Ann
 
     override fun onAnnouncementSelected(id: Int) {
         val bundle = bundleOf("itemId" to id)
-        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsFragment,bundle)
+        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsFragment, bundle)
     }
 
-    private fun initRecyclerView(items: List<Data>){
+    private fun initRecyclerView(items: List<Data>) {
         announcementRecyclerView.apply {
-            announcementsRecyclerAdapter = AnnouncementsRecyclerAdapter(context = requireContext(), announcements = this@EmailFragment, items = items)
+            announcementsRecyclerAdapter = AnnouncementsRecyclerAdapter(
+                context = requireContext(),
+                announcements = this@EmailFragment,
+                items = items
+            )
             layoutManager = LinearLayoutManager(requireContext())
             adapter = announcementsRecyclerAdapter
         }

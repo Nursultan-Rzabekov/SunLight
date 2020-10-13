@@ -1,17 +1,15 @@
 package com.example.sunlightdesign.data.source.repositories
 
-import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.AuthRepository
+import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
-
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.SecureSharedPreferences
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
 
-
-class DefaultAuthRepository  constructor(
+class DefaultAuthRepository constructor(
     private val tasksRemoteDataSource: AuthDataSource,
     private val tasksLocalDataSource: AuthDataSource,
     private val prefs: SecureSharedPreferences,
@@ -19,7 +17,7 @@ class DefaultAuthRepository  constructor(
 ) : AuthRepository {
 
     override suspend fun getTasks(model: SetLogin): Login {
-        val tasks =  tasksRemoteDataSource.getTasks(model)
+        val tasks = tasksRemoteDataSource.getTasks(model)
         prefs.bearerToken = tasks.token
         return tasks
     }

@@ -18,7 +18,7 @@ val announcementsModule = module {
         get<Retrofit>().create(AnnouncementsServices::class.java)
     }
 
-    single<MessengerRepository>{
+    single<MessengerRepository> {
         DefaultMessengerRepository(
             announcementsServices = get(named("announcementsService"))
         )

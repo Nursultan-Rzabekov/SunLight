@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.os.Bundle
@@ -18,9 +16,10 @@ import com.example.sunlightdesign.ui.screens.profile.register.adapters.PackageRe
 import kotlinx.android.synthetic.main.fragment_register_partner_step_two.*
 
 
-class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewModel::class), PackageRecyclerAdapter.PackageSelector {
+class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
+    PackageRecyclerAdapter.PackageSelector {
 
-    private val packageRecyclerAdapter : PackageRecyclerAdapter by lazy {
+    private val packageRecyclerAdapter: PackageRecyclerAdapter by lazy {
         return@lazy PackageRecyclerAdapter(requireContext(), this)
     }
 
@@ -47,10 +46,10 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
         viewModel.onPackageSelected(id)
     }
 
-    private fun setObservers(){
+    private fun setObservers() {
         viewModel.apply {
             packageList.observe(viewLifecycleOwner, Observer {
-                it?.let {packagesList ->
+                it?.let { packagesList ->
                     packageRecyclerAdapter.setItems(packagesList.packages as ArrayList<Package>)
                 }
 
@@ -58,11 +57,11 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
     }
 
-    private fun setLayoutManager(recyclerView: RecyclerView){
+    private fun setLayoutManager(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         registration_partner_step_two_next_button.setOnClickListener {
             findNavController().navigate(R.id.action_stepTwoFragment_to_stepThreeFragment)
         }

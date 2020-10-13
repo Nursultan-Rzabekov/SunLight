@@ -1,14 +1,9 @@
-
 package com.example.sunlightdesign.data.source.dataSource.remote.auth
 
 
 import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
-import org.json.JSONException
-import org.json.JSONObject
 
 
 class AuthRemoteDataSource(private val apiServices: AuthServices) :

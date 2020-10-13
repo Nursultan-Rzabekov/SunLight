@@ -10,13 +10,11 @@ import androidx.navigation.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
 import com.example.sunlightdesign.ui.screens.MainActivity
-import com.example.sunlightdesign.utils.SecureSharedPreferences
 import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedListener
-{
+class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedListener {
     val viewModel: LauncherViewModel by viewModel()
     override val layoutId: Int
         get() = R.layout.activity_launcher
@@ -29,19 +27,19 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
         setObservers()
     }
 
-    private fun setObservers(){
+    private fun setObservers() {
         viewModel.bearerToken.observe(this, Observer {
-            if(it) navMainActivity()
+            if (it) navMainActivity()
         })
     }
 
-    private fun navMainActivity(){
+    private fun navMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
 
-    private fun onFinishCheckPreviousAuthUser(){
+    private fun onFinishCheckPreviousAuthUser() {
         fragment_container.visibility = View.VISIBLE
     }
 

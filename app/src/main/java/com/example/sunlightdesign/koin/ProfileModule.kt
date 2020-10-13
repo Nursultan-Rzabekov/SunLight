@@ -1,7 +1,6 @@
 package com.example.sunlightdesign.koin
 
 import com.example.sunlightdesign.data.source.ProfileRepository
-import com.example.sunlightdesign.data.source.dataSource.remote.account.AccountServices
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.ProfileServices
 import com.example.sunlightdesign.data.source.repositories.DefaultProfileRepository
 import com.example.sunlightdesign.usecase.usercase.profileUse.ProfileInfoUseCase
@@ -15,7 +14,7 @@ val profileModule = module {
         get<Retrofit>().create(ProfileServices::class.java)
     }
 
-    single<ProfileRepository>{
+    single<ProfileRepository> {
         DefaultProfileRepository(
             services = get(named("profileService"))
         )

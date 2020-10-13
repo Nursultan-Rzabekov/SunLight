@@ -5,12 +5,14 @@ import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 class GetProductByIdUseCase constructor(
     private val ordersRepository: OrdersRepository
-) : BaseCoroutinesUseCase<Unit?>(){
+) : BaseCoroutinesUseCase<Unit?>() {
 
-    private var id : Int? = null
-    fun setData(id : Int){
-        this.id  = id
+    private var id: Int? = null
+    fun setData(id: Int) {
+        this.id = id
     }
-    override suspend fun executeOnBackground(): Unit? = this.id?.let { ordersRepository.getProductByID(id = it) }
+
+    override suspend fun executeOnBackground(): Unit? =
+        this.id?.let { ordersRepository.getProductByID(id = it) }
 
 }

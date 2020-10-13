@@ -9,14 +9,14 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import kotlinx.android.synthetic.main.announcement_detail_item.*
 
-class EmailDetailsFragment: StrongFragment<EmailViewModel>(EmailViewModel::class){
+class EmailDetailsFragment : StrongFragment<EmailViewModel>(EmailViewModel::class) {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.announcement_detail_item,container,false)
+        return inflater.inflate(R.layout.announcement_detail_item, container, false)
     }
 
 
@@ -30,7 +30,7 @@ class EmailDetailsFragment: StrongFragment<EmailViewModel>(EmailViewModel::class
         }
     }
 
-    private fun configViewModel(){
+    private fun configViewModel() {
         viewModel.apply {
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE

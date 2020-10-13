@@ -23,7 +23,7 @@ import timber.log.Timber
 /**
  * ViewModel for the task list screen.
  */
-class ProfileViewModel  constructor(
+class ProfileViewModel constructor(
     private val accountCountriesUseCase: AccountCountriesUseCase,
     private val accountUsersListUseCase: AccountUsersListUseCase,
     private val accountPackagesListUseCase: AccountPackagesListUseCase,
@@ -63,7 +63,7 @@ class ProfileViewModel  constructor(
     private var _profileInfo = MutableLiveData<UserInfo>()
     val profileInfo: LiveData<UserInfo> get() = _profileInfo
 
-    fun getCountriesList(){
+    fun getCountriesList() {
         progress.postValue(true)
         accountCountriesUseCase.execute {
             onComplete {
@@ -81,7 +81,7 @@ class ProfileViewModel  constructor(
         }
     }
 
-    fun getUsersList(){
+    fun getUsersList() {
         progress.postValue(true)
         accountUsersListUseCase.execute {
             onComplete {
@@ -99,7 +99,7 @@ class ProfileViewModel  constructor(
         }
     }
 
-    fun getPackagesList(){
+    fun getPackagesList() {
         progress.postValue(true)
         accountPackagesListUseCase.execute {
             onComplete {
@@ -117,7 +117,7 @@ class ProfileViewModel  constructor(
         }
     }
 
-    fun getOfficesList(){
+    fun getOfficesList() {
         progress.postValue(true)
         accountOfficesListUseCase.execute {
             onComplete {
@@ -135,7 +135,7 @@ class ProfileViewModel  constructor(
         }
     }
 
-    fun getProfileInfo(){
+    fun getProfileInfo() {
         progress.postValue(true)
         profileInfoUseCase.execute {
             onComplete {
@@ -153,27 +153,27 @@ class ProfileViewModel  constructor(
         }
     }
 
-    fun createOrder(){
+    fun createOrder() {
         progress.postValue(true)
         accountCreateOrderUseCase.execute {
-            onComplete {  }
-            onNetworkError {  }
-            onError {  }
+            onComplete { }
+            onNetworkError { }
+            onError { }
         }
     }
 
-    fun setPackages(){
+    fun setPackages() {
         progress.postValue(true)
         accountSetPackagesUseCase.execute {
-            onComplete {  }
-            onNetworkError {  }
-            onError {  }
+            onComplete { }
+            onNetworkError { }
+            onError { }
         }
     }
 
 
     fun onAttachDocument(requestCode: Int = Constants.ACTION_IMAGE_CONTENT_INTENT_CODE) {
-        withActivity{
+        withActivity {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
             it.startActivityForResult(intent, requestCode)
@@ -196,8 +196,8 @@ class ProfileViewModel  constructor(
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK && data != null){
-            when(requestCode) {
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            when (requestCode) {
                 Constants.ACTION_IMAGE_CONTENT_INTENT_CODE -> {
                     Timber.d("Image path: ${data.data}")
                     if (_rearDocument.value != null) _backDocument.postValue(data.data)

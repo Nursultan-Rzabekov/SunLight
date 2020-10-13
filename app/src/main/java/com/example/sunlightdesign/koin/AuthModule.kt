@@ -1,7 +1,7 @@
 package com.example.sunlightdesign.koin
 
-import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.AuthRepository
+import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.dataSource.local.auth.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthRemoteDataSource
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices

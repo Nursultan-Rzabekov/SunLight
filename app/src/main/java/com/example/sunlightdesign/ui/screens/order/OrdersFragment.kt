@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.order
 
 import android.os.Bundle
@@ -28,7 +26,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class) {
     }
 
 
-    private fun configViewModel(){
+    private fun configViewModel() {
         viewModel.apply {
 
         }

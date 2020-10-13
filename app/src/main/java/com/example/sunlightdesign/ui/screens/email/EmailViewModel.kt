@@ -3,9 +3,7 @@ package com.example.sunlightdesign.ui.screens.email
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.AuthRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Announcements
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.emailUse.DeleteAnnouncementUseCase
@@ -15,7 +13,7 @@ import com.example.sunlightdesign.usecase.usercase.emailUse.get.ShowAnnouncement
 /**
  * ViewModel for the task list screen.
  */
-class EmailViewModel  constructor(
+class EmailViewModel constructor(
     private val getAnnouncementsUseCase: GetAnnouncementsUseCase,
     private val showAnnouncementsDetailsUseCase: ShowAnnouncementsDetailsUseCase,
     private val deleteAnnouncementUseCase: DeleteAnnouncementUseCase
@@ -26,7 +24,7 @@ class EmailViewModel  constructor(
     private val _announcementList = MutableLiveData<Announcements>()
     val announcementList: LiveData<Announcements> get() = _announcementList
 
-    fun getAnnouncementsList(){
+    fun getAnnouncementsList() {
         progress.postValue(true)
         getAnnouncementsUseCase.execute {
             onComplete {
@@ -42,17 +40,21 @@ class EmailViewModel  constructor(
         }
     }
 
-    fun showAnnouncementDetail(id: Int){
+    fun showAnnouncementDetail(id: Int) {
         progress.postValue(true)
         showAnnouncementsDetailsUseCase.setData(id)
         showAnnouncementsDetailsUseCase.execute {
             onComplete { announcementItem ->
                 progress.postValue(false)
                 withActivity {
-                    (it.findViewById(R.id.itemBodyTextView) as TextView).text = announcementItem?.announcement?.message_body
-                    (it.findViewById(R.id.itemTitleTextView) as TextView).text = announcementItem?.announcement?.message_title
-                    (it.findViewById(R.id.dateTextView) as TextView).text = announcementItem?.announcement?.created_at
-                    (it.findViewById(R.id.toNameTextView) as TextView).text = announcementItem?.announcement?.author?.first_name
+                    (it.findViewById(R.id.itemBodyTextView) as TextView).text =
+                        announcementItem?.announcement?.message_body
+                    (it.findViewById(R.id.itemTitleTextView) as TextView).text =
+                        announcementItem?.announcement?.message_title
+                    (it.findViewById(R.id.dateTextView) as TextView).text =
+                        announcementItem?.announcement?.created_at
+                    (it.findViewById(R.id.toNameTextView) as TextView).text =
+                        announcementItem?.announcement?.author?.first_name
                 }
             }
             onNetworkError {
@@ -64,7 +66,7 @@ class EmailViewModel  constructor(
         }
     }
 
-    fun deleteAnnouncement(id:Int){
+    fun deleteAnnouncement(id: Int) {
         progress.postValue(true)
         deleteAnnouncementUseCase.setData(id)
         deleteAnnouncementUseCase.execute {

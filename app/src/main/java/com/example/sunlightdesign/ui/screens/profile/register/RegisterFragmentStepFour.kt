@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.os.Bundle
@@ -17,11 +15,13 @@ import com.example.sunlightdesign.ui.screens.profile.register.adapters.OfficesRe
 import kotlinx.android.synthetic.main.fragment_register_partner_step_four.*
 
 
-class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewModel::class), OfficesRecyclerAdapter.OfficeSelector {
+class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
+    OfficesRecyclerAdapter.OfficeSelector {
 
     private val officesRecyclerAdapter by lazy {
-        return@lazy OfficesRecyclerAdapter(requireContext(),this)
+        return@lazy OfficesRecyclerAdapter(requireContext(), this)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +42,7 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
         viewModel.getOfficesList()
     }
 
-    private fun setObservers(){
+    private fun setObservers() {
         viewModel.apply {
             officeList.observe(viewLifecycleOwner, Observer {
                 it?.let {
@@ -52,7 +52,7 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
         }
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         btn_next_step_four.setOnClickListener {
             findNavController().navigate(R.id.action_stepFourFragment_to_stepFiveFragment)
         }

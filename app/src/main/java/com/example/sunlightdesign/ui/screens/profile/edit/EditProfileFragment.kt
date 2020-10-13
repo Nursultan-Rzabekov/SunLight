@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -16,19 +15,13 @@ import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.utils.MaskUtils
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
-import kotlinx.android.synthetic.main.fragment_edit_profile.city_drop_down_tv
-import kotlinx.android.synthetic.main.fragment_edit_profile.country_drop_down_tv
-import kotlinx.android.synthetic.main.fragment_edit_profile.document_back_side_iv
-import kotlinx.android.synthetic.main.fragment_edit_profile.document_rear_side_iv
-import kotlinx.android.synthetic.main.fragment_edit_profile.phone_et
-import kotlinx.android.synthetic.main.fragment_edit_profile.region_drop_down_tv
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
-class EditProfileFragment: StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
+class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
-    companion object{
+    companion object {
         const val USER_INFO = "user_info"
     }
 
@@ -50,7 +43,7 @@ class EditProfileFragment: StrongFragment<ProfileViewModel>(ProfileViewModel::cl
         setObservers()
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         backBtn.setOnClickListener { findNavController().navigateUp() }
 
         userEditAvatarCircleImageView.setOnClickListener {
@@ -70,9 +63,10 @@ class EditProfileFragment: StrongFragment<ProfileViewModel>(ProfileViewModel::cl
         }
     }
 
-    private fun setMasks(){
+    private fun setMasks() {
         MaskImpl(
-            MaskUtils.createSlotsFromMask(MaskUtils.PHONE_MASK, true), true).also {
+            MaskUtils.createSlotsFromMask(MaskUtils.PHONE_MASK, true), true
+        ).also {
             it.isHideHardcodedHead = true
             MaskFormatWatcher(it).apply {
                 installOn(phone_et)
@@ -80,7 +74,7 @@ class EditProfileFragment: StrongFragment<ProfileViewModel>(ProfileViewModel::cl
         }
     }
 
-    private fun setUserInfo(info: ShortenedUserInfo?){
+    private fun setUserInfo(info: ShortenedUserInfo?) {
         userFullNameTextView.text = info?.fullName
         userUuidTextView.text = info?.uuid
         userStatusTextView.text = info?.status

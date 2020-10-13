@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.os.Bundle
@@ -32,7 +30,7 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
     }
 
 
-    private fun setListeners(){
+    private fun setListeners() {
 
     }
 

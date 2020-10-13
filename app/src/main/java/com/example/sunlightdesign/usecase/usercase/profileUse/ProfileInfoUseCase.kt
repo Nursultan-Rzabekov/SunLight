@@ -5,8 +5,8 @@ import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.U
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 class ProfileInfoUseCase(
-   private val profileRepository: ProfileRepository
-): BaseCoroutinesUseCase<UserInfo?>() {
+    private val profileRepository: ProfileRepository
+) : BaseCoroutinesUseCase<UserInfo?>() {
 
     override suspend fun executeOnBackground(): UserInfo? = profileRepository.getUserInfo()
 }

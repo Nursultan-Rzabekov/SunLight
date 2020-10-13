@@ -13,11 +13,11 @@ import kotlinx.android.synthetic.main.announcement_item.view.*
 class AnnouncementsRecyclerAdapter(
     private val context: Context,
     private val announcements: AnnouncementSelector,
-    private val items : List<Data>
+    private val items: List<Data>
 ) : RecyclerView.Adapter<AnnouncementsRecyclerAdapter.AnnouncementViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnouncementViewHolder {
-        val view =  LayoutInflater.from(context).inflate(R.layout.announcement_item,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.announcement_item, parent, false)
         return AnnouncementViewHolder(view, announcements)
     }
 
@@ -30,8 +30,8 @@ class AnnouncementsRecyclerAdapter(
     class AnnouncementViewHolder constructor(
         itemView: View,
         private val announcementSelector: AnnouncementSelector
-    ): RecyclerView.ViewHolder(itemView){
-        fun bind(item: Data) = with(itemView){
+    ) : RecyclerView.ViewHolder(itemView) {
+        fun bind(item: Data) = with(itemView) {
 
             itemView.dataTextView.text = item.created_at
             itemView.messageTitleTextView.text = item.message_title
@@ -42,12 +42,13 @@ class AnnouncementsRecyclerAdapter(
                 itemView.itemViewConstraintLayout.background = ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.announcement_item_shape_read,
-                null)
+                    null
+                )
             }
         }
     }
 
-    interface AnnouncementSelector{
-        fun onAnnouncementSelected(id : Int)
+    interface AnnouncementSelector {
+        fun onAnnouncementSelected(id: Int)
     }
 }

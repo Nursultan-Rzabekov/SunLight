@@ -1,6 +1,5 @@
 package com.example.sunlightdesign.ui.launcher.auth
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.ui.screens.MainActivity
@@ -26,7 +25,7 @@ class AuthViewModel constructor(
             onComplete {
                 progress.value = false
                 Timber.e("onComplete: %s", it)
-                it?.errors?.let {errors ->
+                it?.errors?.let { errors ->
                     if (errors.isNotEmpty())
                         handleError(errorMessage = errors.first())
                 }
@@ -37,13 +36,15 @@ class AuthViewModel constructor(
             }
             onNetworkError {
                 println("Course Name 12")
-                it.message?.let {
-                        message -> progress.value = false
+                it.message?.let { message ->
+                    progress.value = false
                     handleError(errorMessage = message)
-                } }
+                }
+            }
             onError {
                 progress.value = false
-                handleError(throwable = it)}
+                handleError(throwable = it)
+            }
         }
     }
 

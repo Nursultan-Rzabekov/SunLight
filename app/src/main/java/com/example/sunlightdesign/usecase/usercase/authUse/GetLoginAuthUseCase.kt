@@ -6,8 +6,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Logi
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 
-
-class GetLoginAuthUseCase  constructor(
+class GetLoginAuthUseCase constructor(
     private val itemsRepository: AuthRepository
 ) : BaseCoroutinesUseCase<Login?>() {
 
@@ -21,4 +20,4 @@ class GetLoginAuthUseCase  constructor(
         this.model?.let { itemsRepository.getTasks(it) }
 }
 
-data class SetLogin(val phone: String,val password: String)
+data class SetLogin(val phone: String, val password: String)

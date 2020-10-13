@@ -5,9 +5,8 @@ import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Or
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 
-
 class GetOrdersUseCase constructor(
-    private val ordersRepository : OrdersRepository
+    private val ordersRepository: OrdersRepository
 ) : BaseCoroutinesUseCase<Orders?>() {
 
     override suspend fun executeOnBackground(): Orders? = ordersRepository.getMyOrders()

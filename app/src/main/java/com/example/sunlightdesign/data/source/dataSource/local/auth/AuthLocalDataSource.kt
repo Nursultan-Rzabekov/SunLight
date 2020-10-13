@@ -1,9 +1,6 @@
-
 package com.example.sunlightdesign.data.source.dataSource.local.auth
 
 import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
-import com.example.sunlightdesign.data.source.dataSource.local.auth.AuthDao
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import kotlinx.coroutines.CoroutineDispatcher

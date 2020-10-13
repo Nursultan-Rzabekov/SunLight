@@ -6,15 +6,18 @@ import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Ann
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Announcements
 
 
-class DefaultMessengerRepository  constructor(
+class DefaultMessengerRepository constructor(
     private val announcementsServices: AnnouncementsServices
 ) : MessengerRepository {
 
-    override suspend fun getAnnouncements(): Announcements = announcementsServices.getAnnouncements().await()
+    override suspend fun getAnnouncements(): Announcements =
+        announcementsServices.getAnnouncements().await()
 
-    override suspend fun showAnnouncementsDetail(id: Int): AnnouncementItem = announcementsServices.showAnnouncementsDetail(id).await()
+    override suspend fun showAnnouncementsDetail(id: Int): AnnouncementItem =
+        announcementsServices.showAnnouncementsDetail(id).await()
 
-    override suspend fun deleteAnnouncement(id: Int): Announcements = announcementsServices.deleteAnnouncement(id).await()
+    override suspend fun deleteAnnouncement(id: Int): Announcements =
+        announcementsServices.deleteAnnouncement(id).await()
 
 
 }

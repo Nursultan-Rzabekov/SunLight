@@ -7,8 +7,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Logi
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 
 
-
-class AccountSetPackagesUseCase  constructor(
+class AccountSetPackagesUseCase constructor(
     private val itemsRepository: AccountRepository
 ) : BaseCoroutinesUseCase<Login?>() {
 

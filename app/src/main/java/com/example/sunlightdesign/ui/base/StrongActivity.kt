@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.sunlightdesign.R
-import timber.log.Timber
 
-abstract class StrongActivity: AppCompatActivity() {
+abstract class StrongActivity : AppCompatActivity() {
 
     open val isLightStatusBar = true
     open val fragmentContainerId get() = R.id.fragment_container
@@ -30,7 +29,11 @@ abstract class StrongActivity: AppCompatActivity() {
         fragment.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         val fragment = supportFragmentManager.currentNavigationFragment ?: return
         fragment.onRequestPermissionsResult(requestCode, permissions, grantResults)

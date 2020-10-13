@@ -27,7 +27,7 @@ class AboutCompanyFragment : BaseCompanyFragment() {
     }
 
 
-    private fun setListeners(){
+    private fun setListeners() {
 
     }
 

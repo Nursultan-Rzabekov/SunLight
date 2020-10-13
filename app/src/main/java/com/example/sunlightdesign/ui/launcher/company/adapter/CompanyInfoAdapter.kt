@@ -9,7 +9,7 @@ class CompanyInfoAdapter(
     fm: FragmentManager,
     lifecycle: Lifecycle,
     private val fragments: List<Fragment>
-): FragmentStateAdapter(fm, lifecycle) {
+) : FragmentStateAdapter(fm, lifecycle) {
 
     override fun getItemCount(): Int = fragments.size
 

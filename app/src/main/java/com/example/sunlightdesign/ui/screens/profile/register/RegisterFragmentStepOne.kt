@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.City
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Country
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Region
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Users
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
@@ -50,13 +53,13 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 //        viewModel.getUsersList()
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         btn_next_step_one.setOnClickListener {
             findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
         }
 
         sponsor_name_group.setOnCheckedChangeListener { _, checkedId ->
-            when(checkedId) {
+            when (checkedId) {
                 sponsor_itself_rbtn.id -> {
                     sponsor_name_tv.isEnabled = false
                     sponsor_name_drop_down.isEndIconCheckable = false
@@ -81,10 +84,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
     }
 
-    private fun setObservers(){
+    private fun setObservers() {
         viewModel.apply {
             progress.observe(viewLifecycleOwner, Observer {
-                progress_bar.visibility = if(it) View.VISIBLE else View.GONE
+                progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
 
             countriesList.observe(viewLifecycleOwner, Observer {
@@ -102,17 +105,17 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             })
 
             backDocument.observe(viewLifecycleOwner, Observer {
-                it?.let{ setBackDocument(it) }
+                it?.let { setBackDocument(it) }
             })
         }
 
     }
 
-    private fun setCountriesList(list: ArrayList<Country>){
+    private fun setCountriesList(list: ArrayList<Country>) {
         countriesAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
-            valueChecker = object: CustomPopupAdapter.ValueChecker<Country, String> {
+            valueChecker = object : CustomPopupAdapter.ValueChecker<Country, String> {
                 override fun filter(value: Country, subvalue: String?): Boolean {
                     val v = value.country_name.toString()
                     if (subvalue == null || subvalue.isBlank())
@@ -136,11 +139,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
     }
 
-    private fun setCitiesList(list: ArrayList<City>){
+    private fun setCitiesList(list: ArrayList<City>) {
         citiesAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
-            valueChecker = object: CustomPopupAdapter.ValueChecker<City, String> {
+            valueChecker = object : CustomPopupAdapter.ValueChecker<City, String> {
                 override fun filter(value: City, subvalue: String?): Boolean {
                     val v = value.city_name.toString()
                     if (subvalue == null || subvalue.isBlank())
@@ -169,11 +172,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
     }
 
-    private fun setRegionsList(list: ArrayList<Region>){
+    private fun setRegionsList(list: ArrayList<Region>) {
         regionsAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
-            valueChecker = object: CustomPopupAdapter.ValueChecker<Region, String> {
+            valueChecker = object : CustomPopupAdapter.ValueChecker<Region, String> {
                 override fun filter(value: Region, subvalue: String?): Boolean {
                     Timber.d("countryID: $countryId")
                     val v = value.region_name.toString()
@@ -208,7 +211,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         val usersAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
-            valueChecker = object: CustomPopupAdapter.ValueChecker<Users, String>{
+            valueChecker = object : CustomPopupAdapter.ValueChecker<Users, String> {
                 override fun filter(value: Users, subvalue: String?): Boolean {
                     if (subvalue == null || subvalue.isBlank())
                         return true
@@ -230,7 +233,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun setupMask() {
         MaskImpl(
-            MaskUtils.createSlotsFromMask(IIN_MASK, true), true).also {
+            MaskUtils.createSlotsFromMask(IIN_MASK, true), true
+        ).also {
             it.isHideHardcodedHead = false
             MaskFormatWatcher(it).apply {
                 installOn(iin_et)
@@ -241,7 +245,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
 
         MaskImpl(
-            MaskUtils.createSlotsFromMask(MaskUtils.PHONE_MASK, true), true).also {
+            MaskUtils.createSlotsFromMask(MaskUtils.PHONE_MASK, true), true
+        ).also {
             it.isHideHardcodedHead = true
             MaskFormatWatcher(it).apply {
                 installOn(phone_et)
@@ -279,10 +284,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun updateSignUpBtn() {
-        btn_next_step_one.isEnabled = if (isPhoneValid(phone_et) && isIinValid(iin_et.text.toString())) {
-            activity?.closeKeyboard()
-            true
-        } else false
+        btn_next_step_one.isEnabled =
+            if (isPhoneValid(phone_et) && isIinValid(iin_et.text.toString())) {
+                activity?.closeKeyboard()
+                true
+            } else false
     }
 
 }

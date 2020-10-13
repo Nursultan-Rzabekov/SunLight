@@ -7,12 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
-import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.utils.BottomNavController
 import com.example.sunlightdesign.utils.setUpNavigation
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 
 class MainActivity : StrongActivity(),
@@ -20,7 +17,7 @@ class MainActivity : StrongActivity(),
     BottomNavController.OnNavigationGraphChanged,
     BottomNavController.OnNavigationReselectedListener {
 
-    companion object{
+    companion object {
         fun intent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
@@ -37,10 +34,11 @@ class MainActivity : StrongActivity(),
             R.id.fragment_container,
             R.id.nav_home,
             this,
-            this)
+            this
+        )
     }
 
-//    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    //    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,7 +54,7 @@ class MainActivity : StrongActivity(),
 
     }
 
-    override fun getNavGraphId(itemId: Int) = when(itemId){
+    override fun getNavGraphId(itemId: Int) = when (itemId) {
         R.id.nav_home -> {
             R.navigation.navigate_home
         }

@@ -5,7 +5,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Pr
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
-interface OrdersServices{
+interface OrdersServices {
 
     @GET("orders")
     fun getMyOrders(): Deferred<Orders>

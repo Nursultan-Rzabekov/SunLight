@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.home
 
 import android.content.Context
@@ -12,9 +10,7 @@ import com.example.sunlightdesign.R
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 
 
-
 class HomeFragment : Fragment() {
-
 
 
     override fun onAttach(context: Context) {
@@ -35,7 +31,6 @@ class HomeFragment : Fragment() {
 
         btn_enter_cv.visibility = View.GONE
         btn_structure_cv.visibility = View.VISIBLE
-
 
 
     }

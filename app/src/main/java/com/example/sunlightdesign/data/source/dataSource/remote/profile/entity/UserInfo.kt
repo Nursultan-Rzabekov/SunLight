@@ -235,4 +235,4 @@ data class ShortenedUserInfo(
     val phone: String?,
     val document_back_path: String?,
     val document_front_path: String?
-): Parcelable
+) : Parcelable

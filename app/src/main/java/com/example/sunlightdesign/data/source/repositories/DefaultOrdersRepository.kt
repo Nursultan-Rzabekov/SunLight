@@ -5,8 +5,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.orders.OrdersSer
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 
 
-
-class DefaultOrdersRepository  constructor(
+class DefaultOrdersRepository constructor(
     private val ordersServices: OrdersServices
 ) : OrdersRepository {
 

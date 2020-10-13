@@ -3,7 +3,6 @@ package com.example.sunlightdesign.data.source.dataSource.remote.account
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
-import com.google.gson.JsonObject
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -31,7 +30,7 @@ interface AccountServices {
     @POST("cabinet/set-package")
     fun addPartnerStepTwo(
         @Field("package_id") package_id: Int,
-        @Field("user_id") user_id:Int
+        @Field("user_id") user_id: Int
     ): Deferred<User>
 
     @GET("cabinet/add-partner/packages-list")

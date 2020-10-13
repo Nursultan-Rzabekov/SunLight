@@ -15,11 +15,11 @@ import retrofit2.Retrofit
 
 val ordersModule = module {
 
-    single(named("ordersServices")){
+    single(named("ordersServices")) {
         get<Retrofit>().create(OrdersServices::class.java)
     }
 
-    single<OrdersRepository>{
+    single<OrdersRepository> {
         DefaultOrdersRepository(
             ordersServices = get(named("ordersServices"))
         )

@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.screens.profile
 
 import android.os.Bundle
@@ -94,13 +92,16 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             .into(userAvatarCircleImageView)
         userCreatedAtTextView.text = info.user?.created_at
         userActivityStatusTextView.text = if (info.user?.is_active == ACTIVITY_ACTIVE)
-                                                getString(R.string.active)
-                                            else getString(R.string.active)
+            getString(R.string.active)
+        else getString(R.string.active)
 
         bonusWalletTextView.text = getString(R.string.amount_bv, info.user?.wallet?.main_wallet)
-        activityWalletTextView.text = getString(R.string.amount_bv, info.user?.wallet?.purchase_wallet)
-        leftBranchTotalTextView.text = getString(R.string.amount_bv, info.user?.wallet?.left_branch_total)
-        rightBranchTotalTextView.text = getString(R.string.amount_bv, info.user?.wallet?.right_branch_total)
+        activityWalletTextView.text =
+            getString(R.string.amount_bv, info.user?.wallet?.purchase_wallet)
+        leftBranchTotalTextView.text =
+            getString(R.string.amount_bv, info.user?.wallet?.left_branch_total)
+        rightBranchTotalTextView.text =
+            getString(R.string.amount_bv, info.user?.wallet?.right_branch_total)
 
         invitedAdapter.setItems(info.children ?: listOf())
     }

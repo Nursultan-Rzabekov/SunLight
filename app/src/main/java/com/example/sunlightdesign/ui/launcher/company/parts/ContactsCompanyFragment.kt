@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.launcher.company.BaseCompanyFragment
 
-class ContactsCompanyFragment: BaseCompanyFragment() {
+class ContactsCompanyFragment : BaseCompanyFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

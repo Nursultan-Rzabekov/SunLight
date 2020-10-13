@@ -4,33 +4,18 @@ import android.text.format.DateUtils
 import androidx.room.Room
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.example.sunlightdesign.BaseApplication
 import com.example.sunlightdesign.BuildConfig
-import com.example.sunlightdesign.data.source.AccountRepository
-import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
-import com.example.sunlightdesign.data.source.AuthRepository
-import com.example.sunlightdesign.data.source.dataSource.local.auth.AuthLocalDataSource
 import com.example.sunlightdesign.data.source.dataSource.local.ToDoDatabase
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthRemoteDataSource
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices
-import com.example.sunlightdesign.data.source.repositories.DefaultAccountRepository
-import com.example.sunlightdesign.data.source.repositories.DefaultAuthRepository
-import com.example.sunlightdesign.ui.launcher.LauncherViewModel
-import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
-import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.utils.HeaderInterceptor
 import com.example.sunlightdesign.utils.SecureSharedPreferences
 import com.example.sunlightdesign.utils.TokenAuthenticator
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
-import kotlinx.coroutines.Dispatchers
-import okhttp3.*
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -76,11 +61,11 @@ val module = module {
 
     single {
         Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .client(get())
-        .build()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(get())
+            .build()
     }
 
 

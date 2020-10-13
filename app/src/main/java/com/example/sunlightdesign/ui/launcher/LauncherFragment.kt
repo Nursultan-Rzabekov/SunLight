@@ -1,5 +1,3 @@
-
-
 package com.example.sunlightdesign.ui.launcher
 
 import android.content.Context
@@ -63,13 +61,13 @@ class LauncherFragment : Fragment() {
     }
 
 
-    private fun setListeners(){
+    private fun setListeners() {
         btn_enter_cv.setOnClickListener {
-            startActivity(Intent(context,AuthActivity::class.java))
+            startActivity(Intent(context, AuthActivity::class.java))
         }
 
         btn_company_cv.setOnClickListener {
-            startActivity(Intent(context,CompanyActivity::class.java))
+            startActivity(Intent(context, CompanyActivity::class.java))
         }
 
         btn_structure_cv.setOnClickListener {

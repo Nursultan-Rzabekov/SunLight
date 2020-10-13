@@ -1,14 +1,11 @@
 package com.example.sunlightdesign.ui.base
 
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.showMessage
 import io.reactivex.Single
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
 
 class VmAction(
@@ -22,7 +19,7 @@ class VmAction(
     }
 }
 
-open class StrongViewModel : ViewModel(){
+open class StrongViewModel : ViewModel() {
     val activityActionBehavior = SingleLiveEvent<VmAction>()
 
     fun VmAction.invokeAction() {
@@ -53,11 +50,16 @@ open class StrongViewModel : ViewModel(){
     open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     }
 
-    open fun onPermissionActivityResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {}
+    open fun onPermissionActivityResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+    }
 
     fun Single<VmAction>.invoiceAction() = doOnSuccess { it.invokeAction() }
 
-    fun withActivity(block: (StrongActivity) -> Unit){
+    fun withActivity(block: (StrongActivity) -> Unit) {
         VmAction(block).invokeAction()
     }
 }

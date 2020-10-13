@@ -1,9 +1,11 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.auth
 
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
-import com.google.gson.JsonObject
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
 import kotlinx.coroutines.Deferred
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 
 interface AuthServices {
