@@ -144,6 +144,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/partnerFullNameEditText"
                     style="@style/BasicEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

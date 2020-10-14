@@ -10,5 +10,9 @@ class Constants {
 
         const val ACTIVITY_ACTIVE = 1.0
         const val ACTIVITY_INACTIVE = 0
+
+        const val PYRAMID_TOP = "top"
+        const val PYRAMID_LEFT = "left"
+        const val PYRAMID_RIGHT = "right"
     }
 }

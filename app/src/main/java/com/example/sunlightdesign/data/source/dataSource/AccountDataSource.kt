@@ -13,15 +13,15 @@ interface AccountDataSource {
 }
 
 data class AddPartner(
-    val first_name: String,
-    val last_name: String,
-    val phone: String,
-    val email: String,
-    val country_id: Int,
-    val city_id: Int,
-    val iin: String,
-    val register_by: Int,
-    val position: String
+    val first_name: String?,
+    val last_name: String?,
+    val phone: String?,
+    val email: String?,
+    val country_id: Int?,
+    val city_id: Int?,
+    val iin: String?,
+    val register_by: Int?,
+    val position: String?
 )
 
 data class CreateOrderPartner(

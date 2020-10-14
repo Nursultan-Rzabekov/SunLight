@@ -36,7 +36,7 @@ class CustomPopupAdapter<T>(
 
     override fun getFilter(): Filter = mFilter
 
-    fun callFiltering(str: String) = mFilter.filter(str)
+    fun callFiltering(str: String?) = mFilter.filter(str)
 
     private fun getItemValue(any: T?): String? {
         return valueChecker.toString(any)
@@ -67,7 +67,7 @@ class CustomPopupAdapter<T>(
         }
 
         override fun publishResults(
-            constraint: CharSequence,
+            constraint: CharSequence?,
             results: FilterResults
         ) {
             items = results.values as ArrayList<T>

@@ -148,7 +148,7 @@
 
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
-    <string name="amount_bv">%1$d BV</string>
+    <string name="amount_bv">%1$f BV</string>
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
     <string name="income_amount_bv">+%1$d BV</string>

@@ -9,7 +9,7 @@ import retrofit2.http.*
 
 interface AccountServices {
 
-    @GET("/cabinet/add-partner/users-list")
+    @GET("cabinet/add-partner/users-list")
     fun getUsersList(
     ): Deferred<UsersList>
 

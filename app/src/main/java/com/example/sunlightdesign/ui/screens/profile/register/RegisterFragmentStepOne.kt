@@ -33,10 +33,12 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     private lateinit var countriesAdapter: CustomPopupAdapter<Country>
     private lateinit var regionsAdapter: CustomPopupAdapter<Region>
     private lateinit var citiesAdapter: CustomPopupAdapter<City>
+    private lateinit var usersAdapter: CustomPopupAdapter<Users>
 
     private var countryId: Int = -1
     private var regionId: Int = -1
     private var cityId: Int = -1
+    private var sponsorId: Int? = -1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,36 +56,48 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         setObservers()
 
         viewModel.getCountriesList()
-//        viewModel.getUsersList()
+        viewModel.getUsersList()
     }
 
     private fun setListeners() {
         btn_next_step_one.setOnClickListener {
-//            viewModel.createOrder(AddPartner(
-//                first_name = "",
-//                last_name = "",
-//                phone = MaskUtils.unMaskValue(
-//                    MaskUtils.PHONE_MASK,
-//                    phone_et.text.toString()
-//                ),
-//                email = "",
-//                country_id = 1,
-//                city_id = 1,
-//                iin = "",
-//                register_by = 1,
-//                position = ""
-//            ))
+            if (checkFields()) {
+                val fullName = partnerFullNameEditText.text.toString().trim().split(" ")
+                val position = when{
+                    sponsor_itself_rbtn.isChecked -> Constants.PYRAMID_TOP
+                    left_side_rbtn.isChecked -> Constants.PYRAMID_LEFT
+                    else -> Constants.PYRAMID_RIGHT
+                }
+                viewModel.createOrder(
+                    AddPartner(
+                        first_name = fullName[0],
+                        last_name = fullName[1],
+                        phone = MaskUtils.unMaskValue(
+                            MaskUtils.PHONE_MASK,
+                            phone_et.text.toString()
+                        ),
+                        email = "",
+                        country_id = countryId,
+                        city_id = cityId,
+                        iin = iin_et.text.toString(),
+                        register_by = sponsorId,
+                        position = position
+                    )
+                )
 
-            findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
+                findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
+            }
         }
 
         sponsor_name_group.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 sponsor_itself_rbtn.id -> {
+                    sponsorId = -1
                     sponsor_name_tv.isEnabled = false
                     sponsor_name_drop_down.isEndIconCheckable = false
                 }
                 sponsor_other_rbtn.id -> {
+                    sponsorId = null
                     sponsor_name_tv.isEnabled = true
                     sponsor_name_drop_down.isEndIconCheckable = true
                 }
@@ -227,7 +241,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun setUsersList(list: ArrayList<Users>) {
-        val usersAdapter = CustomPopupAdapter(
+        usersAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
             valueChecker = object : CustomPopupAdapter.ValueChecker<Users, String> {
@@ -248,6 +262,12 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         )
         sponsor_name_tv.threshold = 1
         sponsor_name_tv.setAdapter(usersAdapter)
+        sponsor_name_tv.setOnItemClickListener { parent, view, position, id ->
+            val adapter = sponsor_name_tv.adapter
+            sponsorId = (adapter.getItem(position) as Users).id
+            usersAdapter.callFiltering("")
+            Timber.d("sponsor: $sponsorId")
+        }
     }
 
     private fun setupMask() {
@@ -308,6 +328,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 activity?.closeKeyboard()
                 true
             } else false
+    }
+
+    private fun checkFields(): Boolean {
+        return partnerFullNameEditText.text.toString().isNotBlank() && sponsorId != null &&
+                partnerFullNameEditText.text.toString().trim().split(" ").size > 1
     }
 
 }
