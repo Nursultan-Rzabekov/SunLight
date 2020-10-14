@@ -83,6 +83,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/paymentByTillRbtn"
                 style="@style/BasicRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,12 +91,14 @@
                 android:text="@string/kassý" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/paymentByPayboxRbtn"
                 style="@style/BasicRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/paybox" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/paymentByBvRbtn"
                 style="@style/BasicRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,8 +106,8 @@
 
         </RadioGroup>
 
-
         <include
+            android:id="@+id/payByPayboxLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/bv_payment_card_layout"
