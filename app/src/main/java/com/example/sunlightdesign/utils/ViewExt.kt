@@ -5,13 +5,16 @@ package com.example.sunlightdesign.utils
  */
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.View
+import android.view.Window
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
@@ -155,6 +158,21 @@ fun <T : Activity> Activity.startNewActivity(activityClass: KClass<T>, block: In
     val intent = Intent(this, activityClass.java)
     intent.block()
     this.startActivity(intent)
+}
+
+
+fun showDialog(context: Context,
+               btnPositiveLayout: Int,
+               setCancelable: Boolean = false, layout:Int) {
+    val dialog = Dialog(context)
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+    dialog.setContentView(layout)
+    dialog.setCancelable(setCancelable)
+
+    val btnPositive = dialog.findViewById<Button>(btnPositiveLayout)
+    btnPositive.setOnClickListener { dialog.dismiss()}
+
+    dialog.show()
 }
 
 

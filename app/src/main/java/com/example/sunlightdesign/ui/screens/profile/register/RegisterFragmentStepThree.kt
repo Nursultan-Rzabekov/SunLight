@@ -45,7 +45,7 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
 
     private fun setListeners() {
         next_step_three_btn.setOnClickListener {
-            val selectedProducts = productsAdapter.getCheckedProducts()
+            viewModel.createOrderPartnerBuilder.products = productsAdapter.getCheckedProducts()
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
     }

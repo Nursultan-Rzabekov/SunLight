@@ -3,11 +3,13 @@ package com.example.sunlightdesign.ui.screens.profile
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
+import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
@@ -21,6 +23,7 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPac
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
 import com.example.sunlightdesign.usecase.usercase.profileUse.ProfileInfoUseCase
 import com.example.sunlightdesign.utils.Constants
+import com.example.sunlightdesign.utils.showDialog
 import timber.log.Timber
 
 
@@ -39,6 +42,8 @@ class ProfileViewModel constructor(
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
+
+    var createOrderPartnerBuilder: CreateOrderPartner.Builder = CreateOrderPartner.Builder()
 
     private var _countriesList = MutableLiveData<CountriesList>()
     val countriesList: LiveData<CountriesList> get() = _countriesList
@@ -198,6 +203,32 @@ class ProfileViewModel constructor(
         }
     }
 
+    fun createOrder(createOrder: CreateOrderPartner) {
+        progress.postValue(true)
+        accountCreateOrderUseCase.setData(createOrder)
+        accountCreateOrderUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _navigationEvent.postValue(
+                    NavigationEvent.NavigateNext(data = it)
+                )
+                withActivity {activity ->
+                    showDialog(activity, R.id.notify_ok_btn, layout = R.layout.dialog_notify)
+                }
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+                withActivity {activity ->
+                    showDialog(activity, R.id.notify_ok_btn, layout = R.layout.dialog_notify)
+                }
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
 
     fun onAttachDocument(requestCode: Int = Constants.ACTION_IMAGE_CONTENT_INTENT_CODE) {
         withActivity {

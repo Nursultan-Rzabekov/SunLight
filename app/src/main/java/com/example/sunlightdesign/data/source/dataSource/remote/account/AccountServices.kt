@@ -41,7 +41,7 @@ interface AccountServices {
     fun getOfficesList(
     ): Deferred<OfficesList>
 
-    @POST("cabinet/add-partner")
+    @POST("cabinet/create-order")
     fun createOrder(
         @Body createOrderPartner: CreateOrderPartner
     ): Deferred<AddPartnerResponse>

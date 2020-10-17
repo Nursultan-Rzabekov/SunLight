@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office
@@ -33,14 +34,23 @@ class OfficesRecyclerAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: OfficeViewHolder, position: Int) {
-        holder.bind(item = items[position])
+        holder.bind(item = items[position], onChecked = ::onChecked)
+    }
+
+    private fun onChecked(position: Int) {
+        items.forEach { it.isChecked = false }
+        items[position].isChecked = true
+        notifyDataSetChanged()
     }
 
     class OfficeViewHolder constructor(
         itemView: View,
         private val officeSelector: OfficeSelector
     ): RecyclerView.ViewHolder(itemView){
-        fun bind(item: Office) = with(itemView){
+        fun bind(item: Office, onChecked: (position: Int) -> Unit) = with(itemView){
+            itemView.office_card_layout.background = if (item.isChecked)
+                ContextCompat.getDrawable(itemView.context, R.drawable.card_border_primary_color)
+            else ContextCompat.getDrawable(itemView.context, R.drawable.card_border_gray_ec)
 
             itemView.office_name_tv.text = item.office_name
             itemView.office_phonenumber_tv.text = item.phone.toString()
@@ -49,6 +59,7 @@ class OfficesRecyclerAdapter(
 
             itemView.setOnClickListener {
                 officeSelector.onOfficeSelected(adapterPosition)
+                onChecked(adapterPosition)
             }
         }
     }

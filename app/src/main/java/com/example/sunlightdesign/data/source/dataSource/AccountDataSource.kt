@@ -28,6 +28,17 @@ data class AddPartner(
 data class CreateOrderPartner(
     val user_id: Int,
     val office_id: Int,
-    val order_payment_type: String,
-    val products: Product
-)
+    val order_payment_type: Int,
+    val products: List<Product>
+) {
+    class Builder {
+        var user_id: Int = -1
+        var office_id: Int = -1
+        var order_payment_type: Int = -1
+        var products: List<Product> = listOf()
+
+        fun build(): CreateOrderPartner = CreateOrderPartner(
+            user_id, office_id, order_payment_type, products
+        )
+    }
+}
