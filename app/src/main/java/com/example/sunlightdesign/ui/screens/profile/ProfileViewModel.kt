@@ -205,6 +205,7 @@ class ProfileViewModel constructor(
     }
 
     fun onPackageSelected(index: Int) {
+        Timber.d(_packageList.value?.packages?.size.toString())
         _productsList.postValue(
             _packageList.value?.packages?.get(index)?.products
         )

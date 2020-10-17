@@ -49,10 +49,9 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
     private fun setObservers() {
         viewModel.apply {
             packageList.observe(viewLifecycleOwner, Observer {
-                it?.let { packagesList ->
-                    packageRecyclerAdapter.setItems(packagesList.packages as ArrayList<Package>)
+                it?.packages?.let { packages ->
+                    packageRecyclerAdapter.setItems(ArrayList(packages))
                 }
-
             })
         }
     }

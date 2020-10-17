@@ -9,10 +9,10 @@
         android:id="@+id/package_item_name_radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:checked="true"
         tools:text="Small Pack" />
 
     <com.google.android.material.card.MaterialCardView
@@ -20,6 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/dimen_5dp"
+        app:strokeColor="@color/transparent"
+        app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/package_item_name_radio">
