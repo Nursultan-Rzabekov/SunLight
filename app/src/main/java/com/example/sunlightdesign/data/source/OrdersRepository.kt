@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.data.source
 
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 
 /**
@@ -8,6 +9,6 @@ import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Or
 interface OrdersRepository {
     suspend fun getMyOrders(): Orders
     suspend fun getOrderById(id: Int)
-    suspend fun getProductList()
+    suspend fun getProductList(): OrderProducts
     suspend fun getProductByID(id: Int)
 }

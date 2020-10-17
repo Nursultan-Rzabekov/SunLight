@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.orders
 
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
 import kotlinx.coroutines.Deferred
@@ -13,8 +14,8 @@ interface OrdersServices {
     @GET("orders/{id}/show")
     fun getOrderById(@Path("id") id: Int)
 
-    @GET("orders/product-list")
-    fun getProductList()
+    @GET("orders/products-list")
+    fun getProductList(): Deferred<OrderProducts>
 
     @GET("orders/product-list/show/{id}")
     fun getProductByID(@Path("id") id: Int)

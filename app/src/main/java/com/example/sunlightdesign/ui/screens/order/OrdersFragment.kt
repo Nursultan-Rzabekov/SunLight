@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
@@ -45,8 +46,11 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         configViewModel()
         viewModel.getMyOrders()
 
-    }
+        goToMarketLayout.setOnClickListener {
+            findNavController().navigate(R.id.orderFragmentTo_marketFragment)
+        }
 
+    }
 
     private fun configViewModel() {
         viewModel.apply {
@@ -72,6 +76,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onReplyOrderSelected(order: Order) {
+        myOrdersBottomSheetDialog.dismiss()
         repeatsOrdersBottomSheetDialog = RepeatsOrdersBottomSheetDialog(order = order,repeatsOrderInteraction = this)
         repeatsOrdersBottomSheetDialog.show(
             parentFragmentManager,
@@ -80,6 +85,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onRepeatsOrderSelected(order: Order) {
+        repeatsOrdersBottomSheetDialog.dismiss()
 
     }
 

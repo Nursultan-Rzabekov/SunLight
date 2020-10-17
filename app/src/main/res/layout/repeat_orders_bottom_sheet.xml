@@ -70,12 +70,11 @@
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
         android:id="@+id/btn_all_right"
-        style="@style/BasicMaterialButton"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_24dp"
         android:paddingTop="@dimen/dimen_16dp"
-        android:enabled="true"
         android:paddingBottom="@dimen/dimen_16dp"
         android:text="@string/all_right"
         android:textSize="@dimen/dimen_16sp" />

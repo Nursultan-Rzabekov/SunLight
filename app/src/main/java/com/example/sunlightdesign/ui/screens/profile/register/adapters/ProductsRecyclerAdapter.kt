@@ -45,11 +45,13 @@ class ProductsRecyclerAdapter(
                 .into(itemView.product_iv)
 
             itemView.product_card.setOnClickListener {
-                itemView.product_card.setStrokeColor(
-                    if (itemView.product_checkbox.isChecked)
-                        ContextCompat.getColorStateList(itemView.context, R.color.transparent)
-                    else  ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
-                )
+                val itemViewColor = when(itemView.product_checkbox.isChecked){
+                    true -> ContextCompat.getColorStateList(itemView.context, R.color.transparent)
+                    false -> ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
+                }
+
+                itemView.product_card.setStrokeColor(itemViewColor)
+
                 product.isChecked = !itemView.product_checkbox.isChecked
                 itemView.product_checkbox.isChecked = !itemView.product_checkbox.isChecked
             }

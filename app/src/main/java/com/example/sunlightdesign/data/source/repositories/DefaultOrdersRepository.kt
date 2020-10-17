@@ -13,7 +13,7 @@ class DefaultOrdersRepository constructor(
 
     override suspend fun getOrderById(id: Int) = ordersServices.getOrderById(id)
 
-    override suspend fun getProductList() = ordersServices.getProductList()
+    override suspend fun getProductList() = ordersServices.getProductList().await()
 
     override suspend fun getProductByID(id: Int) = ordersServices.getProductByID(id)
 

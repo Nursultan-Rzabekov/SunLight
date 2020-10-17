@@ -10,6 +10,18 @@
         android:label="@string/home"
         tools:layout="@layout/wallet">
 
+        <action
+            android:id="@+id/orderFragmentTo_marketFragment"
+            app:destination="@id/marketFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="com.example.sunlightdesign.ui.screens.order.market.MarketFragment"
+        android:label="market"
+        tools:layout="@layout/market_products_list" />
 
 </navigation>

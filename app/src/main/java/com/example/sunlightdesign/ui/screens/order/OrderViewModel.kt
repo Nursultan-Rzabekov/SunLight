@@ -2,6 +2,7 @@ package com.example.sunlightdesign.ui.screens.order
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrderByIdUseCase
@@ -21,20 +22,27 @@ class OrderViewModel constructor(
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
+
     private var _orders = MutableLiveData<Orders>()
     val orders: LiveData<Orders> get() = _orders
+
+    private var _products = MutableLiveData<OrderProducts>()
+    val products: LiveData<OrderProducts> get() = _products
 
     fun getMyOrders() {
         progress.postValue(true)
         getOrdersUseCase.execute {
             onComplete {
+                progress.postValue(false)
                 _orders.postValue(it)
             }
             onNetworkError {
-
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
             }
             onError {
-
+                progress.postValue(false)
+                handleError(throwable = it)
             }
         }
     }
@@ -44,12 +52,15 @@ class OrderViewModel constructor(
         getProductListUseCase.execute {
             onComplete {
                 progress.postValue(false)
+                _products.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)
+                handleError(errorMessage = it.message)
             }
             onError {
                 progress.postValue(false)
+                handleError(throwable = it)
             }
         }
     }
@@ -62,9 +73,11 @@ class OrderViewModel constructor(
             }
             onNetworkError {
                 progress.postValue(false)
+                handleError(errorMessage = it.message)
             }
             onError {
                 progress.postValue(false)
+                handleError(throwable = it)
             }
         }
     }
@@ -77,9 +90,11 @@ class OrderViewModel constructor(
             }
             onNetworkError {
                 progress.postValue(false)
+                handleError(errorMessage = it.message)
             }
             onError {
                 progress.postValue(false)
+                handleError(throwable = it)
             }
         }
     }

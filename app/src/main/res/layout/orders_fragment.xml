@@ -9,7 +9,9 @@
 
 
     <include layout="@layout/toolbar_with_back"/>
-    <include layout="@layout/go_to_market" />
+    <include
+        android:id="@+id/goToMarketLayout"
+        layout="@layout/go_to_market" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerView"
