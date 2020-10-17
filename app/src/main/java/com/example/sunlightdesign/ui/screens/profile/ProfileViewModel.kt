@@ -3,10 +3,8 @@ package com.example.sunlightdesign.ui.screens.profile
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
@@ -21,7 +19,9 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPar
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
-import com.example.sunlightdesign.usecase.usercase.profileUse.ProfileInfoUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangePasswordUseCase
 import com.example.sunlightdesign.utils.Constants
 import com.example.sunlightdesign.utils.showDialog
 import timber.log.Timber
@@ -38,7 +38,8 @@ class ProfileViewModel constructor(
     private val accountSetPackagesUseCase: AccountSetPackagesUseCase,
     private val accountAddPartnerUseCase: AccountAddPartnerUseCase,
     private val accountCreateOrderUseCase: AccountCreateOrderUseCase,
-    private val profileInfoUseCase: ProfileInfoUseCase
+    private val profileInfoUseCase: ProfileInfoUseCase,
+    private val profileChangePasswordUseCase: ProfileChangePasswordUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -165,6 +166,25 @@ class ProfileViewModel constructor(
         }
     }
 
+    fun changePassword(changePassword: ChangePassword) {
+        progress.postValue(true)
+        profileChangePasswordUseCase.setData(changePassword)
+        profileChangePasswordUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _navigationEvent.postValue(NavigationEvent.NoAction)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
     fun addPartner(addPartner: AddPartner) {
         progress.postValue(true)
         accountAddPartnerUseCase.setData(addPartner)
@@ -270,8 +290,9 @@ class ProfileViewModel constructor(
         }
     }
 
-    sealed class NavigationEvent<in T>{
+    sealed class NavigationEvent<out T>{
         class NavigateNext<T>(val data: T): NavigationEvent<T>()
+        object NoAction : NavigationEvent<Nothing>()
     }
 }
 

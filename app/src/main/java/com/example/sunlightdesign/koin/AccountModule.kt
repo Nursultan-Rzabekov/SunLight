@@ -94,7 +94,8 @@ val accountModule = module {
             accountSetPackagesUseCase = get(),
             accountAddPartnerUseCase = get(),
             accountCreateOrderUseCase = get(),
-            profileInfoUseCase = get()
+            profileInfoUseCase = get(),
+            profileChangePasswordUseCase = get()
         )
     }
 }

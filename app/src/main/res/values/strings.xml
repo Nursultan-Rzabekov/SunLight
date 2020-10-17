@@ -186,5 +186,8 @@
     <string name="сount_order">%1$d товара итого к оплате</string>
     <string name="totalAmountOrders">%1$.1fKZT</string>
     <string name="all_right">Все верно</string>
+    <string name="old_password">Старый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_password">Подтвердите пароль</string>
 
 </resources>
