@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.City
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Country
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Region
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Users
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
@@ -157,9 +155,15 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
             navigationEvent.observe(viewLifecycleOwner, Observer{
                 it?.let {
-                    when(it){
-                        is ProfileViewModel.NavigationEvent.NavigateNext ->
-                            findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
+                    if(it is ProfileViewModel.NavigationEvent.NavigateNext &&
+                        it.data is Login?) {
+                        val bundle = bundleOf(
+                            USER_ID to sponsorId
+                        )
+                        findNavController().navigate(
+                            R.id.action_stepOneFragment_to_stepTwoFragment,
+                            bundle
+                        )
                     }
                 }
             })

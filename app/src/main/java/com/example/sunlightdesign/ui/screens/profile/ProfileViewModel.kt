@@ -18,6 +18,7 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountUsersLi
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPartnerUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
 import com.example.sunlightdesign.usecase.usercase.profileUse.ProfileInfoUseCase
 import com.example.sunlightdesign.utils.Constants
 import timber.log.Timber
@@ -66,8 +67,8 @@ class ProfileViewModel constructor(
     private var _profileInfo = MutableLiveData<UserInfo>()
     val profileInfo: LiveData<UserInfo> get() = _profileInfo
 
-    private var _navigationEvent = MutableLiveData<NavigationEvent<Login?>?>()
-    val navigationEvent: LiveData<NavigationEvent<Login?>?> get() = _navigationEvent
+    private var _navigationEvent = MutableLiveData<NavigationEvent<Any?>?>()
+    val navigationEvent: LiveData<NavigationEvent<Any?>?> get() = _navigationEvent
 
     fun getCountriesList() {
         progress.postValue(true)
@@ -178,12 +179,22 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun setPackages() {
+    fun setPackages(setPackage: SetPackage) {
         progress.postValue(true)
+        accountSetPackagesUseCase.setData(setPackage)
         accountSetPackagesUseCase.execute {
-            onComplete { }
-            onNetworkError { }
-            onError { }
+            onComplete {
+                progress.postValue(false)
+                _navigationEvent.postValue(NavigationEvent.NavigateNext(data = it))
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
         }
     }
 

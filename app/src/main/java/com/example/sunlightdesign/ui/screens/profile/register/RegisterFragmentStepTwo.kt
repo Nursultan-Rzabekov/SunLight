@@ -4,20 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Package
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.PackageRecyclerAdapter
+import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
+import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_two.*
+import kotlinx.android.synthetic.main.fragment_register_partner_step_two.progress_bar
 
 
 class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
     PackageRecyclerAdapter.PackageSelector {
+
+    private var packageEntity: Package? = null
 
     private val packageRecyclerAdapter: PackageRecyclerAdapter by lazy {
         return@lazy PackageRecyclerAdapter(requireContext(), this)
@@ -43,14 +50,33 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     override fun onPackageSelected(id: Int) {
+        packageEntity = viewModel.packageList.value?.packages?.get(id)
         viewModel.onPackageSelected(id)
     }
 
     private fun setObservers() {
         viewModel.apply {
+            progress.observe(viewLifecycleOwner, Observer {
+                progress_bar.visibility = if (it) View.VISIBLE else View.GONE
+            })
+
             packageList.observe(viewLifecycleOwner, Observer {
                 it?.packages?.let { packages ->
                     packageRecyclerAdapter.setItems(ArrayList(packages))
+                }
+            })
+
+            navigationEvent.observe(viewLifecycleOwner, Observer {
+                if (it != null &&
+                    it is ProfileViewModel.NavigationEvent.NavigateNext &&
+                    it.data is User?){
+                    val bundle = bundleOf(
+                        RegisterFragmentStepThree.PACKAGE_NAME to
+                                packageEntity?.package_name,
+                        RegisterFragmentStepOne.USER_ID to
+                                arguments?.getInt(RegisterFragmentStepOne.USER_ID)
+                    )
+                    findNavController().navigate(R.id.action_stepTwoFragment_to_stepThreeFragment, bundle)
                 }
             })
         }
@@ -62,7 +88,14 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun setListeners() {
         registration_partner_step_two_next_button.setOnClickListener {
-            findNavController().navigate(R.id.action_stepTwoFragment_to_stepThreeFragment)
+            arguments?.let {
+                viewModel.setPackages(
+                    SetPackage(
+                        userId = it.getInt(RegisterFragmentStepOne.USER_ID, -1),
+                        packageId = packageEntity?.id ?: -1
+                    )
+                )
+            }
         }
     }
 

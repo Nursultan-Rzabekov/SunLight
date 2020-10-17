@@ -39,6 +39,8 @@ class ProductsRecyclerAdapter(
 
             Glide.with(itemView)
                 .load(product.product_image_front_path)
+                .placeholder(R.drawable.product_test)
+                .error(R.drawable.product_test)
                 .centerCrop()
                 .into(itemView.product_iv)
 

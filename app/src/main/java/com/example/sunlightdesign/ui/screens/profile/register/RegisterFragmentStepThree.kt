@@ -17,6 +17,10 @@ import kotlinx.android.synthetic.main.fragment_register_partner_step_three.*
 
 class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
+    companion object{
+        const val PACKAGE_NAME = "package_name"
+    }
+
     private lateinit var productsAdapter: ProductsRecyclerAdapter
     private var spanCount = 2
 
@@ -24,25 +28,24 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceViewState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_register_partner_step_three, container, false)
-    }
+    ): View? = inflater
+        .inflate(R.layout.fragment_register_partner_step_three, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
 
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {
         super.onActivityCreated(savedInstanceViewState)
 
+        arguments?.let {
+            available_products_from_tv.text = getString(R.string.available_products_from,
+                it.getString(PACKAGE_NAME))
+        }
         setListeners()
         setObservers()
     }
 
     private fun setListeners() {
         next_step_three_btn.setOnClickListener {
+            val selectedProducts = productsAdapter.getCheckedProducts()
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
     }
