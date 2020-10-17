@@ -52,7 +52,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/payTextView"
                 style="@style/AppCompatTextView"
-                tools:text="К оплате 2970 BV"
+                tools:text="К оплате 2970 KZT"
                 android:layout_marginTop="@dimen/dimen_12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailTextView"

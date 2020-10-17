@@ -44,9 +44,9 @@ class OrdersRecyclerAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bind(item: Order) = with(itemView) {
-            this.orderNumberTextView.text = context.getString(R.string.order) + item.id
-            this.dataOrdersTextView.text = context.getString(R.string.created_at) + item.created_at
-            this.payTextView.text = context.getString(R.string.payTo) + item.total_price
+            this.orderNumberTextView.text = context.getString(R.string.order_number,item.id)
+            this.dataOrdersTextView.text = context.getString(R.string.created_at,item.created_at)
+            this.payTextView.text = context.getString(R.string.payTo,item.total_price)
 
             if (!item.products.isNullOrEmpty()) {
                 val childLayoutManager = LinearLayoutManager(this.productsRecyclerView.context)
@@ -58,12 +58,12 @@ class OrdersRecyclerAdapter(
             }
 
             this.detailTextView.setOnClickListener {
-                orderSelector.onOrderSelected(adapterPosition)
+                orderSelector.onOrderSelected(item)
             }
         }
     }
 
     interface OrderSelector {
-        fun onOrderSelected(id: Int)
+        fun onOrderSelected(order: Order)
     }
 }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dimen_16dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_margin="@dimen/dimen_16dp"
+        android:id="@+id/arrow_bottom_sheet_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_arrow_sheet"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/orderSheetTextView"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/order_number"
+        android:textSize="@dimen/dimen_22sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_marginStart="@dimen/dimen_16dp"
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:text="@string/info_order"
+        android:textSize="@dimen/dimen_14sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/totalAmountSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/total_amount"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/typePaymentSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/type_of_payment"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/typeSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/type"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cashierSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/cashier"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/officeSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/office"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/contactNumberSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/contact_number"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dateEndSheetTextView"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        style="@style/AppCompatTextView"
+        tools:text="@string/date_end_of_order"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textSize="@dimen/dimen_14sp"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/repeatOrderBtn"
+        style="@style/BasicOutlinedMaterialButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_16dp"
+        android:paddingTop="@dimen/dimen_12dp"
+        android:paddingBottom="@dimen/dimen_12dp"
+        android:text="@string/reply_order"
+        android:textColor="@color/sunLightColor"
+        android:textSize="@dimen/dimen_16sp"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp" />
+
+</LinearLayout>

@@ -124,7 +124,7 @@
     <string name="text_error">Ошибка</string>
     <string name="text_success">Успешно</string>
     <string name="text_ok">OK</string>
-    <string name="text_cancel">Cancel</string>
+    <string name="text_cancel">Отмена</string>
     <string name="text_info">Инфо</string>
     <string name="text_yes">да</string>
 
@@ -140,18 +140,18 @@
     <string name="phone_mask_hint">+7 (_ _ _) _ _ _ _ _ _ _</string>
     <string name="attach_file">Прекрепить документ</string>
     <string name="delete">Удалить</string>
-    <string name="ten_thousand_bv">10000 BV</string>
-    <string name="twelve_thousand_bv">12000 BV</string>
-    <string name="two_thousand_bv">2000 BV</string>
-    <string name="five_thousand_bv">5000 BV</string>
+    <string name="ten_thousand_bv">10000 KZT</string>
+    <string name="twelve_thousand_bv">12000 KZT</string>
+    <string name="two_thousand_bv">2000 KZT</string>
+    <string name="five_thousand_bv">5000 KZT</string>
 
 
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
-    <string name="amount_bv">%1$f BV</string>
+    <string name="amount_bv">%1$.1f KZT</string>
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
-    <string name="income_amount_bv">+%1$d BV</string>
+    <string name="income_amount_bv">+%1$.1f BV</string>
     <string name="greeting_for_payment">Спасибо за оплату!</string>
     <string name="your_password_was_send_to">Ваш временный пароль \nотправлен на номер <b>%1$s</b></string>
     <string name="send_again_after">Отправить повторно через <b>%1$s секунд</b></string>
@@ -165,10 +165,26 @@
     <string name="password_two_dots">Пароль :</string>
     <string name="documents_scans">Сканы документов</string>
     <string name="go_to_market">Перейти в маркет</string>
-    <string name="payTo">К оплате</string>
-    <string name="order">Заказ #</string>
-    <string name="created_at">Дата заказа</string>
-    <string name="amount">Количество</string>
+    <string name="payTo">К оплате: #%1$.1fKZT</string>
+    <string name="created_at">Дата заказа: \n %1$s</string>
+    <string name="amount">Количество: %1$.1f</string>
     <string name="detail_order">Детали заказа</string>
+
+
+    <string name="order_number">Заказ #%1$.1f</string>
+    <string name="code_order">Код товара: %1$.1f</string>
+    <string name="total_amount">Общая сумма: %1$.1f KZT</string>
+    <string name="type_of_payment">Способ оплаты: %1$s</string>
+    <string name="type">Тип: %1$s</string>
+    <string name="cashier">Кассир: %1$s</string>
+    <string name="office">Офис: %1$s</string>
+    <string name="contact_number">Телефон: %1$s</string>
+    <string name="date_end_of_order">Дата завершения покупки: %1$s</string>
+    <string name="info_order">Сведенья о заказе</string>
+    <string name="reply_order">Повторить заказ</string>
+    <string name="repeat_orders">Повтор заказа #%1$.1f</string>
+    <string name="сount_order">%1$d товара итого к оплате</string>
+    <string name="totalAmountOrders">%1$.1fKZT</string>
+    <string name="all_right">Все верно</string>
 
 </resources>

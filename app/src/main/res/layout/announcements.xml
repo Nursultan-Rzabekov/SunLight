@@ -7,30 +7,23 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/messagesTextView"
-        style="@style/AppCompatTextView"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/messages"
-        app:layout_constraintStart_toStartOf="parent"
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_with_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/dimen_32dp"
-        android:layout_marginBottom="@dimen/dimen_32dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/announcementRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/messagesTextView"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        tools:itemCount="4"
-        tools:listitem="@layout/announcement_item"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        tools:itemCount="4"
+        tools:listitem="@layout/announcement_item" />
 
     <ProgressBar
         android:layout_width="wrap_content"

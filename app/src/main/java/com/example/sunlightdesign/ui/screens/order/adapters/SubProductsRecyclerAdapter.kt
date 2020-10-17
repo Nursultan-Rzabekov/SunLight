@@ -25,16 +25,15 @@ class SubProductsRecyclerAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) =
         holder.bind(items[position])
 
-
     class ProductViewHolder(
         view: View
     ) : RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
         fun bind(product: Product) {
-            itemView.bvCountTextView.text = product.product?.product_name
+            itemView.bvCountTextView.text = itemView.context.getString(R.string.totalAmountOrders,product.product_price)
             itemView.orderNameTextView.text = product.product?.product_name
             itemView.codeTextView.text = itemView.context.getString(R.string.amount_bv, product.product_price)
-            itemView.countTextView.text = itemView.context.getString(R.string.amount) + product.product_quantity
+            itemView.countTextView.text = itemView.context.getString(R.string.amount,product.product_quantity)
             itemView.statusLevelTextView.text = "Завершен"
 
             Glide.with(itemView)

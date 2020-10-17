@@ -13,6 +13,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Dat
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.email.adapters.AnnouncementsRecyclerAdapter
 import kotlinx.android.synthetic.main.announcements.*
+import kotlinx.android.synthetic.main.toolbar_with_back.*
 
 
 class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class),
@@ -30,6 +31,8 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class),
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        titleTextView.text = getString(R.string.messages)
 
         configViewModel()
         viewModel.getAnnouncementsList()
