@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
+import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
@@ -63,6 +65,9 @@ class ProfileViewModel constructor(
 
     private var _profileInfo = MutableLiveData<UserInfo>()
     val profileInfo: LiveData<UserInfo> get() = _profileInfo
+
+    private var _navigationEvent = MutableLiveData<NavigationEvent<Login?>?>()
+    val navigationEvent: LiveData<NavigationEvent<Login?>?> get() = _navigationEvent
 
     fun getCountriesList() {
         progress.postValue(true)
@@ -154,12 +159,13 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun createOrder(addPartner: AddPartner) {
+    fun addPartner(addPartner: AddPartner) {
         progress.postValue(true)
-        accountCreateOrderUseCase.setData(addPartner)
-        accountCreateOrderUseCase.execute {
+        accountAddPartnerUseCase.setData(addPartner)
+        accountAddPartnerUseCase.execute {
             onComplete {
                 progress.postValue(false)
+                _navigationEvent.postValue(NavigationEvent.NavigateNext(data = it))
             }
             onNetworkError {
                 progress.postValue(false)
@@ -219,6 +225,10 @@ class ProfileViewModel constructor(
                 }
             }
         }
+    }
+
+    sealed class NavigationEvent<in T>{
+        class NavigateNext<T>(val data: T): NavigationEvent<T>()
     }
 }
 

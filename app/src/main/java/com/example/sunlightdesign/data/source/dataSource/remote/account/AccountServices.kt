@@ -17,7 +17,6 @@ interface AccountServices {
     fun getListCountriesRegionsCities(
     ): Deferred<CountriesList>
 
-    @FormUrlEncoded
     @POST("cabinet/add-partner")
     fun addPartnerStepOne(
         @Body addPartner: AddPartner

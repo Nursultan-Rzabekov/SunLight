@@ -15,6 +15,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.U
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.adapters.InvitedAdapter
 import com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment.Companion.USER_INFO
+import com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne.Companion.USER_ID
 import com.example.sunlightdesign.utils.Constants.Companion.ACTIVITY_ACTIVE
 import com.example.sunlightdesign.utils.toShortenedUserInfo
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
@@ -63,12 +64,15 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
 
     private fun setListeners() {
         register_partner_btn.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragmentFragment_to_registerFragment)
+            val bundle = bundleOf(
+                USER_ID to viewModel.profileInfo.value?.user?.id
+            )
+            findNavController().navigate(R.id.action_profileFragmentFragment_to_registerFragment, bundle)
         }
 
         editProfileBtn.setOnClickListener {
             val bundle = bundleOf(
-                USER_INFO to userInfo.toShortenedUserInfo()
+                USER_INFO to viewModel.profileInfo.value.toShortenedUserInfo()
             )
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment, bundle)
         }
@@ -83,7 +87,6 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
     }
 
     private fun setUserInfo(info: UserInfo) {
-        userInfo = info
         userFullNameTextView.text = ("${info.user?.last_name} ${info.user?.first_name}")
         userUuidTextView.text = info.user?.uuid
         userStatusTextView.text = info.user?.status?.status_name
