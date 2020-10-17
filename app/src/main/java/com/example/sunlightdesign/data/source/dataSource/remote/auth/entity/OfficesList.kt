@@ -20,5 +20,6 @@ data class Office(
     val open_hours: String?,
     val phone: String?,
     val region_id: Int?,
-    val updated_at: String?
+    val updated_at: String?,
+    var isChecked: Boolean = false
 )

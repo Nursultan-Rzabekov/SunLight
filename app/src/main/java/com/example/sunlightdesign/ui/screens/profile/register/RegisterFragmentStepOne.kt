@@ -155,6 +155,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
             navigationEvent.observe(viewLifecycleOwner, Observer{
                 it?.let {
+                    createOrderPartnerBuilder.user_id = sponsorId
                     if(it is ProfileViewModel.NavigationEvent.NavigateNext &&
                         it.data is Login?) {
                         val bundle = bundleOf(

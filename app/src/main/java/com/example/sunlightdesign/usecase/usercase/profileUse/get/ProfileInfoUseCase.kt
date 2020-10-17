@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.usecase.usercase.profileUse
+package com.example.sunlightdesign.usecase.usercase.profileUse.get
 
 import com.example.sunlightdesign.data.source.ProfileRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo

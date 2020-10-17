@@ -59,7 +59,8 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
     }
 
     override fun onOfficeSelected(id: Int) {
-
+        viewModel.createOrderPartnerBuilder.office_id =
+            viewModel.officeList.value?.offices?.get(id)?.id ?: -1
     }
 
 }
