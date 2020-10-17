@@ -35,10 +35,12 @@ class ProductsRecyclerAdapter(
         fun bind(product: Product) {
             itemView.product_name_tv.text = product.product_name
             itemView.product_description_tv.text = product.product_short_description
-            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price)
+            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price?.toDouble())
 
             Glide.with(itemView)
                 .load(product.product_image_front_path)
+                .placeholder(R.drawable.product_test)
+                .error(R.drawable.product_test)
                 .centerCrop()
                 .into(itemView.product_iv)
 

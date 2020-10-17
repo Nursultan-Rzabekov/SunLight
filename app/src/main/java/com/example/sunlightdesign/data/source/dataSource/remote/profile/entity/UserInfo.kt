@@ -118,7 +118,7 @@ data class User(
     val document_front_path: String?,
     val email: String?,
     val first_name: String?,
-    val id: Double?,
+    val id: Int?,
     val iin: String?,
     val is_active: Double?,
     val last_login: Any?,

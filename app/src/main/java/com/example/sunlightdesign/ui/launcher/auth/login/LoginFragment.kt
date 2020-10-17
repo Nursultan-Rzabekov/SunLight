@@ -68,7 +68,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
     }
 
     private fun setCheckers(): Boolean {
-        if (!isPhoneValid(phone_et)) {
+        if (!isPhoneValid(phone_et.text.toString())) {
             phone_et.error = getString(R.string.wrong_phone_number)
             return false
         }

@@ -18,5 +18,6 @@ data class Package(
     val package_price_in_kzt: Int?,
     val package_reference: Int?,
     val products: List<Product>?,
-    val updated_at: String?
+    val updated_at: String?,
+    var isChecked: Boolean = false
 )

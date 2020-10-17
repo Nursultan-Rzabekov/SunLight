@@ -14,5 +14,8 @@ class Constants {
         const val PYRAMID_TOP = "top"
         const val PYRAMID_LEFT = "left"
         const val PYRAMID_RIGHT = "right"
+
+        const val IIN_LENGTH = 12
+        const val PHONE_LENGTH = 11
     }
 }

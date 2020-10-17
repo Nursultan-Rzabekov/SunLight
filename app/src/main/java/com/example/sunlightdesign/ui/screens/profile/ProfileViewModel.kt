@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
+import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
@@ -16,6 +18,7 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountUsersLi
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPartnerUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
 import com.example.sunlightdesign.usecase.usercase.profileUse.ProfileInfoUseCase
 import com.example.sunlightdesign.utils.Constants
 import timber.log.Timber
@@ -63,6 +66,9 @@ class ProfileViewModel constructor(
 
     private var _profileInfo = MutableLiveData<UserInfo>()
     val profileInfo: LiveData<UserInfo> get() = _profileInfo
+
+    private var _navigationEvent = MutableLiveData<NavigationEvent<Any?>?>()
+    val navigationEvent: LiveData<NavigationEvent<Any?>?> get() = _navigationEvent
 
     fun getCountriesList() {
         progress.postValue(true)
@@ -154,12 +160,13 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun createOrder(addPartner: AddPartner) {
+    fun addPartner(addPartner: AddPartner) {
         progress.postValue(true)
-        accountCreateOrderUseCase.setData(addPartner)
-        accountCreateOrderUseCase.execute {
+        accountAddPartnerUseCase.setData(addPartner)
+        accountAddPartnerUseCase.execute {
             onComplete {
                 progress.postValue(false)
+                _navigationEvent.postValue(NavigationEvent.NavigateNext(data = it))
             }
             onNetworkError {
                 progress.postValue(false)
@@ -172,12 +179,22 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun setPackages() {
+    fun setPackages(setPackage: SetPackage) {
         progress.postValue(true)
+        accountSetPackagesUseCase.setData(setPackage)
         accountSetPackagesUseCase.execute {
-            onComplete { }
-            onNetworkError { }
-            onError { }
+            onComplete {
+                progress.postValue(false)
+                _navigationEvent.postValue(NavigationEvent.NavigateNext(data = it))
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
         }
     }
 
@@ -199,6 +216,7 @@ class ProfileViewModel constructor(
     }
 
     fun onPackageSelected(index: Int) {
+        Timber.d(_packageList.value?.packages?.size.toString())
         _productsList.postValue(
             _packageList.value?.packages?.get(index)?.products
         )
@@ -219,6 +237,10 @@ class ProfileViewModel constructor(
                 }
             }
         }
+    }
+
+    sealed class NavigationEvent<in T>{
+        class NavigateNext<T>(val data: T): NavigationEvent<T>()
     }
 }
 
