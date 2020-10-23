@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    app:cardCornerRadius="@dimen/dimen_5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/AppCompatTextView"
+            android:textSize="@dimen/dimen_18sp"
+            android:text="@string/insert_need_amount"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_14sp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            style="@style/AppCompatTextViewGray"
+            android:text="@string/short_info_about_transfer"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/gray_EF"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            app:cardBackgroundColor="@color/gray_FA"
+            app:cardCornerRadius="@dimen/dimen_5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/dimen_12dp"
+                    android:paddingHorizontal="@dimen/dimen_16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/AppCompatTextViewGray"
+                        android:textColor="@color/sunBlackColor"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/dimen_16sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/show_two_dots"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:textSize="@dimen/dimen_14sp"
+                        android:textAlignment="textEnd"
+                        tools:text="1 BV = 300 KZT"
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_EF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/BasicTextInputLayoutOutlined"
+                        android:id="@+id/amountTextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxStrokeColor="@color/gray_EF"
+                        app:boxStrokeWidth="1dp"
+                        android:layout_marginTop="@dimen/dimen_16dp"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/amountEditText"
+                            style="@style/BasicEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            tools:text="5000"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:paddingTop="@dimen/dimen_12dp"
+                            android:paddingBottom="@dimen/dimen_12dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/transfer"
+                        android:layout_marginTop="@dimen/dimen_16dp"
+                        android:textSize="@dimen/dimen_16sp"
+                        android:paddingTop="@dimen/dimen_12dp"
+                        android:paddingBottom="@dimen/dimen_12dp"
+                        app:icon="@drawable/ic_transfer"
+                        app:iconGravity="start"
+                        style="@style/BasicMaterialButton"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/gray_FA"
+            app:strokeColor="@color/gray_EF"
+            app:strokeWidth="1dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            app:cardCornerRadius="@dimen/dimen_5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/dimen_12dp"
+                    android:paddingHorizontal="@dimen/dimen_16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:text="1 USD = 440KZT"
+                        android:textAlignment="viewEnd"
+                        android:textSize="@dimen/dimen_14sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_EF" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/dimen_22sp"
+                    android:padding="@dimen/dimen_16dp"
+                    android:textColor="@color/sunBlackColor"
+                    tools:text="$ 0,0"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

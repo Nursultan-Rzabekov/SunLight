@@ -79,7 +79,7 @@ data class WalletHistory(
 )
 
 data class Data(
-    val bonus: Bonus,
+    val bonus: Bonus?,
     val created_at: String,
     val extra_data: String,
     val finish_date: String,

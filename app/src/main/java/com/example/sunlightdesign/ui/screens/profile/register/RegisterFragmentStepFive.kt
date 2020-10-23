@@ -1,20 +1,14 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.Button
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.AddPartnerResponse
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_register_partner_step_five.*
-import java.util.zip.Inflater
 
 
 class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
@@ -74,11 +68,11 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
     }
 
     private fun hidePayments() {
-        payByPayboxLayout.visibility = View.GONE
+        payByBvLayout.visibility = View.GONE
     }
 
     private fun showPaymentByBv() {
-        payByPayboxLayout.visibility = View.VISIBLE
+        payByBvLayout.visibility = View.VISIBLE
     }
 
 }
