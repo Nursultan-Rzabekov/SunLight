@@ -10,13 +10,15 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
-import com.example.sunlightdesign.ui.screens.order.adapters.ProductsOrderRecyclerAdapter
+import com.example.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecyclerAdapter
+import com.example.sunlightdesign.ui.screens.profile.register.adapters.ProductsRecyclerAdapter
 import kotlinx.android.synthetic.main.market_products_list.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 
-class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class) {
+class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
+    ProductsMarketRecyclerAdapter.ProductsMarketItemSelected{
 
-    private lateinit var productsAdapter: ProductsOrderRecyclerAdapter
+    private lateinit var productsAdapter: ProductsMarketRecyclerAdapter
     private var spanCount = 2
 
     override fun onCreateView(
@@ -53,10 +55,15 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class) {
 
     private fun initRecycler(items: List<Product>) {
         products_recycler_view.apply {
-            productsAdapter = ProductsOrderRecyclerAdapter(items)
+            productsAdapter = ProductsMarketRecyclerAdapter(items,this@MarketFragment)
             layoutManager = GridLayoutManager(requireContext(), spanCount)
             adapter = productsAdapter
         }
     }
+
+    override fun onProductsSelected(product: Product) {
+        TODO("Not yet implemented")
+    }
+
 
 }

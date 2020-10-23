@@ -15,7 +15,8 @@ import com.example.sunlightdesign.ui.screens.profile.register.adapters.ProductsR
 import kotlinx.android.synthetic.main.fragment_register_partner_step_three.*
 
 
-class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
+class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
+    ProductsRecyclerAdapter.ProductsItemSelected {
 
     companion object{
         const val PACKAGE_NAME = "package_name"
@@ -58,10 +59,14 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
 
     private fun initRecycler(items: List<Product>) {
         products_recycler_view.apply {
-            productsAdapter = ProductsRecyclerAdapter(items)
+            productsAdapter = ProductsRecyclerAdapter(items = items,productsItemSelected = this@RegisterFragmentStepThree)
             layoutManager = GridLayoutManager(requireContext(), spanCount)
             adapter = productsAdapter
         }
+    }
+
+    override fun onProductsSelected(product: Product) {
+        TODO("Not yet implemented")
     }
 
 }

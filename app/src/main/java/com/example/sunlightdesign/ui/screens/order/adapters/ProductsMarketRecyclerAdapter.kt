@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.ui.screens.profile.register.adapters
+package com.example.sunlightdesign.ui.screens.order.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,18 +7,18 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
-import kotlinx.android.synthetic.main.products_list_item.view.*
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
+import kotlinx.android.synthetic.main.product_market_item.view.*
 
-class ProductsRecyclerAdapter(
+class ProductsMarketRecyclerAdapter(
     private val items: List<Product>,
-    private val productsItemSelected: ProductsItemSelected
-): RecyclerView.Adapter<ProductsRecyclerAdapter.ProductViewHolder>() {
+    private val productsMarketItemSelected: ProductsMarketItemSelected
+): RecyclerView.Adapter<ProductsMarketRecyclerAdapter.ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view =  LayoutInflater.from(parent.context)
-            .inflate(R.layout.products_list_item, parent,false)
-        return ProductViewHolder(view,productsItemSelected)
+            .inflate(R.layout.product_market_item, parent,false)
+        return ProductViewHolder(view,productsMarketItemSelected)
     }
 
     override fun getItemCount(): Int = items.size
@@ -32,15 +32,15 @@ class ProductsRecyclerAdapter(
 
     class ProductViewHolder(
         view: View,
-        val productsItemSelected: ProductsItemSelected
+        private val productsMarketItemSelected: ProductsMarketItemSelected
     ): RecyclerView.ViewHolder(view) {
         fun bind(product: Product) {
-            itemView.product_name_tv.text = product.product_name
-            itemView.product_description_tv.text = product.product_short_description
+            itemView.product_name_tv.text = product.product?.product_name
+            itemView.product_description_tv.text = product.product?.product_short_description
             itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price?.toDouble())
 
             Glide.with(itemView)
-                .load(product.product_image_front_path)
+                .load(product.product?.product_image_front_path)
                 .placeholder(R.drawable.product_test)
                 .error(R.drawable.product_test)
                 .centerCrop()
@@ -58,16 +58,25 @@ class ProductsRecyclerAdapter(
                 itemView.product_checkbox.isChecked = !itemView.product_checkbox.isChecked
             }
 
+            var k = 1
+            itemView.minusBtn.setOnClickListener {
+                k--
+                itemView.productQuantity.text = k.toString()
+            }
+            itemView.plusBtn.setOnClickListener {
+                k++
+                itemView.productQuantity.text = k.toString()
+            }
 
             itemView.product_more_info_tv.setOnClickListener {
-                productsItemSelected.onProductsSelected(product)
+                productsMarketItemSelected.onProductsSelected(product)
             }
 
         }
     }
 
 
-    interface ProductsItemSelected{
+    interface ProductsMarketItemSelected{
         fun onProductsSelected(product: Product)
     }
 }

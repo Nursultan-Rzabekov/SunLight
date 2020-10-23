@@ -49,13 +49,14 @@ data class Product(
     val id: Double?,
     val is_sent: Double?,
     val order_id: Double?,
-    val product: ProductX?,
+    val product: com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product?,
     val product_id: Double?,
     val product_price: Double?,
     val product_price_in_bv: Double?,
     val product_price_in_currency: Double?,
     val product_quantity: Double?,
-    val updated_at: String?
+    val updated_at: String?,
+    var isChecked: Boolean = false
 )
 
 data class User(
@@ -109,21 +110,4 @@ data class City(
     val country_id: Any?,
     val id: Double?,
     val region_id: Double?
-)
-
-data class ProductX(
-    val created_at: String?,
-    val deleted_at: Any?,
-    val id: Double?,
-    val product_description: String?,
-    val product_image_back_path: String?,
-    val product_image_front_path: String?,
-    val product_name: String?,
-    val product_price: Double?,
-    val product_price_in_bv: Double?,
-    val product_price_in_currency: Double?,
-    val product_quantity: Double?,
-    val product_short_description: String?,
-    val product_type: Double?,
-    val updated_at: String?
 )

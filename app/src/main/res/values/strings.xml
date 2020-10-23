@@ -193,5 +193,7 @@
     <string name="old_password">Старый пароль</string>
     <string name="new_password">Новый пароль</string>
     <string name="confirm_password">Подтвердите пароль</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
 
 </resources>
