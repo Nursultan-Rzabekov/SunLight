@@ -193,6 +193,17 @@
     <string name="old_password">Старый пароль</string>
     <string name="new_password">Новый пароль</string>
     <string name="confirm_password">Подтвердите пароль</string>
+
+    <string name="withdraw_history">Выписка</string>
+    <string name="create_date">Дата открытия</string>
+    <string name="bonuses">Бонусы</string>
+    <string name="wallet">Кошелек</string>
+    <string name="name">Название</string>
+    <string name="insert_need_amount">Введите нужную сумму</string>
+    <string name="short_info_about_transfer">Сведенья о снятии денег, тут будет краткая информация</string>
+    <string name="show_two_dots">Вывести:</string>
+    <string name="transfer">Перевести</string>
+
     <string name="plus">+</string>
     <string name="minus">-</string>
 

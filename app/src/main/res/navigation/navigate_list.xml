@@ -8,7 +8,7 @@
     <fragment android:id="@+id/listFragment"
         android:name="com.example.sunlightdesign.ui.screens.order.OrdersFragment"
         android:label="@string/home"
-        tools:layout="@layout/wallet">
+        tools:layout="@layout/fragment_wallet">
 
         <action
             android:id="@+id/orderFragmentTo_marketFragment"

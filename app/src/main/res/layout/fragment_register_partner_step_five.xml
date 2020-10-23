@@ -106,7 +106,7 @@
         </RadioGroup>
 
         <include
-            android:id="@+id/payByPayboxLayout"
+            android:id="@+id/payByBvLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/bv_payment_card_layout"

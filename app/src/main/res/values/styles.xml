@@ -117,6 +117,17 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="BasicTextInputLayoutOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dimen_5dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dimen_5dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dimen_5dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dimen_5dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeColor">@color/transparent</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
     <style name="BasicTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/dimen_5dp</item>

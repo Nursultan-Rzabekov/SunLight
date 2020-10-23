@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    android:id="@+id/walletHistoriesLayout"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    app:cardElevation="@dimen/dimen_10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/AppCompatTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:text="@string/withdraw_history"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/walletHistoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            tools:itemCount="4"
+            tools:listitem="@layout/wallet_history_item" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
