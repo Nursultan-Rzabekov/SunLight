@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_margin="@dimen/dimen_16dp"
+        android:id="@+id/arrow_bottom_sheet_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_arrow_sheet"
+        android:contentDescription="@string/appbar_scrolling_view_behavior" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/with_cash"
+        android:textSize="@dimen/dimen_16sp"
+        style="@style/AppCompatTextViewGray"
+        android:textColor="@color/sunBlackColor"
+        android:paddingTop="@dimen/dimen_12dp"
+        android:paddingBottom="@dimen/dimen_12dp"
+        android:paddingStart="@dimen/dimen_24dp"
+        android:paddingEnd="@dimen/dimen_24dp"
+        app:drawableStartCompat="@drawable/ic_money"
+        android:drawablePadding="@dimen/dimen_24dp"
+        android:gravity="center_vertical"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/credit_card"
+        android:textSize="@dimen/dimen_16sp"
+        style="@style/AppCompatTextViewGray"
+        android:textColor="@color/sunBlackColor"
+        android:paddingTop="@dimen/dimen_12dp"
+        android:paddingBottom="@dimen/dimen_12dp"
+        android:paddingStart="@dimen/dimen_24dp"
+        android:paddingEnd="@dimen/dimen_24dp"
+        app:drawableStartCompat="@drawable/ic_creditcard"
+        android:drawablePadding="@dimen/dimen_24dp"
+        android:gravity="center_vertical"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right" />
+
+</LinearLayout>

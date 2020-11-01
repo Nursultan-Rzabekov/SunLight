@@ -202,5 +202,13 @@
     <string name="short_info_about_transfer">Сведенья о снятии денег, тут будет краткая информация</string>
     <string name="show_two_dots">Вывести:</string>
     <string name="transfer">Перевести</string>
+    <string name="currency_template">XXX</string>
+    <string name="total_with_taxes_is">Итого, по данному курсу\nс учетом ИПН вы можете вывести:</string>
+    <string name="withdraw_money">Cнять деньги</string>
+    <string name="with_cash">Наличными</string>
+    <string name="credit_card">На карту</string>
+    <string name="choose_office">Выберите подходящий офис</string>
+    <string name="request_approved">Ваш запрос одобрен!</string>
+    <string name="you_can_take_money_at_office">Вы можете забрать деньги по\nуказаному адресу</string>
 
 </resources>

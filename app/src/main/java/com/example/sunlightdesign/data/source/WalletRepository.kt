@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.data.source
 
+import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.CurrencyCalculate
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.Wallet
 
 /**
@@ -7,4 +8,5 @@ import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.W
  */
 interface WalletRepository {
     suspend fun getMyWallets(): Wallet
+    suspend fun getCalculateInfo(): CurrencyCalculate
 }
