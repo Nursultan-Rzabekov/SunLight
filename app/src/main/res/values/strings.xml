@@ -210,5 +210,6 @@
     <string name="choose_office">Выберите подходящий офис</string>
     <string name="request_approved">Ваш запрос одобрен!</string>
     <string name="you_can_take_money_at_office">Вы можете забрать деньги по\nуказаному адресу</string>
+    <string name="bv_to_currency">1 BV = %1$s %2$s</string>
 
 </resources>

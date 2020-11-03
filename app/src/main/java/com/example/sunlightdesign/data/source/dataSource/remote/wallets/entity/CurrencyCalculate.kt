@@ -18,5 +18,5 @@ data class CurrencyX(
     val id: Int?,
     val updated_at: String?
 ) {
-    override fun toString(): String = this.currency_name.toString()
+    override fun toString(): String = this.currency_code.toString()
 }

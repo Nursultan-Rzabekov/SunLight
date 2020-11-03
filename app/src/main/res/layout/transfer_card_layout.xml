@@ -60,6 +60,7 @@
                         android:textSize="@dimen/dimen_16sp" />
 
                     <TextView
+                        android:id="@+id/bvToCurrencyTextView"
                         style="@style/AppCompatTextViewGray"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -108,6 +109,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/convertBtn"
                         style="@style/BasicMaterialButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -209,9 +211,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
+            android:id="@+id/finalAmountLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_24dp"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <TextView

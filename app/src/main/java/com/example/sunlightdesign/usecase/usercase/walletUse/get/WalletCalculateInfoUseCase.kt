@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.usecase.usercase.walletUse
+package com.example.sunlightdesign.usecase.usercase.walletUse.get
 
 import com.example.sunlightdesign.data.source.WalletRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.CurrencyCalculate
