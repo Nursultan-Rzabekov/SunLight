@@ -148,7 +148,7 @@
 
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
-    <string name="amount_bv">%1$.1f KZT</string>
+    <string name="amount_bv">%1$.1f BV</string>
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
     <string name="income_amount_bv">+%1$.1f BV</string>
@@ -204,7 +204,7 @@
     <string name="transfer">Перевести</string>
     <string name="currency_template">XXX</string>
     <string name="total_with_taxes_is">Итого, по данному курсу\nс учетом ИПН вы можете вывести:</string>
-    <string name="withdraw_money">Cнять деньги</string>
+    <string name="withdraw_money">Снять деньги</string>
     <string name="with_cash">Наличными</string>
     <string name="credit_card">На карту</string>
     <string name="choose_office">Выберите подходящий офис</string>

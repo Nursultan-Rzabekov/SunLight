@@ -47,6 +47,7 @@ class ChooseOfficeBottomSheetDialog(
 
     override fun onOfficeSelected(id: Int) {
         selectedOfficeId = id
+        nextBtn.isEnabled = true
     }
 
     private fun setListeners() {
@@ -70,6 +71,6 @@ class ChooseOfficeBottomSheetDialog(
     }
 
     interface ChooseOfficeDialogInteraction {
-        fun onNextBtnPressed(office: Int)
+        fun onNextBtnPressed(officeId: Int)
     }
 }

@@ -7,6 +7,7 @@ import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.usecase.usercase.walletUse.get.WalletCalculateInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.walletUse.get.WalletGetOfficesUseCase
 import com.example.sunlightdesign.usecase.usercase.walletUse.get.WalletInfoUseCase
+import com.example.sunlightdesign.usecase.usercase.walletUse.post.WalletStoreWithdrawalUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -42,11 +43,18 @@ val walletModule = module {
         )
     }
 
+    factory {
+        WalletStoreWithdrawalUseCase(
+            walletRepository = get()
+        )
+    }
+
     viewModel {
         WalletViewModel(
             walletInfoUseCase = get(),
             walletCalculateInfoUseCase = get(),
-            walletGetOfficesUseCase = get()
+            walletGetOfficesUseCase = get(),
+            walletStoreWithdrawalUseCase = get()
         )
     }
 }
