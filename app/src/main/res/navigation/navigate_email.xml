@@ -11,18 +11,18 @@
         tools:layout="@layout/announcements">
 
         <action
-            android:id="@+id/action_emailFragment_to_emailDetailsFragment"
-            app:destination="@id/emailDetailsFragment"
+            android:id="@+id/action_emailFragment_to_emailDetailsActivity"
+            app:destination="@id/emailDetailsActivity"
             app:popUpTo="@id/emailFragment" />
 
     </fragment>
 
 
-    <fragment android:id="@+id/emailDetailsFragment"
-        android:name="com.example.sunlightdesign.ui.screens.email.EmailDetailsFragment"
+    <activity android:id="@+id/emailDetailsActivity"
+        android:name="com.example.sunlightdesign.ui.screens.email.EmailDetailActivity"
         android:label="@string/home"
         tools:layout="@layout/announcement_detail_item">
 
-    </fragment>
+    </activity>
 
 </navigation>

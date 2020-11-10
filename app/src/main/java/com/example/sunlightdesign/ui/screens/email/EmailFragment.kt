@@ -53,7 +53,7 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class),
 
     override fun onAnnouncementSelected(id: Int) {
         val bundle = bundleOf("itemId" to id)
-        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsFragment, bundle)
+        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsActivity, bundle)
     }
 
     private fun initRecyclerView(items: List<Data>) {

@@ -47,7 +47,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         viewModel.getMyOrders()
 
         goToMarketLayout.setOnClickListener {
-            findNavController().navigate(R.id.orderFragmentTo_marketFragment)
+            findNavController().navigate(R.id.orderFragmentTo_marketActivity)
         }
 
     }

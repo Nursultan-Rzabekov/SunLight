@@ -11,15 +11,12 @@
         tools:layout="@layout/fragment_wallet">
 
         <action
-            android:id="@+id/action_walletFragment_to_withdrawFragment"
-            app:destination="@id/withdrawFragment" />
+            android:id="@+id/action_walletFragment_to_withdrawActivity"
+            app:destination="@id/withdrawActivity" />
     </fragment>
 
-    <fragment android:id="@+id/withdrawFragment"
-        android:name="com.example.sunlightdesign.ui.screens.wallet.withdraw.WithdrawFragment"
-        tools:layout="@layout/fragment_withdraw">
-
-
-    </fragment>
+    <activity android:id="@+id/withdrawActivity"
+        android:name="com.example.sunlightdesign.ui.screens.wallet.withdraw.WithdrawActivity"
+        tools:layout="@layout/fragment_withdraw"/>
 
 </navigation>

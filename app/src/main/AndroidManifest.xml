@@ -35,6 +35,15 @@
 
         </activity>
 
+        <activity android:name=".ui.screens.order.market.MarketActivity"/>
+
+        <activity android:name=".ui.screens.profile.register.RegisterActivity"/>
+
+        <activity android:name=".ui.screens.wallet.withdraw.WithdrawActivity"/>
+
+        <activity android:name=".ui.screens.email.EmailDetailActivity"/>
+
+        <activity android:name=".ui.screens.profile.edit.EditPartnerActivity"/>
 
     </application>
 

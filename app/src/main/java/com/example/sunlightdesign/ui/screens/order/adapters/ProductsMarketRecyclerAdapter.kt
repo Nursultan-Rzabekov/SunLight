@@ -46,35 +46,33 @@ class ProductsMarketRecyclerAdapter(
                 .centerCrop()
                 .into(itemView.product_iv)
 
-            itemView.product_card.setOnClickListener {
-                val itemViewColor = when(itemView.product_checkbox.isChecked){
-                    true -> ContextCompat.getColorStateList(itemView.context, R.color.transparent)
-                    false -> ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
-                }
+            var k = itemView.productQuantity.text.toString().toInt()
 
-                itemView.product_card.setStrokeColor(itemViewColor)
-
-                product.isChecked = !itemView.product_checkbox.isChecked
-                itemView.product_checkbox.isChecked = !itemView.product_checkbox.isChecked
-            }
-
-            var k = 1
             itemView.minusBtn.setOnClickListener {
-                k--
+                if(k>0) k--
+
+                if(k==0){
+                    itemView.product_checkbox.isChecked = false
+                    itemView.product_card.setStrokeColor(ContextCompat.getColorStateList(itemView.context, R.color.transparent))
+                }
                 itemView.productQuantity.text = k.toString()
             }
             itemView.plusBtn.setOnClickListener {
-                k++
+                if(k>=0){
+                    k++
+                    itemView.product_checkbox.isChecked = true
+                    itemView.product_card.setStrokeColor(ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary))
+                }
                 itemView.productQuantity.text = k.toString()
             }
+
+            product.isChecked = itemView.product_checkbox.isChecked
 
             itemView.product_more_info_tv.setOnClickListener {
                 productsMarketItemSelected.onProductsSelected(product)
             }
-
         }
     }
-
 
     interface ProductsMarketItemSelected{
         fun onProductsSelected(product: Product)

@@ -3,8 +3,7 @@ package com.example.sunlightdesign.utils
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 
-fun UserInfo?.toShortenedUserInfo(): ShortenedUserInfo {
-    return ShortenedUserInfo(
+fun UserInfo?.toShortenedUserInfo() = ShortenedUserInfo(
         birthday = this?.user?.birthday,
         countryName = this?.user?.country?.country_name,
         regionName = this?.user?.region?.region_name,
@@ -16,4 +15,3 @@ fun UserInfo?.toShortenedUserInfo(): ShortenedUserInfo {
         phone = this?.user?.phone,
         uuid = this?.user?.uuid
     )
-}

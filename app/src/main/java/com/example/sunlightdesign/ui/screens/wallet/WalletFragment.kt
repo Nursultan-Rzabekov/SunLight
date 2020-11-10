@@ -60,7 +60,7 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
 
     private fun setListeners() {
         withdrawMoneyLayout.setOnClickListener {
-            findNavController().navigate(R.id.action_walletFragment_to_withdrawFragment)
+            findNavController().navigate(R.id.action_walletFragment_to_withdrawActivity)
         }
     }
 

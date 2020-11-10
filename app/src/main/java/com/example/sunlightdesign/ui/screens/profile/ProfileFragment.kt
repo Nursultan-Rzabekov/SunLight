@@ -67,14 +67,14 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             val bundle = bundleOf(
                 USER_ID to viewModel.profileInfo.value?.user?.id
             )
-            findNavController().navigate(R.id.action_profileFragmentFragment_to_registerFragment, bundle)
+            findNavController().navigate(R.id.action_profileFragmentFragment_to_register_activity, bundle)
         }
 
         editProfileBtn.setOnClickListener {
             val bundle = bundleOf(
                 USER_INFO to viewModel.profileInfo.value.toShortenedUserInfo()
             )
-            findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment, bundle)
+            findNavController().navigate(R.id.action_profileFragment_to_editProfileActivity, bundle)
         }
     }
 

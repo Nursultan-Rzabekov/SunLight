@@ -11,16 +11,16 @@
         tools:layout="@layout/fragment_wallet">
 
         <action
-            android:id="@+id/orderFragmentTo_marketFragment"
-            app:destination="@id/marketFragment"
+            android:id="@+id/orderFragmentTo_marketActivity"
+            app:destination="@id/marketActivity"
             app:popUpTo="@id/listFragment"
             app:popUpToInclusive="true" />
 
     </fragment>
 
-    <fragment
-        android:id="@+id/marketFragment"
-        android:name="com.example.sunlightdesign.ui.screens.order.market.MarketFragment"
+    <activity
+        android:id="@+id/marketActivity"
+        android:name="com.example.sunlightdesign.ui.screens.order.market.MarketActivity"
         android:label="market"
         tools:layout="@layout/market_products_list" />
 
