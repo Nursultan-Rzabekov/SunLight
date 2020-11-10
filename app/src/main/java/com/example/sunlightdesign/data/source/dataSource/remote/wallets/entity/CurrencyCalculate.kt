@@ -4,7 +4,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
 
 data class CurrencyCalculate(
     val currencies: List<CurrencyX>?,
-    val user: User
+    val user: User?
 )
 
 data class CurrencyX(

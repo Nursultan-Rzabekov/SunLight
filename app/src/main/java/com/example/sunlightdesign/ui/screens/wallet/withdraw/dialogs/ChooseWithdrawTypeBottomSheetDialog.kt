@@ -8,8 +8,8 @@ import com.example.sunlightdesign.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.payment_bottom_sheet.*
 
-class ChoosePaymentBottomSheetDialog(
-    private val interaction: ChoosePaymentInteraction
+class ChooseWithdrawTypeBottomSheetDialog(
+    private val interaction: ChooseWithdrawTypeInteraction
 ): BottomSheetDialogFragment()  {
 
     companion object{
@@ -33,18 +33,18 @@ class ChoosePaymentBottomSheetDialog(
         super.onViewCreated(view, savedInstanceState)
 
         withCashTextView.setOnClickListener {
-            interaction.onPaymentWithCashSelected()
+            interaction.onWithdrawTypeCashSelected()
             dismiss()
         }
 
         withCardTextView.setOnClickListener {
-            interaction.onPaymentWithCardSelected()
+            interaction.onWithdrawTypeCardSelected()
             dismiss()
         }
     }
 
-    interface ChoosePaymentInteraction{
-        fun onPaymentWithCashSelected()
-        fun onPaymentWithCardSelected()
+    interface ChooseWithdrawTypeInteraction{
+        fun onWithdrawTypeCashSelected()
+        fun onWithdrawTypeCardSelected()
     }
 }

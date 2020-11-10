@@ -8,33 +8,39 @@ import android.widget.AutoCompleteTextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.CurrencyX
+import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.WithdrawalReceipt
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
-import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChoosePaymentBottomSheetDialog
-import kotlinx.android.synthetic.main.account_wallet.*
-import kotlinx.android.synthetic.main.account_wallet_history.*
-import kotlinx.android.synthetic.main.fragment_wallet.*
+import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseWithdrawTypeBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.WithdrawSuccessBottomSheetDialog
+import com.example.sunlightdesign.usecase.usercase.walletUse.post.SetWithdrawal
+import com.example.sunlightdesign.utils.showMessage
+import kotlinx.android.synthetic.main.bv_payment_card_layout.*
 import kotlinx.android.synthetic.main.fragment_wallet.progress_bar
-import kotlinx.android.synthetic.main.fragment_withdraw.*
+import kotlinx.android.synthetic.main.toolbar_with_back.*
 import kotlinx.android.synthetic.main.transfer_card_layout.*
 import timber.log.Timber
-import java.lang.IllegalArgumentException
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.contract as contract
 
-class WithdrawFragment:
+class WithdrawFragment :
     StrongFragment<WalletViewModel>(WalletViewModel::class),
-    ChoosePaymentBottomSheetDialog.ChoosePaymentInteraction,
-    ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction
-{
+    ChooseWithdrawTypeBottomSheetDialog.ChooseWithdrawTypeInteraction,
+    ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction,
+    WithdrawSuccessBottomSheetDialog.WithdrawSuccessDialogInteraction {
+
     private lateinit var currencyAdapter: CustomPopupAdapter<CurrencyX>
-    private lateinit var choosePaymentBottomSheetDialog: ChoosePaymentBottomSheetDialog
+    private lateinit var chooseWithdrawTypeBottomSheetDialog: ChooseWithdrawTypeBottomSheetDialog
     private lateinit var chooseOfficeBottomSheetDialog: ChooseOfficeBottomSheetDialog
+    private lateinit var withdrawSuccessBottomSheetDialog: WithdrawSuccessBottomSheetDialog
+
+    companion object {
+        const val WITHDRAW_TYPE_WITH_CASH = 1
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +56,9 @@ class WithdrawFragment:
         setListeners()
         configViewModel()
 
+        backBtn.setText(R.string.back)
+        titleTextView.setText(R.string.withdraw_money)
+
         viewModel.getCurrencyInfo()
         viewModel.getOffices()
     }
@@ -60,7 +69,8 @@ class WithdrawFragment:
                 progress_bar.visibility = if(it) View.VISIBLE else View.GONE
             })
             calculateInfo.observe(viewLifecycleOwner, Observer {
-                it.currencies?.let { list -> setCurrencies(ArrayList(list)) }
+                it.currencies?.let { currencyList -> setCurrencies(ArrayList(currencyList)) }
+                it.user?.let { user -> bindWalletInfo(user) }
             })
 
             selectedCurrency.observe(viewLifecycleOwner, Observer {
@@ -78,12 +88,16 @@ class WithdrawFragment:
                         this@WithdrawFragment, ArrayList(offices))
                 }
             })
+
+            withdrawReceipt.observe(viewLifecycleOwner, Observer {
+                showWithdrawSuccess(it)
+            })
         }
     }
 
     private fun setListeners() {
         withdrawMoneyBtn.setOnClickListener {
-            showPaymentTypeDialog()
+            showWithdrawTypeDialog()
         }
 
         convertBtn.setOnClickListener {
@@ -91,6 +105,10 @@ class WithdrawFragment:
                 viewModel.onSelectCurrency(it)
             }
             finalAmountLayout.isVisible = true
+        }
+
+        backBtn.setOnClickListener {
+
         }
     }
 
@@ -128,23 +146,47 @@ class WithdrawFragment:
         }
     }
 
-    override fun onPaymentWithCashSelected() {
+    private fun bindWalletInfo(user: User) {
+        bv_balance_amount_tv.text = getString(R.string.amount_bv, user.wallet?.main_wallet)
+    }
+
+    override fun onWithdrawTypeCashSelected() {
         showOfficeChoiceDialog()
     }
 
-    override fun onPaymentWithCardSelected() {
+    override fun onWithdrawTypeCardSelected() {
 
     }
 
-    override fun onNextBtnPressed(office: Int) {
+    override fun onNextBtnPressed(officeId: Int) {
+        val bvValue = amountEditText.text.toString().toInt()
+        val amount = amountConvertedTextView.text.toString().toDouble().toInt()
+        val currencyId = viewModel.selectedCurrency.value?.id ?: return showErrorDialog("CurrencyId")
+        val currencyValue = viewModel.selectedCurrency.value?.currency_bv_value ?: return showErrorDialog("CurrencyValue")
+        val userId = viewModel.calculateInfo.value?.user?.id ?: return showErrorDialog("UserId")
 
+        viewModel.storeWithdraw(
+            SetWithdrawal(
+                bvValue = bvValue,
+                cashAmount = amount,
+                currencyId = currencyId,
+                currencyValue = currencyValue,
+                officeId = officeId,
+                userId = userId,
+                withdrawType = WITHDRAW_TYPE_WITH_CASH
+            )
+        )
     }
 
-    private fun showPaymentTypeDialog() {
-        choosePaymentBottomSheetDialog = ChoosePaymentBottomSheetDialog(this)
-        choosePaymentBottomSheetDialog.show(
+    override fun onClose() {
+        // finish activity
+    }
+
+    private fun showWithdrawTypeDialog() {
+        chooseWithdrawTypeBottomSheetDialog = ChooseWithdrawTypeBottomSheetDialog(this)
+        chooseWithdrawTypeBottomSheetDialog.show(
             parentFragmentManager,
-            ChoosePaymentBottomSheetDialog.TAG
+            ChooseWithdrawTypeBottomSheetDialog.TAG
         )
     }
 
@@ -155,13 +197,28 @@ class WithdrawFragment:
         )
     }
 
+    private fun showWithdrawSuccess(WithdrawalReceipt: WithdrawalReceipt) {
+        withdrawSuccessBottomSheetDialog = WithdrawSuccessBottomSheetDialog(
+            WithdrawalReceipt,
+            this
+        )
+        withdrawSuccessBottomSheetDialog.show(
+            parentFragmentManager,
+            WithdrawSuccessBottomSheetDialog.TAG
+        )
+    }
+
+    private fun showErrorDialog(message: String) {
+        showMessage(requireContext(), message = message)
+    }
+
     private fun calculateAmount(currency: CurrencyX): Double {
         val amountInBv = amountEditText.text.toString().toDoubleOrNull() ?: return .0
 
-        return currency fromBvToCurrency amountInBv
+        return currency fromCurrencyToConvertedAmount amountInBv
     }
 
-    private infix fun CurrencyX.fromBvToCurrency(amount: Double): Double {
+    private infix fun CurrencyX.fromCurrencyToConvertedAmount(amount: Double): Double {
         if (this.currency_bv_value == null) return .0
 
         return amount * this.currency_bv_value
