@@ -12,6 +12,24 @@
                 android:label="fragment_launcher"
                 tools:layout="@layout/market_products_list" >
 
+                <action
+                    android:id="@+id/market_fragment_to_market_details_fragment"
+                    app:destination="@id/market_details_fragment"
+                    app:enterAnim="@anim/fade_in"
+                    app:exitAnim="@anim/fade_out"
+                    app:popEnterAnim="@anim/fade_in"
+                    app:popExitAnim="@anim/fade_out" />
+
         </fragment>
+
+
+        <fragment
+            android:id="@+id/market_details_fragment"
+            android:name="com.example.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
+            android:label="fragment_launcher"
+            tools:layout="@layout/order_item_details" >
+
+        </fragment>
+
 
 </navigation>

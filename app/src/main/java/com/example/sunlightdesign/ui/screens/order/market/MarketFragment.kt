@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
@@ -62,8 +63,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onProductsSelected(product: Product) {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.market_fragment_to_market_details_fragment)
     }
-
 
 }
