@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.utils.showMessage
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.choose_payment_type_bottom_sheet_dialog.*
 import kotlinx.android.synthetic.main.products_list_item.view.*
 
 class ChoosePaymentTypeBottomSheetDialog(
-
+    private val chooseTypeInteraction: ChooseTypeInteraction
 ) : BottomSheetDialogFragment(), View.OnClickListener {
+
+    private var type : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,38 +38,74 @@ class ChoosePaymentTypeBottomSheetDialog(
         cashbox_type_btn.setOnClickListener(this)
         paybox_type_btn.setOnClickListener(this)
         bv_type_btn.setOnClickListener(this)
+        nextBtn.setOnClickListener(this)
+        cancelBtn.setOnClickListener(this)
 
     }
 
     interface ChooseTypeInteraction{
-        fun onTypeSelected()
+        fun onTypeSelected(type: Int)
     }
 
     companion object{
         const val TAG = "ModalBottomSheet"
     }
 
+    var k = false
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.cashbox_type_btn -> {
-                cashbox_type_btn.isChecked = !cashbox_type_btn.isChecked
-                cashbox_type_btn.strokeColor = getColorState(v.findViewById(R.id.cashbox_type_btn))
+                type = 1
 
+                cashbox_type_btn.iconTint = cashbox_type_btn.getColorState(true)
+                cashbox_type_btn.strokeColor = cashbox_type_btn.getColorState(true)
+
+                paybox_type_btn.iconTint = paybox_type_btn.getColorState(false)
+                paybox_type_btn.strokeColor = paybox_type_btn.getColorState(false)
+                bv_type_btn.iconTint = bv_type_btn.getColorState(false)
+                bv_type_btn.strokeColor = bv_type_btn.getColorState(false)
             }
             R.id.paybox_type_btn -> {
-                paybox_type_btn.isChecked = !paybox_type_btn.isChecked
-                paybox_type_btn.strokeColor = getColorState(v.findViewById(R.id.paybox_type_btn))
+                type = 2
 
+                paybox_type_btn.iconTint = paybox_type_btn.getColorState(true)
+                paybox_type_btn.strokeColor = paybox_type_btn.getColorState(true)
+
+                cashbox_type_btn.iconTint = cashbox_type_btn.getColorState(false)
+                cashbox_type_btn.strokeColor = cashbox_type_btn.getColorState(false)
+                bv_type_btn.iconTint = bv_type_btn.getColorState(false)
+                bv_type_btn.strokeColor = bv_type_btn.getColorState(false)
             }
             R.id.bv_type_btn -> {
-                bv_type_btn.isChecked = !bv_type_btn.isChecked
-                bv_type_btn.strokeColor = getColorState(v.findViewById(R.id.bv_type_btn))
+                type = 3
+
+                bv_type_btn.iconTint = bv_type_btn.getColorState(true)
+                bv_type_btn.strokeColor = bv_type_btn.getColorState(true)
+
+
+                cashbox_type_btn.iconTint = cashbox_type_btn.getColorState(false)
+                cashbox_type_btn.strokeColor = cashbox_type_btn.getColorState(false)
+                paybox_type_btn.iconTint = paybox_type_btn.getColorState(false)
+                paybox_type_btn.strokeColor = paybox_type_btn.getColorState(false)
+            }
+            R.id.nextBtn -> {
+                when(type){
+                    0 -> return showErrorDialog("Выберите тип платежа")
+                    else -> chooseTypeInteraction.onTypeSelected(type)
+                }
+            }
+            R.id.cancelBtn -> {
+                dismiss()
             }
         }
     }
 
-    private fun getColorState(itemView: MaterialButton) = when(itemView.isChecked){
-            false -> ContextCompat.getColorStateList(itemView.context, R.color.transparent)
-            true -> ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
+    private fun MaterialButton.getColorState(value: Boolean) = when(value){
+            true -> ContextCompat.getColorStateList(this.context, R.color.sunLightColor)
+            false -> ContextCompat.getColorStateList(this.context, R.color.white_gray)
+    }
+
+    private fun showErrorDialog(message: String) {
+        showMessage(requireContext(), message = message)
     }
 }

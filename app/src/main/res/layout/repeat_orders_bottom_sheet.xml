@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
         android:id="@+id/btn_all_right"
@@ -80,6 +80,7 @@
         android:textSize="@dimen/dimen_16sp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_btn"
         android:layout_width="match_parent"
         android:layout_margin="@dimen/dimen_16dp"
         android:layout_height="wrap_content"

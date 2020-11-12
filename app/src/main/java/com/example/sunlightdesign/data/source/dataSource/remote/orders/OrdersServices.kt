@@ -1,6 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.orders
 
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import kotlinx.coroutines.Deferred
@@ -26,9 +27,9 @@ interface OrdersServices {
         @Field("office_id") office_id: Int,
         @Field("order_payment_type") order_payment_type: Int,
         @Field("order_type") order_type: Int,
-        @Field("products") products: Product,
+        @Field("products") products: List<Product>,
         @Field("total_in_bv") total_in_bv: Int,
         @Field("user_id") user_id: Int
-    )
+    ): Deferred<String>
 
 }

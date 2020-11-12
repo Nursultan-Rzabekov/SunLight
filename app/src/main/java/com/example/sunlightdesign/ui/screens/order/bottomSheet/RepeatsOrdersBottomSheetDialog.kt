@@ -48,6 +48,10 @@ class RepeatsOrdersBottomSheetDialog(
             repeatsOrderInteraction.onRepeatsOrderSelected(order)
         }
 
+        cancel_btn.setOnClickListener {
+            dismiss()
+        }
+
     }
 
     companion object {

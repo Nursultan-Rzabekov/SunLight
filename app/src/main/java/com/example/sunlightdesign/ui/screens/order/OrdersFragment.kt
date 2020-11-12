@@ -23,7 +23,8 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     OrdersRecyclerAdapter.OrderSelector,
     MyOrdersBottomSheetDialog.ReplyOrderInteraction,
     RepeatsOrdersBottomSheetDialog.RepeatsOrderInteraction,
-    ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction{
+    ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction,
+    ChoosePaymentTypeBottomSheetDialog.ChooseTypeInteraction {
 
     private val ordersRecyclerAdapter: OrdersRecyclerAdapter by lazy {
         return@lazy OrdersRecyclerAdapter(requireContext(),this)
@@ -82,6 +83,11 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     override fun onReplyOrderSelected(order: Order) {
         myOrdersBottomSheetDialog.dismiss()
+
+        order.user.id?.let {
+            viewModel.createOrderBuilder.user_id = it
+        }
+
         repeatsOrdersBottomSheetDialog = RepeatsOrdersBottomSheetDialog(order = order,repeatsOrderInteraction = this)
         repeatsOrdersBottomSheetDialog.show(
             parentFragmentManager,
@@ -91,6 +97,13 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     override fun onRepeatsOrderSelected(order: Order) {
         repeatsOrdersBottomSheetDialog.dismiss()
+
+        with(order.products){
+            if(!this.isNullOrEmpty()){
+                viewModel.createOrderBuilder.products = this
+            }
+        }
+
         chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@OrdersFragment, arrayListOf(order.office))
         chooseOfficeBottomSheetDialog.show(
             parentFragmentManager,
@@ -100,10 +113,21 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     override fun onNextBtnPressed(officeId: Int) {
         chooseOfficeBottomSheetDialog.dismiss()
-        choosePaymentTypeBottomSheetDialog = ChoosePaymentTypeBottomSheetDialog()
+
+        viewModel.createOrderBuilder.office_id = officeId
+
+        choosePaymentTypeBottomSheetDialog = ChoosePaymentTypeBottomSheetDialog(this@OrdersFragment)
         choosePaymentTypeBottomSheetDialog.show(
             parentFragmentManager,
             ChoosePaymentTypeBottomSheetDialog.TAG
         )
+    }
+
+    override fun onTypeSelected(type: Int) {
+        choosePaymentTypeBottomSheetDialog.dismiss()
+
+        viewModel.createOrderBuilder.order_payment_type = type
+
+        viewModel.storeOrder(createOrderPartner = viewModel.createOrderBuilder.build())
     }
 }

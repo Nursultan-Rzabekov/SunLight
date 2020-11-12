@@ -38,7 +38,10 @@ data class CreateOrderPartner(
         var products: List<Product> = listOf()
 
         fun build(): CreateOrderPartner = CreateOrderPartner(
-            user_id, office_id, order_payment_type, products
+            user_id = user_id,
+            office_id = office_id,
+            order_payment_type = order_payment_type,
+            products = products
         )
     }
 }
