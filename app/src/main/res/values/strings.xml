@@ -35,7 +35,7 @@
     <string name="choose_country">Выберите страну:</string>
     <string name="choose_region">Выберите область:</string>
     <string name="choose_city">Выберите город:</string>
-    <string name="choose_legs">Выберите ногу:</string>
+    <string name="choose_legs">Выберите ветку:</string>
     <string name="left">Левая</string>
     <string name="right">Правая</string>
     <string name="upload_documents">Загрузите документы*</string>
@@ -43,7 +43,7 @@
     <string name="next">Далее</string>
 
     <!--Личный/ Кабинет-->
-    <string name="edit_profile">Редакитировать профиль</string>
+    <string name="edit_profile">Редактировать профиль</string>
     <string name="status_active">Статус\nАктивности</string>
     <string name="data_registration">Дата регистрации\nпользователя</string>
     <string name="personal_structure">Пользователей\nв структуре</string>
@@ -138,7 +138,7 @@
     <string name="wrong_phone_number">Неверный номер телефона</string>
     <string name="password_hint">*******</string>
     <string name="phone_mask_hint">+7 (_ _ _) _ _ _ _ _ _ _</string>
-    <string name="attach_file">Прекрепить документ</string>
+    <string name="attach_file">Прикрепить документ</string>
     <string name="delete">Удалить</string>
     <string name="ten_thousand_bv">10000 KZT</string>
     <string name="twelve_thousand_bv">12000 KZT</string>
@@ -148,10 +148,10 @@
 
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
-    <string name="amount_bv">%1$.1f BV</string>
+    <string name="amount_bv">%1$.2f BV</string>
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
-    <string name="income_amount_bv">+%1$.1f BV</string>
+    <string name="income_amount_bv">+%1$.2f BV</string>
     <string name="greeting_for_payment">Спасибо за оплату!</string>
     <string name="your_password_was_send_to">Ваш временный пароль \nотправлен на номер <b>%1$s</b></string>
     <string name="send_again_after">Отправить повторно через <b>%1$s секунд</b></string>
@@ -165,15 +165,15 @@
     <string name="password_two_dots">Пароль :</string>
     <string name="documents_scans">Сканы документов</string>
     <string name="go_to_market">Перейти в маркет</string>
-    <string name="payTo">К оплате: #%1$.1fKZT</string>
+    <string name="payTo">К оплате: #%1$.2fKZT</string>
     <string name="created_at">Дата заказа: \n %1$s</string>
-    <string name="amount">Количество: %1$.1f</string>
+    <string name="amount">Количество: %1$.2f</string>
     <string name="detail_order">Детали заказа</string>
 
 
-    <string name="order_number">Заказ #%1$.1f</string>
-    <string name="code_order">Код товара: %1$.1f</string>
-    <string name="total_amount">Общая сумма: %1$.1f KZT</string>
+    <string name="order_number">Заказ #%1$.2f</string>
+    <string name="code_order">Код товара: %1$.2f</string>
+    <string name="total_amount">Общая сумма: %1$.2f KZT</string>
     <string name="type_of_payment">Способ оплаты: %1$s</string>
     <string name="type">Тип: %1$s</string>
     <string name="cashier">Кассир: %1$s</string>
@@ -182,9 +182,9 @@
     <string name="date_end_of_order">Дата завершения покупки: %1$s</string>
     <string name="info_order">Сведенья о заказе</string>
     <string name="reply_order">Повторить заказ</string>
-    <string name="repeat_orders">Повтор заказа #%1$.1f</string>
+    <string name="repeat_orders">Повтор заказа #%1$.2f</string>
     <string name="сount_order">%1$d товара итого к оплате</string>
-    <string name="totalAmountOrders">%1$.1fKZT</string>
+    <string name="totalAmountOrders">%1$.2fKZT</string>
     <string name="all_right">Все верно</string>
     <string name="buy">Купить</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -216,5 +216,7 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="zero">0</string>
+    <string name="info_product">Информация о товаре</string>
+    <string name="choose_type">Выберите подходящий \n способ оплаты</string>
 
 </resources>

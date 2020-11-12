@@ -42,3 +42,14 @@ data class CreateOrderPartner(
         )
     }
 }
+
+data class ItemId(
+    val id: Int?
+){
+    class Builder {
+        var id: Int = -1
+
+        fun build() = ItemId(id)
+    }
+
+}

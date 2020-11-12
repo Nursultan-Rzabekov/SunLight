@@ -25,9 +25,7 @@ class EmailDetailsFragment : StrongFragment<EmailViewModel>(EmailViewModel::clas
 
         configViewModel()
 
-        arguments?.let {
-            viewModel.showAnnouncementDetail(it.getInt("itemId"))
-        }
+        viewModel.showAnnouncementDetail(viewModel.itemId.id)
     }
 
     private fun configViewModel() {

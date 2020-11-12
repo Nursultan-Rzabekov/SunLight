@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.ui.screens.order.adapters
+package com.example.sunlightdesign.ui.screens.order.bottomSheet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
+import com.example.sunlightdesign.ui.screens.order.adapters.ProductsSheetRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.repeat_orders_bottom_sheet.*
 

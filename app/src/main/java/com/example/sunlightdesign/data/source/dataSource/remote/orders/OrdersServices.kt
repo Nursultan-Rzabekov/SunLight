@@ -1,8 +1,8 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.orders
 
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 

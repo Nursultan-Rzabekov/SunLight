@@ -18,9 +18,9 @@ class OfficesRecyclerAdapter(
     private val officeSelector: OfficeSelector
 ) : RecyclerView.Adapter<OfficesRecyclerAdapter.OfficeViewHolder>() {
 
-    private var items = arrayListOf<Office>()
+    private var items = arrayListOf<Office?>()
 
-    fun setItems(items: ArrayList<Office>){
+    fun setItems(items: ArrayList<Office?>){
         this.items.clear()
         this.items = items
         notifyDataSetChanged()
@@ -34,12 +34,12 @@ class OfficesRecyclerAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: OfficeViewHolder, position: Int) {
-        holder.bind(item = items[position], onChecked = ::onChecked)
+        items[position]?.let { holder.bind(item = it, onChecked = ::onChecked) }
     }
 
     private fun onChecked(position: Int) {
-        items.forEach { it.isChecked = false }
-        items[position].isChecked = true
+        items.forEach { it?.isChecked = false }
+        items[position]?.isChecked = true
         notifyDataSetChanged()
     }
 

@@ -2,6 +2,7 @@ package com.example.sunlightdesign.usecase.usercase.emailUse.get
 
 
 import com.example.sunlightdesign.data.source.MessengerRepository
+import com.example.sunlightdesign.data.source.dataSource.ItemId
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.AnnouncementItem
 import com.example.sunlightdesign.usecase.BaseCoroutinesUseCase
 

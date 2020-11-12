@@ -9,10 +9,8 @@ import com.example.sunlightdesign.ui.base.StrongActivity
 
 class MarketActivity: StrongActivity(), NavController.OnDestinationChangedListener {
 
-
     override val layoutId: Int
         get() = R.layout.activity_market
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +22,6 @@ class MarketActivity: StrongActivity(), NavController.OnDestinationChangedListen
         destination: NavDestination,
         arguments: Bundle?
     ) {
-
 
     }
 }

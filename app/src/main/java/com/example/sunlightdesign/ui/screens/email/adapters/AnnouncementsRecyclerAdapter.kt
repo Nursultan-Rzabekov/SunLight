@@ -4,11 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Data
+import com.example.sunlightdesign.utils.DateUtils
 import kotlinx.android.synthetic.main.announcement_item.view.*
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AnnouncementsRecyclerAdapter(
     private val context: Context,
@@ -32,8 +35,9 @@ class AnnouncementsRecyclerAdapter(
         private val announcementSelector: AnnouncementSelector
     ) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Data) = with(itemView) {
+            val date = item.created_at?.let { DateUtils.convertLongStringToDate(it) } ?: Date()
 
-            itemView.dataTextView.text = item.created_at
+            itemView.dataTextView.text = DateUtils.convertDateToString(date)
             itemView.messageTitleTextView.text = item.message_title
             itemView.messageBodyTextView.text = item.message_body
 

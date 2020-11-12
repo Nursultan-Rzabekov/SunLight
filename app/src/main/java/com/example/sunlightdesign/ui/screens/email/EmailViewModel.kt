@@ -4,6 +4,7 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.ItemId
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Announcements
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.emailUse.DeleteAnnouncementUseCase
@@ -20,6 +21,8 @@ class EmailViewModel constructor(
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
+
+    var itemId: ItemId.Builder = ItemId.Builder()
 
     private val _announcementList = MutableLiveData<Announcements>()
     val announcementList: LiveData<Announcements> get() = _announcementList

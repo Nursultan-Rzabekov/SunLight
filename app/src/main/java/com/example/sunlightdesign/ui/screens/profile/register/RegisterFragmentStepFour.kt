@@ -46,7 +46,7 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
         viewModel.apply {
             officeList.observe(viewLifecycleOwner, Observer {
                 it?.let {
-                    officesRecyclerAdapter.setItems(it.offices as ArrayList<Office>)
+                    officesRecyclerAdapter.setItems(it.offices as ArrayList<Office?>)
                 }
             })
         }

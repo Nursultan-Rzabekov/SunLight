@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import kotlinx.android.synthetic.main.order_sublist_item.view.*
 
 class SubProductsRecyclerAdapter(
@@ -31,13 +31,13 @@ class SubProductsRecyclerAdapter(
         @SuppressLint("SetTextI18n")
         fun bind(product: Product) {
             itemView.bvCountTextView.text = itemView.context.getString(R.string.totalAmountOrders,product.product_price)
-            itemView.orderNameTextView.text = product.product?.product_name
+            itemView.orderNameTextView.text = product.product_name
             itemView.codeTextView.text = itemView.context.getString(R.string.amount_bv, product.product_price)
             itemView.countTextView.text = itemView.context.getString(R.string.amount,product.product_quantity)
             itemView.statusLevelTextView.text = "Завершен"
 
             Glide.with(itemView)
-                .load(product.product?.product_image_back_path)
+                .load(product.product_image_back_path)
                 .centerCrop()
                 .into(itemView.productImageView)
         }

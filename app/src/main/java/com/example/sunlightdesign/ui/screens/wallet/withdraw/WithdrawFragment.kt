@@ -108,7 +108,7 @@ class WithdrawFragment :
         }
 
         backBtn.setOnClickListener {
-
+            activity?.finish()
         }
     }
 

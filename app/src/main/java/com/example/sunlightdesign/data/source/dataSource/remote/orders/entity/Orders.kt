@@ -1,5 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.orders.entity
 
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+
 data class Orders(
     val orders: List<Order>?
 )
@@ -8,7 +10,7 @@ data class Order(
     val cashier: Any?,
     val created_at: String?,
     val id: Double?,
-    val office: Office?,
+    val office: com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?,
     val order_finish_date: Any?,
     val order_payment_type: Double?,
     val order_payment_type_arr: String?,
@@ -41,22 +43,6 @@ data class Office(
     val phone: String?,
     val region_id: Double?,
     val updated_at: String?
-)
-
-data class Product(
-    val created_at: String?,
-    val deleted_at: Any?,
-    val id: Double?,
-    val is_sent: Double?,
-    val order_id: Double?,
-    val product: com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product?,
-    val product_id: Double?,
-    val product_price: Double?,
-    val product_price_in_bv: Double?,
-    val product_price_in_currency: Double?,
-    val product_quantity: Double?,
-    val updated_at: String?,
-    var isChecked: Boolean = false
 )
 
 data class User(

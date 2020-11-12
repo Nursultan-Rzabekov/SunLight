@@ -2,7 +2,7 @@ package com.example.sunlightdesign.data.source.dataSource.remote.auth.entity
 
 data class OfficesList(
     val message: String?,
-    val offices: List<Office>?
+    val offices: List<Office?>?
 )
 
 data class Office(

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import kotlinx.android.synthetic.main.product_sheet_item.view.*
 
 class ProductsSheetRecyclerAdapter(
@@ -28,12 +28,12 @@ class ProductsSheetRecyclerAdapter(
         view: View
     ) : RecyclerView.ViewHolder(view) {
         fun bind(product: Product) {
-            itemView.product_name_tv.text = product.product?.product_name
+            itemView.product_name_tv.text = product.product_name
             itemView.product_price_tv.text =
                 itemView.context.getString(R.string.amount_bv, product.product_price)
 
             Glide.with(itemView)
-                .load(product.product?.product_image_front_path)
+                .load(product.product_image_front_path)
                 .centerCrop()
                 .placeholder(R.drawable.product_test)
                 .into(itemView.product_iv)

@@ -14,12 +14,12 @@ data class Product(
     val product_image_back_path: String?,
     val product_image_front_path: String?,
     val product_name: String?,
-    val product_price: Int?,
-    val product_price_in_bv: Int?,
-    val product_price_in_currency: Int?,
-    val product_quantity: Int?,
+    val product_price: Double?,
+    val product_price_in_bv: Double?,
+    val product_price_in_currency: Double?,
+    val product_quantity: Double?,
     val product_short_description: String?,
-    val product_type: Int?,
+    val product_type: Double?,
     val updated_at: String?,
     var isChecked: Boolean = false
 )

@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Product
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import kotlinx.android.synthetic.main.product_market_item.view.*
 
 class ProductsMarketRecyclerAdapter(
@@ -35,12 +35,12 @@ class ProductsMarketRecyclerAdapter(
         private val productsMarketItemSelected: ProductsMarketItemSelected
     ): RecyclerView.ViewHolder(view) {
         fun bind(product: Product) {
-            itemView.product_name_tv.text = product.product?.product_name
-            itemView.product_description_tv.text = product.product?.product_short_description
-            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price?.toDouble())
+            itemView.product_name_tv.text = product.product_name
+            itemView.product_description_tv.text = product.product_short_description
+            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price)
 
             Glide.with(itemView)
-                .load(product.product?.product_image_front_path)
+                .load(product.product_image_front_path)
                 .placeholder(R.drawable.product_test)
                 .error(R.drawable.product_test)
                 .centerCrop()

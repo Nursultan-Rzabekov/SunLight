@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.example.sunlightdesign.ui.base.StrongFragment
-import com.example.sunlightdesign.ui.screens.order.adapters.MyOrdersBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.bottomSheet.MyOrdersBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.adapters.OrdersRecyclerAdapter
-import com.example.sunlightdesign.ui.screens.order.adapters.RepeatsOrdersBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.bottomSheet.ChoosePaymentTypeBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.bottomSheet.RepeatsOrdersBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
 import kotlinx.android.synthetic.main.orders_fragment.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 
@@ -20,7 +22,8 @@ import kotlinx.android.synthetic.main.toolbar_with_back.*
 class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     OrdersRecyclerAdapter.OrderSelector,
     MyOrdersBottomSheetDialog.ReplyOrderInteraction,
-    RepeatsOrdersBottomSheetDialog.RepeatsOrderInteraction {
+    RepeatsOrdersBottomSheetDialog.RepeatsOrderInteraction,
+    ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction{
 
     private val ordersRecyclerAdapter: OrdersRecyclerAdapter by lazy {
         return@lazy OrdersRecyclerAdapter(requireContext(),this)
@@ -28,6 +31,8 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     private lateinit var myOrdersBottomSheetDialog: MyOrdersBottomSheetDialog
     private lateinit var repeatsOrdersBottomSheetDialog: RepeatsOrdersBottomSheetDialog
+    private lateinit var chooseOfficeBottomSheetDialog: ChooseOfficeBottomSheetDialog
+    private lateinit var choosePaymentTypeBottomSheetDialog: ChoosePaymentTypeBottomSheetDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,7 +91,19 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     override fun onRepeatsOrderSelected(order: Order) {
         repeatsOrdersBottomSheetDialog.dismiss()
-
+        chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@OrdersFragment, arrayListOf(order.office))
+        chooseOfficeBottomSheetDialog.show(
+            parentFragmentManager,
+            ChooseOfficeBottomSheetDialog.TAG
+        )
     }
 
+    override fun onNextBtnPressed(officeId: Int) {
+        chooseOfficeBottomSheetDialog.dismiss()
+        choosePaymentTypeBottomSheetDialog = ChoosePaymentTypeBottomSheetDialog()
+        choosePaymentTypeBottomSheetDialog.show(
+            parentFragmentManager,
+            ChoosePaymentTypeBottomSheetDialog.TAG
+        )
+    }
 }
