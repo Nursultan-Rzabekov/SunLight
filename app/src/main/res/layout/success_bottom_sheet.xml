@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/dimen_16dp"
+    android:paddingEnd="@dimen/dimen_16dp">
+
+    <ImageView
+        android:layout_margin="@dimen/dimen_16dp"
+        android:id="@+id/arrow_bottom_sheet_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_arrow_sheet"
+        android:contentDescription="@string/appbar_scrolling_view_behavior" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_success"
+        android:contentDescription="@string/text_success"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_58dp"/>
+
+    <TextView
+        android:id="@+id/successInfoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/dimen_22sp"
+        style="@style/AppCompatTextViewGray"
+        android:textColor="@color/sunBlackColor"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:text="@string/success_order"/>
+
+    <TextView
+        android:id="@+id/successInfoDescTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/AppCompatTextViewGray"
+        android:textSize="@dimen/dimen_14sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="@dimen/dimen_24dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:text="@string/go_to_cashbox"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/okBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dimen_12dp"
+        android:paddingBottom="@dimen/dimen_12dp"
+        android:layout_marginTop="@dimen/dimen_58dp"
+        style="@style/BasicMaterialButton"
+        android:text="@string/text_ok"/>
+
+</LinearLayout>

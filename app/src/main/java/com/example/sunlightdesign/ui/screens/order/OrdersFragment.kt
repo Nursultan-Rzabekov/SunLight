@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.example.sunlightdesign.ui.base.StrongFragment
-import com.example.sunlightdesign.ui.screens.order.bottomSheet.MyOrdersBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.MyOrdersBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.adapters.OrdersRecyclerAdapter
-import com.example.sunlightdesign.ui.screens.order.bottomSheet.ChoosePaymentTypeBottomSheetDialog
-import com.example.sunlightdesign.ui.screens.order.bottomSheet.RepeatsOrdersBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentTypeBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.RepeatsOrdersBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
 import kotlinx.android.synthetic.main.orders_fragment.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
@@ -34,6 +35,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     private lateinit var repeatsOrdersBottomSheetDialog: RepeatsOrdersBottomSheetDialog
     private lateinit var chooseOfficeBottomSheetDialog: ChooseOfficeBottomSheetDialog
     private lateinit var choosePaymentTypeBottomSheetDialog: ChoosePaymentTypeBottomSheetDialog
+    private lateinit var successBottomSheetDialog: SuccessBottomSheetDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,6 +64,16 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         viewModel.apply {
             orders.observe(viewLifecycleOwner, Observer {
                 ordersRecyclerAdapter.setItems(it.orders as MutableList<Order>)
+            })
+
+            orderState.observe(viewLifecycleOwner, Observer {
+                if(it){
+                    successBottomSheetDialog = SuccessBottomSheetDialog()
+                    successBottomSheetDialog.show(
+                        parentFragmentManager,
+                        SuccessBottomSheetDialog.TAG
+                    )
+                }
             })
         }
     }

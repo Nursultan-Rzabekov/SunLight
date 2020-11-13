@@ -148,10 +148,10 @@
 
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
-    <string name="amount_bv">%1$.2f BV</string>
+    <string name="amount_bv">%1$.2f KZT</string>
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
-    <string name="income_amount_bv">+%1$.2f BV</string>
+    <string name="income_amount_bv">+%1$.2f KZT</string>
     <string name="greeting_for_payment">Спасибо за оплату!</string>
     <string name="your_password_was_send_to">Ваш временный пароль \nотправлен на номер <b>%1$s</b></string>
     <string name="send_again_after">Отправить повторно через <b>%1$s секунд</b></string>
@@ -167,7 +167,7 @@
     <string name="go_to_market">Перейти в маркет</string>
     <string name="payTo">К оплате: #%1$.2fKZT</string>
     <string name="created_at">Дата заказа: \n %1$s</string>
-    <string name="amount">Количество: %1$.2f</string>
+    <string name="amount">Количество: %1d.0</string>
     <string name="detail_order">Детали заказа</string>
 
 
@@ -183,6 +183,7 @@
     <string name="info_order">Сведенья о заказе</string>
     <string name="reply_order">Повторить заказ</string>
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
+    <string name="products_choose">Вы выбрали</string>
     <string name="сount_order">%1$d товара итого к оплате</string>
     <string name="totalAmountOrders">%1$.2fKZT</string>
     <string name="all_right">Все верно</string>
@@ -218,5 +219,8 @@
     <string name="zero">0</string>
     <string name="info_product">Информация о товаре</string>
     <string name="choose_type">Выберите подходящий \n способ оплаты</string>
+    <string name="success_order">Спасибо \n за покупку</string>
+    <string name="go_to_cashbox">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>
+    <string name="choose_products">Выберите хотя бы один продукт</string>
 
 </resources>

@@ -1,17 +1,15 @@
-package com.example.sunlightdesign.ui.screens.order.bottomSheet
+package com.example.sunlightdesign.ui.screens.order.sheetDialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.showMessage
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.choose_payment_type_bottom_sheet_dialog.*
-import kotlinx.android.synthetic.main.products_list_item.view.*
 
 class ChoosePaymentTypeBottomSheetDialog(
     private val chooseTypeInteraction: ChooseTypeInteraction

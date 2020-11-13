@@ -17,7 +17,7 @@ data class Product(
     val product_price: Double?,
     val product_price_in_bv: Double?,
     val product_price_in_currency: Double?,
-    val product_quantity: Double?,
+    var product_quantity: Int?,
     val product_short_description: String?,
     val product_type: Double?,
     val updated_at: String?,

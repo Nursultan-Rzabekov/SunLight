@@ -175,4 +175,11 @@ fun showDialog(context: Context,
     dialog.show()
 }
 
+fun Fragment.showToast(message: String){
+    Toast.makeText(this.requireContext(),message,Toast.LENGTH_SHORT).show()
+}
+
+fun Activity.showToast(message: String){
+    Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+}
 

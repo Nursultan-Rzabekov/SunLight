@@ -3,6 +3,8 @@ package com.example.sunlightdesign.ui.screens.order.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -50,27 +52,35 @@ class ProductsMarketRecyclerAdapter(
 
             itemView.minusBtn.setOnClickListener {
                 if(k>0) k--
-
                 if(k==0){
                     itemView.product_checkbox.isChecked = false
-                    itemView.product_card.setStrokeColor(ContextCompat.getColorStateList(itemView.context, R.color.transparent))
+                    itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
                 }
-                itemView.productQuantity.text = k.toString()
+                sameClick(itemView = itemView, product = product, k = k)
             }
             itemView.plusBtn.setOnClickListener {
                 if(k>=0){
                     k++
                     itemView.product_checkbox.isChecked = true
-                    itemView.product_card.setStrokeColor(ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary))
+                    itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
+                    sameClick(itemView = itemView, product = product, k = k)
                 }
-                itemView.productQuantity.text = k.toString()
             }
-
-            product.isChecked = itemView.product_checkbox.isChecked
 
             itemView.product_more_info_tv.setOnClickListener {
                 productsMarketItemSelected.onProductsSelected(product)
             }
+        }
+
+        private fun sameClick(itemView: View, product:Product, k: Int){
+            itemView.productQuantity.text = k.toString()
+            product.isChecked = itemView.product_checkbox.isChecked
+            product.product_quantity = k
+        }
+
+        private fun ToggleButton.setColorState()  =  when(this.isChecked){
+            true -> { ContextCompat.getColorStateList(this.context, R.color.colorPrimary) }
+            false -> { ContextCompat.getColorStateList(this.context, R.color.transparent) }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.sunlightdesign.ui.screens.order.bottomSheet
+package com.example.sunlightdesign.ui.screens.order.sheetDialog
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -34,6 +34,10 @@ class OrderViewModel constructor(
     private var _products = MutableLiveData<OrderProducts>()
     val products: LiveData<OrderProducts> get() = _products
 
+
+    private var _orderState = MutableLiveData<Boolean>(false)
+    val orderState: LiveData<Boolean> get() = _orderState
+
     fun getMyOrders() {
         progress.postValue(true)
         getOrdersUseCase.execute {
@@ -112,14 +116,17 @@ class OrderViewModel constructor(
         storeOrderUseCase.execute {
             onComplete {
                 progress.postValue(false)
+                _orderState.postValue(true)
             }
             onNetworkError {
                 progress.postValue(false)
                 handleError(errorMessage = it.message)
+                _orderState.postValue(false)
             }
             onError {
                 progress.postValue(false)
                 handleError(throwable = it)
+                _orderState.postValue(false)
             }
         }
     }
