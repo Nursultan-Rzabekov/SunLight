@@ -37,6 +37,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btn_company_cv"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 style="@style/MainCardViewStyle">
 
                 <ImageView
@@ -60,6 +62,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btn_market_cv"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 style="@style/MainCardViewStyle">
 
                 <ImageView
@@ -85,6 +89,8 @@
 
             <androidx.cardview.widget.CardView
                 android:visibility="gone"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:id="@+id/btn_structure_cv"
                 style="@style/MainCardViewStyle">
 
@@ -110,6 +116,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btn_enter_cv"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 app:cardBackgroundColor="@color/sunLightColor"
                 style="@style/MainCardViewStyle">
 
