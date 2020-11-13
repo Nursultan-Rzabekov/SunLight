@@ -20,6 +20,7 @@ class BaseApplication : MultiDexApplication() {
             // declare modules
             modules(
                 module,
+                mainModule,
                 authModule,
                 accountModule,
                 announcementsModule,
