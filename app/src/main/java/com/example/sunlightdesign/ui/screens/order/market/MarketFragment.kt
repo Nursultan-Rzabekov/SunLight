@@ -90,6 +90,14 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 )
             }
         })
+
+        viewModel.officesList.observe(viewLifecycleOwner, Observer {
+            chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@MarketFragment, it.offices as ArrayList<com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>)
+            chooseOfficeBottomSheetDialog.show(
+                parentFragmentManager,
+                ChooseOfficeBottomSheetDialog.TAG
+            )
+        })
     }
 
     private fun initRecycler(items: List<Product>) {
@@ -119,11 +127,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
         viewModel.createOrderBuilder.products = productsAdapter.getCheckedProducts()
 
-        chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@MarketFragment, arrayListOf())
-        chooseOfficeBottomSheetDialog.show(
-            parentFragmentManager,
-            ChooseOfficeBottomSheetDialog.TAG
-        )
+        viewModel.getOfficesList()
     }
 
     override fun onNextBtnPressed(officeId: Int) {

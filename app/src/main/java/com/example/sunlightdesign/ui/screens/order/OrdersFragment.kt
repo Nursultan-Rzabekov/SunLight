@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Office
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.MyOrdersBottomSheetDialog
@@ -75,6 +76,13 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                     )
                 }
             })
+            officesList.observe(viewLifecycleOwner, Observer {
+                chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@OrdersFragment, it.offices as ArrayList<com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>)
+                chooseOfficeBottomSheetDialog.show(
+                    parentFragmentManager,
+                    ChooseOfficeBottomSheetDialog.TAG
+                )
+            })
         }
     }
 
@@ -116,11 +124,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             }
         }
 
-        chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@OrdersFragment, arrayListOf(order.office))
-        chooseOfficeBottomSheetDialog.show(
-            parentFragmentManager,
-            ChooseOfficeBottomSheetDialog.TAG
-        )
+        viewModel.getOfficesList()
     }
 
     override fun onNextBtnPressed(officeId: Int) {

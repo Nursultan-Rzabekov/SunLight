@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.orders
 
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
@@ -20,6 +21,10 @@ interface OrdersServices {
 
     @GET("orders/product-list/show/{id}")
     fun getProductByID(@Path("id") id: Int)
+
+    @GET("cabinet/add-partner/offices-list")
+    fun getOfficesList(
+    ): Deferred<OfficesList>
 
     @FormUrlEncoded
     @POST("orders/store")
