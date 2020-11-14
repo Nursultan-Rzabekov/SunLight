@@ -1,10 +1,10 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.main.entity
 
-data class Post(
-    val posts: List<PostX>
+data class Posts(
+    val posts: List<Post>
 )
 
-data class PostX(
+data class Post(
     val content: String,
     val created_at: String,
     val description: String,

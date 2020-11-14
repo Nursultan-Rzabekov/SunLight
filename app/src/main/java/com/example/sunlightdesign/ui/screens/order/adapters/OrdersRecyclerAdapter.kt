@@ -52,7 +52,7 @@ class OrdersRecyclerAdapter(
                 val childLayoutManager = LinearLayoutManager(this.productsRecyclerView.context)
                 this.productsRecyclerView.apply {
                     layoutManager = childLayoutManager
-                    adapter = SubProductsRecyclerAdapter(items = item.products)
+                    adapter = SubProductsRecyclerAdapter(items = item.products, statusOrder = item.order_status_value.toString())
                     setRecycledViewPool(RecyclerView.RecycledViewPool())
                 }
             }

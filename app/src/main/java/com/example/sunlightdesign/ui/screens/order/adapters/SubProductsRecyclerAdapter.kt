@@ -11,7 +11,8 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Prod
 import kotlinx.android.synthetic.main.order_sublist_item.view.*
 
 class SubProductsRecyclerAdapter(
-    private val items: List<Product>
+    private val items: List<Product>,
+    private val statusOrder: String
 ) : RecyclerView.Adapter<SubProductsRecyclerAdapter.ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -23,18 +24,18 @@ class SubProductsRecyclerAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) =
-        holder.bind(items[position])
+        holder.bind(items[position],statusOrder)
 
     class ProductViewHolder(
         view: View
     ) : RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
-        fun bind(product: Product) {
+        fun bind(product: Product,statusOrder: String) {
             itemView.bvCountTextView.text = itemView.context.getString(R.string.totalAmountOrders,product.product_price)
             itemView.orderNameTextView.text = product.product_name
             itemView.codeTextView.text = itemView.context.getString(R.string.amount_bv, product.product_price)
             itemView.countTextView.text = itemView.context.getString(R.string.amount,product.product_quantity)
-            itemView.statusLevelTextView.text = "Завершен"
+            itemView.statusLevelTextView.text = statusOrder
 
             Glide.with(itemView)
                 .load(product.product_image_back_path)

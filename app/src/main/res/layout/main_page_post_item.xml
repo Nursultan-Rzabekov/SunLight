@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    style="@style/BaseCardView"
+    android:background="@color/sunlight_background"
+    android:layout_height="300dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/post_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/main_photo"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:layout_height="150dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_text_view"
+            style="@style/AppCompatTextView"
+            tools:text="ТОРЖЕСТВЕННОЕ ОТКРЫТИЕ КОМПАНИИ
+Sun light corporate 11 МАЯ 2020"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:textSize="@dimen/dimen_16sp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description_text_view"
+            style="@style/AppCompatTextViewGray"
+            android:textSize="@dimen/dimen_14sp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            tools:text="Было затрачено большое количество энергии
+и пройден непростой путь для создания..."/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/time_text_view"
+            style="@style/AppCompatTextViewGray"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:textSize="12sp"
+            tools:text="Вчера в 7:00"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -9,17 +9,27 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Category
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.adapter.BannerViewPagerAdapter
+import com.example.sunlightdesign.ui.launcher.adapter.PostAdapter
 import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
+import com.example.sunlightdesign.ui.launcher.adapter.СategoriesAdapter
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
 
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::class),
-    BannerViewPagerAdapter.OnPageSelected {
+    BannerViewPagerAdapter.OnPageSelected,
+    СategoriesAdapter.CategoryInterface {
+
+    private lateinit var categoriesAdapter: СategoriesAdapter
+
+    private val postAdapter: PostAdapter by lazy {
+        return@lazy PostAdapter()
+    }
 
     private val handler = Handler()
     private val delay = 3000L //milliseconds
@@ -103,10 +113,16 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
                 dots_indicator.setDotTintRes(R.color.sunBlackColor)
             })
             categories.observe(viewLifecycleOwner, Observer {
-
+                it.categories.first().selected = true
+                categoriesAdapter = СategoriesAdapter(items = it.categories, categoryInterface = this@LauncherFragment)
+                categories_recycler_view.adapter = categoriesAdapter
             })
             posts.observe(viewLifecycleOwner, Observer {
 
+            })
+            postsById.observe(viewLifecycleOwner, Observer {
+                post_recyclerview.adapter = postAdapter
+                postAdapter.setItems(it.posts)
             })
         }
     }
@@ -133,4 +149,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
 
     }
 
+    override fun onCategorySelected(item: Category) {
+        viewModel.getPostsByCategoryId(item.id)
+    }
 }

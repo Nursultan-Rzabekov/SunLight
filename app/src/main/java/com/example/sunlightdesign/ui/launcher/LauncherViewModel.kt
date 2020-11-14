@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Banners
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Categories
-import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Post
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Posts
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainBannersUseCase
 import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainCategoriesUseCase
 import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainPostUseCase
+import com.example.sunlightdesign.usecase.usercase.mainUse.GetPostsByCategoryId
 
 /**
  * ViewModel for the task list screen.
@@ -19,7 +20,8 @@ class LauncherViewModel constructor(
     private val sharedUseCase: SharedUseCase,
     private val getMainPostUseCase: GetMainPostUseCase,
     private val getMainCategoriesUseCase: GetMainCategoriesUseCase,
-    private val getMainBannersUseCase: GetMainBannersUseCase
+    private val getMainBannersUseCase: GetMainBannersUseCase,
+    private val getPostsByCategoryId: GetPostsByCategoryId
 ) : StrongViewModel() {
 
     val progress = MutableLiveData<Boolean>(false)
@@ -32,9 +34,11 @@ class LauncherViewModel constructor(
     private var _categories = MutableLiveData<Categories>()
     val categories:LiveData<Categories> get() = _categories
 
-    private var _posts = MutableLiveData<Post>()
-    val posts:LiveData<Post> get() = _posts
+    private var _posts = MutableLiveData<Posts>()
+    val posts:LiveData<Posts> get() = _posts
 
+    private var _postsById = MutableLiveData<Posts>()
+    val postsById:LiveData<Posts> get() = _postsById
 
     init {
         if (!sharedUseCase.getSharedPreference().bearerToken.isNullOrEmpty())
@@ -83,6 +87,25 @@ class LauncherViewModel constructor(
             onComplete {
                 progress.postValue(false)
                 _posts.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun getPostsByCategoryId(id: Int){
+        progress.postValue(true)
+        getPostsByCategoryId.setItems(id)
+        getPostsByCategoryId.execute {
+            onComplete {
+                progress.postValue(false)
+                _postsById.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)
