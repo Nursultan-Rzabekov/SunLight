@@ -5,10 +5,8 @@ import com.example.sunlightdesign.data.source.dataSource.remote.main.MainService
 import com.example.sunlightdesign.data.source.repositories.DefaultLauncherRepository
 import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.screens.home.HomeViewModel
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainBannersUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainCategoriesUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainPostUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetPostsByCategoryId
+import com.example.sunlightdesign.ui.screens.home.structure.StructureViewModel
+import com.example.sunlightdesign.usecase.usercase.mainUse.get.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -50,6 +48,12 @@ val mainModule = module {
         )
     }
 
+    factory {
+        GetStructureUseCase(
+            launcherRepository = get()
+        )
+    }
+
     viewModel {
         LauncherViewModel(
             sharedUseCase = get(),
@@ -70,5 +74,9 @@ val mainModule = module {
         )
     }
 
-
+    viewModel {
+        StructureViewModel(
+            getStructureUseCase = get()
+        )
+    }
 }

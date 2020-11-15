@@ -1,9 +1,6 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.main
 
-import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Banners
-import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Categories
-import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Posts
-import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Post
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.*
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,5 +26,9 @@ interface MainServices {
     fun showPostDetails(
         @Path("id") id: Int
     ): Deferred<Post>
+
+    @GET("structure")
+    fun getStructureInfo(
+    ): Deferred<StructureInfo>
 
 }

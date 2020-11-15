@@ -7,17 +7,17 @@ import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Cate
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Posts
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainBannersUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainCategoriesUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetMainPostUseCase
-import com.example.sunlightdesign.usecase.usercase.mainUse.GetPostsByCategoryId
+import com.example.sunlightdesign.usecase.usercase.mainUse.get.GetMainBannersUseCase
+import com.example.sunlightdesign.usecase.usercase.mainUse.get.GetMainCategoriesUseCase
+import com.example.sunlightdesign.usecase.usercase.mainUse.get.GetMainPostUseCase
+import com.example.sunlightdesign.usecase.usercase.mainUse.get.GetPostsByCategoryId
 
 /**
  * ViewModel for the task list screen.
  */
 
 class LauncherViewModel constructor(
-    private val sharedUseCase: SharedUseCase,
+    sharedUseCase: SharedUseCase,
     private val getMainPostUseCase: GetMainPostUseCase,
     private val getMainCategoriesUseCase: GetMainCategoriesUseCase,
     private val getMainBannersUseCase: GetMainBannersUseCase,
