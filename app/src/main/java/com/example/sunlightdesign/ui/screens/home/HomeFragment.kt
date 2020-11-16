@@ -16,6 +16,7 @@ import com.example.sunlightdesign.ui.launcher.adapter.PostAdapter
 import com.example.sunlightdesign.ui.launcher.adapter.СategoriesAdapter
 import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
+import com.example.sunlightdesign.ui.screens.home.structure.StructureActivity
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
@@ -140,7 +141,7 @@ class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
         }
 
         btn_structure_cv.setOnClickListener {
-            
+            startActivity(Intent(requireContext(), StructureActivity::class.java))
         }
 
         btn_market_cv.setOnClickListener {

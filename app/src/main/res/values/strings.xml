@@ -222,5 +222,26 @@
     <string name="success_order">Спасибо \n за покупку</string>
     <string name="go_to_cashbox">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>
     <string name="choose_products">Выберите хотя бы один продукт</string>
+    <string name="title_activity_structure">StructureActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="show_tree">Смотреть древо</string>
+    <string name="structure_status">Статусы структуры</string>
+    <string name="count_of_people_in_status">Сколько пользователей в статусах</string>
+    <string name="users_in_structure">Пользователей в структуре</string>
+    <string name="own_invited">Лично-приглашенных</string>
+    <string name="client_eng">Client</string>
+    <string name="partner_eng">Partner</string>
+    <string name="vip_partner_eng">Vip partner</string>
+    <string name="manager_eng">Manager</string>
+    <string name="topaz_eng">Topaz</string>
+    <string name="ruby_eng">Ruby</string>
+    <string name="sapphire_eng">Sapphire</string>
+    <string name="diamond_eng">Diamond</string>
+    <string name="emerland_eng">Emerland</string>
+    <string name="exit">Выйти</string>
 
 </resources>
