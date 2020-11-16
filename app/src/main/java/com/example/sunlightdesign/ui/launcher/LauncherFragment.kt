@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Category
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Post
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.adapter.BannerViewPagerAdapter
 import com.example.sunlightdesign.ui.launcher.adapter.PostAdapter
@@ -27,9 +28,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
 
     private lateinit var categoriesAdapter: СategoriesAdapter
 
-    private val postAdapter: PostAdapter by lazy {
-        return@lazy PostAdapter()
-    }
+    private lateinit var postAdapter: PostAdapter
 
     private val handler = Handler()
     private val delay = 3000L //milliseconds
@@ -85,44 +84,51 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
             banners.observe(viewLifecycleOwner, Observer {
-                newsViewPagerAdapter = BannerViewPagerAdapter(
-                    banners = it, context = requireContext(), onPageSelected = this@LauncherFragment
-                )
-                news_view_pager.adapter = newsViewPagerAdapter
-                news_view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                    override fun onPageScrolled(
-                        position: Int,
-                        positionOffset: Float,
-                        positionOffsetPixels: Int
-                    ) {
-                    }
+                if(it.banners.isNotEmpty()){
+                    sunlight_banner_lv.visibility = View.VISIBLE
+                    newsViewPagerAdapter = BannerViewPagerAdapter(
+                        banners = it, context = requireContext(), onPageSelected = this@LauncherFragment
+                    )
+                    news_view_pager.adapter = newsViewPagerAdapter
+                    news_view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                        override fun onPageScrolled(
+                            position: Int,
+                            positionOffset: Float,
+                            positionOffsetPixels: Int
+                        ) {
+                        }
 
-                    override fun onPageSelected(position: Int) {
-                        newsViewPagerAdapter?.let { viewPager ->
-                            if (position == (viewPager.count - 1)) {
-                                page = (viewPager.count - 1) - position - 1
-                            } else {
-                                page = position
+                        override fun onPageSelected(position: Int) {
+                            newsViewPagerAdapter?.let { viewPager ->
+                                if (position == (viewPager.count - 1)) {
+                                    page = (viewPager.count - 1) - position - 1
+                                } else {
+                                    page = position
+                                }
                             }
                         }
-                    }
 
-                    override fun onPageScrollStateChanged(state: Int) {}
-                })
-                dots_indicator.attachViewPager(news_view_pager)
-                dots_indicator.setDotTintRes(R.color.sunBlackColor)
+                        override fun onPageScrollStateChanged(state: Int) {}
+                    })
+                    dots_indicator.attachViewPager(news_view_pager)
+                    dots_indicator.setDotTintRes(R.color.sunBlackColor)
+                }
+
             })
             categories.observe(viewLifecycleOwner, Observer {
                 it.categories.first().selected = true
                 categoriesAdapter = СategoriesAdapter(items = it.categories, categoryInterface = this@LauncherFragment)
                 categories_recycler_view.adapter = categoriesAdapter
+
+                viewModel.getPostsByCategoryId(it.categories.first().id)
+
             })
             posts.observe(viewLifecycleOwner, Observer {
 
             })
             postsById.observe(viewLifecycleOwner, Observer {
+                postAdapter = PostAdapter(requireContext(),it.posts)
                 post_recyclerview.adapter = postAdapter
-                postAdapter.setItems(it.posts)
             })
         }
     }

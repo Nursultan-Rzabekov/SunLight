@@ -43,11 +43,13 @@ android {
         prod {
             dimension "default"
             buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz/api/"')
+            buildConfigField("String", "BASE_URL_IMAGE", '"http://Test-sunlight.qsmart.kz/"')
         }
 
         dev {
             dimension "default"
             buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz/api/"')
+            buildConfigField("String", "BASE_URL_IMAGE", '"http://Test-sunlight.qsmart.kz/"')
         }
     }
 }
