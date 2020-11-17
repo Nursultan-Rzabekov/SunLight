@@ -6,25 +6,30 @@ import java.util.*
 class DateUtils {
     companion object{
 
+        const val PATTERN_DD_MM_YYYY = "dd.MM.yyyy"
+
         fun convertLongStringToDate(date: String): Date {
             val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX", Locale.ENGLISH)
-            var d: Date
-            try {
-                d = sdf.parse(date)?: Date()
+            return try {
+                sdf.parse(date)?: Date()
             } catch (e: Exception){
-                d = Date()
+                Date()
             }
-            return d
         }
 
-        fun convertDateToString(date: Date): String{
-            val sdf = SimpleDateFormat("dd.MM.yyyy HH.mm", Locale.getDefault())
+        fun convertDateToString(date: Date, pattern: String = "dd.MM.yyyy HH.mm"): String {
+            val sdf = SimpleDateFormat(pattern, Locale.getDefault())
             try {
-                val d = sdf.format(date)
-                return d
+                return sdf.format(date)
             }catch (e: Exception){
                 throw Exception(e)
             }
+        }
+
+        fun reformatDateString(dataText: String, pattern: String): String {
+            return convertDateToString(
+                date = convertLongStringToDate(dataText),
+                pattern = pattern)
         }
     }
 }

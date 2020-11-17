@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.Child
+import com.example.sunlightdesign.utils.DateUtils
 import kotlinx.android.synthetic.main.invited_list_item.view.*
 
 class InvitedAdapter(
@@ -41,7 +42,10 @@ class InvitedAdapter(
                     itemView.context.getString(R.string.active)
                 else
                     itemView.context.getString(R.string.not_active)
-            itemView.invitedDateTextView.text = item.created_at
+            item.created_at?.let {
+                itemView.invitedDateTextView.text =
+                    DateUtils.reformatDateString(it, pattern = DateUtils.PATTERN_DD_MM_YYYY)
+            }
         }
     }
 }

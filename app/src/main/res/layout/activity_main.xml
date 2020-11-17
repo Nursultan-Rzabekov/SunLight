@@ -43,7 +43,7 @@
         android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelVisibilityMode="unlabeled"
+        app:labelVisibilityMode="labeled"
         android:background="@color/white"
         app:itemIconTint="@color/main_bottom_navigation_colors"
         android:layout_gravity="bottom"

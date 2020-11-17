@@ -17,6 +17,7 @@ import com.example.sunlightdesign.ui.screens.profile.adapters.InvitedAdapter
 import com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment.Companion.USER_INFO
 import com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne.Companion.USER_ID
 import com.example.sunlightdesign.utils.Constants.Companion.ACTIVITY_ACTIVE
+import com.example.sunlightdesign.utils.DateUtils
 import com.example.sunlightdesign.utils.toShortenedUserInfo
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
 import kotlinx.android.synthetic.main.account_invited_all.*
@@ -93,7 +94,9 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         Glide.with(this)
             .load(info.user?.document_front_path)
             .into(userAvatarCircleImageView)
-        userCreatedAtTextView.text = info.user?.created_at
+        info.user?.created_at?.let{
+            userCreatedAtTextView.text =  DateUtils.reformatDateString(it, DateUtils.PATTERN_DD_MM_YYYY)
+        }
         userActivityStatusTextView.text = if (info.user?.is_active == ACTIVITY_ACTIVE)
             getString(R.string.active)
         else getString(R.string.active)

@@ -2,6 +2,7 @@ package com.example.sunlightdesign.ui.screens.home.tree
 
 import android.os.Bundle
 import android.view.KeyEvent
+import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
 import kotlinx.android.synthetic.main.activity_users_tree.*
@@ -28,7 +29,11 @@ class TreeActivity: StrongActivity() {
     }
 
     private fun loadWebView(){
-        treeWebView.loadUrl("")
+        treeWebView.settings.loadWithOverviewMode = true
+        treeWebView.settings.useWideViewPort = true
+        treeWebView.settings.javaScriptEnabled = true
+        treeWebView.settings.loadsImagesAutomatically = true
+        treeWebView.loadUrl(BuildConfig.STRUCTURE_URL)
     }
 
     private fun setListeners() {

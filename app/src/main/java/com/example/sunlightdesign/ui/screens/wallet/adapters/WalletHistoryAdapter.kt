@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.Data
 import com.example.sunlightdesign.utils.Constants
+import com.example.sunlightdesign.utils.DateUtils
 import kotlinx.android.synthetic.main.wallet_history_item.view.*
 
 class WalletHistoryAdapter(
@@ -50,10 +51,14 @@ class WalletHistoryAdapter(
             itemView.typeOfTransactionTextView.text = history.status_type
             itemView.accountTextView.text = history.wallet_type
             itemView.amountTextView.text = itemView.context.getString(R.string.amount_bv, history.value)
-            itemView.dateOfTransactionTextView.text = history.finish_date
+            itemView.dateOfTransactionTextView.text =
+                DateUtils.reformatDateString(history.finish_date, DateUtils.PATTERN_DD_MM_YYYY)
 
             itemView.bonusesTextView.text = history.bonus?.bonus_name
-            itemView.createDateTextView.text = history.bonus?.created_at
+            history.bonus?.created_at?.let {
+                itemView.createDateTextView.text =
+                    DateUtils.reformatDateString(it, DateUtils.PATTERN_DD_MM_YYYY)
+            }
             itemView.walletTextView.text = history.wallet_type
             itemView.nameTextView.text = history.bonus?.bonus_description
 
