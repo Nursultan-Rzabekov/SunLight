@@ -39,6 +39,7 @@
             android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/copyReferralLinkBtn"
             android:layout_width="@dimen/dimen_50dp"
             android:layout_height="@dimen/dimen_50dp"
             android:layout_gravity="center"
@@ -48,6 +49,7 @@
             android:src="@drawable/ic_copy_referal" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/shareReferralLinkBtn"
             android:layout_width="@dimen/dimen_50dp"
             android:layout_height="@dimen/dimen_50dp"
             android:layout_gravity="center"
