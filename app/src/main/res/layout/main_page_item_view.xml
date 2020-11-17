@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/sunlight_background"
+    android:layout_marginHorizontal="@dimen/dimen_4dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.button.MaterialButton
