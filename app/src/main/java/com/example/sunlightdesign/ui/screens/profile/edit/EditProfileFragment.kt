@@ -1,24 +1,36 @@
 package com.example.sunlightdesign.ui.screens.profile.edit
 
 import android.app.Dialog
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
+import com.example.sunlightdesign.utils.DateUtils
 import com.example.sunlightdesign.utils.MaskUtils
+import com.example.sunlightdesign.utils.getImageUrl
+import com.example.sunlightdesign.utils.toShortenedUserInfo
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
 import kotlinx.android.synthetic.main.dialog_change_password.*
+import kotlinx.android.synthetic.main.footer_user_card.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
+import timber.log.Timber
 
 class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
@@ -49,8 +61,9 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
         setListeners()
         setMasks()
-        setUserInfo(arguments?.getParcelable(USER_INFO))
         setObservers()
+
+        viewModel.getProfileInfo()
     }
 
     private fun setListeners() {
@@ -90,10 +103,14 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
             })
 
             navigationEvent.observe(viewLifecycleOwner, Observer {
-                if (it != null &&
-                        it is ProfileViewModel.NavigationEvent.NoAction) {
+                if (it != null && it is ProfileViewModel.NavigationEvent.NoAction) {
                     dismissPasswordDialog()
                 }
+            })
+
+            profileInfo.observe(viewLifecycleOwner, Observer {
+                setUserInfo(it.toShortenedUserInfo())
+                setSponsorInfo(it)
             })
         }
     }
@@ -113,23 +130,67 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         userFullNameTextView.text = info?.fullName
         userUuidTextView.text = info?.uuid
         userStatusTextView.text = info?.status
-        birthdayEditText.setText(info?.birthday)
+        info?.birthday?.let {
+            birthdayEditText.setText(
+                DateUtils.reformatDateString(it, DateUtils.PATTERN_DD_MM_YYYY)
+            )
+        }
         phone_et.setText(info?.phone)
         country_drop_down_tv.setText(info?.countryName)
         city_drop_down_tv.setText(info?.cityName)
         region_drop_down_tv.setText(info?.regionName)
 
         Glide.with(this)
-            .load(info?.document_front_path)
-            .placeholder(R.drawable.test_document)
-            .error(R.drawable.test_document)
+            .load(getImageUrl(info?.document_front_path))
+            .addListener(object: RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?, model: Any?, target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    document_rear_side_card.isVisible = false
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?, model: Any?, target: Target<Drawable>?,
+                    dataSource: DataSource?, isFirstResource: Boolean
+                ): Boolean = false
+
+            })
             .into(document_rear_side_iv)
 
         Glide.with(this)
-            .load(info?.document_back_path)
-            .placeholder(R.drawable.test_document)
-            .error(R.drawable.test_document)
+            .load(getImageUrl(info?.document_back_path))
+            .addListener(object: RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?, model: Any?, target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    document_back_side_card.isVisible = false
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?, model: Any?, target: Target<Drawable>?,
+                    dataSource: DataSource?, isFirstResource: Boolean): Boolean = false
+
+            })
             .into(document_back_side_iv)
+
+        Glide.with(this)
+            .load(getImageUrl(info?.user_avatar_path))
+            .into(userAvatarCircleImageView)
+    }
+
+    private fun setSponsorInfo(userInfo: UserInfo) {
+        sponsorFullNameTextView.text = ("${userInfo.parent?.first_name} ${userInfo.parent?.last_name}")
+        sponsorLoginTextView.text = userInfo.parent?.email
+        sponsorStatusTextView.text = userInfo.parent?.status?.status_name
+        sponsorUuidTextView.text = userInfo.parent?.uuid
+
+        Glide.with(this)
+            .load(getImageUrl(userInfo.parent?.user_avatar_path))
+            .into(sponsorAvatarImageView)
     }
 
     private fun showPasswordDialog() {

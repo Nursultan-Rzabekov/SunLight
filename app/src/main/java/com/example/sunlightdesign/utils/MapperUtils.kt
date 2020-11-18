@@ -13,5 +13,6 @@ fun UserInfo?.toShortenedUserInfo() = ShortenedUserInfo(
         document_front_path = this?.user?.document_front_path,
         status = this?.user?.status?.status_name,
         phone = this?.user?.phone,
-        uuid = this?.user?.uuid
+        uuid = this?.user?.uuid,
+        user_avatar_path = this?.user?.user_avatar_path
     )
