@@ -43,9 +43,11 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
 
     private fun configViewModel(){
         viewModel.apply {
+
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.visibility = if(it) View.VISIBLE else View.GONE
             })
+
             walletLiveData.observe(viewLifecycleOwner, Observer {
                 bonusWalletTextView.text = it.wallet.main_wallet.toString()
                 activityWalletTextView.text = it.wallet.purchase_wallet.toString()
