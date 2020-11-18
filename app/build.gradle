@@ -45,13 +45,14 @@ android {
             buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz/api/"')
             buildConfigField("String", "STRUCTURE_URL", '"http://test-sunlight.qsmart.kz/cabinet/structures"')
             buildConfigField("String", "BASE_URL_IMAGE", '"http://Test-sunlight.qsmart.kz/"')
+            buildConfigField("String", "REFERAL_LINK", '"http://test-sunlight.qsmart.kz/register-partner?referral_link="')
         }
-
         dev {
             dimension "default"
             buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz/api/"')
             buildConfigField("String", "STRUCTURE_URL", '"http://test-sunlight.qsmart.kz/cabinet/structures"')
             buildConfigField("String", "BASE_URL_IMAGE", '"http://Test-sunlight.qsmart.kz/"')
+            buildConfigField("String", "REFERAL_LINK", '"http://test-sunlight.qsmart.kz/register-partner?referral_link="')
         }
     }
 }

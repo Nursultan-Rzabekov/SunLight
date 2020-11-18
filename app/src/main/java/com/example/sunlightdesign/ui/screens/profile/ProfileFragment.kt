@@ -21,6 +21,7 @@ import com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment.Co
 import com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne.Companion.USER_ID
 import com.example.sunlightdesign.utils.Constants.Companion.ACTIVITY_ACTIVE
 import com.example.sunlightdesign.utils.DateUtils
+import com.example.sunlightdesign.utils.getImageUrl
 import com.example.sunlightdesign.utils.saveToClipboard
 import com.example.sunlightdesign.utils.toShortenedUserInfo
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
@@ -110,7 +111,7 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         userUuidTextView.text = info.user?.uuid
         userStatusTextView.text = info.user?.status?.status_name
         Glide.with(this)
-            .load(info.user?.document_front_path)
+            .load(getImageUrl(info.user?.user_avatar_path))
             .into(userAvatarCircleImageView)
         info.user?.created_at?.let{
             userCreatedAtTextView.text =  DateUtils.reformatDateString(it, DateUtils.PATTERN_DD_MM_YYYY)
@@ -126,7 +127,7 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             getString(R.string.amount_bv, info.user?.wallet?.left_branch_total)
         rightBranchTotalTextView.text =
             getString(R.string.amount_bv, info.user?.wallet?.right_branch_total)
-        referralLink = "${BuildConfig.BASE_URL}${info.user?.referral_link}"
+        referralLink = "${BuildConfig.REFERAL_LINK}${info.user?.referral_link}"
 
         invitedAdapter.setItems(info.children ?: listOf())
     }

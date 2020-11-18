@@ -47,10 +47,10 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
                 progress_bar.visibility = if(it) View.VISIBLE else View.GONE
             })
             walletLiveData.observe(viewLifecycleOwner, Observer {
-                bonusWalletTextView.text = it.wallet.main_wallet.toString()
-                activityWalletTextView.text = it.wallet.purchase_wallet.toString()
-                leftBranchTotalTextView.text = it.user.left_total
-                rightBranchTotalTextView.text = it.user.right_total
+                bonusWalletTextView.text = getString(R.string.amount_bv, it.wallet.main_wallet)
+                activityWalletTextView.text = getString(R.string.amount_bv, it.wallet.purchase_wallet)
+                leftBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.left_branch_total)
+                rightBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.right_branch_total)
 
                 walletHistoriesLayout.isVisible = it.walletHistory.data.isNotEmpty()
                 walletHistoryAdapter.submitList(it.walletHistory.data)
