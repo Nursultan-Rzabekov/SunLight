@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/sunlight_background"
     android:layout_marginHorizontal="@dimen/dimen_4dp"
     xmlns:tools="http://schemas.android.com/tools">
@@ -10,6 +11,7 @@
         android:id="@+id/category_name_btn"
         style="@style/BasicMaterialButtonMain"
         android:layout_width="wrap_content"
+        app:cornerRadius="@dimen/dimen_30dp"
         android:layout_height="wrap_content"
         tools:text="Все новости"
         android:textSize="@dimen/dimen_12sp"

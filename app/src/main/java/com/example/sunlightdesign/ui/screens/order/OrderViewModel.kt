@@ -3,13 +3,11 @@ package com.example.sunlightdesign.ui.screens.order
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.example.sunlightdesign.ui.base.StrongViewModel
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrderByIdUseCase
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrdersUseCase
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetProductByIdUseCase
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetProductListUseCase
+import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 
 
@@ -21,7 +19,8 @@ class OrderViewModel constructor(
     private val getProductListUseCase: GetProductListUseCase,
     private val getOrderByIdUseCase: GetOrderByIdUseCase,
     private val getProductByIdUseCase: GetProductByIdUseCase,
-    private val storeOrderUseCase: StoreOrderUseCase
+    private val storeOrderUseCase: StoreOrderUseCase,
+    private val getOfficesListUseCase: GetOfficesListUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -34,9 +33,11 @@ class OrderViewModel constructor(
     private var _products = MutableLiveData<OrderProducts>()
     val products: LiveData<OrderProducts> get() = _products
 
-
     private var _orderState = MutableLiveData<Boolean>(false)
     val orderState: LiveData<Boolean> get() = _orderState
+
+    private var _officesList = MutableLiveData<OfficesList>()
+    val officesList: LiveData<OfficesList> get() = _officesList
 
     fun getMyOrders() {
         progress.postValue(true)
@@ -127,6 +128,25 @@ class OrderViewModel constructor(
                 progress.postValue(false)
                 handleError(throwable = it)
                 _orderState.postValue(false)
+            }
+        }
+    }
+
+
+    fun getOfficesList(){
+        progress.postValue(true)
+        getOfficesListUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _officesList.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
             }
         }
     }

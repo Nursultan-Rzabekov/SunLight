@@ -4,10 +4,7 @@ import com.example.sunlightdesign.data.source.OrdersRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.OrdersServices
 import com.example.sunlightdesign.data.source.repositories.DefaultOrdersRepository
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrderByIdUseCase
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetOrdersUseCase
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetProductByIdUseCase
-import com.example.sunlightdesign.usecase.usercase.orders.get.GetProductListUseCase
+import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -56,13 +53,20 @@ val ordersModule = module {
         )
     }
 
+    factory {
+        GetOfficesListUseCase(
+            ordersRepository = get()
+        )
+    }
+
     viewModel {
         OrderViewModel(
             getOrdersUseCase = get(),
             getOrderByIdUseCase = get(),
             getProductByIdUseCase = get(),
             getProductListUseCase = get(),
-            storeOrderUseCase = get()
+            storeOrderUseCase = get(),
+            getOfficesListUseCase = get()
         )
     }
 }

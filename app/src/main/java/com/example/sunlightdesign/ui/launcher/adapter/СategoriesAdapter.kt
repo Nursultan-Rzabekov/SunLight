@@ -30,11 +30,17 @@ class СategoriesAdapter constructor(
         fun bind(item: Category,categoryInterface: CategoryInterface) {
             itemView.category_name_btn.text = item.name
 
+            itemView.category_name_btn.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.transparent))
+            itemView.category_name_btn.setTextColor(ContextCompat.getColor(itemView.context,R.color.colorPrimary))
+
+
             if(item.selected){
                 itemView.category_name_btn.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.colorPrimary))
+                itemView.category_name_btn.setTextColor(ContextCompat.getColor(itemView.context,R.color.white))
             }
             itemView.category_name_btn.setOnClickListener {
                 itemView.category_name_btn.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.colorPrimary))
+                itemView.category_name_btn.setTextColor(ContextCompat.getColor(itemView.context,R.color.white))
                 categoryInterface.onCategorySelected(item)
             }
         }
