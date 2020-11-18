@@ -50,6 +50,7 @@
                 android:id="@+id/invitedActivityTextView"
                 style="@style/AppCompatTextViewGray"
                 tools:text="Не активен"
+                android:textColor="@color/sunLightColor"
                 android:textSize="@dimen/dimen_14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
