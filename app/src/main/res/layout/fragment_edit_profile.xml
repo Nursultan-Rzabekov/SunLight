@@ -52,8 +52,8 @@
                         android:textSize="@dimen/dimen_16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/BasicTextInputLayout.Reverse"
                         android:id="@+id/passwordEditTextLayout"
+                        style="@style/BasicTextInputLayout.Reverse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp"
@@ -67,11 +67,11 @@
                             style="@style/BasicEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:enabled="false"
                             android:inputType="textPassword"
                             android:paddingTop="@dimen/dimen_12dp"
-                            android:enabled="false"
-                            android:text="@string/password_hint"
-                            android:paddingBottom="@dimen/dimen_12dp" />
+                            android:paddingBottom="@dimen/dimen_12dp"
+                            android:text="@string/password_hint" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -209,170 +209,178 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/AppCompatTextViewGray"
-                        android:layout_marginTop="@dimen/dimen_32dp"
-                        android:text="@string/documents_scans"
-                        android:textColor="@color/sunBlackColor"
-                        android:textSize="@dimen/dimen_14sp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/AppCompatTextViewGray"
-                        android:layout_marginTop="@dimen/dimen_16dp"
-                        android:layout_marginBottom="@dimen/dimen_16dp"
-                        android:text="@string/requirements_documents"
-                        android:textSize="@dimen/dimen_9sp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/attach_document_btn"
-                        style="@style/BasicOutlinedMaterialButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_12dp"
-                        android:paddingTop="@dimen/dimen_16dp"
-                        android:paddingBottom="@dimen/dimen_16dp"
-                        android:text="@string/attach_file"
-                        android:visibility="gone"
-                        app:icon="@drawable/ic_attach_file"
-                        app:iconTint="@color/gray_DA" />
-
                     <LinearLayout
+                        android:id="@+id/documentsLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/document_rear_side_card"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/AppCompatTextViewGray"
+                            android:layout_marginTop="@dimen/dimen_32dp"
+                            android:text="@string/documents_scans"
+                            android:textColor="@color/sunBlackColor"
+                            android:textSize="@dimen/dimen_14sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/AppCompatTextViewGray"
+                            android:layout_marginTop="@dimen/dimen_16dp"
                             android:layout_marginBottom="@dimen/dimen_16dp"
-                            android:background="@drawable/card_border_gray_da"
-                            android:padding="@dimen/dimen_16dp">
+                            android:text="@string/requirements_documents"
+                            android:textSize="@dimen/dimen_9sp" />
 
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/document_rear_side_iv_container"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:cardCornerRadius="@dimen/dimen_5dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <ImageView
-                                    android:id="@+id/document_rear_side_iv"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:adjustViewBounds="true"
-                                    android:contentDescription="@string/upload_documents"
-                                    tools:src="@drawable/test_document" />
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/document_rear_side_name_tv"
-                                style="@style/AppCompatTextViewGray"
-                                android:layout_width="@dimen/dimen_0dp"
-                                android:layout_marginTop="@dimen/dimen_16dp"
-                                android:layout_marginEnd="@dimen/dimen_16dp"
-                                android:ellipsize="end"
-                                android:lines="1"
-                                android:textSize="@dimen/dimen_14sp"
-                                app:layout_constraintEnd_toStartOf="@id/document_rear_side_remove_tv"
-                                app:layout_constraintHorizontal_bias="0.0"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/document_rear_side_iv_container"
-                                tools:text="document.jpg" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/document_rear_side_size_tv"
-                                style="@style/AppCompatTextViewGray"
-                                android:layout_marginTop="@dimen/dimen_4dp"
-                                android:textColor="@color/light_gray"
-                                android:textSize="@dimen/dimen_12sp"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/document_rear_side_name_tv"
-                                tools:text="16 MB" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/document_rear_side_remove_tv"
-                                style="@style/AppCompatTextViewGray"
-                                android:text="@string/delete"
-                                android:textColor="@color/red"
-                                android:textSize="@dimen/dimen_14sp"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toTopOf="@id/document_rear_side_size_tv"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@id/document_rear_side_name_tv" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/document_back_side_card"
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/attach_document_btn"
+                            style="@style/BasicOutlinedMaterialButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/card_border_gray_da"
-                            android:padding="@dimen/dimen_16dp">
+                            android:layout_marginTop="@dimen/dimen_12dp"
+                            android:paddingTop="@dimen/dimen_16dp"
+                            android:paddingBottom="@dimen/dimen_16dp"
+                            android:text="@string/attach_file"
+                            android:visibility="gone"
+                            app:icon="@drawable/ic_attach_file"
+                            app:iconTint="@color/gray_DA" />
 
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/document_back_side_iv_container"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/document_rear_side_card"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:cardCornerRadius="@dimen/dimen_5dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                                android:layout_marginBottom="@dimen/dimen_16dp"
+                                android:background="@drawable/card_border_gray_da"
+                                android:padding="@dimen/dimen_16dp">
 
-                                <ImageView
-                                    android:id="@+id/document_back_side_iv"
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/document_rear_side_iv_container"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:adjustViewBounds="true"
-                                    android:contentDescription="@string/upload_documents"
-                                    tools:src="@drawable/test_document" />
+                                    app:cardCornerRadius="@dimen/dimen_5dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
 
-                            </com.google.android.material.card.MaterialCardView>
+                                    <ImageView
+                                        android:id="@+id/document_rear_side_iv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:contentDescription="@string/upload_documents"
+                                        tools:src="@drawable/test_document" />
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/document_back_side_name_tv"
-                                style="@style/AppCompatTextViewGray"
-                                android:layout_width="0dp"
-                                android:layout_marginTop="@dimen/dimen_16dp"
-                                android:layout_marginEnd="@dimen/dimen_16dp"
-                                android:ellipsize="end"
-                                android:lines="1"
-                                android:textSize="@dimen/dimen_14sp"
-                                app:layout_constraintEnd_toStartOf="@id/document_back_side_remove_tv"
-                                app:layout_constraintHorizontal_bias="0.0"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/document_back_side_iv_container"
-                                tools:text="document.jpg" />
+                                </com.google.android.material.card.MaterialCardView>
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/document_back_side_size_tv"
-                                style="@style/AppCompatTextViewGray"
-                                android:layout_marginTop="@dimen/dimen_4dp"
-                                android:textColor="@color/light_gray"
-                                android:textSize="@dimen/dimen_12sp"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/document_back_side_name_tv"
-                                tools:text="16 MB" />
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/document_rear_side_name_tv"
+                                    style="@style/AppCompatTextViewGray"
+                                    android:layout_width="@dimen/dimen_0dp"
+                                    android:layout_marginTop="@dimen/dimen_16dp"
+                                    android:layout_marginEnd="@dimen/dimen_16dp"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:textSize="@dimen/dimen_14sp"
+                                    app:layout_constraintEnd_toStartOf="@id/document_rear_side_remove_tv"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/document_rear_side_iv_container"
+                                    tools:text="document.jpg" />
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/document_back_side_remove_tv"
-                                style="@style/AppCompatTextViewGray"
-                                android:text="@string/delete"
-                                android:textColor="@color/red"
-                                android:textSize="@dimen/dimen_14sp"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toTopOf="@id/document_back_side_size_tv"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@id/document_back_side_name_tv" />
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/document_rear_side_size_tv"
+                                    style="@style/AppCompatTextViewGray"
+                                    android:layout_marginTop="@dimen/dimen_4dp"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="@dimen/dimen_12sp"
+                                    android:visibility="gone"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/document_rear_side_name_tv"
+                                    tools:text="16 MB" />
 
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/document_rear_side_remove_tv"
+                                    style="@style/AppCompatTextViewGray"
+                                    android:text="@string/delete"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/dimen_14sp"
+                                    android:visibility="gone"
+                                    app:layout_constraintBottom_toTopOf="@id/document_rear_side_size_tv"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/document_rear_side_name_tv" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/document_back_side_card"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/card_border_gray_da"
+                                android:padding="@dimen/dimen_16dp">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/document_back_side_iv_container"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:cardCornerRadius="@dimen/dimen_5dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <ImageView
+                                        android:id="@+id/document_back_side_iv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:contentDescription="@string/upload_documents"
+                                        tools:src="@drawable/test_document" />
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/document_back_side_name_tv"
+                                    style="@style/AppCompatTextViewGray"
+                                    android:layout_width="0dp"
+                                    android:layout_marginTop="@dimen/dimen_16dp"
+                                    android:layout_marginEnd="@dimen/dimen_16dp"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:textSize="@dimen/dimen_14sp"
+                                    app:layout_constraintEnd_toStartOf="@id/document_back_side_remove_tv"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/document_back_side_iv_container"
+                                    tools:text="document.jpg" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/document_back_side_size_tv"
+                                    style="@style/AppCompatTextViewGray"
+                                    android:layout_marginTop="@dimen/dimen_4dp"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="@dimen/dimen_12sp"
+                                    android:visibility="gone"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/document_back_side_name_tv"
+                                    tools:text="16 MB" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/document_back_side_remove_tv"
+                                    style="@style/AppCompatTextViewGray"
+                                    android:text="@string/delete"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/dimen_14sp"
+                                    android:visibility="gone"
+                                    app:layout_constraintBottom_toTopOf="@id/document_back_side_size_tv"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/document_back_side_name_tv" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -392,14 +400,14 @@
                 style="@style/AppCompatTextViewGray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exit"
-                android:textSize="@dimen/dimen_22sp"
-                android:textColor="@color/red"
-                android:paddingHorizontal="-16dp"
-                android:textAlignment="center"
+                android:layout_marginBottom="@dimen/dimen_16dp"
                 android:background="@color/white"
                 android:padding="@dimen/dimen_16dp"
-                android:layout_marginBottom="@dimen/dimen_16dp"/>
+                android:paddingHorizontal="-16dp"
+                android:text="@string/exit"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="@dimen/dimen_22sp" />
 
         </LinearLayout>
 

@@ -156,6 +156,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
                     isFirstResource: Boolean
                 ): Boolean {
                     document_rear_side_card.isVisible = false
+                    documentsLayout.isVisible = document_back_side_card.isVisible
                     return false
                 }
 
@@ -175,6 +176,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
                     isFirstResource: Boolean
                 ): Boolean {
                     document_back_side_card.isVisible = false
+                    documentsLayout.isVisible = document_rear_side_card.isVisible
                     return false
                 }
 
