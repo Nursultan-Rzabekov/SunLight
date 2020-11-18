@@ -81,6 +81,10 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
             dismissPasswordDialog()
         }
 
+        exitTextView.setOnClickListener {
+
+        }
+
         passwordDialog.changePasswordBtn.setOnClickListener {
             if (passwordDialog.confirmPasswordEditText.text.toString().isBlank()) return@setOnClickListener
             if (passwordDialog.oldPasswordEditText.text.toString().isBlank()) return@setOnClickListener
@@ -98,6 +102,10 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
     private fun setObservers() {
         viewModel.apply {
+            progress.observe(viewLifecycleOwner, Observer {
+                progress_bar.isVisible = it
+            })
+
             avatarImage.observe(viewLifecycleOwner, Observer {
                 userAvatarCircleImageView.setImageURI(it)
             })

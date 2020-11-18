@@ -387,10 +387,23 @@
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_marginBottom="@dimen/dimen_16dp" />
 
+            <TextView
+                android:id="@+id/exitTextView"
+                style="@style/AppCompatTextViewGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exit"
+                android:textSize="@dimen/dimen_22sp"
+                android:textColor="@color/red"
+                android:paddingHorizontal="-16dp"
+                android:textAlignment="center"
+                android:background="@color/white"
+                android:padding="@dimen/dimen_16dp"
+                android:layout_marginBottom="@dimen/dimen_16dp"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
     <ProgressBar
         android:id="@+id/progress_bar"
