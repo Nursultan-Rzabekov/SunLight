@@ -53,6 +53,8 @@ class WithdrawFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        incomeAndOutcomeLayout.isVisible = false
+
         setListeners()
         configViewModel()
 
@@ -61,13 +63,16 @@ class WithdrawFragment :
 
         viewModel.getCurrencyInfo()
         viewModel.getOffices()
+        viewModel.getWalletInfo()
     }
 
     private fun configViewModel(){
         viewModel.apply {
+
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.visibility = if(it) View.VISIBLE else View.GONE
             })
+
             calculateInfo.observe(viewLifecycleOwner, Observer {
                 it.currencies?.let { currencyList -> setCurrencies(ArrayList(currencyList)) }
                 it.user?.let { user -> bindWalletInfo(user) }
@@ -81,12 +86,18 @@ class WithdrawFragment :
                 )
                 amountConvertedTextView.text = calculateAmount(it).toString()
                 currencySymbolTextView.text = it.currency_sign
+                finalAmountTextView.text = ("${calculateAmount(it)} ${it.currency_sign}")
             })
+
             officesList.observe(viewLifecycleOwner, Observer {
                 it.offices?.let {offices ->
                     chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(
                         this@WithdrawFragment, ArrayList(offices))
                 }
+            })
+
+            walletLiveData.observe(viewLifecycleOwner, Observer {
+                bv_balance_amount_tv.text = getString(R.string.amount_bv, it.wallet.main_wallet)
             })
 
             withdrawReceipt.observe(viewLifecycleOwner, Observer {

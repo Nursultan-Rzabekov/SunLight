@@ -215,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_24dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:orientation="vertical">
 
             <TextView
@@ -226,6 +226,7 @@
                 android:textSize="@dimen/dimen_16sp" />
 
             <TextView
+                android:id="@+id/finalAmountTextView"
                 style="@style/AppCompatTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
