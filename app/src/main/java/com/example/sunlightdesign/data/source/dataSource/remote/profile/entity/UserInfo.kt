@@ -62,7 +62,7 @@ data class Parent(
     val status_id: Double?,
     val step: Double?,
     val system_status: Double?,
-    val user_avatar_path: Any?,
+    val user_avatar_path: String?,
     val uuid: String?,
     val who: Any?
 )
@@ -146,7 +146,7 @@ data class User(
     val status_id: Double?,
     val step: Double?,
     val system_status: Double?,
-    val user_avatar_path: Any?,
+    val user_avatar_path: String?,
     val uuid: String?,
     val wallet: Wallet?,
     val week_bonus: Any?,
@@ -234,5 +234,6 @@ data class ShortenedUserInfo(
     val status: String?,
     val phone: String?,
     val document_back_path: String?,
-    val document_front_path: String?
+    val document_front_path: String?,
+    val user_avatar_path: String?
 ) : Parcelable
