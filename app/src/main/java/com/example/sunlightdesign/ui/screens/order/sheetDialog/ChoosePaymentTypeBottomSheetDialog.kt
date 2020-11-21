@@ -57,6 +57,10 @@ class ChoosePaymentTypeBottomSheetDialog(
 
                 cashbox_type_btn.iconTint = cashbox_type_btn.getColorState(true)
                 cashbox_type_btn.strokeColor = cashbox_type_btn.getColorState(true)
+                cashbox_type_btn.icon = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.check_toggle_btn_selector
+                )
 
                 paybox_type_btn.iconTint = paybox_type_btn.getColorState(false)
                 paybox_type_btn.strokeColor = paybox_type_btn.getColorState(false)
