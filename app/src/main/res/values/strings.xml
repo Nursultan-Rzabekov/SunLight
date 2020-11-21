@@ -76,7 +76,7 @@
     <string name="vybor_ofısa">Выбор офиса</string>
     <string name="cposob_oplaty"> Cпособ оплаты</string>
     <string name="available_products_from">Доступные товары из <b>“%1$s”</b></string>
-    <string name="itogo_k_oplate">Итого к оплате : %1$dBV = %2$s KZT</string>
+    <string name="itogo_k_oplate">Итого к оплате : %1$.2f BV = %2$.2f KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
 
     <!--Компания-->
@@ -244,5 +244,6 @@
     <string name="diamond_eng">Diamond</string>
     <string name="emerland_eng">Emerland</string>
     <string name="exit">Выйти</string>
+    <string name="oops_message">Упс...</string>
 
 </resources>

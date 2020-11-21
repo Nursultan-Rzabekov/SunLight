@@ -16,6 +16,7 @@ import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.PackageRecyclerAdapter
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
+import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_two.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_two.progress_bar
@@ -72,9 +73,7 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
                     it.data is User?){
                     val bundle = bundleOf(
                         RegisterFragmentStepThree.PACKAGE_NAME to
-                                packageEntity?.package_name,
-                        RegisterFragmentStepOne.USER_ID to
-                                arguments?.getInt(RegisterFragmentStepOne.USER_ID)
+                                packageEntity?.package_name
                     )
                     findNavController().navigate(R.id.action_stepTwoFragment_to_stepThreeFragment, bundle)
                 }
@@ -88,6 +87,7 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun setListeners() {
         registration_partner_step_two_next_button.setOnClickListener {
+            if (!checkFields()) return@setOnClickListener
             arguments?.let {
                 viewModel.setPackages(
                     SetPackage(
@@ -97,6 +97,21 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
                 )
             }
         }
+    }
+
+    private fun checkFields() : Boolean {
+        val message = when {
+            packageEntity == null || packageEntity?.id == null -> "Выбирите пакет"
+            else -> null
+        }
+        if (message != null) {
+            showMessage(
+                context = requireContext(),
+                message = message
+            )
+            return false
+        }
+        return true
     }
 
 }

@@ -13,10 +13,10 @@ data class Package(
     val id: Int?,
     val package_description: String?,
     val package_name: String?,
-    val package_price: Int?,
+    val package_price: Double?,
     val package_price_in_currency: Double?,
-    val package_price_in_kzt: Int?,
-    val package_reference: Int?,
+    val package_price_in_kzt: Double?,
+    val package_reference: Double?,
     val products: List<Product>?,
     val updated_at: String?,
     var isChecked: Boolean = false

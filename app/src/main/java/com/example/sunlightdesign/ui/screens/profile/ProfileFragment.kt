@@ -31,7 +31,6 @@ import kotlinx.android.synthetic.main.account_referral_link.*
 import kotlinx.android.synthetic.main.account_registration_referral.*
 import kotlinx.android.synthetic.main.account_wallet.*
 import kotlinx.android.synthetic.main.fragment_account.*
-import java.nio.file.Paths
 
 class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 

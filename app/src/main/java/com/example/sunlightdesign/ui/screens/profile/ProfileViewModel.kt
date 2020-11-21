@@ -46,6 +46,8 @@ class ProfileViewModel constructor(
 
     var createOrderPartnerBuilder: CreateOrderPartner.Builder = CreateOrderPartner.Builder()
 
+    var registerItselfUserId = MutableLiveData<Int>()
+
     private var _countriesList = MutableLiveData<CountriesList>()
     val countriesList: LiveData<CountriesList> get() = _countriesList
 

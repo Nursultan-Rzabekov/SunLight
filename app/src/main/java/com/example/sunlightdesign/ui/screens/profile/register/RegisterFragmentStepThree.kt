@@ -12,6 +12,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Prod
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.ProductsRecyclerAdapter
+import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.fragment_register_partner_step_three.*
 
 
@@ -46,6 +47,7 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
 
     private fun setListeners() {
         next_step_three_btn.setOnClickListener {
+            if (!checkFields()) return@setOnClickListener
             viewModel.createOrderPartnerBuilder.products = productsAdapter.getCheckedProducts()
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
@@ -66,7 +68,22 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
     }
 
     override fun onProductsSelected(product: Product) {
-        TODO("Not yet implemented")
+
+    }
+
+    private fun checkFields() : Boolean {
+        val message = when {
+            productsAdapter.getCheckedProducts().isEmpty() -> "Выберите продукт"
+            else -> null
+        }
+        if (message != null) {
+            showMessage(
+                context = requireContext(),
+                message = message
+            )
+            return false
+        }
+        return true
     }
 
 }
