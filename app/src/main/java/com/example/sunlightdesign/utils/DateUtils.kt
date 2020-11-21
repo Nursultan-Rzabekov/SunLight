@@ -7,6 +7,7 @@ class DateUtils {
     companion object{
 
         const val PATTERN_DD_MM_YYYY = "dd.MM.yyyy"
+        const val PATTERN_DD_MM_YYYY_HH_mm = "dd.MM.yyyy HH:mm"
 
         fun convertLongStringToDate(date: String): Date {
             val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX", Locale.ENGLISH)

@@ -159,7 +159,7 @@
     <string name="send_again">Отправить повторно</string>
     <string name="come_up_to_till">Подойдите к кассе, чтобы оплатить \nи получить инструкцию \nдальнейших действий.</string>
 
-    <string name="sunlight_mail">From: sunlight@gmail.com</string>
+    <string name="from_mail">From: $1%s</string>
 
     <string name="birthday">День рождения</string>
     <string name="sponsor">Спонсор</string>
@@ -244,6 +244,7 @@
     <string name="diamond_eng">Diamond</string>
     <string name="emerland_eng">Emerland</string>
     <string name="exit">Выйти</string>
-    <string name="oops_message">Упс...</string>
+    <string name="oops_message">Упс…</string>
+    <string name="to_mail">To: $1%s</string>
 
 </resources>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Data
 import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.screens.email.EmailDetailActivity.Companion.KEY_ANNOUNCEMENT_ID
 import com.example.sunlightdesign.ui.screens.email.adapters.AnnouncementsRecyclerAdapter
 import kotlinx.android.synthetic.main.announcements.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
@@ -52,8 +53,10 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class),
     }
 
     override fun onAnnouncementSelected(id: Int) {
-        viewModel.itemId.id = id
-        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsActivity)
+        val bundle = bundleOf(
+            KEY_ANNOUNCEMENT_ID to id
+        )
+        findNavController().navigate(R.id.action_emailFragment_to_emailDetailsActivity, bundle)
     }
 
     private fun initRecyclerView(items: List<Data>) {
