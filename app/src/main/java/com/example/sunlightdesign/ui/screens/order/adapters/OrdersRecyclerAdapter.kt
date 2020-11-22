@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
+import com.example.sunlightdesign.utils.DateUtils
 import kotlinx.android.synthetic.main.order_item.view.*
 
 class OrdersRecyclerAdapter(
@@ -44,9 +45,14 @@ class OrdersRecyclerAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bind(item: Order) = with(itemView) {
-            this.orderNumberTextView.text = context.getString(R.string.order_number,item.id)
-            this.dataOrdersTextView.text = context.getString(R.string.created_at,item.created_at)
-            this.payTextView.text = context.getString(R.string.payTo,item.total_price)
+            this.orderNumberTextView.text = context.getString(R.string.order_number, item.id)
+            item.created_at?.let {
+                this.dataOrdersTextView.text = context.getString(
+                    R.string.created_at,
+                    DateUtils.reformatDateString(item.created_at, DateUtils.PATTERN_DD_MM_YYYY)
+                )
+            }
+            this.payTextView.text = context.getString(R.string.payTo, item.total_price)
 
             if (!item.products.isNullOrEmpty()) {
                 val childLayoutManager = LinearLayoutManager(this.productsRecyclerView.context)
