@@ -43,6 +43,11 @@ class OfficesRecyclerAdapter(
         notifyDataSetChanged()
     }
 
+    fun clearSelection(){
+        items.forEach { it?.isChecked = false }
+        notifyDataSetChanged()
+    }
+
     class OfficeViewHolder constructor(
         itemView: View,
         private val officeSelector: OfficeSelector
