@@ -31,7 +31,8 @@ class AttachedFilesAdapter(
     ) : RecyclerView.ViewHolder(view) {
         fun bind(file: File) = with(itemView) {
             this.fileNameTextView.text = file.attached_file_name
-            this.fileSizeTextView.text = ("(${file.attached_file_size})")
+            this.fileSizeTextView.text =
+                itemView.context.getString(R.string.size_kb, file.attached_file_size)
 
             this.attachFileLayout.setOnClickListener {
                 interaction.onFileClicked(file)

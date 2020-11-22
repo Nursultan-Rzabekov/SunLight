@@ -246,5 +246,6 @@
     <string name="exit">Выйти</string>
     <string name="oops_message">Упс…</string>
     <string name="to_mail">To: $1%s</string>
+    <string name="size_kb">($1%sKb)</string>
 
 </resources>

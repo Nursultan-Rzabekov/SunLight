@@ -20,19 +20,23 @@
     <TextView
         android:id="@+id/fileNameTextView"
         style="@style/AppCompatTextViewGray"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
+        android:singleLine="true"
+        android:layout_weight="1"
+        android:ellipsize="middle"
         android:textSize="@dimen/dimen_16sp"
-        tools:text="Filename.jpeg" />
+        tools:text="Filenasdasdasdasdasdasdasdasdasdasdasdame.jpeg" />
 
     <TextView
         android:id="@+id/fileSizeTextView"
         style="@style/AppCompatTextViewGray"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_weight="1"
         android:textSize="@dimen/dimen_16sp"
-        tools:text="(123Kb)" />
+        tools:text="@string/size_kb" />
 
 </LinearLayout>
