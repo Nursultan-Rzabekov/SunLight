@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#24584D</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#24584D</color>
+    <color name="colorPrimary">#DE6000</color>
+    <color name="colorPrimaryDark">#DE6000</color>
+    <color name="colorAccent">#DE6000</color>
 
-    <color name="sunLightColor">#24584D</color>
+    <color name="sunLightColor">@color/colorPrimary</color>
     <color name="sunBlackColor">#000000</color>
     <color name="gray">#A8ADB8</color>
     <color name="secondaryFirst">#1E1D4C</color>

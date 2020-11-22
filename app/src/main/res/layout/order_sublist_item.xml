@@ -34,16 +34,6 @@
         tools:text="Набор Clinique" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/bvCountTextView"
-        style="@style/AppCompatTextView"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="3dp"
-        android:textSize="@dimen/dimen_14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="990 BV" />
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/codeTextView"
         style="@style/AppCompatTextViewGray"
         android:layout_marginStart="@dimen/dimen_16dp"
@@ -73,7 +63,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="990 BV" />
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/statusTextView"

@@ -187,7 +187,7 @@
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
     <string name="products_choose">Вы выбрали</string>
     <string name="сount_order">%1$d товара итого к оплате</string>
-    <string name="totalAmountOrders">%1$.2fKZT</string>
+    <string name="totalAmountOrders">%1$.2f KZT</string>
     <string name="all_right">Все верно</string>
     <string name="buy">Купить</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -248,7 +248,7 @@
     <string name="oops_message">Упс…</string>
     <string name="to_mail">To: $1%s</string>
     <string name="size_kb">($1%sKb)</string>
-    <string name="code_number">Код: $1%.0f</string>
-    <string name="status_format">Статус: $1%s</string>
+    <string name="code_number">Код: %.0f</string>
+    <string name="status_format">Статус: %s</string>
 
 </resources>

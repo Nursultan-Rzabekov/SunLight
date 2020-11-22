@@ -31,8 +31,6 @@ class SubProductsRecyclerAdapter(
     ) : RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
         fun bind(product: Product, statusOrder: String) {
-            itemView.bvCountTextView.text =
-                itemView.context.getString(R.string.totalAmountOrders, product.product_price)
             itemView.bvTextView.text =
                 itemView.context.getString(R.string.totalAmountOrders, product.product_price)
             itemView.orderNameTextView.text = product.product_name
