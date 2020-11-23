@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Package
+import com.example.sunlightdesign.utils.getImageUrl
 import kotlinx.android.synthetic.main.office_departments_item.view.*
 import kotlinx.android.synthetic.main.partner_packages_list_item.view.*
 
@@ -27,7 +29,7 @@ class OfficesRecyclerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfficeViewHolder {
-        val view =  LayoutInflater.from(context).inflate(R.layout.office_departments_item,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.office_departments_item,parent,false)
         return OfficeViewHolder(view, officeSelector)
     }
 
@@ -61,6 +63,10 @@ class OfficesRecyclerAdapter(
             itemView.office_phonenumber_tv.text = item.phone.toString()
             itemView.office_address_tv.text = item.address
             itemView.office_time_tv.text = item.close_hours
+
+            Glide.with(itemView)
+                .load(getImageUrl(item.office_image_path))
+                .into(itemView.office_image_iv)
 
             itemView.setOnClickListener {
                 officeSelector.onOfficeSelected(adapterPosition)

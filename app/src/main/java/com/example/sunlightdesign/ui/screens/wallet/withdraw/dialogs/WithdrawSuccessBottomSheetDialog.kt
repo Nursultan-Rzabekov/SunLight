@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.WithdrawalReceipt
+import com.example.sunlightdesign.utils.getImageUrl
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.chosen_office_bottom_sheet.*
 import kotlinx.android.synthetic.main.office_departments_item.*
@@ -55,9 +56,7 @@ class WithdrawSuccessBottomSheetDialog(
         office_time_tv.text = withdrawReceipt.office.close_hours
 
         Glide.with(this)
-            .load(withdrawReceipt.office.office_image_path)
-            .placeholder(R.drawable.rectangle_40)
-            .error(R.drawable.rectangle_40)
+            .load(getImageUrl(withdrawReceipt.office.office_image_path))
             .into(office_image_iv)
     }
 

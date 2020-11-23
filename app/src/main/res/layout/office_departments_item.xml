@@ -22,7 +22,7 @@
             android:id="@+id/office_image_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/rectangle_40" />
+            tools:src="@drawable/rectangle_40" />
 
     </androidx.cardview.widget.CardView>
 
