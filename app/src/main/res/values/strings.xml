@@ -187,8 +187,8 @@
     <string name="info_order">Сведения о заказе</string>
     <string name="reply_order">Повторить заказ</string>
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
-    <string name="products_choose">Вы выбрали</string>
-    <string name="сount_order">%1$d товара итого к оплате</string>
+    <string name="products_choose">Количество выбранных товаров: %1$d</string>
+    <string name="сount_order">Итого к оплате</string>
     <string name="totalAmountOrders">%1$.2f KZT</string>
     <string name="all_right">Все верно</string>
     <string name="buy">Купить</string>
@@ -256,5 +256,7 @@
     <string name="first_name">Имя</string>
     <string name="middle_name">Отчество</string>
     <string name="fill_the_field">Заполните поле</string>
+    <string name="market_pay">К оплате: %1$.2f BV</string>
+    <string name="product_market">%1$d товара</string>
 
 </resources>

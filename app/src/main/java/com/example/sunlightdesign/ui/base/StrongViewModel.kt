@@ -1,10 +1,13 @@
 package com.example.sunlightdesign.ui.base
 
+import android.app.LauncherActivity
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.showMessage
+import com.example.sunlightdesign.utils.startNewActivity
+import com.readystatesoftware.chuck.internal.ui.MainActivity
 import io.reactivex.Single
 
 
@@ -33,14 +36,24 @@ open class StrongViewModel : ViewModel() {
     }
 
     protected open fun handleError(throwable: Throwable? = null, errorMessage: String? = null) {
-        withActivity {
+        withActivity { activity ->
             showMessage(
-                context = it,
-                title = it.resources.getString(R.string.text_error),
+                context = activity,
+                title = activity.resources.getString(R.string.text_error),
                 message = errorMessage ?: throwable?.localizedMessage.toString(),
                 setCancelable = false,
-                btnPositive = it.resources.getString(R.string.text_ok),
+                btnPositive = activity.resources.getString(R.string.text_ok),
                 btnPositiveEvent = DialogInterface.OnClickListener { dialog, _ ->
+                    errorMessage?.let { message ->
+                        if(message.contains("Logout")){
+                            if(activity.javaClass.isInstance(MainActivity::class.java)){
+                                (activity as MainActivity).startNewActivity(LauncherActivity::class)
+                            }
+                            else{
+                               println()
+                            }
+                        }
+                    }
                     dialog.dismiss()
                 }
             )

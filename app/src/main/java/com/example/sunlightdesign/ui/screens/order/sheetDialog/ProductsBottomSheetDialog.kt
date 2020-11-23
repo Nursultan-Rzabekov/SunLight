@@ -17,7 +17,7 @@ class ProductsBottomSheetDialog(
 ) : BottomSheetDialogFragment() {
 
     private val productsSheetRecyclerAdapter: ProductsSheetRecyclerAdapter by lazy {
-        return@lazy ProductsSheetRecyclerAdapter(products ?: listOf())
+        return@lazy ProductsSheetRecyclerAdapter(products)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +41,8 @@ class ProductsBottomSheetDialog(
             adapter = productsSheetRecyclerAdapter
         }
 
-        repeatOrdersSheetTextView.text = getString(R.string.products_choose)
-        countOrderTextView.text = getString(R.string.сount_order,products.size)
+        repeatOrdersSheetTextView.text = getString(R.string.products_choose, products.size)
+        countOrderTextView.text = getString(R.string.сount_order)
 
         var count = 0.0
         products.forEach {

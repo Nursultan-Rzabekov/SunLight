@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.usecase
 
+import com.example.sunlightdesign.data.source.dataSource.remote.DefaultErrorResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.ErrorResponse
 import com.example.sunlightdesign.usecase.blocks.CompletionBlock
 import com.example.sunlightdesign.utils.NetworkErrorUiModel
@@ -36,17 +37,37 @@ abstract class BaseCoroutinesUseCase<T> {
                 Timber.e(ex)
                 response(NetworkErrorUiModel(0, ex.message))
             } catch (ex: HttpException) {
-                val responseBody = ex.response()?.errorBody()
-                val error = if (responseBody?.contentType()?.subtype() == "json") {
-                    val errorResponse = Gson().fromJson(responseBody.toString(), ErrorResponse::class.java)
-                    NetworkErrorUiModel(ex.code(), errorResponse.message)
-                } else {
-                    NetworkErrorUiModel(ex.code(), ex.message())
+                try {
+                    val responseBody = ex.response()?.errorBody()
+
+                    val error = if (responseBody?.contentType()?.subtype() == "json") {
+                        val errorResponse =
+                            Gson().fromJson(
+                                responseBody.string(),
+                                when(ex.response()?.code()) {
+                                    401 -> ErrorResponse::class.java
+                                    else -> DefaultErrorResponse::class.java
+                                }
+                            )
+
+                        when (errorResponse) {
+                            is ErrorResponse -> {
+                                NetworkErrorUiModel(ex.code(), "Logout")
+                            }
+                            is DefaultErrorResponse -> {
+                                NetworkErrorUiModel(ex.code(), errorResponse.message)
+                            }
+                            else -> NetworkErrorUiModel(ex.code(), errorResponse.toString())
+                        }
+                    } else {
+                        NetworkErrorUiModel(ex.code(), ex.message())
+                    }
+                    Timber.e(error.toString())
+                    response(error)
+                } catch (ex: Exception) {
+                    response(ex)
                 }
-                Timber.e(error.toString())
-                response(error)
             } catch (ex: Exception) {
-                Timber.e(ex)
                 response(ex)
             }
         }

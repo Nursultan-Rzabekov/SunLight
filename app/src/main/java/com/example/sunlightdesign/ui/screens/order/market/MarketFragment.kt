@@ -21,6 +21,8 @@ import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOffic
 import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.market_products_list.*
+import kotlinx.android.synthetic.main.market_products_list.btn_all_right
+import kotlinx.android.synthetic.main.repeat_orders_bottom_sheet.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 
 class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
@@ -48,6 +50,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         titleTextView.text = getString(R.string.market)
+        product_market_quantity_tv.text = getString(R.string.product_market,0)
+        pay_market_total_tv.text = getString(R.string.market_pay, 0.00)
 
         setListeners()
         setObservers()
@@ -72,6 +76,23 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 }
             }
         }
+    }
+
+    override fun setProductsState() {
+        setTotalQuantityAndCount(productsAdapter.getCheckedProducts())
+    }
+
+    private fun setTotalQuantityAndCount(products: List<Product>){
+        var count = 0.0
+        products.forEach {
+            it.product_price?.let { price ->
+                it.product_quantity?.let {quantity ->
+                    count += (price * quantity)
+                }
+            }
+        }
+        product_market_quantity_tv.text = getString(R.string.product_market,products.size)
+        pay_market_total_tv.text = getString(R.string.market_pay, count)
     }
 
     private fun setObservers() {

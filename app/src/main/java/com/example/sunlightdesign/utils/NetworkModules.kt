@@ -2,10 +2,10 @@ package com.example.sunlightdesign.utils
 
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
-import kotlinx.coroutines.withContext
 import okhttp3.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import timber.log.Timber
 
 class HeaderInterceptor : Interceptor, KoinComponent {
     val sharedPreferences: SecureSharedPreferences by inject()
@@ -31,12 +31,14 @@ class TokenAuthenticator : Authenticator, KoinComponent {
         var newAccessToken: String? = null
 
         if(!sharedPreferences.phoneNumber.isNullOrEmpty() and !sharedPreferences.password.isNullOrEmpty()){
+            Timber.d(authServices.toString())
             newAccessToken = authServices.getLoginRefresh(
                 phone = sharedPreferences.phoneNumber.toString(),
                 password = sharedPreferences.password.toString()).token.toString()
         }
         sharedPreferences.bearerToken = newAccessToken
         // Add new header to rejected request and retry it
+
         return response.request().newBuilder()
             .header("Authorization", "Bearer ${newAccessToken}")
             .build()

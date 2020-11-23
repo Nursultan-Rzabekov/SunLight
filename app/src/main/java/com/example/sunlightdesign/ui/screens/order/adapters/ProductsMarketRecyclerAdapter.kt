@@ -57,6 +57,7 @@ class ProductsMarketRecyclerAdapter(
                     itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
                 }
                 sameClick(itemView = itemView, product = product, k = k)
+                productsMarketItemSelected.setProductsState()
             }
             itemView.plusBtn.setOnClickListener {
                 if(k>=0){
@@ -65,6 +66,7 @@ class ProductsMarketRecyclerAdapter(
                     itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
                     sameClick(itemView = itemView, product = product, k = k)
                 }
+                productsMarketItemSelected.setProductsState()
             }
 
             itemView.product_more_info_tv.setOnClickListener {
@@ -86,5 +88,6 @@ class ProductsMarketRecyclerAdapter(
 
     interface ProductsMarketItemSelected{
         fun onProductsSelected(product: Product)
+        fun setProductsState()
     }
 }

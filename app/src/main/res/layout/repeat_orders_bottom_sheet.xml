@@ -23,7 +23,7 @@
         android:textStyle="normal"
         android:layout_marginTop="@dimen/dimen_24dp"
         tools:text="@string/repeat_orders"
-        android:textSize="@dimen/dimen_22sp"/>
+        android:textSize="@dimen/dimen_18sp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/countOrderTextView"
