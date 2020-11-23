@@ -39,6 +39,7 @@
         <activity android:name=".ui.screens.profile.edit.EditPartnerActivity" />
         <activity android:name=".ui.screens.home.structure.StructureActivity" />
         <activity android:name=".ui.screens.home.tree.TreeActivity" />
+        <activity android:name=".ui.launcher.news.NewsActivity" />
     </application>
 
 </manifest>
