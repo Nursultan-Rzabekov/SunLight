@@ -18,7 +18,6 @@ import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.phone_et
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.progress_bar
-import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 import timber.log.Timber
@@ -57,9 +56,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         setupMask()
         setObservers()
 
-        arguments?.let{
-            sponsorId = it.getInt(USER_ID, -1)
-        }
+        sponsorId = viewModel.registerItselfUserId.value ?: -1
 
         viewModel.getCountriesList()
         viewModel.getUsersList()
@@ -68,6 +65,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     private fun setListeners() {
         btn_next_step_one.setOnClickListener {
             if (checkFields()) {
+                Timber.d("Register first page")
+
                 val fullName = partnerFullNameEditText.text.toString().trim().split(" ")
                 val position = when{
                     sponsor_itself_rbtn.isChecked -> Constants.PYRAMID_TOP
@@ -100,9 +99,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         sponsor_name_group.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 sponsor_itself_rbtn.id -> {
-                    arguments?.let {
-                        sponsorId = it.getInt(USER_ID, -1)
-                    }
+                    sponsorId = viewModel.registerItselfUserId.value ?: -1
                     Timber.d(sponsorId.toString())
                     sponsor_name_tv.isEnabled = false
                     sponsor_name_drop_down.isEndIconCheckable = false
@@ -154,12 +151,13 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             })
 
             navigationEvent.observe(viewLifecycleOwner, Observer{
-                it?.let {
-                    createOrderPartnerBuilder.user_id = sponsorId
-                    if(it is ProfileViewModel.NavigationEvent.NavigateNext &&
-                        it.data is Login?) {
+                it?.let { event ->
+                    if(event is ProfileViewModel.NavigationEvent.NavigateNext &&
+                        event.data is Login?) {
+                        if (event.data?.user?.id == null) return@let
+                        createOrderPartnerBuilder.user_id = event.data?.user.id
                         val bundle = bundleOf(
-                            USER_ID to sponsorId
+                            USER_ID to event.data?.user.id
                         )
                         findNavController().navigate(
                             R.id.action_stepOneFragment_to_stepTwoFragment,
@@ -359,8 +357,26 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun checkFields(): Boolean {
-        return partnerFullNameEditText.text.toString().isNotBlank() && sponsorId != -1 &&
-                partnerFullNameEditText.text.toString().trim().split(" ").size > 1
+        val message = when {
+            partnerFullNameEditText.text.toString().isBlank() -> "Заполните поле Имя Фамилия"
+            sponsorId == -1 -> getString(R.string.indicate_your_sponsor)
+            partnerFullNameEditText.text.toString().trim().split(" ").size < 2 ->
+                "Заполните поле Имя Фамилия полностью"
+            countryId == -1 -> getString(R.string.choose_country)
+            regionId == -1 -> getString(R.string.choose_region)
+            cityId == -1 -> getString(R.string.choose_city)
+            !isPhoneValid(phone_et.text.toString()) -> "Заполните номер телефона"
+            !isIinValid(iin_et.text.toString()) -> "Заполните ИИН"
+            else -> null
+        }
+        if (message != null) {
+            showMessage(
+                context = requireContext(),
+                message = message
+            )
+            return false
+        }
+        return true
     }
 
 }

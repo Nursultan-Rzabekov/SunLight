@@ -39,7 +39,7 @@ class ProductsMarketRecyclerAdapter(
         fun bind(product: Product) {
             itemView.product_name_tv.text = product.product_name
             itemView.product_description_tv.text = product.product_short_description
-            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price)
+            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_kzt, product.product_price)
 
             Glide.with(itemView)
                 .load(product.product_image_front_path)

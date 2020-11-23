@@ -75,215 +75,44 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp">
 
-                        <TableRow>
+<!--                        <TableRow>-->
 
-                            <TextView
-                                android:layout_weight="1"
-                                android:padding="@dimen/dimen_16dp"
-                                android:textColor="@color/sunBlackColor"
-                                android:textSize="@dimen/dimen_16sp"
-                                android:ellipsize="end"
-                                android:text="@string/users_in_structure" />
+<!--                            <TextView-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:padding="@dimen/dimen_16dp"-->
+<!--                                android:textColor="@color/sunBlackColor"-->
+<!--                                android:textSize="@dimen/dimen_16sp"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:text="@string/users_in_structure" />-->
 
-                            <TextView
-                                android:id="@+id/usersInStructureTextView"
-                                style="@style/AppCompatTextView"
-                                android:padding="@dimen/dimen_16dp"
-                                android:textAlignment="center"
-                                android:textSize="@dimen/dimen_16sp"
-                                tools:text="777" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/usersInStructureTextView"-->
+<!--                                style="@style/AppCompatTextView"-->
+<!--                                android:padding="@dimen/dimen_16dp"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textSize="@dimen/dimen_16sp"-->
+<!--                                tools:text="777" />-->
 
-                        </TableRow>
+<!--                        </TableRow>-->
 
-                        <TableRow>
+<!--                        <TableRow>-->
 
-                            <TextView
-                                android:layout_weight="1"
-                                android:padding="@dimen/dimen_16dp"
-                                android:text="@string/own_invited"
-                                android:textColor="@color/sunBlackColor"
-                                android:textSize="@dimen/dimen_16sp" />
+<!--                            <TextView-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:padding="@dimen/dimen_16dp"-->
+<!--                                android:text="@string/own_invited"-->
+<!--                                android:textColor="@color/sunBlackColor"-->
+<!--                                android:textSize="@dimen/dimen_16sp" />-->
 
-                            <TextView
-                                android:id="@+id/ownInvitesTextView"
-                                style="@style/AppCompatTextView"
-                                android:padding="@dimen/dimen_16dp"
-                                android:textAlignment="center"
-                                android:textSize="@dimen/dimen_16sp"
-                                tools:text="777" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/ownInvitesTextView"-->
+<!--                                style="@style/AppCompatTextView"-->
+<!--                                android:padding="@dimen/dimen_16dp"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textSize="@dimen/dimen_16sp"-->
+<!--                                tools:text="777" />-->
 
-                        </TableRow>
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/client_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/clientTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/partner_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/partnerTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/vip_partner_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/vipPartnerTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/manager_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/managerTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/topaz_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/topazTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/ruby_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/rubyTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/sapphire_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/sapphireTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/diamond_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/diamondTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
-
-    <!--                    <TableRow>-->
-
-    <!--                        <TextView-->
-    <!--                            android:layout_weight="1"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:text="@string/emerland_eng"-->
-    <!--                            android:textColor="@color/sunBlackColor"-->
-    <!--                            android:textSize="@dimen/dimen_16sp" />-->
-
-    <!--                        <TextView-->
-    <!--                            android:id="@+id/emerlandTextView"-->
-    <!--                            style="@style/AppCompatTextView"-->
-    <!--                            android:padding="@dimen/dimen_16dp"-->
-    <!--                            android:textAlignment="center"-->
-    <!--                            android:textSize="@dimen/dimen_16sp"-->
-    <!--                            tools:text="777" />-->
-
-    <!--                    </TableRow>-->
+<!--                        </TableRow>-->
 
                     </TableLayout>
 

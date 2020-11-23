@@ -30,8 +30,5 @@ class MarketProductDetailFragment: StrongFragment<OrderViewModel>(OrderViewModel
             product_info_description_tv.text = it?.product_info
         }
 
-
-
-
     }
 }

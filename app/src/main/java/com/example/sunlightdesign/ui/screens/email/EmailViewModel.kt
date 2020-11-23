@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.ItemId
+import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.AnnouncementItem
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Announcements
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.emailUse.DeleteAnnouncementUseCase
@@ -26,6 +27,9 @@ class EmailViewModel constructor(
 
     private val _announcementList = MutableLiveData<Announcements>()
     val announcementList: LiveData<Announcements> get() = _announcementList
+
+    private val _announcementItem = MutableLiveData<AnnouncementItem>()
+    val announcementItem: LiveData<AnnouncementItem> get() = _announcementItem
 
     fun getAnnouncementsList() {
         progress.postValue(true)
@@ -49,16 +53,17 @@ class EmailViewModel constructor(
         showAnnouncementsDetailsUseCase.execute {
             onComplete { announcementItem ->
                 progress.postValue(false)
-                withActivity {
-                    (it.findViewById(R.id.itemBodyTextView) as TextView).text =
-                        announcementItem?.announcement?.message_body
-                    (it.findViewById(R.id.itemTitleTextView) as TextView).text =
-                        announcementItem?.announcement?.message_title
-                    (it.findViewById(R.id.dateTextView) as TextView).text =
-                        announcementItem?.announcement?.created_at
-                    (it.findViewById(R.id.toNameTextView) as TextView).text =
-                        announcementItem?.announcement?.author?.first_name
-                }
+                _announcementItem.postValue(announcementItem)
+//                withActivity {
+//                    (it.findViewById(R.id.itemBodyTextView) as TextView).text =
+//                        announcementItem?.announcement?.message_body
+//                    (it.findViewById(R.id.itemTitleTextView) as TextView).text =
+//                        announcementItem?.announcement?.message_title
+//                    (it.findViewById(R.id.dateTextView) as TextView).text =
+//                        announcementItem?.announcement?.created_at
+//                    (it.findViewById(R.id.toNameTextView) as TextView).text =
+//                        announcementItem?.announcement?.author?.first_name
+//                }
             }
             onNetworkError {
                 progress.postValue(false)

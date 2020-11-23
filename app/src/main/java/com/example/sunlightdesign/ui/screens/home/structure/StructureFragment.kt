@@ -52,18 +52,14 @@ class StructureFragment : StrongFragment<StructureViewModel>(StructureViewModel:
     }
 
     private fun bindStructureInfo(structure: StructureInfo) {
-        ownInvitesTextView.text = structure.invited.toString()
-
-        var totalUsers = 0
         structure.statuses?.let {
-            for (status in structure.statuses) {
+            structureInfoTableLayout.removeAllViews()
+            structure.statuses.forEach {
                 val tableRow = layoutInflater.inflate(R.layout.structure_status_row_item, structureInfoTableLayout, false)
-                tableRow.rowFirstColumnTextView.text = status.status_name
-                tableRow.rowSecondColumnTextView.text = status.users_count.toString()
+                tableRow.rowFirstColumnTextView.text = it.status_name
+                tableRow.rowSecondColumnTextView.text = it.users_count.toString()
                 structureInfoTableLayout.addView(tableRow)
-                totalUsers += status.users_count ?: 0
             }
         }
-        usersInStructureTextView.text = totalUsers.toString()
     }
 }

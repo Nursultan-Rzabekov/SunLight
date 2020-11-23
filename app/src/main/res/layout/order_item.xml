@@ -21,7 +21,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_16dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/orderNumberTextView"
@@ -52,11 +53,11 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/payTextView"
                 style="@style/AppCompatTextView"
-                tools:text="К оплате 2970 KZT"
+                android:textSize="@dimen/dimen_14sp"
                 android:layout_marginTop="@dimen/dimen_12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailTextView"
-                android:textSize="@dimen/dimen_14sp"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dataOrdersTextView"
+                tools:text="К оплате 2970 KZT" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -70,7 +71,6 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_marginTop="-16dp"
             android:layout_height="wrap_content"
             tools:listitem="@layout/order_sublist_item"
             tools:itemCount="2"

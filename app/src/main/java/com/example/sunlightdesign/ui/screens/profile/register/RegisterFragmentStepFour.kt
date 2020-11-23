@@ -12,6 +12,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Offi
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.OfficesRecyclerAdapter
+import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.fragment_register_partner_step_four.*
 
 
@@ -54,6 +55,7 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
 
     private fun setListeners() {
         btn_next_step_four.setOnClickListener {
+            if (!checkFields()) return@setOnClickListener
             findNavController().navigate(R.id.action_stepFourFragment_to_stepFiveFragment)
         }
     }
@@ -61,6 +63,21 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
     override fun onOfficeSelected(id: Int) {
         viewModel.createOrderPartnerBuilder.office_id =
             viewModel.officeList.value?.offices?.get(id)?.id ?: -1
+    }
+
+    private fun checkFields() : Boolean {
+        val message = when (viewModel.createOrderPartnerBuilder.office_id) {
+            -1 -> "Выберите офис"
+            else -> null
+        }
+        if (message != null) {
+            showMessage(
+                context = requireContext(),
+                message = message
+            )
+            return false
+        }
+        return true
     }
 
 }

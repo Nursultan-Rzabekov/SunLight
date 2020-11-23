@@ -76,7 +76,7 @@
     <string name="vybor_ofısa">Выбор офиса</string>
     <string name="cposob_oplaty"> Cпособ оплаты</string>
     <string name="available_products_from">Доступные товары из <b>“%1$s”</b></string>
-    <string name="itogo_k_oplate">Итого к оплате : %1$dBV = %2$s KZT</string>
+    <string name="itogo_k_oplate">Итого к оплате : %1$.2f BV = %2$.2f KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
 
     <!--Компания-->
@@ -149,6 +149,7 @@
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
     <string name="amount_bv">%1$.2f BV</string>
+    <string name="amount_kzt">%1$.2f KZT</string>
     <string name="amount_bv_string">%1$.2s BV</string>
     <string name="income">Доход</string>
     <string name="consumption">Расход</string>
@@ -159,20 +160,20 @@
     <string name="send_again">Отправить повторно</string>
     <string name="come_up_to_till">Подойдите к кассе, чтобы оплатить \nи получить инструкцию \nдальнейших действий.</string>
 
-    <string name="sunlight_mail">From: sunlight@gmail.com</string>
+    <string name="from_mail">From: $1%s</string>
 
     <string name="birthday">День рождения</string>
     <string name="sponsor">Спонсор</string>
     <string name="password_two_dots">Пароль :</string>
     <string name="documents_scans">Сканы документов</string>
     <string name="go_to_market">Заказать товар</string>
-    <string name="payTo">К оплате: #%1$.2fKZT</string>
-    <string name="created_at">Дата заказа: \n %1$s</string>
+    <string name="payTo">К оплате: %1$.2fKZT</string>
+    <string name="created_at">Дата заказа: %1$s</string>
     <string name="amount">Количество: %1d</string>
     <string name="detail_order">Детали заказа</string>
 
 
-    <string name="order_number">Заказ #%1$.2f</string>
+    <string name="order_number">Заказ #%1$.0f</string>
     <string name="code_order">Код товара: %1$.2f</string>
     <string name="total_amount">Общая сумма: %1$.2f KZT</string>
     <string name="type_of_payment">Способ оплаты: %1$s</string>
@@ -186,7 +187,7 @@
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
     <string name="products_choose">Вы выбрали</string>
     <string name="сount_order">%1$d товара итого к оплате</string>
-    <string name="totalAmountOrders">%1$.2fKZT</string>
+    <string name="totalAmountOrders">%1$.2f KZT</string>
     <string name="all_right">Все верно</string>
     <string name="buy">Купить</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -244,5 +245,10 @@
     <string name="diamond_eng">Diamond</string>
     <string name="emerland_eng">Emerland</string>
     <string name="exit">Выйти</string>
+    <string name="oops_message">Упс…</string>
+    <string name="to_mail">To: $1%s</string>
+    <string name="size_kb">($1%sKb)</string>
+    <string name="code_number">Код: %.0f</string>
+    <string name="status_format">Статус: %s</string>
 
 </resources>

@@ -2,10 +2,17 @@ package com.example.sunlightdesign.data.source.dataSource.remote.main.entity
 
 
 data class StructureInfo(
-    val invited: Long?,
-    val statuses: List<Status>?,
-    val user: User
+    val statuses: List<TreeStatus>?
 )
+
+data class TreeStatus(
+    val id: Int?,
+    val sort: Int?,
+    val status_description: String?,
+    val status_name: String?,
+    val users_count: Int?
+)
+
 
 data class Status(
     val deleted_at: Any?,
