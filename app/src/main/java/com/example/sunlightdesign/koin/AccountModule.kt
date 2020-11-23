@@ -87,6 +87,7 @@ val accountModule = module {
 
     viewModel {
         ProfileViewModel(
+            sharedUseCase = get(),
             accountCountriesUseCase = get(),
             accountUsersListUseCase = get(),
             accountPackagesListUseCase = get(),

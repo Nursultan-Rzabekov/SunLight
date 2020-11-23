@@ -27,14 +27,14 @@ class AuthViewModel constructor(
 
     init {
         if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
-            sharedUseCase.getSharedPreference().password.isNullOrEmpty())
-            _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty().toString())
-            _password.postValue(sharedUseCase.getSharedPreference().password.isNullOrEmpty().toString())
+            !sharedUseCase.getSharedPreference().password.isNullOrEmpty())
+            _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber)
+            _password.postValue(sharedUseCase.getSharedPreference().password)
     }
 
     fun setPhoneAndPassword(phoneNumber:String, password:String){
-        sharedUseCase.getSharedPreference().password = password
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
+        sharedUseCase.getSharedPreference().password = password
     }
 
     fun getUseCase(setLogin: SetLogin) {

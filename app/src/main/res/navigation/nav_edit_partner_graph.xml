@@ -17,6 +17,16 @@
                     app:argType="com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo"
                     app:nullable="true" />
 
+                <action
+                    android:id="@+id/action_editProfileFragment_to_launcherActivity"
+                    app:destination="@id/launcherActivity" />
+
         </fragment>
+
+        <activity
+            android:id="@+id/launcherActivity"
+            android:name="com.example.sunlightdesign.ui.launcher.LauncherActivity"
+            android:label="LauncherActivity" />
+
 
 </navigation>

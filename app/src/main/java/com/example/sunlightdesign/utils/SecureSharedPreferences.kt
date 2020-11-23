@@ -23,12 +23,12 @@ class SecureSharedPreferences(
 
     private val PHONE_NUMBER = "phone_number_last"
     var phoneNumber: String?
-        get() = sharedPreferences.getString(PHONE_NUMBER,"")
+        get() = sharedPreferences.getString(PHONE_NUMBER,null)
         set(value) = sharedPreferences.edit().putString(PHONE_NUMBER,value).apply()
 
     private val PASSWORD = "password_last"
     var password: String?
-        get() = sharedPreferences.getString(PASSWORD,"")
+        get() = sharedPreferences.getString(PASSWORD,null)
         set(value) = sharedPreferences.edit().putString(PASSWORD,value).apply()
 
 

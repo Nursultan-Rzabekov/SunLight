@@ -30,21 +30,14 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
         super.onViewCreated(view, savedInstanceViewState)
 
         welcome_login_as_tv.text = getString(R.string.login_welcome, "Спонсор Имя")
+    }
 
+    override fun onResume() {
+        super.onResume()
         setupMask()
         configViewModel()
-
-
-
-
-    }
-
-    override fun onActivityCreated(savedInstanceViewState: Bundle?) {
-        super.onActivityCreated(savedInstanceViewState)
-
         setListeners()
     }
-
 
     private fun setListeners() {
         btn_enter.setOnClickListener {
@@ -77,11 +70,15 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
-            password.observe(viewLifecycleOwner, Observer {
-
+            phoneNumber.observe(viewLifecycleOwner, Observer { phone ->
+                phone_et.setText(
+                    MaskUtils.maskValue(
+                        mask = MaskUtils.PHONE_MASK, value = phone
+                    )
+                )
             })
-            phoneNumber.observe(viewLifecycleOwner, Observer {
-                password_et.setText(it)
+            password.observe(viewLifecycleOwner, Observer { pass ->
+                password_et.setText(pass)
             })
         }
 

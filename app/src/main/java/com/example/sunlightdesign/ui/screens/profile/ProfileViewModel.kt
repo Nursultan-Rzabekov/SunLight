@@ -11,6 +11,7 @@ import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
+import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountOfficesListUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountPackagesListUseCase
@@ -31,6 +32,7 @@ import timber.log.Timber
  * ViewModel for the task list screen.
  */
 class ProfileViewModel constructor(
+    private val sharedUseCase: SharedUseCase,
     private val accountCountriesUseCase: AccountCountriesUseCase,
     private val accountUsersListUseCase: AccountUsersListUseCase,
     private val accountPackagesListUseCase: AccountPackagesListUseCase,
@@ -77,6 +79,12 @@ class ProfileViewModel constructor(
 
     private var _navigationEvent = MutableLiveData<NavigationEvent<Any?>?>()
     val navigationEvent: LiveData<NavigationEvent<Any?>?> get() = _navigationEvent
+
+
+    fun nullifyData(){
+        sharedUseCase.getSharedPreference().bearerToken = ""
+    }
+
 
     fun getCountriesList() {
         progress.postValue(true)

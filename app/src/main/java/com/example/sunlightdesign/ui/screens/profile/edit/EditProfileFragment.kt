@@ -82,7 +82,8 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         }
 
         exitTextView.setOnClickListener {
-
+            viewModel.nullifyData()
+            findNavController().navigate(R.id.action_editProfileFragment_to_launcherActivity)
         }
 
         passwordDialog.changePasswordBtn.setOnClickListener {
