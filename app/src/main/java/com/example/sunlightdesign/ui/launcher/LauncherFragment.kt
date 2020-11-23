@@ -6,7 +6,9 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Category
@@ -16,6 +18,7 @@ import com.example.sunlightdesign.ui.launcher.adapter.PostAdapter
 import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import com.example.sunlightdesign.ui.launcher.adapter.CategoriesAdapter
+import com.example.sunlightdesign.ui.launcher.news.NewsActivity
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
@@ -23,6 +26,7 @@ import kotlinx.android.synthetic.main.sunlight_banner.*
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::class),
     BannerViewPagerAdapter.OnPageSelected,
+    PostAdapter.PostInteraction,
     CategoriesAdapter.CategoryInterface {
 
     private lateinit var categoriesAdapter: CategoriesAdapter
@@ -126,7 +130,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
 
             })
             postsById.observe(viewLifecycleOwner, Observer {
-                postAdapter = PostAdapter(requireContext(),it.posts)
+                postAdapter = PostAdapter(requireContext(), it.posts, this@LauncherFragment)
                 post_recyclerview.adapter = postAdapter
             })
         }
@@ -150,8 +154,18 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
         }
     }
 
-    override fun onPageSelectedByPosition(position: Int) {
+    override fun onPageSelectedByPosition(id: Int) {
+//        val bundle = bundleOf(
+//            NewsActivity.KEY_POST_ID to id
+//        )
+//        findNavController().navigate(R.id.action_launcher_fragment_to_newsActivity, bundle)
+    }
 
+    override fun onPostClicked(id: Int) {
+        val bundle = bundleOf(
+            NewsActivity.KEY_POST_ID to id
+        )
+        findNavController().navigate(R.id.action_launcher_fragment_to_newsActivity, bundle)
     }
 
     override fun onCategorySelected(item: Category) {

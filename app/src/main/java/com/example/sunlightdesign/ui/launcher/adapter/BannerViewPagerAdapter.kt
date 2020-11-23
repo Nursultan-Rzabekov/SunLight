@@ -58,6 +58,6 @@ class BannerViewPagerAdapter(
     }
 
     interface OnPageSelected {
-        fun onPageSelectedByPosition(position: Int)
+        fun onPageSelectedByPosition(id: Int)
     }
 }

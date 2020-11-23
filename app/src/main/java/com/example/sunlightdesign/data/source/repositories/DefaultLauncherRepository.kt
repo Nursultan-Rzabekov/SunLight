@@ -3,7 +3,9 @@ package com.example.sunlightdesign.data.source.repositories
 import com.example.sunlightdesign.data.source.LauncherRepository
 import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
 import com.example.sunlightdesign.data.source.dataSource.remote.main.MainServices
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Post
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Posts
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.SinglePost
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.StructureInfo
 import com.example.sunlightdesign.utils.SecureSharedPreferences
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,4 +25,6 @@ class DefaultLauncherRepository constructor(
     override suspend fun getByCategoryId(id: Int) = mainServices.getPostsByCategoryId(id).await()
 
     override suspend fun getStructureInfo(): StructureInfo = mainServices.getStructureInfo().await()
+
+    override suspend fun getPostById(id: Int): SinglePost = mainServices.showPostDetails(id).await()
 }

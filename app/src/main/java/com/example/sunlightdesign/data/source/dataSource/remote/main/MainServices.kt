@@ -25,7 +25,7 @@ interface MainServices {
     @GET("helper/post/{id}")
     fun showPostDetails(
         @Path("id") id: Int
-    ): Deferred<Post>
+    ): Deferred<SinglePost>
 
     @GET("mobile/structure")
     fun getStructureInfo(

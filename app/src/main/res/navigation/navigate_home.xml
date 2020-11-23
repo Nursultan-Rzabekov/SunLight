@@ -10,6 +10,15 @@
         android:label="@string/home"
         tools:layout="@layout/launcher_authenticated">
 
+        <action
+            android:id="@+id/action_homeFragment_to_newsActivity2"
+            app:destination="@id/newsActivity2" />
     </fragment>
+
+    <activity
+        android:id="@+id/newsActivity2"
+        android:name="com.example.sunlightdesign.ui.launcher.news.NewsActivity"
+        android:label="NewsActivity"
+        tools:layout="@layout/news_activity"/>
 
 </navigation>
