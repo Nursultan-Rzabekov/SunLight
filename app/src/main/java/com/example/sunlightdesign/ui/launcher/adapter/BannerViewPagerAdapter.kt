@@ -41,7 +41,7 @@ class BannerViewPagerAdapter(
         val imageView = view.findViewById<ImageView>(R.id.image_set)
         val titleView = view.findViewById<TextView>(R.id.banner_title_tv)
 
-        titleView.text = banners.banners[position].title
+        titleView.text = banners.banners[position].description
 
         Glide.with(view)
             .load(BuildConfig.BASE_URL_IMAGE + banners.banners[position].media_path)

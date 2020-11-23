@@ -29,13 +29,13 @@ class CompanyActivity : StrongActivity()
         TabLayoutMediator(company_tablayout, company_viewpager) {
                 tab, position ->
             when (position) {
+//                0 -> {
+//                    tab.text = getString(R.string.about_company)
+//                }
                 0 -> {
-                    tab.text = getString(R.string.about_company)
-                }
-                1 -> {
                     tab.text = getString(R.string.market_plan)
                 }
-                2 -> {
+                else -> {
                     tab.text = getString(R.string.сontacts)
                 }
             }
@@ -45,7 +45,7 @@ class CompanyActivity : StrongActivity()
     private fun initViewPager() {
         viewPagerAdapter = CompanyInfoAdapter(supportFragmentManager, lifecycle,
                 listOf(
-                    AboutCompanyFragment(),
+//                    AboutCompanyFragment(),
                     MarketPlanFragment(),
                     ContactsCompanyFragment()
                 )

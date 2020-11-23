@@ -20,9 +20,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/office_image_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/rectangle_40" />
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_100dp"
+            tools:src="@drawable/rectangle_40" />
 
     </androidx.cardview.widget.CardView>
 

@@ -49,7 +49,7 @@
             android:checkable="true"
             android:paddingTop="@dimen/dimen_12dp"
             android:paddingBottom="@dimen/dimen_12dp"
-            android:text="@string/paybox"
+            android:text="@string/bank_account_card"
             app:icon="@drawable/check_toggle_btn_selector" />
 
         <com.google.android.material.button.MaterialButton

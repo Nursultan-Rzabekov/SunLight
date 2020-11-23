@@ -51,7 +51,7 @@
     <string name="personal_structure">Пользователей\nв структуре</string>
     <string name="referral_reference">Реферальная ссылка</string>
     <string name="your_reference">Ваша ссылка на страницу \n регистрации</string>
-    <string name="registration_referral">Регистрация реферала</string>
+    <string name="registration_referral">Добавить пользователя</string>
     <string name="leader_structure">Лидер структуры</string>
     <string name="leader_five_top">Лидеры структуры до 5 поколения</string>
     <string name="invited">Приглашенные</string>
@@ -104,7 +104,7 @@
     <string name="working_hours_step_four_cardview">Закроется в 21:00</string>
     <string name="oplata_cherez">Оплата через:</string>
     <string name="kassý">Кассу</string>
-    <string name="paybox">Paybox</string>
+    <string name="bank_account_card">Банковская карта</string>
     <string name="bv">BV</string>
     <string name="submit">Подтвердить</string>
     <string name="vvedıte_dannye_karty">Введите данные карты:</string>
