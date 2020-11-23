@@ -67,7 +67,9 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             if (checkFields()) {
                 Timber.d("Register first page")
 
-                val fullName = partnerFullNameEditText.text.toString().trim().split(" ")
+                val firstName = partnerFirstNameEditText.text.toString().trim()
+                val lastName = partnerLastNameEditText.text.toString().trim()
+                val middleName = partnerMiddleNameEditText.text.toString().trim()
                 val position = when{
                     sponsor_itself_rbtn.isChecked -> Constants.PYRAMID_TOP
                     left_side_rbtn.isChecked -> Constants.PYRAMID_LEFT
@@ -75,13 +77,13 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 }
                 viewModel.addPartner(
                     AddPartner(
-                        first_name = fullName.first(),
-                        last_name = fullName.last(),
+                        first_name = firstName,
+                        last_name = lastName,
                         phone = MaskUtils.unMaskValue(
                             MaskUtils.PHONE_MASK,
                             phone_et.text.toString()
                         ),
-                        middle_name = fullName[1],
+                        middle_name = middleName,
                         country_id = countryId,
                         region_id = regionId,
                         city_id = cityId,
@@ -358,15 +360,20 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun checkFields(): Boolean {
         val message = when {
-            partnerFullNameEditText.text.toString().isBlank() -> "Заполните поле Имя Фамилия"
+            partnerFirstNameEditText.text.toString().isBlank() ->
+                "${getString(R.string.fill_the_field)} ${getString(R.string.first_name)}"
+            partnerLastNameEditText.text.toString().isBlank() ->
+                "${getString(R.string.fill_the_field)} ${getString(R.string.last_name)}"
+            partnerMiddleNameEditText.text.toString().isBlank() ->
+                "${getString(R.string.fill_the_field)} ${getString(R.string.middle_name)}"
             sponsorId == -1 -> getString(R.string.indicate_your_sponsor)
-            partnerFullNameEditText.text.toString().trim().split(" ").size < 2 ->
-                "Заполните поле Имя Фамилия полностью"
             countryId == -1 -> getString(R.string.choose_country)
             regionId == -1 -> getString(R.string.choose_region)
             cityId == -1 -> getString(R.string.choose_city)
-            !isPhoneValid(phone_et.text.toString()) -> "Заполните номер телефона"
-            !isIinValid(iin_et.text.toString()) -> "Заполните ИИН"
+            !isPhoneValid(phone_et.text.toString()) ->
+                "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"
+            !isIinValid(iin_et.text.toString()) ->
+                "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
             else -> null
         }
         if (message != null) {

@@ -100,7 +100,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
                         android:layout_marginTop="@dimen/dimen_32dp"
-                        android:text="@string/phone_number"
+                        android:text="@string/phone_number_two_dots"
                         android:textSize="@dimen/dimen_16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout

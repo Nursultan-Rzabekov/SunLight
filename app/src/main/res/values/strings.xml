@@ -31,7 +31,9 @@
     <string name="partner">Партнер:</string>
     <string name="fullName_partner">Ф.И.О партнера</string>
     <string name="enter_iin">Введите ИИН:</string>
-    <string name="phone_number">Номер телефонa:</string>
+    <string name="iin">ИИН</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="phone_number_two_dots">Номер телефонa:</string>
     <string name="choose_country">Выберите страну:</string>
     <string name="choose_region">Выберите область:</string>
     <string name="choose_city">Выберите город:</string>
@@ -250,5 +252,9 @@
     <string name="size_kb">($1%sKb)</string>
     <string name="code_number">Код: %.0f</string>
     <string name="status_format">Статус: %s</string>
+    <string name="last_name">Фамилия</string>
+    <string name="first_name">Имя</string>
+    <string name="middle_name">Отчество</string>
+    <string name="fill_the_field">Заполните поле</string>
 
 </resources>
