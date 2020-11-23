@@ -17,6 +17,10 @@ interface AuthServices {
         @Field("password") password: String
     ): Deferred<Login>
 
-    @GET("refreshToken")
-    fun refreshToken(): Login
+    @FormUrlEncoded
+    @POST("auth/login")
+    fun getLoginRefresh(
+        @Field("phone") phone: String,
+        @Field("password") password: String
+    ): Login
 }
