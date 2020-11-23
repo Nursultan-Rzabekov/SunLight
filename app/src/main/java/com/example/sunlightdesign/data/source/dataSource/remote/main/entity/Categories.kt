@@ -11,5 +11,5 @@ data class Category(
     val name: String,
     val slug: String,
     val updated_at: String,
-    var selected: Boolean
+    var isSelected: Boolean
 )
