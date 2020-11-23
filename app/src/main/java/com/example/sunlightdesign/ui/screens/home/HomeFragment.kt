@@ -13,8 +13,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Cate
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.adapter.BannerViewPagerAdapter
 import com.example.sunlightdesign.ui.launcher.adapter.PostAdapter
-import com.example.sunlightdesign.ui.launcher.adapter.СategoriesAdapter
-import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
+import com.example.sunlightdesign.ui.launcher.adapter.CategoriesAdapter
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import com.example.sunlightdesign.ui.screens.home.structure.StructureActivity
 import kotlinx.android.synthetic.main.launcher_authenticated.*
@@ -23,9 +22,9 @@ import kotlinx.android.synthetic.main.sunlight_banner.*
 
 class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
     BannerViewPagerAdapter.OnPageSelected,
-    СategoriesAdapter.CategoryInterface {
+    CategoriesAdapter.CategoryInterface {
 
-    private lateinit var categoriesAdapter: СategoriesAdapter
+    private lateinit var categoriesAdapter: CategoriesAdapter
 
     private lateinit var postAdapter: PostAdapter
 
@@ -121,9 +120,9 @@ class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
                 }
             })
             categories.observe(viewLifecycleOwner, Observer {
-                it.categories.first().selected = true
+                it.categories.first().isSelected = true
                 categoriesAdapter =
-                    СategoriesAdapter(items = it.categories, categoryInterface = this@HomeFragment)
+                    CategoriesAdapter(items = it.categories, categoryInterface = this@HomeFragment)
                 categories_recycler_view.adapter = categoriesAdapter
 
                 viewModel.getPostsByCategoryId(it.categories.first().id)

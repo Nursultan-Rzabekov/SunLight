@@ -10,13 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Category
-import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.Post
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.adapter.BannerViewPagerAdapter
 import com.example.sunlightdesign.ui.launcher.adapter.PostAdapter
 import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
-import com.example.sunlightdesign.ui.launcher.adapter.СategoriesAdapter
+import com.example.sunlightdesign.ui.launcher.adapter.CategoriesAdapter
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
@@ -24,9 +23,9 @@ import kotlinx.android.synthetic.main.sunlight_banner.*
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::class),
     BannerViewPagerAdapter.OnPageSelected,
-    СategoriesAdapter.CategoryInterface {
+    CategoriesAdapter.CategoryInterface {
 
-    private lateinit var categoriesAdapter: СategoriesAdapter
+    private lateinit var categoriesAdapter: CategoriesAdapter
 
     private lateinit var postAdapter: PostAdapter
 
@@ -116,8 +115,8 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
 
             })
             categories.observe(viewLifecycleOwner, Observer {
-                it.categories.first().selected = true
-                categoriesAdapter = СategoriesAdapter(items = it.categories, categoryInterface = this@LauncherFragment)
+                it.categories.first().isSelected = true
+                categoriesAdapter = CategoriesAdapter(items = it.categories, categoryInterface = this@LauncherFragment)
                 categories_recycler_view.adapter = categoriesAdapter
 
                 viewModel.getPostsByCategoryId(it.categories.first().id)

@@ -49,9 +49,9 @@ class BannerViewPagerAdapter(
             .error(R.drawable.main_photo)
             .centerCrop().into(imageView)
 
-//        imageView.setOnClickListener {
-//            onPageSelected.onPageSelectedByPosition(listNews.news[position].id)
-//        }
+        imageView.setOnClickListener {
+            onPageSelected.onPageSelectedByPosition(banners.banners[position].id)
+        }
 
         (collection as ViewPager).addView(view, 0)
         return view
