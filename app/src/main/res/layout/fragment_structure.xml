@@ -31,7 +31,7 @@
                     android:gravity="center_vertical"
                     android:paddingHorizontal="@dimen/dimen_16dp"
                     android:paddingVertical="@dimen/dimen_12dp"
-                    android:text="@string/show_tree"
+                    android:text="@string/structure"
                     android:textSize="@dimen/dimen_16sp"
                     app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right"
                     app:drawableStartCompat="@drawable/ic_expand_tree" />
