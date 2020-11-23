@@ -54,8 +54,6 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
                     )
                 )
         }
-
-        forget_password_tv.setOnClickListener {}
     }
 
     private fun configViewModel() {
