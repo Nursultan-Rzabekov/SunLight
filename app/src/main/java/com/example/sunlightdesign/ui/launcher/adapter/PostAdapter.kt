@@ -15,13 +15,14 @@ import kotlinx.android.synthetic.main.main_page_post_item.view.*
 
 class PostAdapter(
     private val context: Context,
-    private val posts: List<Post>
+    private val posts: List<Post>,
+    private val postInteraction: PostInteraction
 ) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view =
             LayoutInflater.from(context).inflate(R.layout.main_page_post_item, parent, false)
-        return PostViewHolder(view)
+        return PostViewHolder(view, postInteraction)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
@@ -30,22 +31,32 @@ class PostAdapter(
 
     override fun getItemCount() = posts.size
 
-    class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PostViewHolder(
+        itemView: View,
+        private val postInteraction: PostInteraction
+    ) : RecyclerView.ViewHolder(itemView) {
         fun bind(post: Post) {
 
             println(BuildConfig.BASE_URL_IMAGE + post.image)
 
             Glide.with(itemView)
                 .load(BuildConfig.BASE_URL_IMAGE + post.image)
-                .placeholder(R.drawable.main_photo)
-                .error(R.drawable.main_photo)
-                .centerCrop().into(itemView.post_image_view)
+                .centerCrop()
+                .into(itemView.post_image_view)
 
             itemView.title_text_view.text = post.title
             itemView.description_text_view.text = post.description
 
             val date = DateUtils.convertLongStringToDate(post.created_at)
             itemView.time_text_view.text = DateUtils.convertDateToString(date)
+
+            itemView.postLayout.setOnClickListener {
+                postInteraction.onPostClicked(post.id)
+            }
         }
+    }
+
+    interface PostInteraction {
+        fun onPostClicked(id: Int)
     }
 }

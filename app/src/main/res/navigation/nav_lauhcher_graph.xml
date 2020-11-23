@@ -13,6 +13,15 @@
                 android:label="fragment_launcher"
                 tools:layout="@layout/launcher_authenticated" >
 
+                <action
+                    android:id="@+id/action_launcher_fragment_to_newsActivity"
+                    app:destination="@id/newsActivity" />
         </fragment>
+
+        <activity
+            android:id="@+id/newsActivity"
+            android:name="com.example.sunlightdesign.ui.launcher.news.NewsActivity"
+            android:label="NewsActivity"
+            tools:layout="@layout/news_activity"/>
 
 </navigation>

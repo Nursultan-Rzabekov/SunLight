@@ -54,13 +54,20 @@ val mainModule = module {
         )
     }
 
+    factory {
+        GetPostByIdUseCase(
+            launcherRepository = get()
+        )
+    }
+
     viewModel {
         LauncherViewModel(
             sharedUseCase = get(),
             getMainPostUseCase = get(),
             getMainCategoriesUseCase = get(),
             getMainBannersUseCase = get(),
-            getPostsByCategoryId = get()
+            getPostsByCategoryId = get(),
+            getPostByIdUseCase = get()
         )
     }
 
