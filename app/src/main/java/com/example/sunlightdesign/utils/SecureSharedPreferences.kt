@@ -21,6 +21,18 @@ class SecureSharedPreferences(
         get() = sharedPreferences.getInt(PIN_WRONG_COUNT, 0)
         set(count) = sharedPreferences.edit().putInt(PIN_WRONG_COUNT, count).apply()
 
+    private val PHONE_NUMBER = "phone_number_last"
+    var phoneNumber: String?
+        get() = sharedPreferences.getString(PHONE_NUMBER,"")
+        set(value) = sharedPreferences.edit().putString(PHONE_NUMBER,value).apply()
+
+    private val PASSWORD = "password_last"
+    var password: String?
+        get() = sharedPreferences.getString(PASSWORD,"")
+        set(value) = sharedPreferences.edit().putString(PASSWORD,value).apply()
+
+
+
 
 }
 

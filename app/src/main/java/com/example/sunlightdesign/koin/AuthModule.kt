@@ -51,6 +51,7 @@ val authModule = module {
 
     viewModel {
         AuthViewModel(
+            sharedUseCase = get(),
             getItemsUseCase = get()
         )
     }

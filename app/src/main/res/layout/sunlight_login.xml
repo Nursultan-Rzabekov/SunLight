@@ -84,6 +84,7 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/remember_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -93,14 +94,6 @@
                 />
 
         </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/AppCompatTextViewGray"
-            android:id="@+id/forget_password_tv"
-            android:text="@string/forgot_password"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:textColor="@color/sunLightColor"
-            />
 
         <Button
             android:id="@+id/btn_enter"

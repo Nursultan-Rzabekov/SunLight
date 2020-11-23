@@ -3,6 +3,7 @@ package com.example.sunlightdesign.ui.launcher.auth
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.ui.screens.MainActivity
+import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.startNewActivity
@@ -12,10 +13,29 @@ import timber.log.Timber
  * ViewModel for the task list screen.
  */
 class AuthViewModel constructor(
+    val sharedUseCase: SharedUseCase,
     private val getItemsUseCase: GetLoginAuthUseCase
 ) : StrongViewModel() {
 
     val progress = MutableLiveData<Boolean>()
+
+    private var _phoneNumber = MutableLiveData<String>()
+    val phoneNumber get() = _phoneNumber
+
+    private var _password= MutableLiveData<String>()
+    val password get() = _password
+
+    init {
+        if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
+            sharedUseCase.getSharedPreference().password.isNullOrEmpty())
+            _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty().toString())
+            _password.postValue(sharedUseCase.getSharedPreference().password.isNullOrEmpty().toString())
+    }
+
+    fun setPhoneAndPassword(phoneNumber:String, password:String){
+        sharedUseCase.getSharedPreference().password = password
+        sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
+    }
 
     fun getUseCase(setLogin: SetLogin) {
         progress.value = true

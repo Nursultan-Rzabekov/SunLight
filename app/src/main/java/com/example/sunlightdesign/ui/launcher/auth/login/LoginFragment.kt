@@ -33,6 +33,10 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
 
         setupMask()
         configViewModel()
+
+
+
+
     }
 
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {
@@ -55,13 +59,29 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
                 )
         }
 
-        forget_password_tv.setOnClickListener {}
+        remember_checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                viewModel.setPhoneAndPassword(phoneNumber = MaskUtils.unMaskValue(
+                    MaskUtils.PHONE_MASK,
+                    phone_et.text.toString()
+                ), password = password_et.text.toString())
+            }
+            else{
+                viewModel.setPhoneAndPassword(phoneNumber = "", password = "")
+            }
+        }
     }
 
     private fun configViewModel() {
         viewModel.apply {
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
+            })
+            password.observe(viewLifecycleOwner, Observer {
+
+            })
+            phoneNumber.observe(viewLifecycleOwner, Observer {
+                password_et.setText(it)
             })
         }
 
