@@ -128,6 +128,8 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             getString(R.string.amount_bv, info.user?.wallet?.right_branch_total)
         referralLink = "${BuildConfig.REFERAL_LINK}${info.user?.referral_link}"
 
+        usersInStructureTextView.text = info.children?.size.toString()
+
         invitedAdapter.setItems(info.children ?: listOf())
     }
 
