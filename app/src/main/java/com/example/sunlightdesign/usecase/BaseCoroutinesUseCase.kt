@@ -4,6 +4,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.DefaultErrorResp
 import com.example.sunlightdesign.data.source.dataSource.remote.ErrorResponse
 import com.example.sunlightdesign.usecase.blocks.CompletionBlock
 import com.example.sunlightdesign.utils.NetworkErrorUiModel
+import com.example.sunlightdesign.utils.SessionEndException
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import retrofit2.HttpException
@@ -50,10 +51,11 @@ abstract class BaseCoroutinesUseCase<T> {
                                 }
                             )
 
+                        if (errorResponse is ErrorResponse) {
+                            response(SessionEndException())
+                        }
+
                         when (errorResponse) {
-                            is ErrorResponse -> {
-                                NetworkErrorUiModel(ex.code(), "Logout")
-                            }
                             is DefaultErrorResponse -> {
                                 NetworkErrorUiModel(ex.code(), errorResponse.message)
                             }
