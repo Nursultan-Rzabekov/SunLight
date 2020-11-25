@@ -44,7 +44,6 @@ val module = module {
 
     single {
         val client = OkHttpClient.Builder()
-            //.authenticator(TokenAuthenticator())
             .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
             .writeTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
             .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
