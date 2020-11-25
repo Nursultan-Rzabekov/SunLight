@@ -137,7 +137,9 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 product_description = product.product_short_description.toString(),
                 product_price_bv = product.product_price_in_bv.toString(),
                 product_price_kzt = product.product_price_in_currency.toString(),
-                product_info = product.product_description.toString()
+                product_info = product.product_description.toString(),
+                productBackImage = product.product_image_back_path.toString(),
+                productFrontImage = product.product_image_front_path.toString()
             )
         )
         findNavController().navigate(R.id.market_fragment_to_market_details_fragment, bundle)
@@ -175,5 +177,7 @@ data class ProductItem(
     val product_description: String,
     val product_price_bv: String,
     val product_price_kzt: String,
-    val product_info: String
+    val product_info: String,
+    val productFrontImage: String,
+    val productBackImage: String
 ) : Parcelable
