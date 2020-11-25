@@ -61,8 +61,8 @@
     <string name="status">Статус:</string>
 
     <!--Кошелек-->
-    <string name="bonusnyi_koshelek">Основной кошелек</string>
-    <string name="koshelek_aktive">Кошелек активности</string>
+    <string name="bonusnyi_koshelek">Основной \nкошелек</string>
+    <string name="koshelek_aktive">Кошелек \nактивности</string>
     <string name="arrow_left">Объем левой ветки</string>
     <string name="koshelek">Кошелек</string>
     <string name="money_withdraw">Снять деньги</string>

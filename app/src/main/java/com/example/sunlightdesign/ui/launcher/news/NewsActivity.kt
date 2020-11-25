@@ -35,6 +35,10 @@ class NewsActivity : StrongActivity() {
         setListeners()
         setObservers()
 
+        newsContentWebView.settings.blockNetworkImage = false
+        newsContentWebView.settings.blockNetworkLoads = false
+        newsContentWebView.settings.loadWithOverviewMode = true
+
         intent.getIntExtra(KEY_POST_ID, -1).let {
             if (it == -1) return@let
             viewModel.getPostById(it)
@@ -59,10 +63,10 @@ class NewsActivity : StrongActivity() {
 
     private fun fillFields(post: Post) {
         newsTitleTextView.text = Html.fromHtml(post.title, Html.FROM_HTML_MODE_COMPACT)
-        newsDescriptionTextView.text = Html.fromHtml(post.description, Html.FROM_HTML_MODE_COMPACT)
         newsDateTextView.text =
             DateUtils.reformatDateString(post.created_at, DateUtils.PATTERN_DD_MM_YYYY_HH_mm)
-        newsContentTextView.text = Html.fromHtml(post.content, Html.FROM_HTML_MODE_COMPACT)
+        newsContentWebView
+            .loadData(post.content, "text/html; charset=utf-8", "UTF-8")
 
         Glide.with(this)
             .load(getImageUrl(post.image))
