@@ -15,7 +15,7 @@ import com.example.sunlightdesign.usecase.usercase.mainUse.get.*
  */
 
 class LauncherViewModel constructor(
-    sharedUseCase: SharedUseCase,
+    private val sharedUseCase: SharedUseCase,
     private val getMainPostUseCase: GetMainPostUseCase,
     private val getMainCategoriesUseCase: GetMainCategoriesUseCase,
     private val getMainBannersUseCase: GetMainBannersUseCase,
@@ -46,6 +46,8 @@ class LauncherViewModel constructor(
         if (!sharedUseCase.getSharedPreference().bearerToken.isNullOrEmpty())
             _bearerToken.postValue(true)
     }
+
+    fun getUserId(): String = sharedUseCase.getSharedPreference().userId.toString()
 
     fun getBanners(){
         progress.postValue(true)

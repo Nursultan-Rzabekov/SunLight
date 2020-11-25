@@ -16,6 +16,12 @@ class SecureSharedPreferences(
         get() = sharedPreferences.getString(BEARER_TOKEN, null)
         set(value) = sharedPreferences.edit().putString(BEARER_TOKEN, value).apply()
 
+
+    private val USER_ID = "user_id"
+    var userId:String?
+        get() = sharedPreferences.getString(USER_ID,null)
+        set(value) = sharedPreferences.edit().putString(USER_ID,value).apply()
+
     private val PIN_WRONG_COUNT = "pin_wrong_count"
     var pinWrongCount: Int
         get() = sharedPreferences.getInt(PIN_WRONG_COUNT, 0)

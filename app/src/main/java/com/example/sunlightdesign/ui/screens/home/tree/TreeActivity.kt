@@ -1,13 +1,20 @@
 package com.example.sunlightdesign.ui.screens.home.tree
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.KeyEvent
 import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongActivity
+import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import kotlinx.android.synthetic.main.activity_users_tree.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TreeActivity: StrongActivity() {
+
+
+    val viewModel: LauncherViewModel by viewModel()
+
 
     override val layoutId: Int
         get() = R.layout.activity_users_tree
@@ -28,12 +35,15 @@ class TreeActivity: StrongActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun loadWebView(){
         treeWebView.settings.loadWithOverviewMode = true
         treeWebView.settings.useWideViewPort = true
         treeWebView.settings.javaScriptEnabled = true
         treeWebView.settings.loadsImagesAutomatically = true
-        treeWebView.loadUrl(BuildConfig.STRUCTURE_URL)
+        treeWebView.settings.builtInZoomControls = true
+        treeWebView.settings.domStorageEnabled = true
+        treeWebView.loadUrl(BuildConfig.STRUCTURE_URL.plus(viewModel.getUserId()))
     }
 
     private fun setListeners() {

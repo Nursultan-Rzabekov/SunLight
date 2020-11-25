@@ -19,6 +19,7 @@ import com.example.sunlightdesign.ui.launcher.adapter.CategoriesAdapter
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import com.example.sunlightdesign.ui.launcher.news.NewsActivity
 import com.example.sunlightdesign.ui.screens.home.structure.StructureActivity
+import com.example.sunlightdesign.ui.screens.order.market.MarketActivity
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
@@ -151,7 +152,7 @@ class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
         }
 
         btn_market_cv.setOnClickListener {
-
+            startActivity(Intent(requireContext(),MarketActivity::class.java))
         }
     }
 

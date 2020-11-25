@@ -19,6 +19,7 @@ class DefaultAuthRepository constructor(
     override suspend fun getTasks(model: SetLogin): Login {
         val tasks = tasksRemoteDataSource.getTasks(model)
         prefs.bearerToken = tasks.token
+        prefs.userId = tasks.user?.id.toString()
         return tasks
     }
 }
