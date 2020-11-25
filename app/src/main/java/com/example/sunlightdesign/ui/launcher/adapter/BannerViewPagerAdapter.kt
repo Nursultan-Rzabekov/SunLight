@@ -2,6 +2,7 @@ package com.example.sunlightdesign.ui.launcher.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,8 @@ class BannerViewPagerAdapter(
         val imageView = view.findViewById<ImageView>(R.id.image_set)
         val titleView = view.findViewById<TextView>(R.id.banner_title_tv)
 
-        titleView.text = banners.banners[position].description
+        titleView.text =
+            Html.fromHtml(banners.banners[position].content, Html.FROM_HTML_MODE_COMPACT)
 
         Glide.with(view)
             .load(BuildConfig.BASE_URL_IMAGE + banners.banners[position].media_path)
