@@ -121,8 +121,11 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
         with(order.products){
             if(!this.isNullOrEmpty()){
-
-                viewModel.createOrderBuilder.products = this
+                val products = mutableListOf<Product>()
+                order.products?.forEach {
+                    it.product?.let { it1 -> products.add(it1) }
+                }
+                viewModel.createOrderBuilder.products = products
             }
         }
         viewModel.createOrderBuilder.payment_sum = order.total_price ?: -0.0
