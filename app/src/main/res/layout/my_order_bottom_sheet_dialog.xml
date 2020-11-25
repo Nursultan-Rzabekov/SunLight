@@ -58,15 +58,6 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/cashierSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        tools:text="@string/cashier"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/officeSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
         style="@style/AppCompatTextView"
