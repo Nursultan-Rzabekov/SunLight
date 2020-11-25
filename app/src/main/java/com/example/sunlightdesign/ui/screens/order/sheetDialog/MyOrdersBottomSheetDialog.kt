@@ -39,7 +39,6 @@ class MyOrdersBottomSheetDialog(
         totalAmountSheetTextView.text = getString(R.string.total_amount,order.total_price)
         typePaymentSheetTextView.text = getString(R.string.type_of_payment, order.order_payment_type_value)
         typeSheetTextView.text = getString(R.string.type,order.order_type_value)
-        cashierSheetTextView.text = getString(R.string.cashier,order.cashier)
         officeSheetTextView.text = getString(R.string.office,order.office?.office_name)
         contactNumberSheetTextView.text = getString(R.string.contact_number,order.office?.phone)
         dateEndSheetTextView.text = getString(R.string.date_end_of_order,order.order_finish_date)
