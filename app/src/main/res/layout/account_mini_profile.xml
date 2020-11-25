@@ -119,6 +119,7 @@
                     android:layout_weight="1" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/usersInStructureTextView"
                     style="@style/AppCompatTextViewGray"
                     android:layout_gravity="center"
                     android:textColor="@color/sunLightColor"
