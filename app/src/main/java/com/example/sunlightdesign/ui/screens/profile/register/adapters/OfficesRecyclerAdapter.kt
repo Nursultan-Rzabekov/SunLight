@@ -69,7 +69,7 @@ class OfficesRecyclerAdapter(
                 .into(itemView.office_image_iv)
 
             itemView.setOnClickListener {
-                officeSelector.onOfficeSelected(adapterPosition)
+                item.id?.let { it1 -> officeSelector.onOfficeSelected(it1) }
                 onChecked(adapterPosition)
             }
         }

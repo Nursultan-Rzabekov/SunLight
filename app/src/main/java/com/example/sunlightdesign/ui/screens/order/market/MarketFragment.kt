@@ -144,10 +144,12 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
 
-    override fun onProductsListSelected(product: List<Product>) {
+    override fun onProductsListSelected(product: List<Product>,count:Double) {
         productsBottomSheetDialog.dismiss()
 
+        viewModel.createOrderBuilder.user_id = viewModel.getUserId()?.toInt() ?: -1
         viewModel.createOrderBuilder.products = productsAdapter.getCheckedProducts()
+        viewModel.createOrderBuilder.payment_sum = count
 
         viewModel.getOfficesList()
     }

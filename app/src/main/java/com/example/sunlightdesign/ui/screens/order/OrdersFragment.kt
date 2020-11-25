@@ -123,6 +123,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 viewModel.createOrderBuilder.products = this
             }
         }
+        viewModel.createOrderBuilder.payment_sum = order.total_price ?: -0.0
 
         viewModel.getOfficesList()
     }

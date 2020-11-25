@@ -22,8 +22,6 @@ class DefaultOrdersRepository constructor(
 
     override suspend fun getOfficesList() = ordersServices.getOfficesList().await()
 
-    override suspend fun storeOrder(createOrderPartner: CreateOrderPartner) = ordersServices.storeOrder(
-        office_id = createOrderPartner.office_id, order_payment_type = createOrderPartner.order_payment_type,
-        order_type = 0, products = createOrderPartner.products, total_in_bv = 0, user_id = createOrderPartner.user_id
-    ).await()
+    override suspend fun storeOrder(createOrderPartner: CreateOrderPartner) =
+        ordersServices.storeOrder(createOrderPartner).await()
 }

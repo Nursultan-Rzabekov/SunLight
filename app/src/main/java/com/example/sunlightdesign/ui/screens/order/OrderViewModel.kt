@@ -7,6 +7,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Offi
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.example.sunlightdesign.ui.base.StrongViewModel
+import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 
@@ -15,6 +16,7 @@ import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
  * ViewModel for the task list screen.
  */
 class OrderViewModel constructor(
+    private val sharedUseCase: SharedUseCase,
     private val getOrdersUseCase: GetOrdersUseCase,
     private val getProductListUseCase: GetProductListUseCase,
     private val getOrderByIdUseCase: GetOrderByIdUseCase,
@@ -38,6 +40,8 @@ class OrderViewModel constructor(
 
     private var _officesList = MutableLiveData<OfficesList>()
     val officesList: LiveData<OfficesList> get() = _officesList
+
+    fun getUserId() = sharedUseCase.getSharedPreference().userId
 
     fun getMyOrders() {
         progress.postValue(true)

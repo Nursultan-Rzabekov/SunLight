@@ -61,6 +61,7 @@ val ordersModule = module {
 
     viewModel {
         OrderViewModel(
+            sharedUseCase = get(),
             getOrdersUseCase = get(),
             getOrderByIdUseCase = get(),
             getProductByIdUseCase = get(),

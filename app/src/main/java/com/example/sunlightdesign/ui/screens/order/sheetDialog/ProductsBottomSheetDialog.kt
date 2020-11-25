@@ -1,13 +1,17 @@
 package com.example.sunlightdesign.ui.screens.order.sheetDialog
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.example.sunlightdesign.ui.screens.order.adapters.ProductsSheetRecyclerAdapter
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.repeat_orders_bottom_sheet.*
 
@@ -55,7 +59,7 @@ class ProductsBottomSheetDialog(
         amountOrderTextView.text = getString(R.string.totalAmountOrders, count)
 
         btn_all_right.setOnClickListener {
-            productsInteraction.onProductsListSelected(products)
+            productsInteraction.onProductsListSelected(products,count)
         }
         cancel_btn.setOnClickListener {
             dismiss()
@@ -68,6 +72,28 @@ class ProductsBottomSheetDialog(
     }
 
     interface ProductsInteraction{
-        fun onProductsListSelected(product: List<Product>)
+        fun onProductsListSelected(product: List<Product>, count:Double)
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+
+        bottomSheetDialog.setOnShowListener {
+            val bottomSheet = it as BottomSheetDialog
+            val parentLayout =
+                bottomSheet.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+            parentLayout?.let { layout ->
+                val behaviour = BottomSheetBehavior.from(layout)
+                setupFullHeight(layout)
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+        return bottomSheetDialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        val layoutParams = bottomSheet.layoutParams
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        bottomSheet.layoutParams = layoutParams
     }
 }
