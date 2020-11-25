@@ -7,7 +7,7 @@ data class Orders(
 )
 
 data class Order(
-    val cashier: String?,
+    val cashier: Any?,
     val created_at: String?,
     val id: Double?,
     val office: com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?,

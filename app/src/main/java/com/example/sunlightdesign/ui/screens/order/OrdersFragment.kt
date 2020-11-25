@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Office
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.example.sunlightdesign.ui.base.StrongFragment
@@ -120,6 +121,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
         with(order.products){
             if(!this.isNullOrEmpty()){
+
                 viewModel.createOrderBuilder.products = this
             }
         }
