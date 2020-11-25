@@ -21,6 +21,7 @@ data class Product(
     val product_short_description: String?,
     val product_type: Double?,
     val updated_at: String?,
+    val product: Product?,
     var isChecked: Boolean = false
 )
 

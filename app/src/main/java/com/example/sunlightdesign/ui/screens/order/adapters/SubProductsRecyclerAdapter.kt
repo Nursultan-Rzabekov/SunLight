@@ -33,9 +33,7 @@ class SubProductsRecyclerAdapter(
         fun bind(product: Product, statusOrder: String) {
             itemView.bvTextView.text =
                 itemView.context.getString(R.string.totalAmountOrders, product.product_price)
-            itemView.orderNameTextView.text = product.product_name
-            itemView.codeTextView.text =
-                itemView.context.getString(R.string.code_number, product.pivot?.model_id)
+            itemView.orderNameTextView.text = product.product?.product_name
             itemView.countTextView.text =
                 itemView.context.getString(R.string.amount, product.product_quantity)
             itemView.statusTextView.text =

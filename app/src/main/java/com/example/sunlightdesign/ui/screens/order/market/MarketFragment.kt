@@ -84,14 +84,16 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     private fun setTotalQuantityAndCount(products: List<Product>){
         var count = 0.0
+        var productSize = 0
         products.forEach {
             it.product_price?.let { price ->
                 it.product_quantity?.let {quantity ->
                     count += (price * quantity)
+                    productSize += quantity
                 }
             }
         }
-        product_market_quantity_tv.text = getString(R.string.product_market,products.size)
+        product_market_quantity_tv.text = getString(R.string.product_market,productSize)
         pay_market_total_tv.text = getString(R.string.market_pay, count)
     }
 

@@ -33,16 +33,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Набор Clinique" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/codeTextView"
-        style="@style/AppCompatTextViewGray"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="@dimen/dimen_14sp"
-        app:layout_constraintStart_toEndOf="@+id/imageCardView"
-        app:layout_constraintTop_toBottomOf="@+id/orderNameTextView"
-        tools:text="@string/code_number" />
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/countTextView"
@@ -51,7 +41,7 @@
         android:layout_marginTop="5dp"
         android:textSize="@dimen/dimen_14sp"
         app:layout_constraintStart_toEndOf="@+id/imageCardView"
-        app:layout_constraintTop_toBottomOf="@+id/codeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/orderNameTextView"
         tools:text="Количество : 1" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -70,8 +60,8 @@
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginTop="8dp"
         android:textSize="@dimen/dimen_14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bvTextView"
+        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+        app:layout_constraintTop_toBottomOf="@+id/countTextView"
         tools:text="@string/status_format" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
