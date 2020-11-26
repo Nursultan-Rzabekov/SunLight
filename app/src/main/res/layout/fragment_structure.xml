@@ -34,7 +34,7 @@
                     android:text="@string/structure"
                     android:textSize="@dimen/dimen_16sp"
                     app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right"
-                    app:drawableStartCompat="@drawable/ic_expand_tree" />
+                    app:drawableStartCompat="@drawable/ic_structure_icon" />
 
             </androidx.cardview.widget.CardView>
 
