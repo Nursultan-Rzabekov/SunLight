@@ -3,6 +3,7 @@ package com.example.sunlightdesign.ui.screens.profile
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.FileUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.R
@@ -22,10 +23,16 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPac
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangeAvatarUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangePasswordUseCase
 import com.example.sunlightdesign.utils.Constants
 import com.example.sunlightdesign.utils.showDialog
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import timber.log.Timber
+import java.io.File
+import java.net.URI
 
 
 /**
@@ -41,7 +48,8 @@ class ProfileViewModel constructor(
     private val accountAddPartnerUseCase: AccountAddPartnerUseCase,
     private val accountCreateOrderUseCase: AccountCreateOrderUseCase,
     private val profileInfoUseCase: ProfileInfoUseCase,
-    private val profileChangePasswordUseCase: ProfileChangePasswordUseCase
+    private val profileChangePasswordUseCase: ProfileChangePasswordUseCase,
+    private val profileChangeAvatarUseCase: ProfileChangeAvatarUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -65,8 +73,8 @@ class ProfileViewModel constructor(
     private var _rearDocument = MutableLiveData<Uri?>()
     val rearDocument: LiveData<Uri?> get() = _rearDocument
 
-    private var _avatarImage = MutableLiveData<Uri?>()
-    val avatarImage: LiveData<Uri?> get() = _avatarImage
+    private var _avatarImage = MutableLiveData<String?>()
+    val avatarImage: LiveData<String?> get() = _avatarImage
 
     private var _productsList = MutableLiveData<List<Product>?>()
     val productsList: LiveData<List<Product>?> get() = _productsList
@@ -195,6 +203,35 @@ class ProfileViewModel constructor(
         }
     }
 
+    fun changeAvatar(path: Uri?) {
+        val absPath = path?.path
+        if (absPath == null) {
+            Timber.d("Failed to get path of $path")
+            return
+        }
+        progress.postValue(true)
+        val file = File(absPath)
+        val imageFile = RequestBody.create(MediaType.parse("image/*"), file)
+        val data = MultipartBody.Part.createFormData("user_avatar_path", file.name, imageFile)
+        profileChangeAvatarUseCase.setData(data)
+        profileChangeAvatarUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                it?.user?.user_avatar_path?.let{ avatar ->
+                    _avatarImage.postValue(avatar)
+                }
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
     fun addPartner(addPartner: AddPartner) {
         progress.postValue(true)
         accountAddPartnerUseCase.setData(addPartner)
@@ -294,7 +331,7 @@ class ProfileViewModel constructor(
                 }
                 Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE -> {
                     Timber.d("Image path: ${data.data}")
-                    _avatarImage.postValue(data.data)
+                    changeAvatar(data.data)
                 }
             }
         }

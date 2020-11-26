@@ -105,7 +105,9 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
             })
 
             avatarImage.observe(viewLifecycleOwner, Observer {
-                userAvatarCircleImageView.setImageURI(it)
+                Glide.with(this@EditProfileFragment)
+                    .load(it)
+                    .into(userAvatarCircleImageView)
             })
 
             navigationEvent.observe(viewLifecycleOwner, Observer {

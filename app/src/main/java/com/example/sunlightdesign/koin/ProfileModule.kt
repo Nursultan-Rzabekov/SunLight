@@ -4,6 +4,7 @@ import com.example.sunlightdesign.data.source.ProfileRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.ProfileServices
 import com.example.sunlightdesign.data.source.repositories.DefaultProfileRepository
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangeAvatarUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangePasswordUseCase
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -30,6 +31,12 @@ val profileModule = module {
     factory {
         ProfileChangePasswordUseCase(
             repository = get()
+        )
+    }
+
+    factory {
+        ProfileChangeAvatarUseCase(
+            profileRepository = get()
         )
     }
 }

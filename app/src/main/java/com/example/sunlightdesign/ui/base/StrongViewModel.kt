@@ -72,6 +72,7 @@ open class StrongViewModel : ViewModel(), KoinComponent {
     }
 
     open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
     }
 
     open fun onPermissionActivityResult(
