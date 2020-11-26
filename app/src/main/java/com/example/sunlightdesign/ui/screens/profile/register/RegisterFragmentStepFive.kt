@@ -9,6 +9,7 @@ import android.view.Window
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.AddPartnerResponse
 import com.example.sunlightdesign.ui.base.StrongFragment
@@ -87,6 +88,10 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
 
         btn_next_step_five.setOnClickListener {
             viewModel.createOrder(viewModel.createOrderPartnerBuilder.build())
+        }
+
+        backBtn.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
