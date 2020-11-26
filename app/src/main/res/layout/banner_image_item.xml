@@ -25,6 +25,7 @@
             style="@style/AppCompatTextView"
             android:layout_gravity="center"
             tools:text="Hello world"
+            android:textSize="15sp"
             android:textColor="@color/white"
             />
 
