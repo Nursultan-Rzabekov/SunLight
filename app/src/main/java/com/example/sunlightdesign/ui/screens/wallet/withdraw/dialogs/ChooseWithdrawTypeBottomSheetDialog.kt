@@ -1,10 +1,14 @@
 package com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.example.sunlightdesign.R
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.payment_bottom_sheet.*
 
@@ -46,5 +50,27 @@ class ChooseWithdrawTypeBottomSheetDialog(
     interface ChooseWithdrawTypeInteraction{
         fun onWithdrawTypeCashSelected()
         fun onWithdrawTypeCardSelected()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+
+        bottomSheetDialog.setOnShowListener {
+            val bottomSheet = it as BottomSheetDialog
+            val parentLayout =
+                bottomSheet.findViewById<View>(R.id.design_bottom_sheet)
+            parentLayout?.let { layout ->
+                val behaviour = BottomSheetBehavior.from(layout)
+                setupFullHeight(layout)
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+        return bottomSheetDialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        val layoutParams = bottomSheet.layoutParams
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        bottomSheet.layoutParams = layoutParams
     }
 }

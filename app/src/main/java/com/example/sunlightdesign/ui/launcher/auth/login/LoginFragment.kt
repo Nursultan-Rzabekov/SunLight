@@ -29,7 +29,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
     override fun onViewCreated(view: View, savedInstanceViewState: Bundle?) {
         super.onViewCreated(view, savedInstanceViewState)
 
-        welcome_login_as_tv.text = getString(R.string.login_welcome, "Спонсор Имя")
+        welcome_login_as_tv.text = getString(R.string.login_welcome)
     }
 
     override fun onResume() {

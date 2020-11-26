@@ -12,7 +12,7 @@
 
     <!--Логин-->
     <string name="login">Вход</string>
-    <string name="login_welcome">Добро пожаловать вы входите в систему \nкак <b>%1$s</b></string>
+    <string name="login_welcome">Добро пожаловать вы входите в систему</string>
     <string name="enter_phone_number">Введите ваш номер телефона:</string>
     <string name="enter_password">Введите ваш пароль</string>
     <string name="remember_me">Запомнить меня</string>
