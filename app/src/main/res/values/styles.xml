@@ -206,8 +206,15 @@
         <item name="fontFamily">@font/rubik_regular</item>
     </style>
 
-    <style name="myDialogError" parent="Theme.AppCompat.Dialog">
+    <style name="myDialogError" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="windowNoTitle">true</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="backgroundTint">@color/white</item>
     </style>
 
     <!-- set the rounded drawable as background to your bottom sheet -->

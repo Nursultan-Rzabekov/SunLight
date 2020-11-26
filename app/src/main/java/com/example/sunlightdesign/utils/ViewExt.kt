@@ -9,6 +9,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.View
@@ -27,6 +28,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.example.sunlightdesign.Event
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.AreYouSureCallback
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 import kotlin.reflect.KClass
@@ -136,22 +138,20 @@ fun showMessage(context: Context, title: String? = null, message: String,
                 btnPositiveEvent: DialogInterface.OnClickListener? = null,
                 setCancelable: Boolean = true)
 {
-    var dialog: AlertDialog? = null
-    val builder = AlertDialog.Builder(context,R.style.myDialogError)
-    builder.setTitle(title?:"")
-    builder.setMessage(message)
-    builder.setCancelable(setCancelable)
+    var builder = MaterialAlertDialogBuilder(context, R.style.myDialogError)
+        .setTitle(title?:"")
+        .setMessage(message)
+        .setCancelable(setCancelable)
+        .setPositiveButton(btnPositive, btnPositiveEvent)
     if (btnNegative != null) {
-        if (btnNegativeEvent != null)
-            builder.setNegativeButton(btnNegative, btnNegativeEvent)
-        else
-            builder.setNegativeButton(btnNegative) { _, _ ->
-                dialog?.dismiss()
-            }
+        builder = if (btnNegativeEvent != null)
+                        builder.setNegativeButton(btnNegative, btnNegativeEvent)
+                    else
+                        builder.setNegativeButton(btnNegative) { dialog, _ ->
+                            dialog.dismiss()
+                        }
     }
-    builder.setPositiveButton(btnPositive, btnPositiveEvent)
-    dialog = builder.create()
-    dialog.show()
+    builder.show()
 }
 
 fun <T : Activity> Activity.startNewActivity(activityClass: KClass<T>, block: Intent.() -> Unit = {}){
