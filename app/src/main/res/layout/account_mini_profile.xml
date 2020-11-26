@@ -63,7 +63,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/userActivityStatusTextView"
-                    style="@style/AppCompatTextViewGray"
+                    style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:textColor="@color/sunLightColor"
                     android:textSize="@dimen/dimen_14sp"
@@ -91,7 +91,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/userCreatedAtTextView"
-                    style="@style/AppCompatTextViewGray"
+                    style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:textColor="@color/sunLightColor"
                     android:textSize="@dimen/dimen_14sp"
@@ -120,7 +120,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/usersInStructureTextView"
-                    style="@style/AppCompatTextViewGray"
+                    style="@style/AppCompatTextView"
                     android:layout_gravity="center"
                     android:textColor="@color/sunLightColor"
                     android:textSize="@dimen/dimen_14sp"
