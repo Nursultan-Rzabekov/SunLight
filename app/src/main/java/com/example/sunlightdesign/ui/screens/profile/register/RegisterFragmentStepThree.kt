@@ -53,6 +53,10 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
             viewModel.createOrderPartnerBuilder.products = productsAdapter.getCheckedProducts()
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
+
+        back_step_three_btn.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setObservers() {

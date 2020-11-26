@@ -21,14 +21,6 @@
             android:text="@string/insert_need_amount"
             android:textSize="@dimen/dimen_18sp" />
 
-        <TextView
-            style="@style/AppCompatTextViewGray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8dp"
-            android:text="@string/short_info_about_transfer"
-            android:textSize="@dimen/dimen_14sp" />
-
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

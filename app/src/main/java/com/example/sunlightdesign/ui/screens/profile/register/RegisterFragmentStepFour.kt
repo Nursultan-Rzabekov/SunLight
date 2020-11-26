@@ -58,6 +58,10 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
             if (!checkFields()) return@setOnClickListener
             findNavController().navigate(R.id.action_stepFourFragment_to_stepFiveFragment)
         }
+
+        backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onOfficeSelected(id: Int) {

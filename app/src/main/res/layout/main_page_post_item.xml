@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/postLayout"
     style="@style/BaseCardView"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
     android:layout_marginBottom="15dp"
+    app:cardElevation="@dimen/dimen_0dp"
     android:background="@color/sunlight_background">
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/post_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="top"
-        android:scaleType="centerCrop"
-        android:src="@drawable/main_photo" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_16dp"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/post_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="top"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_photo" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title_text_view"
             style="@style/AppCompatTextView"
             android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
             android:textSize="@dimen/dimen_16sp"
             tools:text="ТОРЖЕСТВЕННОЕ ОТКРЫТИЕ КОМПАНИИ
 Sun light corporate 11 МАЯ 2020" />
@@ -37,6 +39,8 @@ Sun light corporate 11 МАЯ 2020" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description_text_view"
             style="@style/AppCompatTextViewGray"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
             android:layout_marginTop="@dimen/dimen_8dp"
             android:textSize="@dimen/dimen_14sp"
             tools:text="Было затрачено большое количество энергии
@@ -45,6 +49,8 @@ Sun light corporate 11 МАЯ 2020" />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/time_text_view"
             style="@style/AppCompatTextViewGray"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
             android:layout_marginTop="@dimen/dimen_16dp"
             android:textSize="12sp"
             tools:text="Вчера в 7:00" />

@@ -19,10 +19,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.U
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
-import com.example.sunlightdesign.utils.DateUtils
-import com.example.sunlightdesign.utils.MaskUtils
-import com.example.sunlightdesign.utils.getImageUrl
-import com.example.sunlightdesign.utils.toShortenedUserInfo
+import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
 import kotlinx.android.synthetic.main.dialog_change_password.*
 import kotlinx.android.synthetic.main.footer_user_card.*
@@ -70,7 +67,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         backBtn.setOnClickListener { findNavController().navigateUp() }
 
         userEditAvatarCircleImageView.setOnClickListener {
-            viewModel.onAttachDocument()
+            viewModel.onAttachDocument(Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE)
         }
 
         passwordEditTextLayout.setStartIconOnClickListener {

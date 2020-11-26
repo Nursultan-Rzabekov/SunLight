@@ -97,6 +97,10 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
                 )
             }
         }
+
+        backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun checkFields() : Boolean {

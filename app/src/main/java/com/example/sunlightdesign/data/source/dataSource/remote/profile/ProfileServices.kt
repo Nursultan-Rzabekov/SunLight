@@ -4,9 +4,9 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Base
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
 import kotlinx.coroutines.Deferred
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface ProfileServices {
 
@@ -17,5 +17,11 @@ interface ProfileServices {
     @POST("profile/update-password")
     fun changePassword(
         @Body changePassword: ChangePassword
+    ): Deferred<BaseResponse>
+
+    @Multipart
+    @POST("profile/update-avatar")
+    fun changeAvatar(
+        @Part avatar: MultipartBody.Part
     ): Deferred<BaseResponse>
 }

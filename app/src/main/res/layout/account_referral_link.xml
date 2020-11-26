@@ -17,7 +17,6 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextView"
-                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/rubik_regular"
                 android:text="@string/referral_reference"
                 android:textColor="@color/sunLightColor"
