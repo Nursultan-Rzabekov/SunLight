@@ -64,7 +64,8 @@ class PackageRecyclerAdapter(
                 )
             }
             itemView.package_item_card_name_tv.text = item.package_name
-            itemView.package_price_tv.text = item.package_price.toString()
+            itemView.package_price_tv.text =
+                itemView.context.getString(R.string.amountText_kzt, item.package_price_in_kzt.toString())
 
             itemView.package_item_card.setOnClickListener {
                 Timber.d(adapterPosition.toString())
