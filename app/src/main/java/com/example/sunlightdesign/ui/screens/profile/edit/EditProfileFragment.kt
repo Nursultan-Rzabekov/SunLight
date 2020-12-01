@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -39,9 +40,10 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
     }
 
     private val passwordDialog by lazy {
-        Dialog(requireContext(), R.style.FullDialog).apply {
+        Dialog(requireContext(), R.style.FullDialogAnother).apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.color.transparent))
             setCancelable(false)
             setContentView(R.layout.dialog_change_password)
         }
@@ -75,7 +77,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
             }
         }
 
-        passwordEditTextLayout.setStartIconOnClickListener {
+        passwordEditTextLayout.setEndIconOnClickListener {
             showPasswordDialog()
         }
 

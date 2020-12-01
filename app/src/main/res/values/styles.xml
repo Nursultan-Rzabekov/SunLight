@@ -231,9 +231,9 @@
         <item name="android:windowMinWidthMinor">90%</item>
     </style>
 
-    <style name="FullDialogAnother" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowMinWidthMajor">100%</item>
-        <item name="android:windowMinWidthMinor">100%</item>
+    <style name="FullDialogAnother" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowMinWidthMajor">95%</item>
+        <item name="android:windowMinWidthMinor">95%</item>
     </style>
 
     <style name="NavDrawerTextStyleActive" parent="Base.TextAppearance.AppCompat">

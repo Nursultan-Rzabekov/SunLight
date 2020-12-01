@@ -59,8 +59,7 @@
                         android:layout_marginTop="@dimen/dimen_16dp"
                         app:hintEnabled="false"
                         app:passwordToggleEnabled="true"
-                        app:startIconCheckable="true"
-                        app:startIconDrawable="@drawable/ic_pen">
+                        app:passwordToggleDrawable="@drawable/ic_pen">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/repasswordEditText"
