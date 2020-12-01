@@ -1,11 +1,12 @@
 package com.example.sunlightdesign.ui.screens.profile
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
-import android.provider.MediaStore
+import android.os.Environment
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.R
@@ -34,6 +35,8 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import timber.log.Timber
 import java.io.File
+import java.io.FileNotFoundException
+import java.io.InputStream
 
 
 /**
@@ -205,31 +208,36 @@ class ProfileViewModel constructor(
     }
 
     private fun changeAvatar(path: Uri?) {
-        val absPath = path?.path
-        if (absPath == null) {
-            Timber.d("Failed to get path of $path")
-            return
-        }
+        if(path == null) return
         progress.postValue(true)
-        val file = File(absPath)
-        val imageFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-        val data = MultipartBody.Part.createFormData("user_avatar_path", file.name, imageFile)
-        profileChangeAvatarUseCase.setData(data)
-        profileChangeAvatarUseCase.execute {
-            onComplete {
-                progress.postValue(false)
-                it?.user?.user_avatar_path?.let{ avatar ->
-                    _avatarImage.postValue(avatar)
+
+        withActivity {
+            val inputStream: InputStream? =
+                it.contentResolver?.openInputStream(path)
+            val part = MultipartBody.Part.createFormData(
+                "user_avatar_path", "file.jpg", RequestBody.create(
+                    MediaType.parse("image/*"),
+                    inputStream!!.readBytes()
+                )
+            )
+            profileChangeAvatarUseCase.setData(part)
+            profileChangeAvatarUseCase.execute {
+                onComplete { response ->
+                    progress.postValue(false)
+                    response?.user?.user_avatar_path?.let{ avatar ->
+                        _avatarImage.postValue(avatar)
+                    }
+                }
+                onNetworkError {
+                    progress.postValue(false)
+                    handleError(errorMessage = it.message)
+                }
+                onError {
+                    progress.postValue(false)
+                    handleError(throwable = it)
                 }
             }
-            onNetworkError {
-                progress.postValue(false)
-                handleError(errorMessage = it.message)
-            }
-            onError {
-                progress.postValue(false)
-                handleError(throwable = it)
-            }
+
         }
     }
 
@@ -280,14 +288,14 @@ class ProfileViewModel constructor(
                 _navigationEvent.postValue(
                     NavigationEvent.NavigateNext(data = it)
                 )
-                withActivity {activity ->
+                withActivity { activity ->
                     showDialog(activity, R.id.notify_ok_btn, layout = R.layout.dialog_notify)
                 }
             }
             onNetworkError {
                 progress.postValue(false)
                 handleError(errorMessage = it.message)
-                withActivity {activity ->
+                withActivity { activity ->
                     showDialog(activity, R.id.notify_ok_btn, layout = R.layout.dialog_notify)
                 }
             }
@@ -341,6 +349,7 @@ class ProfileViewModel constructor(
         }
     }
 
+    
     sealed class NavigationEvent<out T>{
         class NavigateNext<T>(val data: T): NavigationEvent<T>()
         object NoAction : NavigationEvent<Nothing>()

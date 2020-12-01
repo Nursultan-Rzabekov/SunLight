@@ -79,7 +79,7 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
                 product_name = product.product_name.toString(),
                 product_description = product.product_short_description.toString(),
                 product_price_bv = product.product_price_in_bv.toString(),
-                product_price_kzt = product.product_price_in_currency.toString(),
+                product_price_kzt = product.product_price.toString(),
                 product_info = product.product_description.toString(),
                 productBackImage = product.product_image_back_path.toString(),
                 productFrontImage = product.product_image_front_path.toString()
