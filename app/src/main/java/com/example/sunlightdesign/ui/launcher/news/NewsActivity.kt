@@ -3,7 +3,7 @@ package com.example.sunlightdesign.ui.launcher.news
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Html
-import androidx.core.view.isVisible
+import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
@@ -12,7 +12,6 @@ import com.example.sunlightdesign.ui.base.StrongActivity
 import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.utils.DateUtils
 import com.example.sunlightdesign.utils.getImageUrl
-import kotlinx.android.synthetic.main.fragment_company_market_plan.*
 import kotlinx.android.synthetic.main.news_activity.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,7 +57,7 @@ class NewsActivity : StrongActivity() {
     private fun setObservers() {
         viewModel.apply {
             progress.observe(this@NewsActivity, Observer {
-                progress_bar.isVisible = it
+                progress_bar.visibility = if(it) View.VISIBLE else View.GONE
             })
 
             postItem.observe(this@NewsActivity, Observer {
