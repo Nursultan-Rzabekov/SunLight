@@ -1,6 +1,8 @@
 package com.example.sunlightdesign.data.source.dataSource
 
+import android.net.Uri
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import okhttp3.MultipartBody
 
 interface AccountDataSource {
     suspend fun getCountriesList(): CountriesList
@@ -22,7 +24,9 @@ data class AddPartner(
     val city_id: Int?,
     val iin: String?,
     val register_by: Int?,
-    val position: String?
+    val position: String?,
+    val document_front: MultipartBody.Part?,
+    val document_back: MultipartBody.Part?
 )
 
 data class CreateOrderPartner(

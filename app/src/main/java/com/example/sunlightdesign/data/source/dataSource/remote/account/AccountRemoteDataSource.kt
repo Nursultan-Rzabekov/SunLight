@@ -17,8 +17,9 @@ class AccountRemoteDataSource(private val apiServices: AccountServices) : Accoun
 
     override suspend fun getUsersList(): UsersList = apiServices.getUsersList().await()
 
-    override suspend fun addPartner(body: AddPartner): Login =
-        apiServices.addPartnerStepOne(body).await()
+    override suspend fun addPartner(body: AddPartner): Login {
+//        return apiServices.addPartnerStepOne(body).await()
+    }
 
     override suspend fun setPackage(package_id: Int, user_id: Int): User =
         apiServices.addPartnerStepTwo(package_id = package_id, user_id = user_id).await()

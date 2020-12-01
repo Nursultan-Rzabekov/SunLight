@@ -4,6 +4,8 @@ import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import kotlinx.coroutines.Deferred
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 
@@ -17,9 +19,21 @@ interface AccountServices {
     fun getListCountriesRegionsCities(
     ): Deferred<CountriesList>
 
+    @Multipart
     @POST("cabinet/add-partner")
     fun addPartnerStepOne(
-        @Body addPartner: AddPartner
+        @Part first_name: RequestBody,
+        @Part last_name: RequestBody,
+        @Part phone: RequestBody,
+        @Part middle_name: RequestBody,
+        @Part country_id: RequestBody,
+        @Part region_id: RequestBody,
+        @Part city_id: RequestBody,
+        @Part iin: RequestBody,
+        @Part register_by: RequestBody,
+        @Part position: RequestBody?,
+        @Part document_front_path: MultipartBody.Part,
+        @Part document_back_path: MultipartBody.Part
     ): Deferred<Login>
 
     @GET("cabinet/add-partner/packages-list")
