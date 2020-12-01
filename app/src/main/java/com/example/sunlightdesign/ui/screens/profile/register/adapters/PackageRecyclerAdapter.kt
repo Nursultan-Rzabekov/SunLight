@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Package
+import com.example.sunlightdesign.utils.NumberUtils
 import kotlinx.android.synthetic.main.partner_packages_list_item.view.*
 import timber.log.Timber
 
@@ -64,8 +65,10 @@ class PackageRecyclerAdapter(
                 )
             }
             itemView.package_item_card_name_tv.text = item.package_name
-            itemView.package_price_tv.text =
-                itemView.context.getString(R.string.amountText_kzt, item.package_price_in_kzt.toString())
+            item.package_price_in_kzt?.let {
+                itemView.package_price_tv.text =
+                    itemView.context.getString(R.string.amountText_kzt, NumberUtils.prettifyDouble(it))
+            }
 
             itemView.package_item_card.setOnClickListener {
                 Timber.d(adapterPosition.toString())

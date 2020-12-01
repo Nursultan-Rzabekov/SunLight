@@ -20,6 +20,8 @@ import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import com.example.sunlightdesign.ui.launcher.news.NewsActivity
 import com.example.sunlightdesign.ui.screens.home.structure.StructureActivity
 import com.example.sunlightdesign.ui.screens.order.market.MarketActivity
+import com.example.sunlightdesign.utils.NumberUtils
+import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
