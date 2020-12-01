@@ -110,6 +110,7 @@
                         android:paddingBottom="@dimen/dimen_12dp"
                         android:text="@string/transfer"
                         android:textSize="@dimen/dimen_16sp"
+                        app:iconPadding="-18dp"
                         app:icon="@drawable/ic_transfer"
                         app:iconGravity="start" />
 
