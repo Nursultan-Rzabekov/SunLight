@@ -140,6 +140,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
     }
 
     private fun setUserInfo(info: ShortenedUserInfo?) {
+        repasswordEditText.setText(viewModel.sharedPreferences.password)
         userFullNameTextView.text = info?.fullName
         userUuidTextView.text = info?.uuid
         userStatusTextView.text = info?.status

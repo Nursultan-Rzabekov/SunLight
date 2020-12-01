@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp"
                         app:hintEnabled="false"
-                        app:passwordToggleEnabled="false"
+                        app:passwordToggleEnabled="true"
                         app:startIconCheckable="true"
                         app:startIconDrawable="@drawable/ic_pen">
 

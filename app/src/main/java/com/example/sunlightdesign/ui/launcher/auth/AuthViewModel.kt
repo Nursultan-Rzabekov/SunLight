@@ -51,6 +51,7 @@ class AuthViewModel constructor(
                 }
 
                 withActivity { activity ->
+                    sharedPreferences.password = setLogin.password
                     activity.startNewActivity(MainActivity::class)
                 }
             }
