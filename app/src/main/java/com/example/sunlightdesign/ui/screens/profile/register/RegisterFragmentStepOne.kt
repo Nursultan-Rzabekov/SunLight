@@ -1,10 +1,16 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
+import android.Manifest
+import android.content.ContentResolver
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -116,7 +122,9 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         }
 
         attach_document_btn.setOnClickListener {
-            viewModel.onAttachDocument()
+            if (checkPermission()) {
+                viewModel.onAttachDocument()
+            }
         }
 
         document_back_side_remove_tv.setOnClickListener {
@@ -384,6 +392,26 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             return false
         }
         return true
+    }
+
+    private fun checkPermission() : Boolean {
+        return if (
+            requireContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED &&
+            requireContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED) {
+            true
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ),
+                Constants.PERMISSIONS_REQUEST_READ_STORAGE
+            )
+            false
+        }
     }
 
 }

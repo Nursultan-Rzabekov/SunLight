@@ -23,12 +23,16 @@ abstract class StrongActivity : AppCompatActivity() {
         //add status bar custom color
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        supportFragmentManager.currentNavigationFragment?.forEach {
-            it.onActivityResult(requestCode, resultCode, data)
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        supportFragmentManager.fragments.forEach {
+//            it.onActivityResult(requestCode, resultCode, data)
+//        }
+//        supportFragmentManager.currentNavigationFragment?.forEach {
+//            it.onActivityResult(requestCode, resultCode, data)
+//        }
+//    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

@@ -1,9 +1,11 @@
 package com.example.sunlightdesign.ui.screens.profile
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
-import android.os.FileUtils
+import android.provider.MediaStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.R
@@ -32,7 +34,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import timber.log.Timber
 import java.io.File
-import java.net.URI
 
 
 /**
@@ -203,7 +204,7 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun changeAvatar(path: Uri?) {
+    private fun changeAvatar(path: Uri?) {
         val absPath = path?.path
         if (absPath == null) {
             Timber.d("Failed to get path of $path")
@@ -211,7 +212,7 @@ class ProfileViewModel constructor(
         }
         progress.postValue(true)
         val file = File(absPath)
-        val imageFile = RequestBody.create(MediaType.parse("image/*"), file)
+        val imageFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
         val data = MultipartBody.Part.createFormData("user_avatar_path", file.name, imageFile)
         profileChangeAvatarUseCase.setData(data)
         profileChangeAvatarUseCase.execute {
@@ -326,8 +327,11 @@ class ProfileViewModel constructor(
             when (requestCode) {
                 Constants.ACTION_IMAGE_CONTENT_INTENT_CODE -> {
                     Timber.d("Image path: ${data.data}")
-                    if (_rearDocument.value != null) _backDocument.postValue(data.data)
-                    else _rearDocument.postValue(data.data)
+                    if (_rearDocument.value != null) {
+                        _backDocument.postValue(data.data)
+                    } else {
+                        _rearDocument.postValue(data.data)
+                    }
                 }
                 Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE -> {
                     Timber.d("Image path: ${data.data}")

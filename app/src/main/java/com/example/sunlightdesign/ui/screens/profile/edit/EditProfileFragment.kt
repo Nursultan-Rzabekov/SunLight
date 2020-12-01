@@ -1,9 +1,12 @@
 package com.example.sunlightdesign.ui.screens.profile.edit
 
+import android.Manifest
 import android.app.Dialog
+import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -67,7 +70,9 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         backBtn.setOnClickListener { findNavController().navigateUp() }
 
         userEditAvatarCircleImageView.setOnClickListener {
-            viewModel.onAttachDocument(Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE)
+            if (checkPermission()) {
+                viewModel.onAttachDocument(Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE)
+            }
         }
 
         passwordEditTextLayout.setStartIconOnClickListener {
@@ -209,5 +214,25 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
     private fun dismissPasswordDialog() {
         passwordDialog.dismiss()
+    }
+
+    private fun checkPermission() : Boolean {
+        return if (
+            requireContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED &&
+            requireContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED) {
+            true
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ),
+                Constants.PERMISSIONS_REQUEST_READ_STORAGE
+            )
+            false
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -32,5 +33,11 @@ class RegisterActivity : StrongActivity(), NavController.OnDestinationChangedLis
         destination: NavDestination,
         arguments: Bundle?
     ) {
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        viewModel.onActivityResult(requestCode, resultCode, data)
+        Timber.d("asda")
     }
 }
