@@ -284,16 +284,10 @@ class ProfileViewModel constructor(
                 _navigationEvent.postValue(
                     NavigationEvent.NavigateNext(data = it)
                 )
-                withActivity {activity ->
-                    showDialog(activity, R.id.notify_ok_btn, layout = R.layout.dialog_notify)
-                }
             }
             onNetworkError {
                 progress.postValue(false)
                 handleError(errorMessage = it.message)
-                withActivity {activity ->
-                    showDialog(activity, R.id.notify_ok_btn, layout = R.layout.dialog_notify)
-                }
             }
             onError {
                 progress.postValue(false)

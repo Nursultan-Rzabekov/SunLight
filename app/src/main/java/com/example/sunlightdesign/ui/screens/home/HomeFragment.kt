@@ -1,11 +1,15 @@
 package com.example.sunlightdesign.ui.screens.home
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,6 +26,7 @@ import com.example.sunlightdesign.ui.screens.home.structure.StructureActivity
 import com.example.sunlightdesign.ui.screens.order.market.MarketActivity
 import com.example.sunlightdesign.utils.NumberUtils
 import com.example.sunlightdesign.utils.showMessage
+import kotlinx.android.synthetic.main.dialog_notify.*
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 

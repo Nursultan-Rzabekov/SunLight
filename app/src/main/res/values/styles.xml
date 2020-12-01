@@ -230,9 +230,13 @@
     <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
 
     <style name="FullDialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+    <style name="FullDialogAnother" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowMinWidthMajor">100%</item>
         <item name="android:windowMinWidthMinor">100%</item>
     </style>
-
 
 </resources>

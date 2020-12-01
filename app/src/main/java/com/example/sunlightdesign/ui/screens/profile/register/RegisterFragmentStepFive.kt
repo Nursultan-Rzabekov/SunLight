@@ -120,37 +120,41 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
         val dialog = Dialog(requireContext(), R.style.FullDialog).apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.color.transparent))
             setCancelable(false)
             setContentView(R.layout.dialog_notify)
         }
         dialog.notify_desc_tv.text = message
-        notify_icon_iv.setImageDrawable(
+        dialog.notify_icon_iv.setImageDrawable(
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_success))
-        notify_title_tv.text = getString(R.string.greeting_for_payment)
+        dialog.notify_title_tv.text = getString(R.string.greetings_for_registration)
 
         dialog.notify_ok_btn.setOnClickListener {
             viewModel.withActivity {
                 it.finish()
             }
         }
+        dialog.show()
     }
 
     private fun showFailDialog(message: String) {
         val dialog = Dialog(requireContext(), R.style.FullDialog).apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.color.transparent))
             setCancelable(false)
             setContentView(R.layout.dialog_notify)
         }
         dialog.notify_desc_tv.text = message
-        notify_icon_iv.setImageDrawable(
+        dialog.notify_icon_iv.setImageDrawable(
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_failed))
-        notify_title_tv.text = getString(R.string.oops_message)
+        dialog.notify_title_tv.text = getString(R.string.oops_message)
 
         dialog.notify_ok_btn.setOnClickListener {
             viewModel.withActivity {
                 it.finish()
             }
         }
+        dialog.show()
     }
 }
