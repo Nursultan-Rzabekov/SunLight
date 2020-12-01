@@ -13,7 +13,7 @@
 
         <ImageView
             android:contentDescription="@string/news"
-            android:foreground="#99000000"
+            android:foreground="#44000000"
             android:id="@+id/image_set"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
