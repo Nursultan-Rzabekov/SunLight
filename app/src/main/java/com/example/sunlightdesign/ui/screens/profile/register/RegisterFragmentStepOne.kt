@@ -21,9 +21,13 @@ import com.example.sunlightdesign.utils.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.phone_et
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.progress_bar
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 import timber.log.Timber
+import java.io.InputStream
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -78,6 +82,28 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     left_side_rbtn.isChecked -> Constants.PYRAMID_LEFT
                     else -> Constants.PYRAMID_RIGHT
                 }
+
+                val backPath = viewModel.backDocument.value ?: return@setOnClickListener
+                val frontPath = viewModel.rearDocument.value ?: return@setOnClickListener
+
+                val backInputStream: InputStream? =
+                    requireActivity().contentResolver?.openInputStream(backPath)
+                val backPart = MultipartBody.Part.createFormData(
+                    "document_back_path", "back.jpeg", RequestBody.create(
+                        MediaType.parse("image/*"),
+                        backInputStream!!.readBytes()
+                    )
+                )
+
+                val frontInputStream: InputStream? =
+                    requireActivity().contentResolver?.openInputStream(frontPath)
+                val frontPart = MultipartBody.Part.createFormData(
+                    "document_front_path", "front.jpg", RequestBody.create(
+                        MediaType.parse("image/*"),
+                        frontInputStream!!.readBytes()
+                    )
+                )
+
                 viewModel.addPartner(
                     AddPartner(
                         first_name = firstName,
@@ -95,7 +121,9 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                             iin_et.text.toString()
                         ),
                         register_by = sponsorId,
-                        position = position
+                        position = position,
+                        document_front = frontPart,
+                        document_back = backPart
                     )
                 )
             }
@@ -380,6 +408,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"
             !isIinValid(iin_et.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
+            viewModel.backDocument.value == null ->
+                "Нету фото документа(задняя сторона)"
+            viewModel.rearDocument.value == null ->
+                "Нету фото документа(передняя сторона)"
             else -> null
         }
         if (message != null) {

@@ -370,13 +370,6 @@
                 android:textColor="@color/sunBlackColor"
                 android:textSize="@dimen/dimen_14sp" />
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                android:text="@string/requirements_documents"
-                android:textSize="@dimen/dimen_9sp" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/attach_document_btn"
                 style="@style/BasicOutlinedMaterialButton"

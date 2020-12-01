@@ -15,18 +15,18 @@ interface AccountDataSource {
 }
 
 data class AddPartner(
-    val first_name: String?,
-    val last_name: String?,
-    val phone: String?,
-    val middle_name: String?,
-    val country_id: Int?,
-    val region_id: Int?,
-    val city_id: Int?,
-    val iin: String?,
-    val register_by: Int?,
-    val position: String?,
-    val document_front: MultipartBody.Part?,
-    val document_back: MultipartBody.Part?
+    val first_name: String,
+    val last_name: String,
+    val phone: String,
+    val middle_name: String,
+    val country_id: Int,
+    val region_id: Int,
+    val city_id: Int,
+    val iin: String,
+    val register_by: Int,
+    val position: String,
+    val document_front: MultipartBody.Part,
+    val document_back: MultipartBody.Part
 )
 
 data class CreateOrderPartner(

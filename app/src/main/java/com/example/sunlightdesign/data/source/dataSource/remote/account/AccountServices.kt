@@ -22,16 +22,16 @@ interface AccountServices {
     @Multipart
     @POST("cabinet/add-partner")
     fun addPartnerStepOne(
-        @Part first_name: RequestBody,
-        @Part last_name: RequestBody,
-        @Part phone: RequestBody,
-        @Part middle_name: RequestBody,
-        @Part country_id: RequestBody,
-        @Part region_id: RequestBody,
-        @Part city_id: RequestBody,
-        @Part iin: RequestBody,
-        @Part register_by: RequestBody,
-        @Part position: RequestBody?,
+        @Part("first_name") first_name: RequestBody,
+        @Part("last_name") last_name: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("middle_name") middle_name: RequestBody,
+        @Part("country_id") country_id: RequestBody,
+        @Part("region_id") region_id: RequestBody,
+        @Part("city_id") city_id: RequestBody,
+        @Part("iin") iin: RequestBody,
+        @Part("register_by") register_by: RequestBody,
+        @Part("position") position: RequestBody?,
         @Part document_front_path: MultipartBody.Part,
         @Part document_back_path: MultipartBody.Part
     ): Deferred<Login>
