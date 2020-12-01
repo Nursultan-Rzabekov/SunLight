@@ -24,10 +24,17 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/dimen_5dp"
                 android:fontFamily="@font/rubik_regular"
                 android:text="@string/your_reference"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/dimen_12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/bottom_register"
+                android:textAlignment="textStart"
                 android:textSize="@dimen/dimen_12sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
