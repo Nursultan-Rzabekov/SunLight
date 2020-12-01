@@ -86,12 +86,11 @@
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/remember_checkbox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
                 android:text="@string/remember_me"
-                />
+                android:padding="@dimen/dimen_4dp"
+                android:textColor="@color/gray_textColor"
+                android:textAppearance="@style/TextViewAppearance"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

@@ -49,6 +49,13 @@
         <item name="android:textColor">@color/gray_textColor</item>
     </style>
 
+    <style name="TextViewAppearance" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/rubik_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="android:textColor">@color/gray_textColor</item>
+    </style>
+
     <style name="TextOutlined">
         <item name="boxCornerRadiusBottomEnd">@dimen/dimen_10dp</item>
         <item name="boxCornerRadiusBottomStart">@dimen/dimen_10dp</item>
