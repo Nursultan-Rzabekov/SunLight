@@ -42,9 +42,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/userFullNameTextView"
-            style="@style/AppCompatTextViewGray"
+            style="@style/AppCompatTextView"
             android:textColor="@color/sunLightColor"
-            android:textSize="@dimen/dimen_14sp"
+            android:textSize="@dimen/dimen_16sp"
             tools:text="Nursultan Rzabekov" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -54,28 +54,13 @@
             android:textSize="@dimen/dimen_14sp"
             tools:text="KAZ000005454545" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/dimen_4dp"
-                android:text="@string/status"
-                android:textSize="@dimen/dimen_14sp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/userStatusTextView"
-                style="@style/AppCompatTextView"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="@dimen/dimen_4dp"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/dimen_14sp"
-                tools:text="@string/all" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/userStatusTextView"
+            style="@style/AppCompatTextView"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_14sp"
+            tools:text="@string/all" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.screens.order.market.ProductItem
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.ProductsRecyclerAdapter
 import com.example.sunlightdesign.utils.showMessage
@@ -72,7 +74,18 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
     }
 
     override fun onProductsSelected(product: Product) {
-
+        val bundle = bundleOf(
+            "item" to ProductItem(
+                product_name = product.product_name.toString(),
+                product_description = product.product_short_description.toString(),
+                product_price_bv = product.product_price_in_bv.toString(),
+                product_price_kzt = product.product_price.toString(),
+                product_info = product.product_description.toString(),
+                productBackImage = product.product_image_back_path.toString(),
+                productFrontImage = product.product_image_front_path.toString()
+            )
+        )
+        findNavController().navigate(R.id.stepThreeFragment_to_market_details_fragment, bundle)
     }
 
     private fun checkFields() : Boolean {

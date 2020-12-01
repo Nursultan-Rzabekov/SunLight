@@ -114,7 +114,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
                         override fun onPageScrollStateChanged(state: Int) {}
                     })
                     dots_indicator.attachViewPager(news_view_pager)
-                    dots_indicator.setDotTintRes(R.color.sunBlackColor)
+                    dots_indicator.setDotTintRes(R.color.white)
                 }
 
             })

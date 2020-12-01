@@ -16,14 +16,11 @@
     </style>
 
     <style name="BannerCardViewStyle" parent="BaseCardView">
-        <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
-        <item name="android:layout_marginEnd">@dimen/dimen_8dp</item>
-        <item name="android:layout_height">@dimen/dimen_200dp</item>
+        <item name="android:layout_height">150dp</item>
         <item name="android:layout_width">match_parent</item>
     </style>
 
     <style name="MainCardViewStyle" parent="BaseCardView">
-        <item name="android:layout_marginStart">@dimen/dimen_8dp</item>
         <item name="android:layout_height">@dimen/dimen_100dp</item>
         <item name="android:layout_width">@dimen/dimen_100dp</item>
     </style>
@@ -237,6 +234,17 @@
     <style name="FullDialogAnother" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowMinWidthMajor">100%</item>
         <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+
+    <style name="NavDrawerTextStyleActive" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NavDrawerTextStyleInActive" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
 </resources>
