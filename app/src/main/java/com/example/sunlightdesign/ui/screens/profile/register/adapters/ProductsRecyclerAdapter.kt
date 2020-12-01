@@ -24,20 +24,26 @@ class ProductsRecyclerAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) =
-        holder.bind(items[position])
+        holder.bind(items[position], ::selectItem)
 
     fun getCheckedProducts(): List<Product> {
         return items.filter { it.isChecked }
     }
 
+    private fun selectItem(position: Int) {
+        items.forEach { it.isChecked = false }
+        items[position].isChecked = true
+        notifyDataSetChanged()
+    }
+
     class ProductViewHolder(
         view: View,
-        val productsItemSelected: ProductsItemSelected
+        private val productsItemSelected: ProductsItemSelected
     ): RecyclerView.ViewHolder(view) {
-        fun bind(product: Product) {
+        fun bind(product: Product, onChecked: (Int) -> Unit) {
             itemView.product_name_tv.text = product.product_name
             itemView.product_description_tv.text = product.product_short_description
-            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price?.toDouble())
+            itemView.product_price_tv.text = itemView.context.getString(R.string.amount_bv, product.product_price)
 
             Glide.with(itemView)
                 .load(product.product_image_front_path)
@@ -46,18 +52,16 @@ class ProductsRecyclerAdapter(
                 .centerCrop()
                 .into(itemView.product_iv)
 
-            itemView.product_card.setOnClickListener {
-                val itemViewColor = when(itemView.product_checkbox.isChecked){
-                    true -> ContextCompat.getColorStateList(itemView.context, R.color.transparent)
-                    false -> ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
-                }
-
-                itemView.product_card.setStrokeColor(itemViewColor)
-
-                product.isChecked = !itemView.product_checkbox.isChecked
-                itemView.product_checkbox.isChecked = !itemView.product_checkbox.isChecked
+            val itemViewColor = when(product.isChecked){
+                false -> ContextCompat.getColorStateList(itemView.context, R.color.transparent)
+                true -> ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
             }
+            itemView.product_card.setStrokeColor(itemViewColor)
+            itemView.product_checkbox.isChecked = product.isChecked
 
+            itemView.product_card.setOnClickListener {
+                onChecked(adapterPosition)
+            }
 
             itemView.product_more_info_tv.setOnClickListener {
                 productsItemSelected.onProductsSelected(product)
@@ -65,7 +69,6 @@ class ProductsRecyclerAdapter(
 
         }
     }
-
 
     interface ProductsItemSelected{
         fun onProductsSelected(product: Product)
