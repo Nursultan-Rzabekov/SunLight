@@ -135,6 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp"
                         app:endIconCheckable="false"
+                        app:endIconTint="@color/transparent"
                         app:hintEnabled="false">
 
                         <AutoCompleteTextView
@@ -164,6 +165,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp"
                         app:endIconCheckable="false"
+                        app:endIconTint="@color/transparent"
                         app:hintEnabled="false">
 
                         <AutoCompleteTextView
@@ -193,6 +195,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp"
                         app:endIconCheckable="false"
+                        app:endIconTint="@color/transparent"
                         app:hintEnabled="false">
 
                         <AutoCompleteTextView
