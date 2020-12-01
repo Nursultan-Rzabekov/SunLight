@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.ui.launcher.news
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Html
 import androidx.core.view.isVisible
@@ -11,6 +12,7 @@ import com.example.sunlightdesign.ui.base.StrongActivity
 import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.utils.DateUtils
 import com.example.sunlightdesign.utils.getImageUrl
+import kotlinx.android.synthetic.main.fragment_company_market_plan.*
 import kotlinx.android.synthetic.main.news_activity.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,6 +28,7 @@ class NewsActivity : StrongActivity() {
     override val layoutId: Int
         get() = R.layout.news_activity
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,9 +38,12 @@ class NewsActivity : StrongActivity() {
         setListeners()
         setObservers()
 
-        newsContentWebView.settings.blockNetworkImage = false
-        newsContentWebView.settings.blockNetworkLoads = false
         newsContentWebView.settings.loadWithOverviewMode = true
+        newsContentWebView.settings.useWideViewPort = true
+        newsContentWebView.settings.javaScriptEnabled = true
+        newsContentWebView.settings.loadsImagesAutomatically = true
+        newsContentWebView.settings.builtInZoomControls = true
+        newsContentWebView.settings.domStorageEnabled = true
 
         intent.getIntExtra(KEY_POST_ID, -1).let {
             if (it == -1) return@let
