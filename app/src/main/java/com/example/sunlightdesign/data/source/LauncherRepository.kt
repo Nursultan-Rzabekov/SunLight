@@ -13,4 +13,5 @@ interface LauncherRepository {
     suspend fun getByCategoryId(id: Int): Posts
     suspend fun getStructureInfo(): StructureInfo
     suspend fun getPostById(id: Int): SinglePost
+    suspend fun getCompanyInfo(url: String): CompanyInfo
 }

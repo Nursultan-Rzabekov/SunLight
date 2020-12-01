@@ -6,7 +6,6 @@ import com.example.sunlightdesign.data.source.dataSource.local.auth.AuthLocalDat
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthRemoteDataSource
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices
 import com.example.sunlightdesign.data.source.repositories.DefaultAuthRepository
-import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import kotlinx.coroutines.Dispatchers

@@ -26,7 +26,8 @@ class BaseApplication : MultiDexApplication() {
                 announcementsModule,
                 ordersModule,
                 profileModule,
-                walletModule
+                walletModule,
+                companyModule
             )
         }
     }

@@ -31,4 +31,9 @@ interface MainServices {
     fun getStructureInfo(
     ): Deferred<StructureInfo>
 
+    @GET("helper/pages/{url}")
+    fun getCompanyInfo(
+        @Path("url") url: String
+    ): Deferred<CompanyInfo>
+
 }
