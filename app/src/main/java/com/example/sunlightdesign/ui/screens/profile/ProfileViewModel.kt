@@ -252,6 +252,10 @@ class ProfileViewModel constructor(
         }
     }
 
+    fun nullifyNavigation() {
+        _navigationEvent.postValue(NavigationEvent.NoAction)
+    }
+
     fun setPackages(setPackage: SetPackage) {
         progress.postValue(true)
         accountSetPackagesUseCase.setData(setPackage)

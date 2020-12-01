@@ -60,6 +60,7 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
                     } else {
                         showFailDialog(it.data?.message.toString())
                     }
+                    nullifyNavigation()
                 }
             })
 

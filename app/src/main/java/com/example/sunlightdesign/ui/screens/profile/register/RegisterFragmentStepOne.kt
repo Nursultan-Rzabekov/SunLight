@@ -1,8 +1,6 @@
 package com.example.sunlightdesign.ui.screens.profile.register
 
 import android.Manifest
-import android.content.ContentResolver
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -10,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -173,6 +170,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                             R.id.action_stepOneFragment_to_stepTwoFragment,
                             bundle
                         )
+                        nullifyNavigation()
                     }
                 }
             })
