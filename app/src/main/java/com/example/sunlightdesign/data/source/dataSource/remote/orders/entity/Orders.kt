@@ -11,7 +11,7 @@ data class Order(
     val created_at: String?,
     val id: Double?,
     val office: com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?,
-    val order_finish_date: Any?,
+    val order_finish_date: String?,
     val order_payment_type: Double?,
     val order_payment_type_arr: String?,
     val order_payment_type_value: String?,

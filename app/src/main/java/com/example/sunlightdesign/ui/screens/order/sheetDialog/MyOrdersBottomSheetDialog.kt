@@ -41,7 +41,9 @@ class MyOrdersBottomSheetDialog(
         typeSheetTextView.text = getString(R.string.type,order.order_type_value)
         officeSheetTextView.text = getString(R.string.office,order.office?.office_name)
         contactNumberSheetTextView.text = getString(R.string.contact_number,order.office?.phone)
-        dateEndSheetTextView.text = getString(R.string.date_end_of_order,order.order_finish_date)
+        order.order_finish_date?.let{
+            dateEndSheetTextView.text = getString(R.string.date_end_of_order,it)
+        }
 
 
         repeatOrderBtn.setOnClickListener {

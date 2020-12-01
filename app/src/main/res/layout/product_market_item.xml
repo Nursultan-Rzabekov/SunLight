@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/product_card"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="310dp"
     android:layout_margin="@dimen/dimen_8dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/dimen_5dp"
@@ -15,7 +15,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/product_iv"
@@ -46,6 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_12dp"
             android:textSize="@dimen/dimen_14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_iv"
@@ -59,6 +61,8 @@
             android:layout_marginTop="@dimen/dimen_8dp"
             android:textAlignment="center"
             android:textSize="@dimen/dimen_12sp"
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_name_tv"
@@ -89,42 +93,40 @@
             tools:text="200 BV" />
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_price_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            app:layout_constraintVertical_bias="1.0">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/minusBtn"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_8dp"
+                android:layout_weight="1"
                 android:background="@drawable/card_border_primary_color"
-                android:text="@string/minus"
-                />
+                android:text="@string/minus" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/productQuantity"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_8dp"
+                android:layout_weight="1"
                 android:background="@drawable/card_border_primary_color"
-                android:text="@string/zero"
-                />
+                android:text="@string/zero" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/plusBtn"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/card_border_primary_color"
-                android:text="@string/plus"
-                />
+                android:text="@string/plus" />
 
         </LinearLayout>
 
