@@ -62,22 +62,14 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/sponsorStatusTextView"
                     style="@style/AppCompatTextView"
-                    tools:text=" Ruby"
+                    tools:text="Ruby"
+                    android:layout_marginStart="@dimen/dimen_4dp"
                     android:textSize="@dimen/dimen_14sp"
                     android:textColor="@color/colorPrimary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/sponsorLoginTextView"
-                style="@style/AppCompatTextViewGray"
-                android:layout_marginTop="@dimen/dimen_4dp"
-                tools:text="Логин: abaykusetayev"
-                android:textSize="@dimen/dimen_14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"

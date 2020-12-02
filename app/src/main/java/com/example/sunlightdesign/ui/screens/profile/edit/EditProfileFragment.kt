@@ -202,7 +202,6 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
     private fun setSponsorInfo(userInfo: UserInfo) {
         sponsorFullNameTextView.text = ("${userInfo.parent?.first_name} ${userInfo.parent?.last_name}")
-        sponsorLoginTextView.text = userInfo.parent?.email
         sponsorStatusTextView.text = userInfo.parent?.status?.status_name
         sponsorUuidTextView.text = userInfo.parent?.uuid
 
