@@ -38,10 +38,8 @@ class NewsActivity : StrongActivity() {
         setObservers()
 
         newsContentWebView.settings.loadWithOverviewMode = true
-        newsContentWebView.settings.useWideViewPort = true
         newsContentWebView.settings.javaScriptEnabled = true
         newsContentWebView.settings.loadsImagesAutomatically = true
-        newsContentWebView.settings.builtInZoomControls = true
         newsContentWebView.settings.domStorageEnabled = true
 
         intent.getIntExtra(KEY_POST_ID, -1).let {

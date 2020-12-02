@@ -52,7 +52,7 @@ class BannerViewPagerAdapter(
             .centerCrop().into(imageView)
 
         imageView.setOnClickListener {
-            onPageSelected.onPageSelectedByPosition(banners.banners[position].id)
+            onPageSelected.onPageSelectedByPosition(banners.banners[position].post_id)
         }
 
         (collection as ViewPager).addView(view, 0)

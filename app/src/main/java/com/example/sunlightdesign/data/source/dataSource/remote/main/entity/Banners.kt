@@ -14,5 +14,6 @@ data class Banner(
     val sort: Int,
     val status: Int,
     val title: String,
-    val type: Int
+    val type: Int,
+    val post_id: Int
 )

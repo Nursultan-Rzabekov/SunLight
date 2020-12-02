@@ -164,10 +164,10 @@ class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
     }
 
     override fun onPageSelectedByPosition(id: Int) {
-//        val bundle = bundleOf(
-//            NewsActivity.KEY_POST_ID to id
-//        )
-//        findNavController().navigate(R.id.action_homeFragment_to_newsActivity2, bundle)
+        val bundle = bundleOf(
+            NewsActivity.KEY_POST_ID to id
+        )
+        findNavController().navigate(R.id.action_homeFragment_to_newsActivity2, bundle)
     }
 
     override fun onPostClicked(id: Int) {

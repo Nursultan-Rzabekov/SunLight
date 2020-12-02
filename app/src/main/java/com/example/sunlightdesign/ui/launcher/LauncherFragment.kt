@@ -155,10 +155,10 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
     }
 
     override fun onPageSelectedByPosition(id: Int) {
-//        val bundle = bundleOf(
-//            NewsActivity.KEY_POST_ID to id
-//        )
-//        findNavController().navigate(R.id.action_launcher_fragment_to_newsActivity, bundle)
+        val bundle = bundleOf(
+            NewsActivity.KEY_POST_ID to id
+        )
+        findNavController().navigate(R.id.action_launcher_fragment_to_newsActivity, bundle)
     }
 
     override fun onPostClicked(id: Int) {
