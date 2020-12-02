@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.ui.screens.order
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Or
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.MyOrdersBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.adapters.OrdersRecyclerAdapter
+import com.example.sunlightdesign.ui.screens.order.market.MarketActivity
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentTypeBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.RepeatsOrdersBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
@@ -57,7 +59,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         viewModel.getMyOrders()
 
         goToMarketLayout.setOnClickListener {
-            findNavController().navigate(R.id.orderFragmentTo_marketActivity)
+            startActivity(Intent(requireContext(), MarketActivity::class.java))
         }
 
     }
