@@ -124,7 +124,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
                         android:layout_marginTop="@dimen/dimen_32dp"
-                        android:text="@string/choose_country"
+                        android:text="@string/country_two_dots"
                         android:textSize="@dimen/dimen_16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +154,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
                         android:layout_marginTop="@dimen/dimen_32dp"
-                        android:text="@string/choose_region"
+                        android:text="@string/region_two_dots"
                         android:textSize="@dimen/dimen_16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -184,7 +184,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
                         android:layout_marginTop="@dimen/dimen_32dp"
-                        android:text="@string/choose_city"
+                        android:text="@string/city_two_dots"
                         android:textSize="@dimen/dimen_16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
