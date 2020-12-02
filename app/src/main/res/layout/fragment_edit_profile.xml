@@ -76,7 +76,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
                         android:layout_marginTop="@dimen/dimen_32dp"
-                        android:text="@string/birthday"
+                        android:text="@string/birthday_two_dots"
                         android:textSize="@dimen/dimen_16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
