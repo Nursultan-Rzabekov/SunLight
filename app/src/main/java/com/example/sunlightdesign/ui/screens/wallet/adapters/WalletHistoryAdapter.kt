@@ -50,7 +50,7 @@ class WalletHistoryAdapter(
         fun bind(history: Data) {
             itemView.typeOfTransactionTextView.text = history.status_type
             itemView.accountTextView.text = history.wallet_type
-            itemView.amountTextView.text = itemView.context.getString(R.string.amount_bv, history.value)
+            itemView.amountTextView.text = itemView.context.getString(R.string.amount_formatted, history.value)
             itemView.dateOfTransactionTextView.text =
                 DateUtils.reformatDateString(history.finish_date, DateUtils.PATTERN_DD_MM_YYYY)
 

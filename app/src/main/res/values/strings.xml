@@ -155,6 +155,7 @@
     <string name="more_info"><u>подробнее</u></string>
     <string name="in_balance">На вашем балансе:</string>
     <string name="amount_bv">%1$.2f BV</string>
+    <string name="amount_formatted">%1.2f</string>
     <string name="amountText_bv">%1$s BV</string>
     <string name="amount_kzt">%1$.2f KZT</string>
     <string name="amountText_kzt">%1$s KZT</string>

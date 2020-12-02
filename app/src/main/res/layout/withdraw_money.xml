@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="@dimen/dimen_16dp"
     android:elevation="@dimen/dimen_10dp"
+    app:cardElevation="@dimen/dimen_0dp"
     android:id="@+id/withdrawMoneyLayout"
     android:layout_height="wrap_content">
 
