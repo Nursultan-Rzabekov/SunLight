@@ -170,7 +170,7 @@
     <string name="birthday">День рождения</string>
     <string name="birthday_two_dots">День рождения:</string>
     <string name="sponsor">Спонсор</string>
-    <string name="password_two_dots">Пароль :</string>
+    <string name="password_two_dots">Пароль:</string>
     <string name="documents_scans">Сканы документов</string>
     <string name="go_to_market">Заказать товар</string>
     <string name="payTo">К оплате: %1$.2fKZT</string>
