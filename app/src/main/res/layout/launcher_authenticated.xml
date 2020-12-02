@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.core.widget.NestedScrollView
+    android:id="@+id/nestedScroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -92,6 +92,7 @@
                         />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/centerBtnText"
                         style="@style/AppCompatTextViewGray"
                         android:textColor="@color/sunLightColor"
                         android:layout_gravity="bottom|center_horizontal"
@@ -169,6 +170,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/newsTextView"
                 style="@style/AppCompatTextView"
                 android:text="@string/news"
                 android:layout_marginTop="@dimen/dimen_24dp"
@@ -176,7 +178,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categories_recycler_view"
-                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

@@ -35,6 +35,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
 
     private val handler = Handler()
     private val delay = 3000L //milliseconds
+    private val smoothScrollDelay = 1500
 
     private var page = 0
     private var newsViewPagerAdapter: BannerViewPagerAdapter? = null
@@ -72,6 +73,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {
         super.onActivityCreated(savedInstanceViewState)
 
+        centerBtnText.text = getString(R.string.about_goods)
 
         setObservers()
         setListeners()
@@ -150,7 +152,16 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
         }
 
         btn_market_cv.setOnClickListener {
+            val aboutGoodCategory = viewModel.categories.value?.categories?.firstOrNull {
+                it.id == 3
+            } ?: return@setOnClickListener
+            val position = viewModel.categories.value?.categories?.indexOfFirst {
+                it.id == aboutGoodCategory.id
+            } ?: return@setOnClickListener
+            viewModel.getPostsByCategoryId(aboutGoodCategory.id)
+            categoriesAdapter.selectItem(position)
 
+            nestedScroll.smoothScrollTo(0, newsTextView.top, smoothScrollDelay)
         }
     }
 

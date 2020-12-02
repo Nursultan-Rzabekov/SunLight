@@ -267,5 +267,6 @@
     <string name="market_pay">К оплате: %1$.2f BV</string>
     <string name="product_market">%1$d товара</string>
     <string name="greetings_for_registration">Спасибо за регистрацию!</string>
+    <string name="about_goods">О Товаре</string>
 
 </resources>
