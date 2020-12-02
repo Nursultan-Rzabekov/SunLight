@@ -26,6 +26,7 @@
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_5dp"
                 android:fontFamily="@font/rubik_regular"
+                android:textColor="@color/light_gray"
                 android:text="@string/your_reference"
                 android:textAlignment="textStart"
                 android:textSize="@dimen/dimen_12sp" />
@@ -34,6 +35,7 @@
                 style="@style/AppCompatTextViewGray"
                 android:fontFamily="@font/rubik_regular"
                 android:text="@string/bottom_register"
+                android:textColor="@color/light_gray"
                 android:textAlignment="textStart"
                 android:textSize="@dimen/dimen_12sp" />
 
