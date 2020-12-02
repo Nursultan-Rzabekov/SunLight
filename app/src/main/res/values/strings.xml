@@ -202,9 +202,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="old_password">Старый пароль</string>
-    <string name="new_password">Новый пароль</string>
-    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="old_password">Старый пароль:</string>
+    <string name="new_password">Новый пароль:</string>
+    <string name="confirm_password">Подтвердите пароль:</string>
 
     <string name="withdraw_history">Выписка</string>
     <string name="create_date">Дата открытия</string>
