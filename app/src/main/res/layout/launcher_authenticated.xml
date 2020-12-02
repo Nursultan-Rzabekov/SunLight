@@ -192,7 +192,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/main_page_post_item"
                 tools:itemCount="2"
-                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
