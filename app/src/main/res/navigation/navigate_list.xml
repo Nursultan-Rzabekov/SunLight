@@ -9,19 +9,6 @@
         android:name="com.example.sunlightdesign.ui.screens.order.OrdersFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_wallet">
-
-        <action
-            android:id="@+id/orderFragmentTo_marketActivity"
-            app:destination="@id/marketActivity"
-            app:popUpTo="@id/listFragment"
-            app:popUpToInclusive="true" />
-
     </fragment>
-
-    <activity
-        android:id="@+id/marketActivity"
-        android:name="com.example.sunlightdesign.ui.screens.order.market.MarketActivity"
-        android:label="market"
-        tools:layout="@layout/market_products_list" />
 
 </navigation>
