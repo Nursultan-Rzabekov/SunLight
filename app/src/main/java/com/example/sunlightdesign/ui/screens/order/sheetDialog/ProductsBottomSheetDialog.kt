@@ -45,7 +45,9 @@ class ProductsBottomSheetDialog(
             adapter = productsSheetRecyclerAdapter
         }
 
-        repeatOrdersSheetTextView.text = getString(R.string.products_choose, products.size)
+        var totalQuantity = 0
+        products.forEach { totalQuantity += it.product_quantity ?: 0 }
+        repeatOrdersSheetTextView.text = getString(R.string.products_choose, totalQuantity)
         countOrderTextView.text = getString(R.string.сount_order)
 
         var count = 0.0

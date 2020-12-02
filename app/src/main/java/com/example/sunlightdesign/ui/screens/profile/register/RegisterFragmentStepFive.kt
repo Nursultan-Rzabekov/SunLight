@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.fragment_register_partner_step_five.*
 class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
     companion object {
-        private const val PAYMENT_BY_BV = 3
+        private const val PAYMENT_BY_BV = 2
         private const val PAYMENT_BY_TILL = 1
-        private const val PAYMENT_BY_PAYBOX = 2
+        private const val PAYMENT_BY_PAYBOX = 3
     }
 
     override fun onCreateView(

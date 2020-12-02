@@ -103,8 +103,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         })
 
         viewModel.orderState.observe(viewLifecycleOwner, Observer {
-            if(it){
-                successBottomSheetDialog = SuccessBottomSheetDialog()
+            if (it.isSuccess) {
+                successBottomSheetDialog = SuccessBottomSheetDialog(it.message)
                 successBottomSheetDialog.show(
                     parentFragmentManager,
                     SuccessBottomSheetDialog.TAG

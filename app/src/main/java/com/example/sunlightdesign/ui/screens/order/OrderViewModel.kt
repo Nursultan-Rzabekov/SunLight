@@ -10,6 +10,7 @@ import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
+import timber.log.Timber
 
 
 /**
@@ -35,8 +36,8 @@ class OrderViewModel constructor(
     private var _products = MutableLiveData<OrderProducts>()
     val products: LiveData<OrderProducts> get() = _products
 
-    private var _orderState = MutableLiveData<Boolean>(false)
-    val orderState: LiveData<Boolean> get() = _orderState
+    private var _orderState = MutableLiveData<OrderShortResponse>()
+    val orderState: LiveData<OrderShortResponse> get() = _orderState
 
     private var _officesList = MutableLiveData<OfficesList>()
     val officesList: LiveData<OfficesList> get() = _officesList
@@ -121,17 +122,36 @@ class OrderViewModel constructor(
         storeOrderUseCase.execute {
             onComplete {
                 progress.postValue(false)
-                _orderState.postValue(true)
+                Timber.d(it?.orders.toString())
+                _orderState.postValue(
+                    OrderShortResponse(
+                        orderType = it?.order?.order_payment_type ?: -1,
+                        message = it?.order?.order_status_value.toString(),
+                        isSuccess = true
+                    )
+                )
             }
             onNetworkError {
                 progress.postValue(false)
                 handleError(errorMessage = it.message)
-                _orderState.postValue(false)
+                _orderState.postValue(
+                    OrderShortResponse(
+                        orderType = -1,
+                        message = "",
+                        isSuccess = false
+                    )
+                )
             }
             onError {
                 progress.postValue(false)
                 handleError(throwable = it)
-                _orderState.postValue(false)
+                _orderState.postValue(
+                    OrderShortResponse(
+                        orderType = -1,
+                        message = "",
+                        isSuccess = false
+                    )
+                )
             }
         }
     }
@@ -155,7 +175,11 @@ class OrderViewModel constructor(
         }
     }
 
-
+    data class OrderShortResponse(
+        val orderType: Int,
+        val message: String,
+        val isSuccess: Boolean
+    )
 }
 
 

@@ -3,7 +3,8 @@ package com.example.sunlightdesign.data.source.dataSource.remote.orders.entity
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 
 data class Orders(
-    val orders: List<Order>?
+    val orders: List<Order>?,
+    val order: Order?
 )
 
 data class Order(
@@ -12,7 +13,7 @@ data class Order(
     val id: Double?,
     val office: com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?,
     val order_finish_date: String?,
-    val order_payment_type: Double?,
+    val order_payment_type: Int?,
     val order_payment_type_arr: String?,
     val order_payment_type_value: String?,
     val order_status: Double?,

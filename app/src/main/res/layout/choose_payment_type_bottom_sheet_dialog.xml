@@ -16,9 +16,11 @@
         android:src="@drawable/ic_arrow_sheet" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
+        android:textColor="@color/sunBlackColor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
+        android:textSize="@dimen/dimen_18sp"
         android:layout_marginTop="@dimen/dimen_24dp"
         android:text="@string/choose_type"
         android:textAlignment="center" />

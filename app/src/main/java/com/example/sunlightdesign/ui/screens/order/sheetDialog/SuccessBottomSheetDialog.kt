@@ -13,6 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.success_bottom_sheet.*
 
 class SuccessBottomSheetDialog(
+    val message: String = ""
 ) : BottomSheetDialogFragment() {
 
     companion object {
@@ -36,6 +37,9 @@ class SuccessBottomSheetDialog(
         super.onViewCreated(view, savedInstanceState)
 
         setListeners()
+        if (message.isNotBlank()) {
+            successInfoDescTextView.text = message
+        }
     }
 
     private fun setListeners() {

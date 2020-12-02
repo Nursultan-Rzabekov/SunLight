@@ -51,13 +51,17 @@ class ChoosePaymentTypeBottomSheetDialog(
 
     companion object{
         const val TAG = "ModalBottomSheet"
+
+        private const val PAYMENT_BY_BV = 2
+        private const val PAYMENT_BY_TILL = 1
+        private const val PAYMENT_BY_PAYBOX = 3
     }
 
     var k = false
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.cashbox_type_btn -> {
-                type = 1
+                type = PAYMENT_BY_TILL
 
                 cashbox_type_btn.iconTint = cashbox_type_btn.getColorState(true)
                 cashbox_type_btn.strokeColor = cashbox_type_btn.getColorState(true)
@@ -72,7 +76,7 @@ class ChoosePaymentTypeBottomSheetDialog(
                 bv_type_btn.strokeColor = bv_type_btn.getColorState(false)
             }
             R.id.paybox_type_btn -> {
-                type = 2
+                type = PAYMENT_BY_PAYBOX
 
                 paybox_type_btn.iconTint = paybox_type_btn.getColorState(true)
                 paybox_type_btn.strokeColor = paybox_type_btn.getColorState(true)
@@ -83,7 +87,7 @@ class ChoosePaymentTypeBottomSheetDialog(
                 bv_type_btn.strokeColor = bv_type_btn.getColorState(false)
             }
             R.id.bv_type_btn -> {
-                type = 3
+                type = PAYMENT_BY_BV
 
                 bv_type_btn.iconTint = bv_type_btn.getColorState(true)
                 bv_type_btn.strokeColor = bv_type_btn.getColorState(true)
