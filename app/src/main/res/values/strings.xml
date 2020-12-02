@@ -43,7 +43,7 @@
     <string name="choose_legs">Выберите ветку:</string>
     <string name="left">Левая</string>
     <string name="right">Правая</string>
-    <string name="upload_documents">Загрузите документы*</string>
+    <string name="upload_documents">Сканы документов</string>
     <string name="requirements_documents">Требование: желательно jpg-файл с размером <b>1440х1440 пикселей</b>. \nТакже принимает картинки с <b>соотношением сторон 1х1.</b></string>
     <string name="next">Далее</string>
 
