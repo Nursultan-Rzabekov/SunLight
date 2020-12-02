@@ -8,6 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
+        android:contentDescription="@string/exit"
         android:layout_margin="@dimen/dimen_16dp"
         android:id="@+id/arrow_bottom_sheet_iv"
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/totalAmountSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
+        android:textColor="@color/sunBlackColor"
         tools:text="@string/total_amount"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:textSize="@dimen/dimen_14sp"/>
@@ -42,8 +44,9 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/typePaymentSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
         tools:text="@string/type_of_payment"
+        android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:textSize="@dimen/dimen_14sp"/>
 
@@ -51,8 +54,9 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/typeSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
         tools:text="@string/type"
+        android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:textSize="@dimen/dimen_14sp"/>
 
@@ -60,16 +64,18 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/officeSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
         tools:text="@string/office"
+        android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:textSize="@dimen/dimen_14sp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/contactNumberSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
         tools:text="@string/contact_number"
+        android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:textSize="@dimen/dimen_14sp"/>
 
@@ -77,7 +83,8 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/dateEndSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
+        style="@style/AppCompatTextViewGray"
+        android:textColor="@color/sunBlackColor"
         tools:text="@string/date_end_of_order"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:textSize="@dimen/dimen_14sp"/>
@@ -91,6 +98,7 @@
         android:layout_margin="@dimen/dimen_16dp"
         android:paddingTop="@dimen/dimen_12dp"
         android:paddingBottom="@dimen/dimen_12dp"
+        android:visibility="gone"
         android:text="@string/reply_order"
         android:textColor="@color/sunLightColor"
         android:textSize="@dimen/dimen_16sp"
