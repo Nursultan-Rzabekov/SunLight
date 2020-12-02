@@ -49,6 +49,7 @@ class PackageRecyclerAdapter(
     ): RecyclerView.ViewHolder(itemView){
         fun bind(item: Package, onChecked: (position: Int) -> Unit) = with(itemView){
             itemView.package_item_name_radio.isChecked = item.isChecked
+            itemView.package_item_name_radio.text = item.package_name
             if (item.isChecked) {
                 itemView.package_item_card.setStrokeColor(
                     ContextCompat.getColorStateList(itemView.context, R.color.colorPrimary)
@@ -64,7 +65,7 @@ class PackageRecyclerAdapter(
                     ContextCompat.getColor(itemView.context, R.color.dark_gray)
                 )
             }
-            itemView.package_item_card_name_tv.text = item.package_name
+            itemView.package_item_card_name_tv.text = item.package_description
             item.package_price_in_kzt?.let {
                 itemView.package_price_tv.text =
                     itemView.context.getString(R.string.amountText_kzt, NumberUtils.prettifyDouble(it))
