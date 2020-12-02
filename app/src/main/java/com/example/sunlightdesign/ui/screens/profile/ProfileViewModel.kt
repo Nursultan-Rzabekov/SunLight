@@ -334,7 +334,7 @@ class ProfileViewModel constructor(
                     Timber.d("Image path: ${data.data}")
                     if (_rearDocument.value != null) {
                         _backDocument.postValue(data.data)
-                    } else {
+                    } else if (_backDocument.value != null) {
                         _rearDocument.postValue(data.data)
                     }
                 }
