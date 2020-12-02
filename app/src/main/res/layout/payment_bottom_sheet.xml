@@ -35,7 +35,9 @@
         android:id="@+id/divider7"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:background="@color/light_gray" />
 
     <TextView
         android:id="@+id/withCardTextView"
