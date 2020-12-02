@@ -20,5 +20,9 @@ class Constants {
 
         const val IIN_LENGTH = 12
         const val PHONE_LENGTH = 11
+
+        const val PAYMENT_BY_BV = 2
+        const val PAYMENT_BY_TILL = 1
+        const val PAYMENT_BY_PAYBOX = 3
     }
 }

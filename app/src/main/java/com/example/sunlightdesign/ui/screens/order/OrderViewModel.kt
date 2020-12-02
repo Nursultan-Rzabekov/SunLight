@@ -10,6 +10,7 @@ import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
+import com.example.sunlightdesign.utils.Constants
 import timber.log.Timber
 
 
@@ -126,7 +127,6 @@ class OrderViewModel constructor(
                 _orderState.postValue(
                     OrderShortResponse(
                         orderType = it?.order?.order_payment_type ?: -1,
-                        message = it?.order?.order_status_value.toString(),
                         isSuccess = true
                     )
                 )
@@ -137,7 +137,6 @@ class OrderViewModel constructor(
                 _orderState.postValue(
                     OrderShortResponse(
                         orderType = -1,
-                        message = "",
                         isSuccess = false
                     )
                 )
@@ -148,7 +147,6 @@ class OrderViewModel constructor(
                 _orderState.postValue(
                     OrderShortResponse(
                         orderType = -1,
-                        message = "",
                         isSuccess = false
                     )
                 )
@@ -177,7 +175,6 @@ class OrderViewModel constructor(
 
     data class OrderShortResponse(
         val orderType: Int,
-        val message: String,
         val isSuccess: Boolean
     )
 }

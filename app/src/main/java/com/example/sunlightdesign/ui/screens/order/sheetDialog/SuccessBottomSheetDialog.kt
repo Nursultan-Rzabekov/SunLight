@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.utils.Constants
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.success_bottom_sheet.*
 
 class SuccessBottomSheetDialog(
-    val message: String = ""
+    val paymentType: Int = -1
 ) : BottomSheetDialogFragment() {
 
     companion object {
@@ -37,8 +38,13 @@ class SuccessBottomSheetDialog(
         super.onViewCreated(view, savedInstanceState)
 
         setListeners()
-        if (message.isNotBlank()) {
-            successInfoDescTextView.text = message
+        when(paymentType) {
+            Constants.PAYMENT_BY_BV -> {
+                successInfoDescTextView.text = getString(R.string.by_bv_success_text)
+            }
+            Constants.PAYMENT_BY_TILL -> {
+                successInfoDescTextView.text = getString(R.string.go_to_cashbox)
+            }
         }
     }
 

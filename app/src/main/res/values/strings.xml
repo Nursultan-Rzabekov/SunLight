@@ -233,6 +233,7 @@
     <string name="choose_type">Выберите подходящий \n способ оплаты</string>
     <string name="success_order">Спасибо \n за покупку</string>
     <string name="go_to_cashbox">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>
+    <string name="by_bv_success_text">Товар бронируется на 24 часа</string>
     <string name="choose_products">Выберите хотя бы один продукт</string>
     <string name="title_activity_structure">StructureActivity</string>
     <!--
