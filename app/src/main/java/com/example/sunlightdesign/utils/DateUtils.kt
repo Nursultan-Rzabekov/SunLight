@@ -18,7 +18,7 @@ class DateUtils {
             }
         }
 
-        fun convertDateToString(date: Date, pattern: String = "dd.MM.yyyy HH.mm"): String {
+        fun convertDateToString(date: Date, pattern: String = "dd.MM.yyyy HH:mm"): String {
             val sdf = SimpleDateFormat(pattern, Locale.getDefault())
             try {
                 return sdf.format(date)
