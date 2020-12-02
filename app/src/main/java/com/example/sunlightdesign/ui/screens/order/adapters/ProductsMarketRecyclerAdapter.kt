@@ -72,6 +72,16 @@ class ProductsMarketRecyclerAdapter(
             itemView.product_more_info_tv.setOnClickListener {
                 productsMarketItemSelected.onProductsSelected(product)
             }
+
+            itemView.product_card.setOnClickListener {
+                if (k == 0) {
+                    k++
+                    itemView.product_checkbox.isChecked = true
+                    itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
+                    sameClick(itemView = itemView, product = product, k = k)
+                    productsMarketItemSelected.setProductsState()
+                }
+            }
         }
 
         private fun sameClick(itemView: View, product:Product, k: Int){
