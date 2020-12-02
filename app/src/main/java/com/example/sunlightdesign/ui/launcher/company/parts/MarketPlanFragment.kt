@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.company.CompanyViewModel
 import kotlinx.android.synthetic.main.fragment_company_market_plan.*
+import kotlinx.android.synthetic.main.fragment_company_market_plan.progress_bar
+import kotlinx.android.synthetic.main.news_activity.*
 
 class MarketPlanFragment : StrongFragment<CompanyViewModel>(CompanyViewModel::class) {
 
@@ -27,9 +30,11 @@ class MarketPlanFragment : StrongFragment<CompanyViewModel>(CompanyViewModel::cl
 
         marketingWebView.settings.javaScriptEnabled = true
         marketingWebView.settings.loadsImagesAutomatically = true
-        marketingWebView.settings.useWideViewPort = true
         marketingWebView.settings.loadWithOverviewMode = true
+        marketingWebView.settings.useWideViewPort = true
+        marketingWebView.settings.domStorageEnabled = true
 
+        marketingWebView.settings.textZoom = 260
     }
 
     private fun setObservers() {
