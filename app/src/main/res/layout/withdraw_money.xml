@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/AppCompatTextViewGray"
+            style="@style/AppCompatTextView"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:text="@string/money_withdraw"
