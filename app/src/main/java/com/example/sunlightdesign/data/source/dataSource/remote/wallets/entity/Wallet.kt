@@ -84,10 +84,10 @@ data class Data(
     val extra_data: String,
     val finish_date: String,
     val history_type: String,
-    val id: Double,
+    val id: Double?,
     val main_wallet_new: Double,
     val main_wallet_old: Double,
-    val order: Any,
+    val order: Any?,
     val purchase_wallet_new: Double,
     val purchase_wallet_old: Double,
     val registry_wallet_new: Double,
@@ -98,7 +98,7 @@ data class Data(
     val value: Double,
     val wallet_id: Double,
     val wallet_type: String,
-    val withdraw: Any
+    val withdraw: Any?
 )
 
 data class Bonus(

@@ -5,6 +5,6 @@
     style="@style/AppCompatTextViewGray"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dimen_16dp"
+    android:padding="@dimen/dimen_8dp"
     android:textAlignment="center"
     tools:text="Hello, World!" />

@@ -12,11 +12,12 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.Data
 import com.example.sunlightdesign.utils.Constants
 import com.example.sunlightdesign.utils.DateUtils
+import com.example.sunlightdesign.utils.EmptyViewHolder
 import kotlinx.android.synthetic.main.wallet_history_item.view.*
 
 class WalletHistoryAdapter(
     private val interaction: WalletHistoryInteraction
-): ListAdapter<Data, WalletHistoryAdapter.WalletHistoryViewHolder>(diffUtil) {
+): ListAdapter<Data, RecyclerView.ViewHolder>(diffUtil) {
 
     companion object{
         private val diffUtil = object: DiffUtil.ItemCallback<Data>(){
@@ -29,19 +30,68 @@ class WalletHistoryAdapter(
             ): Boolean = oldItem.id == newItem.id
 
         }
+
+        private const val EMPTY_LIST = -1
+        private const val NOT_EMPTY_LIST = 0
+
+        val EMPTY = Data(
+            bonus = null,
+            created_at = "",
+            extra_data = "",
+            finish_date = "",
+            history_type = "",
+            id = null,
+            main_wallet_new = 0.0,
+            main_wallet_old = 0.0,
+            order = null,
+            purchase_wallet_new = 0.0,
+            purchase_wallet_old = 0.0,
+            registry_wallet_new = 0.0,
+            registry_wallet_old = 0.0,
+            start_date = "",
+            status_type = "",
+            user_id = 0.0,
+            value = 0.0,
+            wallet_id = 0.0,
+            wallet_type = "",
+            withdraw = null
+        )
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WalletHistoryViewHolder {
-       return WalletHistoryViewHolder(
-           LayoutInflater.from(parent.context)
-               .inflate(R.layout.wallet_history_item, parent, false),
-           interaction = interaction
-       )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            EMPTY_LIST -> {
+                EmptyViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(EmptyViewHolder.getLayoutId(), parent, false))
+            }
+            else -> {
+                WalletHistoryViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.wallet_history_item, parent, false),
+                    interaction = interaction
+                )
+            }
+        }
     }
 
-    override fun onBindViewHolder(holder: WalletHistoryViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is WalletHistoryViewHolder -> {
+                holder.bind(getItem(position))
+            }
+            is EmptyViewHolder -> {
+                holder.bind(holder.itemView.context.getString(R.string.empty_withdraw_history))
+            }
+        }
     }
+
+    override fun getItemViewType(position: Int): Int =
+        if (currentList.size == 1 && currentList.first() == EMPTY) {
+            EMPTY_LIST
+        } else {
+            NOT_EMPTY_LIST
+        }
 
     class WalletHistoryViewHolder(
         view: View,

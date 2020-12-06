@@ -10,8 +10,6 @@ import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Dat
 import com.example.sunlightdesign.utils.DateUtils
 import com.example.sunlightdesign.utils.EmptyViewHolder
 import kotlinx.android.synthetic.main.announcement_item.view.*
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class AnnouncementsRecyclerAdapter(
