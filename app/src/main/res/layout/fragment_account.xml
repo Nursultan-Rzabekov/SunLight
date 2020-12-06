@@ -15,6 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:paddingBottom="@dimen/dimen_16dp"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatTextView

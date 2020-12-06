@@ -130,7 +130,8 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
 
         usersInStructureTextView.text = info.children?.size.toString()
 
-        invitedAdapter.setItems(info.children ?: listOf())
+//        invitedAdapter.setItems(info.children ?: listOf())
+        invitedAdapter.setItems(listOf())
     }
 
     private fun saveReferralLinkToClipboard(link: String) {
