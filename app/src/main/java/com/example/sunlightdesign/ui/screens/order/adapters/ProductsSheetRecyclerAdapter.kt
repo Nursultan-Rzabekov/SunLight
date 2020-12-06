@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+import com.example.sunlightdesign.utils.getImageUrl
 import kotlinx.android.synthetic.main.product_sheet_item.view.*
 
 class ProductsSheetRecyclerAdapter(
@@ -33,7 +34,7 @@ class ProductsSheetRecyclerAdapter(
                 itemView.context.getString(R.string.amount_bv, product.product_price)
 
             Glide.with(itemView)
-                .load(product.product_image_front_path)
+                .load(getImageUrl(product.product_image_front_path))
                 .centerCrop()
                 .placeholder(R.drawable.product_test)
                 .into(itemView.product_iv)

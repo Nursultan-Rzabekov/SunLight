@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+import com.example.sunlightdesign.utils.getImageUrl
 import kotlinx.android.synthetic.main.product_market_item.view.*
 
 class ProductsMarketRecyclerAdapter(
@@ -42,10 +43,8 @@ class ProductsMarketRecyclerAdapter(
             itemView.product_price_tv.text = itemView.context.getString(R.string.amount_kzt, product.product_price)
 
             Glide.with(itemView)
-                .load(product.product_image_front_path)
-                .placeholder(R.drawable.product_test)
-                .error(R.drawable.product_test)
-                .centerCrop()
+                .load(getImageUrl(product.product_image_front_path))
+                .centerInside()
                 .into(itemView.product_iv)
 
             var k = itemView.productQuantity.text.toString().toInt()
@@ -77,10 +76,14 @@ class ProductsMarketRecyclerAdapter(
                 if (k == 0) {
                     k++
                     itemView.product_checkbox.isChecked = true
-                    itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
-                    sameClick(itemView = itemView, product = product, k = k)
-                    productsMarketItemSelected.setProductsState()
+
+                } else {
+                    k = 0
+                    itemView.product_checkbox.isChecked = false
                 }
+                itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
+                sameClick(itemView = itemView, product = product, k = k)
+                productsMarketItemSelected.setProductsState()
             }
         }
 

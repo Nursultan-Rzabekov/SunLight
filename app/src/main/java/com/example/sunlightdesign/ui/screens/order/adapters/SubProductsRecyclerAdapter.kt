@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+import com.example.sunlightdesign.utils.getImageUrl
 import kotlinx.android.synthetic.main.order_sublist_item.view.*
 
 class SubProductsRecyclerAdapter(
@@ -40,7 +42,7 @@ class SubProductsRecyclerAdapter(
                 itemView.context.getString(R.string.status_format, statusOrder)
 
             Glide.with(itemView)
-                .load(product.product_image_back_path)
+                .load(getImageUrl(product.product?.product_image_front_path))
                 .centerCrop()
                 .into(itemView.productImageView)
         }

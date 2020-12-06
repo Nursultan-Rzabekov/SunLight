@@ -243,15 +243,9 @@
         <item name="android:windowMinWidthMinor">95%</item>
     </style>
 
-    <style name="NavDrawerTextStyleActive" parent="Base.TextAppearance.AppCompat">
-        <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="NavDrawerTextStyleInActive" parent="Base.TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">8sp</item>
     </style>
 
 </resources>
