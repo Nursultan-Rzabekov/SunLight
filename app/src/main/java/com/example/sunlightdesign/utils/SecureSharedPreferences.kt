@@ -37,9 +37,10 @@ class SecureSharedPreferences(
         get() = sharedPreferences.getString(PASSWORD,null)
         set(value) = sharedPreferences.edit().putString(PASSWORD,value).apply()
 
-
-
-
+    private val EDIT_PASSWORD = "edit_password_last"
+    var editPassword: String?
+        get() = sharedPreferences.getString(EDIT_PASSWORD,null)
+        set(value) = sharedPreferences.edit().putString(EDIT_PASSWORD,value).apply()
 }
 
 

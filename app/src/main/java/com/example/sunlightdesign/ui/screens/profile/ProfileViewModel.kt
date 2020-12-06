@@ -96,6 +96,7 @@ class ProfileViewModel constructor(
 
     fun nullifyData(){
         sharedUseCase.getSharedPreference().bearerToken = ""
+        sharedUseCase.getSharedPreference().editPassword = ""
     }
 
 

@@ -32,7 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_16dp"
-        android:visibility="gone"
         app:boxBackgroundColor="@color/gray_EF"
         app:hintEnabled="false">
 
@@ -44,10 +43,13 @@
             android:enabled="false"
             android:hint="@string/office_name"
             android:inputType="none"
+            android:drawableTint="@color/colorPrimary"
+            android:drawablePadding="-24dp"
             android:labelFor="@id/country_drop_down"
             android:paddingTop="@dimen/dimen_12dp"
             android:paddingBottom="@dimen/dimen_12dp"
             android:textAlignment="center"
+            android:textColorHint="@color/colorPrimary"
             android:textColor="@color/colorPrimary" />
 
     </com.google.android.material.textfield.TextInputLayout>
