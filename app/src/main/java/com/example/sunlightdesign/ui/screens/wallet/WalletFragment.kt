@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.view.marginTop
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,8 +55,11 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
                 leftBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.left_branch_total)
                 rightBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.right_branch_total)
 
-                walletHistoriesLayout.isVisible = it.walletHistory.data.isNotEmpty()
-                walletHistoryAdapter.submitList(it.walletHistory.data)
+                if (it.walletHistory.data.isNotEmpty()) {
+                    walletHistoryAdapter.submitList(it.walletHistory.data)
+                } else {
+                    walletHistoryAdapter.submitList(listOf(WalletHistoryAdapter.EMPTY))
+                }
             })
         }
     }

@@ -31,6 +31,7 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.AreYouSureCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.empty_list_message_item.view.*
 import timber.log.Timber
 import kotlin.reflect.KClass
 
@@ -186,5 +187,12 @@ fun Activity.showToast(message: String){
 
 class EmptyViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
+    companion object {
+        fun getLayoutId() = R.layout.empty_list_message_item
+    }
+
+    fun bind(message: String) {
+        itemView.messageTextView.text = message
+    }
 }
 
