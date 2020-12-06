@@ -231,7 +231,7 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="zero">0</string>
-    <string name="info_product">Информация о товаре</string>
+    <string name="info_product">Информация о товаре:</string>
     <string name="choose_type">Выберите подходящий \n способ оплаты</string>
     <string name="success_order">Спасибо \n за покупку</string>
     <string name="go_to_cashbox">Подойдите к кассе, чтобы оплатить \n и получить инструкцию \n дальнейших действий.</string>

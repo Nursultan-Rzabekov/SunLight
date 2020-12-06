@@ -39,6 +39,7 @@ class ImageGalleryViewPager(
         Timber.d(getImageUrl(images[position]))
         Glide.with(view)
             .load(getImageUrl(images[position]))
+            .centerInside()
             .into(imageView)
 
         (container as ViewPager).addView(view, 0)

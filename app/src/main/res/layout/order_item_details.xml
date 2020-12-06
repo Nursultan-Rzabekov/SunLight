@@ -33,7 +33,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/productImagesViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="176dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -126,7 +126,6 @@
                         style="@style/AppCompatTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_12dp"
                         android:text="@string/info_product"
                         android:textSize="@dimen/dimen_18sp" />
 
