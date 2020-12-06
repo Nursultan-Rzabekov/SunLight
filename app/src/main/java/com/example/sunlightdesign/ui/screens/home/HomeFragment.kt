@@ -25,6 +25,7 @@ import com.example.sunlightdesign.ui.launcher.news.NewsActivity
 import com.example.sunlightdesign.ui.screens.home.structure.StructureActivity
 import com.example.sunlightdesign.ui.screens.order.market.MarketActivity
 import com.example.sunlightdesign.utils.NumberUtils
+import com.example.sunlightdesign.utils.ZoomOutPageTransformer
 import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.dialog_notify.*
 import kotlinx.android.synthetic.main.launcher_authenticated.*
@@ -41,7 +42,7 @@ class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
     private lateinit var postAdapter: PostAdapter
 
     private val handler = Handler()
-    private val delay = 3000L //milliseconds
+    private val delay = 5000L //milliseconds
 
     private var page = 0
     private var newsViewPagerAdapter: BannerViewPagerAdapter? = null
@@ -79,13 +80,14 @@ class HomeFragment : StrongFragment<HomeViewModel>(HomeViewModel::class),
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {
         super.onActivityCreated(savedInstanceViewState)
 
-
         btn_enter_cv.visibility = View.GONE
         btn_structure_cv.visibility = View.VISIBLE
 
         btn_company_cv.setOnClickListener {
             startActivity(Intent(context, CompanyActivity::class.java))
         }
+
+        news_view_pager.setPageTransformer(true, ZoomOutPageTransformer())
 
         setObservers()
         setListeners()

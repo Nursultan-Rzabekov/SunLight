@@ -334,10 +334,10 @@ class ProfileViewModel constructor(
             when (requestCode) {
                 Constants.ACTION_IMAGE_CONTENT_INTENT_CODE -> {
                     Timber.d("Image path: ${data.data}")
-                    if (_rearDocument.value != null) {
-                        _backDocument.postValue(data.data)
-                    } else if (_backDocument.value != null) {
+                    if (_rearDocument.value == null) {
                         _rearDocument.postValue(data.data)
+                    } else if (_backDocument.value == null) {
+                        _backDocument.postValue(data.data)
                     }
                 }
                 Constants.ACTION_IMAGE_CONTENT_AVATAR_CODE -> {

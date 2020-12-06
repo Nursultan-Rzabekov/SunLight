@@ -19,6 +19,7 @@ import com.example.sunlightdesign.ui.launcher.auth.AuthActivity
 import com.example.sunlightdesign.ui.launcher.company.CompanyActivity
 import com.example.sunlightdesign.ui.launcher.adapter.CategoriesAdapter
 import com.example.sunlightdesign.ui.launcher.news.NewsActivity
+import com.example.sunlightdesign.utils.ZoomOutPageTransformer
 import kotlinx.android.synthetic.main.launcher_authenticated.*
 import kotlinx.android.synthetic.main.sunlight_banner.*
 
@@ -34,7 +35,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
     private lateinit var postAdapter: PostAdapter
 
     private val handler = Handler()
-    private val delay = 3000L //milliseconds
+    private val delay = 5000L //milliseconds
     private val smoothScrollDelay = 1500
 
     private var page = 0
@@ -74,6 +75,7 @@ class LauncherFragment : StrongFragment<LauncherViewModel>(LauncherViewModel::cl
         super.onActivityCreated(savedInstanceViewState)
 
         centerBtnText.text = getString(R.string.about_goods)
+        news_view_pager.setPageTransformer(true, ZoomOutPageTransformer())
 
         setObservers()
         setListeners()
