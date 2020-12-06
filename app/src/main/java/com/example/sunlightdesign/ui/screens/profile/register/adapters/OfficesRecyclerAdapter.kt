@@ -62,7 +62,7 @@ class OfficesRecyclerAdapter(
             itemView.office_name_tv.text = item.office_name
             itemView.office_phonenumber_tv.text = item.phone.toString()
             itemView.office_address_tv.text = item.address
-            itemView.office_time_tv.text = item.close_hours
+            itemView.office_time_tv.text = ("${item.open_hours} - ${item.close_hours}")
 
             Glide.with(itemView)
                 .load(getImageUrl(item.office_image_path))
