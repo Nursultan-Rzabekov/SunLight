@@ -63,7 +63,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
-                        android:textColor="@color/sunLightColor"
+                        android:textColor="@color/sunBlackColor"
                         android:layout_gravity="bottom|center_horizontal"
                         android:text="@string/company"
                         android:textSize="@dimen/dimen_14sp"
@@ -94,7 +94,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/centerBtnText"
                         style="@style/AppCompatTextViewGray"
-                        android:textColor="@color/sunLightColor"
+                        android:textColor="@color/sunBlackColor"
                         android:layout_gravity="bottom|center_horizontal"
                         android:text="@string/market"
                         android:textSize="@dimen/dimen_14sp"
@@ -126,7 +126,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/AppCompatTextViewGray"
-                        android:textColor="@color/sunLightColor"
+                        android:textColor="@color/sunBlackColor"
                         android:layout_gravity="bottom|center_horizontal"
                         android:text="@string/structure"
                         android:textSize="@dimen/dimen_14sp"
