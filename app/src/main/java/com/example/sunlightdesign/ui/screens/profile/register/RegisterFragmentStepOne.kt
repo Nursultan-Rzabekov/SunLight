@@ -179,10 +179,12 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
             rearDocument.observe(viewLifecycleOwner, Observer {
                 it?.let { setRearDocument(it) }
+                checkAttachBtn()
             })
 
             backDocument.observe(viewLifecycleOwner, Observer {
                 it?.let { setBackDocument(it) }
+                checkAttachBtn()
             })
 
             navigationEvent.observe(viewLifecycleOwner, Observer{
@@ -382,6 +384,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         document_back_side_card.visibility = View.GONE
         document_back_side_iv.invalidate()
         viewModel.onBackDocumentInvalidate()
+    }
+
+    private fun checkAttachBtn() {
+        attach_document_btn.isEnabled = viewModel.rearDocument.value == null || viewModel.backDocument.value == null
     }
 
     private fun updateSignUpBtn() {
