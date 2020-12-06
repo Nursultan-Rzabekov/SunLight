@@ -56,6 +56,11 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         initRecycler()
         setObservers()
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         viewModel.getProfileInfo()
     }
 
