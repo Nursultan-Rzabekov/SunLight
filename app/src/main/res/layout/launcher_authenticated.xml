@@ -15,8 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_marginEnd="@dimen/dimen_16dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content">
 
@@ -37,6 +35,8 @@
             <LinearLayout
                 android:gravity="center"
                 android:layout_weight="3"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/dimen_24dp"
@@ -173,12 +173,16 @@
                 android:id="@+id/newsTextView"
                 style="@style/AppCompatTextView"
                 android:text="@string/news"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
                 android:layout_marginTop="@dimen/dimen_24dp"
                 />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categories_recycler_view"
                 android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -189,6 +193,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/post_recyclerview"
                 android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/main_page_post_item"
                 tools:itemCount="2"
