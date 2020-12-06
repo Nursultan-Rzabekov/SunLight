@@ -30,6 +30,7 @@ import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChange
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangePasswordUseCase
 import com.example.sunlightdesign.utils.Constants
 import com.example.sunlightdesign.utils.showDialog
+import de.hdodenhof.circleimageview.CircleImageView
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -225,7 +226,7 @@ class ProfileViewModel constructor(
                 onComplete { response ->
                     progress.postValue(false)
                     response?.user?.user_avatar_path?.let{ avatar ->
-                        _avatarImage.postValue(avatar)
+                        it.findViewById<CircleImageView>(R.id.userAvatarCircleImageView).setImageURI(path)
                     }
                 }
                 onNetworkError {

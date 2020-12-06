@@ -53,7 +53,8 @@
     <string name="data_registration">Дата регистрации\nпользователя</string>
     <string name="personal_structure">Пользователей\nв структуре</string>
     <string name="referral_reference">Реферальная ссылка</string>
-    <string name="your_reference">Ваша ссылка на страницу</string>
+    <string name="your_reference_left">Ссылка на левую ветку</string>
+    <string name="your_reference_right">Ссылка на правую ветку</string>
     <string name="bottom_register">регистрации</string>
     <string name="registration_referral">Добавить пользователя</string>
     <string name="leader_structure">Лидер структуры</string>

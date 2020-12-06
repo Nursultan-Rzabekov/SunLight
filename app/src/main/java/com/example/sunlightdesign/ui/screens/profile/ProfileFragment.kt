@@ -88,11 +88,11 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             findNavController().navigate(R.id.action_profileFragment_to_editProfileActivity, bundle)
         }
 
-        copyReferralLinkBtn.setOnClickListener {
+        copyReferralLinkLeftBtn.setOnClickListener {
             referralLink?.let { saveReferralLinkToClipboard(it) }
         }
 
-        shareReferralLinkBtn.setOnClickListener {
+        shareReferralLinkLeftBtn.setOnClickListener {
             referralLink?.let { shareReferralLink(it) }
         }
     }

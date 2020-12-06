@@ -1,71 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen_91dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_marginTop="@dimen/dimen_16dp">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_16dp"
-        android:orientation="horizontal">
+        app:cardElevation="@dimen/dimen_0dp">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextView"
-                android:fontFamily="@font/rubik_regular"
-                android:text="@string/referral_reference"
-                android:textColor="@color/sunLightColor"
-                android:textSize="@dimen/dimen_16sp" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                android:fontFamily="@font/rubik_regular"
-                android:textColor="@color/light_gray"
-                android:text="@string/your_reference"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/dimen_12sp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/referral_reference"
+                    android:textColor="@color/sunLightColor"
+                    android:textSize="@dimen/dimen_16sp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
-                android:fontFamily="@font/rubik_regular"
-                android:text="@string/bottom_register"
-                android:textColor="@color/light_gray"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/dimen_12sp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/your_reference_left"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/dimen_12sp" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/bottom_register"
+                    android:visibility="gone"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/dimen_12sp" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/copyReferralLinkBtn"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/dimen_30dp"
-            android:foreground="?attr/selectableItemBackground"
-            android:background="@drawable/border_color_copy_referal"
-            android:src="@drawable/ic_copy_referal" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/shareReferralLinkBtn"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="-1dp"
-            android:foreground="?attr/selectableItemBackground"
-            android:background="@drawable/border_color_share_referal"
-            android:src="@drawable/ic_share_referal" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/copyReferralLinkLeftBtn"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_30dp"
+                android:background="@drawable/border_color_copy_referal"
+                android:foreground="?attr/selectableItemBackground"
+                android:src="@drawable/ic_copy_referal" />
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/shareReferralLinkLeftBtn"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="-1dp"
+                android:background="@drawable/border_color_share_referal"
+                android:foreground="?attr/selectableItemBackground"
+                android:src="@drawable/ic_share_referal" />
 
-</androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/dimen_0dp"
+        android:layout_marginTop="@dimen/dimen_16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextView"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/referral_reference"
+                    android:textColor="@color/sunLightColor"
+                    android:textSize="@dimen/dimen_16sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/your_reference_right"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/dimen_12sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/AppCompatTextViewGray"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/bottom_register"
+                    android:textAlignment="textStart"
+                    android:visibility="gone"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/dimen_12sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/copyReferralLinkRightBtn"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_30dp"
+                android:background="@drawable/border_color_copy_referal"
+                android:foreground="?attr/selectableItemBackground"
+                android:src="@drawable/ic_copy_referal" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/shareReferralLinkRightBtn"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="-1dp"
+                android:background="@drawable/border_color_share_referal"
+                android:foreground="?attr/selectableItemBackground"
+                android:src="@drawable/ic_share_referal" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
