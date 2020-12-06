@@ -53,14 +53,33 @@
 
             </LinearLayout>
 
-            <TextView
-                style="@style/AppCompatTextView"
-                android:id="@+id/available_products_from_tv"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                android:text="@string/available_products_from"
-                android:textSize="@dimen/dimen_16sp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/AppCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:text="@string/available_products_from_"
+                    android:textSize="@dimen/dimen_16sp" />
+
+
+                <TextView
+                    style="@style/AppCompatTextView"
+                    android:id="@+id/available_products_from_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/sunLightColor"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:text="@string/available_products_from"
+                    android:textSize="@dimen/dimen_16sp" />
+
+            </LinearLayout>
+
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/products_recycler_view"

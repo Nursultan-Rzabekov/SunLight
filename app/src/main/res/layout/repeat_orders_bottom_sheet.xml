@@ -17,7 +17,6 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/repeatOrdersSheetTextView"
-        android:layout_marginStart="@dimen/dimen_16dp"
         style="@style/AppCompatTextView"
         android:layout_gravity="center"
         android:textStyle="normal"
@@ -27,7 +26,6 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/countOrderTextView"
-        android:layout_marginStart="@dimen/dimen_16dp"
         style="@style/AppCompatTextView"
         android:layout_gravity="center"
         android:textStyle="normal"
@@ -37,17 +35,16 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/amountOrderTextView"
-        android:layout_marginStart="@dimen/dimen_16dp"
         style="@style/AppCompatTextView"
         android:layout_gravity="center"
         android:textStyle="normal"
+        android:textColor="@color/sunLightColor"
         tools:text="@string/totalAmountOrders"
         android:textSize="@dimen/dimen_18sp"/>
 
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_marginTop="@dimen/dimen_10dp"
-        android:layout_marginStart="@dimen/dimen_16dp"
         style="@style/AppCompatTextViewGray"
         android:textAlignment="center"
         android:layout_gravity="center"

@@ -25,7 +25,7 @@
         android:textSize="@dimen/dimen_22sp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginStart="@dimen/dimen_18dp"
         style="@style/AppCompatTextViewGray"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:text="@string/info_order"
@@ -34,7 +34,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/totalAmountSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextViewGray"
+        style="@style/AppCompatTextView"
         android:textColor="@color/sunBlackColor"
         tools:text="@string/total_amount"
         android:layout_marginTop="@dimen/dimen_10dp"
@@ -44,7 +44,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/typePaymentSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextViewGray"
+        style="@style/AppCompatTextView"
         tools:text="@string/type_of_payment"
         android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
@@ -54,7 +54,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/typeSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextViewGray"
+        style="@style/AppCompatTextView"
         tools:text="@string/type"
         android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
@@ -64,7 +64,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/officeSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextViewGray"
+        style="@style/AppCompatTextView"
         tools:text="@string/office"
         android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
@@ -73,7 +73,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/contactNumberSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextViewGray"
+        style="@style/AppCompatTextView"
         tools:text="@string/contact_number"
         android:textColor="@color/sunBlackColor"
         android:layout_marginTop="@dimen/dimen_10dp"
@@ -83,7 +83,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/dateEndSheetTextView"
         android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextViewGray"
+        style="@style/AppCompatTextView"
         android:textColor="@color/sunBlackColor"
         tools:text="@string/date_end_of_order"
         android:layout_marginTop="@dimen/dimen_10dp"

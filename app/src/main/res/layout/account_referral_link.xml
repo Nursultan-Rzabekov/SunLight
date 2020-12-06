@@ -23,7 +23,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
+                    style="@style/AppCompatTextViewGray"
                     android:fontFamily="@font/rubik_regular"
                     android:text="@string/referral_reference_right"
                     android:textColor="@color/sunLightColor"
@@ -97,7 +97,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/AppCompatTextView"
+                    style="@style/AppCompatTextViewGray"
                     android:fontFamily="@font/rubik_regular"
                     android:text="@string/referral_reference_left"
                     android:textColor="@color/sunLightColor"

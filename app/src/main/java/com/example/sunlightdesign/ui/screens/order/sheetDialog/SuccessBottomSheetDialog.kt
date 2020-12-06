@@ -50,6 +50,7 @@ class SuccessBottomSheetDialog(
 
     private fun setListeners() {
         okBtn.setOnClickListener {
+            activity?.finish()
             dismiss()
         }
     }

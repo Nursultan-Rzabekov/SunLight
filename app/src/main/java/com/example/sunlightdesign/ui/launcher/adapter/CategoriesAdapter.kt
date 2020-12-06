@@ -45,7 +45,7 @@ class CategoriesAdapter constructor(
                 itemView.category_name_btn.setBackgroundColor(
                     ContextCompat.getColor(itemView.context, R.color.transparent))
                 itemView.category_name_btn.setTextColor(
-                    ContextCompat.getColor(itemView.context, R.color.colorPrimary))
+                    ContextCompat.getColor(itemView.context, R.color.sunBlackColor))
             }
             itemView.category_name_btn.setOnClickListener {
                 categoryInterface.onCategorySelected(item)

@@ -61,6 +61,7 @@
                 app:tabPaddingEnd="0dp"
                 app:tabPaddingStart="0dp"
                 app:tabPaddingTop="-12dp"
+                app:tabTextColor="@color/sunBlackColor"
                 app:tabRippleColor="@null"
                 android:clipToPadding="true"
                 app:tabSelectedTextColor="@color/white"

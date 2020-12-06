@@ -38,12 +38,11 @@ class SubProductsRecyclerAdapter(
             itemView.orderNameTextView.text = product.product?.product_name
             itemView.countTextView.text =
                 itemView.context.getString(R.string.amount, product.product_quantity)
-            itemView.statusTextView.text =
-                itemView.context.getString(R.string.status_format, statusOrder)
+            itemView.statusTextView.text = statusOrder
 
             Glide.with(itemView)
                 .load(getImageUrl(product.product?.product_image_front_path))
-                .centerCrop()
+                .centerInside()
                 .into(itemView.productImageView)
         }
     }

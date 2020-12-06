@@ -83,7 +83,8 @@
     <string name="vybor_tovara">Выбор товара</string>
     <string name="vybor_ofısa">Выбор офиса</string>
     <string name="cposob_oplaty"> Cпособ оплаты</string>
-    <string name="available_products_from">Доступные товары из <b>“%1$s”</b></string>
+    <string name="available_products_from_">Доступные товары из </string>
+    <string name="available_products_from"><b>“%1$s”</b></string>
     <string name="itogo_k_oplate">Итого к оплате : %1$.2f BV = %2$.2f KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
 
@@ -262,7 +263,8 @@
     <string name="to_mail">To: $1%s</string>
     <string name="size_kb">($1%sKb)</string>
     <string name="code_number">Код: %.0f</string>
-    <string name="status_format">Статус: %s</string>
+    <string name="status_format_">Статус:</string>
+    <string name="status_format">%s</string>
     <string name="last_name">Фамилия</string>
     <string name="first_name">Имя</string>
     <string name="middle_name">Отчество</string>

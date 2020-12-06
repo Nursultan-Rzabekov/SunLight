@@ -77,6 +77,6 @@
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
-        android:background="?android:attr/listDivider" />
+        android:background="@color/gray_" />
 
 </LinearLayout>
