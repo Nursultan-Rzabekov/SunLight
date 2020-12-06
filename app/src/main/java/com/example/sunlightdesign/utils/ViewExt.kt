@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.example.sunlightdesign.Event
 import com.example.sunlightdesign.R
@@ -181,5 +182,9 @@ fun Fragment.showToast(message: String){
 
 fun Activity.showToast(message: String){
     Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+}
+
+class EmptyViewHolder(view: View): RecyclerView.ViewHolder(view) {
+
 }
 
