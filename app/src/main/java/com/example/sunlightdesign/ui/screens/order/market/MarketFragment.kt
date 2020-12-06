@@ -18,6 +18,7 @@ import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentType
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.ProductsBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
+import com.example.sunlightdesign.utils.showMessage
 import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.market_products_list.*
@@ -169,6 +170,12 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onTypeSelected(type: Int) {
+
+//        if(0 < viewModel.createOrderBuilder.payment_sum)  {
+//            showMessage(requireContext(), message = "Недостаточно средств")
+//            return
+//        }
+
         choosePaymentTypeBottomSheetDialog.dismiss()
         viewModel.createOrderBuilder.order_payment_type = type
         viewModel.storeOrder(createOrderPartner = viewModel.createOrderBuilder.build())
