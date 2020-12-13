@@ -21,5 +21,11 @@ data class Office(
     val phone: String?,
     val region_id: Int?,
     val updated_at: String?,
+    val city: ShortenedCityInfo?,
     var isChecked: Boolean = false
+)
+
+data class ShortenedCityInfo(
+    val id: Int?,
+    val city_name: String?
 )

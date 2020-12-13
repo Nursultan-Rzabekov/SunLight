@@ -14,6 +14,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.W
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
+import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel.ShortenedCity
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseWithdrawTypeBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.WithdrawSuccessBottomSheetDialog
@@ -90,9 +91,19 @@ class WithdrawFragment :
             })
 
             officesList.observe(viewLifecycleOwner, Observer {
-                it.offices?.let {offices ->
+                it.offices?.let { offices ->
+                    val citiesList = ArrayList<ShortenedCity>()
+                    offices.forEach { office ->
+                        office?.city?.id ?: return@forEach
+                        citiesList.add(
+                            ShortenedCity(
+                                office.city.id,
+                                office.city.city_name.toString()
+                            )
+                        )
+                    }
                     chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(
-                        this@WithdrawFragment, ArrayList(offices))
+                        this@WithdrawFragment, ArrayList(offices), citiesList, true)
                 }
             })
 
