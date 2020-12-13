@@ -73,6 +73,8 @@
     <string name="koshelek">Кошелек</string>
     <string name="money_withdraw">Снять деньги</string>
     <string name="arrow_right">Объем\nправой ветки</string>
+    <string name="arrow_left_this_week">Объем\nлевой ветки\nна этой\nнеделе</string>
+    <string name="arrow_right_this_week">Объем\nправой ветки\nна этой\nнеделе</string>
 
     <string name="shag_two">Шаг 2</string>
     <string name="vybor_paketa">Выбор пакета</string>
@@ -188,13 +190,19 @@
 
     <string name="order_number">Заказ #%1$.0f</string>
     <string name="code_order">Код товара: %1$.2f</string>
-    <string name="total_amount"><b>Общая сумма:</b> %1$.2f KZT</string>
-    <string name="type_of_payment"><b>Способ оплаты:</b> %1$s</string>
-    <string name="type"><b>Тип:</b> %1$s</string>
+    <string name="total_amount_"><b>Общая сумма:</b></string>
+    <string name="total_amount">%1$.2f KZT</string>
+    <string name="type_of_payment_"><b>Способ оплаты:</b></string>
+    <string name="type_of_payment">%1$s</string>
+    <string name="type_"><b>Тип:</b></string>
+    <string name="type">%1$s</string>
     <string name="cashier">Кассир: %1$s</string>
-    <string name="office"><b>Офис:</b> %1$s</string>
-    <string name="contact_number"><b>Телефон:</b> %1$s</string>
-    <string name="date_end_of_order"><b>Дата завершения покупки:</b> %1$s</string>
+    <string name="office_"><b>Офис:</b></string>
+    <string name="office">%1$s</string>
+    <string name="contact_number_"><b>Телефон:</b></string>
+    <string name="contact_number">%1$s</string>
+    <string name="date_end_of_order_"><b>Дата завершения покупки:</b></string>
+    <string name="date_end_of_order">%1$s</string>
     <string name="info_order">Сведения о заказе</string>
     <string name="reply_order">Повторить заказ</string>
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>

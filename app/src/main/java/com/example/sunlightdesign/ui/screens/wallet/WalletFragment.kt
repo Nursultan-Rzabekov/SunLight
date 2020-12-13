@@ -54,6 +54,10 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
                 activityWalletTextView.text = getString(R.string.amount_bv, it.wallet.purchase_wallet)
                 leftBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.left_branch_total)
                 rightBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.right_branch_total)
+                leftBranchTotalTextViewThisWeek.text =
+                    getString(R.string.amount_bv, it.wallet.left_branch_total)
+                rightBranchTotalTextViewThisWeek.text =
+                    getString(R.string.amount_bv, it.wallet.right_branch_total)
 
                 if (it.walletHistory.data.isNotEmpty()) {
                     walletHistoryAdapter.submitList(it.walletHistory.data)

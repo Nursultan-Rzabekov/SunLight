@@ -33,7 +33,6 @@
     <style name="AppCompatTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/rubik_regular</item>
         <item name="android:textSize">@dimen/dimen_20sp</item>
         <item name="android:textColor">@color/sunBlackColor</item>
@@ -199,7 +198,6 @@
     <style name="TabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/dimen_12sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
     </style>
     

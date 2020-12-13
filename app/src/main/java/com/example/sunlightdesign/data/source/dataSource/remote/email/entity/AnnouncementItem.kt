@@ -55,8 +55,7 @@ data class Author(
     val step: Int,
     val system_status: Int,
     val user_avatar_path: Any,
-    val uuid: String,
-    val who: Any
+    val uuid: String
 )
 
 data class File(

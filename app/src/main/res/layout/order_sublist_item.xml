@@ -73,14 +73,10 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/statusTextView"
             style="@style/AppCompatTextViewGray"
-            android:layout_marginStart="@dimen/dimen_16dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/sunLightColor"
             android:textSize="@dimen/dimen_14sp"
             tools:text="@string/status_format" />
-
-
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

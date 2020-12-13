@@ -131,6 +131,10 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             getString(R.string.amount_bv, info.user?.wallet?.left_branch_total)
         rightBranchTotalTextView.text =
             getString(R.string.amount_bv, info.user?.wallet?.right_branch_total)
+        leftBranchTotalTextViewThisWeek.text =
+            getString(R.string.amount_bv, info.weekBonus?.first())
+        rightBranchTotalTextViewThisWeek.text =
+            getString(R.string.amount_bv, info.weekBonus?.get(1))
         referralLink = "${BuildConfig.REFERAL_LINK}${info.user?.referral_link}"
 
         usersInStructureTextView.text = info.children?.size.toString()

@@ -60,8 +60,7 @@ data class User(
     val step: Int?,
     val system_status: Int?,
     val user_avatar_path: Any?,
-    val uuid: String?,
-    val who: Int?
+    val uuid: String?
 )
 
 data class Data(

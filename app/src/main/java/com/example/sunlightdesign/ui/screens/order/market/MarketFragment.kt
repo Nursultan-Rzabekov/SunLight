@@ -101,6 +101,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     private fun setObservers() {
         viewModel.products.observe(viewLifecycleOwner, Observer {
             initRecycler(it.products ?: listOf())
+            viewModel.createOrderBuilder.mainWallet = it.wallet.main_wallet ?: 0.0
         })
 
         viewModel.orderState.observe(viewLifecycleOwner, Observer {
@@ -171,10 +172,12 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     override fun onTypeSelected(type: Int) {
 
-//        if(0 < viewModel.createOrderBuilder.payment_sum)  {
-//            showMessage(requireContext(), message = "Недостаточно средств")
-//            return
-//        }
+        if(type == 2){
+            if(viewModel.createOrderBuilder.mainWallet < viewModel.createOrderBuilder.payment_sum)  {
+                showMessage(requireContext(), message = "Недостаточно средств")
+                return
+            }
+        }
 
         choosePaymentTypeBottomSheetDialog.dismiss()
         viewModel.createOrderBuilder.order_payment_type = type

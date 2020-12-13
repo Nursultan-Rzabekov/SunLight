@@ -42,6 +42,7 @@ data class CreateOrderPartner(
         var order_payment_type: Int = -1
         var products: List<Product> = listOf()
         var payment_sum: Double = -0.0
+        var mainWallet: Double = -0.0
 
         fun build(): CreateOrderPartner = CreateOrderPartner(
             user_id = user_id,

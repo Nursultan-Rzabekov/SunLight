@@ -31,63 +31,171 @@
         android:text="@string/info_order"
         android:textSize="@dimen/dimen_14sp"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/totalAmountSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        android:textColor="@color/sunBlackColor"
-        tools:text="@string/total_amount"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/dimen_20dp"
+            style="@style/AppCompatTextView"
+            android:textColor="@color/sunBlackColor"
+            android:text="@string/total_amount_"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/typePaymentSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        tools:text="@string/type_of_payment"
-        android:textColor="@color/sunBlackColor"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalAmountSheetTextView"
+            style="@style/AppCompatTextView"
+            android:textColor="@color/sunBlackColor"
+            tools:text="@string/total_amount"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/typeSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        tools:text="@string/type"
-        android:textColor="@color/sunBlackColor"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/dimen_20dp"
+            style="@style/AppCompatTextView"
+            android:text="@string/type_of_payment_"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/typePaymentSheetTextView"
+            style="@style/AppCompatTextView"
+            tools:text="@string/type_of_payment"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/officeSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        tools:text="@string/office"
-        android:textColor="@color/sunBlackColor"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/contactNumberSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        tools:text="@string/contact_number"
-        android:textColor="@color/sunBlackColor"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/dateEndSheetTextView"
-        android:layout_marginStart="@dimen/dimen_20dp"
-        style="@style/AppCompatTextView"
-        android:textColor="@color/sunBlackColor"
-        tools:text="@string/date_end_of_order"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:textSize="@dimen/dimen_14sp"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/dimen_20dp"
+            style="@style/AppCompatTextView"
+            android:text="@string/type_"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/typeSheetTextView"
+            style="@style/AppCompatTextView"
+            tools:text="@string/type"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/dimen_20dp"
+            style="@style/AppCompatTextView"
+            android:text="@string/office_"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/officeSheetTextView"
+            style="@style/AppCompatTextView"
+            tools:text="@string/office"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/dimen_20dp"
+            style="@style/AppCompatTextView"
+            android:text="@string/contact_number_"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/contactNumberSheetTextView"
+            style="@style/AppCompatTextView"
+            tools:text="@string/contact_number"
+            android:textColor="@color/sunBlackColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/dimen_20dp"
+            style="@style/AppCompatTextView"
+            android:textColor="@color/sunBlackColor"
+            android:text="@string/date_end_of_order_"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dateEndSheetTextView"
+            style="@style/AppCompatTextView"
+            android:textColor="@color/sunBlackColor"
+            tools:text="@string/date_end_of_order"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:textSize="@dimen/dimen_14sp"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
 
 
     <com.google.android.material.button.MaterialButton
