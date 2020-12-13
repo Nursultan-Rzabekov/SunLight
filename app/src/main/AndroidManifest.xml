@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".ui.screens.profile.invited.InvitedActivity"></activity>
         <activity android:name=".ui.screens.MainActivity" />
         <activity android:name=".ui.launcher.company.CompanyActivity" />
         <activity android:name=".ui.launcher.auth.AuthActivity" />

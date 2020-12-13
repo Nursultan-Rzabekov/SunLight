@@ -101,6 +101,14 @@ class InvitedAdapter(
         notifyDataSetChanged()
     }
 
+    fun addItems(items: List<Child>) {
+        this.items.addAll(items)
+        if (items.isEmpty() && showEmptyViewHolder) {
+            this.items.add(EMPTY)
+        }
+        notifyDataSetChanged()
+    }
+
     class InvitedViewHolder(
         view: View
     ) : RecyclerView.ViewHolder(view) {

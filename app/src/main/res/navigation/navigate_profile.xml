@@ -25,6 +25,9 @@
             app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_profileFragment_to_invitedActivity"
+            app:destination="@id/invitedActivity" />
 
     </fragment>
 
@@ -46,5 +49,11 @@
             app:nullable="true" />
 
     </activity>
+
+    <activity
+        android:id="@+id/invitedActivity"
+        android:name="com.example.sunlightdesign.ui.screens.profile.invited.InvitedActivity"
+        android:label="activity_invited"
+        tools:layout="@layout/activity_invited" />
 
 </navigation>

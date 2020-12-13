@@ -2,6 +2,7 @@ package com.example.sunlightdesign.data.source.dataSource.remote.profile
 
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.BaseResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ChangeAvatar
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.InvitedResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
 import kotlinx.coroutines.Deferred
@@ -25,4 +26,9 @@ interface ProfileServices {
     fun changeAvatar(
         @Part avatar: MultipartBody.Part
     ): Deferred<ChangeAvatar>
+
+    @GET("profile/mobile/recent-invitees")
+    fun getInvites(
+        @Query("page") page: Int
+    ): Deferred<InvitedResponse>
 }

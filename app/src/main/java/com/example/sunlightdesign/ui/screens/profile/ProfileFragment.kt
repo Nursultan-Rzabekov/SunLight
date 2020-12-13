@@ -18,6 +18,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.U
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.adapters.InvitedAdapter
 import com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment.Companion.USER_INFO
+import com.example.sunlightdesign.ui.screens.profile.invited.InvitedActivity
 import com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne.Companion.USER_ID
 import com.example.sunlightdesign.utils.Constants.Companion.ACTIVITY_ACTIVE
 import com.example.sunlightdesign.utils.DateUtils
@@ -55,8 +56,6 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         setListeners()
         initRecycler()
         setObservers()
-
-
     }
 
     override fun onResume() {
@@ -99,6 +98,10 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
 
         shareReferralLinkLeftBtn.setOnClickListener {
             referralLink?.let { shareReferralLink(it) }
+        }
+
+        allBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_invitedActivity)
         }
     }
 
