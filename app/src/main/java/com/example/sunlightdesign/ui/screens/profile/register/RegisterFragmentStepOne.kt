@@ -414,10 +414,6 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"
             !isIinValid(iin_et.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
-            viewModel.backDocument.value == null ->
-                "Нету фото документа(задняя сторона)"
-            viewModel.rearDocument.value == null ->
-                "Нету фото документа(передняя сторона)"
             else -> null
         }
         if (message != null) {

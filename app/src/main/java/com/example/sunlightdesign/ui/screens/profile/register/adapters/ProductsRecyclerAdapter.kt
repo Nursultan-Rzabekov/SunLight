@@ -48,7 +48,7 @@ class ProductsRecyclerAdapter(
 
             Glide.with(itemView)
                 .load(getImageUrl(product.product_image_front_path))
-                .centerCrop()
+                .centerInside()
                 .into(itemView.product_iv)
 
             val itemViewColor = when(product.isChecked){

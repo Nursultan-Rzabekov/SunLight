@@ -70,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:checkedButton="@id/sponsor_itself_rbtn"
                     android:orientation="vertical"
+                    android:paddingStart="-5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">

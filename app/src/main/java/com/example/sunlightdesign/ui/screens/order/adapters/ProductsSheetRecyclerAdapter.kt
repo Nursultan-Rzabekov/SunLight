@@ -31,11 +31,11 @@ class ProductsSheetRecyclerAdapter(
         fun bind(product: Product) {
             itemView.product_name_tv.text = product.product_name
             itemView.product_price_tv.text =
-                itemView.context.getString(R.string.amount_bv, product.product_price)
+                itemView.context.getString(R.string.amount_kzt, product.product_price)
 
             Glide.with(itemView)
                 .load(getImageUrl(product.product_image_front_path))
-                .centerCrop()
+                .centerInside()
                 .placeholder(R.drawable.product_test)
                 .into(itemView.product_iv)
         }

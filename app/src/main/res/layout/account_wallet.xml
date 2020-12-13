@@ -52,7 +52,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_EF" />
+            android:background="@color/gray_" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,7 +93,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_EF" />
+            android:background="@color/gray_" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -134,7 +134,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_EF" />
+            android:background="@color/gray_" />
 
 
         <LinearLayout

@@ -6,22 +6,16 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/dimen_32dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/imageCardView"
+
+    <ImageView
+        android:id="@+id/productImageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:elevation="@dimen/dimen_5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/info_product"
+        tools:src="@drawable/product_test" />
 
-        <ImageView
-            android:id="@+id/productImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/info_product"
-            tools:src="@drawable/product_test" />
-
-    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/orderNameTextView"
@@ -35,7 +29,7 @@
         android:layout_marginEnd="@dimen/dimen_12dp"
         app:layout_constraintEnd_toStartOf="@+id/bvTextView"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+        app:layout_constraintStart_toEndOf="@+id/productImageView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Набор clinuqu" />
 
@@ -46,7 +40,7 @@
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/dimen_14sp"
-        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+        app:layout_constraintStart_toEndOf="@+id/productImageView"
         app:layout_constraintTop_toBottomOf="@+id/orderNameTextView"
         tools:text="Количество : 1" />
 
@@ -60,14 +54,36 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="990 BV" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/statusTextView"
-        style="@style/AppCompatTextViewGray"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="@dimen/dimen_14sp"
-        app:layout_constraintStart_toEndOf="@+id/imageCardView"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+
+        app:layout_constraintStart_toEndOf="@+id/productImageView"
         app:layout_constraintTop_toBottomOf="@+id/countTextView"
-        tools:text="@string/status_format" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextViewGray"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/dimen_14sp"
+            android:text="@string/status_format_" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/statusTextView"
+            style="@style/AppCompatTextViewGray"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/sunLightColor"
+            android:textSize="@dimen/dimen_14sp"
+            tools:text="@string/status_format" />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,9 +12,9 @@
     android:layout_marginBottom="14dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/dimen_5dp"
-    app:cardElevation="5dp"
+    app:cardElevation="0dp"
     app:contentPadding="@dimen/dimen_16dp"
-    app:strokeColor="@color/transparent"
+    app:strokeColor="@color/white_gray"
     app:strokeWidth="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
             android:id="@+id/product_iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
+            android:scaleType="centerInside"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
