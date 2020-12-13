@@ -29,6 +29,7 @@ import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePasswor
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangeAvatarUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangePasswordUseCase
 import com.example.sunlightdesign.utils.Constants
+import com.example.sunlightdesign.utils.ErrorListException
 import com.example.sunlightdesign.utils.showDialog
 import de.hdodenhof.circleimageview.CircleImageView
 import okhttp3.MediaType
@@ -62,6 +63,8 @@ class ProfileViewModel constructor(
     var createOrderPartnerBuilder: CreateOrderPartner.Builder = CreateOrderPartner.Builder()
 
     var registerItselfUserId = MutableLiveData<Int>()
+
+    var errorsMap = MutableLiveData<Map<String, List<String>>>()
 
     private var _countriesList = MutableLiveData<CountriesList>()
     val countriesList: LiveData<CountriesList> get() = _countriesList
@@ -256,7 +259,14 @@ class ProfileViewModel constructor(
             }
             onError {
                 progress.postValue(false)
-                handleError(throwable = it)
+                when (it) {
+                    is ErrorListException -> {
+                        errorsMap.postValue(it.errorMap)
+                        handleError(errorMessage = it.errorMessage)
+                    }
+                    else ->
+                        handleError(throwable = it)
+                }
             }
         }
     }

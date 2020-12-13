@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.City
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office
+import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.OfficesRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -22,6 +24,7 @@ class ChooseOfficeBottomSheetDialog(
 
     private lateinit var officesAdapter: OfficesRecyclerAdapter
     private var selectedOfficeId: Int? = null
+    private lateinit var citiesAdapter: CustomPopupAdapter<City>
 
     companion object {
         const val TAG = "ModalBottomSheet"
