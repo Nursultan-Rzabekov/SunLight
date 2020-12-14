@@ -14,6 +14,7 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountUsersLi
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPartnerUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetInvitesUseCase
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -85,6 +86,12 @@ val accountModule = module {
         )
     }
 
+    factory {
+        GetInvitesUseCase(
+            profileRepository = get()
+        )
+    }
+
     viewModel {
         ProfileViewModel(
             sharedUseCase = get(),
@@ -97,7 +104,8 @@ val accountModule = module {
             accountCreateOrderUseCase = get(),
             profileInfoUseCase = get(),
             profileChangePasswordUseCase = get(),
-            profileChangeAvatarUseCase = get()
+            profileChangeAvatarUseCase = get(),
+            profileGetInvitesUseCase = get()
         )
     }
 }

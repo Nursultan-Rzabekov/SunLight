@@ -150,6 +150,8 @@
     <string name="password_hint">*******</string>
     <string name="phone_mask_hint">+7 (_ _ _) _ _ _ _ _ _ _</string>
     <string name="attach_file">Прикрепить документ</string>
+    <string name="rear_side">Передняя сторона</string>
+    <string name="back_side">Задняя сторона</string>
     <string name="delete">Удалить</string>
     <string name="ten_thousand_bv">10000 BV</string>
     <string name="twelve_thousand_bv">12000 BV</string>

@@ -1,8 +1,10 @@
 package com.example.sunlightdesign.usecase
 
 import com.example.sunlightdesign.data.source.dataSource.remote.DefaultErrorResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.ErrorListResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.ErrorResponse
 import com.example.sunlightdesign.usecase.blocks.CompletionBlock
+import com.example.sunlightdesign.utils.ErrorListException
 import com.example.sunlightdesign.utils.NetworkErrorUiModel
 import com.example.sunlightdesign.utils.SessionEndException
 import com.google.gson.Gson
@@ -47,12 +49,18 @@ abstract class BaseCoroutinesUseCase<T> {
                                 responseBody.string(),
                                 when(ex.response()?.code()) {
                                     401 -> ErrorResponse::class.java
+                                    422 -> ErrorListResponse::class.java
                                     else -> DefaultErrorResponse::class.java
                                 }
                             )
 
                         if (errorResponse is ErrorResponse) {
                             response(SessionEndException())
+                        }
+
+                        if (errorResponse is ErrorListResponse) {
+                            response(ErrorListException(errorResponse.message, errorResponse.errors))
+                            return@launch
                         }
 
                         when (errorResponse) {

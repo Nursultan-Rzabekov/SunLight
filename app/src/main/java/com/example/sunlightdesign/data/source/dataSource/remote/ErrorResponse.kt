@@ -11,3 +11,8 @@ data class ErrorResponse(
 data class DefaultErrorResponse(
     @SerializedName("message") val message: String?
 )
+
+data class ErrorListResponse(
+    @SerializedName("message") val message: String?,
+    @SerializedName("errors") val errors: Map<String, List<String>>?
+)

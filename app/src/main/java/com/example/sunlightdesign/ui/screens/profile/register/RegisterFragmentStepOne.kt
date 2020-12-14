@@ -104,6 +104,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     )
                 )
 
+                disableErrors()
+
                 viewModel.addPartner(
                     AddPartner(
                         first_name = firstName,
@@ -179,10 +181,23 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
             rearDocument.observe(viewLifecycleOwner, Observer {
                 it?.let { setRearDocument(it) }
+                checkAttachBtn()
             })
 
             backDocument.observe(viewLifecycleOwner, Observer {
                 it?.let { setBackDocument(it) }
+                checkAttachBtn()
+            })
+
+            errorsMap.observe(viewLifecycleOwner, Observer {
+                if (it.containsKey("iin")) {
+                    iinLayout.isErrorEnabled = true
+                    iinLayout.error = it["iin"]?.first()
+                }
+                if (it.containsKey("phone")) {
+                    phoneLayout.isErrorEnabled = true
+                    phoneLayout.error = it["phone"]?.first()
+                }
             })
 
             navigationEvent.observe(viewLifecycleOwner, Observer{
@@ -384,6 +399,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         viewModel.onBackDocumentInvalidate()
     }
 
+    private fun checkAttachBtn() {
+        attach_document_btn.isEnabled = viewModel.rearDocument.value == null || viewModel.backDocument.value == null
+    }
+
     private fun updateSignUpBtn() {
         btn_next_step_one.isEnabled =
             if (isPhoneValid(phone_et.text.toString()) && isIinValid(iin_et.text.toString())) {
@@ -408,6 +427,10 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"
             !isIinValid(iin_et.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
+            viewModel.backDocument.value == null ->
+                "${getString(R.string.attach_file)}(${getString(R.string.back_side)})"
+            viewModel.rearDocument.value == null ->
+                "${getString(R.string.attach_file)}(${getString(R.string.rear_side)})"
             else -> null
         }
         if (message != null) {
@@ -418,6 +441,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             return false
         }
         return true
+    }
+
+    private fun disableErrors() {
+        iinLayout.isErrorEnabled = false
+        phoneLayout.isErrorEnabled = false
     }
 
     private fun checkPermission() : Boolean {

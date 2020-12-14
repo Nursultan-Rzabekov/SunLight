@@ -80,7 +80,9 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 }
             })
             officesList.observe(viewLifecycleOwner, Observer {
-                chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(this@OrdersFragment, it.offices as ArrayList<com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>)
+                chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(
+                    this@OrdersFragment,
+                    it.offices as ArrayList<com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>)
                 chooseOfficeBottomSheetDialog.show(
                     parentFragmentManager,
                     ChooseOfficeBottomSheetDialog.TAG

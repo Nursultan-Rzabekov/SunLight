@@ -119,6 +119,12 @@ class WalletViewModel constructor(
         }
     }
 
+    data class ShortenedCity (
+        val city_id: Int,
+        val city_name: String
+    ) {
+        override fun toString(): String = city_name
+    }
 }
 
 

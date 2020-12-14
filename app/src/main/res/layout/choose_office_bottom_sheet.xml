@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:visibility="gone"
-        app:boxBackgroundColor="@color/gray_EF"
+        app:boxBackgroundColor="@color/gray_FA"
         app:hintEnabled="false">
 
         <AutoCompleteTextView

@@ -24,7 +24,7 @@ class OfficesRecyclerAdapter(
 
     fun setItems(items: ArrayList<Office?>){
         this.items.clear()
-        this.items = items
+        this.items.addAll(items)
         notifyDataSetChanged()
     }
 

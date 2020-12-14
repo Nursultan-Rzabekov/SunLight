@@ -200,9 +200,12 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/BasicTextInputLayout"
+                android:id="@+id/iinLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
+                app:errorEnabled="false"
+                app:errorTextColor="@color/red"
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -223,6 +226,7 @@
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneLayout"
                 style="@style/BasicTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
