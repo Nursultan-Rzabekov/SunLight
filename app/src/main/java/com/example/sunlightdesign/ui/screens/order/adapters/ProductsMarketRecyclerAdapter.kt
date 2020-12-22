@@ -18,6 +18,10 @@ class ProductsMarketRecyclerAdapter(
     private val productsMarketItemSelected: ProductsMarketItemSelected
 ): RecyclerView.Adapter<ProductsMarketRecyclerAdapter.ProductViewHolder>() {
 
+    companion object {
+        private const val PRODUCT_TYPE_UPGRADE = 3
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view =  LayoutInflater.from(parent.context)
             .inflate(R.layout.product_market_item, parent,false)
@@ -50,8 +54,8 @@ class ProductsMarketRecyclerAdapter(
             var k = itemView.productQuantity.text.toString().toInt()
 
             itemView.minusBtn.setOnClickListener {
-                if(k>0) k--
-                if(k==0){
+                if(k > 0) k--
+                if(k == 0){
                     itemView.product_checkbox.isChecked = false
                     itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
                 }
@@ -59,8 +63,10 @@ class ProductsMarketRecyclerAdapter(
                 productsMarketItemSelected.setProductsState()
             }
             itemView.plusBtn.setOnClickListener {
-                if(k>=0){
-                    k++
+                if (k >= 0) {
+                    if (product.product_type != PRODUCT_TYPE_UPGRADE || k != 1) {
+                        k++
+                    }
                     itemView.product_checkbox.isChecked = true
                     itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
                     sameClick(itemView = itemView, product = product, k = k)

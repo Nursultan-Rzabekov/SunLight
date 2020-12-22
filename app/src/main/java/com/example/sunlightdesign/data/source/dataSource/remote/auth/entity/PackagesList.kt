@@ -19,7 +19,7 @@ data class Product(
     val product_price_in_currency: Double?,
     var product_quantity: Int?,
     val product_short_description: String?,
-    val product_type: Double?,
+    val product_type: Int?,
     val updated_at: String?,
     val product: Product?,
     var isChecked: Boolean = false
