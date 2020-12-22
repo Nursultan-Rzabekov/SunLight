@@ -59,6 +59,11 @@ class EmailFragment : StrongFragment<EmailViewModel>(EmailViewModel::class),
         findNavController().navigate(R.id.action_emailFragment_to_emailDetailsActivity, bundle)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAnnouncementsList()
+    }
+
     private fun initRecyclerView(items: List<Data>) {
         announcementRecyclerView.apply {
             announcementsRecyclerAdapter = AnnouncementsRecyclerAdapter(

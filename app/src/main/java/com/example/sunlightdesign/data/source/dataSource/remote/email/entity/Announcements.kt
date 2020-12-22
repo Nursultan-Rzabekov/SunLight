@@ -70,5 +70,6 @@ data class Data(
     val message_body: String?,
     val message_title: String?,
     val updated_at: String?,
-    val user_id: Int?
+    val user_id: Int?,
+    val read: Int?
 )

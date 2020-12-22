@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.email.entity.Data
@@ -29,7 +30,8 @@ class AnnouncementsRecyclerAdapter(
             message_body = null,
             message_title = null,
             updated_at = null,
-            user_id = null
+            user_id = null,
+            read = null
         )
     }
 
@@ -88,6 +90,17 @@ class AnnouncementsRecyclerAdapter(
             itemView.dataTextView.text = DateUtils.convertDateToString(date)
             itemView.messageTitleTextView.text = item.message_title
             itemView.messageBodyTextView.text = item.message_body
+
+            item.read?.let {
+                itemView.itemViewConstraintLayout.background = ContextCompat.getDrawable(
+                    itemView.context,
+                    if (it == 1) {
+                        R.drawable.announcement_item_shape_read
+                    } else {
+                        R.drawable.announcement_item_shape_unread
+                    }
+                )
+            }
 
             itemView.setOnClickListener {
                 item.id?.let { it1 -> announcementSelector.onAnnouncementSelected(it1) }
