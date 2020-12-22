@@ -275,7 +275,7 @@
     <string name="product_market">%1$d товара</string>
     <string name="greetings_for_registration">Спасибо за регистрацию!</string>
     <string name="about_goods">О Товаре</string>
-    <string name="you_dont_have_messages">У вас пока нет сообщении</string>
+    <string name="you_dont_have_messages">У вас пока нет сообщений</string>
     <string name="you_dont_have_invited_people">У вас еще нет приглашенных</string>
     <string name="empty_withdraw_history">Пустая история выписки</string>
 
