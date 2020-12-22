@@ -20,9 +20,9 @@ class WalletStoreWithdrawalUseCase(
 
 data class SetWithdrawal(
     val bvValue: Int,
-    val cashAmount: Int,
+    val cashAmount: Double,
     val currencyId: Int,
-    val currencyValue: Int,
+    val currencyValue: Double,
     val officeId: Int,
     val userId: Int,
     val withdrawType: Int

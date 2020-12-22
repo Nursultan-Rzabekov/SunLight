@@ -106,6 +106,7 @@
     <!--Профиль-->
     <string name="profile">Профиль</string>
     <string name="office_name">Название офиса</string>
+    <string name="city_name">Название города</string>
     <string name="phone_number_step_four_cardview">+7(747) 345 67 89</string>
     <string name="street_step_four_cardview">ул.Макатева 84</string>
     <string name="working_hours_step_four_cardview">Закроется в 21:00</string>

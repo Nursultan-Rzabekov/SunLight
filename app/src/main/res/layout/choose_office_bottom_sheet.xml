@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:hint="@string/office_name"
+            android:hint="@string/city_name"
             android:inputType="none"
             android:drawableTint="@color/colorPrimary"
             android:drawablePadding="-24dp"

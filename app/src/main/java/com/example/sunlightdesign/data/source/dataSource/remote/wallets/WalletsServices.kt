@@ -26,9 +26,9 @@ interface WalletsServices {
     @POST("withdraws/store")
     fun storeWithdrawal(
         @Query("bv_value") bvValue: Int,
-        @Query("cash_amount") cashAmount: Int,
+        @Query("cash_amount") cashAmount: Double,
         @Query("currency_id") currencyId: Int,
-        @Query("currency_value") currencyValue: Int,
+        @Query("currency_value") currencyValue: Double,
         @Query("office_id") officeId: Int,
         @Query("user_id") userId: Int,
         @Query("withdraw_type") withdrawType: Int

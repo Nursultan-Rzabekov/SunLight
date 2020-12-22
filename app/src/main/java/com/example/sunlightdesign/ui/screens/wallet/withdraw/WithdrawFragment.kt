@@ -182,7 +182,7 @@ class WithdrawFragment :
 
     override fun onNextBtnPressed(officeId: Int) {
         val bvValue = amountEditText.text.toString().toInt()
-        val amount = amountConvertedTextView.text.toString().toDouble().toInt()
+        val amount = amountConvertedTextView.text.toString().toDouble()
         val currencyId = viewModel.selectedCurrency.value?.id ?: return showErrorDialog("CurrencyId")
         val currencyValue = viewModel.selectedCurrency.value?.currency_bv_value ?: return showErrorDialog("CurrencyValue")
         val userId = viewModel.calculateInfo.value?.user?.id ?: return showErrorDialog("UserId")

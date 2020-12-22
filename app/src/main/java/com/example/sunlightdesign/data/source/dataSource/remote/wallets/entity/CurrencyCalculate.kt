@@ -9,11 +9,11 @@ data class CurrencyCalculate(
 
 data class CurrencyX(
     val created_at: String?,
-    val currency_bv_value: Int?,
+    val currency_bv_value: Double?,
     val currency_code: String?,
     val currency_name: String?,
     val currency_sign: String?,
-    val currency_value: Int?,
+    val currency_value: Double?,
     val deleted_at: String?,
     val id: Int?,
     val updated_at: String?
