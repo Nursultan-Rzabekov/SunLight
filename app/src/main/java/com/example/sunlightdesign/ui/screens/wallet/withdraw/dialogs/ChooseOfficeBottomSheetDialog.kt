@@ -82,8 +82,8 @@ class ChooseOfficeBottomSheetDialog(
 
         setListeners()
         initRecycler()
+        initCities()
         if (isCityFilter) {
-            initCities()
             officeDropDown.visibility = View.VISIBLE
         }
     }
