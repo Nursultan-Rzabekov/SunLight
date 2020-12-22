@@ -44,21 +44,35 @@ class AccountRemoteDataSource(private val apiServices: AccountServices) : Accoun
         val registerBy =
             RequestBody.create(MediaType.parse("multipart/form-data"), body.register_by.toString())
 
-
-        return apiServices.addPartnerStepOne(
-            document_back_path = body.document_back,
-            document_front_path = body.document_front,
-            first_name = firstName,
-            last_name = lastName,
-            middle_name = middleName,
-            phone = phone,
-            iin = iin,
-            position = position,
-            region_id = regionId,
-            register_by = registerBy,
-            city_id = cityId,
-            country_id = countryId
-        ).await()
+        if (body.document_back == null || body.document_front == null) {
+            return apiServices.addPartnerStepOne(
+                first_name = firstName,
+                last_name = lastName,
+                middle_name = middleName,
+                phone = phone,
+                iin = iin,
+                position = position,
+                region_id = regionId,
+                register_by = registerBy,
+                city_id = cityId,
+                country_id = countryId
+            ).await()
+        } else {
+            return apiServices.addPartnerStepOne(
+                document_back_path = body.document_back,
+                document_front_path = body.document_front,
+                first_name = firstName,
+                last_name = lastName,
+                middle_name = middleName,
+                phone = phone,
+                iin = iin,
+                position = position,
+                region_id = regionId,
+                register_by = registerBy,
+                city_id = cityId,
+                country_id = countryId
+            ).await()
+        }
     }
 
     override suspend fun setPackage(package_id: Int, user_id: Int): User =

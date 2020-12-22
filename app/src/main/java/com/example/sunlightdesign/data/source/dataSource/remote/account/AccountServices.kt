@@ -36,6 +36,21 @@ interface AccountServices {
         @Part document_back_path: MultipartBody.Part
     ): Deferred<Login>
 
+    @Multipart
+    @POST("cabinet/add-partner")
+    fun addPartnerStepOne(
+        @Part("first_name") first_name: RequestBody,
+        @Part("last_name") last_name: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("middle_name") middle_name: RequestBody,
+        @Part("country_id") country_id: RequestBody,
+        @Part("region_id") region_id: RequestBody,
+        @Part("city_id") city_id: RequestBody,
+        @Part("iin") iin: RequestBody,
+        @Part("register_by") register_by: RequestBody,
+        @Part("position") position: RequestBody?
+    ): Deferred<Login>
+
     @GET("cabinet/add-partner/packages-list")
     fun getPackagesList(
     ): Deferred<PackagesList>

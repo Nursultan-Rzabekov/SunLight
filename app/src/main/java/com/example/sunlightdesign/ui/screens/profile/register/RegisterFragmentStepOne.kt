@@ -83,51 +83,78 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     else -> Constants.PYRAMID_RIGHT
                 }
 
-                val backPath = viewModel.backDocument.value ?: return@setOnClickListener
-                val frontPath = viewModel.rearDocument.value ?: return@setOnClickListener
+                val backPath = viewModel.backDocument.value
+                val frontPath = viewModel.rearDocument.value
 
-                val backInputStream: InputStream? =
-                    requireActivity().contentResolver?.openInputStream(backPath)
-                val backPart = MultipartBody.Part.createFormData(
-                    "document_back_path", "back.jpeg", RequestBody.create(
-                        MediaType.parse("image/*"),
-                        backInputStream!!.readBytes()
-                    )
-                )
-
-                val frontInputStream: InputStream? =
-                    requireActivity().contentResolver?.openInputStream(frontPath)
-                val frontPart = MultipartBody.Part.createFormData(
-                    "document_front_path", "front.jpg", RequestBody.create(
-                        MediaType.parse("image/*"),
-                        frontInputStream!!.readBytes()
-                    )
-                )
+                val isNotNeeded = backPath == null && frontPath == null
 
                 disableErrors()
 
-                viewModel.addPartner(
-                    AddPartner(
-                        first_name = firstName,
-                        last_name = lastName,
-                        phone = MaskUtils.unMaskValue(
-                            MaskUtils.PHONE_MASK,
-                            phone_et.text.toString()
-                        ),
-                        middle_name = middleName,
-                        country_id = countryId,
-                        region_id = regionId,
-                        city_id = cityId,
-                        iin = MaskUtils.unMaskValue(
-                            IIN_MASK,
-                            iin_et.text.toString()
-                        ),
-                        register_by = sponsorId,
-                        position = position,
-                        document_front = frontPart,
-                        document_back = backPart
+                if (!isNotNeeded) {
+                    backPath ?: return@setOnClickListener
+                    frontPath ?: return@setOnClickListener
+                    val backInputStream: InputStream? =
+                        requireActivity().contentResolver?.openInputStream(backPath)
+                    val backPart = MultipartBody.Part.createFormData(
+                        "document_back_path", "back.jpeg", RequestBody.create(
+                            MediaType.parse("image/*"),
+                            backInputStream!!.readBytes()
+                        )
                     )
-                )
+
+                    val frontInputStream: InputStream? =
+                        requireActivity().contentResolver?.openInputStream(frontPath)
+                    val frontPart = MultipartBody.Part.createFormData(
+                        "document_front_path", "front.jpg", RequestBody.create(
+                            MediaType.parse("image/*"),
+                            frontInputStream!!.readBytes()
+                        )
+                    )
+
+                    viewModel.addPartner(
+                        AddPartner(
+                            first_name = firstName,
+                            last_name = lastName,
+                            phone = MaskUtils.unMaskValue(
+                                MaskUtils.PHONE_MASK,
+                                phone_et.text.toString()
+                            ),
+                            middle_name = middleName,
+                            country_id = countryId,
+                            region_id = regionId,
+                            city_id = cityId,
+                            iin = MaskUtils.unMaskValue(
+                                IIN_MASK,
+                                iin_et.text.toString()
+                            ),
+                            register_by = sponsorId,
+                            position = position,
+                            document_front = frontPart,
+                            document_back = backPart
+                        )
+                    )
+                } else {
+                    viewModel.addPartner(
+                        AddPartner(
+                            first_name = firstName,
+                            last_name = lastName,
+                            phone = MaskUtils.unMaskValue(
+                                MaskUtils.PHONE_MASK,
+                                phone_et.text.toString()
+                            ),
+                            middle_name = middleName,
+                            country_id = countryId,
+                            region_id = regionId,
+                            city_id = cityId,
+                            iin = MaskUtils.unMaskValue(
+                                IIN_MASK,
+                                iin_et.text.toString()
+                            ),
+                            register_by = sponsorId,
+                            position = position
+                        )
+                    )
+                }
             }
         }
 
@@ -427,10 +454,16 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"
             !isIinValid(iin_et.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
-            viewModel.backDocument.value == null ->
-                "${getString(R.string.attach_file)}(${getString(R.string.back_side)})"
-            viewModel.rearDocument.value == null ->
-                "${getString(R.string.attach_file)}(${getString(R.string.rear_side)})"
+            viewModel.backDocument.value == null || viewModel.rearDocument.value == null ->
+                when {
+                    viewModel.backDocument.value == null && viewModel.rearDocument.value == null ->
+                        null
+                    viewModel.backDocument.value == null ->
+                        "${getString(R.string.attach_file)}(${getString(R.string.back_side)})"
+                    viewModel.rearDocument.value == null ->
+                        "${getString(R.string.attach_file)}(${getString(R.string.rear_side)})"
+                    else -> null
+                }
             else -> null
         }
         if (message != null) {

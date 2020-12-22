@@ -25,8 +25,8 @@ data class AddPartner(
     val iin: String,
     val register_by: Int,
     val position: String,
-    val document_front: MultipartBody.Part,
-    val document_back: MultipartBody.Part
+    val document_front: MultipartBody.Part? = null,
+    val document_back: MultipartBody.Part? = null
 )
 
 data class CreateOrderPartner(
