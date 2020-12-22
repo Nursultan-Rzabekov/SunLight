@@ -63,6 +63,35 @@
                 android:text="@string/vyberıte_blıjaıshıı_sklad"
                 android:textSize="@dimen/dimen_16sp" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/officeDropDown"
+                style="@style/BasicDropDownInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/gray_FA"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/officeDropDownTextView"
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/city_name"
+                    android:inputType="none"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="-24dp"
+                    android:labelFor="@id/country_drop_down"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fragment_register_partner_step_four_rv"
                 android:layout_width="match_parent"

@@ -28,6 +28,10 @@ class OfficesRecyclerAdapter(
         notifyDataSetChanged()
     }
 
+    fun getItems(): List<Office?> {
+        return this.items
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfficeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.office_departments_item,parent,false)
         return OfficeViewHolder(view, officeSelector)
