@@ -34,6 +34,7 @@
         android:layout_marginTop="@dimen/dimen_16dp"
         android:visibility="gone"
         app:boxBackgroundColor="@color/gray_FA"
+        app:endIconTint="@color/colorPrimary"
         app:hintEnabled="false">
 
         <AutoCompleteTextView
@@ -44,7 +45,6 @@
             android:enabled="false"
             android:hint="@string/city_name"
             android:inputType="none"
-            android:drawableTint="@color/colorPrimary"
             android:drawablePadding="-24dp"
             android:labelFor="@id/country_drop_down"
             android:paddingTop="@dimen/dimen_12dp"

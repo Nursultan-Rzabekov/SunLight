@@ -19,6 +19,7 @@ import com.example.sunlightdesign.ui.screens.order.market.MarketActivity
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentTypeBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.RepeatsOrdersBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
 import kotlinx.android.synthetic.main.orders_fragment.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
@@ -80,9 +81,22 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 }
             })
             officesList.observe(viewLifecycleOwner, Observer {
+                val citiesList = ArrayList<WalletViewModel.ShortenedCity>()
+                it.offices?.forEach { office ->
+                    office?.city?.id ?: return@forEach
+                    citiesList.add(
+                        WalletViewModel.ShortenedCity(
+                            office.city.id,
+                            office.city.city_name.toString()
+                        )
+                    )
+                }
                 chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(
                     this@OrdersFragment,
-                    it.offices as ArrayList<com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>)
+                    it.offices as ArrayList<com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>,
+                    citiesList,
+                    true
+                )
                 chooseOfficeBottomSheetDialog.show(
                     parentFragmentManager,
                     ChooseOfficeBottomSheetDialog.TAG
