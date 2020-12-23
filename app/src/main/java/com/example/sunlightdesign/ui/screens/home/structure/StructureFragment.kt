@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.StructureInfo
+import com.example.sunlightdesign.data.source.dataSource.remote.main.entity.User
 import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.screens.home.structure.adapters.UserStatusesAdapter
 import com.example.sunlightdesign.ui.screens.home.tree.TreeActivity
 import kotlinx.android.synthetic.main.activity_structure.*
 import kotlinx.android.synthetic.main.fragment_structure.*
@@ -17,6 +20,8 @@ import kotlinx.android.synthetic.main.fragment_structure.progress_bar
 import kotlinx.android.synthetic.main.structure_status_row_item.view.*
 
 class StructureFragment : StrongFragment<StructureViewModel>(StructureViewModel::class) {
+
+    private lateinit var userStatusesAdapter: UserStatusesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +43,12 @@ class StructureFragment : StrongFragment<StructureViewModel>(StructureViewModel:
         viewModel.apply {
             structure.observe(viewLifecycleOwner, Observer {
                 bindStructureInfo(it)
+                if (it.status_update_list.isNullOrEmpty()) {
+                    statusesLayout.visibility = View.GONE
+                } else {
+                    statusesLayout.visibility = View.VISIBLE
+                    initRecyclerViews(it.status_update_list)
+                }
             })
             progress.observe(viewLifecycleOwner, Observer {
                 progress_bar.isVisible = it
@@ -60,6 +71,15 @@ class StructureFragment : StrongFragment<StructureViewModel>(StructureViewModel:
                 tableRow.rowSecondColumnTextView.text = it.users_count.toString()
                 structureInfoTableLayout.addView(tableRow)
             }
+        }
+    }
+
+    private fun initRecyclerViews(userStatuses: List<User>) {
+        statusesHeaderTextView.text = getString(R.string.changes_in_statuses, userStatuses.size)
+        userStatusesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            userStatusesAdapter = UserStatusesAdapter(userStatuses)
+            adapter = userStatusesAdapter
         }
     }
 }

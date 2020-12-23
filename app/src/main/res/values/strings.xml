@@ -280,5 +280,7 @@
     <string name="you_dont_have_invited_people">У вас еще нет приглашенных</string>
     <string name="empty_withdraw_history">Пустая история выписки</string>
     <string name="not_enough_bv">У вас недостаточно BV для оплаты</string>
+    <string name="changes_in_statuses">Изменения в статусах (%d)</string>
+    <string name="status_changes_users">Изменение статусов пользователей</string>
 
 </resources>

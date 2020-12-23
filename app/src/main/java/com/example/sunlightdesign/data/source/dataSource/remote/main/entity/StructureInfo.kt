@@ -2,7 +2,8 @@ package com.example.sunlightdesign.data.source.dataSource.remote.main.entity
 
 
 data class StructureInfo(
-    val statuses: List<TreeStatus>?
+    val statuses: List<TreeStatus>?,
+    val status_update_list: List<User>?
 )
 
 data class TreeStatus(

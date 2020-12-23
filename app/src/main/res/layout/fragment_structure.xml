@@ -43,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
+                app:cardElevation="@dimen/dimen_0dp"
                 app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
@@ -115,6 +116,52 @@
 <!--                        </TableRow>-->
 
                     </TableLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statusesLayout"
+                style="@style/BaseCardView"
+                app:cardElevation="@dimen/dimen_0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/statusesHeaderTextView"
+                        style="@style/AppCompatTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_16dp"
+                        android:layout_marginVertical="@dimen/dimen_16dp"
+                        tools:text="@string/changes_in_statuses"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/dimen_18sp" />
+
+                    <TextView
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_16dp"
+                        android:text="@string/status_changes_users"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/dimen_14sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/userStatusesRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_16dp"
+                        tools:listitem="@layout/user_status_item"
+                        tools:itemCount="5" />
 
                 </LinearLayout>
 

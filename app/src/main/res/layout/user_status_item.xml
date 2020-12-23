@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/divider10"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_EF" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userCircleImageView"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            app:layout_constraintBottom_toBottomOf="@id/userStatusTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/userFullNameTextView"
+            tools:src="@drawable/test_image1" />
+
+        <TextView
+            android:id="@+id/userFullNameTextView"
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:textColor="@color/sunBlackColor"
+            android:textSize="@dimen/dimen_16sp"
+            app:layout_constraintBottom_toTopOf="@+id/userStatusTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/userCircleImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="asdasd asda" />
+
+        <TextView
+            android:id="@+id/userStatusTextView"
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_12dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/userCircleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/userFullNameTextView"
+            tools:text="asdasd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
