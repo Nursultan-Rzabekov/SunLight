@@ -2,10 +2,12 @@ package com.example.sunlightdesign.ui.screens.order.sheetDialog
 
 import android.app.Dialog
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.text.HtmlCompat
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -35,14 +37,27 @@ class MyOrdersBottomSheetDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        orderSheetTextView.text = getString(R.string.order_number,order.id)
-        totalAmountSheetTextView.text = getString(R.string.total_amount,order.total_price)
-        typePaymentSheetTextView.text = getString(R.string.type_of_payment, order.order_payment_type_value)
-        typeSheetTextView.text = getString(R.string.type,order.order_type_value)
-        officeSheetTextView.text = getString(R.string.office,order.office?.office_name)
-        contactNumberSheetTextView.text = getString(R.string.contact_number,order.office?.phone)
+        orderSheetTextView.text = Html.fromHtml(
+            getString(R.string.order_number,order.id),
+            HtmlCompat.FROM_HTML_MODE_LEGACY)
+        totalAmountSheetTextView.text = Html.fromHtml(
+            getString(R.string.total_amount,order.total_price),
+            HtmlCompat.FROM_HTML_MODE_LEGACY)
+        typePaymentSheetTextView.text = Html.fromHtml(
+            getString(R.string.type_of_payment, order.order_payment_type_value),
+            HtmlCompat.FROM_HTML_MODE_LEGACY)
+        typeSheetTextView.text = Html.fromHtml(
+            getString(R.string.type,order.order_type_value),
+            HtmlCompat.FROM_HTML_MODE_LEGACY)
+        officeSheetTextView.text = Html.fromHtml(
+            getString(R.string.office,order.office?.office_name),
+            HtmlCompat.FROM_HTML_MODE_LEGACY)
+        contactNumberSheetTextView.text = Html.fromHtml(
+            getString(R.string.contact_number,order.office?.phone),
+            HtmlCompat.FROM_HTML_MODE_LEGACY)
         order.order_finish_date?.let{
-            dateEndSheetTextView.text = getString(R.string.date_end_of_order,it)
+            dateEndSheetTextView.text = Html.fromHtml(
+                getString(R.string.date_end_of_order, it), HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
 
 

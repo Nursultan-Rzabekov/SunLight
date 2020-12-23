@@ -191,13 +191,13 @@
 
     <string name="order_number">Заказ #%1$.0f</string>
     <string name="code_order">Код товара: %1$.2f</string>
-    <string name="total_amount"><b>Общая сумма:</b> %1$.2f KZT</string>
-    <string name="type_of_payment"><b>Способ оплаты:</b> %1$s</string>
-    <string name="type"><b>Тип:</b> %1$s</string>
+    <string name="total_amount"><![CDATA[<b>Общая сумма:</b>]]> %1$.2f KZT</string>
+    <string name="type_of_payment"><![CDATA[<b>Способ оплаты:</b>]]> %1$s</string>
+    <string name="type"><![CDATA[<b>Тип:</b>]]> %1$s</string>
     <string name="cashier">Кассир: %1$s</string>
-    <string name="office"><b>Офис:</b> %1$s</string>
-    <string name="contact_number"><b>Телефон:</b> %1$s</string>
-    <string name="date_end_of_order"><b>Дата завершения покупки:</b> %1$s</string>
+    <string name="office"><![CDATA[<b>Офис:</b>]]> %1$s</string>
+    <string name="contact_number"><![CDATA[<b>Телефон:</b>]]> %1$s</string>
+    <string name="date_end_of_order"><![CDATA[<b>Дата завершения покупки:</b>]]> %1$s</string>
     <string name="info_order">Сведения о заказе</string>
     <string name="reply_order">Повторить заказ</string>
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
