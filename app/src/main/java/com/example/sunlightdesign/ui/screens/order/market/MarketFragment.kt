@@ -15,6 +15,7 @@ import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
 import com.example.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecyclerAdapter
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentTypeBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.PAYMENT_BY_BV
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.ProductsBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
@@ -183,15 +184,21 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onTypeSelected(type: Int) {
-
-//        if(0 < viewModel.createOrderBuilder.payment_sum)  {
-//            showMessage(requireContext(), message = "Недостаточно средств")
-//            return
-//        }
-
         choosePaymentTypeBottomSheetDialog.dismiss()
         viewModel.createOrderBuilder.order_payment_type = type
-        viewModel.storeOrder(createOrderPartner = viewModel.createOrderBuilder.build())
+
+        val mainWallet = viewModel.products.value?.wallet?.main_wallet ?: .0
+
+        var total = .0
+        viewModel.createOrderBuilder.products.forEach { product ->
+            total += product.product_price_in_bv ?: .0
+        }
+
+        if (total > mainWallet && type == PAYMENT_BY_BV) {
+            showMessage(requireContext(), message = getString(R.string.not_enough_bv))
+        } else {
+            viewModel.storeOrder(createOrderPartner = viewModel.createOrderBuilder.build())
+        }
     }
 }
 

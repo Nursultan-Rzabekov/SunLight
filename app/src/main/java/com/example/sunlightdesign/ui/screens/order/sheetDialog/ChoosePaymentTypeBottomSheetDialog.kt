@@ -15,6 +15,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.choose_payment_type_bottom_sheet_dialog.*
 
+const val PAYMENT_BY_BV = 2
+const val PAYMENT_BY_TILL = 1
+const val PAYMENT_BY_PAYBOX = 3
+
 class ChoosePaymentTypeBottomSheetDialog(
     private val chooseTypeInteraction: ChooseTypeInteraction
 ) : BottomSheetDialogFragment(), View.OnClickListener {
@@ -51,10 +55,6 @@ class ChoosePaymentTypeBottomSheetDialog(
 
     companion object{
         const val TAG = "ModalBottomSheet"
-
-        private const val PAYMENT_BY_BV = 2
-        private const val PAYMENT_BY_TILL = 1
-        private const val PAYMENT_BY_PAYBOX = 3
     }
 
     var k = false
