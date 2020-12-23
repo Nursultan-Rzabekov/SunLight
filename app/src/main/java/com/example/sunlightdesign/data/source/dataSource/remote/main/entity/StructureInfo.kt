@@ -76,7 +76,7 @@ data class User(
     val system_status: Int?,
     val user_avatar_path: String?,
     val uuid: String?,
-    val who: Int?
+    val who: String?
 )
 
 data class Direct(
@@ -121,7 +121,7 @@ data class Direct(
     val system_status: Int?,
     val user_avatar_path: String?,
     val uuid: String?,
-    val who: Int?
+    val who: String?
 )
 
 data class Package(

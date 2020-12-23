@@ -47,7 +47,7 @@ data class User(
     val system_status: Double,
     val user_avatar_path: String,
     val uuid: String,
-    val who: Double
+    val who: String?
 )
 
 data class WalletX(

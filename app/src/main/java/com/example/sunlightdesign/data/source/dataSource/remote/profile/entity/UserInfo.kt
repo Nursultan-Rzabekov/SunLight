@@ -64,7 +64,7 @@ data class Parent(
     val system_status: Double?,
     val user_avatar_path: String?,
     val uuid: String?,
-    val who: Any?
+    val who: String?
 )
 
 data class Child(
@@ -150,7 +150,7 @@ data class User(
     val uuid: String?,
     val wallet: Wallet?,
     val week_bonus: Any?,
-    val who: Double?
+    val who: String?
 )
 
 data class Status(

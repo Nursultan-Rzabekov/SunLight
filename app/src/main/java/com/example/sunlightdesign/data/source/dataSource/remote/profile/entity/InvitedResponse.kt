@@ -62,6 +62,6 @@ data class Data(
     val user_avatar_path: String?,
     val uuid: String?,
     val wallet_main_wallet: Double?,
-    val who: Any?,
+    val who: String?,
     val withdraw_status: Int?
 )

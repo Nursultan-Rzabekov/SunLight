@@ -87,7 +87,7 @@ data class User(
     val system_status: Double?,
     val user_avatar_path: Any?,
     val uuid: String?,
-    val who: Double?
+    val who: String?
 )
 
 data class City(
