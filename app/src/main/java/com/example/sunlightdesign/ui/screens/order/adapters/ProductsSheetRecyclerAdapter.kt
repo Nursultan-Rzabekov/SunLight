@@ -36,7 +36,6 @@ class ProductsSheetRecyclerAdapter(
             Glide.with(itemView)
                 .load(getImageUrl(product.product_image_front_path))
                 .centerInside()
-                .placeholder(R.drawable.product_test)
                 .into(itemView.product_iv)
         }
     }
