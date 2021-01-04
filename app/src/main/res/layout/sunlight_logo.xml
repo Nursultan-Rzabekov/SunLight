@@ -4,5 +4,5 @@
     android:id="@+id/sunlight_logo_iv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:src="@drawable/ic_sunlightlogo"
+    android:src="@drawable/ic_sunlight_top_icon"
     android:layout_marginTop="@dimen/dimen_8dp" />
