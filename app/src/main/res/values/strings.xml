@@ -34,11 +34,13 @@
     <string name="iin">ИИН</string>
     <string name="phone_number">Номер телефона</string>
     <string name="phone_number_two_dots">Номер телефонa:</string>
-    <string name="choose_country">Выберите страну:</string>
+    <string name="choose_country_two_dots">Выберите страну:</string>
+    <string name="choose_country">Выберите страну</string>
     <string name="country_two_dots">Страна:</string>
     <string name="choose_region">Выберите область:</string>
     <string name="region_two_dots">Область:</string>
-    <string name="choose_city">Выберите город:</string>
+    <string name="choose_city_two_dots">Выберите город:</string>
+    <string name="choose_city">Выберите город</string>
     <string name="city_two_dots">Город:</string>
     <string name="choose_legs">Выберите ветку:</string>
     <string name="left">Левая</string>
@@ -282,5 +284,12 @@
     <string name="not_enough_bv">У вас недостаточно BV для оплаты</string>
     <string name="changes_in_statuses">Изменения в статусах (%d)</string>
     <string name="status_changes_users">Изменение статусов пользователей</string>
+    <string name="choose_delivery_type">Выберите подходящий\nспособ доставки</string>
+    <string name="we_will_deliver">Доставка</string>
+    <string name="deliver_by_myself">Самовывоз</string>
+    <string name="wihtout_cash_delivery">*безналичная оплата при доставке</string>
+    <string name="delivery_address">Адрес доставки</string>
+    <string name="delivery_cost_bv_kzt">Стоимость доставки 400 BV = 1000 KZT</string>
+    <string name="fill_street_address">Укажите улицу/адрес</string>
 
 </resources>

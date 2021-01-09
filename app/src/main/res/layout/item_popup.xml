@@ -8,5 +8,5 @@
     android:inputType="none"
     android:enabled="false"
     android:padding="@dimen/dimen_12dp"
-    android:hint="@string/choose_country"
+    android:hint="@string/choose_country_two_dots"
     android:labelFor="@id/country_drop_down"/>
