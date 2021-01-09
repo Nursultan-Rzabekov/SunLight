@@ -274,6 +274,7 @@
     <string name="first_name">Имя</string>
     <string name="middle_name">Отчество</string>
     <string name="fill_the_field">Заполните поле</string>
+    <string name="fill_all_the_field">Заполните все поля</string>
     <string name="market_pay">К оплате: %1$.2f BV</string>
     <string name="product_market">%1$d товара</string>
     <string name="greetings_for_registration">Спасибо за регистрацию!</string>

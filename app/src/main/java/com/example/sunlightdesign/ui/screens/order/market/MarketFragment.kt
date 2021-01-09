@@ -14,10 +14,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Prod
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
 import com.example.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecyclerAdapter
-import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentTypeBottomSheetDialog
-import com.example.sunlightdesign.ui.screens.order.sheetDialog.PAYMENT_BY_BV
-import com.example.sunlightdesign.ui.screens.order.sheetDialog.ProductsBottomSheetDialog
-import com.example.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.*
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
 import com.example.sunlightdesign.utils.showMessage
@@ -32,7 +29,9 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     ProductsMarketRecyclerAdapter.ProductsMarketItemSelected,
     ProductsBottomSheetDialog.ProductsInteraction,
     ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction,
-    ChoosePaymentTypeBottomSheetDialog.ChooseTypeInteraction {
+    ChoosePaymentTypeBottomSheetDialog.ChooseTypeInteraction,
+    ChooseDeliveryTypeBottomSheet.Interaction,
+    AddressFieldsBottomSheet.Interaction {
 
     private lateinit var productsAdapter: ProductsMarketRecyclerAdapter
     private var spanCount = 2
@@ -41,6 +40,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     private lateinit var chooseOfficeBottomSheetDialog: ChooseOfficeBottomSheetDialog
     private lateinit var choosePaymentTypeBottomSheetDialog: ChoosePaymentTypeBottomSheetDialog
     private lateinit var successBottomSheetDialog: SuccessBottomSheetDialog
+    private lateinit var chooseDeliveryTypeBottomSheet: ChooseDeliveryTypeBottomSheet
+    private lateinit var addressFieldsBottomSheet: AddressFieldsBottomSheet
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,7 +61,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         setObservers()
 
         viewModel.getProductList()
-
+        chooseDeliveryTypeBottomSheet = ChooseDeliveryTypeBottomSheet(this)
+        addressFieldsBottomSheet = AddressFieldsBottomSheet(this)
     }
 
     private fun setListeners() {
@@ -147,6 +149,28 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         }
     }
 
+    private fun showChooseDeliveryTypeDialog() {
+        chooseDeliveryTypeBottomSheet.show(
+            parentFragmentManager,
+            ChooseDeliveryTypeBottomSheet.TAG
+        )
+    }
+
+    private fun hideDeliverTypeDialog() {
+        chooseDeliveryTypeBottomSheet.dismiss()
+    }
+
+    private fun showAddressFieldsDialog() {
+        addressFieldsBottomSheet.show(
+            parentFragmentManager,
+            AddressFieldsBottomSheet.TAG
+        )
+    }
+
+    private fun hideAddressFieldsDialog() {
+        addressFieldsBottomSheet.dismiss()
+    }
+
     override fun onProductsSelected(product: Product) {
         val bundle = bundleOf(
             "item" to ProductItem(
@@ -199,6 +223,16 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         } else {
             viewModel.storeOrder(createOrderPartner = viewModel.createOrderBuilder.build())
         }
+    }
+
+    override fun onDeliveryTypeSelected(type: Int) {
+        showToast(type.toString())
+        hideDeliverTypeDialog()
+    }
+
+    override fun onAddressPassed(country: Int, city: Int, address: String) {
+        showToast("address")
+        hideAddressFieldsDialog()
     }
 }
 
