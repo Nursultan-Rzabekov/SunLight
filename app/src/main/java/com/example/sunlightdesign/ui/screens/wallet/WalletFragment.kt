@@ -35,11 +35,13 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        volumeRightBranchLayout.visibility = View.GONE
+        volumeLeftBranchLayout.visibility = View.GONE
+
         initRecyclerView()
         setListeners()
         configViewModel()
         viewModel.getWalletInfo()
-
     }
 
     private fun configViewModel(){
