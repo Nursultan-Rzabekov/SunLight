@@ -64,6 +64,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         setObservers()
 
         sponsorId = viewModel.registerItselfUserId.value ?: -1
+        sponsor_name_drop_down.isEnabled = false
 
         viewModel.getCountriesList()
         viewModel.getUsersList()
@@ -164,12 +165,15 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     sponsorId = viewModel.registerItselfUserId.value ?: -1
                     Timber.d(sponsorId.toString())
                     sponsor_name_tv.isEnabled = false
+                    sponsor_name_tv.text.clear()
+                    sponsor_name_drop_down.isEnabled = false
                     sponsor_name_drop_down.isEndIconCheckable = false
                 }
                 sponsor_other_rbtn.id -> {
                     sponsorId = -1
                     sponsor_name_tv.isEnabled = true
                     sponsor_name_tv.text.clear()
+                    sponsor_name_drop_down.isEnabled = true
                     sponsor_name_drop_down.isEndIconCheckable = true
                 }
             }
