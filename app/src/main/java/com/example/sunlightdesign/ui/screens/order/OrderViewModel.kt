@@ -3,12 +3,16 @@ package com.example.sunlightdesign.ui.screens.order
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
+import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
+import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 import com.example.sunlightdesign.utils.Constants
 import timber.log.Timber
@@ -24,7 +28,9 @@ class OrderViewModel constructor(
     private val getOrderByIdUseCase: GetOrderByIdUseCase,
     private val getProductByIdUseCase: GetProductByIdUseCase,
     private val storeOrderUseCase: StoreOrderUseCase,
-    private val getOfficesListUseCase: GetOfficesListUseCase
+    private val getOfficesListUseCase: GetOfficesListUseCase,
+    private val storeDeliveryUseCase: StoreDeliveryUseCase,
+    private val accountCountriesUseCase: AccountCountriesUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -42,6 +48,12 @@ class OrderViewModel constructor(
 
     private var _officesList = MutableLiveData<OfficesList>()
     val officesList: LiveData<OfficesList> get() = _officesList
+
+    private var _deliverResponse = MutableLiveData<DeliverResponse>()
+    val deliverResponse: LiveData<DeliverResponse> get() = _deliverResponse
+
+    private var _locationsList = MutableLiveData<CountriesList>()
+    val locationList: LiveData<CountriesList> get() = _locationsList
 
     fun getUserId() = sharedUseCase.getSharedPreference().userId
 
@@ -161,6 +173,43 @@ class OrderViewModel constructor(
             onComplete {
                 progress.postValue(false)
                 _officesList.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun storeDelivery(delivery: StoreDeliveryUseCase.DeliverRequest) {
+        progress.postValue(true)
+        storeDeliveryUseCase.setModel(delivery)
+        storeDeliveryUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _deliverResponse.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun getLocations() {
+        progress.postValue(true)
+        accountCountriesUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _locationsList.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)

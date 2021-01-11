@@ -1,11 +1,11 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.orders
 
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
+import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -32,4 +32,8 @@ interface OrdersServices {
         @Body createOrderPartner: CreateOrderPartner
     ): Deferred<Orders>
 
+    @POST("delivery")
+    fun storeDelivery(
+        @Body deliver: StoreDeliveryUseCase.DeliverRequest
+    ): Deferred<DeliverResponse>
 }

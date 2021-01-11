@@ -37,7 +37,8 @@
     <string name="choose_country_two_dots">Выберите страну:</string>
     <string name="choose_country">Выберите страну</string>
     <string name="country_two_dots">Страна:</string>
-    <string name="choose_region">Выберите область:</string>
+    <string name="choose_region_two_dots">Выберите область:</string>
+    <string name="choose_region">Выберите область</string>
     <string name="region_two_dots">Область:</string>
     <string name="choose_city_two_dots">Выберите город:</string>
     <string name="choose_city">Выберите город</string>

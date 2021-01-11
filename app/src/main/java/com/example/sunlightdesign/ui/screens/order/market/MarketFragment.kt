@@ -61,8 +61,10 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         setObservers()
 
         viewModel.getProductList()
+        viewModel.getLocations()
         chooseDeliveryTypeBottomSheet = ChooseDeliveryTypeBottomSheet(this)
         addressFieldsBottomSheet = AddressFieldsBottomSheet(this)
+//        showChooseDeliveryTypeDialog()
     }
 
     private fun setListeners() {
@@ -117,6 +119,10 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             }
         })
 
+        viewModel.locationList.observe(viewLifecycleOwner, Observer {
+            addressFieldsBottomSheet.setLocations(it)
+        })
+
         viewModel.officesList.observe(viewLifecycleOwner, Observer {
             val citiesList = ArrayList<WalletViewModel.ShortenedCity>()
             it.offices?.forEach { office ->
@@ -144,7 +150,19 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     private fun initRecycler(items: List<Product>) {
         products_recycler_view.apply {
             productsAdapter = ProductsMarketRecyclerAdapter(items, this@MarketFragment)
-            layoutManager = GridLayoutManager(requireContext(), spanCount)
+            val manager = GridLayoutManager(requireContext(), spanCount)
+
+            manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when {
+                        position < 0 -> 2
+                        else -> 1
+                    }
+                }
+            }
+
+            layoutManager = manager
+
             adapter = productsAdapter
         }
     }
@@ -226,11 +244,13 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onDeliveryTypeSelected(type: Int) {
-        showToast(type.toString())
+        if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_COMPANY) {
+            showAddressFieldsDialog()
+        }
         hideDeliverTypeDialog()
     }
 
-    override fun onAddressPassed(country: Int, city: Int, address: String) {
+    override fun onAddressPassed(country: Int, region: Int, city: Int, address: String) {
         showToast("address")
         hideAddressFieldsDialog()
     }

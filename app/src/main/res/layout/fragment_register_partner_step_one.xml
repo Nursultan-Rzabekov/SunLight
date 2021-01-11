@@ -276,7 +276,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_32dp"
-                android:text="@string/choose_region"
+                android:text="@string/choose_region_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -293,7 +293,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:hint="@string/choose_region"
+                    android:hint="@string/choose_region_two_dots"
                     android:inputType="none"
                     android:labelFor="@id/region_drop_down"
                     android:paddingTop="@dimen/dimen_12dp"

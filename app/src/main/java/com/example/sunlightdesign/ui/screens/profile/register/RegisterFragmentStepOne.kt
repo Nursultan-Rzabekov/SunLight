@@ -452,7 +452,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 "${getString(R.string.fill_the_field)} ${getString(R.string.middle_name)}"
             sponsorId == -1 -> getString(R.string.indicate_your_sponsor)
             countryId == -1 -> getString(R.string.choose_country_two_dots)
-            regionId == -1 -> getString(R.string.choose_region)
+            regionId == -1 -> getString(R.string.choose_region_two_dots)
             cityId == -1 -> getString(R.string.choose_city_two_dots)
             !isPhoneValid(phone_et.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"

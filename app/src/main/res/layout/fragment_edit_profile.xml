@@ -173,7 +173,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:enabled="false"
-                            android:hint="@string/choose_region"
+                            android:hint="@string/choose_region_two_dots"
                             android:inputType="none"
                             android:labelFor="@id/region_drop_down"
                             android:paddingTop="@dimen/dimen_12dp"

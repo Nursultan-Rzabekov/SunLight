@@ -5,6 +5,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.orders.OrdersSer
 import com.example.sunlightdesign.data.source.repositories.DefaultOrdersRepository
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
+import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -59,6 +60,12 @@ val ordersModule = module {
         )
     }
 
+    factory {
+        StoreDeliveryUseCase(
+            repository = get()
+        )
+    }
+
     viewModel {
         OrderViewModel(
             sharedUseCase = get(),
@@ -67,7 +74,9 @@ val ordersModule = module {
             getProductByIdUseCase = get(),
             getProductListUseCase = get(),
             storeOrderUseCase = get(),
-            getOfficesListUseCase = get()
+            getOfficesListUseCase = get(),
+            storeDeliveryUseCase = get(),
+            accountCountriesUseCase = get()
         )
     }
 }
