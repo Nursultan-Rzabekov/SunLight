@@ -152,18 +152,24 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             productsAdapter = ProductsMarketRecyclerAdapter(items, this@MarketFragment)
             val manager = GridLayoutManager(requireContext(), spanCount)
 
-            manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return when {
-                        position < 0 -> 2
-                        else -> 1
-                    }
-                }
-            }
+            specialProductCase(items, manager)
 
             layoutManager = manager
 
             adapter = productsAdapter
+        }
+    }
+
+    private fun specialProductCase(items: List<Product>, manager: GridLayoutManager) {
+        var specialProductCount = 0
+        items.forEach { if (it.product_stock == Product.SPECIAL_OFFER) specialProductCount++ }
+        manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when {
+                    position < specialProductCount -> spanCount
+                    else -> 1
+                }
+            }
         }
     }
 

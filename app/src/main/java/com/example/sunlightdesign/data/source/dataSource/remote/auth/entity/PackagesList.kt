@@ -22,6 +22,13 @@ data class Product(
     val product_type: Int?,
     val updated_at: String?,
     val product: Product?,
+    val product_stock: Int?,
+    val product_image_sale: String?,
+    val product_description_sale: String?,
     var isChecked: Boolean = false
-)
+) {
+    companion object {
+        const val SPECIAL_OFFER = 1
+    }
+}
 

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/special_product_card"
+    android:layout_width="match_parent"
+    android:layout_height="310dp"
+    android:layout_margin="@dimen/dimen_8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    app:cardElevation="3dp"
+    app:contentPadding="@dimen/dimen_16dp"
+    app:strokeColor="@color/transparent"
+    app:strokeWidth="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/productImagesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/special_product_iv"
+                android:layout_width="115dp"
+                android:layout_height="112dp"
+                android:contentDescription="@string/info_product"
+                tools:src="@drawable/product_test" />
+
+            <ImageView
+                android:id="@+id/plusImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/plus"
+                android:src="@drawable/ic_big_plus_red" />
+
+            <ImageView
+                android:id="@+id/specialProductAdditionalImageView"
+                android:layout_width="115dp"
+                android:layout_height="112dp"
+                android:contentDescription="@string/product_market"
+                tools:src="@drawable/product_test" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/special_product_checkbox"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:background="@drawable/check_toggle_btn_selector"
+            android:checked="false"
+            android:enabled="false"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/productTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productImagesLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/special_product_name_tv"
+                style="@style/AppCompatTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textSize="@dimen/dimen_14sp"
+                tools:text="Набор от Clinique" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/specialAdditionalNameTextView"
+                style="@style/AppCompatTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="@dimen/dimen_14sp"
+                tools:text=" + Набор от Clinique" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/special_product_description_tv"
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textSize="@dimen/dimen_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productTitleLayout"
+            tools:text="Сквалан с ретинолом 0,5% The Ordinary" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/special_product_more_info_tv"
+            style="@style/AppCompatTextViewGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/more_info"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/special_product_description_tv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/special_product_price_tv"
+            style="@style/AppCompatTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/dimen_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/special_product_more_info_tv"
+            tools:text="200 BV" />
+
+        <LinearLayout
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/special_product_price_tv"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/special_minusBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_8dp"
+                android:layout_weight="1"
+                android:background="@drawable/card_border_primary_color"
+                android:text="@string/minus" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/special_productQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_8dp"
+                android:layout_weight="1"
+                android:background="@drawable/card_border_primary_color"
+                android:text="@string/zero" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/special_plusBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/card_border_primary_color"
+                android:text="@string/plus" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
