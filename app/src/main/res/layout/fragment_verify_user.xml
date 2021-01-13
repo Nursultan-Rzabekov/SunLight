@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/sunlight_background">
+
+    <include layout="@layout/toolbar_with_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/user"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <RadioGroup
+                android:id="@+id/userOccupationRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/physRadioBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="@string/entepreneur"
+                    android:paddingStart="@dimen/dimen_8dp"
+                    android:paddingEnd="@dimen/dimen_4dp"
+                    android:checked="true"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/legalRadioBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_24dp"
+                    android:text="@string/legal_entity"
+                    android:paddingStart="@dimen/dimen_8dp"
+                    android:paddingEnd="@dimen/dimen_4dp"
+                    android:buttonTint="@color/colorPrimary" />
+
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/individual_title"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/legalEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_individual_title"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/first_name"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/firstNameEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/middle_name"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/middleNameEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/last_name"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/lastNameEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:text="@string/enter_iin"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:id="@+id/iinLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:errorEnabled="false"
+                app:errorTextColor="@color/red"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/iinEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:text="@string/social_status"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/socialStatusDropDown"
+                style="@style/BasicDropDownInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/socialStatusDropDownText"
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/choose_from_list"
+                    android:inputType="none"
+                    android:labelFor="@id/country_drop_down"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:text="@string/bank"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/bankDropDown"
+                style="@style/BasicDropDownInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/bankDropDownText"
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/choose_from_list"
+                    android:inputType="none"
+                    android:labelFor="@id/country_drop_down"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:text="@string/card_iban"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:id="@+id/ibanLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:errorEnabled="false"
+                app:errorTextColor="@color/red"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ibanEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/insert_data"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:textColor="@color/sunBlackColor"
+                android:textSize="@dimen/dimen_14sp"
+                android:text="@string/load_documents_three_parts"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/attach_document_btn"
+                style="@style/BasicOutlinedMaterialButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_12dp"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingBottom="@dimen/dimen_16dp"
+                android:text="@string/attach_file"
+                app:icon="@drawable/ic_attach_file"
+                app:iconTint="@color/gray_DA" />
+
+            <LinearLayout
+                android:id="@+id/documentsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:orientation="vertical" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sendVerificationBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BasicMaterialButton"
+                android:textStyle="bold"
+                android:text="@string/send_verification"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingBottom="@dimen/dimen_16dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

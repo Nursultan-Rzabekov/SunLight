@@ -65,6 +65,8 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         setMasks()
         setObservers()
 
+        showUnverifiedUser()
+
         viewModel.getProfileInfo()
     }
 
@@ -216,6 +218,16 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
     private fun dismissPasswordDialog() {
         passwordDialog.dismiss()
+    }
+
+    private fun showVerifiedUser() {
+        userVerificationStatusTextView.text = getString(R.string.verified)
+        passVerificationBtn.visibility = View.GONE
+    }
+
+    private fun showUnverifiedUser() {
+        userVerificationStatusTextView.text = getString(R.string.not_verified)
+        passVerificationBtn.visibility = View.VISIBLE
     }
 
     private fun checkPermission() : Boolean {

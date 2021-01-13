@@ -21,12 +21,22 @@
                     android:id="@+id/action_editProfileFragment_to_launcherActivity"
                     app:destination="@id/launcherActivity" />
 
+                <action
+                    android:id="@+id/action_editProfileFragment_to_userVerificationActivity"
+                    app:destination="@id/userVerificationActivity" />
+
         </fragment>
 
         <activity
             android:id="@+id/launcherActivity"
             android:name="com.example.sunlightdesign.ui.launcher.LauncherActivity"
             android:label="LauncherActivity" />
+
+        <activity
+            android:id="@+id/userVerificationActivity"
+            android:name="com.example.sunlightdesign.ui.screens.profile.verification.UserVerificationActivity"
+            android:label="UserVerificationActivity"
+            tools:layout="@layout/activity_user_verification"/>
 
 
 </navigation>
