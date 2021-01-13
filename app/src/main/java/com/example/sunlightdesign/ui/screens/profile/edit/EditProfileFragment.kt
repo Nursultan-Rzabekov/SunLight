@@ -92,6 +92,10 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
             findNavController().navigate(R.id.action_editProfileFragment_to_launcherActivity)
         }
 
+        passVerificationBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_editProfileFragment_to_userVerificationActivity)
+        }
+
         passwordDialog.changePasswordBtn.setOnClickListener {
             if (passwordDialog.confirmPasswordEditText.text.toString().isBlank()) return@setOnClickListener
             if (passwordDialog.oldPasswordEditText.text.toString().isBlank()) return@setOnClickListener

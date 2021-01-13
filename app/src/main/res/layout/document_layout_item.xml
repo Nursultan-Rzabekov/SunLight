@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/documentCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimen_16dp"
+    android:background="@drawable/card_border_gray_da"
+    android:padding="@dimen/dimen_16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/documentImageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dimen_5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/documentImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/upload_documents"
+            tools:src="@drawable/test_document" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/documentNameTextView"
+        style="@style/AppCompatTextViewGray"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textSize="@dimen/dimen_14sp"
+        app:layout_constraintEnd_toStartOf="@id/documentRemoveTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/documentImageContainer"
+        tools:text="document.jpg" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/documentSizeTextView"
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:textColor="@color/light_gray"
+        android:textSize="@dimen/dimen_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/documentNameTextView"
+        tools:text="16 MB" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/documentRemoveTextView"
+        style="@style/AppCompatTextViewGray"
+        android:text="@string/delete"
+        android:textColor="@color/red"
+        android:textSize="@dimen/dimen_14sp"
+        app:layout_constraintBottom_toTopOf="@id/documentSizeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/documentNameTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
