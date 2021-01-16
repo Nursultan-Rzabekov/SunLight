@@ -310,5 +310,6 @@
     <string name="individual_title">Название ИП</string>
     <string name="enter_individual_title">Введите название ИП</string>
     <string name="verification">Верификация</string>
+    <string name="contract">Договор</string>
 
 </resources>

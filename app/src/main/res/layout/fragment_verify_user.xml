@@ -268,7 +268,7 @@
                 android:text="@string/load_documents_three_parts"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/attach_document_btn"
+                android:id="@+id/attachDocumentBtn"
                 style="@style/BasicOutlinedMaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

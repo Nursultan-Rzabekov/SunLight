@@ -3,9 +3,11 @@ package com.example.sunlightdesign.koin
 import com.example.sunlightdesign.data.source.ProfileRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.ProfileServices
 import com.example.sunlightdesign.data.source.repositories.DefaultProfileRepository
+import com.example.sunlightdesign.ui.screens.profile.verification.UserVerificationViewModel
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangeAvatarUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangePasswordUseCase
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -38,5 +40,9 @@ val profileModule = module {
         ProfileChangeAvatarUseCase(
             profileRepository = get()
         )
+    }
+
+    viewModel {
+        UserVerificationViewModel()
     }
 }

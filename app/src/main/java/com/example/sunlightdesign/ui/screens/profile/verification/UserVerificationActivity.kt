@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserVerificationActivity : StrongActivity(), NavController.OnDestinationChangedListener {
 
-    val viewModel: ProfileViewModel by viewModel()
+    val viewModel: UserVerificationViewModel by viewModel()
 
     override val layoutId: Int
         get() = R.layout.activity_user_verification
