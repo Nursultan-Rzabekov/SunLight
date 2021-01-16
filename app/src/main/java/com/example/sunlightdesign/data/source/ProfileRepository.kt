@@ -1,10 +1,9 @@
 package com.example.sunlightdesign.data.source
 
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.BaseResponse
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ChangeAvatar
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.InvitedResponse
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.*
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
 import okhttp3.MultipartBody
 
 interface ProfileRepository {
@@ -12,4 +11,6 @@ interface ProfileRepository {
     suspend fun changePassword(changePassword: ChangePassword): BaseResponse
     suspend fun changeAvatar(changeAvatar: MultipartBody.Part): ChangeAvatar
     suspend fun getInvites(page: Int): InvitedResponse
+    suspend fun getVerifyHelpers(): VerificationHelperResponse
+    suspend fun verifyUser(request: VerificationRequest): VerificationResponse
 }

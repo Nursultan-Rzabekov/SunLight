@@ -5,11 +5,25 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationHelperResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
 import com.example.sunlightdesign.ui.base.StrongViewModel
+import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
+import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerifyHelperUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerifyUserUseCase
 import com.example.sunlightdesign.utils.Constants
+import com.example.sunlightdesign.utils.ErrorListException
 import timber.log.Timber
 
-class UserVerificationViewModel: StrongViewModel() {
+class UserVerificationViewModel(
+    private val verifyUserUseCase: VerifyUserUseCase,
+    private val getVerifyHelperUseCase: GetVerifyHelperUseCase
+): StrongViewModel() {
+
+    var progress = MutableLiveData<Boolean>(false)
+
+    var selectedSocialStatuses = mutableListOf<String>()
 
     private var _backDocument = MutableLiveData<Uri?>()
     val backDocument: LiveData<Uri?> = _backDocument
@@ -20,6 +34,54 @@ class UserVerificationViewModel: StrongViewModel() {
     private var _contractDocument = MutableLiveData<Uri?>()
     val contractDocument: LiveData<Uri?> = _contractDocument
 
+    private var _helper = MutableLiveData<VerificationHelperResponse>()
+    val helper: LiveData<VerificationHelperResponse> = _helper
+
+    private var _verify = MutableLiveData<VerificationResponse>()
+    val verify: LiveData<VerificationResponse> = _verify
+
+    fun getHelper() {
+        progress.postValue(true)
+        getVerifyHelperUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _helper.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun verifyUser(verification: VerificationRequest) {
+        progress.postValue(true)
+        verifyUserUseCase.setModel(verification)
+        verifyUserUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _verify.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                when (it) {
+                    is ErrorListException -> {
+                        handleError(errorMessage = it.errorMessage)
+                    }
+                    else ->
+                        handleError(throwable = it)
+                }
+            }
+        }
+    }
 
     fun onBackDocumentInvalidate() {
         _backDocument.postValue(null)

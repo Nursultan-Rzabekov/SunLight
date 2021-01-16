@@ -1,9 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.profile
 
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.BaseResponse
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ChangeAvatar
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.InvitedResponse
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.*
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
 import kotlinx.coroutines.Deferred
 import okhttp3.MultipartBody
@@ -31,4 +29,23 @@ interface ProfileServices {
     fun getInvites(
         @Query("page") page: Int
     ): Deferred<InvitedResponse>
+
+    @GET("helper/verify")
+    fun getHelpersForVerification(
+    ): Deferred<VerificationHelperResponse>
+
+    @Multipart
+    @POST("profile/verify")
+    fun verifyUser(
+        @Part("name") name: RequestBody,
+        @Part("surname") surname: RequestBody,
+        @Part("middle_name") middle_name: RequestBody,
+        @Part("iin") iin: RequestBody,
+        @Part("social_status") social_status: RequestBody,
+        @Part("bank") bank: RequestBody,
+        @Part("iban") iban: RequestBody,
+        @Part("type") type: RequestBody,
+        @Part("ip") ip: RequestBody?,
+        @Part images: List<MultipartBody.Part>
+    ): Deferred<VerificationResponse>
 }
