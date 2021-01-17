@@ -6,19 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MultiAutoCompleteTextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import com.afollestad.materialdialogs.list.MultiChoiceListener
 import com.example.sunlightdesign.R
-import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Users
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.BankName
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.SocialStatusArr
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
 import com.example.sunlightdesign.utils.*
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.document_layout_item.view.*
-import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
 import kotlinx.android.synthetic.main.fragment_verify_user.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import okhttp3.MediaType
@@ -27,7 +25,6 @@ import okhttp3.RequestBody
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 import timber.log.Timber
-import java.io.InputStream
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -60,6 +57,11 @@ class UserVerificationFragment:
 
     private fun setupObservers() {
         viewModel.apply {
+
+            progress.observe(viewLifecycleOwner, Observer {
+                progress_bar.visibility = if (it) View.VISIBLE else View.GONE
+            })
+
             frontDocument.observe(viewLifecycleOwner, Observer {
                 it ?: return@Observer
                 addDocumentView(it) {
@@ -291,7 +293,6 @@ class UserVerificationFragment:
         val lastName = lastNameEditText.text.toString().trim()
         val iin = iinEditText.text.toString().trim()
         val iban = ibanEditText.text.toString().trim()
-        val bank = bankDropDownText.text.toString().trim()
         val type = when (userOccupationRadioGroup.checkedRadioButtonId) {
             legalRadioBtn.id -> VerificationRequest.TYPE_LEGAL
             else -> VerificationRequest.TYPE_NOT_LEGAL
@@ -300,7 +301,10 @@ class UserVerificationFragment:
             legalRadioBtn.id -> legalEditText.text.toString().trim()
             else -> null
         }
-        val social = socialStatusDropDownText.text.toString().trim()
+
+        val gson = Gson()
+        val social = gson.toJson(viewModel.selectedSocialStatuses.map { SocialStatusArr(it) })
+        val bank = gson.toJson(BankName(bankDropDownText.text.toString().trim()))
 
         val backPath = viewModel.backDocument.value
         val frontPath = viewModel.frontDocument.value
