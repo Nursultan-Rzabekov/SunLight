@@ -150,7 +150,28 @@ data class User(
     val uuid: String?,
     val wallet: Wallet?,
     val week_bonus: Any?,
-    val who: String?
+    val who: String?,
+    val verifyuser: VerifyUser?
+)
+
+data class VerifyUser(
+    val bank: String?,
+    val bank_other_name: String?,
+    val comment: String?,
+    val created_at: String?,
+    val iban: String?,
+    val id: Int?,
+    val iin: String?,
+    val ip: String?,
+    val middle_name: String?,
+    val name: String?,
+    val social_status: String?,
+    val status: Int?,
+    val status_name: String?,
+    val surname: String?,
+    val type: Int?,
+    val updated_at: String?,
+    val user_id: Int?
 )
 
 data class Status(

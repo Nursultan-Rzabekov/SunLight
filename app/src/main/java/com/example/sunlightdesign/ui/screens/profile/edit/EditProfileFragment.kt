@@ -132,6 +132,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
             profileInfo.observe(viewLifecycleOwner, Observer {
                 setUserInfo(it.toShortenedUserInfo())
                 setSponsorInfo(it)
+                setVerifyInfo(it)
             })
         }
     }
@@ -214,6 +215,10 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         Glide.with(this)
             .load(getImageUrl(userInfo.parent?.user_avatar_path))
             .into(sponsorAvatarImageView)
+    }
+
+    private fun setVerifyInfo(userInfo: UserInfo) {
+        userVerificationStatusTextView.text = userInfo.user?.verifyuser?.status_name
     }
 
     private fun showPasswordDialog() {
