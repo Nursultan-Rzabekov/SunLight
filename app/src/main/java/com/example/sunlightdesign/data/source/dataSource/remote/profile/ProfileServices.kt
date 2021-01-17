@@ -34,6 +34,10 @@ interface ProfileServices {
     fun getHelpersForVerification(
     ): Deferred<VerificationHelperResponse>
 
+    @GET("profile/verify")
+    fun getVerificationInfo(
+    ): Deferred<VerificationResponse>
+
     @Multipart
     @POST("profile/verify")
     fun verifyUser(

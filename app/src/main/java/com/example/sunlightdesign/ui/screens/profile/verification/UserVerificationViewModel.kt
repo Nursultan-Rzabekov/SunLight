@@ -9,6 +9,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.V
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
+import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerificationInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerifyHelperUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerifyUserUseCase
@@ -18,7 +19,8 @@ import timber.log.Timber
 
 class UserVerificationViewModel(
     private val verifyUserUseCase: VerifyUserUseCase,
-    private val getVerifyHelperUseCase: GetVerifyHelperUseCase
+    private val getVerifyHelperUseCase: GetVerifyHelperUseCase,
+    private val getVerificationInfoUseCase: GetVerificationInfoUseCase
 ): StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)

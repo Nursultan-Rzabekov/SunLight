@@ -4,6 +4,7 @@ import com.example.sunlightdesign.data.source.ProfileRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.ProfileServices
 import com.example.sunlightdesign.data.source.repositories.DefaultProfileRepository
 import com.example.sunlightdesign.ui.screens.profile.verification.UserVerificationViewModel
+import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerificationInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerifyHelperUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ProfileChangeAvatarUseCase
@@ -56,10 +57,17 @@ val profileModule = module {
         )
     }
 
+    factory {
+        GetVerificationInfoUseCase(
+            repository = get()
+        )
+    }
+
     viewModel {
         UserVerificationViewModel(
             getVerifyHelperUseCase = get(),
-            verifyUserUseCase = get()
+            verifyUserUseCase = get(),
+            getVerificationInfoUseCase = get()
         )
     }
 }

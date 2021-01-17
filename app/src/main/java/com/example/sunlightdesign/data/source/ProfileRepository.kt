@@ -12,5 +12,6 @@ interface ProfileRepository {
     suspend fun changeAvatar(changeAvatar: MultipartBody.Part): ChangeAvatar
     suspend fun getInvites(page: Int): InvitedResponse
     suspend fun getVerifyHelpers(): VerificationHelperResponse
+    suspend fun getVerificationInfo(): VerificationResponse
     suspend fun verifyUser(request: VerificationRequest): VerificationResponse
 }

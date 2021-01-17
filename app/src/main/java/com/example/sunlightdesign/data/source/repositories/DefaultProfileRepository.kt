@@ -27,6 +27,9 @@ class DefaultProfileRepository(
     override suspend fun getVerifyHelpers(): VerificationHelperResponse =
         services.getHelpersForVerification().await()
 
+    override suspend fun getVerificationInfo(): VerificationResponse =
+        services.getVerificationInfo().await()
+
     override suspend fun verifyUser(request: VerificationRequest): VerificationResponse {
         val name =
             RequestBody.create(MediaType.parse("multipart/form-data"), request.name)
