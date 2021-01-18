@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.BankName
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.SocialStatusArr
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
@@ -87,9 +88,28 @@ class UserVerificationFragment:
                 it.bank_names?.let { banks ->
                     setupBankList(banks.map { bank -> bank.name.toString() })
                 }
+                viewModel.getInitialVerificationInfo()
             })
 
-            verify.observe(viewLifecycleOwner, Observer {
+            verificationInfo.observe(viewLifecycleOwner, Observer {
+                firstNameEditText.setText(it.verify?.name)
+                lastNameEditText.setText(it.verify?.surname)
+                middleNameEditText.setText(it.verify?.middle_name)
+                iinEditText.setText(it.verify?.iin)
+                ibanEditText.setText(it.verify?.iban)
+                bankDropDownText.setText(it.verify?.bank?.name)
+
+                if (it.verify?.type.toString() == VerificationRequest.TYPE_LEGAL) {
+                    userOccupationRadioGroup.check(legalRadioBtn.id)
+                    legalChecked()
+                    legalEditText.setText(it.verify?.ip)
+                } else {
+                    userOccupationRadioGroup.check(physRadioBtn.id)
+                    entepreneurChecked()
+                }
+            })
+
+            verificationState.observe(viewLifecycleOwner, Observer {
                 if (it.verify?.id != null) {
                     showMessage(
                         requireContext(),

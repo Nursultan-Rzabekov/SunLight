@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationHelperResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
 import com.example.sunlightdesign.ui.base.StrongViewModel
-import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerificationInfoUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetVerifyHelperUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
@@ -39,8 +38,11 @@ class UserVerificationViewModel(
     private var _helper = MutableLiveData<VerificationHelperResponse>()
     val helper: LiveData<VerificationHelperResponse> = _helper
 
-    private var _verify = MutableLiveData<VerificationResponse>()
-    val verify: LiveData<VerificationResponse> = _verify
+    private var _verificationState = MutableLiveData<VerificationResponse>()
+    val verificationState: LiveData<VerificationResponse> = _verificationState
+
+    private var _verificationInfo = MutableLiveData<VerificationResponse>()
+    val verificationInfo: LiveData<VerificationResponse> = _verificationInfo
 
     fun getHelper() {
         progress.postValue(true)
@@ -66,7 +68,7 @@ class UserVerificationViewModel(
         verifyUserUseCase.execute {
             onComplete {
                 progress.postValue(false)
-                _verify.postValue(it)
+                _verificationState.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)
@@ -81,6 +83,24 @@ class UserVerificationViewModel(
                     else ->
                         handleError(throwable = it)
                 }
+            }
+        }
+    }
+
+    fun getInitialVerificationInfo() {
+        progress.postValue(true)
+        getVerificationInfoUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _verificationInfo.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
             }
         }
     }
