@@ -211,6 +211,8 @@ class UserVerificationFragment:
                 val formattedText = selectedItems.joinToString("\n")
                 socialStatusDropDownText.setText(formattedText)
             }
+            .setNegativeButton(getString(R.string.text_cancel)) { _, _ -> Unit}
+
         socialDialog = alertBuilder.create()
         socialDialog.show()
     }
