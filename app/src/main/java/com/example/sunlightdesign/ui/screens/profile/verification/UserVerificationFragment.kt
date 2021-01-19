@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.BankName
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.SocialStatusArr
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyImage
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
@@ -107,6 +109,12 @@ class UserVerificationFragment:
                     userOccupationRadioGroup.check(physRadioBtn.id)
                     entepreneurChecked()
                 }
+
+                val socials = it.verify?.social_status?.map { social -> social.name.toString() }
+                val socialsText = socials?.joinToString("\n")
+                socialStatusDropDownText.setText(socialsText)
+
+                setInitialDocuments(it.verify_images)
             })
 
             verificationState.observe(viewLifecycleOwner, Observer {
@@ -239,11 +247,36 @@ class UserVerificationFragment:
         companyTitleLayout.visibility = View.VISIBLE
     }
 
+    private fun setInitialDocuments(documents: List<VerifyImage>?) {
+        documents ?: return
+
+        documentsContainer.removeAllViews()
+        documents.forEach {
+            addDocumentView(it.verify_path) {}
+        }
+    }
+
     private inline fun addDocumentView(uri: Uri, crossinline invalidate: () -> Unit) {
         val view = layoutInflater.inflate(R.layout.document_layout_item, null)
         view.documentNameTextView.text = getFileName(requireContext(), uri)
         view.documentSizeTextView.text = getFileSizeInLong(requireContext(), uri).toString()
         view.documentImageView.setImageURI(uri)
+        view.documentRemoveTextView.setOnClickListener {
+            documentsContainer.removeView(view)
+            invalidate()
+            checkDocumentsCapacity()
+        }
+
+        documentsContainer.addView(view)
+        checkDocumentsCapacity()
+    }
+
+    private inline fun addDocumentView(path: String?, crossinline invalidate: () -> Unit) {
+        val view = layoutInflater.inflate(R.layout.document_layout_item, null)
+        Glide.with(this)
+            .load(getImageUrl(path))
+            .into(view.documentImageView)
+
         view.documentRemoveTextView.setOnClickListener {
             documentsContainer.removeView(view)
             invalidate()
