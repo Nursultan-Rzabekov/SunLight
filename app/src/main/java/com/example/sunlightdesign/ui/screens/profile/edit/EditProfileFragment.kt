@@ -20,6 +20,7 @@ import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyUser
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
@@ -218,7 +219,23 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
     }
 
     private fun setVerifyInfo(userInfo: UserInfo) {
-        userVerificationStatusTextView.text = userInfo.user?.verifyuser?.status_name
+        userVerificationStatusTextView.text =
+            if (userInfo.user?.verifyuser == null) {
+                getString(R.string.not_verified)
+            } else {
+                userInfo.user.verifyuser.status_name
+            }
+        commentVerifyTextView.text = userInfo.user?.verifyuser?.comment
+        passVerificationBtn.isEnabled =
+            when (userInfo.user?.verifyuser?.status) {
+                VerifyUser.STATUS_WAITING_VERIFICATION -> false
+                else -> true
+            }
+        commentVerifyTextView.visibility =
+            when (userInfo.user?.verifyuser?.status) {
+                VerifyUser.STATUS_REJECTED -> View.VISIBLE
+                else -> View.GONE
+            }
     }
 
     private fun showPasswordDialog() {

@@ -1,5 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity
 
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyUser
+
 data class Wallet(
     val user: User,
     val wallet: WalletX,
@@ -47,7 +49,8 @@ data class User(
     val system_status: Double,
     val user_avatar_path: String,
     val uuid: String,
-    val who: String?
+    val who: String?,
+    val verifyuser: VerifyUser?
 )
 
 data class WalletX(

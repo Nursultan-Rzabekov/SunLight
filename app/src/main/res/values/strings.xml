@@ -311,5 +311,8 @@
     <string name="enter_individual_title">Введите название ИП</string>
     <string name="verification">Верификация</string>
     <string name="contract">Договор</string>
+    <string name="error_waiting_verification">Ваш аккаунт проходит верификацию.\nВывод средств будет доступен после подтверждения</string>
+    <string name="error_need_verification">Для вывода средств необходимо пройти Верификацию</string>
+    <string name="error_need_verification_phrase">Верификацию</string>
 
 </resources>

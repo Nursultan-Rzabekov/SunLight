@@ -452,6 +452,15 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/commentVerifyTextView"
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dimen_14sp"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        tools:text="text test"/>
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/passVerificationBtn"
                         style="@style/BasicOutlinedMaterialButton"

@@ -172,7 +172,14 @@ data class VerifyUser(
     val type: Int?,
     val updated_at: String?,
     val user_id: Int?
-)
+) {
+    companion object {
+        const val STATUS_NOT_VERIFIED = 0
+        const val STATUS_VERIFIED = 1
+        const val STATUS_WAITING_VERIFICATION = 2
+        const val STATUS_REJECTED = 3
+    }
+}
 
 data class Status(
     val deleted_at: Any?,

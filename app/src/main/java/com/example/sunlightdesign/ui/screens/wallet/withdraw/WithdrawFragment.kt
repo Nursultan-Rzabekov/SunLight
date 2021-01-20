@@ -1,14 +1,25 @@
 package com.example.sunlightdesign.ui.screens.wallet.withdraw
 
+import android.app.Dialog
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.User
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyUser
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.CurrencyX
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.WithdrawalReceipt
 import com.example.sunlightdesign.ui.base.StrongFragment
@@ -21,6 +32,7 @@ import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.WithdrawSuc
 import com.example.sunlightdesign.usecase.usercase.walletUse.post.SetWithdrawal
 import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.bv_payment_card_layout.*
+import kotlinx.android.synthetic.main.dialog_notify.*
 import kotlinx.android.synthetic.main.fragment_wallet.progress_bar
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import kotlinx.android.synthetic.main.transfer_card_layout.*
@@ -35,7 +47,9 @@ class WithdrawFragment :
     WithdrawSuccessBottomSheetDialog.WithdrawSuccessDialogInteraction {
 
     private lateinit var currencyAdapter: CustomPopupAdapter<CurrencyX>
-    private lateinit var chooseWithdrawTypeBottomSheetDialog: ChooseWithdrawTypeBottomSheetDialog
+    private val chooseWithdrawTypeBottomSheetDialog: ChooseWithdrawTypeBottomSheetDialog by lazy {
+        ChooseWithdrawTypeBottomSheetDialog(this)
+    }
     private lateinit var chooseOfficeBottomSheetDialog: ChooseOfficeBottomSheetDialog
     private lateinit var withdrawSuccessBottomSheetDialog: WithdrawSuccessBottomSheetDialog
 
@@ -177,7 +191,17 @@ class WithdrawFragment :
     }
 
     override fun onWithdrawTypeCardSelected() {
-
+        when (viewModel.walletLiveData.value?.user?.verifyuser?.status) {
+            VerifyUser.STATUS_WAITING_VERIFICATION -> {
+                showVerificationWaitErrorDialog(getString(R.string.error_waiting_verification))
+            }
+            VerifyUser.STATUS_NOT_VERIFIED, VerifyUser.STATUS_REJECTED -> {
+                showNotVerifiedErrorDialog(getString(R.string.error_need_verification))
+            }
+            else -> {
+                //FIXME when its allowed
+            }
+        }
     }
 
     override fun onNextBtnPressed(officeId: Int) {
@@ -205,7 +229,6 @@ class WithdrawFragment :
     }
 
     private fun showWithdrawTypeDialog() {
-        chooseWithdrawTypeBottomSheetDialog = ChooseWithdrawTypeBottomSheetDialog(this)
         chooseWithdrawTypeBottomSheetDialog.show(
             parentFragmentManager,
             ChooseWithdrawTypeBottomSheetDialog.TAG
@@ -234,6 +257,47 @@ class WithdrawFragment :
         showMessage(requireContext(), message = message)
     }
 
+    private fun showVerificationWaitErrorDialog(message: String) {
+        val dialog = Dialog(requireContext(), R.style.FullDialog).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.color.transparent))
+            setCancelable(false)
+            setContentView(R.layout.dialog_notify)
+        }
+        dialog.notify_desc_tv.text = message
+        dialog.notify_icon_iv.setImageDrawable(
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_failed))
+        dialog.notify_title_tv.text = getString(R.string.oops_message)
+
+        dialog.notify_ok_btn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    private fun showNotVerifiedErrorDialog(message: String) {
+        val dialog = Dialog(requireContext(), R.style.FullDialog).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.color.transparent))
+            setCancelable(false)
+            setContentView(R.layout.dialog_notify)
+        }
+        dialog.notify_desc_tv.makeLink(message, getString(R.string.error_need_verification_phrase)) {
+            findNavController().navigate(R.id.action_withdrawFragment_to_editPartnerActivity)
+            viewModel.withActivity { it.finish() }
+        }
+        dialog.notify_icon_iv.setImageDrawable(
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_failed))
+        dialog.notify_title_tv.text = getString(R.string.oops_message)
+
+        dialog.notify_ok_btn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
     private fun calculateAmount(currency: CurrencyX): Double {
         val amountInBv = amountEditText.text.toString().toDoubleOrNull() ?: return .0
 
@@ -248,5 +312,29 @@ class WithdrawFragment :
 
     private fun AutoCompleteTextView.selectItem(position: Int) {
         this.setText((this.adapter.getItem(position) as CurrencyX).toString(), false)
+    }
+
+    private fun TextView.makeLink(
+        text: String,
+        phrase: String,
+        listener: () -> Unit
+    ) {
+        val spannableString = SpannableString(text)
+        val clickableSpan = object : ClickableSpan() {
+            override fun updateDrawState(ds: TextPaint) {
+                ds.color = ContextCompat.getColor(context, R.color.colorPrimary)
+                ds.isUnderlineText = true
+            }
+            override fun onClick(view: View) {
+                listener()
+            }
+        }
+        val start = text.indexOf(phrase)
+        val end = start + phrase.length
+
+        spannableString.setSpan(clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        movementMethod = LinkMovementMethod.getInstance()
+        setText(spannableString, TextView.BufferType.SPANNABLE)
     }
 }

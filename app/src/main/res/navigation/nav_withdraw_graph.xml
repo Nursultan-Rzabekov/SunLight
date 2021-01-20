@@ -10,6 +10,15 @@
             android:name="com.example.sunlightdesign.ui.screens.wallet.withdraw.WithdrawFragment"
             tools:layout="@layout/fragment_withdraw">
 
+                <action
+                    android:id="@+id/action_withdrawFragment_to_editPartnerActivity"
+                    app:destination="@id/editPartnerActivity" />
         </fragment>
+
+        <activity
+            android:id="@+id/editPartnerActivity"
+            android:name="com.example.sunlightdesign.ui.screens.profile.edit.EditPartnerActivity"
+            android:label="EditPartnerActivity"
+            tools:layout="@layout/activity_edit_partner"/>
 
 </navigation>
