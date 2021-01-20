@@ -113,6 +113,7 @@ class UserVerificationFragment:
                 val socials = it.verify?.social_status?.map { social -> social.name.toString() }
                 val socialsText = socials?.joinToString("\n")
                 socialStatusDropDownText.setText(socialsText)
+                banksAdapter.callFiltering("")
 
                 setInitialDocuments(it.verify_images)
             })
