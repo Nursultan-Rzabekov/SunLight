@@ -204,7 +204,16 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 product_price_kzt = product.product_price.toString(),
                 product_info = product.product_description.toString(),
                 productBackImage = product.product_image_back_path.toString(),
-                productFrontImage = product.product_image_front_path.toString()
+                productFrontImage = product.product_image_front_path.toString(),
+                specialOffer =
+                    if (product.product_stock == Product.SPECIAL_OFFER) {
+                        SpecialOfferProductItem(
+                            product.product_image_sale,
+                            product.product_description_sale
+                        )
+                    } else {
+                        null
+                    }
             )
         )
         findNavController().navigate(R.id.market_fragment_to_market_details_fragment, bundle)
@@ -270,5 +279,12 @@ data class ProductItem(
     val product_price_kzt: String,
     val product_info: String,
     val productFrontImage: String,
-    val productBackImage: String
+    val productBackImage: String,
+    val specialOffer: SpecialOfferProductItem?
+) : Parcelable
+
+@Parcelize
+data class SpecialOfferProductItem(
+    val offerImage: String?,
+    val offerDescription: String?
 ) : Parcelable

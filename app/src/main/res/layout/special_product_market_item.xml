@@ -42,12 +42,29 @@
                 android:contentDescription="@string/plus"
                 android:src="@drawable/ic_big_plus_red" />
 
-            <ImageView
-                android:id="@+id/specialProductAdditionalImageView"
-                android:layout_width="115dp"
-                android:layout_height="112dp"
-                android:contentDescription="@string/product_market"
-                tools:src="@drawable/product_test" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/specialProductAdditionalImageView"
+                    android:layout_width="115dp"
+                    android:layout_height="112dp"
+                    android:padding="1dp"
+                    android:layout_margin="1dp"
+                    android:contentDescription="@string/product_market"
+                    android:background="@drawable/card_border_red"
+                    tools:src="@drawable/product_test" />
+
+                <ImageView
+                    android:contentDescription="@string/product_market"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/img_present"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignEnd="@id/specialProductAdditionalImageView"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

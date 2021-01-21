@@ -17,7 +17,6 @@
             android:layout_width="@dimen/dimen_58dp"
             android:layout_height="@dimen/dimen_58dp"
             android:layout_margin="@dimen/dimen_8dp"
-            tools:src="@drawable/image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

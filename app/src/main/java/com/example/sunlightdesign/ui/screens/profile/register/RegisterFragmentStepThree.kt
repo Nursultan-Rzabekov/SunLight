@@ -82,7 +82,8 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
                 product_price_kzt = product.product_price.toString(),
                 product_info = product.product_description.toString(),
                 productBackImage = product.product_image_back_path.toString(),
-                productFrontImage = product.product_image_front_path.toString()
+                productFrontImage = product.product_image_front_path.toString(),
+                specialOffer = null
             )
         )
         findNavController().navigate(R.id.stepThreeFragment_to_market_details_fragment, bundle)

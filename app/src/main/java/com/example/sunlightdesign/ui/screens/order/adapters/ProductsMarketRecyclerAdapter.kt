@@ -133,7 +133,7 @@ class ProductsMarketRecyclerAdapter(
     ): RecyclerView.ViewHolder(view) {
         fun bind(product: Product) {
             itemView.special_product_name_tv.text = product.product_name
-            itemView.specialAdditionalNameTextView.text = (" + ${product.product_description_sale}")
+            itemView.specialAdditionalNameTextView.text = product.product_description_sale
             itemView.special_product_description_tv.text = product.product_short_description
             itemView.special_product_price_tv.text = itemView.context.getString(R.string.amount_kzt, product.product_price)
 

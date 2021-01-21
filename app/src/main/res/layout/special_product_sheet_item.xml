@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_8dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="@dimen/dimen_8dp"
+    android:layout_marginBottom="14dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    app:cardElevation="0dp"
+    app:contentPadding="@dimen/dimen_16dp"
+    app:strokeColor="@color/white_gray"
+    app:strokeWidth="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/productsImagesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/specialProductImageView"
+                android:layout_width="115dp"
+                android:layout_height="106dp"
+                android:scaleType="centerInside"
+                tools:src="@drawable/product_test" />
+
+            <ImageView
+                android:id="@+id/plusImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/plus"
+                android:src="@drawable/ic_big_plus_red" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/specialProductAddImageView"
+                    android:layout_width="115dp"
+                    android:layout_height="106dp"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/card_border_red"
+                    android:contentDescription="@string/product_market"
+                    android:padding="1dp"
+                    tools:src="@drawable/product_test" />
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_alignEnd="@id/specialProductAddImageView"
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="@string/product_market"
+                    android:src="@drawable/img_present" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/specialProductTitleTextView"
+            style="@style/AppCompatTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:textSize="@dimen/dimen_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productsImagesLayout"
+            tools:text="Набор от Clinique" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/specialProductPriceTextView"
+            style="@style/AppCompatTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:textSize="@dimen/dimen_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/specialProductTitleTextView"
+            tools:text="200 BV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
