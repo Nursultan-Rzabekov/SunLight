@@ -228,7 +228,8 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         commentVerifyTextView.text = userInfo.user?.verifyuser?.comment
         passVerificationBtn.isEnabled =
             when (userInfo.user?.verifyuser?.status) {
-                VerifyUser.STATUS_WAITING_VERIFICATION -> false
+                VerifyUser.STATUS_WAITING_VERIFICATION,
+                VerifyUser.STATUS_VERIFIED -> false
                 else -> true
             }
         commentVerifyTextView.visibility =
