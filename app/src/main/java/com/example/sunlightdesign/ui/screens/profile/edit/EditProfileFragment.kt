@@ -237,6 +237,13 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
                 VerifyUser.STATUS_REJECTED -> View.VISIBLE
                 else -> View.GONE
             }
+        userVerificationStatusTextView.setTextColor(ContextCompat.getColor(requireContext(),
+            when (userInfo.user?.verifyuser?.status) {
+                VerifyUser.STATUS_VERIFIED -> R.color.green
+                VerifyUser.STATUS_WAITING_VERIFICATION -> R.color.yellow
+                else -> R.color.red
+            }
+        ))
     }
 
     private fun showPasswordDialog() {

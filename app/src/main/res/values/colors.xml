@@ -31,5 +31,8 @@
     <color name="hint_text_color">#9FA3A7</color>
 
     <color name="light_green_color">#5DC88C</color>
+    <color name="green">#24584d</color>
+
+    <color name="yellow">#FFF200</color>
 
 </resources>
