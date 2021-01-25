@@ -263,7 +263,7 @@
                 android:layout_marginTop="@dimen/dimen_32dp"
                 android:textColor="@color/sunBlackColor"
                 android:textSize="@dimen/dimen_14sp"
-                android:text="@string/load_documents_three_parts"/>
+                android:text="@string/attach_documents_scans"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/attachDocumentBtn"

@@ -306,6 +306,7 @@
     <string name="card_iban">Расчетный счет или IBAN карты</string>
     <string name="insert_data">Введите данные</string>
     <string name="load_documents_three_parts">Загрузите следующие документы:\n\n1. Передняя сторона УЛ\n2. Задняя сторона УЛ\n3. Договор двух сторон</string>
+    <string name="attach_documents_scans">*Прикрепите сканы документов</string>
     <string name="send_verification">Отправить на верификацию</string>
     <string name="individual_title">Название ИП</string>
     <string name="enter_individual_title">Введите название ИП</string>
