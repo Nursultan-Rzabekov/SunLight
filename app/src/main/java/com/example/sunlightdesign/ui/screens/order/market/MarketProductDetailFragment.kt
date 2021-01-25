@@ -54,9 +54,12 @@ class MarketProductDetailFragment: StrongFragment<OrderViewModel>(OrderViewModel
 
             it ?: return@let
 
-            val listOfImages = mutableListOf(it.productFrontImage, it.productBackImage)
-            if (it.specialOffer != null) {
-                listOfImages.add(it.specialOffer.offerImage.toString())
+            val listOfImages = mutableListOf(it.productFrontImage.toString())
+            if (it.productBackImage != null) {
+                listOfImages.add(it.productBackImage)
+            }
+            if (it.specialOffer?.offerImage != null) {
+                listOfImages.add(it.specialOffer.offerImage)
             }
             initViewPager(listOfImages)
         }

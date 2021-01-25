@@ -203,8 +203,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 product_price_bv = product.product_price_in_bv.toString(),
                 product_price_kzt = product.product_price.toString(),
                 product_info = product.product_description.toString(),
-                productBackImage = product.product_image_back_path.toString(),
-                productFrontImage = product.product_image_front_path.toString(),
+                productBackImage = product.product_image_back_path,
+                productFrontImage = product.product_image_front_path,
                 specialOffer =
                     if (product.product_stock == Product.SPECIAL_OFFER) {
                         SpecialOfferProductItem(
@@ -278,8 +278,8 @@ data class ProductItem(
     val product_price_bv: String,
     val product_price_kzt: String,
     val product_info: String,
-    val productFrontImage: String,
-    val productBackImage: String,
+    val productFrontImage: String?,
+    val productBackImage: String?,
     val specialOffer: SpecialOfferProductItem?
 ) : Parcelable
 
