@@ -8,18 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.BankName
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.SocialStatusArr
-import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyImage
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
-import com.example.sunlightdesign.utils.*
+import com.example.sunlightdesign.utils.IIN_MASK
+import com.example.sunlightdesign.utils.MaskUtils
+import com.example.sunlightdesign.utils.isIinValid
+import com.example.sunlightdesign.utils.showMessage
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.document_layout_item.view.*
 import kotlinx.android.synthetic.main.fragment_verify_user.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import okhttp3.MediaType
@@ -38,6 +38,8 @@ class UserVerificationFragment:
     private lateinit var socialAdapter: CustomPopupAdapter<String>
     private lateinit var socialDialog: AlertDialog
 
+    private val documentsAdapter = DocumentAttachmentAdapter(mutableListOf())
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,6 +54,7 @@ class UserVerificationFragment:
 
         setListeners()
         setupMask()
+        setupRecyclerView()
         entepreneurChecked()
         setupObservers()
 
@@ -65,25 +68,11 @@ class UserVerificationFragment:
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
 
-            frontDocument.observe(viewLifecycleOwner, Observer {
-                it ?: return@Observer
-                addDocumentView(it) {
-                    onFrontDocumentInvalidate()
-                }
-            })
-
-            backDocument.observe(viewLifecycleOwner, Observer {
-                it ?: return@Observer
-                addDocumentView(it) {
-                    onBackDocumentInvalidate()
-                }
-            })
-
-            contractDocument.observe(viewLifecycleOwner, Observer {
-                it ?: return@Observer
-                addDocumentView(it) {
-                    onContractDocumentInvalidate()
-                }
+            attachDocument.observe(viewLifecycleOwner, Observer {
+                documentsAdapter.addItem(DocumentAttachmentEntity(
+                    url = null,
+                    uri = it
+                ))
             })
 
             helper.observe(viewLifecycleOwner, Observer {
@@ -156,6 +145,10 @@ class UserVerificationFragment:
             showSocialListDialog(viewModel.helper.value?.social_status_arr
                 ?.map{ it.name.toString() } ?: listOf())
         }
+    }
+
+    private fun setupRecyclerView() {
+        documentsRecyclerView.adapter = documentsAdapter
     }
 
     private fun setupMask() {
@@ -252,46 +245,12 @@ class UserVerificationFragment:
 
     private fun setInitialDocuments(documents: List<VerifyImage>?) {
         documents ?: return
-
-        documentsContainer.removeAllViews()
         documents.forEach {
-            addDocumentView(it.verify_path) {}
+            documentsAdapter.addItem(DocumentAttachmentEntity(
+                uri = null,
+                url = it.verify_path
+            ))
         }
-    }
-
-    private inline fun addDocumentView(uri: Uri, crossinline invalidate: () -> Unit) {
-        val view = layoutInflater.inflate(R.layout.document_layout_item, null)
-        view.documentNameTextView.text = getFileName(requireContext(), uri)
-        view.documentSizeTextView.text = getFileSizeInLong(requireContext(), uri).toString()
-        view.documentImageView.setImageURI(uri)
-        view.documentRemoveTextView.setOnClickListener {
-            documentsContainer.removeView(view)
-            invalidate()
-            checkDocumentsCapacity()
-        }
-
-        documentsContainer.addView(view)
-        checkDocumentsCapacity()
-    }
-
-    private inline fun addDocumentView(path: String?, crossinline invalidate: () -> Unit) {
-        val view = layoutInflater.inflate(R.layout.document_layout_item, null)
-        Glide.with(this)
-            .load(getImageUrl(path))
-            .into(view.documentImageView)
-
-        view.documentRemoveTextView.setOnClickListener {
-            documentsContainer.removeView(view)
-            invalidate()
-            checkDocumentsCapacity()
-        }
-
-        documentsContainer.addView(view)
-        checkDocumentsCapacity()
-    }
-
-    private fun checkDocumentsCapacity() {
-        attachDocumentBtn.isEnabled = documentsContainer.childCount != 3
     }
 
     private fun checkFields(): Boolean {
@@ -308,15 +267,6 @@ class UserVerificationFragment:
 
             !isIinValid(iinEditText.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
-
-            viewModel.backDocument.value == null ->
-                "${getString(R.string.attach_file)}(${getString(R.string.back_side)})"
-
-            viewModel.frontDocument.value == null ->
-                "${getString(R.string.attach_file)}(${getString(R.string.rear_side)})"
-
-            viewModel.contractDocument.value == null ->
-                "${getString(R.string.attach_file)}(${getString(R.string.contract)})"
 
             socialStatusDropDownText.text.toString().isBlank() ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.social_status)}"
@@ -362,43 +312,7 @@ class UserVerificationFragment:
         val social = gson.toJson(viewModel.selectedSocialStatuses.map { SocialStatusArr(it) })
         val bank = gson.toJson(BankName(bankDropDownText.text.toString().trim()))
 
-        val backPath = viewModel.backDocument.value
-        val frontPath = viewModel.frontDocument.value
-        val contractPath = viewModel.contractDocument.value
-
-        backPath ?: return
-        frontPath ?: return
-        contractPath ?: return
-
-        val backInputStream =
-            requireActivity().contentResolver?.openInputStream(backPath) ?: return
-
-        val frontInputStream =
-            requireActivity().contentResolver?.openInputStream(frontPath) ?: return
-
-        val contractInputStream =
-            requireActivity().contentResolver?.openInputStream(contractPath) ?: return
-
-        val backPart = MultipartBody.Part.createFormData(
-            "images[]", "back.jpeg", RequestBody.create(
-                MediaType.parse("image/*"),
-                backInputStream.readBytes()
-            )
-        )
-
-        val frontPart = MultipartBody.Part.createFormData(
-            "images[]", "front.jpg", RequestBody.create(
-                MediaType.parse("image/*"),
-                frontInputStream.readBytes()
-            )
-        )
-
-        val contractPart = MultipartBody.Part.createFormData(
-            "images[]", "contract.jpg", RequestBody.create(
-                MediaType.parse("image/*"),
-                contractInputStream.readBytes()
-            )
-        )
+        val files = createMultipartFiles(documentsAdapter.getLocalFiles())
 
         viewModel.verifyUser(
             VerificationRequest(
@@ -411,9 +325,25 @@ class UserVerificationFragment:
                 type = type,
                 bank = bank,
                 social_status = social,
-                images = listOf(frontPart, backPart, contractPart)
+                images = files
             )
         )
 
+    }
+
+    private fun createMultipartFiles(files: List<Uri>): List<MultipartBody.Part> {
+        val documents = mutableListOf<MultipartBody.Part>()
+        files.forEachIndexed { index, it ->
+            val inputStream =
+                requireActivity().contentResolver?.openInputStream(it) ?: return@forEachIndexed
+            val part = MultipartBody.Part.createFormData(
+                "images[]", "file$index.jpeg", RequestBody.create(
+                    MediaType.parse("image/*"),
+                    inputStream.readBytes()
+                )
+            )
+            documents.add(part)
+        }
+        return documents
     }
 }

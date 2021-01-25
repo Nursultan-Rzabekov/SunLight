@@ -26,14 +26,8 @@ class UserVerificationViewModel(
 
     var selectedSocialStatuses = mutableListOf<String>()
 
-    private var _backDocument = MutableLiveData<Uri?>()
-    val backDocument: LiveData<Uri?> = _backDocument
-
-    private var _frontDocument = MutableLiveData<Uri?>()
-    val frontDocument: LiveData<Uri?> = _frontDocument
-
-    private var _contractDocument = MutableLiveData<Uri?>()
-    val contractDocument: LiveData<Uri?> = _contractDocument
+    private var _attachDocument = MutableLiveData<Uri?>()
+    val attachDocument: LiveData<Uri?> = _attachDocument
 
     private var _helper = MutableLiveData<VerificationHelperResponse>()
     val helper: LiveData<VerificationHelperResponse> = _helper
@@ -105,18 +99,6 @@ class UserVerificationViewModel(
         }
     }
 
-    fun onBackDocumentInvalidate() {
-        _backDocument.postValue(null)
-    }
-
-    fun onFrontDocumentInvalidate() {
-        _frontDocument.postValue(null)
-    }
-
-    fun onContractDocumentInvalidate() {
-        _contractDocument.postValue(null)
-    }
-
     fun onAttachDocument(requestCode: Int = Constants.ACTION_IMAGE_CONTENT_INTENT_CODE) {
         withActivity {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -131,11 +113,7 @@ class UserVerificationViewModel(
         when (requestCode) {
             Constants.ACTION_IMAGE_CONTENT_INTENT_CODE -> {
                 Timber.d("Image path: ${data.data}")
-                when {
-                    _frontDocument.value == null -> _frontDocument.postValue(data.data)
-                    _backDocument.value == null -> _backDocument.postValue(data.data)
-                    _contractDocument.value == null -> _contractDocument.postValue(data.data)
-                }
+                _attachDocument.postValue(data.data)
             }
         }
     }

@@ -23,7 +23,7 @@
         <ImageView
             android:id="@+id/documentImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="198dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/upload_documents"
             tools:src="@drawable/test_document" />

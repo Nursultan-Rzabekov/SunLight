@@ -277,9 +277,10 @@
                 app:icon="@drawable/ic_attach_file"
                 app:iconTint="@color/gray_DA" />
 
-            <LinearLayout
-                android:id="@+id/documentsContainer"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/documentsRecyclerView"
                 android:layout_width="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:orientation="vertical" />
