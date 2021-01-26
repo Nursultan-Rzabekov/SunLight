@@ -316,6 +316,6 @@
     <string name="error_need_verification">Для вывода средств необходимо пройти Верификацию</string>
     <string name="error_need_verification_phrase">Верификацию</string>
     <string name="another">другое</string>
-    <string name="enter_bank_name">Введите название банка</string>
+    <string name="enter_bank_name">Название банка</string>
 
 </resources>
