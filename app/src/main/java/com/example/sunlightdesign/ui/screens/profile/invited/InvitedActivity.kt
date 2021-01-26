@@ -32,6 +32,7 @@ class InvitedActivity : StrongActivity() {
         setObservers()
         setListeners()
 
+        page = 1
         viewModel.getInvites(page)
     }
 
@@ -53,8 +54,9 @@ class InvitedActivity : StrongActivity() {
                     Timber.d("$page page")
 
                     if (lastPosition == (invitedAdapter.itemCount - 1) &&
-                        page != -1 ) {
-                        viewModel.getInvites(page + 1)
+                        page != -1 &&
+                        !progress_bar.isVisible) {
+                        viewModel.getInvites(++page)
                     }
                     swipeInvites.isRefreshing = false
                 }
@@ -89,10 +91,8 @@ class InvitedActivity : StrongActivity() {
                     }
                 }
 
-                if (it.children?.last_page == page) {
+                if (it.children?.last_page == null || it.children.last_page <= page) {
                     page = -1
-                } else {
-                    page++
                 }
             })
         }
