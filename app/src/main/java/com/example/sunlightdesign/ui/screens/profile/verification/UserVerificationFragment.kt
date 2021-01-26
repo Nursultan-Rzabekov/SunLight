@@ -184,6 +184,13 @@ class UserVerificationFragment:
         bankDropDownText.setAdapter(banksAdapter)
         bankDropDownText.setOnItemClickListener { _, _, position, _ ->
             val adapter = bankDropDownText.adapter
+            val option = adapter.getItem(position) as String
+            if (position == items.size - 1 &&
+                option.trim().toLowerCase(Locale.getDefault()) == getString(R.string.another)) {
+                anotherBankLayout.visibility = View.VISIBLE
+            } else {
+                anotherBankLayout.visibility = View.GONE
+            }
             Timber.d("sponsor: ${adapter.getItem(position)}")
         }
     }
@@ -310,7 +317,10 @@ class UserVerificationFragment:
 
         val gson = Gson()
         val social = gson.toJson(viewModel.selectedSocialStatuses.map { SocialStatusArr(it) })
-        val bank = gson.toJson(BankName(bankDropDownText.text.toString().trim()))
+        var bank = gson.toJson(BankName(bankDropDownText.text.toString().trim()))
+        if (anotherBankLayout.visibility == View.VISIBLE) {
+            bank = gson.toJson(BankName(anotherBankEditText.text.toString().trim()))
+        }
 
         val files = createMultipartFiles(documentsAdapter.getLocalFiles())
 

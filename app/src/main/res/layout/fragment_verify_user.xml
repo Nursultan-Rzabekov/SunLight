@@ -223,7 +223,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choose_from_list"
+                    android:enabled="false"
                     android:labelFor="@id/country_drop_down"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:id="@+id/anotherBankLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:visibility="gone"
+                app:errorEnabled="false"
+                app:errorTextColor="@color/red"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/anotherBankEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_bank_name"
                     android:paddingTop="@dimen/dimen_12dp"
                     android:paddingBottom="@dimen/dimen_12dp" />
 

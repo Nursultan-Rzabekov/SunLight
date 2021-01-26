@@ -315,5 +315,7 @@
     <string name="error_waiting_verification">Ваш аккаунт проходит верификацию.\nВывод средств будет доступен после подтверждения</string>
     <string name="error_need_verification">Для вывода средств необходимо пройти Верификацию</string>
     <string name="error_need_verification_phrase">Верификацию</string>
+    <string name="another">другое</string>
+    <string name="enter_bank_name">Введите название банка</string>
 
 </resources>
