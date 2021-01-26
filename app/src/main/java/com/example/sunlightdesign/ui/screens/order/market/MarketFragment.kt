@@ -104,12 +104,16 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         pay_market_total_tv.text = getString(R.string.market_pay, count)
     }
 
-    private fun setObservers() {
-        viewModel.products.observe(viewLifecycleOwner, Observer {
+    private fun setObservers() = with(viewModel) {
+        progress.observe(viewLifecycleOwner, Observer {
+            marketProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+        products.observe(viewLifecycleOwner, Observer {
             initRecycler(it.products ?: listOf())
         })
 
-        viewModel.orderState.observe(viewLifecycleOwner, Observer {
+        orderState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 successBottomSheetDialog = SuccessBottomSheetDialog(it.orderType)
                 successBottomSheetDialog.show(
@@ -119,11 +123,11 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             }
         })
 
-        viewModel.locationList.observe(viewLifecycleOwner, Observer {
+        locationList.observe(viewLifecycleOwner, Observer {
             addressFieldsBottomSheet.setLocations(it)
         })
 
-        viewModel.officesList.observe(viewLifecycleOwner, Observer {
+        officesList.observe(viewLifecycleOwner, Observer {
             val citiesList = ArrayList<WalletViewModel.ShortenedCity>()
             it.offices?.forEach { office ->
                 office?.city?.id ?: return@forEach

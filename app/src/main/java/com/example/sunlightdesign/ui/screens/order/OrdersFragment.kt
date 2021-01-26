@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Office
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.MyOrdersBottomSheetDialog
@@ -67,6 +65,9 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     private fun configViewModel() {
         viewModel.apply {
+            progress.observe(viewLifecycleOwner, Observer {
+                ordersProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+            })
             orders.observe(viewLifecycleOwner, Observer {
                 ordersRecyclerAdapter.setItems(it.orders as MutableList<Order>)
             })
