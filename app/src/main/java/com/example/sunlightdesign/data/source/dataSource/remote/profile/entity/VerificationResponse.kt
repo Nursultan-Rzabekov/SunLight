@@ -2,8 +2,14 @@ package com.example.sunlightdesign.data.source.dataSource.remote.profile.entity
 
 data class VerificationResponse(
     val verify: Verify?,
-    val verify_images: List<VerifyImage>?
-)
+    val verify_images: List<VerifyImage>?,
+    val result: Int?,
+    val status: Int?
+) {
+    companion object {
+        const val RESULT_SUCCESS = 1
+    }
+}
 
 data class Verify(
     val bank: BankName?,

@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.BankName
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.SocialStatusArr
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerificationResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyImage
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
@@ -108,7 +109,7 @@ class UserVerificationFragment:
             })
 
             verificationState.observe(viewLifecycleOwner, Observer {
-                if (it.verify?.id != null) {
+                if (it.result == VerificationResponse.RESULT_SUCCESS) {
                     showMessage(
                         requireContext(),
                         message = getString(R.string.text_success),
@@ -324,21 +325,23 @@ class UserVerificationFragment:
 
         val files = createMultipartFiles(documentsAdapter.getLocalFiles())
 
-        viewModel.verifyUser(
-            VerificationRequest(
-                name = name,
-                surname = lastName,
-                middle_name = middleName,
-                iin = iin,
-                iban = iban,
-                ip = ip,
-                type = type,
-                bank = bank,
-                social_status = social,
-                images = files
+        viewModel.verificationInfo.value?.verify?.user_id?.let { user_id ->
+            viewModel.verifyUser(
+                VerificationRequest(
+                    user_id = user_id,
+                    name = name,
+                    surname = lastName,
+                    middle_name = middleName,
+                    iin = iin,
+                    iban = iban,
+                    ip = ip,
+                    type = type,
+                    bank = bank,
+                    social_status = social,
+                    images = files
+                )
             )
-        )
-
+        }
     }
 
     private fun createMultipartFiles(files: List<Uri>): List<MultipartBody.Part> {

@@ -5,6 +5,7 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Base
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.ProfileServices
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.*
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
+import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationJsonRequest
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.VerificationRequest
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -31,6 +32,8 @@ class DefaultProfileRepository(
         services.getVerificationInfo().await()
 
     override suspend fun verifyUser(request: VerificationRequest): VerificationResponse {
+        val user_id =
+            RequestBody.create(MediaType.parse("multipart/form-data"), request.user_id.toString())
         val name =
             RequestBody.create(MediaType.parse("multipart/form-data"), request.name)
         val surname =
@@ -54,6 +57,7 @@ class DefaultProfileRepository(
         }
 
         return services.verifyUser(
+            user_id = user_id,
             name = name,
             surname = surname,
             middle_name = middle_name,
@@ -65,16 +69,5 @@ class DefaultProfileRepository(
             images = request.images,
             ip = ip
         ).await()
-    }
-
-    private fun prepareImageFilePart(
-        partName: String,
-        file: File
-    ): MultipartBody.Part? {
-        val requestFile: RequestBody = RequestBody.create(
-            MediaType.parse("image/jpg"),
-            file
-        )
-        return MultipartBody.Part.createFormData(partName, file.name, requestFile)
     }
 }

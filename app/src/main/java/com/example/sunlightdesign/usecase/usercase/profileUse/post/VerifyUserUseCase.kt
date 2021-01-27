@@ -23,6 +23,7 @@ class VerifyUserUseCase(
 }
 
 data class VerificationRequest(
+    val user_id: Int,
     val name: String,
     val surname: String,
     val middle_name: String,
@@ -39,3 +40,15 @@ data class VerificationRequest(
         const val TYPE_NOT_LEGAL = "0"
     }
 }
+
+data class VerificationJsonRequest(
+    val name: String,
+    val surname: String,
+    val middle_name: String,
+    val iin: String,
+    val social_status: String,
+    val bank: String,
+    val iban: String,
+    val type: String,
+    val ip: String?
+)
