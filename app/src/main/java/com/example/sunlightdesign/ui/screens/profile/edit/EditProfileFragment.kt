@@ -71,6 +71,11 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         viewModel.getProfileInfo()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getProfileInfo()
+    }
+
     private fun setListeners() {
         backBtn.setOnClickListener { findNavController().navigateUp() }
 
