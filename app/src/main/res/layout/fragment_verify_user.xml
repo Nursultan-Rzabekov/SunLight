@@ -105,29 +105,6 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
-                android:text="@string/middle_name"
-                android:layout_marginTop="@dimen/dimen_32dp"
-                android:textSize="@dimen/dimen_16sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/BasicTextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/middleNameEditText"
-                    style="@style/BasicEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/dimen_12dp"
-                    android:paddingBottom="@dimen/dimen_12dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
                 android:text="@string/last_name"
                 android:layout_marginTop="@dimen/dimen_32dp"
                 android:textSize="@dimen/dimen_16sp" />
@@ -141,6 +118,29 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/lastNameEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:text="@string/middle_name"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/BasicTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/middleNameEditText"
                     style="@style/BasicEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
