@@ -6,6 +6,7 @@ import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
+import com.example.sunlightdesign.utils.ErrorListException
 import com.example.sunlightdesign.utils.startNewActivity
 import timber.log.Timber
 
@@ -56,6 +57,7 @@ class AuthViewModel constructor(
                 }
             }
             onNetworkError {
+                progress.value = false
                 it.message?.let { message ->
                     progress.value = false
                     handleError(errorMessage = message)
@@ -63,7 +65,13 @@ class AuthViewModel constructor(
             }
             onError {
                 progress.value = false
-                handleError(throwable = it)
+                when (it) {
+                    is ErrorListException -> {
+                        val firstMessage = it.errorMap?.values?.firstOrNull()?.firstOrNull()
+                        handleError(errorMessage = firstMessage.toString())
+                    }
+                    else -> handleError(throwable = it)
+                }
             }
         }
     }

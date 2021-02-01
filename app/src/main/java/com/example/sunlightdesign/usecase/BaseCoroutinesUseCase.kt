@@ -56,6 +56,7 @@ abstract class BaseCoroutinesUseCase<T> {
 
                         if (errorResponse is ErrorResponse) {
                             response(SessionEndException())
+                            return@launch
                         }
 
                         if (errorResponse is ErrorListResponse) {
