@@ -75,13 +75,13 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
             hidePayments()
             when(checkedId) {
                 paymentByTillRbtn.id -> {
-                    viewModel.createOrderPartnerBuilder.order_payment_type = PAYMENT_BY_TILL
+                    viewModel.createOrderPartnerBuilder.orderPaymentType = PAYMENT_BY_TILL
                 }
                 paymentByPayboxRbtn.id -> {
-                    viewModel.createOrderPartnerBuilder.order_payment_type = PAYMENT_BY_PAYBOX
+                    viewModel.createOrderPartnerBuilder.orderPaymentType = PAYMENT_BY_PAYBOX
                 }
                 paymentByBvRbtn.id -> {
-                    viewModel.createOrderPartnerBuilder.order_payment_type = PAYMENT_BY_BV
+                    viewModel.createOrderPartnerBuilder.orderPaymentType = PAYMENT_BY_BV
                     showPaymentByBv()
                 }
             }

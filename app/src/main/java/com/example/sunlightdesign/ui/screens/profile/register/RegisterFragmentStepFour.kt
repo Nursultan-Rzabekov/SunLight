@@ -15,10 +15,8 @@ import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPop
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.OfficesRecyclerAdapter
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.utils.showMessage
-import kotlinx.android.synthetic.main.choose_office_bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_four.*
 import kotlinx.android.synthetic.main.fragment_register_partner_step_four.officeDropDownTextView
-import timber.log.Timber
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -125,13 +123,13 @@ class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewMod
     }
 
     override fun onOfficeSelected(id: Int) {
-        viewModel.createOrderPartnerBuilder.office_id = id
+        viewModel.createOrderPartnerBuilder.officeId = id
 //            viewModel.officeList.value?.offices?.get(id)?.id ?: -1
 //            officesRecyclerAdapter.getItems().firstOrNull { id == it?.id }?.id ?: -1
     }
 
     private fun checkFields() : Boolean {
-        val message = when (viewModel.createOrderPartnerBuilder.office_id) {
+        val message = when (viewModel.createOrderPartnerBuilder.officeId) {
             -1 -> "Выберите офис"
             else -> null
         }

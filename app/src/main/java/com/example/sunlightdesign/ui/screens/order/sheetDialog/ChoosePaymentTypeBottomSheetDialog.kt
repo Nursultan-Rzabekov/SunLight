@@ -20,10 +20,16 @@ const val PAYMENT_BY_TILL = 1
 const val PAYMENT_BY_PAYBOX = 3
 
 class ChoosePaymentTypeBottomSheetDialog(
-    private val chooseTypeInteraction: ChooseTypeInteraction
+    private val chooseTypeInteraction: ChooseTypeInteraction,
+    private val isHideTill: Boolean = false
 ) : BottomSheetDialogFragment(), View.OnClickListener {
 
     private var type : Int = 0
+
+    companion object{
+        const val TAG = "ModalBottomSheet"
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,6 @@ class ChoosePaymentTypeBottomSheetDialog(
     ): View? {
         return inflater.inflate(R.layout.choose_payment_type_bottom_sheet_dialog, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,17 +52,9 @@ class ChoosePaymentTypeBottomSheetDialog(
         nextBtn.setOnClickListener(this)
         cancelBtn.setOnClickListener(this)
 
+        cashbox_type_btn.visibility = if (isHideTill) View.GONE else View.VISIBLE
     }
 
-    interface ChooseTypeInteraction{
-        fun onTypeSelected(type: Int)
-    }
-
-    companion object{
-        const val TAG = "ModalBottomSheet"
-    }
-
-    var k = false
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.cashbox_type_btn -> {
@@ -139,5 +136,9 @@ class ChoosePaymentTypeBottomSheetDialog(
         val layoutParams = bottomSheet.layoutParams
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         bottomSheet.layoutParams = layoutParams
+    }
+
+    interface ChooseTypeInteraction{
+        fun onTypeSelected(type: Int)
     }
 }

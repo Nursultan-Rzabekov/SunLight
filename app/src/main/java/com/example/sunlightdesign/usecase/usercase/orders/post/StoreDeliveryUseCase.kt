@@ -21,6 +21,7 @@ class StoreDeliveryUseCase(
         }
 
     data class DeliverRequest(
+
         var snl: String,
 
         @SerializedName("country_id")
@@ -33,6 +34,7 @@ class StoreDeliveryUseCase(
         var cityId: Int,
 
         var street: String,
+
         var sum: String
     )
 }

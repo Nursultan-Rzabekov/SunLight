@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
@@ -17,12 +18,12 @@ import com.example.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecycl
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.*
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
+import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.utils.showMessage
 import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.market_products_list.*
 import kotlinx.android.synthetic.main.market_products_list.btn_all_right
-import kotlinx.android.synthetic.main.repeat_orders_bottom_sheet.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 
 class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
@@ -62,9 +63,9 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
         viewModel.getProductList()
         viewModel.getLocations()
+        viewModel.getUserInfo()
         chooseDeliveryTypeBottomSheet = ChooseDeliveryTypeBottomSheet(this)
         addressFieldsBottomSheet = AddressFieldsBottomSheet(this)
-//        showChooseDeliveryTypeDialog()
     }
 
     private fun setListeners() {
@@ -72,14 +73,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             when(productsAdapter.getCheckedProducts().size){
                 0 -> showToast(getString(R.string.choose_products))
                 else -> {
-                    productsBottomSheetDialog = ProductsBottomSheetDialog(
-                        this@MarketFragment,
-                        products = productsAdapter.getCheckedProducts()
-                    )
-                    productsBottomSheetDialog.show(
-                        parentFragmentManager,
-                        ProductsBottomSheetDialog.TAG
-                    )
+                    showProductsBottomSheetDialog()
                 }
             }
         }
@@ -102,6 +96,18 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         }
         product_market_quantity_tv.text = getString(R.string.product_market,productSize)
         pay_market_total_tv.text = getString(R.string.market_pay, count)
+    }
+
+    private fun getTotalSum(products: List<Product>): Double {
+        var count = 0.0
+        products.forEach {
+            it.product_price?.let { price ->
+                it.product_quantity?.let {quantity ->
+                    count += (price * quantity)
+                }
+            }
+        }
+        return count
     }
 
     private fun setObservers() = with(viewModel) {
@@ -149,6 +155,11 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 ChooseOfficeBottomSheetDialog.TAG
             )
         })
+
+        deliverResponse.observe(viewLifecycleOwner, Observer {
+            createOrderBuilder.deliveryId = it.delivery?.id ?: -1
+            showPaymentTypeDialog(isHideTill = true)
+        })
     }
 
     private fun initRecycler(items: List<Product>) {
@@ -157,9 +168,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             val manager = GridLayoutManager(requireContext(), spanCount)
 
             specialProductCase(items, manager)
-
             layoutManager = manager
-
             adapter = productsAdapter
         }
     }
@@ -175,6 +184,17 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 }
             }
         }
+    }
+
+    private fun showProductsBottomSheetDialog() {
+        productsBottomSheetDialog = ProductsBottomSheetDialog(
+            this@MarketFragment,
+            products = productsAdapter.getCheckedProducts()
+        )
+        productsBottomSheetDialog.show(
+            parentFragmentManager,
+            ProductsBottomSheetDialog.TAG
+        )
     }
 
     private fun showChooseDeliveryTypeDialog() {
@@ -197,6 +217,15 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     private fun hideAddressFieldsDialog() {
         addressFieldsBottomSheet.dismiss()
+    }
+
+    private fun showPaymentTypeDialog(isHideTill: Boolean = false) {
+        choosePaymentTypeBottomSheetDialog =
+            ChoosePaymentTypeBottomSheetDialog(this@MarketFragment, isHideTill)
+        choosePaymentTypeBottomSheetDialog.show(
+            parentFragmentManager,
+            ChoosePaymentTypeBottomSheetDialog.TAG
+        )
     }
 
     override fun onProductsSelected(product: Product) {
@@ -227,26 +256,22 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     override fun onProductsListSelected(product: List<Product>,count:Double) {
         productsBottomSheetDialog.dismiss()
 
-        viewModel.createOrderBuilder.user_id = viewModel.getUserId()?.toInt() ?: -1
+        viewModel.createOrderBuilder.userId = viewModel.getUserId()?.toInt() ?: -1
         viewModel.createOrderBuilder.products = productsAdapter.getCheckedProducts()
-        viewModel.createOrderBuilder.payment_sum = count
+        viewModel.createOrderBuilder.paymentSum = count
 
-        viewModel.getOfficesList()
+        showChooseDeliveryTypeDialog()
     }
 
     override fun onNextBtnPressed(officeId: Int) {
         chooseOfficeBottomSheetDialog.dismiss()
-        viewModel.createOrderBuilder.office_id = officeId
-        choosePaymentTypeBottomSheetDialog = ChoosePaymentTypeBottomSheetDialog(this@MarketFragment)
-        choosePaymentTypeBottomSheetDialog.show(
-            parentFragmentManager,
-            ChoosePaymentTypeBottomSheetDialog.TAG
-        )
+        viewModel.createOrderBuilder.officeId = officeId
+        showPaymentTypeDialog()
     }
 
     override fun onTypeSelected(type: Int) {
         choosePaymentTypeBottomSheetDialog.dismiss()
-        viewModel.createOrderBuilder.order_payment_type = type
+        viewModel.createOrderBuilder.orderPaymentType = type
 
         val mainWallet = viewModel.products.value?.wallet?.main_wallet ?: .0
 
@@ -265,13 +290,28 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     override fun onDeliveryTypeSelected(type: Int) {
         if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_COMPANY) {
             showAddressFieldsDialog()
+            viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_BY_COMPANY
+        } else if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_USER) {
+            viewModel.getOfficesList()
+            viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_BY_USER
         }
         hideDeliverTypeDialog()
     }
 
     override fun onAddressPassed(country: Int, region: Int, city: Int, address: String) {
-        showToast("address")
         hideAddressFieldsDialog()
+        val userInfo = viewModel.userInfo.value
+        val snl = "${userInfo?.user?.last_name}" +
+                " ${userInfo?.user?.first_name} " +
+                "${userInfo?.user?.middle_name}"
+        viewModel.storeDelivery(StoreDeliveryUseCase.DeliverRequest(
+            snl = snl,
+            countryId = country,
+            regionId = region,
+            cityId = city,
+            street = address,
+            sum = getTotalSum(productsAdapter.getCheckedProducts()).toString()
+        ))
     }
 }
 

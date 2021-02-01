@@ -236,7 +236,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     if(event is ProfileViewModel.NavigationEvent.NavigateNext &&
                         event.data is Login?) {
                         if (event.data?.user?.id == null) return@let
-                        createOrderPartnerBuilder.user_id = event.data?.user.id
+                        createOrderPartnerBuilder.userId = event.data?.user.id
                         val bundle = bundleOf(
                             USER_ID to event.data?.user.id
                         )

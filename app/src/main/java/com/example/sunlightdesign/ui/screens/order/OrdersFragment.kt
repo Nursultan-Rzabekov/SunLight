@@ -125,7 +125,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         myOrdersBottomSheetDialog.dismiss()
 
         order.user.id?.let {
-            viewModel.createOrderBuilder.user_id = it
+            viewModel.createOrderBuilder.userId = it
         }
 
         repeatsOrdersBottomSheetDialog = RepeatsOrdersBottomSheetDialog(order = order,repeatsOrderInteraction = this)
@@ -147,7 +147,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 viewModel.createOrderBuilder.products = products
             }
         }
-        viewModel.createOrderBuilder.payment_sum = order.total_price ?: -0.0
+        viewModel.createOrderBuilder.paymentSum = order.total_price ?: -0.0
 
         viewModel.getOfficesList()
     }
@@ -155,7 +155,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     override fun onNextBtnPressed(officeId: Int) {
         chooseOfficeBottomSheetDialog.dismiss()
 
-        viewModel.createOrderBuilder.office_id = officeId
+        viewModel.createOrderBuilder.officeId = officeId
 
         choosePaymentTypeBottomSheetDialog = ChoosePaymentTypeBottomSheetDialog(this@OrdersFragment)
         choosePaymentTypeBottomSheetDialog.show(
@@ -167,7 +167,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     override fun onTypeSelected(type: Int) {
         choosePaymentTypeBottomSheetDialog.dismiss()
 
-        viewModel.createOrderBuilder.order_payment_type = type
+        viewModel.createOrderBuilder.orderPaymentType = type
 
         viewModel.storeOrder(createOrderPartner = viewModel.createOrderBuilder.build())
     }

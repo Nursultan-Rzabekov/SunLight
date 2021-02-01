@@ -8,12 +8,14 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Offi
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
+import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
 import com.example.sunlightdesign.utils.Constants
 import timber.log.Timber
 
@@ -30,7 +32,8 @@ class OrderViewModel constructor(
     private val storeOrderUseCase: StoreOrderUseCase,
     private val getOfficesListUseCase: GetOfficesListUseCase,
     private val storeDeliveryUseCase: StoreDeliveryUseCase,
-    private val accountCountriesUseCase: AccountCountriesUseCase
+    private val accountCountriesUseCase: AccountCountriesUseCase,
+    private val profileInfoUseCase: ProfileInfoUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -54,6 +57,9 @@ class OrderViewModel constructor(
 
     private var _locationsList = MutableLiveData<CountriesList>()
     val locationList: LiveData<CountriesList> get() = _locationsList
+
+    private var _userInfo = MutableLiveData<UserInfo>()
+    val userInfo: LiveData<UserInfo> get() = _userInfo
 
     fun getUserId() = sharedUseCase.getSharedPreference().userId
 
@@ -192,6 +198,24 @@ class OrderViewModel constructor(
             onComplete {
                 progress.postValue(false)
                 _deliverResponse.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun getUserInfo() {
+        progress.postValue(true)
+        profileInfoUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _userInfo.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)

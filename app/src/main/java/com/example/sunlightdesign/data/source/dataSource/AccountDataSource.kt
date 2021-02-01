@@ -1,6 +1,5 @@
 package com.example.sunlightdesign.data.source.dataSource
 
-import android.net.Uri
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import okhttp3.MultipartBody
 
@@ -34,21 +33,32 @@ data class CreateOrderPartner(
     val office_id: Int,
     val order_payment_type: Int,
     val payment_sum: Double,
-    val products: List<Product>
+    val products: List<Product>,
+    val delivery_id: Int,
+    val delivery_type: Int
 ) {
+    companion object {
+        const val DELIVERY_TYPE_BY_COMPANY = 1
+        const val DELIVERY_TYPE_BY_USER = 2
+    }
+
     class Builder {
-        var user_id: Int = -1
-        var office_id: Int = -1
-        var order_payment_type: Int = -1
+        var userId: Int = -1
+        var officeId: Int = -1
+        var orderPaymentType: Int = -1
         var products: List<Product> = listOf()
-        var payment_sum: Double = -0.0
+        var paymentSum: Double = -0.0
+        var deliveryId: Int = -1
+        var deliveryType: Int = -1
 
         fun build(): CreateOrderPartner = CreateOrderPartner(
-            user_id = user_id,
-            office_id = office_id,
-            order_payment_type = order_payment_type,
+            user_id = userId,
+            office_id = officeId,
+            order_payment_type = orderPaymentType,
             products = products,
-            payment_sum = payment_sum
+            payment_sum = paymentSum,
+            delivery_id = deliveryId,
+            delivery_type = deliveryType
         )
     }
 }

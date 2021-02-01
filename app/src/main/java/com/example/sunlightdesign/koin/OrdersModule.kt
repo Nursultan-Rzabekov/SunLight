@@ -76,7 +76,8 @@ val ordersModule = module {
             storeOrderUseCase = get(),
             getOfficesListUseCase = get(),
             storeDeliveryUseCase = get(),
-            accountCountriesUseCase = get()
+            accountCountriesUseCase = get(),
+            profileInfoUseCase = get()
         )
     }
 }
