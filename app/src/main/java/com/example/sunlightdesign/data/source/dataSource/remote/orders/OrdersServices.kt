@@ -32,7 +32,7 @@ interface OrdersServices {
         @Body createOrderPartner: CreateOrderPartner
     ): Deferred<Orders>
 
-    @POST("delivery")
+    @POST("orders/delivery")
     fun storeDelivery(
         @Body deliver: StoreDeliveryUseCase.DeliverRequest
     ): Deferred<DeliverResponse>
