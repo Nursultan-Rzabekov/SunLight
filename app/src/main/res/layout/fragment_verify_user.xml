@@ -82,7 +82,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
-                android:text="@string/first_name"
+                android:text="@string/first_name_two_dots"
                 android:layout_marginTop="@dimen/dimen_32dp"
                 android:textSize="@dimen/dimen_16sp" />
 
@@ -105,7 +105,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
-                android:text="@string/last_name"
+                android:text="@string/last_name_two_dots"
                 android:layout_marginTop="@dimen/dimen_32dp"
                 android:textSize="@dimen/dimen_16sp" />
 
@@ -128,7 +128,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
-                android:text="@string/middle_name"
+                android:text="@string/middle_name_two_dots"
                 android:layout_marginTop="@dimen/dimen_32dp"
                 android:textSize="@dimen/dimen_16sp" />
 
@@ -178,7 +178,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_32dp"
-                android:text="@string/social_status"
+                android:text="@string/social_status_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -206,7 +206,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_32dp"
-                android:text="@string/bank"
+                android:text="@string/bank_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
