@@ -307,6 +307,7 @@
     <string name="social_status_two_dots">Социальный статус:</string>
     <string name="choose_from_list">Выберите из списка</string>
     <string name="bank_two_dots">Банк:</string>
+    <string name="bank">Банк</string>
     <string name="card_iban">Расчетный счет или IBAN карты:</string>
     <string name="insert_data">Введите данные</string>
     <string name="load_documents_three_parts">Загрузите следующие документы:\n\n1. Передняя сторона УЛ\n2. Задняя сторона УЛ\n3. Договор двух сторон</string>
