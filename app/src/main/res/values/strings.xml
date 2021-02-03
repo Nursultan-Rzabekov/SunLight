@@ -32,6 +32,7 @@
     <string name="fullName_partner">Ф.И.О партнера</string>
     <string name="enter_iin">Введите ИИН:</string>
     <string name="iin">ИИН</string>
+    <string name="full_name">ФИО</string>
     <string name="phone_number">Номер телефона</string>
     <string name="phone_number_two_dots">Номер телефонa:</string>
     <string name="choose_country_two_dots">Выберите страну:</string>
@@ -295,7 +296,7 @@
     <string name="wihtout_cash_delivery">*безналичная оплата при доставке</string>
     <string name="delivery_address">Адрес доставки</string>
     <string name="delivery_cost_bv_kzt">Стоимость доставки 400 BV = 1000 KZT</string>
-    <string name="fill_street_address">Укажите улицу/адрес</string>
+    <string name="fill_street_address">Укажите улицу/адрес:</string>
     <string name="verification_user">Верификация пользователя</string>
     <string name="not_verified">Неверифицированы</string>
     <string name="verified">Верифицированы</string>

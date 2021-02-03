@@ -42,7 +42,32 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_32dp"
-                android:text="@string/choose_country"
+                android:text="@string/partner"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/partnerInputLayout"
+                style="@style/BasicTextInputLayout.Reverse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/partnerEditText"
+                    style="@style/BasicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/full_name"
+                    android:paddingTop="@dimen/dimen_12dp"
+                    android:paddingBottom="@dimen/dimen_12dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/choose_country_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +95,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                android:text="@string/choose_region"
+                android:text="@string/choose_region_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +123,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
                 android:layout_marginTop="@dimen/dimen_16dp"
-                android:text="@string/choose_city"
+                android:text="@string/choose_city_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
             <com.google.android.material.textfield.TextInputLayout

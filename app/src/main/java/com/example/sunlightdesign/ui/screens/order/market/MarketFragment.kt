@@ -298,14 +298,20 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         hideDeliverTypeDialog()
     }
 
-    override fun onAddressPassed(country: Int, region: Int, city: Int, address: String) {
+    override fun onAddressPassed(
+        partnerFullName: String,
+        country: Int,
+        region: Int,
+        city: Int,
+        address: String
+    ) {
         hideAddressFieldsDialog()
         val userInfo = viewModel.userInfo.value
         val snl = "${userInfo?.user?.last_name}" +
                 " ${userInfo?.user?.first_name} " +
                 "${userInfo?.user?.middle_name}"
         viewModel.storeDelivery(StoreDeliveryUseCase.DeliverRequest(
-            snl = snl,
+            snl = partnerFullName,
             countryId = country,
             regionId = region,
             cityId = city,

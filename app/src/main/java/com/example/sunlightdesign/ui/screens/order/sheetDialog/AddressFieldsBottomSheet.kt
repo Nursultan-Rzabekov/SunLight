@@ -105,7 +105,12 @@ class AddressFieldsBottomSheet(
                 requireContext(), message = getString(R.string.fill_all_the_field))
 
             interaction.onAddressPassed(
-                countryId, regionId, cityId, streetAddressEditText.text.toString().trim())
+                partnerEditText.text.toString().trim(),
+                countryId,
+                regionId,
+                cityId,
+                streetAddressEditText.text.toString().trim()
+            )
         }
 
         cancelBtn.setOnClickListener {
@@ -218,10 +223,17 @@ class AddressFieldsBottomSheet(
         return !countryDropDownTextView.text.isNullOrBlank() &&
                 !cityDropDownTextView.text.isNullOrBlank() &&
                 !regionDropDownTextView.text.isNullOrBlank() &&
-                !streetAddressEditText.text.isNullOrBlank()
+                !streetAddressEditText.text.isNullOrBlank() &&
+                !partnerEditText.text.isNullOrBlank()
     }
 
     interface Interaction {
-        fun onAddressPassed(country: Int, region: Int, city: Int, address: String)
+        fun onAddressPassed(
+            partnerFullName: String,
+            country: Int,
+            region: Int,
+            city: Int,
+            address: String
+        )
     }
 }
