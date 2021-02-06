@@ -56,7 +56,7 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
                         it is ProfileViewModel.NavigationEvent.NavigateNext &&
                         it.data is AddPartnerResponse?) {
                     if (it.data?.error.isNullOrBlank()) {
-                        showSuccessDialog(it.data?.message.toString())
+                        showSuccessDialog(it.data?.message?.first()?.first().toString())
                     } else {
                         showFailDialog(it.data?.message.toString())
                     }

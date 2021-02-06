@@ -34,21 +34,21 @@ data class CreateOrderPartner(
     val order_payment_type: Int,
     val payment_sum: Double,
     val products: List<Product>,
-    val delivery_id: Int,
+    val delivery_id: Int?,
     val delivery_type: Int
 ) {
     companion object {
         const val DELIVERY_TYPE_BY_COMPANY = 1
-        const val DELIVERY_TYPE_BY_USER = 2
+        const val DELIVERY_TYPE_PICKUP = 2
     }
 
     class Builder {
         var userId: Int = -1
-        var officeId: Int = -1
+        var officeId: Int = 0
         var orderPaymentType: Int = -1
         var products: List<Product> = listOf()
         var paymentSum: Double = -0.0
-        var deliveryId: Int = -1
+        var deliveryId: Int? = null
         var deliveryType: Int = -1
 
         fun build(): CreateOrderPartner = CreateOrderPartner(

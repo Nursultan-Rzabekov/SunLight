@@ -1,7 +1,7 @@
 package com.example.sunlightdesign.data.source.dataSource.remote.auth.entity
 
 data class AddPartnerResponse(
-    val message: String?,
+    val message: List<List<String>>?,
     val order: Order?,
     val error: String?
 )

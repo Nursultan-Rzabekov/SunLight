@@ -105,7 +105,8 @@ val accountModule = module {
             profileInfoUseCase = get(),
             profileChangePasswordUseCase = get(),
             profileChangeAvatarUseCase = get(),
-            profileGetInvitesUseCase = get()
+            profileGetInvitesUseCase = get(),
+            storeDeliveryUseCase = get()
         )
     }
 }

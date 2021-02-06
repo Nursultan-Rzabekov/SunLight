@@ -157,7 +157,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         })
 
         deliverResponse.observe(viewLifecycleOwner, Observer {
-            createOrderBuilder.deliveryId = it.delivery?.id ?: -1
+            createOrderBuilder.deliveryId = it.delivery?.id
             showPaymentTypeDialog(isHideTill = true)
         })
     }
@@ -293,7 +293,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_BY_COMPANY
         } else if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_USER) {
             viewModel.getOfficesList()
-            viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_BY_USER
+            viewModel.createOrderBuilder.deliveryId = null
+            viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_PICKUP
         }
         hideDeliverTypeDialog()
     }

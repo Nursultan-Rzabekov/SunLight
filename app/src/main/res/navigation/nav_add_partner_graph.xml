@@ -31,6 +31,7 @@
                 <action
                     android:id="@+id/action_stepTwoFragment_to_stepThreeFragment"
                     app:destination="@id/register_fragment_step_three"
+                    app:popUpTo="@id/register_fragment_step_two"
                     app:popEnterAnim="@anim/slide_in_left"
                     app:popExitAnim="@anim/slide_out_right"
                     app:enterAnim="@anim/slide_in_right"
@@ -48,19 +49,25 @@
                 <action
                     android:id="@+id/action_stepThreeFragment_to_stepFourFragment"
                     app:destination="@id/register_fragment_step_four"
+                    app:popUpTo="@id/register_fragment_step_three"
                     app:popEnterAnim="@anim/slide_in_left"
                     app:popExitAnim="@anim/slide_out_right"
                     app:enterAnim="@anim/slide_in_right"
                     app:exitAnim="@anim/slide_out_left"/>
 
-
                 <action
                     android:id="@+id/stepThreeFragment_to_market_details_fragment"
                     app:destination="@id/market_details_fragment"
+                    app:popUpTo="@id/register_fragment_step_three"
                     app:enterAnim="@anim/fade_in"
                     app:exitAnim="@anim/fade_out"
                     app:popEnterAnim="@anim/fade_in"
                     app:popExitAnim="@anim/fade_out" />
+
+                <action
+                    android:id="@+id/action_register_fragment_step_three_to_register_fragment_step_five"
+                    app:popUpTo="@id/register_fragment_step_three"
+                    app:destination="@id/register_fragment_step_five" />
 
 
         </fragment>
@@ -82,6 +89,7 @@
                 <action
                     android:id="@+id/action_stepFourFragment_to_stepFiveFragment"
                     app:destination="@id/register_fragment_step_five"
+                    app:popUpTo="@id/register_fragment_step_four"
                     app:popEnterAnim="@anim/slide_in_left"
                     app:popExitAnim="@anim/slide_out_right"
                     app:enterAnim="@anim/slide_in_right"

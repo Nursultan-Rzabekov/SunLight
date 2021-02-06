@@ -9,23 +9,31 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.order.market.ProductItem
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.AddressFieldsBottomSheet
+import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChooseDeliveryTypeBottomSheet
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.ProductsRecyclerAdapter
+import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.fragment_register_partner_step_three.*
 
 
 class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
-    ProductsRecyclerAdapter.ProductsItemSelected {
+    ProductsRecyclerAdapter.ProductsItemSelected,
+    ChooseDeliveryTypeBottomSheet.Interaction,
+    AddressFieldsBottomSheet.Interaction {
 
     companion object{
         const val PACKAGE_NAME = "package_name"
     }
 
     private lateinit var productsAdapter: ProductsRecyclerAdapter
+    private lateinit var chooseDeliveryTypeBottomSheet: ChooseDeliveryTypeBottomSheet
+    private lateinit var addressFieldsBottomSheet: AddressFieldsBottomSheet
     private var spanCount = 2
 
     override fun onCreateView(
@@ -45,13 +53,49 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         }
         setListeners()
         setObservers()
+
+        chooseDeliveryTypeBottomSheet = ChooseDeliveryTypeBottomSheet(this)
+        addressFieldsBottomSheet = AddressFieldsBottomSheet(this)
+    }
+
+    override fun onDeliveryTypeSelected(type: Int) {
+        if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_COMPANY) {
+            showAddressFieldsDialog()
+            viewModel.createOrderPartnerBuilder.deliveryType =
+                CreateOrderPartner.DELIVERY_TYPE_BY_COMPANY
+        } else if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_USER) {
+            viewModel.createOrderPartnerBuilder.deliveryType =
+                CreateOrderPartner.DELIVERY_TYPE_PICKUP
+            viewModel.createOrderPartnerBuilder.deliveryId = null
+            findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
+        }
+        hideDeliverTypeDialog()
+    }
+
+    override fun onAddressPassed(
+        partnerFullName: String,
+        country: Int,
+        region: Int,
+        city: Int,
+        address: String
+    ) {
+        hideAddressFieldsDialog()
+        viewModel.storeDelivery(
+            StoreDeliveryUseCase.DeliverRequest(
+            snl = partnerFullName,
+            countryId = country,
+            regionId = region,
+            cityId = city,
+            street = address,
+            sum = getTotalSum(productsAdapter.getCheckedProducts()).toString()
+        ))
     }
 
     private fun setListeners() {
         next_step_three_btn.setOnClickListener {
             if (!checkFields()) return@setOnClickListener
             viewModel.createOrderPartnerBuilder.products = productsAdapter.getCheckedProducts()
-            findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
+            showChooseDeliveryTypeDialog()
         }
 
         back_step_three_btn.setOnClickListener {
@@ -59,9 +103,18 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         }
     }
 
-    private fun setObservers() {
-        viewModel.productsList.observe(viewLifecycleOwner, Observer {
+    private fun setObservers() = with(viewModel) {
+        productsList.observe(viewLifecycleOwner, Observer {
             initRecycler(it ?: listOf())
+        })
+        deliverResponse.observe(viewLifecycleOwner, Observer {
+            createOrderPartnerBuilder.deliveryId = it.delivery?.id
+            findNavController().navigate(
+                R.id.action_register_fragment_step_three_to_register_fragment_step_five
+            )
+        })
+        countriesList.observe(viewLifecycleOwner, Observer {
+            addressFieldsBottomSheet.setLocations(it)
         })
     }
 
@@ -102,6 +155,40 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
             return false
         }
         return true
+    }
+
+    private fun getTotalSum(products: List<Product>): Double {
+        var count = 0.0
+        products.forEach {
+            it.product_price?.let { price ->
+                it.product_quantity?.let {quantity ->
+                    count += (price * quantity)
+                }
+            }
+        }
+        return count
+    }
+
+    private fun showChooseDeliveryTypeDialog() {
+        chooseDeliveryTypeBottomSheet.show(
+            parentFragmentManager,
+            ChooseDeliveryTypeBottomSheet.TAG
+        )
+    }
+
+    private fun hideDeliverTypeDialog() {
+        chooseDeliveryTypeBottomSheet.dismiss()
+    }
+
+    private fun showAddressFieldsDialog() {
+        addressFieldsBottomSheet.show(
+            parentFragmentManager,
+            AddressFieldsBottomSheet.TAG
+        )
+    }
+
+    private fun hideAddressFieldsDialog() {
+        addressFieldsBottomSheet.dismiss()
     }
 
 }
