@@ -1,15 +1,15 @@
 package com.example.sunlightdesign.koin
 
+import android.content.SharedPreferences
 import android.text.format.DateUtils
 import androidx.room.Room
 import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
+import androidx.security.crypto.MasterKey
 import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.data.source.dataSource.local.ToDoDatabase
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.utils.HeaderInterceptor
 import com.example.sunlightdesign.utils.SecureSharedPreferences
-import com.example.sunlightdesign.utils.TokenAuthenticator
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
@@ -26,11 +26,13 @@ val module = module {
 
     single {
         val preferences = "shared"
-        val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        val masterKeyAlias = MasterKey.Builder(androidContext())
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
         EncryptedSharedPreferences.create(
+            androidContext(),
             preferences,
             masterKeyAlias,
-            androidContext(),
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
