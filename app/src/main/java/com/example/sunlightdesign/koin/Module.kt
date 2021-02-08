@@ -1,6 +1,5 @@
 package com.example.sunlightdesign.koin
 
-import android.content.SharedPreferences
 import android.text.format.DateUtils
 import androidx.room.Room
 import androidx.security.crypto.EncryptedSharedPreferences
