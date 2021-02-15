@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -15,10 +16,10 @@ import com.bumptech.glide.Glide
 import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
+import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyUser
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.adapters.InvitedAdapter
 import com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment.Companion.USER_INFO
-import com.example.sunlightdesign.ui.screens.profile.invited.InvitedActivity
 import com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne.Companion.USER_ID
 import com.example.sunlightdesign.utils.Constants.Companion.ACTIVITY_ACTIVE
 import com.example.sunlightdesign.utils.DateUtils
@@ -31,7 +32,10 @@ import kotlinx.android.synthetic.main.account_mini_profile.*
 import kotlinx.android.synthetic.main.account_referral_link.*
 import kotlinx.android.synthetic.main.account_registration_referral.*
 import kotlinx.android.synthetic.main.account_wallet.*
-import kotlinx.android.synthetic.main.fragment_account.*
+import kotlinx.android.synthetic.main.card_verification_box.commentVerifyTextView
+import kotlinx.android.synthetic.main.card_verification_box.passVerificationBtn
+import kotlinx.android.synthetic.main.card_verification_box.userVerificationStatusTextView
+import kotlinx.android.synthetic.main.fragment_account.progress_bar
 
 class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
@@ -72,6 +76,7 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             profileInfo.observe(viewLifecycleOwner, Observer {
                 it?.let {
                     setUserInfo(it)
+                    setVerifyInfo(it)
                 }
             })
         }
@@ -102,6 +107,10 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
 
         allBtn.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_invitedActivity)
+        }
+
+        passVerificationBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_userVerificationActivity2)
         }
     }
 
@@ -139,6 +148,35 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         usersInStructureTextView.text = info.children?.size.toString()
 
         invitedAdapter.setItems(info.children ?: listOf())
+    }
+
+    private fun setVerifyInfo(userInfo: UserInfo) {
+        userVerificationStatusTextView.text =
+            if (userInfo.user?.verifyuser == null) {
+                getString(R.string.not_verified)
+            } else {
+                userInfo.user.verifyuser.status_name
+            }
+        commentVerifyTextView.text = userInfo.user?.verifyuser?.comment
+        passVerificationBtn.isEnabled =
+            when (userInfo.user?.verifyuser?.status) {
+                VerifyUser.STATUS_WAITING_VERIFICATION,
+                VerifyUser.STATUS_VERIFIED -> false
+                else -> true
+            }
+        commentVerifyTextView.visibility =
+            when (userInfo.user?.verifyuser?.status) {
+                VerifyUser.STATUS_REJECTED -> View.VISIBLE
+                else -> View.GONE
+            }
+        userVerificationStatusTextView.setTextColor(
+            ContextCompat.getColor(requireContext(),
+            when (userInfo.user?.verifyuser?.status) {
+                VerifyUser.STATUS_VERIFIED -> R.color.green
+                VerifyUser.STATUS_WAITING_VERIFICATION -> R.color.yellow
+                else -> R.color.red
+            }
+        ))
     }
 
     private fun saveReferralLinkToClipboard(link: String) {

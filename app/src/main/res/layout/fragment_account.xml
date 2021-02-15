@@ -36,6 +36,8 @@
 
             <include layout="@layout/account_invited_all"/>
 
+            <include layout="@layout/card_verification_box"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

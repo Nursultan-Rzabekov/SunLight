@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_profileFragment_to_invitedActivity"
             app:destination="@id/invitedActivity" />
+        <action
+            android:id="@+id/action_profileFragment_to_userVerificationActivity2"
+            app:destination="@id/userVerificationActivity2" />
 
     </fragment>
 
@@ -55,5 +58,9 @@
         android:name="com.example.sunlightdesign.ui.screens.profile.invited.InvitedActivity"
         android:label="activity_invited"
         tools:layout="@layout/activity_invited" />
+    <activity
+        android:id="@+id/userVerificationActivity2"
+        android:name="com.example.sunlightdesign.ui.screens.profile.verification.UserVerificationActivity"
+        android:label="UserVerificationActivity" />
 
 </navigation>
