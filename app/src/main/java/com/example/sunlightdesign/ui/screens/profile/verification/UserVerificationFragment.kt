@@ -276,9 +276,6 @@ class UserVerificationFragment:
             !isIinValid(iinEditText.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
 
-            socialStatusDropDownText.text.toString().isBlank() ->
-                "${getString(R.string.fill_the_field)} ${getString(R.string.social_status)}"
-
             bankDropDownText.text.toString().isBlank() ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.bank)}"
 
@@ -325,23 +322,20 @@ class UserVerificationFragment:
 
         val files = createMultipartFiles(documentsAdapter.getLocalFiles())
 
-        viewModel.verificationInfo.value?.verify?.user_id?.let { user_id ->
-            viewModel.verifyUser(
-                VerificationRequest(
-                    user_id = user_id,
-                    name = name,
-                    surname = lastName,
-                    middle_name = middleName,
-                    iin = iin,
-                    iban = iban,
-                    ip = ip,
-                    type = type,
-                    bank = bank,
-                    social_status = social,
-                    images = files
-                )
+        viewModel.verifyUser(
+            VerificationRequest(
+                name = name,
+                surname = lastName,
+                middle_name = middleName,
+                iin = iin,
+                iban = iban,
+                ip = ip,
+                type = type,
+                bank = bank,
+                social_status = social,
+                images = files
             )
-        }
+        )
     }
 
     private fun createMultipartFiles(files: List<Uri>): List<MultipartBody.Part> {

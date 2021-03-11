@@ -32,8 +32,6 @@ class DefaultProfileRepository(
         services.getVerificationInfo().await()
 
     override suspend fun verifyUser(request: VerificationRequest): VerificationResponse {
-        val user_id =
-            RequestBody.create(MediaType.parse("multipart/form-data"), request.user_id.toString())
         val name =
             RequestBody.create(MediaType.parse("multipart/form-data"), request.name)
         val surname =
@@ -57,7 +55,6 @@ class DefaultProfileRepository(
         }
 
         return services.verifyUser(
-            user_id = user_id,
             name = name,
             surname = surname,
             middle_name = middle_name,

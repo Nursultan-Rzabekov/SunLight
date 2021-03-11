@@ -23,7 +23,6 @@ class VerifyUserUseCase(
 }
 
 data class VerificationRequest(
-    val user_id: Int,
     val name: String,
     val surname: String,
     val middle_name: String,

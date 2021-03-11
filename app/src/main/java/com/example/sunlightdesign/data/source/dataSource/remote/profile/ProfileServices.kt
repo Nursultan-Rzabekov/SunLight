@@ -39,9 +39,8 @@ interface ProfileServices {
     ): Deferred<VerificationResponse>
 
     @Multipart
-    @POST("profile/verify-mobile/0")
+    @POST("profile/verify-mobile")
     fun verifyUser(
-        @Part("user_id") user_id: RequestBody,
         @Part("name") name: RequestBody,
         @Part("surname") surname: RequestBody,
         @Part("middle_name") middle_name: RequestBody,
