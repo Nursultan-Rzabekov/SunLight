@@ -349,6 +349,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun setUsersList(list: ArrayList<Users>) {
+        sponsor_name_tv.setText("")
         usersAdapter = CustomPopupAdapter(
             context = requireContext(),
             items = list,
@@ -356,8 +357,9 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 override fun filter(value: Users, subvalue: String?): Boolean {
                     if (subvalue == null || subvalue.isBlank())
                         return true
-                    return value.first_name?.contains(subvalue) ?: false ||
-                            value.last_name?.contains(subvalue) ?: false
+                    val firstName = value.first_name?.toLowerCase(Locale.getDefault()) ?: ""
+                    val lastName = value.last_name?.toLowerCase(Locale.getDefault()) ?: ""
+                    return firstName.contains(subvalue) || lastName.contains(subvalue)
                 }
 
                 override fun toString(value: Users?): String =
