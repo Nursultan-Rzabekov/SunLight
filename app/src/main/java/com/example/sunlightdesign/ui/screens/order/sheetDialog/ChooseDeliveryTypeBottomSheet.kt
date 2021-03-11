@@ -22,7 +22,7 @@ class ChooseDeliveryTypeBottomSheet(
         const val DELIVERY_BY_USER = 1
     }
 
-    private var type = DELIVERY_BY_COMPANY
+    private var type = DELIVERY_BY_USER
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +56,7 @@ class ChooseDeliveryTypeBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        nextBtn.isEnabled = false
         setListeners()
     }
 
@@ -66,11 +67,13 @@ class ChooseDeliveryTypeBottomSheet(
 
         deliverTypeByUsBtn.setOnClickListener {
             type = DELIVERY_BY_COMPANY
+            nextBtn.isEnabled = true
             selectDeliverByCompany()
         }
 
         deliverTypeByUserBtn.setOnClickListener {
             type = DELIVERY_BY_USER
+            nextBtn.isEnabled = true
             selectDeliverByUser()
         }
 

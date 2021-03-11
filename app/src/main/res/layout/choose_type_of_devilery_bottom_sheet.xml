@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/dimen_16dp">
 
     <ImageView
-        android:contentDescription="@string/exit"
-        android:layout_margin="@dimen/dimen_16dp"
         android:id="@+id/arrow_bottom_sheet_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/ic_arrow_sheet"
-        />
+        android:layout_margin="@dimen/dimen_16dp"
+        android:contentDescription="@string/exit"
+        android:src="@drawable/ic_arrow_sheet" />
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/AppCompatTextViewGray"
-        android:textColor="@color/sunBlackColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_18sp"
         android:layout_marginTop="@dimen/dimen_24dp"
         android:text="@string/choose_delivery_type"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/sunBlackColor"
+        android:textSize="@dimen/dimen_18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dimen_32dp">
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:orientation="vertical">
 
+        <!--Todo remove visibility after delivery api is done-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/deliverTypeByUsBtn"
             style="@style/BasicOutlinedButtonGrayStyle"
@@ -41,52 +41,55 @@
             android:paddingTop="@dimen/dimen_16dp"
             android:paddingBottom="@dimen/dimen_16dp"
             android:text="@string/we_will_deliver"
-            app:strokeColor="@color/toggle_button_color_state"
             android:textColor="@color/text_selector_color_state"
+            android:visibility="gone"
+            app:icon="@drawable/ic_truck"
             app:iconTint="@color/toggle_button_color_state"
-            app:icon="@drawable/ic_truck" />
+            app:strokeColor="@color/toggle_button_color_state" />
 
+        <!--Todo remove visibility after delivery api is done-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/wihtout_cash_delivery"/>
+            android:text="@string/wihtout_cash_delivery"
+            android:visibility="gone" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/deliverTypeByUserBtn"
             style="@style/BasicOutlinedButtonGrayStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checkable="true"
             android:layout_marginTop="@dimen/dimen_16dp"
+            android:checkable="true"
             android:paddingTop="@dimen/dimen_16dp"
             android:paddingBottom="@dimen/dimen_16dp"
             android:text="@string/deliver_by_myself"
-            app:strokeColor="@color/toggle_button_color_state"
             android:textColor="@color/text_selector_color_state"
+            app:icon="@drawable/ic_map_pin"
             app:iconTint="@color/toggle_button_color_state"
-            app:icon="@drawable/ic_map_pin" />
+            app:strokeColor="@color/toggle_button_color_state" />
 
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextBtn"
         style="@style/BasicMaterialButton"
-        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_100dp"
         android:enabled="true"
         android:paddingTop="@dimen/dimen_12dp"
         android:paddingBottom="@dimen/dimen_12dp"
-        android:text="@string/next" />
+        android:text="@string/next"
+        android:textStyle="bold" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cancelBtn"
         style="@style/BasicTextMaterialButton"
-        android:textColor="@color/gray_textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/back" />
+        android:text="@string/back"
+        android:textColor="@color/gray_textColor" />
 
 </LinearLayout>

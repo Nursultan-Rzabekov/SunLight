@@ -44,17 +44,21 @@ val module = module {
     }
 
     single {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor.Level.BODY
+        } else {
+            HttpLoggingInterceptor.Level.NONE
+        }
         val client = OkHttpClient.Builder()
             .connectTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
             .writeTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
             .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
-
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level =
-            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        client.addInterceptor(interceptor)
+            .addInterceptor(interceptor)
+            .addInterceptor(HeaderInterceptor())
+//        if (BuildConfig.DEBUG) {
         client.addInterceptor(ChuckInterceptor(androidContext()))
-        client.addInterceptor(HeaderInterceptor())
+//        }
         client.build() as OkHttpClient
     }
 
