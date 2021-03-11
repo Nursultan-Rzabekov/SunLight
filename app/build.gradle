@@ -42,11 +42,11 @@ android {
     productFlavors {
         prod {
             dimension "default"
-            buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz/api/"')
-            buildConfigField("String", "STRUCTURE_URL", '"http://test-sunlight.qsmart.kz/structures?user_id="')
-            buildConfigField("String", "BASE_URL_IMAGE", '"http://Test-sunlight.qsmart.kz/"')
-            buildConfigField("String", "REFERAL_LINK", '"http://test-sunlight.qsmart.kz/register-partner?referral_link="')
-            buildConfigField("String", "BASE_URL_FILE", '"http://Test-sunlight.qsmart.kz/"')
+            buildConfigField("String", "BASE_URL", '"http://sunlightcorp.kz/api/"')
+            buildConfigField("String", "STRUCTURE_URL", '"http://sunlightcorp.kz/structures?user_id="')
+            buildConfigField("String", "BASE_URL_IMAGE", '"http://sunlightcorp.kz/"')
+            buildConfigField("String", "REFERAL_LINK", '"http://sunlightcorp.kz/register-partner?referral_link="')
+            buildConfigField("String", "BASE_URL_FILE", '"http://sunlightcorp.kz/"')
         }
         dev {
             dimension "default"
