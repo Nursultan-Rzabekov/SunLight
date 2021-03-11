@@ -99,6 +99,7 @@ data class Child(
     val status_id: Double?,
     val step: Double?,
     val system_status: Double?,
+    val status: Status?,
     val uuid: String?,
     val wallet_main_wallet: Double?
 )

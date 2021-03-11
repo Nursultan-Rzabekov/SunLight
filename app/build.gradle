@@ -50,11 +50,11 @@ android {
         }
         dev {
             dimension "default"
-            buildConfigField("String", "BASE_URL", '"http://Test-sunlight.qsmart.kz/api/"')
-            buildConfigField("String", "STRUCTURE_URL", '"http://test-sunlight.qsmart.kz/structures?user_id="')
-            buildConfigField("String", "BASE_URL_IMAGE", '"http://Test-sunlight.qsmart.kz/"')
-            buildConfigField("String", "REFERAL_LINK", '"http://test-sunlight.qsmart.kz/register-partner?referral_link="')
-            buildConfigField("String", "BASE_URL_FILE", '"http://Test-sunlight.qsmart.kz/"')
+            buildConfigField("String", "BASE_URL", '"http://172.17.49.167:8000/api/"')
+            buildConfigField("String", "STRUCTURE_URL", '"http://172.17.49.167:8000/structures?user_id="')
+            buildConfigField("String", "BASE_URL_IMAGE", '"http://172.17.49.167:8000/"')
+            buildConfigField("String", "REFERAL_LINK", '"http://172.17.49.167:8000/register-partner?referral_link="')
+            buildConfigField("String", "BASE_URL_FILE", '"http://172.17.49.167:8000/"')
         }
     }
 }

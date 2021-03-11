@@ -53,7 +53,8 @@ class InvitedAdapter(
             step = null,
             system_status = null,
             uuid = null,
-            wallet_main_wallet = null
+            wallet_main_wallet = null,
+            status = null
         )
     }
 
@@ -115,15 +116,7 @@ class InvitedAdapter(
         fun bind(item: Child) {
             itemView.invitedFullNameTextView.text = ("${item.first_name} ${item.last_name}")
             itemView.invitedUuidTextView.text = item.uuid
-            itemView.invitedActivityTextView.text =
-                if (item.is_active == 1.0)
-                    itemView.context.getString(R.string.active)
-                else
-                    itemView.context.getString(R.string.not_active)
-            item.created_at?.let {
-                itemView.invitedDateTextView.text =
-                    DateUtils.reformatDateString(it, pattern = DateUtils.PATTERN_DD_MM_YYYY)
-            }
+            itemView.invitedActivityTextView.text = item.status?.status_name
         }
     }
 }
