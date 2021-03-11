@@ -8,11 +8,12 @@ class DateUtils {
 
         const val PATTERN_DD_MM_YYYY = "dd.MM.yyyy"
         const val PATTERN_DD_MM_YYYY_HH_mm = "dd.MM.yyyy HH:mm"
+        const val PATTERN_DD_MM_YYYY_HH_mm_SLASH = "yyyy-MM-dd HH:mm:ss"
 
         fun convertLongStringToDate(date: String): Date {
-            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX", Locale.ENGLISH)
+            val sdf = SimpleDateFormat(PATTERN_DD_MM_YYYY_HH_mm_SLASH, Locale.ENGLISH)
             return try {
-                sdf.parse(date)?: Date()
+                sdf.parse(date) ?: Date()
             } catch (e: Exception){
                 Date()
             }
