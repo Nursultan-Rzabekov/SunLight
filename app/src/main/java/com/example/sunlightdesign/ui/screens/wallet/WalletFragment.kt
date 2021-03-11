@@ -37,6 +37,8 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
 
         volumeRightBranchLayout.visibility = View.GONE
         volumeLeftBranchLayout.visibility = View.GONE
+        volumeLeftBranchWeekLayout.visibility = View.GONE
+        volumeRightBranchWeekLayout.visibility = View.GONE
 
         initRecyclerView()
         setListeners()

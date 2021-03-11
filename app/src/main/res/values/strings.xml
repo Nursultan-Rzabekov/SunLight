@@ -74,9 +74,11 @@
     <string name="bonusnyi_koshelek">Основной \nкошелек</string>
     <string name="koshelek_aktive">Кошелек \nактивности</string>
     <string name="arrow_left">Объем\nлевой ветки</string>
+    <string name="arrow_left_week">Объем \nлевой ветки \nна этой неделе</string>
     <string name="koshelek">Кошелек</string>
     <string name="money_withdraw">Снять деньги</string>
     <string name="arrow_right">Объем\nправой ветки</string>
+    <string name="arrow_right_week">Объем \nправой ветки \nна этой неделе</string>
 
     <string name="shag_two">Шаг 2</string>
     <string name="vybor_paketa">Выбор пакета</string>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/dimen_16dp"
     android:elevation="@dimen/dimen_10dp"
-    app:cardElevation="@dimen/dimen_0dp"
     app:cardCornerRadius="@dimen/dimen_5dp"
-    android:layout_marginTop="@dimen/dimen_16dp">
+    app:cardElevation="@dimen/dimen_0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -173,6 +173,89 @@
                 android:textSize="@dimen/dimen_16sp" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_" />
+
+        <LinearLayout
+            android:id="@+id/volumeLeftBranchWeekLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet_gray_arrow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/arrow_left_week"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/leftBranchTotalWeekTextView"
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/two_thousand_bv"
+                android:textSize="@dimen/dimen_16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_" />
+
+        <LinearLayout
+            android:id="@+id/volumeRightBranchWeekLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet_gray_arrow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/arrow_right_week"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rightBranchTotalWeekTextView"
+                style="@style/AppCompatTextView"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/two_thousand_bv"
+                android:textSize="@dimen/dimen_16sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -150,9 +150,20 @@ data class User(
     val user_avatar_path: String?,
     val uuid: String?,
     val wallet: Wallet?,
-    val week_bonus: Any?,
+    val week_bonus: WeekBonus?,
     val who: String?,
     val verifyuser: VerifyUser?
+)
+
+data class WeekBonus(
+    val id: Long?,
+    val user_id: Int?,
+    val team_bonus: Double?,
+    val matching_bonus: Double?,
+    val created_at: String?,
+    val updated_at: String?,
+    val left_week: Double?,
+    val right_week: Double?
 )
 
 data class VerifyUser(
