@@ -98,11 +98,23 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         }
 
         copyReferralLinkLeftBtn.setOnClickListener {
-            referralLink?.let { saveReferralLinkToClipboard(it) }
+            viewModel.profileInfo.value?.user?.referral_link_right
+                ?.let(::saveReferralLinkToClipboard)
         }
 
         shareReferralLinkLeftBtn.setOnClickListener {
-            referralLink?.let { shareReferralLink(it) }
+            viewModel.profileInfo.value?.user?.referral_link_left
+                ?.let(::shareReferralLink)
+        }
+
+        copyReferralLinkRightBtn.setOnClickListener {
+            viewModel.profileInfo.value?.user?.referral_link_left
+                ?.let(::saveReferralLinkToClipboard)
+        }
+
+        shareReferralLinkRightBtn.setOnClickListener {
+            viewModel.profileInfo.value?.user?.referral_link_right
+                ?.let(::shareReferralLink)
         }
 
         allBtn.setOnClickListener {

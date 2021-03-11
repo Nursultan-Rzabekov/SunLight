@@ -137,6 +137,8 @@ data class User(
     val phone_verified_at: String?,
     val position: String?,
     val referral_link: String?,
+    val referral_link_left: String?,
+    val referral_link_right: String?,
     val region: Region?,
     val region_id: Double?,
     val register_by: Double?,
