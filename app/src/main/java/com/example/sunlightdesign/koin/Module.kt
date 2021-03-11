@@ -56,9 +56,9 @@ val module = module {
             .readTimeout(DateUtils.MINUTE_IN_MILLIS, TimeUnit.MILLISECONDS)
             .addInterceptor(interceptor)
             .addInterceptor(HeaderInterceptor())
-//        if (BuildConfig.DEBUG) {
-        client.addInterceptor(ChuckInterceptor(androidContext()))
-//        }
+        if (BuildConfig.DEBUG) {
+            client.addInterceptor(ChuckInterceptor(androidContext()))
+        }
         client.build() as OkHttpClient
     }
 
