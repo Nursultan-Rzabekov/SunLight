@@ -140,9 +140,9 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         activityWalletTextView.text =
             getString(R.string.amount_bv, info.user?.wallet?.purchase_wallet)
         leftBranchTotalTextView.text =
-            getString(R.string.amount_bv, info.user?.wallet?.left_branch_total)
+            getString(R.string.amountText_bv, info.user?.left_total)
         rightBranchTotalTextView.text =
-            getString(R.string.amount_bv, info.user?.wallet?.right_branch_total)
+            getString(R.string.amountText_bv, info.user?.right_total)
         referralLink = "${BuildConfig.REFERAL_LINK}${info.user?.referral_link}"
 
         usersInStructureTextView.text = info.children?.size.toString()
