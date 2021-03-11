@@ -91,7 +91,7 @@
                             style="@style/BasicEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="0123456789"
+                            android:digits="0123456789."
                             android:inputType="number"
                             android:paddingTop="@dimen/dimen_12dp"
                             android:paddingBottom="@dimen/dimen_12dp"

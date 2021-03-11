@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
@@ -145,6 +146,15 @@ class WithdrawFragment :
 
         backBtn.setOnClickListener {
             activity?.finish()
+        }
+
+        amountEditText.addTextChangedListener {
+            val convertedAmount = it.toString().toDoubleOrNull() ?: return@addTextChangedListener
+            val mainWallet = viewModel.walletLiveData.value?.wallet?.main_wallet
+                ?: return@addTextChangedListener
+
+            convertBtn.isEnabled = convertedAmount <= mainWallet
+            withdrawMoneyBtn.isEnabled = convertedAmount <= mainWallet
         }
     }
 
