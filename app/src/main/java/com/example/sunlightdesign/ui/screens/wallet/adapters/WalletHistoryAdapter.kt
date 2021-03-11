@@ -105,10 +105,9 @@ class WalletHistoryAdapter(
                 DateUtils.reformatDateString(history.finish_date, DateUtils.PATTERN_DD_MM_YYYY)
 
             itemView.bonusesTextView.text = history.bonus?.bonus_name
-            history.bonus?.created_at?.let {
-                itemView.createDateTextView.text =
-                    DateUtils.reformatDateString(it, DateUtils.PATTERN_DD_MM_YYYY)
-            }
+            itemView.createDateTextView.text =
+                DateUtils.reformatDateString(history.created_at, DateUtils.PATTERN_DD_MM_YYYY)
+
             itemView.walletTextView.text = history.wallet_type
             itemView.nameTextView.text = history.bonus?.bonus_description
 
