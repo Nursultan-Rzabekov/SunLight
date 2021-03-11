@@ -222,6 +222,7 @@
     <string name="bonuses">Бонусы</string>
     <string name="wallet">Кошелек</string>
     <string name="name">Название</string>
+    <string name="description">Описание</string>
     <string name="insert_need_amount">Введите нужную сумму</string>
     <string name="short_info_about_transfer">Сведенья о снятии денег, тут будет краткая информация</string>
     <string name="show_two_dots">Вывести:</string>
