@@ -17,6 +17,7 @@ import com.example.sunlightdesign.ui.screens.order.market.adapter.ImageGalleryVi
 import kotlinx.android.synthetic.main.order_item_details.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 
+private const val NOT_INITIALIZED_IMAGE = "/storage/"
 
 class MarketProductDetailFragment: StrongFragment<OrderViewModel>(OrderViewModel::class) {
 
@@ -55,10 +56,11 @@ class MarketProductDetailFragment: StrongFragment<OrderViewModel>(OrderViewModel
             it ?: return@let
 
             val listOfImages = mutableListOf(it.productFrontImage.toString())
-            if (it.productBackImage != null) {
+            if (it.productBackImage != null && it.productBackImage != NOT_INITIALIZED_IMAGE) {
                 listOfImages.add(it.productBackImage)
             }
-            if (it.specialOffer?.offerImage != null) {
+            if (it.specialOffer?.offerImage != null
+                && it.specialOffer.offerImage != NOT_INITIALIZED_IMAGE) {
                 listOfImages.add(it.specialOffer.offerImage)
             }
             initViewPager(listOfImages)
