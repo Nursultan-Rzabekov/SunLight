@@ -67,7 +67,8 @@ class EmailDetailsFragment : StrongFragment<EmailViewModel>(EmailViewModel::clas
     }
 
     private fun fillFields(item: AnnouncementItem) {
-        fromNameTextView.text = getString(R.string.from_mail, item.announcement.author.email)
+        val author = "${item.announcement.author.first_name} ${item.announcement.author.last_name}"
+        fromNameTextView.text = getString(R.string.from_mail, author)
         itemTitleTextView.text = item.announcement.message_title
         itemBodyTextView.text = item.announcement.message_body
         dateTextView.text = DateUtils.reformatDateString(

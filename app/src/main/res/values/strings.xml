@@ -181,7 +181,7 @@
     <string name="send_again">Отправить повторно</string>
     <string name="come_up_to_till">Подойдите к кассе, чтобы оплатить \nи получить инструкцию \nдальнейших действий.</string>
 
-    <string name="from_mail">From: $1%s</string>
+    <string name="from_mail">От: %s</string>
 
     <string name="birthday">День рождения</string>
     <string name="birthday_two_dots">День рождения:</string>
