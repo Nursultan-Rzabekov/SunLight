@@ -142,7 +142,11 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
             .load(getImageUrl(info.user?.user_avatar_path))
             .into(userAvatarCircleImageView)
         info.user?.created_at?.let{
-            userCreatedAtTextView.text =  DateUtils.reformatDateString(it, DateUtils.PATTERN_DD_MM_YYYY)
+            userCreatedAtTextView.text = DateUtils.reformatDateString(
+                dataText = it,
+                toPattern = DateUtils.PATTERN_DD_MM_YYYY,
+                fromPattern = DateUtils.PATTERN_FULL_DATE
+            )
         }
         userActivityStatusTextView.text = if (info.user?.is_active == ACTIVITY_ACTIVE)
             getString(R.string.active)
@@ -156,12 +160,12 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         rightBranchTotalTextView.text =
             getString(R.string.amountText_bv, info.user?.right_total)
         leftBranchTotalWeekTextView.text =
-            getString(R.string.amount_bv, info.user?.week_bonus?.left_week)
+            getString(R.string.amount_bv, info.user?.week_bonus?.left_week ?: 0.0)
         rightBranchTotalWeekTextView.text =
-            getString(R.string.amount_bv, info.user?.week_bonus?.right_week)
+            getString(R.string.amount_bv, info.user?.week_bonus?.right_week ?: 0.0)
         referralLink = "${BuildConfig.REFERAL_LINK}${info.user?.referral_link}"
 
-        usersInStructureTextView.text = info.children?.size.toString()
+        usersInStructureTextView.text = info.user?.childs.toString()
 
         invitedAdapter.setItems(info.children ?: listOf())
     }

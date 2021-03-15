@@ -9,9 +9,13 @@ class DateUtils {
         const val PATTERN_DD_MM_YYYY = "dd.MM.yyyy"
         const val PATTERN_DD_MM_YYYY_HH_mm = "dd.MM.yyyy HH:mm"
         const val PATTERN_DD_MM_YYYY_HH_mm_SLASH = "yyyy-MM-dd HH:mm:ss"
+        const val PATTERN_FULL_DATE = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS'Z'"
 
-        fun convertLongStringToDate(date: String): Date {
-            val sdf = SimpleDateFormat(PATTERN_DD_MM_YYYY_HH_mm_SLASH, Locale.ENGLISH)
+        fun convertLongStringToDate(
+            date: String,
+            pattern: String = PATTERN_DD_MM_YYYY_HH_mm_SLASH
+        ): Date {
+            val sdf = SimpleDateFormat(pattern, Locale.ENGLISH)
             return try {
                 sdf.parse(date) ?: Date()
             } catch (e: Exception){
@@ -28,10 +32,14 @@ class DateUtils {
             }
         }
 
-        fun reformatDateString(dataText: String, pattern: String): String {
+        fun reformatDateString(
+            dataText: String,
+            toPattern: String,
+            fromPattern: String = PATTERN_DD_MM_YYYY_HH_mm_SLASH
+        ): String {
             return convertDateToString(
-                date = convertLongStringToDate(dataText),
-                pattern = pattern)
+                date = convertLongStringToDate(dataText, fromPattern),
+                pattern = toPattern)
         }
     }
 }

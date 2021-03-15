@@ -107,7 +107,7 @@ data class Child(
 data class User(
     val birthday: String?,
     val block_status: Double?,
-    val childs: Any?,
+    val childs: Int?,
     val city: City?,
     val city_id: Double?,
     val country: Country?,
