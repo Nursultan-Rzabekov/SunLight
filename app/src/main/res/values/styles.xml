@@ -21,6 +21,7 @@
     </style>
 
     <style name="MainCardViewStyle" parent="BaseCardView">
+        <item name="cardBackgroundColor">@color/white</item>
         <item name="android:layout_height">@dimen/dimen_100dp</item>
         <item name="android:layout_width">@dimen/dimen_100dp</item>
     </style>
