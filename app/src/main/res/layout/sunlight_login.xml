@@ -94,6 +94,15 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/biometricOptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="8702123123"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_18sp"
+            android:layout_marginTop="@dimen/dimen_8dp"/>
+
         <Button
             android:id="@+id/btn_enter"
             android:layout_width="match_parent"

@@ -4,19 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.biometric.BiometricPrompt
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
+import com.example.sunlightdesign.utils.biometric.BiometricUtil
 import com.example.sunlightdesign.utils.isPhoneValid
+import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 
-class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
+class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
+    BiometricUtil.BiometricAuthenticationCallback,
+    BiometricUtil.BiometricHolder {
+
+    private val biometricUtil = BiometricUtil(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +50,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
 
     private fun setListeners() {
         btn_enter.setOnClickListener {
-            if (setCheckers())
+            if (setCheckers()) {
                 viewModel.getUseCase(
                     SetLogin(
                         MaskUtils.unMaskValue(
@@ -50,9 +59,10 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
                         ), password_et.text.toString()
                     )
                 )
+            }
         }
 
-        remember_checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+        remember_checkbox.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 viewModel.setPhoneAndPassword(phoneNumber = MaskUtils.unMaskValue(
                     MaskUtils.PHONE_MASK,
@@ -62,6 +72,10 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
             else{
                 viewModel.setPhoneAndPassword(phoneNumber = "", password = "")
             }
+        }
+
+        biometricOptionTextView.setOnClickListener {
+            biometricUtil.authenticateByFingerprint(this)
         }
     }
 
@@ -75,6 +89,10 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
                     MaskUtils.maskValue(
                         mask = MaskUtils.PHONE_MASK, value = phone
                     )
+                )
+                biometricOptionTextView.text = MaskUtils.maskValue(
+                    mask = MaskUtils.PHONE_MASK,
+                    value = phone
                 )
             })
             password.observe(viewLifecycleOwner, Observer { pass ->
@@ -115,4 +133,22 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class) {
         }
     }
 
+    override fun onBiometricIntent(intent: BiometricUtil.BiometricResponse) =
+        when (intent) {
+
+            is BiometricUtil.BiometricResponse.Success -> {
+                showToast("Success fingerprint")
+                // ToDo authenticate using phonenumber
+            }
+
+            is BiometricUtil.BiometricResponse.Error -> {
+                showToast("${intent.errorInt}")
+            }
+
+            is BiometricUtil.BiometricResponse.Unavailable -> {
+                biometricOptionTextView.isVisible = false
+            }
+
+            else -> showToast(getString(R.string.try_again))
+        }
 }

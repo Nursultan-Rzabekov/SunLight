@@ -7,6 +7,7 @@ import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.GetLoginAuthUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.ErrorListException
+import com.example.sunlightdesign.utils.showMessage
 import com.example.sunlightdesign.utils.startNewActivity
 import timber.log.Timber
 
@@ -28,14 +29,19 @@ class AuthViewModel constructor(
 
     init {
         if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
-            !sharedUseCase.getSharedPreference().password.isNullOrEmpty())
-            _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber)
+            !sharedUseCase.getSharedPreference().password.isNullOrEmpty()) {
             _password.postValue(sharedUseCase.getSharedPreference().password)
+        }
+        _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber)
     }
 
     fun setPhoneAndPassword(phoneNumber:String, password:String){
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
         sharedUseCase.getSharedPreference().password = password
+    }
+
+    fun cachePhone(phoneNumber: String) {
+        sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
     }
 
     fun getUseCase(setLogin: SetLogin) {
@@ -52,6 +58,7 @@ class AuthViewModel constructor(
                 }
 
                 withActivity { activity ->
+                    cachePhone(setLogin.phone)
                     sharedPreferences.editPassword = setLogin.password
                     activity.startNewActivity(MainActivity::class)
                 }

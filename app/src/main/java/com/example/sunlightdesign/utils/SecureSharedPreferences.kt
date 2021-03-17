@@ -2,9 +2,7 @@ package com.example.sunlightdesign.utils
 
 import android.content.SharedPreferences
 
-class SecureSharedPreferences(
-    val sharedPreferences: SharedPreferences
-) {
+class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
 
     private val LANG = "LANG"
     var lang: String?
@@ -41,6 +39,7 @@ class SecureSharedPreferences(
     var editPassword: String?
         get() = sharedPreferences.getString(EDIT_PASSWORD,null)
         set(value) = sharedPreferences.edit().putString(EDIT_PASSWORD,value).apply()
+
 }
 
 
