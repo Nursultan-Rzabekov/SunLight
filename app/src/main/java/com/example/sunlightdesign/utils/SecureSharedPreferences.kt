@@ -40,6 +40,11 @@ class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences.getString(EDIT_PASSWORD,null)
         set(value) = sharedPreferences.edit().putString(EDIT_PASSWORD,value).apply()
 
+    private val PIN = "pin"
+    var pin: String?
+        get() = sharedPreferences.getString(PIN,null)
+        set(value) = sharedPreferences.edit().putString(PIN, value).apply()
+
 }
 
 

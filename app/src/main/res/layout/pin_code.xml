@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16dp"
@@ -16,12 +17,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.chaos.view.PinView
+        android:id="@+id/pinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:digits="1234567890"
-        android:inputType="number"
-        android:textSize="24sp"
+        android:inputType="numberPassword"
+        android:textSize="12sp"
         app:itemSpacing="@dimen/dimen_16dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +33,8 @@
         app:layout_constraintVertical_bias="0.3"
         app:lineColor="@color/colorPrimary"
         app:viewType="line"
-        tools:text="1231" />
+        app:lineWidth="2dp"
+        app:hideLineWhenFilled="true"
+        tools:text="121" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

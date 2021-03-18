@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.biometric.BiometricPrompt
+import androidx.biometric.BiometricPrompt.ERROR_LOCKOUT
 import androidx.core.view.isVisible
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
+import com.example.sunlightdesign.ui.launcher.auth.pin.PinVerificationFragmentDialog
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.biometric.BiometricUtil
@@ -23,7 +24,8 @@ import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
     BiometricUtil.BiometricAuthenticationCallback,
-    BiometricUtil.BiometricHolder {
+    BiometricUtil.BiometricHolder,
+    PinVerificationFragmentDialog.PinVerificationInteraction{
 
     private val biometricUtil = BiometricUtil(this)
 
@@ -133,22 +135,41 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         }
     }
 
-    override fun onBiometricIntent(intent: BiometricUtil.BiometricResponse) =
-        when (intent) {
+    override fun onBiometricIntent(intent: BiometricUtil.BiometricResponse) = when (intent) {
 
-            is BiometricUtil.BiometricResponse.Success -> {
-                showToast("Success fingerprint")
-                // ToDo authenticate using phonenumber
-            }
-
-            is BiometricUtil.BiometricResponse.Error -> {
-                showToast("${intent.errorInt}")
-            }
-
-            is BiometricUtil.BiometricResponse.Unavailable -> {
-                biometricOptionTextView.isVisible = false
-            }
-
-            else -> showToast(getString(R.string.try_again))
+        is BiometricUtil.BiometricResponse.Success -> {
+            showToast("Success fingerprint")
+            // ToDo authenticate using phonenumber
         }
+
+        is BiometricUtil.BiometricResponse.Error -> {
+            if (intent.errorInt == ERROR_LOCKOUT) {
+                showPinVerification()
+            }
+            showToast("${intent.errorInt}")
+        }
+
+        is BiometricUtil.BiometricResponse.Unavailable -> {
+            showPinVerification()
+        }
+
+        else -> showToast(getString(R.string.try_again))
+    }
+
+    private fun showPinVerification() {
+        val pin = "1234"//viewModel.pin.value
+        if (pin.isNullOrBlank()) return
+
+        val dialog = PinVerificationFragmentDialog(pin, this)
+        dialog.show(parentFragmentManager, PinVerificationFragmentDialog.TAG)
+    }
+
+    override fun onPinIntent(result: PinVerificationFragmentDialog.PinResult) = when (result) {
+        is PinVerificationFragmentDialog.PinResult.Success -> {
+            showToast("Success pin")
+        }
+        else -> {
+            showToast("Failure pin")
+        }
+    }
 }

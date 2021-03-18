@@ -12,6 +12,14 @@
             android:label="fragment_launcher"
             tools:layout="@layout/sunlight_login" >
 
+                <action
+                    android:id="@+id/action_login_fragment_to_pinVerificationFragmentDialog"
+                    app:destination="@id/pinVerificationFragmentDialog" />
         </fragment>
+        <dialog
+            android:id="@+id/pinVerificationFragmentDialog"
+            android:name="com.example.sunlightdesign.ui.launcher.auth.pin.PinVerificationFragmentDialog"
+            android:label="PinVerificationFragmentDialog"
+            tools:layout="@layout/pin_code"/>
 
 </navigation>

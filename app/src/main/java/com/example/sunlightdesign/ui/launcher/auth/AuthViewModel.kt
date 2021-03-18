@@ -27,12 +27,19 @@ class AuthViewModel constructor(
     private var _password= MutableLiveData<String>()
     val password get() = _password
 
+    private var _pin = MutableLiveData<String>()
+    val pin get() = _pin
+
     init {
         if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
             !sharedUseCase.getSharedPreference().password.isNullOrEmpty()) {
             _password.postValue(sharedUseCase.getSharedPreference().password)
         }
         _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber)
+
+        if (!sharedUseCase.getSharedPreference().pin.isNullOrBlank()) {
+            _pin.postValue(sharedUseCase.getSharedPreference().pin)
+        }
     }
 
     fun setPhoneAndPassword(phoneNumber:String, password:String){
