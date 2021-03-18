@@ -42,6 +42,14 @@ class AuthViewModel constructor(
         }
     }
 
+    fun setIsFingerprintEnabled(isEnabled: Boolean) {
+        sharedUseCase.getSharedPreference().isFingerprintEnabled = isEnabled
+    }
+
+    fun setPin(pin: String) {
+        sharedUseCase.getSharedPreference().pin = pin
+    }
+
     fun setPhoneAndPassword(phoneNumber:String, password:String){
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
         sharedUseCase.getSharedPreference().password = password

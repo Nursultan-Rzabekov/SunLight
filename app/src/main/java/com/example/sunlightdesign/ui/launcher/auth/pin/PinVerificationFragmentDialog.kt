@@ -3,7 +3,6 @@ package com.example.sunlightdesign.ui.launcher.auth.pin
 import android.app.Dialog
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.widget.doAfterTextChanged
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.showToast
@@ -17,7 +16,8 @@ private const val MAX_ATTEMPTS = 3
 
 class PinVerificationFragmentDialog(
     private val pin: String,
-    private val interaction: PinVerificationInteraction
+    private val interaction: PinVerificationInteraction,
+    private val isEditing: Boolean = false
 ): BottomSheetDialogFragment() {
 
     private var attempts: Int = 0
@@ -71,24 +71,36 @@ class PinVerificationFragmentDialog(
         pinView.doAfterTextChanged {
             val enteredPin = it.toString()
             if (enteredPin.length != DEFAULT_PIN_LENGTH) return@doAfterTextChanged
-            if (pin != enteredPin) {
-                attempts++
-                showToast(getString(R.string.try_again))
-                pinView.setText("")
-                if (attempts == MAX_ATTEMPTS) {
-                    interaction.onPinIntent(PinResult.Failure)
+            when {
+                !isEditing && pin != enteredPin -> {
+                    attempts++
+                    showToast(getString(R.string.try_again))
+                    pinView.setText("")
+                    if (attempts == MAX_ATTEMPTS) {
+                        interaction.onPinIntent(PinResult.Failure)
+                        dismiss()
+                    }
+                }
+                !isEditing && pin == enteredPin -> {
+                    interaction.onPinIntent(PinResult.Success)
                     dismiss()
                 }
-                return@doAfterTextChanged
+                isEditing -> {
+                    interaction.onPinEditComplete(enteredPin)
+                    dismiss()
+                }
             }
-            interaction.onPinIntent(PinResult.Success)
+        }
+        closeButton.setOnClickListener {
             dismiss()
         }
-        closeButton.setOnClickListener { dismiss() }
     }
 
     interface PinVerificationInteraction {
+
         fun onPinIntent(result: PinResult)
+
+        fun onPinEditComplete(pin: String)
     }
 
     sealed class PinResult {

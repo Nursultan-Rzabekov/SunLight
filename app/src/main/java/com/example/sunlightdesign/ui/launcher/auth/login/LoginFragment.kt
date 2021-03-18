@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.biometric.BiometricPrompt.ERROR_LOCKOUT
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
@@ -41,6 +42,11 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         super.onViewCreated(view, savedInstanceViewState)
 
         welcome_login_as_tv.text = getString(R.string.login_welcome)
+
+        biometricOptionTextView.isVisible = viewModel
+            .sharedUseCase
+            .getSharedPreference()
+            .isFingerprintEnabled ?: false
     }
 
     override fun onResume() {
@@ -171,5 +177,24 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         else -> {
             showToast("Failure pin")
         }
+    }
+
+    override fun onPinEditComplete(pin: String) {
+        viewModel.setIsFingerprintEnabled(true)
+        viewModel.setPin(pin)
+        //Todo Login
+    }
+
+    private fun requestFingerprintEnabling() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Fingerprint?")
+            .setPositiveButton("Yes") { _, _ ->
+                val dialog = PinVerificationFragmentDialog("0000", this, true)
+                dialog.show(parentFragmentManager, PinVerificationFragmentDialog.TAG)
+            }
+            .setNegativeButton("No") { _, _ ->
+                //Todo Login
+            }
+            .show()
     }
 }
