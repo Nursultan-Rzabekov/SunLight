@@ -50,6 +50,12 @@ class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences.getBoolean(FINGERPRINT_ENABLED,false)
         set(value) = sharedPreferences.edit()
             .putBoolean(FINGERPRINT_ENABLED, value ?: false).apply()
+
+    private val PIN_ENABLED = "pin_enabled"
+    var isPinEnabled: Boolean?
+        get() = sharedPreferences.getBoolean(PIN_ENABLED,false)
+        set(value) = sharedPreferences.edit()
+            .putBoolean(PIN_ENABLED, value ?: false).apply()
 }
 
 

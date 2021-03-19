@@ -2,7 +2,10 @@ package com.example.sunlightdesign.ui.launcher.auth.pin
 
 import android.app.Dialog
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.widget.doAfterTextChanged
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.showToast
@@ -12,14 +15,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.pin_code.*
 
 private const val DEFAULT_PIN_LENGTH = 4
-private const val MAX_ATTEMPTS = 3
 
-class PinVerificationFragmentDialog(
-    private val pin: String,
-    private val interaction: PinVerificationInteraction
+class PinSetupFragmentDialog(
+    private val interaction: PinSetupInteraction
 ): BottomSheetDialogFragment() {
 
-    private var attempts: Int = 0
+    private var verifyPin: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,17 +71,19 @@ class PinVerificationFragmentDialog(
         pinView.doAfterTextChanged {
             val enteredPin = it.toString()
             if (enteredPin.length != DEFAULT_PIN_LENGTH) return@doAfterTextChanged
-            if (pin != enteredPin) {
-                attempts++
-                showToast(getString(R.string.try_again))
-                pinView.setText("")
-                if (attempts == MAX_ATTEMPTS) {
-                    interaction.onPinIntent(PinResult.Failure)
+            when (verifyPin) {
+                null -> {
+                    verifyPin = enteredPin
+                    pinView.setText("")
+                }
+                enteredPin -> {
+                    interaction.onPinEditComplete(enteredPin)
                     dismiss()
                 }
-            } else {
-                interaction.onPinIntent(PinResult.Success)
-                dismiss()
+                else -> {
+                    pinView.setText("")
+                    showToast("Pin does not match")
+                }
             }
         }
         closeButton.setOnClickListener {
@@ -88,18 +91,11 @@ class PinVerificationFragmentDialog(
         }
     }
 
-    interface PinVerificationInteraction {
-        fun onPinIntent(result: PinResult)
-    }
-
-    sealed class PinResult {
-
-        object Success: PinResult()
-
-        object Failure: PinResult()
+    interface PinSetupInteraction {
+        fun onPinEditComplete(pin: String)
     }
 
     companion object {
-        const val TAG = "pin_verification"
+        const val TAG = "pin_setup"
     }
 }

@@ -30,6 +30,9 @@ class AuthViewModel constructor(
     private var _pin = MutableLiveData<String>()
     val pin get() = _pin
 
+    private var _isLoginSuccess = MutableLiveData<Boolean>()
+    val isLoginSuccess get() = _isLoginSuccess
+
     init {
         if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
             !sharedUseCase.getSharedPreference().password.isNullOrEmpty()) {
@@ -48,6 +51,12 @@ class AuthViewModel constructor(
 
     fun setPin(pin: String) {
         sharedUseCase.getSharedPreference().pin = pin
+        sharedUseCase.getSharedPreference().isPinEnabled = true
+    }
+
+    fun clearPin() {
+        sharedUseCase.getSharedPreference().pin = null
+        sharedUseCase.getSharedPreference().isPinEnabled = false
     }
 
     fun setPhoneAndPassword(phoneNumber:String, password:String){
@@ -68,15 +77,13 @@ class AuthViewModel constructor(
                 progress.value = false
                 Timber.e("onComplete: %s", it)
                 it?.errors?.let { errors ->
-                    if (errors.isNotEmpty())
-                        handleError(errorMessage = errors.first())
+                    if (errors.isNotEmpty()) handleError(errorMessage = errors.first())
+                    return@onComplete
                 }
 
-                withActivity { activity ->
-                    cachePhone(setLogin.phone)
-                    sharedPreferences.editPassword = setLogin.password
-                    activity.startNewActivity(MainActivity::class)
-                }
+                cachePhone(setLogin.phone)
+                sharedPreferences.editPassword = setLogin.password
+                _isLoginSuccess.postValue(true)
             }
             onNetworkError {
                 progress.value = false
