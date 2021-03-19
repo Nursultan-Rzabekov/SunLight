@@ -391,6 +391,12 @@
             </androidx.cardview.widget.CardView>
 
             <include
+                layout="@layout/card_verification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"/>
+
+            <include
                 layout="@layout/footer_user_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

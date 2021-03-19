@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.pin_code.*
 private const val DEFAULT_PIN_LENGTH = 4
 
 class PinSetupFragmentDialog(
-    private val interaction: PinSetupInteraction
+    private val interaction: PinSetupInteraction,
+    private val enableInterrupt: Boolean = false
 ): BottomSheetDialogFragment() {
 
     private var verifyPin: String? = null
@@ -88,11 +89,15 @@ class PinSetupFragmentDialog(
         }
         closeButton.setOnClickListener {
             dismiss()
+            if (enableInterrupt) {
+                interaction.onPinSetupInterrupted()
+            }
         }
     }
 
     interface PinSetupInteraction {
         fun onPinEditComplete(pin: String)
+        fun onPinSetupInterrupted()
     }
 
     companion object {

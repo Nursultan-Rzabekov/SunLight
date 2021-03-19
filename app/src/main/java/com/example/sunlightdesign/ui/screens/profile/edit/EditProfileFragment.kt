@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -16,28 +17,38 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.VerifyUser
 import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.launcher.auth.pin.PinSetupFragmentDialog
+import com.example.sunlightdesign.ui.launcher.auth.pin.PinVerificationFragmentDialog
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.usecase.usercase.profileUse.post.ChangePassword
 import com.example.sunlightdesign.utils.*
+import com.example.sunlightdesign.utils.biometric.BiometricUtil
 import kotlinx.android.synthetic.main.account_base_profile_cardview.*
+import kotlinx.android.synthetic.main.card_verification.*
 import kotlinx.android.synthetic.main.dialog_change_password.*
 import kotlinx.android.synthetic.main.footer_user_card.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
-import timber.log.Timber
 
-class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
+class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
+    PinSetupFragmentDialog.PinSetupInteraction,
+    BiometricUtil.BiometricHolder,
+    BiometricUtil.BiometricAuthenticationCallback {
 
     companion object {
         const val USER_INFO = "user_info"
+    }
+
+    private val isBiometricEnabled by lazy {
+        val biometricUtil = BiometricUtil(this)
+        biometricUtil.checkFingerprintAccess(this)
     }
 
     private val passwordDialog by lazy {
@@ -60,6 +71,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         super.onActivityCreated(savedInstanceState)
 
         userEditAvatarCircleImageView.isVisible = true
+        setAuthenticationInfo()
         titleTextView.setText(R.string.profile)
 
         setListeners()
@@ -115,6 +127,32 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
                 password_confirmation = passwordDialog.confirmPasswordEditText.text.toString().trim()
             ))
         }
+
+        enterByPinSwitch.setOnCheckedChangeListener { _, isChecked ->
+            changePinTextView.isVisible = isChecked
+            viewModel.isPinEnabled = isChecked
+            enterByFingerprintSwitch.isChecked = isChecked
+            if (!isChecked) return@setOnCheckedChangeListener
+            showPinEditor(enableInterrupt = true)
+        }
+
+        enterByFingerprintSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (!isBiometricEnabled) return@setOnCheckedChangeListener
+            viewModel.isFingerprintEnabled = isChecked
+            if (isChecked) {
+                enterByPinSwitch.isChecked = true
+            }
+        }
+
+        changePinTextView.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Sure?")
+                .setPositiveButton("Yes") { _, _ ->
+                    showPinEditor()
+                }
+                .setNegativeButton("No", null)
+                .show()
+        }
     }
 
     private fun setObservers() {
@@ -141,6 +179,13 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
                 setVerifyInfo(it)
             })
         }
+    }
+
+    private fun setAuthenticationInfo() {
+        fingerprintLayout.isVisible = isBiometricEnabled
+        enterByFingerprintSwitch.isChecked = viewModel.isFingerprintEnabled
+        enterByPinSwitch.isChecked = viewModel.isPinEnabled
+        changePinTextView.isVisible = viewModel.isPinEnabled
     }
 
     private fun setMasks() {
@@ -268,6 +313,21 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         userVerificationStatusTextView.text = getString(R.string.not_verified)
         passVerificationBtn.visibility = View.VISIBLE
     }
+
+    private fun showPinEditor(enableInterrupt: Boolean = false) {
+        val dialog = PinSetupFragmentDialog(this, enableInterrupt)
+        dialog.show(parentFragmentManager, PinVerificationFragmentDialog.TAG)
+    }
+
+    override fun onPinEditComplete(pin: String) {
+        viewModel.setPin(pin)
+    }
+
+    override fun onPinSetupInterrupted() {
+        enterByPinSwitch.isChecked = false
+    }
+
+    override fun onBiometricIntent(intent: BiometricUtil.BiometricResponse) = Unit
 
     private fun checkPermission() : Boolean {
         return if (

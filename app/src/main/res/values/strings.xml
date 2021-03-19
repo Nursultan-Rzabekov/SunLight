@@ -329,4 +329,7 @@
 
     <string name="try_again">Попробуйте еще раз</string>
     <string name="close">Закрыть</string>
+    <string name="login_by_fingerprint">Вход по отпечатку пальца</string>
+    <string name="login_by_pin">Вход по ПИН-коду</string>
+    <string name="change_pin">Изменить ПИН-код</string>
 </resources>

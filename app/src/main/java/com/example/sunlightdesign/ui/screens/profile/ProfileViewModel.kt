@@ -108,12 +108,31 @@ class ProfileViewModel constructor(
     private var _navigationEvent = MutableLiveData<NavigationEvent<Any?>?>()
     val navigationEvent: LiveData<NavigationEvent<Any?>?> get() = _navigationEvent
 
+    var isFingerprintEnabled: Boolean
+        get() = sharedUseCase.getSharedPreference().isFingerprintEnabled ?: false
+        set(value) = setIsFingerprintEnabled(value)
+
+    var isPinEnabled: Boolean
+        get() = sharedUseCase.getSharedPreference().isPinEnabled ?: false
+        set(value) = setIsPinEnabled(value)
+
+    private fun setIsFingerprintEnabled(isEnabled: Boolean) {
+        sharedUseCase.getSharedPreference().isFingerprintEnabled = isEnabled
+    }
+
+    private fun setIsPinEnabled(isEnabled: Boolean) {
+        sharedUseCase.getSharedPreference().isPinEnabled = isEnabled
+    }
+
+    fun setPin(pin: String) {
+        isPinEnabled = true
+        sharedUseCase.getSharedPreference().pin = pin
+    }
 
     fun nullifyData(){
         sharedUseCase.getSharedPreference().bearerToken = ""
         sharedUseCase.getSharedPreference().editPassword = ""
     }
-
 
     fun getCountriesList() {
         progress.postValue(true)

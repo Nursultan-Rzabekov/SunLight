@@ -217,6 +217,8 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         startMainPage()
     }
 
+    override fun onPinSetupInterrupted() = Unit
+
     private fun requestFingerprintEnabling() {
         AlertDialog.Builder(requireContext())
             .setTitle("Fingerprint?")
