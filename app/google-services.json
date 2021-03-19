@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1084568866584",
+    "project_id": "sunlightcorp-8f231",
+    "storage_bucket": "sunlightcorp-8f231.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084568866584:android:459fbebe4c40d6f3d8186d",
+        "android_client_info": {
+          "package_name": "com.example.sunlightdesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084568866584-8idvp5jhjkse6iod1uplgfbki7vvgk6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATmM4XT-aURYlkdv4SwkLrjEMK2HSGdZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084568866584-8idvp5jhjkse6iod1uplgfbki7vvgk6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
