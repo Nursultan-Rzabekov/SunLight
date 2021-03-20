@@ -15,7 +15,7 @@ import com.example.sunlightdesign.usecase.usercase.mainUse.get.*
  */
 
 class LauncherViewModel constructor(
-    private val sharedUseCase: SharedUseCase,
+    val sharedUseCase: SharedUseCase,
     private val getMainPostUseCase: GetMainPostUseCase,
     private val getMainCategoriesUseCase: GetMainCategoriesUseCase,
     private val getMainBannersUseCase: GetMainBannersUseCase,
@@ -42,12 +42,27 @@ class LauncherViewModel constructor(
     private var _postItem = MutableLiveData<Post?>()
     val postItem: LiveData<Post?> get() = _postItem
 
+    private var _pin = MutableLiveData<String>()
+    val pin get() = _pin
+
     init {
-        if (!sharedUseCase.getSharedPreference().bearerToken.isNullOrEmpty())
+        if (!sharedUseCase.getSharedPreference().bearerToken.isNullOrEmpty()) {
             _bearerToken.postValue(true)
+        }
+        if (!sharedUseCase.getSharedPreference().pin.isNullOrBlank()) {
+            _pin.postValue(sharedUseCase.getSharedPreference().pin)
+        }
     }
 
     fun getUserId(): String = sharedUseCase.getSharedPreference().userId.toString()
+
+    fun isPinEnabled(): Boolean = sharedUseCase
+        .getSharedPreference()
+        .isFingerprintEnabled ?: false
+
+    fun isFingerprintEnabled(): Boolean = sharedUseCase
+        .getSharedPreference()
+        .isPinEnabled ?: false
 
     fun getBanners(){
         progress.postValue(true)
