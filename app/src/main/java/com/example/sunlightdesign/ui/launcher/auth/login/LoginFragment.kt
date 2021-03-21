@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.biometric.BiometricPrompt.ERROR_LOCKOUT
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
@@ -19,33 +17,25 @@ import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.biometric.BiometricUtil
 import com.example.sunlightdesign.utils.isPhoneValid
-import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 
 class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
-    BiometricUtil.BiometricAuthenticationCallback,
     BiometricUtil.BiometricHolder,
-    PinVerificationFragmentDialog.PinVerificationInteraction,
     PinSetupFragmentDialog.PinSetupInteraction {
-
-    private val biometricUtil = BiometricUtil(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceViewState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.sunlight_login, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.sunlight_login, container, false)
 
     override fun onViewCreated(view: View, savedInstanceViewState: Bundle?) {
         super.onViewCreated(view, savedInstanceViewState)
 
         welcome_login_as_tv.text = getString(R.string.login_welcome)
-        setupVerificationOptions()
     }
 
     override fun onResume() {
@@ -57,16 +47,16 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
     private fun setListeners() {
         btn_enter.setOnClickListener {
-            if (setCheckers()) {
-                viewModel.getUseCase(
-                    SetLogin(
-                        MaskUtils.unMaskValue(
-                            MaskUtils.PHONE_MASK,
-                            phone_et.text.toString()
-                        ), password_et.text.toString()
-                    )
+            if (!setCheckers()) return@setOnClickListener
+            viewModel.getUseCase(
+                SetLogin(
+                    MaskUtils.unMaskValue(
+                        MaskUtils.PHONE_MASK,
+                        phone_et.text.toString()
+                    ),
+                    password_et.text.toString()
                 )
-            }
+            )
         }
 
         remember_checkbox.setOnCheckedChangeListener { _, isChecked ->
@@ -77,21 +67,6 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
                 ), password = password_et.text.toString())
             } else {
                 viewModel.setPhoneAndPassword(phoneNumber = "", password = "")
-            }
-        }
-
-        biometricOptionTextView.setOnClickListener {
-            val isFingerprintEnabled = viewModel
-                .sharedUseCase
-                .getSharedPreference()
-                .isFingerprintEnabled ?: false
-            val isPinEnabled = viewModel
-                .sharedUseCase
-                .getSharedPreference()
-                .isPinEnabled ?: false
-            when {
-                isFingerprintEnabled -> biometricUtil.authenticateByFingerprint(this)
-                isPinEnabled -> authenticateByPinVerification()
             }
         }
     }
@@ -107,35 +82,19 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
                         mask = MaskUtils.PHONE_MASK, value = phone
                     )
                 )
-                biometricOptionTextView.text = MaskUtils.maskValue(
-                    mask = MaskUtils.PHONE_MASK,
-                    value = phone
-                )
             })
             password.observe(viewLifecycleOwner, Observer { pass ->
                 password_et.setText(pass)
             })
             isLoginSuccess.observe(viewLifecycleOwner, Observer {
                 if (!it) return@Observer
-                if (biometricUtil.checkFingerprintAccess(this@LoginFragment)) {
+                if (BiometricUtil.checkFingerprintAccess(this@LoginFragment)) {
                     requestFingerprintEnabling()
                 } else {
                     requestPinEnabling()
                 }
             })
         }
-    }
-
-    private fun setupVerificationOptions() {
-        val isFingerprintEnabled = viewModel
-            .sharedUseCase
-            .getSharedPreference()
-            .isFingerprintEnabled ?: false
-        val isPinEnabled = viewModel
-            .sharedUseCase
-            .getSharedPreference()
-            .isPinEnabled ?: false
-        biometricOptionTextView.isVisible = isFingerprintEnabled || isPinEnabled
     }
 
     private fun setCheckers(): Boolean {
@@ -169,52 +128,8 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         }
     }
 
-    override fun onBiometricIntent(intent: BiometricUtil.BiometricResponse) = when (intent) {
-
-        is BiometricUtil.BiometricResponse.Success -> {
-            showToast("Success fingerprint")
-            // ToDo authenticate using phonenumber
-        }
-
-        is BiometricUtil.BiometricResponse.Error -> {
-            if (intent.errorInt == ERROR_LOCKOUT) {
-                authenticateByPinVerification()
-            }
-            showToast("${intent.errorInt}")
-        }
-
-        is BiometricUtil.BiometricResponse.Unavailable -> {
-            authenticateByPinVerification()
-        }
-
-        else -> showToast(getString(R.string.try_again))
-    }
-
-    private fun authenticateByPinVerification() {
-        val isPinEnabled = viewModel
-            .sharedUseCase
-            .getSharedPreference()
-            .isPinEnabled ?: false
-        if (!isPinEnabled) return showToast("Pin is not enabled")
-        val pin = viewModel.pin.value
-        if (pin.isNullOrBlank()) return
-
-        val dialog = PinVerificationFragmentDialog(pin, this)
-        dialog.show(parentFragmentManager, PinVerificationFragmentDialog.TAG)
-    }
-
-    override fun onPinIntent(result: PinVerificationFragmentDialog.PinResult) = when (result) {
-        is PinVerificationFragmentDialog.PinResult.Success -> {
-            showToast("Success pin")
-        }
-        else -> {
-            showToast("Failure pin")
-        }
-    }
-
     override fun onPinEditComplete(pin: String) {
         viewModel.setPin(pin)
-        startMainPage()
     }
 
     override fun onPinSetupInterrupted() = Unit
@@ -243,6 +158,8 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
             }
             .setNegativeButton("No") { _, _ ->
                 viewModel.clearPin()
+            }
+            .setOnDismissListener {
                 startMainPage()
             }
             .show()

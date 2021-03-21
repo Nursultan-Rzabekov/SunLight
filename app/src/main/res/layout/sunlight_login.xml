@@ -1,40 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/sunlight_background"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/sunlight_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextView"
-            android:textStyle="bold"
             android:text="@string/login"
-            />
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/welcome_login_as_tv"
             style="@style/AppCompatTextViewGray"
             android:layout_marginTop="@dimen/dimen_12dp"
-            tools:text="@string/login_welcome"
-            />
+            tools:text="@string/login_welcome" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"
             android:layout_marginTop="@dimen/dimen_32dp"
-            android:text="@string/enter_phone_number"
-            />
+            android:text="@string/enter_phone_number" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/phone_l_et"
@@ -45,12 +42,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_et"
+                style="@style/BasicEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:paddingTop="@dimen/dimen_16dp"
-                android:paddingBottom="@dimen/dimen_16dp"
-                style="@style/BasicEditText" />
+                android:paddingBottom="@dimen/dimen_16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,57 +60,47 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_l_et"
             style="@style/BasicTextInputLayout"
-            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50dp"
-            android:layout_marginTop="@dimen/dimen_18dp">
-            
+            android:layout_marginTop="@dimen/dimen_18dp"
+            app:passwordToggleEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_et"
-                android:inputType="textPassword"
                 style="@style/BasicEditText"
+                android:inputType="textPassword"
                 android:paddingTop="@dimen/dimen_16dp"
                 android:paddingBottom="@dimen/dimen_16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
-        
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/remember_checkbox"
                 android:layout_width="wrap_content"
-                android:text="@string/remember_me"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_4dp"
-                android:textColor="@color/gray_textColor"
+                android:text="@string/remember_me"
                 android:textAppearance="@style/TextViewAppearance"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/gray_textColor" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/biometricOptionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="8702123123"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/dimen_18sp"
-            android:layout_marginTop="@dimen/dimen_8dp"/>
-
         <Button
             android:id="@+id/btn_enter"
+            style="@style/BasicMaterialButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/dimen_16sp"
+            android:layout_marginTop="@dimen/dimen_32dp"
             android:paddingTop="@dimen/dimen_16dp"
             android:paddingBottom="@dimen/dimen_16dp"
-            style="@style/BasicMaterialButton"
             android:text="@string/enter"
-            android:layout_marginTop="@dimen/dimen_32dp"
-            />
+            android:textSize="@dimen/dimen_16sp" />
 
     </LinearLayout>
 

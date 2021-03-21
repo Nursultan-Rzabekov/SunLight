@@ -38,7 +38,7 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
         viewModel.bearerToken.observe(this, Observer {
             if (!it) return@Observer
             val isFingerprintEnabled = viewModel.isFingerprintEnabled() &&
-                    biometricUtil.checkFingerprintAccess(this)
+                    BiometricUtil.checkFingerprintAccess(this)
             val isPinEnabled = viewModel.isPinEnabled()
             when {
                 isFingerprintEnabled -> biometricUtil.authenticateByFingerprint(this)

@@ -15,15 +15,17 @@ private const val ILLEGAL_BIOMETRIC_HOLDER =
 
 class BiometricUtil(private val callback: BiometricAuthenticationCallback) {
 
-    fun checkFingerprintAccess(holder: BiometricHolder): Boolean {
-        val context = when (holder) {
-            is AppCompatActivity -> holder
-            is Fragment -> holder.requireContext()
-            else -> throw IllegalArgumentException(ILLEGAL_BIOMETRIC_HOLDER)
+    companion object {
+        fun checkFingerprintAccess(holder: BiometricHolder): Boolean {
+            val context = when (holder) {
+                is AppCompatActivity -> holder
+                is Fragment -> holder.requireContext()
+                else -> throw IllegalArgumentException(ILLEGAL_BIOMETRIC_HOLDER)
+            }
+            val biometricManager = BiometricManager.from(context)
+            val isAvailable = biometricManager.canAuthenticate(BIOMETRIC_WEAK)
+            return isAvailable == BiometricManager.BIOMETRIC_SUCCESS
         }
-        val biometricManager = BiometricManager.from(context)
-        val isAvailable = biometricManager.canAuthenticate(BIOMETRIC_WEAK)
-        return isAvailable == BiometricManager.BIOMETRIC_SUCCESS
     }
 
     fun authenticateByFingerprint(holder: BiometricHolder) {
