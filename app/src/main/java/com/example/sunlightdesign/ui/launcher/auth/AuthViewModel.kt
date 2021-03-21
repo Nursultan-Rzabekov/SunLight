@@ -36,9 +36,9 @@ class AuthViewModel constructor(
     init {
         if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
             !sharedUseCase.getSharedPreference().password.isNullOrEmpty()) {
-            _password.postValue(sharedUseCase.getSharedPreference().password)
+            _password.postValue(sharedUseCase.getSharedPreference().password.orEmpty())
         }
-        _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber)
+        _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber.orEmpty())
 
         if (!sharedUseCase.getSharedPreference().pin.isNullOrBlank()) {
             _pin.postValue(sharedUseCase.getSharedPreference().pin)
