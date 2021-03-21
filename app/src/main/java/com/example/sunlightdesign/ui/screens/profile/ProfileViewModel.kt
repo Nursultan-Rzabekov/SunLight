@@ -129,9 +129,12 @@ class ProfileViewModel constructor(
         sharedUseCase.getSharedPreference().pin = pin
     }
 
-    fun nullifyData(){
+    fun nullifyData() {
         sharedUseCase.getSharedPreference().bearerToken = ""
         sharedUseCase.getSharedPreference().editPassword = ""
+        sharedUseCase.getSharedPreference().pin = null
+        sharedUseCase.getSharedPreference().isPinEnabled = false
+        sharedUseCase.getSharedPreference().isFingerprintEnabled = false
     }
 
     fun getCountriesList() {

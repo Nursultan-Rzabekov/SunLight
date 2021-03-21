@@ -47,15 +47,22 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
     }
 
     private val isBiometricEnabled by lazy {
-        val biometricUtil = BiometricUtil(this)
-        biometricUtil.checkFingerprintAccess(this)
+        BiometricUtil.checkFingerprintAccess(this)
     }
 
     private val passwordDialog by lazy {
         Dialog(requireContext(), R.style.FullDialogAnother).apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
-            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.color.transparent))
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            window?.setBackgroundDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.color.transparent
+                )
+            )
             setCancelable(false)
             setContentView(R.layout.dialog_change_password)
         }
@@ -115,17 +122,27 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
         }
 
         passwordDialog.changePasswordBtn.setOnClickListener {
-            if (passwordDialog.confirmPasswordEditText.text.toString().isBlank()) return@setOnClickListener
-            if (passwordDialog.oldPasswordEditText.text.toString().isBlank()) return@setOnClickListener
-            if (passwordDialog.newPasswordEditText.text.toString().isBlank()) return@setOnClickListener
+            if (passwordDialog.confirmPasswordEditText.text.toString()
+                    .isBlank()
+            ) return@setOnClickListener
+            if (passwordDialog.oldPasswordEditText.text.toString()
+                    .isBlank()
+            ) return@setOnClickListener
+            if (passwordDialog.newPasswordEditText.text.toString()
+                    .isBlank()
+            ) return@setOnClickListener
             if (passwordDialog.confirmPasswordEditText.text.toString() !=
-                passwordDialog.newPasswordEditText.text.toString()) return@setOnClickListener
+                passwordDialog.newPasswordEditText.text.toString()
+            ) return@setOnClickListener
 
-            viewModel.changePassword(ChangePassword(
-                old_password = passwordDialog.oldPasswordEditText.text.toString().trim(),
-                password = passwordDialog.newPasswordEditText.text.toString().trim(),
-                password_confirmation = passwordDialog.confirmPasswordEditText.text.toString().trim()
-            ))
+            viewModel.changePassword(
+                ChangePassword(
+                    old_password = passwordDialog.oldPasswordEditText.text.toString().trim(),
+                    password = passwordDialog.newPasswordEditText.text.toString().trim(),
+                    password_confirmation = passwordDialog.confirmPasswordEditText.text.toString()
+                        .trim()
+                )
+            )
         }
 
         enterByPinSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -216,7 +233,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
         Glide.with(this)
             .load(getImageUrl(info?.document_front_path))
-            .addListener(object: RequestListener<Drawable> {
+            .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?, model: Any?, target: Target<Drawable>?,
                     isFirstResource: Boolean
@@ -236,7 +253,7 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
         Glide.with(this)
             .load(getImageUrl(info?.document_back_path))
-            .addListener(object: RequestListener<Drawable> {
+            .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?, model: Any?, target: Target<Drawable>?,
                     isFirstResource: Boolean
@@ -248,7 +265,8 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
                 override fun onResourceReady(
                     resource: Drawable?, model: Any?, target: Target<Drawable>?,
-                    dataSource: DataSource?, isFirstResource: Boolean): Boolean = false
+                    dataSource: DataSource?, isFirstResource: Boolean
+                ): Boolean = false
 
             })
             .into(document_back_side_iv)
@@ -259,7 +277,8 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
     }
 
     private fun setSponsorInfo(userInfo: UserInfo) {
-        sponsorFullNameTextView.text = ("${userInfo.parent?.first_name} ${userInfo.parent?.last_name}")
+        sponsorFullNameTextView.text =
+            ("${userInfo.parent?.first_name} ${userInfo.parent?.last_name}")
         sponsorStatusTextView.text = userInfo.parent?.status?.status_name
         sponsorUuidTextView.text = userInfo.parent?.uuid
 
@@ -287,13 +306,16 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
                 VerifyUser.STATUS_REJECTED -> View.VISIBLE
                 else -> View.GONE
             }
-        userVerificationStatusTextView.setTextColor(ContextCompat.getColor(requireContext(),
-            when (userInfo.user?.verifyuser?.status) {
-                VerifyUser.STATUS_VERIFIED -> R.color.green
-                VerifyUser.STATUS_WAITING_VERIFICATION -> R.color.yellow
-                else -> R.color.red
-            }
-        ))
+        userVerificationStatusTextView.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                when (userInfo.user?.verifyuser?.status) {
+                    VerifyUser.STATUS_VERIFIED -> R.color.green
+                    VerifyUser.STATUS_WAITING_VERIFICATION -> R.color.yellow
+                    else -> R.color.red
+                }
+            )
+        )
     }
 
     private fun showPasswordDialog() {
@@ -329,23 +351,22 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
     override fun onBiometricIntent(intent: BiometricUtil.BiometricResponse) = Unit
 
-    private fun checkPermission() : Boolean {
-        return if (
-            requireContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-            PackageManager.PERMISSION_GRANTED &&
-            requireContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-            PackageManager.PERMISSION_GRANTED) {
-            true
-        } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ),
-                Constants.PERMISSIONS_REQUEST_READ_STORAGE
-            )
-            false
-        }
+    private fun checkPermission(): Boolean = if (
+        requireContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+        PackageManager.PERMISSION_GRANTED &&
+        requireContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+        PackageManager.PERMISSION_GRANTED
+    ) {
+        true
+    } else {
+        ActivityCompat.requestPermissions(
+            requireActivity(),
+            arrayOf(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ),
+            Constants.PERMISSIONS_REQUEST_READ_STORAGE
+        )
+        false
     }
 }
