@@ -74,8 +74,8 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
     private fun authenticateByPinVerification() {
         val isPinEnabled = viewModel.isPinEnabled()
         if (!isPinEnabled) return showToast("Pin is not enabled")
-        val pin = viewModel.pin.value
-        if (pin.isNullOrBlank()) return
+        val pin = viewModel.getPin()
+        if (pin.isNullOrBlank()) return showToast("Pin was not found")
 
         val dialog = PinVerificationFragmentDialog(pin, this)
         dialog.show(supportFragmentManager, PinVerificationFragmentDialog.TAG)

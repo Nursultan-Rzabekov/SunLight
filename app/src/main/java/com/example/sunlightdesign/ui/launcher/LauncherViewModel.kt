@@ -56,13 +56,17 @@ class LauncherViewModel constructor(
 
     fun getUserId(): String = sharedUseCase.getSharedPreference().userId.toString()
 
+    fun getPin(): String? = sharedUseCase
+        .getSharedPreference()
+        .pin
+
     fun isPinEnabled(): Boolean = sharedUseCase
         .getSharedPreference()
-        .isFingerprintEnabled ?: false
+        .isPinEnabled ?: false
 
     fun isFingerprintEnabled(): Boolean = sharedUseCase
         .getSharedPreference()
-        .isPinEnabled ?: false
+        .isFingerprintEnabled ?: false
 
     fun getBanners(){
         progress.postValue(true)

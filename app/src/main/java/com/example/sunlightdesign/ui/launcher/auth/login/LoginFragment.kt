@@ -130,21 +130,26 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
     override fun onPinEditComplete(pin: String) {
         viewModel.setPin(pin)
+        startMainPage()
     }
 
-    override fun onPinSetupInterrupted() = Unit
+    override fun onPinSetupInterrupted() {
+        viewModel.clearPin()
+        viewModel.setIsFingerprintEnabled(false)
+        startMainPage()
+    }
 
     private fun requestFingerprintEnabling() {
         AlertDialog.Builder(requireContext())
             .setTitle("Fingerprint?")
+            .setCancelable(false)
             .setPositiveButton("Yes") { _, _ ->
                 viewModel.setIsFingerprintEnabled(true)
+                requestPinEnabling()
             }
             .setNegativeButton("No") { _, _ ->
                 viewModel.setIsFingerprintEnabled(false)
-            }
-            .setOnDismissListener {
-                requestPinEnabling()
+                startMainPage()
             }
             .show()
     }
@@ -152,14 +157,14 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
     private fun requestPinEnabling() {
         AlertDialog.Builder(requireContext())
             .setTitle("Pin?")
+            .setCancelable(false)
             .setPositiveButton("Yes") { _, _ ->
-                val dialog = PinSetupFragmentDialog(this)
-                dialog.show(parentFragmentManager, PinVerificationFragmentDialog.TAG)
+                val dialog = PinSetupFragmentDialog(this, true)
+                dialog.show(parentFragmentManager, PinSetupFragmentDialog.TAG)
             }
             .setNegativeButton("No") { _, _ ->
                 viewModel.clearPin()
-            }
-            .setOnDismissListener {
+                viewModel.setIsFingerprintEnabled(false)
                 startMainPage()
             }
             .show()
