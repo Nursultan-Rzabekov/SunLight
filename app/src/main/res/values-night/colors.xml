@@ -5,28 +5,26 @@
     <color name="colorAccent">#DE6000</color>
 
     <color name="sunLightColor">@color/colorPrimary</color>
-    <color name="sunBlackColor">#000000</color>
+    <color name="sunBlackColor">#FFF</color>
     <color name="gray">#A8ADB8</color>
-    <color name="gray_">#EFEFF1</color>
+    <color name="gray_">#000</color>
     <color name="secondaryFirst">#1E1D4C</color>
     <color name="gray_textColor">#67707A</color>
     <color name="gray_wallet_collor">#857C7C</color>
-    <color name="sunlight_background">#F2F2F2</color>
-    <color name="white">#fff</color>
-    <color name="fixed_white">#fff</color>
-    <color name="fixed_black">#000</color>
+    <color name="sunlight_background">#0d0d0d</color>
+    <color name="white">#000</color>
     <color name="pure_color">#2C2A4B</color>
     <color name="red">#CA1616</color>
 
     <color name="transparent">#00FFFFFF</color>
 
-    <color name="gray_for_line">#DADCE1</color>
+    <color name="gray_for_line">#25231e</color>
     <color name="gray_DA">#DADADA</color>
     <color name="white_gray">#ECECEC</color>
     <color name="light_gray">#C4C4C4</color>
     <color name="gray_editTextColor">#F7F7F7</color>
     <color name="gray_F2">#F2F2F2</color>
-    <color name="gray_F9">#F9F9F9</color>
+    <color name="gray_F9">#060606</color>
     <color name="gray_FA">#FAFAFA</color>
     <color name="gray_EF">#EFEFEF</color>
     <color name="dark_gray">#857C7C</color>
@@ -36,5 +34,4 @@
     <color name="green">#24584d</color>
 
     <color name="yellow">#FFd300</color>
-
 </resources>

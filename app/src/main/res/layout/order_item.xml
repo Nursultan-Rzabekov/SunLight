@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:layout_marginStart="@dimen/dimen_16dp"
-    android:layout_marginEnd="@dimen/dimen_16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="@dimen/dimen_0dp"
-    app:cardCornerRadius="@dimen/dimen_5dp"
     android:layout_marginTop="@dimen/dimen_12dp"
+    android:layout_marginEnd="@dimen/dimen_16dp"
     android:layout_marginBottom="@dimen/dimen_12dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    app:cardElevation="@dimen/dimen_0dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/dimen_16dp"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,34 +27,34 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/orderNumberTextView"
                 style="@style/AppCompatTextView"
-                tools:text="Заказ #1"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:textSize="@dimen/dimen_16sp"/>
+                tools:text="Заказ #1" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/detailTextView"
                 style="@style/AppCompatTextViewGray"
                 android:text="@string/detail_order"
                 android:textColor="@color/sunLightColor"
+                android:textSize="@dimen/dimen_16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="@dimen/dimen_16sp"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/dataOrdersTextView"
                 style="@style/AppCompatTextViewGray"
-                tools:text="Дата заказа: 12.02.18"
                 android:layout_marginTop="@dimen/dimen_12dp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/orderNumberTextView"
-                android:textSize="@dimen/dimen_14sp"/>
+                tools:text="Дата заказа: 12.02.18" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/payTextView"
                 style="@style/AppCompatTextView"
-                android:textSize="@dimen/dimen_14sp"
                 android:layout_marginTop="@dimen/dimen_12dp"
+                android:textSize="@dimen/dimen_14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dataOrdersTextView"
                 tools:text="К оплате 2970 KZT" />
@@ -73,9 +72,8 @@
             android:id="@+id/productsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/order_sublist_item"
             tools:itemCount="2"
-            />
+            tools:listitem="@layout/order_sublist_item" />
 
     </LinearLayout>
 

@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/login_by_fingerprint"
+                android:textColor="@color/gray_textColor"
                 android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -54,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/login_by_pin"
+                android:textColor="@color/gray_textColor"
                 android:textSize="@dimen/dimen_16sp" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -79,6 +81,7 @@
             android:paddingHorizontal="@dimen/dimen_16dp"
             android:paddingVertical="@dimen/dimen_20dp"
             android:text="@string/change_pin"
+            android:textColor="@color/gray_textColor"
             android:textSize="@dimen/dimen_16sp"
             app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right" />
 

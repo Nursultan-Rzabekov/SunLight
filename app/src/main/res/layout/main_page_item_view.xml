@@ -13,6 +13,7 @@
         app:cornerRadius="@dimen/dimen_30dp"
         android:layout_height="wrap_content"
         tools:text="Все новости"
+        android:textColor="@color/fixed_white"
         android:textStyle="bold"
         android:textSize="@dimen/dimen_12sp"
         android:textAllCaps="false"
