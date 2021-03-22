@@ -11,7 +11,6 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.ui.launcher.auth.pin.PinSetupFragmentDialog
-import com.example.sunlightdesign.ui.launcher.auth.pin.PinVerificationFragmentDialog
 import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
@@ -61,10 +60,12 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
         remember_checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                viewModel.setPhoneAndPassword(phoneNumber = MaskUtils.unMaskValue(
-                    MaskUtils.PHONE_MASK,
-                    phone_et.text.toString()
-                ), password = password_et.text.toString())
+                viewModel.setPhoneAndPassword(
+                    phoneNumber = MaskUtils.unMaskValue(
+                        MaskUtils.PHONE_MASK,
+                        phone_et.text.toString()
+                    ), password = password_et.text.toString()
+                )
             } else {
                 viewModel.setPhoneAndPassword(phoneNumber = "", password = "")
             }
