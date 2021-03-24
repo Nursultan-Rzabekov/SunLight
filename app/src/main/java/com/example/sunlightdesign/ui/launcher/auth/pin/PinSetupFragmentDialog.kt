@@ -75,6 +75,7 @@ class PinSetupFragmentDialog(
             when (verifyPin) {
                 null -> {
                     verifyPin = enteredPin
+                    descriptionTextView.text = getString(R.string.repeat_created_pin_code)
                     pinView.setText("")
                 }
                 enteredPin -> {

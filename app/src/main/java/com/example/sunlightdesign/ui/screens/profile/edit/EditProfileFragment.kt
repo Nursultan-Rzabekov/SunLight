@@ -163,11 +163,11 @@ class EditProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::c
 
         changePinTextView.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setTitle("Sure?")
-                .setPositiveButton("Yes") { _, _ ->
+                .setTitle(R.string.sure_change_pin_question)
+                .setPositiveButton(R.string.text_yes) { _, _ ->
                     showPinEditor()
                 }
-                .setNegativeButton("No", null)
+                .setNegativeButton(R.string.text_no, null)
                 .show()
         }
     }

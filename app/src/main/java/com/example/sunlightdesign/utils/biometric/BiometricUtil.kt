@@ -1,5 +1,6 @@
 package com.example.sunlightdesign.utils.biometric
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK
@@ -7,6 +8,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.example.sunlightdesign.R
 import java.lang.IllegalArgumentException
 import java.util.concurrent.Executor
 
@@ -51,11 +53,10 @@ class BiometricUtil(private val callback: BiometricAuthenticationCallback) {
     }
 
     private fun authenticateByPrompt(executor: Executor, holder: BiometricHolder) {
+        val context = getContext(holder)
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Title")
-            .setSubtitle("Subtitle")
-            .setDescription("Description")
-            .setNegativeButtonText("Cancel")
+            .setTitle(context.getString(R.string.login_using_fingerprint_title))
+            .setNegativeButtonText(context.getString(R.string.text_cancel))
             .build()
 
         val biometricCallback = object : BiometricPrompt.AuthenticationCallback() {
@@ -87,6 +88,12 @@ class BiometricUtil(private val callback: BiometricAuthenticationCallback) {
     ) = when (holder) {
         is AppCompatActivity -> BiometricPrompt(holder, executor, callback)
         is Fragment -> BiometricPrompt(holder, executor, callback)
+        else -> throw IllegalArgumentException(ILLEGAL_BIOMETRIC_HOLDER)
+    }
+
+    private fun getContext(holder: BiometricHolder): Context = when (holder) {
+        is AppCompatActivity -> holder
+        is Fragment -> holder.requireContext()
         else -> throw IllegalArgumentException(ILLEGAL_BIOMETRIC_HOLDER)
     }
 

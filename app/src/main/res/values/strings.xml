@@ -332,4 +332,12 @@
     <string name="login_by_fingerprint">Вход по отпечатку пальца</string>
     <string name="login_by_pin">Вход по ПИН-коду</string>
     <string name="change_pin">Изменить ПИН-код</string>
+    <string name="enable_fingerprint_question">Включить отпечаток пальца?</string>
+    <string name="text_no">нет</string>
+    <string name="enable_pin_question">Включить ПИН-код?</string>
+    <string name="login_using_fingerprint_title">Войдите в приложение используя отпечаток пальца</string>
+    <string name="sure_change_pin_question">Вы действительно хотите изменить ПИН-код?</string>
+    <string name="pin_code_label">Код быстрого доступа</string>
+    <string name="create_pin_code">Придумайте код быстрого доступа к приложению</string>
+    <string name="repeat_created_pin_code">Повторите код быстрого доступа к приложению</string>
 </resources>

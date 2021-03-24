@@ -142,13 +142,13 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
     private fun requestFingerprintEnabling() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Fingerprint?")
+            .setTitle(R.string.enable_fingerprint_question)
             .setCancelable(false)
-            .setPositiveButton("Yes") { _, _ ->
+            .setPositiveButton(R.string.text_yes) { _, _ ->
                 viewModel.setIsFingerprintEnabled(true)
                 requestPinEnabling()
             }
-            .setNegativeButton("No") { _, _ ->
+            .setNegativeButton(R.string.text_no) { _, _ ->
                 viewModel.setIsFingerprintEnabled(false)
                 startMainPage()
             }
@@ -157,13 +157,13 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
     private fun requestPinEnabling() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Pin?")
+            .setTitle(R.string.enable_pin_question)
             .setCancelable(false)
-            .setPositiveButton("Yes") { _, _ ->
+            .setPositiveButton(R.string.text_yes) { _, _ ->
                 val dialog = PinSetupFragmentDialog(this, true)
                 dialog.show(parentFragmentManager, PinSetupFragmentDialog.TAG)
             }
-            .setNegativeButton("No") { _, _ ->
+            .setNegativeButton(R.string.text_no) { _, _ ->
                 viewModel.clearPin()
                 viewModel.setIsFingerprintEnabled(false)
                 startMainPage()
