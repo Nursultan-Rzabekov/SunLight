@@ -32,6 +32,7 @@ class PinVerificationFragmentDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isCancelable = false
+        descriptionTextView.visibility = View.GONE
         setListeners()
     }
 
