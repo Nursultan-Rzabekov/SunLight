@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/dimen_16dp"
     android:id="@+id/walletHistoriesLayout"
+    android:layout_marginBottom="@dimen/dimen_4dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/dimen_5dp"
     app:cardElevation="@dimen/dimen_4dp">

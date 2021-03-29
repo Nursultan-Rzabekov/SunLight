@@ -10,7 +10,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/news_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="215dp" />
 
     <com.afollestad.viewpagerdots.DotsIndicator
         android:id="@+id/dots_indicator"
