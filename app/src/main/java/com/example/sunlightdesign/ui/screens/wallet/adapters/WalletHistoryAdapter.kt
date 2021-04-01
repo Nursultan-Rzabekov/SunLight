@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.Bonus
 import com.example.sunlightdesign.data.source.dataSource.remote.wallets.entity.Data
 import com.example.sunlightdesign.utils.Constants
 import com.example.sunlightdesign.utils.DateUtils
@@ -109,7 +110,16 @@ class WalletHistoryAdapter(
                 DateUtils.reformatDateString(history.created_at, DateUtils.PATTERN_DD_MM_YYYY)
 
             itemView.walletTextView.text = history.wallet_type
-            itemView.nameTextView.text = history.bonus?.bonus_description
+
+            itemView.nameTextView.text = when (history.bonus?.id) {
+                Bonus.RECRUITING_BONUS -> {
+                    history.bonus.bonus_description
+                }
+                Bonus.MATCHING_BONUS, Bonus.TEAM_BONUS -> {
+                    history.bonus.bonus_description
+                }
+                else -> history.bonus?.bonus_description
+            }
 
             itemView.typeOfTransactionImageView.setImageDrawable(
                 ContextCompat.getDrawable(itemView.context,

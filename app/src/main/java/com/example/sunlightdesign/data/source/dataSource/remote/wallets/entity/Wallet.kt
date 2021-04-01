@@ -109,6 +109,12 @@ data class Bonus(
     val bonus_name: String,
     val bonus_type: Double,
     val created_at: String,
-    val id: Double,
+    val id: Int,
     val updated_at: String
-)
+) {
+    companion object {
+        const val RECRUITING_BONUS = 1
+        const val TEAM_BONUS = 2
+        const val MATCHING_BONUS = 3
+    }
+}
