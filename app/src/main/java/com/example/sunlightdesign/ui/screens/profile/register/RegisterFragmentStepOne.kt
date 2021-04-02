@@ -38,9 +38,13 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         const val USER_ID = "user_id"
     }
 
-    private lateinit var countriesAdapter: CustomPopupAdapter<Country>
-    private lateinit var regionsAdapter: CustomPopupAdapter<Region>
-    private lateinit var citiesAdapter: CustomPopupAdapter<City>
+//    private lateinit var countriesAdapter: CustomPopupAdapter<Country>
+//    private lateinit var regionsAdapter: CustomPopupAdapter<Region>
+//    private lateinit var citiesAdapter: CustomPopupAdapter<City>
+
+    private val countriesPopUpAdapter = BasePopUpAdapter<Country>()
+    private val regionsPopUpAdapter = BasePopUpAdapter<Region>()
+    private val citiesPopUpAdapter = BasePopUpAdapter<City>()
     private lateinit var usersAdapter: CustomPopupAdapter<Users>
 
     private var countryId: Int = -1
@@ -253,98 +257,138 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun setCountriesList(list: ArrayList<Country>) {
-        countriesAdapter = CustomPopupAdapter(
-            context = requireContext(),
-            items = list,
-            valueChecker = object : CustomPopupAdapter.ValueChecker<Country, String> {
-                override fun filter(value: Country, subvalue: String?): Boolean {
-                    val v = value.country_name.toString()
-                    if (subvalue == null || subvalue.isBlank())
-                        return true
-                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue)
-                }
-
-                override fun toString(value: Country?): String = value?.country_name.toString()
-
-                override fun toLong(value: Country?): Long = value?.id?.toLong() ?: -1
-
+//        countriesAdapter = CustomPopupAdapter(
+//            context = requireContext(),
+//            items = list,
+//            valueChecker = object : CustomPopupAdapter.ValueChecker<Country, String> {
+//                override fun filter(value: Country, subvalue: String?): Boolean {
+//                    val v = value.country_name.toString()
+//                    if (subvalue == null || subvalue.isBlank())
+//                        return true
+//                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue)
+//                }
+//
+//                override fun toString(value: Country?): String = value?.country_name.toString()
+//
+//                override fun toLong(value: Country?): Long = value?.id?.toLong() ?: -1
+//
+//            }
+//        )
+//        country_drop_down_tv.setAdapter(countriesAdapter)
+//        country_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
+//            val adapter = country_drop_down_tv.adapter
+//            val c = adapter.getItem(position) as Country
+//            countryId = c.id ?: -1
+//            regionsAdapter.callFiltering("")
+//            Timber.d("countryID: $countryId")
+//        }
+        countryTextView.setOnClickListener {
+            showListPopupWindow(
+                context = requireContext(),
+                items = list,
+                anchor = countryTextView,
+                adapter = countriesPopUpAdapter
+            ) { country ->
+                countryId = country.id ?: -1
+                regionId = -1
+                cityId = -1
+                regionsTextView.text = ""
+                citiesTextView.text = ""
+                countryTextView.text = country.country_name
             }
-        )
-        country_drop_down_tv.setAdapter(countriesAdapter)
-        country_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
-            val adapter = country_drop_down_tv.adapter
-            val c = adapter.getItem(position) as Country
-            countryId = c.id ?: -1
-            regionsAdapter.callFiltering("")
-            Timber.d("countryID: $countryId")
         }
     }
 
     private fun setCitiesList(list: ArrayList<City>) {
-        citiesAdapter = CustomPopupAdapter(
-            context = requireContext(),
-            items = list,
-            valueChecker = object : CustomPopupAdapter.ValueChecker<City, String> {
-                override fun filter(value: City, subvalue: String?): Boolean {
-                    val v = value.city_name.toString()
-                    if (subvalue == null || subvalue.isBlank())
-                        return (regionId == value.region_id || regionId == -1)
-                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue) &&
-                            (regionId == value.region_id || regionId == -1)
-                }
-
-                override fun toString(value: City?): String {
-                    return value?.city_name.toString()
-                }
-
-                override fun toLong(value: City?): Long {
-                    return value?.id?.toLong() ?: -1
-                }
-
+//        citiesAdapter = CustomPopupAdapter(
+//            context = requireContext(),
+//            items = list,
+//            valueChecker = object : CustomPopupAdapter.ValueChecker<City, String> {
+//                override fun filter(value: City, subvalue: String?): Boolean {
+//                    val v = value.city_name.toString()
+//                    if (subvalue == null || subvalue.isBlank())
+//                        return (regionId == value.region_id || regionId == -1)
+//                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue) &&
+//                            (regionId == value.region_id || regionId == -1)
+//                }
+//
+//                override fun toString(value: City?): String {
+//                    return value?.city_name.toString()
+//                }
+//
+//                override fun toLong(value: City?): Long {
+//                    return value?.id?.toLong() ?: -1
+//                }
+//
+//            }
+//        )
+//        city_drop_down_tv.threshold = 1
+//        city_drop_down_tv.setAdapter(citiesAdapter)
+//        city_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
+//            val adapter = city_drop_down_tv.adapter
+//            val c = adapter.getItem(position) as City
+//            cityId = c.id ?: -1
+//            Timber.d("cityID: $cityId")
+//        }
+        citiesTextView.setOnClickListener {
+            showListPopupWindow(
+                context = requireContext(),
+                items = list.filter { regionId == it.region_id || regionId == -1 },
+                anchor = citiesTextView,
+                adapter = citiesPopUpAdapter
+            ) { city ->
+                cityId = city.id ?: -1
+                citiesTextView.text = city.city_name
             }
-        )
-        city_drop_down_tv.threshold = 1
-        city_drop_down_tv.setAdapter(citiesAdapter)
-        city_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
-            val adapter = city_drop_down_tv.adapter
-            val c = adapter.getItem(position) as City
-            cityId = c.id ?: -1
-            Timber.d("cityID: $cityId")
         }
     }
 
     private fun setRegionsList(list: ArrayList<Region>) {
-        regionsAdapter = CustomPopupAdapter(
-            context = requireContext(),
-            items = list,
-            valueChecker = object : CustomPopupAdapter.ValueChecker<Region, String> {
-                override fun filter(value: Region, subvalue: String?): Boolean {
-                    Timber.d("countryID: $countryId")
-                    val v = value.region_name.toString()
-                    if (subvalue == null || subvalue.isBlank())
-                        return (countryId == value.country_id || countryId == -1)
-                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue) &&
-                            (countryId == value.country_id || countryId == -1)
-                }
-
-                override fun toString(value: Region?): String {
-                    return value?.region_name.toString()
-                }
-
-                override fun toLong(value: Region?): Long {
-                    return value?.id?.toLong() ?: -1
-                }
-
+//        regionsAdapter = CustomPopupAdapter(
+//            context = requireContext(),
+//            items = list,
+//            valueChecker = object : CustomPopupAdapter.ValueChecker<Region, String> {
+//                override fun filter(value: Region, subvalue: String?): Boolean {
+//                    Timber.d("countryID: $countryId")
+//                    val v = value.region_name.toString()
+//                    if (subvalue == null || subvalue.isBlank())
+//                        return (countryId == value.country_id || countryId == -1)
+//                    return v.toLowerCase(Locale.getDefault()).startsWith(subvalue) &&
+//                            (countryId == value.country_id || countryId == -1)
+//                }
+//
+//                override fun toString(value: Region?): String {
+//                    return value?.region_name.toString()
+//                }
+//
+//                override fun toLong(value: Region?): Long {
+//                    return value?.id?.toLong() ?: -1
+//                }
+//
+//            }
+//        )
+//        region_drop_down_tv.setOnClickListener { region_drop_down_tv.showDropDown() }
+//        region_drop_down_tv.threshold = 1
+//        region_drop_down_tv.setAdapter(regionsAdapter)
+//        region_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
+//            val adapter = region_drop_down_tv.adapter
+//            val r = adapter.getItem(position) as Region
+//            regionId = r.id ?: -1
+//            citiesAdapter.callFiltering("")
+//            Timber.d("regionID: $regionId")
+//        }
+        regionsTextView.setOnClickListener {
+            showListPopupWindow(
+                context = requireContext(),
+                items = list.filter { countryId == it.country_id || countryId == -1 },
+                anchor = regionsTextView,
+                adapter = regionsPopUpAdapter
+            ) { region ->
+                regionId = region.id ?: -1
+                cityId = -1
+                citiesTextView.text = ""
+                regionsTextView.text = region.region_name
             }
-        )
-        region_drop_down_tv.threshold = 1
-        region_drop_down_tv.setAdapter(regionsAdapter)
-        region_drop_down_tv.setOnItemClickListener { parent, view, position, id ->
-            val adapter = region_drop_down_tv.adapter
-            val r = adapter.getItem(position) as Region
-            regionId = r.id ?: -1
-            citiesAdapter.callFiltering("")
-            Timber.d("regionID: $regionId")
         }
     }
 

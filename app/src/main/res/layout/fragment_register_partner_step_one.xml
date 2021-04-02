@@ -251,27 +251,17 @@
                 android:text="@string/choose_country_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/country_drop_down"
-                style="@style/BasicDropDownInputLayout"
+            <TextView
+                android:id="@+id/countryTextView"
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                app:hintEnabled="false">
-
-                <AutoCompleteTextView
-                    android:id="@+id/country_drop_down_tv"
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:hint="@string/choose_country_two_dots"
-                    android:inputType="none"
-                    android:labelFor="@id/country_drop_down"
-                    android:paddingTop="@dimen/dimen_12dp"
-                    android:paddingBottom="@dimen/dimen_12dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:padding="@dimen/dimen_12dp"
+                android:textColorHint="@color/gray"
+                android:background="@drawable/white_bordered_box"
+                android:hint="@string/choose_country_two_dots"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
@@ -279,27 +269,39 @@
                 android:text="@string/choose_region_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/region_drop_down"
-                style="@style/BasicDropDownInputLayout"
+            <TextView
+                android:id="@+id/regionsTextView"
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                app:hintEnabled="false">
+                android:padding="@dimen/dimen_12dp"
+                android:textColorHint="@color/gray"
+                android:background="@drawable/white_bordered_box"
+                android:hint="@string/choose_region_two_dots"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/region_drop_down_tv"
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:hint="@string/choose_region_two_dots"
-                    android:inputType="none"
-                    android:labelFor="@id/region_drop_down"
-                    android:paddingTop="@dimen/dimen_12dp"
-                    android:paddingBottom="@dimen/dimen_12dp" />
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/region_drop_down"-->
+<!--                style="@style/BasicDropDownInputLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/dimen_16dp"-->
+<!--                app:hintEnabled="false">-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--                <AutoCompleteTextView-->
+<!--                    android:id="@+id/region_drop_down_tv"-->
+<!--                    style="@style/AppCompatTextViewGray"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:enabled="false"-->
+<!--                    android:hint="@string/choose_region_two_dots"-->
+<!--                    android:inputType="none"-->
+<!--                    android:labelFor="@id/region_drop_down"-->
+<!--                    android:paddingTop="@dimen/dimen_12dp"-->
+<!--                    android:paddingBottom="@dimen/dimen_12dp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
@@ -307,27 +309,39 @@
                 android:text="@string/choose_city_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/city_drop_down"
-                style="@style/BasicDropDownInputLayout"
+            <TextView
+                android:id="@+id/citiesTextView"
+                style="@style/AppCompatTextViewGray"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_16dp"
-                app:hintEnabled="false">
+                android:padding="@dimen/dimen_12dp"
+                android:textColorHint="@color/gray"
+                android:background="@drawable/white_bordered_box"
+                android:hint="@string/choose_city_two_dots"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/city_drop_down_tv"
-                    style="@style/AppCompatTextViewGray"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:hint="@string/choose_city_two_dots"
-                    android:inputType="none"
-                    android:labelFor="@id/city_drop_down"
-                    android:paddingTop="@dimen/dimen_12dp"
-                    android:paddingBottom="@dimen/dimen_12dp" />
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/city_drop_down"-->
+<!--                style="@style/BasicDropDownInputLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/dimen_16dp"-->
+<!--                app:hintEnabled="false">-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--                <AutoCompleteTextView-->
+<!--                    android:id="@+id/city_drop_down_tv"-->
+<!--                    style="@style/AppCompatTextViewGray"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:enabled="false"-->
+<!--                    android:hint="@string/choose_city_two_dots"-->
+<!--                    android:inputType="none"-->
+<!--                    android:labelFor="@id/city_drop_down"-->
+<!--                    android:paddingTop="@dimen/dimen_12dp"-->
+<!--                    android:paddingBottom="@dimen/dimen_12dp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/AppCompatTextViewGray"
