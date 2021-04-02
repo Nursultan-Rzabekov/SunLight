@@ -82,8 +82,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 val firstName = partnerFirstNameEditText.text.toString().trim()
                 val lastName = partnerLastNameEditText.text.toString().trim()
                 val middleName = partnerMiddleNameEditText.text.toString().trim()
-                val position = when{
-                    sponsor_itself_rbtn.isChecked -> Constants.PYRAMID_TOP
+                val position = when {
                     left_side_rbtn.isChecked -> Constants.PYRAMID_LEFT
                     else -> Constants.PYRAMID_RIGHT
                 }
