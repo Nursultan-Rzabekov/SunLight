@@ -34,7 +34,7 @@ import kotlin.collections.ArrayList
 
 class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewModel::class) {
 
-    companion object{
+    companion object {
         const val USER_ID = "user_id"
     }
 
@@ -76,90 +76,68 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun setListeners() {
         btn_next_step_one.setOnClickListener {
-            if (checkFields()) {
-                Timber.d("Register first page")
+            if (!checkFields()) return@setOnClickListener
+            Timber.d("Register first page")
 
-                val firstName = partnerFirstNameEditText.text.toString().trim()
-                val lastName = partnerLastNameEditText.text.toString().trim()
-                val middleName = partnerMiddleNameEditText.text.toString().trim()
-                val position = when {
-                    left_side_rbtn.isChecked -> Constants.PYRAMID_LEFT
-                    else -> Constants.PYRAMID_RIGHT
-                }
-
-                val backPath = viewModel.backDocument.value
-                val frontPath = viewModel.rearDocument.value
-
-                val isNotNeeded = backPath == null && frontPath == null
-
-                disableErrors()
-
-                if (!isNotNeeded) {
-                    backPath ?: return@setOnClickListener
-                    frontPath ?: return@setOnClickListener
-                    val backInputStream: InputStream? =
-                        requireActivity().contentResolver?.openInputStream(backPath)
-                    val backPart = MultipartBody.Part.createFormData(
-                        "document_back_path", "back.jpeg", RequestBody.create(
-                            MediaType.parse("image/*"),
-                            backInputStream!!.readBytes()
-                        )
-                    )
-
-                    val frontInputStream: InputStream? =
-                        requireActivity().contentResolver?.openInputStream(frontPath)
-                    val frontPart = MultipartBody.Part.createFormData(
-                        "document_front_path", "front.jpg", RequestBody.create(
-                            MediaType.parse("image/*"),
-                            frontInputStream!!.readBytes()
-                        )
-                    )
-
-                    viewModel.addPartner(
-                        AddPartner(
-                            first_name = firstName,
-                            last_name = lastName,
-                            phone = MaskUtils.unMaskValue(
-                                MaskUtils.PHONE_MASK,
-                                phone_et.text.toString()
-                            ),
-                            middle_name = middleName,
-                            country_id = countryId,
-                            region_id = regionId,
-                            city_id = cityId,
-                            iin = MaskUtils.unMaskValue(
-                                IIN_MASK,
-                                iin_et.text.toString()
-                            ),
-                            register_by = sponsorId,
-                            position = position,
-                            document_front = frontPart,
-                            document_back = backPart
-                        )
-                    )
-                } else {
-                    viewModel.addPartner(
-                        AddPartner(
-                            first_name = firstName,
-                            last_name = lastName,
-                            phone = MaskUtils.unMaskValue(
-                                MaskUtils.PHONE_MASK,
-                                phone_et.text.toString()
-                            ),
-                            middle_name = middleName,
-                            country_id = countryId,
-                            region_id = regionId,
-                            city_id = cityId,
-                            iin = MaskUtils.unMaskValue(
-                                IIN_MASK,
-                                iin_et.text.toString()
-                            ),
-                            register_by = sponsorId,
-                            position = position
-                        )
-                    )
-                }
+            val firstName = partnerFirstNameEditText.text.toString().trim()
+            val lastName = partnerLastNameEditText.text.toString().trim()
+            val middleName = partnerMiddleNameEditText.text.toString().trim()
+            val position = when {
+                left_side_rbtn.isChecked -> Constants.PYRAMID_LEFT
+                else -> Constants.PYRAMID_RIGHT
             }
+
+            val backPath = viewModel.backDocument.value
+            val frontPath = viewModel.rearDocument.value
+
+            disableErrors()
+
+            var backPart: MultipartBody.Part? = null
+            var frontPart: MultipartBody.Part? = null
+
+            if (backPath != null || frontPath != null) {
+                backPath ?: return@setOnClickListener
+                frontPath ?: return@setOnClickListener
+
+                val backInputStream: InputStream? =
+                    requireActivity().contentResolver?.openInputStream(backPath)
+                backPart = MultipartBody.Part.createFormData(
+                    "document_back_path", "back.jpeg", RequestBody.create(
+                        MediaType.parse("image/*"),
+                        backInputStream!!.readBytes()
+                    )
+                )
+                val frontInputStream: InputStream? =
+                    requireActivity().contentResolver?.openInputStream(frontPath)
+                frontPart = MultipartBody.Part.createFormData(
+                    "document_front_path", "front.jpg", RequestBody.create(
+                        MediaType.parse("image/*"),
+                        frontInputStream!!.readBytes()
+                    )
+                )
+            }
+            viewModel.addPartner(
+                AddPartner(
+                    first_name = firstName,
+                    last_name = lastName,
+                    phone = MaskUtils.unMaskValue(
+                        MaskUtils.PHONE_MASK,
+                        phone_et.text.toString()
+                    ),
+                    middle_name = middleName,
+                    country_id = countryId,
+                    region_id = regionId,
+                    city_id = cityId,
+                    iin = MaskUtils.unMaskValue(
+                        IIN_MASK,
+                        iin_et.text.toString()
+                    ),
+                    register_by = sponsorId,
+                    position = position,
+                    document_front = frontPart,
+                    document_back = backPart
+                )
+            )
         }
 
         sponsor_name_group.setOnCheckedChangeListener { _, checkedId ->
@@ -234,10 +212,11 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 }
             })
 
-            navigationEvent.observe(viewLifecycleOwner, Observer{
+            navigationEvent.observe(viewLifecycleOwner, Observer {
                 it?.let { event ->
-                    if(event is ProfileViewModel.NavigationEvent.NavigateNext &&
-                        event.data is Login?) {
+                    if (event is ProfileViewModel.NavigationEvent.NavigateNext &&
+                        event.data is Login?
+                    ) {
                         if (event.data?.user?.id == null) return@let
                         createOrderPartnerBuilder.userId = event.data?.user.id
                         val bundle = bundleOf(
@@ -476,7 +455,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
     }
 
     private fun checkAttachBtn() {
-        attach_document_btn.isEnabled = viewModel.rearDocument.value == null || viewModel.backDocument.value == null
+        attach_document_btn.isEnabled =
+            viewModel.rearDocument.value == null || viewModel.backDocument.value == null
     }
 
     private fun updateSignUpBtn() {
@@ -528,14 +508,14 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
         phoneLayout.isErrorEnabled = false
     }
 
-    private fun checkPermission() : Boolean {
-        return if (
+    private fun checkPermission(): Boolean {
+        val isPermitted =
             requireContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
             PackageManager.PERMISSION_GRANTED &&
             requireContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-            PackageManager.PERMISSION_GRANTED) {
-            true
-        } else {
+            PackageManager.PERMISSION_GRANTED
+
+        if (!isPermitted) {
             ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(
@@ -544,8 +524,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 ),
                 Constants.PERMISSIONS_REQUEST_READ_STORAGE
             )
-            false
         }
+        return isPermitted
     }
 
 }
