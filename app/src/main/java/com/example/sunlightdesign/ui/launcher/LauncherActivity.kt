@@ -54,7 +54,8 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
             is BiometricUtil.BiometricResponse.Success -> navMainActivity()
 
             is BiometricUtil.BiometricResponse.Error -> {
-                if (intent.errorInt != BiometricPrompt.ERROR_LOCKOUT) return
+                if (intent.errorInt != BiometricPrompt.ERROR_LOCKOUT &&
+                    intent.errorInt != BiometricPrompt.ERROR_NEGATIVE_BUTTON) return
                 authenticateByPinVerification()
             }
 

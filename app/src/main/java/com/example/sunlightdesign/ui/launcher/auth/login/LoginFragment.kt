@@ -89,11 +89,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
             })
             isLoginSuccess.observe(viewLifecycleOwner, Observer {
                 if (!it) return@Observer
-                if (BiometricUtil.checkFingerprintAccess(this@LoginFragment)) {
-                    requestFingerprintEnabling()
-                } else {
-                    requestPinEnabling()
-                }
+                requestPinEnabling()
             })
         }
     }
@@ -131,7 +127,11 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
     override fun onPinEditComplete(pin: String) {
         viewModel.setPin(pin)
-        startMainPage()
+        if (BiometricUtil.checkFingerprintAccess(this@LoginFragment)) {
+            requestFingerprintEnabling()
+        } else {
+            startMainPage()
+        }
     }
 
     override fun onPinSetupInterrupted() {
@@ -146,10 +146,11 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
             .setCancelable(false)
             .setPositiveButton(R.string.text_yes) { _, _ ->
                 viewModel.setIsFingerprintEnabled(true)
-                requestPinEnabling()
             }
             .setNegativeButton(R.string.text_no) { _, _ ->
                 viewModel.setIsFingerprintEnabled(false)
+            }
+            .setOnDismissListener {
                 startMainPage()
             }
             .show()
