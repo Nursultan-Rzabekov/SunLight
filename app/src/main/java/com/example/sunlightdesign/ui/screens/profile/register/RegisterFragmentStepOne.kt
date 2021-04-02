@@ -450,8 +450,6 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 "${getString(R.string.fill_the_field)} ${getString(R.string.first_name)}"
             partnerLastNameEditText.text.toString().isBlank() ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.last_name)}"
-            partnerMiddleNameEditText.text.toString().isBlank() ->
-                "${getString(R.string.fill_the_field)} ${getString(R.string.middle_name)}"
             sponsorId == -1 -> getString(R.string.indicate_your_sponsor)
             countryId == -1 -> getString(R.string.choose_country_two_dots)
             regionId == -1 -> getString(R.string.choose_region_two_dots)

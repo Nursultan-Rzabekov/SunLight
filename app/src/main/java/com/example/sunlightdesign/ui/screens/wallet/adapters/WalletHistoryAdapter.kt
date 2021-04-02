@@ -55,7 +55,8 @@ class WalletHistoryAdapter(
             value = 0.0,
             wallet_id = 0.0,
             wallet_type = "",
-            withdraw = null
+            withdraw = null,
+            extra_json = ""
         )
     }
 
@@ -111,15 +112,7 @@ class WalletHistoryAdapter(
 
             itemView.walletTextView.text = history.wallet_type
 
-            itemView.nameTextView.text = when (history.bonus?.id) {
-                Bonus.RECRUITING_BONUS -> {
-                    history.bonus.bonus_description
-                }
-                Bonus.MATCHING_BONUS, Bonus.TEAM_BONUS -> {
-                    history.bonus.bonus_description
-                }
-                else -> history.bonus?.bonus_description
-            }
+            itemView.nameTextView.text = history.extra_json
 
             itemView.typeOfTransactionImageView.setImageDrawable(
                 ContextCompat.getDrawable(itemView.context,
