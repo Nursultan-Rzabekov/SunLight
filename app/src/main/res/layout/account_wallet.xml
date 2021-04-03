@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_4dp"
     android:layout_marginTop="@dimen/dimen_16dp"
+    android:layout_marginEnd="@dimen/dimen_4dp"
     android:layout_marginBottom="@dimen/dimen_4dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/dimen_5dp"
@@ -90,8 +92,8 @@
 
         </LinearLayout>
 
-
         <View
+            android:id="@+id/activeWalletDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray_" />
@@ -132,12 +134,11 @@
 
         </LinearLayout>
 
-
         <View
+            android:id="@+id/volumeLeftBranchDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray_" />
-
 
         <LinearLayout
             android:id="@+id/volumeRightBranchLayout"
@@ -176,6 +177,7 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/volumeRightBranchDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray_" />
@@ -217,6 +219,7 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/volumeLeftBranchWeekDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray_" />

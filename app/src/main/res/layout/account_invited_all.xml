@@ -4,8 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_4dp"
     android:layout_marginTop="@dimen/dimen_16dp"
+    android:layout_marginEnd="@dimen/dimen_4dp"
+    android:layout_marginBottom="@dimen/dimen_4dp"
     app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dimen_5dp"
     app:cardElevation="@dimen/dimen_4dp">
 
     <LinearLayout

@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="@dimen/dimen_16dp"
-    android:elevation="@dimen/dimen_10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/dimen_16dp"
-    app:cardBackgroundColor="@color/white"
+    android:layout_marginTop="@dimen/dimen_16dp"
     android:layout_marginEnd="@dimen/dimen_16dp"
-    android:layout_height="wrap_content">
+    android:elevation="@dimen/dimen_10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dimen_5dp"
+    app:cardElevation="@dimen/dimen_4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16dp"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
-            android:src="@drawable/ic_market_logo"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_market_logo" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextView"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/dimen_16dp"
-            android:text="@string/go_to_market"
-            android:textSize="@dimen/dimen_16sp"
             android:fontFamily="@font/rubik_regular"
-            />
+            android:text="@string/go_to_market"
+            android:textSize="@dimen/dimen_16sp" />
 
         <View
             android:layout_width="0dp"
@@ -37,11 +38,10 @@
         <androidx.appcompat.widget.AppCompatImageView
             style="@style/AppCompatTextView"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow_path"
             android:layout_marginEnd="23dp"
-            android:textSize="@dimen/dimen_16sp"
             android:fontFamily="@font/rubik_regular"
-            />
+            android:src="@drawable/ic_arrow_path"
+            android:textSize="@dimen/dimen_16sp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

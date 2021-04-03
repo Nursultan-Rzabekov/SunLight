@@ -30,7 +30,7 @@
 
             <include layout="@layout/account_wallet" />
 
-            <include layout="@layout/withdraw_money" />
+            <include layout="@layout/withdraw_money"/>
 
             <include layout="@layout/account_wallet_history" />
 
