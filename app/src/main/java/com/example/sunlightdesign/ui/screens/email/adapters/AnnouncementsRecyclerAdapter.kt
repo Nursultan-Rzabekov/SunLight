@@ -85,7 +85,9 @@ class AnnouncementsRecyclerAdapter(
         private val announcementSelector: AnnouncementSelector
     ) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Data) = with(itemView) {
-            val date = item.created_at?.let { DateUtils.convertLongStringToDate(it) } ?: Date()
+            val date = item.created_at?.let {
+                DateUtils.convertLongStringToDate(it, pattern = DateUtils.PATTERN_FULL_DATE)
+            } ?: Date()
 
             itemView.dataTextView.text = DateUtils.convertDateToString(date)
             itemView.messageTitleTextView.text = item.message_title
