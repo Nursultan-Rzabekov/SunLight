@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checkable="true"
+            android:visibility="gone"
             android:paddingTop="@dimen/dimen_12dp"
             android:paddingBottom="@dimen/dimen_12dp"
             android:text="@string/bank_account_card"

@@ -34,6 +34,7 @@ class PinSetupFragmentDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isCancelable = false
+        pinView.requestFocus()
         setListeners()
     }
 
@@ -84,7 +85,7 @@ class PinSetupFragmentDialog(
                 }
                 else -> {
                     pinView.setText("")
-                    showToast("Pin does not match")
+                    showToast("Введен неправильный ПИН-код")
                 }
             }
         }
