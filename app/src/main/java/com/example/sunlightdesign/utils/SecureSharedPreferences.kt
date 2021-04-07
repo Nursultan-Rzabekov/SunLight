@@ -2,6 +2,7 @@ package com.example.sunlightdesign.utils
 
 import android.content.SharedPreferences
 
+private const val PHONE_SPECIAL_DIVIDER = "&&"
 class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
 
     private val LANG = "LANG"
@@ -26,9 +27,18 @@ class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
         set(count) = sharedPreferences.edit().putInt(PIN_WRONG_COUNT, count).apply()
 
     private val PHONE_NUMBER = "phone_number_last"
-    var phoneNumber: String?
-        get() = sharedPreferences.getString(PHONE_NUMBER,null)
-        set(value) = sharedPreferences.edit().putString(PHONE_NUMBER,value).apply()
+    var phoneNumber: Pair<String, String>?
+        get() {
+            val value = sharedPreferences.getString(PHONE_NUMBER, null)
+            value ?: return null
+            val pairs = value.split(PHONE_SPECIAL_DIVIDER)
+            if (pairs.first().isBlank() or pairs.last().isBlank()) return null
+            return pairs.first() to pairs.last()
+        }
+        set(pair) {
+            val value = "${pair?.first}$PHONE_SPECIAL_DIVIDER${pair?.second}"
+            sharedPreferences.edit().putString(PHONE_NUMBER, value).apply()
+        }
 
     private val PASSWORD = "password_last"
     var password: String?

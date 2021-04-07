@@ -16,6 +16,7 @@ import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.biometric.BiometricUtil
 import com.example.sunlightdesign.utils.isPhoneValid
+import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.synthetic.main.sunlight_login.*
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
@@ -48,26 +49,19 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         btn_enter.setOnClickListener {
             if (!setCheckers()) return@setOnClickListener
             viewModel.getUseCase(
-                SetLogin(
-                    MaskUtils.unMaskValue(
-                        MaskUtils.PHONE_MASK,
-                        phone_et.text.toString()
-                    ),
-                    password_et.text.toString()
-                )
+                phoneView.getPair(),
+                password_et.text.toString()
             )
         }
 
         remember_checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 viewModel.setPhoneAndPassword(
-                    phoneNumber = MaskUtils.unMaskValue(
-                        MaskUtils.PHONE_MASK,
-                        phone_et.text.toString()
-                    ), password = password_et.text.toString()
+                    phoneNumber = phoneView.getPair(),
+                    password = password_et.text.toString()
                 )
             } else {
-                viewModel.setPhoneAndPassword(phoneNumber = "", password = "")
+                viewModel.setPhoneAndPassword(phoneNumber = "" to "", password = "")
             }
         }
     }
@@ -78,11 +72,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
             phoneNumber.observe(viewLifecycleOwner, Observer { phone ->
-                phone_et.setText(
-                    MaskUtils.maskValue(
-                        mask = MaskUtils.PHONE_MASK, value = phone
-                    )
-                )
+                phoneView.setPair(phone)
             })
             password.observe(viewLifecycleOwner, Observer { pass ->
                 password_et.setText(pass)
@@ -94,35 +84,13 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         }
     }
 
-    private fun setCheckers(): Boolean {
-        if (!isPhoneValid(phone_et.text.toString())) {
-            phone_et.error = getString(R.string.wrong_phone_number)
-            return false
-        }
-        return true
-    }
+    private fun setCheckers(): Boolean = phoneView.isDone()
 
     private fun setupMask() {
-        MaskImpl(
-            MaskUtils.createSlotsFromMask(
-                MaskUtils.PHONE_MASK,
-                true
-            ),
-            true
-        ).also {
-            it.isHideHardcodedHead = true
-            MaskFormatWatcher(it).apply {
-                installOn(phone_et)
-            }
-        }
-
-        phone_et.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                phone_et.hint = getString(R.string.phone_mask_hint)
-            } else {
-                phone_et.hint = ""
-            }
-        }
+        phoneView.installItems(mapOf(
+            "+7" to "(___) ___ __ __",
+            "+77" to "_____ ____"
+        ))
     }
 
     override fun onPinEditComplete(pin: String) {

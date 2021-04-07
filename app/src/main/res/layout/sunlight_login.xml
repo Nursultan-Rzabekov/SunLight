@@ -33,24 +33,11 @@
             android:layout_marginTop="@dimen/dimen_32dp"
             android:text="@string/enter_phone_number" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phone_l_et"
-            style="@style/BasicTextInputLayout"
+        <com.example.sunlightdesign.utils.views.CountrySelectionPhoneView
+            android:id="@+id/phoneView"
+            android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50dp"
-            android:layout_marginTop="@dimen/dimen_10dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phone_et"
-                style="@style/BasicEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:paddingTop="@dimen/dimen_16dp"
-                android:paddingBottom="@dimen/dimen_16dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_height="wrap_content" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"

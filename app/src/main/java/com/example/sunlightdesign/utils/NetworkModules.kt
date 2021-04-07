@@ -30,7 +30,10 @@ class TokenAuthenticator : Authenticator, KoinComponent {
         // Refresh your access_token using a synchronous api request
         var newAccessToken: String? = null
 
-        if(!sharedPreferences.phoneNumber.isNullOrEmpty() and !sharedPreferences.password.isNullOrEmpty()){
+        val phonePair = sharedPreferences.phoneNumber
+
+        if(phonePair != null && phonePair.first.isNotBlank() && phonePair.second.isNotBlank()
+            && !sharedPreferences.password.isNullOrEmpty()){
             Timber.d(authServices.toString())
             newAccessToken = authServices.getLoginRefresh(
                 phone = sharedPreferences.phoneNumber.toString(),

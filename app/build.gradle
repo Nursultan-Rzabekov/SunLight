@@ -156,4 +156,7 @@ dependencies {
 
     //Biometrics
     implementation 'androidx.biometric:biometric:1.1.0'
+
+    // masks
+    implementation 'com.github.santalu:maskara:1.0.0'
 }

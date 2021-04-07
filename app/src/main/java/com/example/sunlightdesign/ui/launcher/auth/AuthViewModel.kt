@@ -21,7 +21,7 @@ class AuthViewModel constructor(
 
     val progress = MutableLiveData<Boolean>()
 
-    private var _phoneNumber = MutableLiveData<String>()
+    private var _phoneNumber = MutableLiveData<Pair<String, String>>()
     val phoneNumber get() = _phoneNumber
 
     private var _password= MutableLiveData<String>()
@@ -34,11 +34,11 @@ class AuthViewModel constructor(
     val isLoginSuccess get() = _isLoginSuccess
 
     init {
-        if (!sharedUseCase.getSharedPreference().phoneNumber.isNullOrEmpty() and
-            !sharedUseCase.getSharedPreference().password.isNullOrEmpty()) {
+        val phonePair = sharedUseCase.getSharedPreference().phoneNumber
+        if (phonePair != null && !sharedUseCase.getSharedPreference().password.isNullOrEmpty()) {
             _password.postValue(sharedUseCase.getSharedPreference().password.orEmpty())
         }
-        _phoneNumber.postValue(sharedUseCase.getSharedPreference().phoneNumber.orEmpty())
+        _phoneNumber.postValue(phonePair)
 
         if (!sharedUseCase.getSharedPreference().pin.isNullOrBlank()) {
             _pin.postValue(sharedUseCase.getSharedPreference().pin)
@@ -59,16 +59,20 @@ class AuthViewModel constructor(
         sharedUseCase.getSharedPreference().isPinEnabled = false
     }
 
-    fun setPhoneAndPassword(phoneNumber:String, password:String){
+    fun setPhoneAndPassword(phoneNumber: Pair<String, String>, password:String){
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
         sharedUseCase.getSharedPreference().password = password
     }
 
-    fun cachePhone(phoneNumber: String) {
+    fun cachePhone(phoneNumber: Pair<String, String>) {
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
     }
 
-    fun getUseCase(setLogin: SetLogin) {
+    fun getUseCase(phone: Pair<String, String>, password: String) {
+        val setLogin = SetLogin(
+            phone = phone.first + phone.second,
+            password = password
+        )
         progress.value = true
         getItemsUseCase.setData(setLogin)
 
@@ -81,7 +85,7 @@ class AuthViewModel constructor(
                     return@onComplete
                 }
 
-                cachePhone(setLogin.phone)
+                cachePhone(phone)
                 sharedPreferences.editPassword = setLogin.password
                 _isLoginSuccess.postValue(true)
             }
