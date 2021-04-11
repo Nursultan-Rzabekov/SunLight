@@ -70,7 +70,7 @@ class AuthViewModel constructor(
 
     fun getUseCase(phone: Pair<String, String>, password: String) {
         val setLogin = SetLogin(
-            phone = phone.first + phone.second,
+            phone = phone.first.substring(1) + phone.second,
             password = password
         )
         progress.value = true

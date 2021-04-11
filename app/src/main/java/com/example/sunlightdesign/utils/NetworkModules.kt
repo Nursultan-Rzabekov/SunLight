@@ -1,7 +1,10 @@
 package com.example.sunlightdesign.utils
 
+import androidx.appcompat.app.AlertDialog
+import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
+import com.example.sunlightdesign.usecase.usercase.authUse.SetFirebaseTokenUseCase
 import okhttp3.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -25,6 +28,7 @@ class HeaderInterceptor : Interceptor, KoinComponent {
 class TokenAuthenticator : Authenticator, KoinComponent {
     val authServices: AuthServices by inject()
     val sharedPreferences: SecureSharedPreferences by inject()
+    val setFirebaseTokenUseCase: SetFirebaseTokenUseCase by inject()
 
     override fun authenticate(route: Route?, response: Response): Request? {
         // Refresh your access_token using a synchronous api request
@@ -40,6 +44,20 @@ class TokenAuthenticator : Authenticator, KoinComponent {
                 password = sharedPreferences.password.toString()).token.toString()
         }
         sharedPreferences.bearerToken = newAccessToken
+        sharedPreferences.firebaseToken?.let {
+            setFirebaseTokenUseCase.setModel(it)
+            setFirebaseTokenUseCase.execute {
+                onComplete {
+                    Timber.d("firebase token is sent")
+                }
+                onError {
+                    Timber.d("firebase token is not sent: $it")
+                }
+                onNetworkError {
+                    Timber.d("firebase token is not sent: $it")
+                }
+            }
+        }
         // Add new header to rejected request and retry it
 
         return response.request().newBuilder()

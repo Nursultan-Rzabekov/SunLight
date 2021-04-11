@@ -12,14 +12,8 @@ import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.ui.launcher.auth.pin.PinSetupFragmentDialog
 import com.example.sunlightdesign.ui.screens.MainActivity
-import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
-import com.example.sunlightdesign.utils.MaskUtils
 import com.example.sunlightdesign.utils.biometric.BiometricUtil
-import com.example.sunlightdesign.utils.isPhoneValid
-import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.synthetic.main.sunlight_login.*
-import ru.tinkoff.decoro.MaskImpl
-import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 
 class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),

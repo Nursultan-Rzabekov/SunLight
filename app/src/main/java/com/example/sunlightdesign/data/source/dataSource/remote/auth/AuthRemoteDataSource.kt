@@ -2,6 +2,7 @@ package com.example.sunlightdesign.data.source.dataSource.remote.auth
 
 
 import com.example.sunlightdesign.data.source.dataSource.AuthDataSource
+import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.BaseResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 
@@ -12,6 +13,10 @@ class AuthRemoteDataSource(private val apiServices: AuthServices) :
     override suspend fun getTasks(model: SetLogin): Login {
         // Simulate network by delaying the execution.
         return apiServices.getLoginAuth(model.phone, model.password).await()
+    }
+
+    override suspend fun setFirebaseToken(token: String): BaseResponse {
+        return apiServices.setFirebaseToken(token).await()
     }
 
 //    private fun apiJsonMap(phone: String, password: String): JsonObject {

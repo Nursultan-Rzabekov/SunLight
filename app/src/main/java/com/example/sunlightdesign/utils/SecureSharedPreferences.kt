@@ -15,7 +15,6 @@ class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences.getString(BEARER_TOKEN, null)
         set(value) = sharedPreferences.edit().putString(BEARER_TOKEN, value).apply()
 
-
     private val USER_ID = "user_id"
     var userId:String?
         get() = sharedPreferences.getString(USER_ID,null)
@@ -66,6 +65,12 @@ class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences.getBoolean(PIN_ENABLED,false)
         set(value) = sharedPreferences.edit()
             .putBoolean(PIN_ENABLED, value ?: false).apply()
+
+    private val FIREBASE_TOKEN = "firebase_token"
+    var firebaseToken: String?
+        get() = sharedPreferences.getString(FIREBASE_TOKEN, "")
+        set(value) = sharedPreferences.edit()
+            .putString(FIREBASE_TOKEN, value.orEmpty()).apply()
 }
 
 

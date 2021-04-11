@@ -4,19 +4,53 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.graphics.BitmapFactory
 import android.os.Build
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.usecase.usercase.authUse.SetFirebaseTokenUseCase
+import com.example.sunlightdesign.utils.SecureSharedPreferences
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 import timber.log.Timber
 
-class SunlightFirebaseMessagingService : FirebaseMessagingService() {
+class SunlightFirebaseMessagingService : FirebaseMessagingService(), KoinComponent {
+
+    private val setFirebaseTokenUseCase: SetFirebaseTokenUseCase by inject()
+
+    private val sharedPreferences: SecureSharedPreferences by inject()
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         Timber.d(token)
+        sharedPreferences.firebaseToken = token
+        if (sharedPreferences.bearerToken.isNullOrBlank()) return
+        setFirebaseTokenUseCase.setModel(token)
+        setFirebaseTokenUseCase.execute {
+            onComplete {
+                Timber.d("firebase token is sent")
+            }
+            onError {
+                Timber.d("firebase token is not sent: $it")
+                if (!BuildConfig.DEBUG) return@onError
+                AlertDialog.Builder(this@SunlightFirebaseMessagingService.applicationContext)
+                    .setTitle("Firebase")
+                    .setMessage(it.toString())
+                    .show()
+            }
+            onNetworkError {
+                Timber.d("firebase token is not sent: $it")
+                if (!BuildConfig.DEBUG) return@onNetworkError
+                AlertDialog.Builder(this@SunlightFirebaseMessagingService.applicationContext)
+                    .setTitle("Firebase")
+                    .setMessage(it.toString())
+                    .show()
+            }
+        }
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {

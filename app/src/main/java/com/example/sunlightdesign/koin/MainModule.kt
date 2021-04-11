@@ -6,6 +6,7 @@ import com.example.sunlightdesign.data.source.repositories.DefaultLauncherReposi
 import com.example.sunlightdesign.ui.launcher.LauncherViewModel
 import com.example.sunlightdesign.ui.screens.home.HomeViewModel
 import com.example.sunlightdesign.ui.screens.home.structure.StructureViewModel
+import com.example.sunlightdesign.usecase.usercase.authUse.SetFirebaseTokenUseCase
 import com.example.sunlightdesign.usecase.usercase.mainUse.get.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -57,6 +58,12 @@ val mainModule = module {
     factory {
         GetPostByIdUseCase(
             launcherRepository = get()
+        )
+    }
+
+    factory {
+        SetFirebaseTokenUseCase(
+            repository = get()
         )
     }
 
