@@ -36,11 +36,11 @@ class TokenAuthenticator : Authenticator, KoinComponent {
 
         val phonePair = sharedPreferences.phoneNumber
 
-        if(phonePair != null && phonePair.first.isNotBlank() && phonePair.second.isNotBlank()
-            && !sharedPreferences.password.isNullOrEmpty()){
+        if(phonePair != null && phonePair.phone.isNotBlank()
+            && !sharedPreferences.password.isNullOrEmpty()) {
             Timber.d(authServices.toString())
             newAccessToken = authServices.getLoginRefresh(
-                phone = sharedPreferences.phoneNumber.toString(),
+                phone = sharedPreferences.phoneNumber?.phone.orEmpty(),
                 password = sharedPreferences.password.toString()).token.toString()
         }
         sharedPreferences.bearerToken = newAccessToken

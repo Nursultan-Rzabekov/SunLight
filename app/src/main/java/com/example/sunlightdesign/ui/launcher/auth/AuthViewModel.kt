@@ -9,6 +9,7 @@ import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.ErrorListException
 import com.example.sunlightdesign.utils.showMessage
 import com.example.sunlightdesign.utils.startNewActivity
+import com.example.sunlightdesign.utils.views.PhoneInfo
 import timber.log.Timber
 
 /**
@@ -21,7 +22,7 @@ class AuthViewModel constructor(
 
     val progress = MutableLiveData<Boolean>()
 
-    private var _phoneNumber = MutableLiveData<Pair<String, String>>()
+    private var _phoneNumber = MutableLiveData<PhoneInfo>()
     val phoneNumber get() = _phoneNumber
 
     private var _password= MutableLiveData<String>()
@@ -59,18 +60,18 @@ class AuthViewModel constructor(
         sharedUseCase.getSharedPreference().isPinEnabled = false
     }
 
-    fun setPhoneAndPassword(phoneNumber: Pair<String, String>, password:String){
+    fun setPhoneAndPassword(phoneNumber: PhoneInfo, password:String){
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
         sharedUseCase.getSharedPreference().password = password
     }
 
-    fun cachePhone(phoneNumber: Pair<String, String>) {
+    fun cachePhone(phoneNumber: PhoneInfo) {
         sharedUseCase.getSharedPreference().phoneNumber = phoneNumber
     }
 
-    fun getUseCase(phone: Pair<String, String>, password: String) {
+    fun getUseCase(phone: PhoneInfo, password: String) {
         val setLogin = SetLogin(
-            phone = phone.first.substring(1) + phone.second,
+            phone = phone.phone,
             password = password
         )
         progress.value = true

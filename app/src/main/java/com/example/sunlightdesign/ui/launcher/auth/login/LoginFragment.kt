@@ -13,6 +13,7 @@ import com.example.sunlightdesign.ui.launcher.auth.AuthViewModel
 import com.example.sunlightdesign.ui.launcher.auth.pin.PinSetupFragmentDialog
 import com.example.sunlightdesign.ui.screens.MainActivity
 import com.example.sunlightdesign.utils.biometric.BiometricUtil
+import com.example.sunlightdesign.utils.views.PhoneInfo
 import kotlinx.android.synthetic.main.sunlight_login.*
 
 
@@ -34,7 +35,6 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
 
     override fun onResume() {
         super.onResume()
-        setupMask()
         configViewModel()
         setListeners()
     }
@@ -42,20 +42,24 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
     private fun setListeners() {
         btn_enter.setOnClickListener {
             if (!setCheckers()) return@setOnClickListener
-            viewModel.getUseCase(
-                phoneView.getPair(),
-                password_et.text.toString()
-            )
+            phoneView.getPhoneInfo()?.let {
+                viewModel.getUseCase(it, password_et.text.toString())
+            }
         }
 
         remember_checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                viewModel.setPhoneAndPassword(
-                    phoneNumber = phoneView.getPair(),
-                    password = password_et.text.toString()
-                )
+                phoneView.getPhoneInfo()?.let {
+                    viewModel.setPhoneAndPassword(
+                        phoneNumber = it,
+                        password = password_et.text.toString()
+                    )
+                }
             } else {
-                viewModel.setPhoneAndPassword(phoneNumber = "" to "", password = "")
+                viewModel.setPhoneAndPassword(
+                    phoneNumber = PhoneInfo("", "", ""),
+                    password = ""
+                )
             }
         }
     }
@@ -66,7 +70,8 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
                 progress_bar.visibility = if (it) View.VISIBLE else View.GONE
             })
             phoneNumber.observe(viewLifecycleOwner, Observer { phone ->
-                phoneView.setPair(phone)
+                phone ?: return@Observer
+                phoneView.setPhoneInfo(phone.countryCode, phone.body)
             })
             password.observe(viewLifecycleOwner, Observer { pass ->
                 password_et.setText(pass)
@@ -78,14 +83,7 @@ class LoginFragment : StrongFragment<AuthViewModel>(AuthViewModel::class),
         }
     }
 
-    private fun setCheckers(): Boolean = phoneView.isDone()
-
-    private fun setupMask() {
-        phoneView.installItems(mapOf(
-            "+7" to "(___) ___ __ __",
-            "+77" to "_____ ____"
-        ))
-    }
+    private fun setCheckers(): Boolean = phoneView.isValid()
 
     override fun onPinEditComplete(pin: String) {
         viewModel.setPin(pin)

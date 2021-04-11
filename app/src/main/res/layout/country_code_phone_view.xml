@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/phonePrefixTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@drawable/start_box_round"
+        android:gravity="center"
+        android:minWidth="@dimen/dimen_100dp"
+        android:paddingStart="@dimen/dimen_4dp"
+        android:paddingEnd="@dimen/dimen_4dp"
+        android:textColor="@color/sunBlackColor"
+        android:textSize="@dimen/dimen_16sp"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down"
+        app:layout_constraintBottom_toBottomOf="@id/phoneBodyTextInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/phoneBodyTextInputLayout"
+        tools:text="+77" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneBodyTextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="@dimen/dimen_5dp"
+        app:boxCornerRadiusTopEnd="@dimen/dimen_5dp"
+        app:boxStrokeWidth="@dimen/dimen_0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/phonePrefixTextView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/phoneBodyEditText"
+            style="@style/BasicEditText"
+            android:autofillHints="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="phone"
+            android:hint="@null"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
