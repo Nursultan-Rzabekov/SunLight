@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.BasePopUpAdapter
 import com.example.sunlightdesign.utils.showListPopupWindow
@@ -23,7 +24,7 @@ class CountryCodePhoneView @JvmOverloads constructor(
     private val countries = mutableListOf<CountryCode>()
     private val phoneUtil by lazy { PhoneNumberUtil.createInstance(context) }
     private var currentCountry: CountryCode? = null
-    private val itemsAdapter = BasePopUpAdapter<CountryCode>()
+    private val itemsAdapter = CountryCodeBaseAdapter()
     private var currentTextWatcher: InternationalPhoneTextWatcher? = null
 
     init {
@@ -40,7 +41,7 @@ class CountryCodePhoneView @JvmOverloads constructor(
             showListPopupWindow(
                 context = context,
                 items = countries,
-                anchor = phonePrefixTextView,
+                anchor = selectorLinearLayout,
                 adapter = itemsAdapter,
                 onSelection = { country ->
                     setCountry(country)
@@ -66,6 +67,10 @@ class CountryCodePhoneView @JvmOverloads constructor(
         currentCountry = country
         phoneBodyEditText.setText("")
         phonePrefixTextView.text = ("+${country.phoneCode}")
+        flagImageView.setImageDrawable(ContextCompat.getDrawable(
+            context,
+            getCountryFlag(country.code)
+        ))
         setMask(country)
     }
 
@@ -111,7 +116,7 @@ data class CountryCode(
     val code: String,
     val phoneCode: Int
 ) {
-    override fun toString(): String = "+${phoneCode} - ${code}"
+    override fun toString(): String = "+${phoneCode}"
 }
 
 data class PhoneInfo(

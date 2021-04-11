@@ -2,30 +2,63 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/phonePrefixTextView"
+    <LinearLayout
+        android:id="@+id/selectorLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:background="@drawable/start_box_round"
-        android:gravity="center"
-        android:minWidth="@dimen/dimen_100dp"
-        android:paddingStart="@dimen/dimen_4dp"
-        android:paddingEnd="@dimen/dimen_4dp"
-        android:textColor="@color/sunBlackColor"
-        android:textSize="@dimen/dimen_16sp"
-        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/phoneBodyTextInputLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/phoneBodyTextInputLayout"
-        tools:text="+77" />
+        app:layout_constraintTop_toTopOf="@id/phoneBodyTextInputLayout">
+
+        <ImageView
+            android:id="@+id/flagImageView"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/start_box_round"
+            android:contentDescription="@string/phone_number"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingEnd="0dp"
+            android:src="@drawable/flag_transparent"
+            app:layout_constraintBottom_toBottomOf="@id/phoneBodyTextInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/phoneBodyTextInputLayout" />
+
+        <TextView
+            android:id="@+id/phonePrefixTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/middle_box"
+            android:gravity="center"
+            android:minWidth="80dp"
+            android:paddingStart="@dimen/dimen_4dp"
+            android:paddingEnd="@dimen/dimen_4dp"
+            android:textColor="@color/sunBlackColor"
+            android:textSize="@dimen/dimen_16sp"
+            app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down"
+            app:layout_constraintBottom_toBottomOf="@id/phoneBodyTextInputLayout"
+            app:layout_constraintStart_toEndOf="@id/flagImageView"
+            app:layout_constraintTop_toTopOf="@id/phoneBodyTextInputLayout"
+            tools:text="+77" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/sunlight_background"
+        app:layout_constraintBottom_toBottomOf="@id/phoneBodyTextInputLayout"
+        app:layout_constraintStart_toEndOf="@id/selectorLinearLayout"
+        app:layout_constraintTop_toTopOf="@id/phoneBodyTextInputLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneBodyTextInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -33,19 +66,19 @@
         app:boxCornerRadiusBottomEnd="@dimen/dimen_5dp"
         app:boxCornerRadiusTopEnd="@dimen/dimen_5dp"
         app:boxStrokeWidth="@dimen/dimen_0dp"
+        app:boxStrokeColor="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/phonePrefixTextView"
+        app:layout_constraintStart_toEndOf="@id/divider"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/phoneBodyEditText"
             style="@style/BasicEditText"
-            android:autofillHints="@null"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:inputType="phone"
+            android:autofillHints="@null"
             android:hint="@null"
+            android:inputType="phone"
             android:paddingTop="@dimen/dimen_16dp"
             android:paddingBottom="@dimen/dimen_16dp" />
 
