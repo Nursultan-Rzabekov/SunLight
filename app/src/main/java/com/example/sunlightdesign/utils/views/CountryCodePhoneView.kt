@@ -65,7 +65,7 @@ class CountryCodePhoneView @JvmOverloads constructor(
     private fun setCountry(country: CountryCode) {
         currentCountry = country
         phoneBodyEditText.setText("")
-        phonePrefixTextView.text = country.toString()
+        phonePrefixTextView.text = ("+${country.phoneCode}")
         setMask(country)
     }
 
@@ -111,7 +111,7 @@ data class CountryCode(
     val code: String,
     val phoneCode: Int
 ) {
-    override fun toString(): String = "+${phoneCode}"
+    override fun toString(): String = "+${phoneCode} - ${code}"
 }
 
 data class PhoneInfo(
