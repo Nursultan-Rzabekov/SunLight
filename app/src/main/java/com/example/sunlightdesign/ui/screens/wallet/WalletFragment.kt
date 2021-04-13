@@ -43,6 +43,7 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
         volumeLeftBranchDivider.isVisible = false
         volumeRightBranchDivider.isVisible = false
         volumeLeftBranchWeekDivider.isVisible = false
+        blockedAmountLinearLayout.isVisible = true
 
         initRecyclerView()
         setListeners()
@@ -62,6 +63,7 @@ class WalletFragment : StrongFragment<WalletViewModel>(WalletViewModel::class), 
                 activityWalletTextView.text = getString(R.string.amount_bv, it.wallet.purchase_wallet)
                 leftBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.left_branch_total)
                 rightBranchTotalTextView.text = getString(R.string.amount_bv, it.wallet.right_branch_total)
+                blockedWalletTextView.text = getString(R.string.amount_bv, it.wallet.blocked_wallet)
 
                 if (it.walletHistory.data.isNotEmpty()) {
                     walletHistoryAdapter.submitList(it.walletHistory.data)

@@ -28,27 +28,67 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_wallet_bonus" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/AppCompatTextViewGray"
-                android:layout_gravity="center"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/dimen_16dp"
-                android:fontFamily="@font/rubik_regular"
-                android:text="@string/bonusnyi_koshelek"
-                android:textSize="@dimen/dimen_16sp" />
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/bonusWalletTextView"
-                style="@style/AppCompatTextView"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/dimen_16dp"
-                android:fontFamily="@font/rubik_regular"
-                android:textSize="@dimen/dimen_16sp"
-                tools:text="@string/ten_thousand_bv" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/bonusnyi_koshelek"
+                        android:textSize="@dimen/dimen_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/bonusWalletTextView"
+                        style="@style/AppCompatTextView"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_16dp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textSize="@dimen/dimen_16sp"
+                        tools:text="@string/ten_thousand_bv" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/blockedAmountLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/blocked_amount"
+                        android:textSize="@dimen/dimen_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/blockedWalletTextView"
+                        style="@style/AppCompatTextView"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_16dp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textSize="@dimen/dimen_16sp"
+                        tools:text="@string/ten_thousand_bv" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -63,7 +63,8 @@ data class WalletX(
     val registry_wallet: Double,
     val right_branch_total: Double,
     val updated_at: String,
-    val user_id: Double
+    val user_id: Double,
+    val blocked_wallet: Double
 )
 
 data class WalletHistory(
