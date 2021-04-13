@@ -46,9 +46,9 @@ class BannerViewPagerAdapter(
             Html.fromHtml(banners.banners[position].content, Html.FROM_HTML_MODE_COMPACT).trim()
 
         Glide.with(view)
-            .load(BuildConfig.BASE_URL_IMAGE + banners.banners[position].media_path)
-            .placeholder(R.drawable.main_photo)
-            .error(R.drawable.main_photo)
+            .load(BuildConfig.BASE_URL_IMAGE + banners.banners[position].media_path_mobile)
+            .placeholder(R.drawable.white_bordered_box)
+            .error(R.drawable.white_bordered_box)
             .centerCrop().into(imageView)
 
         imageView.setOnClickListener {

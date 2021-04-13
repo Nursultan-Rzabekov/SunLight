@@ -11,6 +11,7 @@ data class Banner(
     val link: String,
     val media_caption: Any,
     val media_path: String,
+    val media_path_mobile: String,
     val sort: Int,
     val status: Int,
     val title: String,
