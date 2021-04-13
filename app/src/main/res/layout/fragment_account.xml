@@ -25,7 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/cabinet"
                 android:layout_marginTop="@dimen/dimen_32dp"
-                android:layout_marginBottom="@dimen/dimen_32dp"
+                android:layout_marginBottom="28dp"
                 />
 
             <include layout="@layout/account_mini_profile"/>

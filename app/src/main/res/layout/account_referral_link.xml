@@ -23,8 +23,9 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -55,16 +56,12 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/copyReferralLinkRightBtn"
-                android:layout_width="@dimen/dimen_50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_50dp"
                 android:layout_gravity="center"
+                android:paddingHorizontal="@dimen/dimen_16dp"
                 android:layout_marginStart="@dimen/dimen_30dp"
                 android:background="@drawable/border_color_copy_referal"
                 android:foreground="?attr/selectableItemBackground"
@@ -72,8 +69,9 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/shareReferralLinkRightBtn"
-                android:layout_width="@dimen/dimen_50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_50dp"
+                android:paddingHorizontal="@dimen/dimen_16dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="-1dp"
                 android:background="@drawable/border_color_share_referal"
@@ -103,8 +101,9 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -135,15 +134,11 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/copyReferralLinkLeftBtn"
-                android:layout_width="@dimen/dimen_50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_50dp"
+                android:paddingHorizontal="@dimen/dimen_16dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dimen_30dp"
                 android:background="@drawable/border_color_copy_referal"
@@ -152,8 +147,9 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/shareReferralLinkLeftBtn"
-                android:layout_width="@dimen/dimen_50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_50dp"
+                android:paddingHorizontal="@dimen/dimen_16dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="-1dp"
                 android:background="@drawable/border_color_share_referal"
