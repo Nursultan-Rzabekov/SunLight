@@ -41,7 +41,7 @@ class CountryCodePhoneView @JvmOverloads constructor(
             showListPopupWindow(
                 context = context,
                 items = countries,
-                anchor = selectorLinearLayout,
+                anchor = countryPickerLayout,
                 adapter = itemsAdapter,
                 onSelection = { country ->
                     setCountry(country)
@@ -114,9 +114,10 @@ class CountryCodePhoneView @JvmOverloads constructor(
 
 data class CountryCode(
     val code: String,
-    val phoneCode: Int
+    val phoneCode: Int,
+    val countryName: String
 ) {
-    override fun toString(): String = "+${phoneCode}"
+    override fun toString(): String = countryName
 }
 
 data class PhoneInfo(

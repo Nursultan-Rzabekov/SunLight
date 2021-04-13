@@ -2,6 +2,7 @@ package com.example.sunlightdesign.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ open class BasePopUpAdapter<T>: BaseAdapter() {
     }
 }
 
+@SuppressLint("RestrictedApi")
 fun <T> showListPopupWindow(
     context: Context,
     items: List<T>,
