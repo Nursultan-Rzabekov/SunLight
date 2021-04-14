@@ -56,16 +56,16 @@ class SunlightFirebaseMessagingService : FirebaseMessagingService(), KoinCompone
         super.onMessageReceived(remoteMessage)
         Timber.d(remoteMessage.notification?.body)
         createChannel()
-        val largeIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
+        val largeIcon = BitmapFactory.decodeResource(resources, R.mipmap.notification_icon)
         val notification = NotificationCompat.Builder(
             this,
             getString(R.string.default_notification_channel_id)
         ).setContentTitle(remoteMessage.notification?.title)
             .setContentText(remoteMessage.notification?.body)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setLargeIcon(largeIcon)
+            .setSmallIcon(R.mipmap.notification_icon)
             .setColor(ContextCompat.getColor(this, R.color.colorPrimary))
             .setAutoCancel(true)
+            .setChannelId(getString(R.string.default_notification_channel_id))
             .build()
 
         val manager = NotificationManagerCompat.from(applicationContext)
