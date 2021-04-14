@@ -5,6 +5,8 @@ import com.example.sunlightdesign.BuildConfig
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.AuthServices
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Login
 import com.example.sunlightdesign.usecase.usercase.authUse.SetFirebaseTokenUseCase
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import okhttp3.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -44,20 +46,33 @@ class TokenAuthenticator : Authenticator, KoinComponent {
                 password = sharedPreferences.password.toString()).token.toString()
         }
         sharedPreferences.bearerToken = newAccessToken
-        sharedPreferences.firebaseToken?.let {
-            setFirebaseTokenUseCase.setModel(it)
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Timber.d("Fetching FCM registration token failed ${task.exception}")
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            token ?: return@OnCompleteListener
+
+            // Log and toast
+            val msg = "user token $token"
+            Timber.d(msg)
+
+            setFirebaseTokenUseCase.setModel(token)
             setFirebaseTokenUseCase.execute {
                 onComplete {
-                    Timber.d("firebase token is sent")
+                    Timber.d("firebase token $token is sent")
                 }
                 onError {
-                    Timber.d("firebase token is not sent: $it")
+                    Timber.d("firebase token $token is not sent: $it")
                 }
                 onNetworkError {
-                    Timber.d("firebase token is not sent: $it")
+                    Timber.d("firebase token $token is not sent: $it")
                 }
             }
-        }
+        })
         // Add new header to rejected request and retry it
 
         return response.request().newBuilder()

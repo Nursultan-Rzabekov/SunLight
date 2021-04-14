@@ -72,12 +72,6 @@ class SecureSharedPreferences(val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences.getBoolean(PIN_ENABLED,false)
         set(value) = sharedPreferences.edit()
             .putBoolean(PIN_ENABLED, value ?: false).apply()
-
-    private val FIREBASE_TOKEN = "firebase_token"
-    var firebaseToken: String?
-        get() = sharedPreferences.getString(FIREBASE_TOKEN, "")
-        set(value) = sharedPreferences.edit()
-            .putString(FIREBASE_TOKEN, value.orEmpty()).apply()
 }
 
 

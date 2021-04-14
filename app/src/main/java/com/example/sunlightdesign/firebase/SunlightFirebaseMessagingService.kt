@@ -27,7 +27,6 @@ class SunlightFirebaseMessagingService : FirebaseMessagingService(), KoinCompone
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         Timber.d(token)
-        sharedPreferences.firebaseToken = token
         if (sharedPreferences.bearerToken.isNullOrBlank()) return
         setFirebaseTokenUseCase.setModel(token)
         setFirebaseTokenUseCase.execute {

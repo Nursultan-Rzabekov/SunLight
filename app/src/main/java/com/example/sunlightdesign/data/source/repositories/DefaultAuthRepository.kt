@@ -7,6 +7,8 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Logi
 import com.example.sunlightdesign.usecase.usercase.authUse.SetFirebaseTokenUseCase
 import com.example.sunlightdesign.usecase.usercase.authUse.SetLogin
 import com.example.sunlightdesign.utils.SecureSharedPreferences
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import timber.log.Timber
@@ -25,21 +27,35 @@ class DefaultAuthRepository constructor(
         val tasks = tasksRemoteDataSource.getTasks(model)
         prefs.bearerToken = tasks.token
         prefs.userId = tasks.user?.id.toString()
-        prefs.firebaseToken?.let {
-            if (it.isBlank()) return@let
-            setFirebaseTokenUseCase.setModel(it)
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Timber.d("Fetching FCM registration token failed ${task.exception}")
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            token ?: return@OnCompleteListener
+
+            // Log and toast
+            val msg = "user token $token"
+            Timber.d(msg)
+
+            setFirebaseTokenUseCase.setModel(token)
             setFirebaseTokenUseCase.execute {
                 onComplete {
-                    Timber.d("firebase token is sent")
+                    Timber.d("firebase token $token is sent")
                 }
                 onError {
-                    Timber.d("firebase token is not sent: $it")
+                    Timber.d("firebase token $token is not sent: $it")
                 }
                 onNetworkError {
-                    Timber.d("firebase token is not sent: $it")
+                    Timber.d("firebase token $token is not sent: $it")
                 }
             }
-        }
+        })
+
         return tasks
     }
 
