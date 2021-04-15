@@ -340,5 +340,5 @@
     <string name="pin_code_label">Код быстрого доступа</string>
     <string name="create_pin_code">Придумайте код быстрого доступа к приложению</string>
     <string name="repeat_created_pin_code">Повторите код быстрого доступа к приложению</string>
-    <string name="blocked_amount">Сумма в блоке</string>
+    <string name="blocked_amount">Бонусы текущей недели</string>
 </resources>
