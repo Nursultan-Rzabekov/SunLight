@@ -112,6 +112,7 @@ class WalletHistoryAdapter(
 
             itemView.walletTextView.text = history.wallet_type
 
+            itemView.isVisible = !history.extra_json.isNullOrBlank()
             itemView.nameTextView.text = history.extra_json
 
             itemView.typeOfTransactionImageView.setImageDrawable(
