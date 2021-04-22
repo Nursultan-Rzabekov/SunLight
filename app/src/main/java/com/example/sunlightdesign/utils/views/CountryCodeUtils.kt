@@ -122,7 +122,6 @@ fun getCountryCodes(): List<CountryCode> {
     countries.add(CountryCode("kr", 82, "Южная Корея"))
     countries.add(CountryCode("kw", 965, "Кувейт"))
     countries.add(CountryCode("ky", 1, "Каймановы острова"))
-    countries.add(CountryCode("kz", 7, "Казахстан"))
     countries.add(CountryCode("la", 856, "Лаосская Народно-Демократическая Республика"))
     countries.add(CountryCode("lb", 961, "Ливан"))
     countries.add(CountryCode("lc", 1, "Санкт-Люсия"))
@@ -245,6 +244,9 @@ fun getCountryCodes(): List<CountryCode> {
     countries.add(CountryCode("za", 27, "Южная Африка"))
     countries.add(CountryCode("zm", 260, "Замбия"))
     countries.add(CountryCode("zw", 263, "Зимбабве"))
+
+    countries.sortBy { it.countryName }
+    countries.add(CountryCode("kz", 7, "Казахстан"))
     return countries
 }
 
