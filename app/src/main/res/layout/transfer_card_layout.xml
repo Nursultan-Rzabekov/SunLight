@@ -28,9 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_24dp"
-            app:cardBackgroundColor="@color/gray_FA"
+            app:cardBackgroundColor="@color/gray_FA_background"
             app:cardCornerRadius="@dimen/dimen_5dp"
-            app:strokeColor="@color/gray_EF"
+            app:strokeColor="@color/gray_EF_stroke"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -70,7 +70,7 @@
                     android:id="@+id/divider5"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray_EF" />
+                    android:background="@color/gray_EF_stroke" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,9 +127,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_16dp"
-            app:cardBackgroundColor="@color/gray_FA"
+            app:cardBackgroundColor="@color/gray_FA_background"
             app:cardCornerRadius="@dimen/dimen_5dp"
-            app:strokeColor="@color/gray_EF"
+            app:strokeColor="@color/gray_EF_stroke"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -149,6 +149,7 @@
                         style="@style/BasicDropDownInputLayout.Transparent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/white"
                         app:hintEnabled="false">
 
                         <AutoCompleteTextView
@@ -174,7 +175,7 @@
                     android:id="@+id/divider6"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray_EF" />
+                    android:background="@color/gray_EF_stroke" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -198,6 +199,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_4dp"
                         android:textSize="@dimen/dimen_16sp"
+                        android:textColor="@color/light_gray"
                         tools:text="$" />
 
                 </LinearLayout>
