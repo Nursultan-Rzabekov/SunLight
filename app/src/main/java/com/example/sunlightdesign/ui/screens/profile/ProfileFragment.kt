@@ -57,6 +57,7 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
     override fun onActivityCreated(savedInstanceViewState: Bundle?) {
         super.onActivityCreated(savedInstanceViewState)
 
+        blockedAmountLinearLayout.isVisible = true
         setListeners()
         initRecycler()
         setObservers()
@@ -153,6 +154,7 @@ class ProfileFragment : StrongFragment<ProfileViewModel>(ProfileViewModel::class
         else getString(R.string.active)
 
         bonusWalletTextView.text = getString(R.string.amount_bv, info.user?.wallet?.main_wallet)
+        blockedWalletTextView.text = getString(R.string.amount_bv, info.user?.wallet?.blocked_wallet)
         activityWalletTextView.text =
             getString(R.string.amount_bv, info.user?.wallet?.purchase_wallet)
         leftBranchTotalTextView.text =
