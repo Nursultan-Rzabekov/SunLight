@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/dimen_16dp"
+    android:layout_marginHorizontal="@dimen/dimen_4dp"
+    android:layout_marginBottom="@dimen/dimen_8dp"
     app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/dimen_4dp"
     app:cardCornerRadius="@dimen/dimen_5dp">
 
     <LinearLayout
