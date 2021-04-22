@@ -246,7 +246,7 @@ fun getCountryCodes(): List<CountryCode> {
     countries.add(CountryCode("zw", 263, "Зимбабве"))
 
     countries.sortBy { it.countryName }
-    countries.add(CountryCode("kz", 7, "Казахстан"))
+    countries.add(0, CountryCode("kz", 7, "Казахстан"))
     return countries
 }
 

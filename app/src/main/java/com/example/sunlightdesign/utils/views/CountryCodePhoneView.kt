@@ -4,7 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.utils.BasePopUpAdapter
 import com.example.sunlightdesign.utils.showListPopupWindow
@@ -26,6 +28,15 @@ class CountryCodePhoneView @JvmOverloads constructor(
     private var currentCountry: CountryCode? = null
     private val itemsAdapter = CountryCodeBaseAdapter()
     private var currentTextWatcher: InternationalPhoneTextWatcher? = null
+    private var onTextFormattedListener: OnTextFormattedListener? = null
+
+    var isErrorEnabled: Boolean
+        get() = phoneBodyTextInputLayout.isErrorEnabled
+        set(value) { phoneBodyTextInputLayout.isErrorEnabled = value }
+
+    var error: CharSequence?
+        get() = phoneBodyTextInputLayout.error
+        set(value) { phoneBodyTextInputLayout.error = value }
 
     init {
         countries.addAll(getCountryCodes())
@@ -36,6 +47,10 @@ class CountryCodePhoneView @JvmOverloads constructor(
         super.onFinishInflate()
 
         setDefaultMask()
+
+        phoneBodyEditText.addTextChangedListener {
+            onTextFormattedListener?.onTextFormatted(it)
+        }
 
         phonePrefixTextView.setOnClickListener {
             showListPopupWindow(
@@ -108,7 +123,23 @@ class CountryCodePhoneView @JvmOverloads constructor(
 
     fun isValid(): Boolean {
         val phone = "${phonePrefixTextView.text} ${phoneBodyEditText.text}"
-        return phoneUtil.isValidNumber(phoneUtil.parse(phone, null))
+        return try {
+            phoneUtil.isValidNumber(phoneUtil.parse(phone, null))
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    fun setOnTextFormattedListener(listener: OnTextFormattedListener) {
+        this.onTextFormattedListener = listener
+    }
+
+    fun removeOnTextFormattedListener() {
+        this.onTextFormattedListener = null
+    }
+
+    interface OnTextFormattedListener {
+        fun onTextFormatted(text: CharSequence?)
     }
 }
 

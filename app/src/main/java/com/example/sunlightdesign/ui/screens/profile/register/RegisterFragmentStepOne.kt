@@ -18,8 +18,8 @@ import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
 import com.example.sunlightdesign.ui.screens.profile.register.adapters.CustomPopupAdapter
 import com.example.sunlightdesign.utils.*
+import com.example.sunlightdesign.utils.views.CountryCodePhoneView
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.*
-import kotlinx.android.synthetic.main.fragment_register_partner_step_one.phone_et
 import kotlinx.android.synthetic.main.fragment_register_partner_step_one.progress_bar
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -120,10 +120,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                 AddPartner(
                     first_name = firstName,
                     last_name = lastName,
-                    phone = MaskUtils.unMaskValue(
-                        MaskUtils.PHONE_MASK,
-                        phone_et.text.toString()
-                    ),
+                    phone = requireNotNull(countryCodePhoneView.getPhoneInfo()?.phone),
                     middle_name = middleName,
                     country_id = countryId,
                     region_id = regionId,
@@ -207,8 +204,8 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
                     iinLayout.error = it["iin"]?.first()
                 }
                 if (it.containsKey("phone")) {
-                    phoneLayout.isErrorEnabled = true
-                    phoneLayout.error = it["phone"]?.first()
+                    countryCodePhoneView.isErrorEnabled = true
+                    countryCodePhoneView.error = it["phone"]?.first()
                 }
             })
 
@@ -409,21 +406,16 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             it.isHideHardcodedHead = false
             MaskFormatWatcher(it).apply {
                 installOn(iin_et)
-                onTextFormatted {
-                    if (isIinValid(iin_et.text.toString())) phone_et.requestFocus()
-                }
             }
         }
 
-        MaskImpl(
-            MaskUtils.createSlotsFromMask(MaskUtils.PHONE_MASK, true), true
-        ).also {
-            it.isHideHardcodedHead = true
-            MaskFormatWatcher(it).apply {
-                installOn(phone_et)
-                onTextFormatted { updateSignUpBtn() }
+        countryCodePhoneView.setOnTextFormattedListener(
+            object: CountryCodePhoneView.OnTextFormattedListener {
+                override fun onTextFormatted(text: CharSequence?) {
+                    updateSignUpBtn()
+                }
             }
-        }
+        )
     }
 
     private fun setRearDocument(uri: Uri) {
@@ -461,7 +453,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun updateSignUpBtn() {
         btn_next_step_one.isEnabled =
-            if (isPhoneValid(phone_et.text.toString()) && isIinValid(iin_et.text.toString())) {
+            if (countryCodePhoneView.isValid() && isIinValid(iin_et.text.toString())) {
                 activity?.closeKeyboard()
                 true
             } else false
@@ -477,7 +469,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
             countryId == -1 -> getString(R.string.choose_country_two_dots)
             regionId == -1 -> getString(R.string.choose_region_two_dots)
             cityId == -1 -> getString(R.string.choose_city_two_dots)
-            !isPhoneValid(phone_et.text.toString()) ->
+            !countryCodePhoneView.isValid() ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.phone_number)}"
             !isIinValid(iin_et.text.toString()) ->
                 "${getString(R.string.fill_the_field)} ${getString(R.string.iin)}"
@@ -505,7 +497,7 @@ class RegisterFragmentStepOne : StrongFragment<ProfileViewModel>(ProfileViewMode
 
     private fun disableErrors() {
         iinLayout.isErrorEnabled = false
-        phoneLayout.isErrorEnabled = false
+        countryCodePhoneView.isErrorEnabled = false
     }
 
     private fun checkPermission(): Boolean {
