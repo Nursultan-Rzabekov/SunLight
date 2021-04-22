@@ -306,6 +306,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_16dp"
+                android:overScrollMode="never"
                 android:orientation="vertical" />
 
             <com.google.android.material.button.MaterialButton

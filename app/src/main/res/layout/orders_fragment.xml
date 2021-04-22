@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/dimen_24dp"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             tools:itemCount="6"
             tools:listitem="@layout/order_item"
             />

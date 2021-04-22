@@ -80,9 +80,6 @@
 
             </LinearLayout>
 
-
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/products_recycler_view"
                 android:layout_width="match_parent"
@@ -90,6 +87,7 @@
                 android:layout_marginTop="@dimen/dimen_24dp"
                 tools:listitem="@layout/products_list_item"
                 tools:itemCount="6"
+                android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2" />
 

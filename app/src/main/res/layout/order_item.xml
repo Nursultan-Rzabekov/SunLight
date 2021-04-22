@@ -72,6 +72,7 @@
             android:id="@+id/productsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             tools:itemCount="2"
             tools:listitem="@layout/order_sublist_item" />
 

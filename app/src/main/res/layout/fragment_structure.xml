@@ -161,6 +161,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_16dp"
                         tools:listitem="@layout/user_status_item"
+                        android:overScrollMode="never"
                         tools:itemCount="5" />
 
                 </LinearLayout>

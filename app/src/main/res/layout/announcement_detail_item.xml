@@ -57,6 +57,7 @@
                 android:id="@+id/filesRecyclerView"
                 tools:itemCount="1"
                 tools:listitem="@layout/attached_file_recycler_item"
+                android:overScrollMode="never"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

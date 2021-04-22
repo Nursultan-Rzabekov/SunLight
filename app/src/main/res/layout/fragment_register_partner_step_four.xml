@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
                 tools:listitem="@layout/office_departments_item"
+                android:overScrollMode="never"
                 tools:itemCount="3"/>
 
             <com.google.android.material.button.MaterialButton
