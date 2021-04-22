@@ -482,20 +482,28 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/exitTextView"
-                style="@style/AppCompatTextViewGray"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_16dp"
+                app:cardElevation="@dimen/dimen_4dp"
                 android:layout_marginHorizontal="@dimen/dimen_4dp"
-                android:background="@color/white"
-                android:padding="@dimen/dimen_16dp"
-                android:paddingHorizontal="-16dp"
-                android:text="@string/exit"
-                android:textAlignment="center"
-                android:textColor="@color/red"
-                android:textSize="@dimen/dimen_22sp" />
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                app:cardCornerRadius="@dimen/dimen_5dp">
+
+                <TextView
+                    android:id="@+id/exitTextView"
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dimen_16dp"
+                    android:paddingHorizontal="-16dp"
+                    android:text="@string/exit"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/dimen_22sp" />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
