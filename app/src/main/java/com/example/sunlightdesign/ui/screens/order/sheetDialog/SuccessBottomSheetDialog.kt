@@ -1,6 +1,7 @@
 package com.example.sunlightdesign.ui.screens.order.sheetDialog
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,9 +51,13 @@ class SuccessBottomSheetDialog(
 
     private fun setListeners() {
         okBtn.setOnClickListener {
-            activity?.finish()
             dismiss()
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        activity?.finish()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

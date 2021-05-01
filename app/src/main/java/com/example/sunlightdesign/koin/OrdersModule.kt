@@ -4,6 +4,7 @@ import com.example.sunlightdesign.data.source.OrdersRepository
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.OrdersServices
 import com.example.sunlightdesign.data.source.repositories.DefaultOrdersRepository
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
+import com.example.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
@@ -66,6 +67,12 @@ val ordersModule = module {
         )
     }
 
+    factory {
+        CalculateDeliveryUseCase(
+            repository = get()
+        )
+    }
+
     viewModel {
         OrderViewModel(
             sharedUseCase = get(),
@@ -77,7 +84,8 @@ val ordersModule = module {
             getOfficesListUseCase = get(),
             storeDeliveryUseCase = get(),
             accountCountriesUseCase = get(),
-            profileInfoUseCase = get()
+            profileInfoUseCase = get(),
+            calculateDeliveryUseCase = get()
         )
     }
 }

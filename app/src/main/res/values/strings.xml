@@ -341,4 +341,11 @@
     <string name="create_pin_code">Придумайте код быстрого доступа к приложению</string>
     <string name="repeat_created_pin_code">Повторите код быстрого доступа к приложению</string>
     <string name="blocked_amount">Бонусы текущей недели</string>
+    <string name="available_delivery_type">Доступный вид доставки:</string>
+    <string name="delivery_address_example">Например: Абая 45</string>
+    <string name="choose_delivery_service_type">Выберите вид доставки</string>
+    <string name="fasten">Ускоренная</string>
+    <string name="basic">Обычная</string>
+    <string name="choose_delivery_service">Выберите вид доставки</string>
+    <string name="delivery_cost_format">Стоимость доставки %1$s BV или %2$s KZT</string>
 </resources>

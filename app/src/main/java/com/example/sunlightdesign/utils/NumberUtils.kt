@@ -12,3 +12,7 @@ class NumberUtils {
         }
     }
 }
+
+fun Double?.orZero(): Double = this ?: 0.0
+
+fun Int?.orMinusOne(): Int = this ?: -1

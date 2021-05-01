@@ -5,13 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.OrderProducts
-import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
 import com.example.sunlightdesign.usecase.usercase.SharedUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
+import com.example.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.get.*
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
@@ -33,7 +32,8 @@ class OrderViewModel constructor(
     private val getOfficesListUseCase: GetOfficesListUseCase,
     private val storeDeliveryUseCase: StoreDeliveryUseCase,
     private val accountCountriesUseCase: AccountCountriesUseCase,
-    private val profileInfoUseCase: ProfileInfoUseCase
+    private val profileInfoUseCase: ProfileInfoUseCase,
+    private val calculateDeliveryUseCase: CalculateDeliveryUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -60,6 +60,9 @@ class OrderViewModel constructor(
 
     private var _userInfo = MutableLiveData<UserInfo>()
     val userInfo: LiveData<UserInfo> get() = _userInfo
+
+    private var _deliveryService = MutableLiveData<DeliveryServiceListResponse>()
+    val deliveryService: LiveData<DeliveryServiceListResponse> get() = _deliveryService
 
     fun getUserId() = sharedUseCase.getSharedPreference().userId
 
@@ -137,7 +140,6 @@ class OrderViewModel constructor(
     fun storeOrder(createOrderPartner: CreateOrderPartner){
         progress.postValue(true)
         storeOrderUseCase.setData(createOrderPartner)
-
         storeOrderUseCase.execute {
             onComplete {
                 progress.postValue(false)
@@ -234,6 +236,25 @@ class OrderViewModel constructor(
             onComplete {
                 progress.postValue(false)
                 _locationsList.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun calculateDelivery(request: CalculateDeliveryUseCase.Request) {
+        progress.postValue(true)
+        calculateDeliveryUseCase.setModel(request)
+        calculateDeliveryUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _deliveryService.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)

@@ -206,6 +206,7 @@
     
     <style name="BasicRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="buttonTint">@color/colorPrimary</item>
         <item name="android:textColor">@color/sunBlackColor</item>
         <item name="fontFamily">@font/rubik_regular</item>
     </style>

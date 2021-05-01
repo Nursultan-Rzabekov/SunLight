@@ -30,12 +30,12 @@ data class AddPartner(
 
 data class CreateOrderPartner(
     val user_id: Int,
-    val office_id: Int,
+    val office_id: Int?,
     val order_payment_type: Int,
     val payment_sum: Double,
     val products: List<Product>,
-    val delivery_id: Int?,
-    val delivery_type: Int
+    val delivery_type: Int,
+    val delivery_info: DeliveryInfoRequest?
 ) {
     companion object {
         const val DELIVERY_TYPE_BY_COMPANY = 1
@@ -44,12 +44,12 @@ data class CreateOrderPartner(
 
     class Builder {
         var userId: Int = -1
-        var officeId: Int = 0
+        var officeId: Int? = null
         var orderPaymentType: Int = -1
         var products: List<Product> = listOf()
         var paymentSum: Double = -0.0
-        var deliveryId: Int? = null
         var deliveryType: Int = -1
+        var deliveryInfo: DeliveryInfoRequest? = null
 
         fun build(): CreateOrderPartner = CreateOrderPartner(
             user_id = userId,
@@ -57,11 +57,24 @@ data class CreateOrderPartner(
             order_payment_type = orderPaymentType,
             products = products,
             payment_sum = paymentSum,
-            delivery_id = deliveryId,
-            delivery_type = deliveryType
+            delivery_type = deliveryType,
+            delivery_info = deliveryInfo
         )
     }
 }
+
+data class DeliveryInfoRequest(
+    var delivery_type_id: Int,
+    var delivery_zone_id: Int,
+    var price: Double,
+    var weight: String,
+    var city_id: Int,
+    var region_id: Int,
+    var country_code: String,
+    var country_id: Int,
+    var address: String,
+    var fio: String
+)
 
 data class ItemId(
     val id: Int?

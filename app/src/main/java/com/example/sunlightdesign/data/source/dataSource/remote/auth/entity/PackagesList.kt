@@ -22,6 +22,7 @@ data class Product(
     val product_type: Int?,
     val updated_at: String?,
     val product: Product?,
+    val gram: Double?,
     val product_stock: Int?,
     val product_image_sale: String?,
     val product_description_sale: String?,
@@ -29,6 +30,30 @@ data class Product(
 ) {
     companion object {
         const val SPECIAL_OFFER = 1
+
+        fun getTotalSum(products: List<Product>): Double {
+            var count = 0.0
+            products.forEach {
+                it.product_price?.let { price ->
+                    it.product_quantity?.let {quantity ->
+                        count += (price * quantity)
+                    }
+                }
+            }
+            return count
+        }
+
+        fun getTotalWeight(products: List<Product>): Double {
+            var count = 0.0
+            products.forEach {
+                it.gram?.let { price ->
+                    it.product_quantity?.let {quantity ->
+                        count += (price * quantity)
+                    }
+                }
+            }
+            return count
+        }
     }
 }
 

@@ -8,7 +8,10 @@ import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Offi
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.OrdersServices
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliveryServiceListResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliveryServiceResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
+import com.example.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 
 
@@ -31,4 +34,8 @@ class DefaultOrdersRepository constructor(
 
     override suspend fun storeDelivery(delivery: StoreDeliveryUseCase.DeliverRequest): DeliverResponse =
         ordersServices.storeDelivery(delivery).await()
+
+    override suspend fun calculateDelivery(
+        parameter: CalculateDeliveryUseCase.Request
+    ): DeliveryServiceListResponse = ordersServices.calculateDelivery(parameter).await()
 }

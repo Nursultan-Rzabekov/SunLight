@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16dp">
+
+    <ImageView
+        android:id="@+id/arrow_bottom_sheet_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_16dp"
+        android:contentDescription="@string/exit"
+        android:src="@drawable/ic_arrow_sheet" />
+
+    <TextView
+        style="@style/AppCompatTextViewGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_address"
+        android:textAlignment="center"
+        android:textColor="@color/sunBlackColor"
+        android:textSize="@dimen/dimen_18sp" />
+
+    <TextView
+        android:id="@+id/deliveryDescriptionTextView"
+        style="@style/AppCompatTextViewGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="asdasd"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:textAlignment="center"
+        android:textSize="@dimen/dimen_14sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:text="@string/partner"
+        android:textSize="@dimen/dimen_16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/partnerInputLayout"
+        style="@style/BasicTextInputLayout.Reverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/partnerEditText"
+            style="@style/BasicEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/full_name"
+            android:paddingTop="@dimen/dimen_12dp"
+            android:paddingBottom="@dimen/dimen_12dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:text="@string/fill_street_address"
+        android:textSize="@dimen/dimen_16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/streetAddress"
+        style="@style/BasicTextInputLayout.Reverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/streetAddressEditText"
+            style="@style/BasicEditText"
+            android:hint="@string/delivery_address_example"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_12dp"
+            android:paddingBottom="@dimen/dimen_12dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextButton"
+        style="@style/BasicMaterialButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_100dp"
+        android:enabled="true"
+        android:paddingTop="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_16dp"
+        android:text="@string/next"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancelButton"
+        style="@style/BasicTextMaterialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/back"
+        android:textColor="@color/gray_textColor" />
+
+</LinearLayout>

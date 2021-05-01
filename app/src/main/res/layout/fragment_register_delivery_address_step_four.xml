@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sunlight_background"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/sunlight_logo"
+            layout="@layout/sunlight_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_8dp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextView"
+            android:layout_marginTop="@dimen/dimen_32dp"
+            android:text="@string/registration_partner" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AppCompatTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/step_four"
+                android:textSize="@dimen/dimen_16sp" />
+
+            <TextView
+                style="@style/AppCompatTextViewGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_13dp"
+                android:text="@string/delivery_address"
+                android:textSize="@dimen/dimen_16sp" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextViewGray"
+            android:layout_marginTop="@dimen/dimen_32dp"
+            android:text="@string/partner"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/partnerInputLayout"
+            style="@style/BasicTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/partnerEditText"
+                style="@style/BasicEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/full_name"
+                android:paddingTop="@dimen/dimen_12dp"
+                android:paddingBottom="@dimen/dimen_12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextViewGray"
+            android:layout_marginTop="@dimen/dimen_32dp"
+            android:text="@string/fill_street_address"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/streetAddress"
+            style="@style/BasicTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/streetAddressEditText"
+                style="@style/BasicEditText"
+                android:hint="@string/delivery_address_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dimen_12dp"
+                android:paddingBottom="@dimen/dimen_12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next_step_four"
+            style="@style/BasicMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp"
+            android:text="@string/next"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backBtn"
+            style="@style/BasicTextMaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:layout_marginBottom="@dimen/dimen_12dp"
+            android:text="@string/back"
+            android:textColor="@color/gray_textColor" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

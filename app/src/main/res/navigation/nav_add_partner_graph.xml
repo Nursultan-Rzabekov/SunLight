@@ -65,9 +65,13 @@
                     app:popExitAnim="@anim/fade_out" />
 
                 <action
-                    android:id="@+id/action_register_fragment_step_three_to_register_fragment_step_five"
+                    android:id="@+id/action_register_fragment_step_three_to_deliveryServiceRegisterStepFourFragment"
+                    app:destination="@id/deliveryServiceRegisterStepFourFragment"
                     app:popUpTo="@id/register_fragment_step_three"
-                    app:destination="@id/register_fragment_step_five" />
+                    app:enterAnim="@anim/fade_in"
+                    app:exitAnim="@anim/fade_out"
+                    app:popEnterAnim="@anim/fade_in"
+                    app:popExitAnim="@anim/fade_out" />
 
 
         </fragment>
@@ -82,7 +86,7 @@
 
         <fragment
             android:id="@+id/register_fragment_step_four"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepFour"
+            android:name="com.example.sunlightdesign.ui.screens.profile.register.PickUpRegisterFragmentStepFour"
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_four" >
 
@@ -95,7 +99,6 @@
                     app:enterAnim="@anim/slide_in_right"
                     app:exitAnim="@anim/slide_out_left"/>
 
-
         </fragment>
 
         <fragment
@@ -104,6 +107,36 @@
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_five" >
 
+        </fragment>
+
+        <fragment
+            android:id="@+id/deliveryServiceRegisterStepFourFragment"
+            android:name="com.example.sunlightdesign.ui.screens.profile.register.DeliveryServiceRegisterStepFourFragment"
+            android:label="DeliveryServiceRegisterStepFourFragment"
+            tools:layout="@layout/fragment_register_delivery_service_step_four">
+                <action
+                    android:id="@+id/action_deliveryServiceRegisterStepFourFragment_to_deliveryAddressRegisterStepFourFragment"
+                    app:destination="@id/deliveryAddressRegisterStepFourFragment"
+                    app:popUpTo="@id/deliveryServiceRegisterStepFourFragment"
+                    app:popEnterAnim="@anim/slide_in_left"
+                    app:popExitAnim="@anim/slide_out_right"
+                    app:enterAnim="@anim/slide_in_right"
+                    app:exitAnim="@anim/slide_out_left" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/deliveryAddressRegisterStepFourFragment"
+            android:name="com.example.sunlightdesign.ui.screens.profile.register.DeliveryAddressRegisterStepFourFragment"
+            android:label="DeliveryAddressRegisterStepFourFragment"
+            tools:layout="@layout/fragment_register_delivery_address_step_four">
+                <action
+                    android:id="@+id/action_deliveryAddressRegisterStepFourFragment_to_register_fragment_step_five"
+                    app:destination="@id/register_fragment_step_five"
+                    app:popUpTo="@id/deliveryAddressRegisterStepFourFragment"
+                    app:popEnterAnim="@anim/slide_in_left"
+                    app:popExitAnim="@anim/slide_out_right"
+                    app:enterAnim="@anim/slide_in_right"
+                    app:exitAnim="@anim/slide_out_left" />
         </fragment>
 
 </navigation>

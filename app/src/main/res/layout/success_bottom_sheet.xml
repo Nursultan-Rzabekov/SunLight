@@ -49,8 +49,8 @@
         android:id="@+id/okBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dimen_12dp"
-        android:paddingBottom="@dimen/dimen_12dp"
+        android:paddingTop="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_16dp"
         android:layout_marginTop="@dimen/dimen_58dp"
         style="@style/BasicMaterialButton"
         android:text="@string/text_ok"/>

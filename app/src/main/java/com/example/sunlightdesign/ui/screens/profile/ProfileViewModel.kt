@@ -14,6 +14,8 @@ import com.example.sunlightdesign.data.source.dataSource.AddPartner
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.*
 import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliveryServiceListResponse
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliveryServiceResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.InvitedResponse
 import com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.UserInfo
 import com.example.sunlightdesign.ui.base.StrongViewModel
@@ -26,6 +28,7 @@ import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountAddPar
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountCreateOrderUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.AccountSetPackagesUseCase
 import com.example.sunlightdesign.usecase.usercase.accountUse.post.SetPackage
+import com.example.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.GetInvitesUseCase
 import com.example.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
@@ -61,7 +64,7 @@ class ProfileViewModel constructor(
     private val profileChangePasswordUseCase: ProfileChangePasswordUseCase,
     private val profileChangeAvatarUseCase: ProfileChangeAvatarUseCase,
     private val profileGetInvitesUseCase: GetInvitesUseCase,
-    private val storeDeliveryUseCase: StoreDeliveryUseCase
+    private val calculateDeliveryUseCase: CalculateDeliveryUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -102,8 +105,8 @@ class ProfileViewModel constructor(
     private var _invites = MutableLiveData<InvitedResponse>()
     val invites: LiveData<InvitedResponse> get() = _invites
 
-    private var _deliverResponse = MutableLiveData<DeliverResponse>()
-    val deliverResponse: LiveData<DeliverResponse> get() = _deliverResponse
+    private var _deliverService = MutableLiveData<DeliveryServiceListResponse>()
+    val deliverService: LiveData<DeliveryServiceListResponse> get() = _deliverService
 
     private var _navigationEvent = MutableLiveData<NavigationEvent<Any?>?>()
     val navigationEvent: LiveData<NavigationEvent<Any?>?> get() = _navigationEvent
@@ -368,13 +371,13 @@ class ProfileViewModel constructor(
         }
     }
 
-    fun storeDelivery(delivery: StoreDeliveryUseCase.DeliverRequest) {
+    fun calculateDelivery(request: CalculateDeliveryUseCase.Request) {
         progress.postValue(true)
-        storeDeliveryUseCase.setModel(delivery)
-        storeDeliveryUseCase.execute {
+        calculateDeliveryUseCase.setModel(request)
+        calculateDeliveryUseCase.execute {
             onComplete {
                 progress.postValue(false)
-                _deliverResponse.postValue(it)
+                _deliverService.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)

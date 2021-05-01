@@ -31,7 +31,6 @@
         android:layout_marginTop="@dimen/dimen_32dp"
         android:orientation="vertical">
 
-        <!--Todo remove visibility after delivery api is done-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/deliverTypeByUsBtn"
             style="@style/BasicOutlinedButtonGrayStyle"
@@ -42,17 +41,14 @@
             android:paddingBottom="@dimen/dimen_16dp"
             android:text="@string/we_will_deliver"
             android:textColor="@color/text_selector_color_state"
-            android:visibility="gone"
             app:icon="@drawable/ic_truck"
             app:iconTint="@color/toggle_button_color_state"
             app:strokeColor="@color/toggle_button_color_state" />
 
-        <!--Todo remove visibility after delivery api is done-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/wihtout_cash_delivery"
-            android:visibility="gone" />
+            android:text="@string/wihtout_cash_delivery" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/deliverTypeByUserBtn"
@@ -78,8 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_100dp"
         android:enabled="true"
-        android:paddingTop="@dimen/dimen_12dp"
-        android:paddingBottom="@dimen/dimen_12dp"
+        android:paddingTop="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_16dp"
         android:text="@string/next"
         android:textStyle="bold" />
 

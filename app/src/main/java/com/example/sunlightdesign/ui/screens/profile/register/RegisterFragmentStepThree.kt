@@ -24,8 +24,7 @@ import kotlinx.android.synthetic.main.fragment_register_partner_step_three.*
 
 class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
     ProductsRecyclerAdapter.ProductsItemSelected,
-    ChooseDeliveryTypeBottomSheet.Interaction,
-    AddressFieldsBottomSheet.Interaction {
+    ChooseDeliveryTypeBottomSheet.Interaction {
 
     companion object{
         const val PACKAGE_NAME = "package_name"
@@ -33,7 +32,6 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
 
     private lateinit var productsAdapter: ProductsRecyclerAdapter
     private lateinit var chooseDeliveryTypeBottomSheet: ChooseDeliveryTypeBottomSheet
-    private lateinit var addressFieldsBottomSheet: AddressFieldsBottomSheet
     private var spanCount = 2
 
     override fun onCreateView(
@@ -55,40 +53,21 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         setObservers()
 
         chooseDeliveryTypeBottomSheet = ChooseDeliveryTypeBottomSheet(this)
-        addressFieldsBottomSheet = AddressFieldsBottomSheet(this)
     }
 
     override fun onDeliveryTypeSelected(type: Int) {
         if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_COMPANY) {
-            showAddressFieldsDialog()
             viewModel.createOrderPartnerBuilder.deliveryType =
                 CreateOrderPartner.DELIVERY_TYPE_BY_COMPANY
+            findNavController().navigate(
+                R.id.action_register_fragment_step_three_to_deliveryServiceRegisterStepFourFragment
+            )
         } else if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_USER) {
             viewModel.createOrderPartnerBuilder.deliveryType =
                 CreateOrderPartner.DELIVERY_TYPE_PICKUP
-            viewModel.createOrderPartnerBuilder.deliveryId = null
             findNavController().navigate(R.id.action_stepThreeFragment_to_stepFourFragment)
         }
         hideDeliverTypeDialog()
-    }
-
-    override fun onAddressPassed(
-        partnerFullName: String,
-        country: Int,
-        region: Int,
-        city: Int,
-        address: String
-    ) {
-        hideAddressFieldsDialog()
-        viewModel.storeDelivery(
-            StoreDeliveryUseCase.DeliverRequest(
-            snl = partnerFullName,
-            countryId = country,
-            regionId = region,
-            cityId = city,
-            street = address,
-            sum = getTotalSum(productsAdapter.getCheckedProducts()).toString()
-        ))
     }
 
     private fun setListeners() {
@@ -106,15 +85,6 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
     private fun setObservers() = with(viewModel) {
         productsList.observe(viewLifecycleOwner, Observer {
             initRecycler(it ?: listOf())
-        })
-        deliverResponse.observe(viewLifecycleOwner, Observer {
-            createOrderPartnerBuilder.deliveryId = it.delivery?.id
-            findNavController().navigate(
-                R.id.action_register_fragment_step_three_to_register_fragment_step_five
-            )
-        })
-        countriesList.observe(viewLifecycleOwner, Observer {
-            addressFieldsBottomSheet.setLocations(it)
         })
     }
 
@@ -179,16 +149,4 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
     private fun hideDeliverTypeDialog() {
         chooseDeliveryTypeBottomSheet.dismiss()
     }
-
-    private fun showAddressFieldsDialog() {
-        addressFieldsBottomSheet.show(
-            parentFragmentManager,
-            AddressFieldsBottomSheet.TAG
-        )
-    }
-
-    private fun hideAddressFieldsDialog() {
-        addressFieldsBottomSheet.dismiss()
-    }
-
 }

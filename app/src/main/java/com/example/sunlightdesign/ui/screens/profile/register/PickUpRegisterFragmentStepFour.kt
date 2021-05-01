@@ -21,7 +21,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class RegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
+class PickUpRegisterFragmentStepFour : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
     OfficesRecyclerAdapter.OfficeSelector {
 
     private val officesRecyclerAdapter by lazy {

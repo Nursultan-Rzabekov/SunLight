@@ -11,14 +11,21 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
+import com.example.sunlightdesign.data.source.dataSource.DeliveryInfoRequest
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+import com.example.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliveryServiceResponse
 import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.bottomsheets.DeliveryAddressBottomSheet
+import com.example.sunlightdesign.ui.bottomsheets.DeliveryServiceBottomSheet
 import com.example.sunlightdesign.ui.screens.order.OrderViewModel
 import com.example.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecyclerAdapter
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.*
 import com.example.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.example.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
+import com.example.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
+import com.example.sunlightdesign.utils.orMinusOne
+import com.example.sunlightdesign.utils.orZero
 import com.example.sunlightdesign.utils.showMessage
 import com.example.sunlightdesign.utils.showToast
 import kotlinx.android.parcel.Parcelize
@@ -32,7 +39,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction,
     ChoosePaymentTypeBottomSheetDialog.ChooseTypeInteraction,
     ChooseDeliveryTypeBottomSheet.Interaction,
-    AddressFieldsBottomSheet.Interaction {
+    DeliveryServiceBottomSheet.Interaction,
+    DeliveryAddressBottomSheet.Interaction {
 
     private lateinit var productsAdapter: ProductsMarketRecyclerAdapter
     private var spanCount = 2
@@ -42,7 +50,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     private lateinit var choosePaymentTypeBottomSheetDialog: ChoosePaymentTypeBottomSheetDialog
     private lateinit var successBottomSheetDialog: SuccessBottomSheetDialog
     private lateinit var chooseDeliveryTypeBottomSheet: ChooseDeliveryTypeBottomSheet
-    private lateinit var addressFieldsBottomSheet: AddressFieldsBottomSheet
+    private lateinit var deliveryServiceBottomSheet: DeliveryServiceBottomSheet
+    private lateinit var deliveryAddressBottomSheet: DeliveryAddressBottomSheet
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,7 +74,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         viewModel.getLocations()
         viewModel.getUserInfo()
         chooseDeliveryTypeBottomSheet = ChooseDeliveryTypeBottomSheet(this)
-        addressFieldsBottomSheet = AddressFieldsBottomSheet(this)
+        deliveryServiceBottomSheet = DeliveryServiceBottomSheet(this)
+        deliveryAddressBottomSheet = DeliveryAddressBottomSheet(this)
     }
 
     private fun setListeners() {
@@ -98,18 +108,6 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         pay_market_total_tv.text = getString(R.string.market_pay, count)
     }
 
-    private fun getTotalSum(products: List<Product>): Double {
-        var count = 0.0
-        products.forEach {
-            it.product_price?.let { price ->
-                it.product_quantity?.let {quantity ->
-                    count += (price * quantity)
-                }
-            }
-        }
-        return count
-    }
-
     private fun setObservers() = with(viewModel) {
         progress.observe(viewLifecycleOwner, Observer {
             marketProgressBar.visibility = if (it) View.VISIBLE else View.GONE
@@ -130,7 +128,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         })
 
         locationList.observe(viewLifecycleOwner, Observer {
-            addressFieldsBottomSheet.setLocations(it)
+            deliveryServiceBottomSheet.setLocations(it)
         })
 
         officesList.observe(viewLifecycleOwner, Observer {
@@ -155,10 +153,8 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 ChooseOfficeBottomSheetDialog.TAG
             )
         })
-
-        deliverResponse.observe(viewLifecycleOwner, Observer {
-            createOrderBuilder.deliveryId = it.delivery?.id
-            showPaymentTypeDialog(isHideTill = true)
+        deliveryService.observe(viewLifecycleOwner, Observer {
+            deliveryServiceBottomSheet.recycleDeliveryServices(it.deliveryServices.orEmpty())
         })
     }
 
@@ -208,15 +204,11 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         chooseDeliveryTypeBottomSheet.dismiss()
     }
 
-    private fun showAddressFieldsDialog() {
-        addressFieldsBottomSheet.show(
+    private fun showDeliveryServiceDialog() {
+        deliveryServiceBottomSheet.show(
             parentFragmentManager,
-            AddressFieldsBottomSheet.TAG
+            DeliveryServiceBottomSheet.TAG
         )
-    }
-
-    private fun hideAddressFieldsDialog() {
-        addressFieldsBottomSheet.dismiss()
     }
 
     private fun showPaymentTypeDialog(isHideTill: Boolean = false) {
@@ -225,6 +217,13 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         choosePaymentTypeBottomSheetDialog.show(
             parentFragmentManager,
             ChoosePaymentTypeBottomSheetDialog.TAG
+        )
+    }
+
+    private fun showDeliveryAddressDialog() {
+        deliveryAddressBottomSheet.show(
+            parentFragmentManager,
+            DeliveryAddressBottomSheet.TAG
         )
     }
 
@@ -289,36 +288,70 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     override fun onDeliveryTypeSelected(type: Int) {
         if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_COMPANY) {
-            showAddressFieldsDialog()
+            showDeliveryServiceDialog()
             viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_BY_COMPANY
         } else if (type == ChooseDeliveryTypeBottomSheet.DELIVERY_BY_USER) {
             viewModel.getOfficesList()
-            viewModel.createOrderBuilder.deliveryId = null
             viewModel.createOrderBuilder.deliveryType = CreateOrderPartner.DELIVERY_TYPE_PICKUP
         }
+        viewModel.createOrderBuilder.deliveryInfo = null
         hideDeliverTypeDialog()
     }
 
-    override fun onAddressPassed(
-        partnerFullName: String,
-        country: Int,
-        region: Int,
-        city: Int,
-        address: String
+    override fun onDeliveryServiceSelected(
+        cityId: Int,
+        countryId: Int,
+        regionId: Int,
+        deliveryService: DeliveryServiceResponse,
+        countryCode: String
     ) {
-        hideAddressFieldsDialog()
-        val userInfo = viewModel.userInfo.value
-        val snl = "${userInfo?.user?.last_name}" +
-                " ${userInfo?.user?.first_name} " +
-                "${userInfo?.user?.middle_name}"
-        viewModel.storeDelivery(StoreDeliveryUseCase.DeliverRequest(
-            snl = partnerFullName,
-            countryId = country,
-            regionId = region,
-            cityId = city,
-            street = address,
-            sum = getTotalSum(productsAdapter.getCheckedProducts()).toString()
+        deliveryAddressBottomSheet.setDeliveryService(
+            cityId = cityId,
+            countryId = countryId,
+            regionId = regionId,
+            deliveryService = deliveryService,
+            countryCode = countryCode
+        )
+        showDeliveryAddressDialog()
+    }
+
+    override fun onDeliveryServiceAddressChosen(
+        countryId: Int,
+        regionId: Int,
+        cityId: Int,
+        countryCode: String
+    ) {
+        viewModel.calculateDelivery(CalculateDeliveryUseCase.Request(
+            cityId = cityId,
+            countryCode = countryCode,
+            totalAmount = Product.getTotalSum(productsAdapter.getCheckedProducts()),
+            weight = Product.getTotalWeight(productsAdapter.getCheckedProducts()).toString()
         ))
+    }
+
+    override fun onDeliveryServiceAddressSelected(
+        address: String,
+        partner: String,
+        cityId: Int,
+        countryId: Int,
+        countryCode: String,
+        regionId: Int,
+        deliveryService: DeliveryServiceResponse
+    ) {
+        viewModel.createOrderBuilder.deliveryInfo = DeliveryInfoRequest(
+            delivery_type_id = deliveryService.deliveryTypeId.orMinusOne(),
+            delivery_zone_id = deliveryService.deliveryZoneId.orMinusOne(),
+            price = deliveryService.price.orZero(),
+            weight = Product.getTotalWeight(productsAdapter.getCheckedProducts()).toString(),
+            city_id = cityId,
+            region_id = regionId,
+            country_code = countryCode,
+            country_id = countryId,
+            address = address,
+            fio = partner
+        )
+        viewModel.createOrderBuilder.paymentSum += deliveryService.price.orZero()
+        showPaymentTypeDialog(isHideTill = true)
     }
 }
 
