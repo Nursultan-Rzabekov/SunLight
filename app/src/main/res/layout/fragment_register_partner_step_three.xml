@@ -86,17 +86,53 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
                 tools:listitem="@layout/products_list_item"
-                tools:itemCount="6"
+                tools:itemCount="2"
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2" />
+
+            <RelativeLayout
+                android:id="@+id/bottom_info_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_market_quantity_tv"
+                    style="@style/AppCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="start"
+                    android:textSize="@dimen/dimen_12sp"
+                    tools:text="@string/product_market" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pay_market_total_tv"
+                    style="@style/AppCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/dimen_14sp"
+                    tools:text="@string/market_pay" />
+
+                <View
+                    android:id="@+id/divider9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/product_market_quantity_tv"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/sunBlackColor" />
+
+            </RelativeLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_step_three_btn"
                 style="@style/BasicMaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_24dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
                 android:paddingTop="@dimen/dimen_16dp"
                 android:paddingBottom="@dimen/dimen_16dp"
                 android:text="@string/next"

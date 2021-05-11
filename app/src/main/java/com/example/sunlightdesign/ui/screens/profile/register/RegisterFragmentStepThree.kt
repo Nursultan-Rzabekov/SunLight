@@ -12,25 +12,34 @@ import com.example.sunlightdesign.R
 import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.example.sunlightdesign.ui.base.StrongFragment
+import com.example.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecyclerAdapter
 import com.example.sunlightdesign.ui.screens.order.market.ProductItem
-import com.example.sunlightdesign.ui.screens.order.sheetDialog.AddressFieldsBottomSheet
 import com.example.sunlightdesign.ui.screens.order.sheetDialog.ChooseDeliveryTypeBottomSheet
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
-import com.example.sunlightdesign.ui.screens.profile.register.adapters.ProductsRecyclerAdapter
-import com.example.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
+import com.example.sunlightdesign.utils.NumberUtils
+import com.example.sunlightdesign.utils.orZero
 import com.example.sunlightdesign.utils.showMessage
 import kotlinx.android.synthetic.main.fragment_register_partner_step_three.*
+import kotlinx.android.synthetic.main.fragment_register_partner_step_three.pay_market_total_tv
+import kotlinx.android.synthetic.main.fragment_register_partner_step_three.product_market_quantity_tv
+import kotlinx.android.synthetic.main.fragment_register_partner_step_three.products_recycler_view
+import kotlinx.android.synthetic.main.market_products_list.*
 
 
 class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewModel::class),
-    ProductsRecyclerAdapter.ProductsItemSelected,
+    ProductsMarketRecyclerAdapter.ProductsMarketItemSelected,
     ChooseDeliveryTypeBottomSheet.Interaction {
 
-    companion object{
+    companion object {
+
         const val PACKAGE_NAME = "package_name"
+
+        const val PACKAGE_SUM_KZT = "package_sum_kzt"
+
+        const val PACKAGE_SUM_BV = "package_sum_bv"
     }
 
-    private lateinit var productsAdapter: ProductsRecyclerAdapter
+    private lateinit var productsAdapter: ProductsMarketRecyclerAdapter
     private lateinit var chooseDeliveryTypeBottomSheet: ChooseDeliveryTypeBottomSheet
     private var spanCount = 2
 
@@ -74,6 +83,9 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         next_step_three_btn.setOnClickListener {
             if (!checkFields()) return@setOnClickListener
             viewModel.createOrderPartnerBuilder.products = productsAdapter.getCheckedProducts()
+            viewModel.createOrderPartnerBuilder.paymentSum = Product.getTotalSum(
+                productsAdapter.getCheckedProducts()
+            )
             showChooseDeliveryTypeDialog()
         }
 
@@ -90,7 +102,10 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
 
     private fun initRecycler(items: List<Product>) {
         products_recycler_view.apply {
-            productsAdapter = ProductsRecyclerAdapter(items = items,productsItemSelected = this@RegisterFragmentStepThree)
+            productsAdapter = ProductsMarketRecyclerAdapter(
+                items = items,
+                productsMarketItemSelected = this@RegisterFragmentStepThree
+            )
             layoutManager = GridLayoutManager(requireContext(), spanCount)
             adapter = productsAdapter
         }
@@ -112,9 +127,40 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
         findNavController().navigate(R.id.stepThreeFragment_to_market_details_fragment, bundle)
     }
 
+    override fun setProductsState() {
+        setTotalQuantityAndCount(productsAdapter.getCheckedProducts())
+    }
+
+    private fun setTotalQuantityAndCount(products: List<Product>){
+        var count = 0.0
+        var productSize = 0
+        products.forEach {
+            it.product_price?.let { price ->
+                it.product_quantity?.let {quantity ->
+                    count += (price * quantity)
+                    productSize += quantity
+                }
+            }
+        }
+        product_market_quantity_tv.text = getString(R.string.product_market,productSize)
+        pay_market_total_tv.text = getString(R.string.market_pay, count)
+    }
+
     private fun checkFields() : Boolean {
+        val thresholdInKzt = arguments?.getDouble(PACKAGE_SUM_KZT, 0.0).orZero()
+        val thresholdInBv = arguments?.getDouble(PACKAGE_SUM_BV, 0.0).orZero()
+        val totalSum = Product.getTotalSum(productsAdapter.getCheckedProducts())
+        val totalSumBv = Product.getTotalSumInBv(productsAdapter.getCheckedProducts())
         val message = when {
             productsAdapter.getCheckedProducts().isEmpty() -> "Выберите продукт"
+            thresholdInKzt < totalSum -> "Вы превысили лимит. Доступная вам сумма $thresholdInBv" +
+                    " BV или ${NumberUtils.prettifyDouble(thresholdInKzt)} тг"
+            thresholdInKzt > totalSum -> {
+                val diffKzt = thresholdInKzt - totalSum
+                val diffBv = thresholdInBv - totalSumBv
+                "Вам нужно выбрать еще товар на сумму $diffBv BV " +
+                        "или ${NumberUtils.prettifyDouble(diffKzt)} тг"
+            }
             else -> null
         }
         if (message != null) {
@@ -125,18 +171,6 @@ class RegisterFragmentStepThree : StrongFragment<ProfileViewModel>(ProfileViewMo
             return false
         }
         return true
-    }
-
-    private fun getTotalSum(products: List<Product>): Double {
-        var count = 0.0
-        products.forEach {
-            it.product_price?.let { price ->
-                it.product_quantity?.let {quantity ->
-                    count += (price * quantity)
-                }
-            }
-        }
-        return count
     }
 
     private fun showChooseDeliveryTypeDialog() {

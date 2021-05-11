@@ -71,8 +71,9 @@ class RegisterFragmentStepTwo : StrongFragment<ProfileViewModel>(ProfileViewMode
                     it is ProfileViewModel.NavigationEvent.NavigateNext &&
                     it.data is User?){
                     val bundle = bundleOf(
-                        RegisterFragmentStepThree.PACKAGE_NAME to
-                                packageEntity?.package_name
+                        RegisterFragmentStepThree.PACKAGE_NAME to packageEntity?.package_name,
+                        RegisterFragmentStepThree.PACKAGE_SUM_KZT to packageEntity?.package_price_in_kzt,
+                        RegisterFragmentStepThree.PACKAGE_SUM_BV to packageEntity?.package_price
                     )
                     findNavController().navigate(R.id.action_stepTwoFragment_to_stepThreeFragment, bundle)
                     nullifyNavigation()

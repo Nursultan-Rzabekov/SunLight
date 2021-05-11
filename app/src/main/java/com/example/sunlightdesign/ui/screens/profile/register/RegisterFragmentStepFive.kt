@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.sunlightdesign.R
+import com.example.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.example.sunlightdesign.data.source.dataSource.remote.auth.entity.AddPartnerResponse
 import com.example.sunlightdesign.ui.base.StrongFragment
 import com.example.sunlightdesign.ui.screens.profile.ProfileViewModel
@@ -42,7 +43,14 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
         setListeners()
         setObservers()
         viewModel.getProfileInfo()
-        registration_partner_step_five_payment_rg.check(paymentByTillRbtn.id)
+        val deliveryType = viewModel.createOrderPartnerBuilder.deliveryType
+        if (deliveryType == CreateOrderPartner.DELIVERY_TYPE_PICKUP) {
+            paymentByTillRbtn.visibility = View.VISIBLE
+            registration_partner_step_five_payment_rg.check(paymentByTillRbtn.id)
+        } else {
+            paymentByTillRbtn.visibility = View.GONE
+            registration_partner_step_five_payment_rg.check(paymentByBvRbtn.id)
+        }
     }
 
     private fun setObservers() {

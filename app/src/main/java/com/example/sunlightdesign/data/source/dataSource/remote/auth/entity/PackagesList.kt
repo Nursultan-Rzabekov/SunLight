@@ -43,6 +43,18 @@ data class Product(
             return count
         }
 
+        fun getTotalSumInBv(products: List<Product>): Double {
+            var count = 0.0
+            products.forEach {
+                it.product_price_in_bv?.let { price ->
+                    it.product_quantity?.let {quantity ->
+                        count += (price * quantity)
+                    }
+                }
+            }
+            return count
+        }
+
         fun getTotalWeight(products: List<Product>): Double {
             var count = 0.0
             products.forEach {
