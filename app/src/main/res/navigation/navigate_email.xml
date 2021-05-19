@@ -6,7 +6,7 @@
     android:id="@+id/navigate_email">
 
     <fragment android:id="@+id/emailFragment"
-        android:name="com.example.sunlightdesign.ui.screens.email.EmailFragment"
+        android:name="com.corp.sunlightdesign.ui.screens.email.EmailFragment"
         android:label="@string/home"
         tools:layout="@layout/announcements">
 
@@ -19,7 +19,7 @@
 
 
     <activity android:id="@+id/emailDetailsActivity"
-        android:name="com.example.sunlightdesign.ui.screens.email.EmailDetailActivity"
+        android:name="com.corp.sunlightdesign.ui.screens.email.EmailDetailActivity"
         android:label="@string/home"
         tools:layout="@layout/announcement_detail_item">
 

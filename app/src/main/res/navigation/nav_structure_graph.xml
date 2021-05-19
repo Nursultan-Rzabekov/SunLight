@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/structureFragment"
-        android:name="com.example.sunlightdesign.ui.screens.home.structure.StructureFragment"
+        android:name="com.corp.sunlightdesign.ui.screens.home.structure.StructureFragment"
         android:label="StructureFragment"
         tools:layout="@layout/fragment_structure">
     </fragment>

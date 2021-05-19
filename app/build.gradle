@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.sunlightdesign"
+        applicationId "com.corp.sunlightdesign"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1

@@ -8,7 +8,7 @@
 
         <fragment
             android:id="@+id/register_fragment_step_one"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepOne"
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_one" >
 
@@ -24,7 +24,7 @@
 
         <fragment
             android:id="@+id/register_fragment_step_two"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepTwo"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepTwo"
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_two" >
 
@@ -42,7 +42,7 @@
 
         <fragment
             android:id="@+id/register_fragment_step_three"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepThree"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepThree"
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_three" >
 
@@ -78,7 +78,7 @@
 
         <fragment
             android:id="@+id/market_details_fragment"
-            android:name="com.example.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
+            android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
             android:label="fragment_launcher"
             tools:layout="@layout/order_item_details" >
 
@@ -86,7 +86,7 @@
 
         <fragment
             android:id="@+id/register_fragment_step_four"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.PickUpRegisterFragmentStepFour"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.PickUpRegisterFragmentStepFour"
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_four" >
 
@@ -103,7 +103,7 @@
 
         <fragment
             android:id="@+id/register_fragment_step_five"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepFive"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.RegisterFragmentStepFive"
             android:label="fragment_launcher"
             tools:layout="@layout/fragment_register_partner_step_five" >
 
@@ -111,7 +111,7 @@
 
         <fragment
             android:id="@+id/deliveryServiceRegisterStepFourFragment"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.DeliveryServiceRegisterStepFourFragment"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.DeliveryServiceRegisterStepFourFragment"
             android:label="DeliveryServiceRegisterStepFourFragment"
             tools:layout="@layout/fragment_register_delivery_service_step_four">
                 <action
@@ -126,7 +126,7 @@
 
         <fragment
             android:id="@+id/deliveryAddressRegisterStepFourFragment"
-            android:name="com.example.sunlightdesign.ui.screens.profile.register.DeliveryAddressRegisterStepFourFragment"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.register.DeliveryAddressRegisterStepFourFragment"
             android:label="DeliveryAddressRegisterStepFourFragment"
             tools:layout="@layout/fragment_register_delivery_address_step_four">
                 <action

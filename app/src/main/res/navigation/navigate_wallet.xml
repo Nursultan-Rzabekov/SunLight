@@ -6,7 +6,7 @@
     android:id="@+id/navigate_wallet">
 
     <fragment android:id="@+id/walletFragment"
-        android:name="com.example.sunlightdesign.ui.screens.wallet.WalletFragment"
+        android:name="com.corp.sunlightdesign.ui.screens.wallet.WalletFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_wallet">
 
@@ -16,7 +16,7 @@
     </fragment>
 
     <activity android:id="@+id/withdrawActivity"
-        android:name="com.example.sunlightdesign.ui.screens.wallet.withdraw.WithdrawActivity"
+        android:name="com.corp.sunlightdesign.ui.screens.wallet.withdraw.WithdrawActivity"
         tools:layout="@layout/fragment_withdraw"/>
 
 </navigation>

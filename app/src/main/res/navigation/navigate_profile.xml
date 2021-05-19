@@ -6,7 +6,7 @@
     android:id="@+id/navigate_profile">
 
     <fragment android:id="@+id/profileFragment"
-        android:name="com.example.sunlightdesign.ui.screens.profile.ProfileFragment"
+        android:name="com.corp.sunlightdesign.ui.screens.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_account">
 
@@ -36,31 +36,31 @@
 
     <activity
         android:id="@+id/register_activity"
-        android:name="com.example.sunlightdesign.ui.screens.profile.register.RegisterActivity"
+        android:name="com.corp.sunlightdesign.ui.screens.profile.register.RegisterActivity"
         android:label="fragment_launcher"
         tools:layout="@layout/activity_add_partner"/>
 
     <activity
         android:id="@+id/editProfileActivity"
-        android:name="com.example.sunlightdesign.ui.screens.profile.edit.EditPartnerActivity"
+        android:name="com.corp.sunlightdesign.ui.screens.profile.edit.EditPartnerActivity"
         android:label="EditProfileFragment"
         tools:layout="@layout/fragment_edit_profile">
 
         <argument
             android:name="shortenedUserInfo"
-            app:argType="com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo"
+            app:argType="com.corp.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo"
             app:nullable="true" />
 
     </activity>
 
     <activity
         android:id="@+id/invitedActivity"
-        android:name="com.example.sunlightdesign.ui.screens.profile.invited.InvitedActivity"
+        android:name="com.corp.sunlightdesign.ui.screens.profile.invited.InvitedActivity"
         android:label="activity_invited"
         tools:layout="@layout/activity_invited" />
     <activity
         android:id="@+id/userVerificationActivity2"
-        android:name="com.example.sunlightdesign.ui.screens.profile.verification.UserVerificationActivity"
+        android:name="com.corp.sunlightdesign.ui.screens.profile.verification.UserVerificationActivity"
         android:label="UserVerificationActivity" />
 
 </navigation>

@@ -8,7 +8,7 @@
 
         <fragment
                 android:id="@+id/market_fragment"
-                android:name="com.example.sunlightdesign.ui.screens.order.market.MarketFragment"
+                android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketFragment"
                 android:label="fragment_launcher"
                 tools:layout="@layout/market_products_list" >
 
@@ -25,7 +25,7 @@
 
         <fragment
             android:id="@+id/market_details_fragment"
-            android:name="com.example.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
+            android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
             android:label="fragment_launcher"
             tools:layout="@layout/order_item_details" >
 

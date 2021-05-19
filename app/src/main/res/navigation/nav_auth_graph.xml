@@ -8,7 +8,7 @@
 
         <fragment
             android:id="@+id/login_fragment"
-            android:name="com.example.sunlightdesign.ui.launcher.auth.login.LoginFragment"
+            android:name="com.corp.sunlightdesign.ui.launcher.auth.login.LoginFragment"
             android:label="fragment_launcher"
             tools:layout="@layout/sunlight_login" >
 
@@ -18,7 +18,7 @@
         </fragment>
         <dialog
             android:id="@+id/pinVerificationFragmentDialog"
-            android:name="com.example.sunlightdesign.ui.launcher.auth.pin.PinVerificationFragmentDialog"
+            android:name="com.corp.sunlightdesign.ui.launcher.auth.pin.PinVerificationFragmentDialog"
             android:label="PinVerificationFragmentDialog"
             tools:layout="@layout/pin_code"/>
 

@@ -8,13 +8,13 @@
 
         <fragment
             android:id="@+id/editProfileFragment"
-            android:name="com.example.sunlightdesign.ui.screens.profile.edit.EditProfileFragment"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.edit.EditProfileFragment"
             android:label="EditProfileFragment"
             tools:layout="@layout/fragment_edit_profile">
 
                 <argument
                     android:name="shortenedUserInfo"
-                    app:argType="com.example.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo"
+                    app:argType="com.corp.sunlightdesign.data.source.dataSource.remote.profile.entity.ShortenedUserInfo"
                     app:nullable="true" />
 
                 <action
@@ -29,12 +29,12 @@
 
         <activity
             android:id="@+id/launcherActivity"
-            android:name="com.example.sunlightdesign.ui.launcher.LauncherActivity"
+            android:name="com.corp.sunlightdesign.ui.launcher.LauncherActivity"
             android:label="LauncherActivity" />
 
         <activity
             android:id="@+id/userVerificationActivity"
-            android:name="com.example.sunlightdesign.ui.screens.profile.verification.UserVerificationActivity"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.verification.UserVerificationActivity"
             android:label="UserVerificationActivity"
             tools:layout="@layout/activity_user_verification"/>
 

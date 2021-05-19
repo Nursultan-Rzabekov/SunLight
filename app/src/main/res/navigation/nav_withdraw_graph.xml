@@ -7,7 +7,7 @@
         app:startDestination="@id/withdrawFragment">
 
         <fragment android:id="@+id/withdrawFragment"
-            android:name="com.example.sunlightdesign.ui.screens.wallet.withdraw.WithdrawFragment"
+            android:name="com.corp.sunlightdesign.ui.screens.wallet.withdraw.WithdrawFragment"
             tools:layout="@layout/fragment_withdraw">
 
                 <action
@@ -17,7 +17,7 @@
 
         <activity
             android:id="@+id/editPartnerActivity"
-            android:name="com.example.sunlightdesign.ui.screens.profile.edit.EditPartnerActivity"
+            android:name="com.corp.sunlightdesign.ui.screens.profile.edit.EditPartnerActivity"
             android:label="EditPartnerActivity"
             tools:layout="@layout/activity_edit_partner"/>
 

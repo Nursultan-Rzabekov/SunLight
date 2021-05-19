@@ -8,7 +8,7 @@
 
         <fragment
                 android:id="@+id/email_fragment"
-                android:name="com.example.sunlightdesign.ui.screens.email.EmailDetailsFragment"
+                android:name="com.corp.sunlightdesign.ui.screens.email.EmailDetailsFragment"
                 android:label="fragment_launcher"
                 tools:layout="@layout/announcement_detail_item" >
 

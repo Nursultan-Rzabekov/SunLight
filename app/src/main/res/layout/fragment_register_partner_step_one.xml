@@ -226,7 +226,7 @@
                 android:text="@string/phone_number_two_dots"
                 android:textSize="@dimen/dimen_16sp" />
 
-            <com.example.sunlightdesign.utils.views.CountryCodePhoneView
+            <com.corp.sunlightdesign.utils.views.CountryCodePhoneView
                 android:id="@+id/countryCodePhoneView"
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_width="match_parent"

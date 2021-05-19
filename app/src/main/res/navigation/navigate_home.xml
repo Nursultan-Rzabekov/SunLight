@@ -6,7 +6,7 @@
     android:id="@+id/navigate_home">
 
     <fragment android:id="@+id/homeFragment"
-        android:name="com.example.sunlightdesign.ui.screens.home.HomeFragment"
+        android:name="com.corp.sunlightdesign.ui.screens.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/launcher_authenticated">
 
@@ -17,7 +17,7 @@
 
     <activity
         android:id="@+id/newsActivity2"
-        android:name="com.example.sunlightdesign.ui.launcher.news.NewsActivity"
+        android:name="com.corp.sunlightdesign.ui.launcher.news.NewsActivity"
         android:label="NewsActivity"
         tools:layout="@layout/news_activity"/>
 

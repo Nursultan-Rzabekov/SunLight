@@ -1,0 +1,138 @@
+package com.corp.sunlightdesign.data.source.dataSource.remote.main.entity
+
+
+data class StructureInfo(
+    val statuses: List<TreeStatus>?,
+    val status_update_list: List<User>?
+)
+
+data class TreeStatus(
+    val id: Int?,
+    val sort: Int?,
+    val status_description: String?,
+    val status_name: String?,
+    val users_count: Int?
+)
+
+
+data class Status(
+    val deleted_at: Any?,
+    val development_bonus_awards: Any?,
+    val development_bonus_limits_per_status: Int?,
+    val id: Int?,
+    val low_branch_amount: Int?,
+    val matching_bonus_depth: Any?,
+    val matching_bonus_percent: Int?,
+    val purchases_cashback: Int?,
+    val purchases_cashback_depth: String?,
+    val status_description: String?,
+    val status_name: String?,
+    val team_bonus_limits_per_period: Int?,
+    val team_bonus_percent: Int?,
+    val updated_at: String?,
+    val users_count: Int?
+)
+data class User(
+    val birthday: String?,
+    val block_status: Int?,
+    val childs: Int?,
+    val city_id: Int?,
+    val country_id: Int?,
+    val created_at: String?,
+    val direct: Direct?,
+    val direct_id: Int?,
+    val direct_level: Int?,
+    val document_back_path: String?,
+    val document_front_path: String?,
+    val email: String?,
+    val first_name: String?,
+    val id: Int?,
+    val iin: String?,
+    val is_active: Int?,
+    val last_login: String?,
+    val last_name: String?,
+    val left_children: Int?,
+    val left_total: String?,
+    val level: Int?,
+    val middle_name: String?,
+    val office_id: Int?,
+    val `package`: Package?,
+    val package_id: Int?,
+    val parent_id: Int?,
+    val parent_level: Int?,
+    val permissions: Any?,
+    val phone: String?,
+    val phone_verified_at: String?,
+    val position: String?,
+    val referral_link: String?,
+    val region_id: Int?,
+    val register_by: Int?,
+    val right_children: Int?,
+    val right_total: String?,
+    val root_id: Int?,
+    val status: Status?,
+    val status_id: Int?,
+    val status_update_date: String?,
+    val step: Int?,
+    val system_status: Int?,
+    val user_avatar_path: String?,
+    val uuid: String?,
+    val who: String?
+)
+
+data class Direct(
+    val birthday: Any?,
+    val block_status: Int?,
+    val childs: Int?,
+    val city_id: Int?,
+    val country_id: Int?,
+    val created_at: String?,
+    val direct_id: Int?,
+    val direct_level: Int?,
+    val document_back_path: String?,
+    val document_front_path: String?,
+    val email: Any?,
+    val first_name: String?,
+    val id: Int?,
+    val iin: String?,
+    val is_active: Int?,
+    val last_login: Any?,
+    val last_name: String?,
+    val left_children: Any?,
+    val left_total: String?,
+    val level: Int?,
+    val middle_name: String?,
+    val office_id: Int?,
+    val package_id: Int?,
+    val parent_id: Int?,
+    val parent_level: Int?,
+    val permissions: Any?,
+    val phone: String?,
+    val phone_verified_at: String?,
+    val position: String?,
+    val referral_link: String?,
+    val region_id: Int?,
+    val register_by: Int?,
+    val right_children: Any?,
+    val right_total: String?,
+    val root_id: Any?,
+    val status_id: Int?,
+    val status_update_date: Any?,
+    val step: Int?,
+    val system_status: Int?,
+    val user_avatar_path: String?,
+    val uuid: String?,
+    val who: String?
+)
+
+data class Package(
+    val deleted_at: Any?,
+    val id: Int?,
+    val package_description: String?,
+    val package_name: String?,
+    val package_price: Int?,
+    val package_price_in_currency: Double?,
+    val package_price_in_kzt: Int?,
+    val package_reference: Int?,
+    val updated_at: String?
+)

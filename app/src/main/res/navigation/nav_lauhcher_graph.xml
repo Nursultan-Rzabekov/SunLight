@@ -9,7 +9,7 @@
 
         <fragment
                 android:id="@+id/launcher_fragment"
-                android:name="com.example.sunlightdesign.ui.launcher.LauncherFragment"
+                android:name="com.corp.sunlightdesign.ui.launcher.LauncherFragment"
                 android:label="fragment_launcher"
                 tools:layout="@layout/launcher_authenticated" >
 
@@ -20,7 +20,7 @@
 
         <activity
             android:id="@+id/newsActivity"
-            android:name="com.example.sunlightdesign.ui.launcher.news.NewsActivity"
+            android:name="com.corp.sunlightdesign.ui.launcher.news.NewsActivity"
             android:label="NewsActivity"
             tools:layout="@layout/news_activity"/>
 
