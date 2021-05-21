@@ -19,7 +19,7 @@ class BaseApplication : MultiDexApplication(), LifecycleObserver {
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
 
         startKoin {
-            // use Koin logger
+            // use Koin loggers
             printLogger()
             androidContext(this@BaseApplication)
             // declare modules
