@@ -20,6 +20,31 @@
                     app:popEnterAnim="@anim/fade_in"
                     app:popExitAnim="@anim/fade_out" />
 
+                <action
+                    android:id="@+id/market_fragment_to_market_event_fragment"
+                    app:destination="@id/market_event_fragment"
+                    app:enterAnim="@anim/fade_in"
+                    app:exitAnim="@anim/fade_out"
+                    app:popEnterAnim="@anim/fade_in"
+                    app:popExitAnim="@anim/fade_out" />
+
+        </fragment>
+
+
+        <fragment
+            android:id="@+id/market_event_fragment"
+            android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketEventFragment"
+            android:label="fragment_launcher"
+            tools:layout="@layout/market_products_list" >
+
+                <action
+                    android:id="@+id/market_event_fragment_to_market_details_fragment"
+                    app:destination="@id/market_details_fragment"
+                    app:enterAnim="@anim/fade_in"
+                    app:exitAnim="@anim/fade_out"
+                    app:popEnterAnim="@anim/fade_in"
+                    app:popExitAnim="@anim/fade_out" />
+
         </fragment>
 
 

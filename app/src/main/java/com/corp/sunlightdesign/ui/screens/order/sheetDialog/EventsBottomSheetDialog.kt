@@ -8,20 +8,15 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import com.corp.sunlightdesign.R
 import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
-import com.corp.sunlightdesign.ui.screens.order.adapters.ProductsSheetRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.repeat_orders_bottom_sheet.*
+import kotlinx.android.synthetic.main.repeat_events_bottom_sheet.*
 
-class ProductsBottomSheetDialog(
+class EventsBottomSheetDialog(
     private val productsInteraction: ProductsInteraction,
-    private var products: List<Product>
+    private var product: Product
 ) : BottomSheetDialogFragment() {
-
-    private val productsSheetRecyclerAdapter: ProductsSheetRecyclerAdapter by lazy {
-        return@lazy ProductsSheetRecyclerAdapter(products)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,39 +28,19 @@ class ProductsBottomSheetDialog(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.repeat_orders_bottom_sheet, container, false)
+        return inflater.inflate(R.layout.repeat_events_bottom_sheet, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        repeatRecyclerView.apply {
-            adapter = productsSheetRecyclerAdapter
-        }
-
-        var totalQuantity = 0
-        products.forEach { totalQuantity += it.product_quantity ?: 0 }
-        repeatOrdersSheetTextView.text = getString(R.string.products_choose, totalQuantity)
-        countOrderTextView.text = getString(R.string.сount_order)
-
-        var count = 0.0
-        products.forEach {
-            it.product_price?.let { price ->
-                it.product_quantity?.let { quantity ->
-                    count += (price * quantity)
-                }
-            }
-        }
-        amountOrderTextView.text = getString(R.string.totalAmountOrders, count)
-
         btn_all_right.setOnClickListener {
-            productsInteraction.onProductsListSelected(products, count)
+            productsInteraction.onProductsListSelected(product)
         }
         cancel_btn.setOnClickListener {
             dismiss()
         }
-
     }
 
     companion object {
@@ -73,7 +48,7 @@ class ProductsBottomSheetDialog(
     }
 
     interface ProductsInteraction {
-        fun onProductsListSelected(product: List<Product>, count: Double)
+        fun onProductsListSelected(product: Product)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

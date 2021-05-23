@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sunlight_background">
+
+    <include
+        android:id="@+id/toolbarMarket"
+        layout="@layout/toolbar_with_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/future_events_tv"
+        style="@style/AppCompatTextView"
+        android:layout_margin="@dimen/dimen_16dp"
+        android:fontFamily="@font/rubik_regular"
+        android:text="@string/future_events"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/dimen_18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMarket" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/buy_right_now_tv"
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:fontFamily="@font/rubik_regular"
+        android:text="@string/buy_right_now"
+        android:textSize="@dimen/dimen_14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/future_events_tv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/products_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:paddingHorizontal="@dimen/dimen_8dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buy_right_now_tv"
+        app:spanCount="2"
+        tools:itemCount="2"
+        tools:listitem="@layout/events_market_item" />
+
+    <ProgressBar
+        android:id="@+id/marketProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

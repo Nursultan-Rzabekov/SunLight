@@ -1,7 +1,6 @@
 package com.corp.sunlightdesign.ui.screens.order.market
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ import com.corp.sunlightdesign.ui.base.StrongFragment
 import com.corp.sunlightdesign.ui.bottomsheets.DeliveryAddressBottomSheet
 import com.corp.sunlightdesign.ui.bottomsheets.DeliveryServiceBottomSheet
 import com.corp.sunlightdesign.ui.screens.order.OrderViewModel
-import com.corp.sunlightdesign.ui.screens.order.adapters.ProductsMarketRecyclerAdapter
+import com.corp.sunlightdesign.ui.screens.order.adapters.EventsMarketRecyclerAdapter
 import com.corp.sunlightdesign.ui.screens.order.sheetDialog.*
 import com.corp.sunlightdesign.ui.screens.wallet.WalletViewModel
 import com.corp.sunlightdesign.ui.screens.wallet.withdraw.dialogs.ChooseOfficeBottomSheetDialog
@@ -26,25 +25,22 @@ import com.corp.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.corp.sunlightdesign.utils.orMinusOne
 import com.corp.sunlightdesign.utils.orZero
 import com.corp.sunlightdesign.utils.showMessage
-import com.corp.sunlightdesign.utils.showToast
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.synthetic.main.market_products_list.*
-import kotlinx.android.synthetic.main.market_products_list.btn_all_right
+import kotlinx.android.synthetic.main.market_event_products_list.*
 import kotlinx.android.synthetic.main.toolbar_with_back.*
 
-class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
-    ProductsMarketRecyclerAdapter.ProductsMarketItemSelected,
-    ProductsBottomSheetDialog.ProductsInteraction,
+class MarketEventFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
+    EventsMarketRecyclerAdapter.EventMarketItemSelected,
+    EventsBottomSheetDialog.ProductsInteraction,
     ChooseOfficeBottomSheetDialog.ChooseOfficeDialogInteraction,
     ChoosePaymentTypeBottomSheetDialog.ChooseTypeInteraction,
     ChooseDeliveryTypeBottomSheet.Interaction,
     DeliveryServiceBottomSheet.Interaction,
     DeliveryAddressBottomSheet.Interaction {
 
-    private lateinit var productsAdapter: ProductsMarketRecyclerAdapter
+    private lateinit var eventsAdapter: EventsMarketRecyclerAdapter
     private var spanCount = 2
 
-    private lateinit var productsBottomSheetDialog: ProductsBottomSheetDialog
+    private lateinit var eventsBottomSheetDialog: EventsBottomSheetDialog
     private lateinit var chooseOfficeBottomSheetDialog: ChooseOfficeBottomSheetDialog
     private lateinit var choosePaymentTypeBottomSheetDialog: ChoosePaymentTypeBottomSheetDialog
     private lateinit var successBottomSheetDialog: SuccessBottomSheetDialog
@@ -57,16 +53,13 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.market_products_list, container, false)
+        return inflater.inflate(R.layout.market_event_products_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         titleTextView.text = getString(R.string.market)
-        product_market_quantity_tv.text = getString(R.string.product_market,0)
-        pay_market_total_tv.text = getString(R.string.market_pay, 0.00)
 
-        setListeners()
         setObservers()
 
         viewModel.getProductList()
@@ -77,39 +70,10 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         deliveryAddressBottomSheet = DeliveryAddressBottomSheet(this)
     }
 
-    private fun setListeners() {
-        btn_all_right.setOnClickListener {
-            when(productsAdapter.getCheckedProducts().size){
-                0 -> showToast(getString(R.string.choose_products))
-                else -> {
-                    showProductsBottomSheetDialog()
-                }
-            }
-        }
-
-        goToMarketEventLayout.setOnClickListener {
-            findNavController().navigate(R.id.market_fragment_to_market_event_fragment)
-        }
+    override fun setEventState() {
+        showEventBottomSheetDialog()
     }
 
-    override fun setProductsState() {
-        setTotalQuantityAndCount(productsAdapter.getCheckedProducts())
-    }
-
-    private fun setTotalQuantityAndCount(products: List<Product>){
-        var count = 0.0
-        var productSize = 0
-        products.forEach {
-            it.product_price?.let { price ->
-                it.product_quantity?.let {quantity ->
-                    count += (price * quantity)
-                    productSize += quantity
-                }
-            }
-        }
-        product_market_quantity_tv.text = getString(R.string.product_market,productSize)
-        pay_market_total_tv.text = getString(R.string.market_pay, count)
-    }
 
     private fun setObservers() = with(viewModel) {
         progress.observe(viewLifecycleOwner, Observer {
@@ -146,7 +110,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 )
             }
             chooseOfficeBottomSheetDialog = ChooseOfficeBottomSheetDialog(
-                this@MarketFragment,
+                this@MarketEventFragment,
                 it.offices as ArrayList<com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.Office?>,
                 citiesList,
                 true
@@ -163,34 +127,19 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     private fun initRecycler(items: List<Product>) {
         products_recycler_view.apply {
-            productsAdapter = ProductsMarketRecyclerAdapter(items, this@MarketFragment)
+            eventsAdapter = EventsMarketRecyclerAdapter(items, this@MarketEventFragment)
             val manager = GridLayoutManager(requireContext(), spanCount)
-
-            specialProductCase(items, manager)
             layoutManager = manager
-            adapter = productsAdapter
+            adapter = eventsAdapter
         }
     }
 
-    private fun specialProductCase(items: List<Product>, manager: GridLayoutManager) {
-        var specialProductCount = 0
-        items.forEach { if (it.product_stock == Product.SPECIAL_OFFER) specialProductCount++ }
-        manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return when {
-                    position < specialProductCount -> spanCount
-                    else -> 1
-                }
-            }
-        }
-    }
-
-    private fun showProductsBottomSheetDialog() {
-        productsBottomSheetDialog = ProductsBottomSheetDialog(
-            this@MarketFragment,
-            products = productsAdapter.getCheckedProducts()
+    private fun showEventBottomSheetDialog() {
+        eventsBottomSheetDialog = EventsBottomSheetDialog(
+            this@MarketEventFragment,
+            product = eventsAdapter.getCheckedProducts().first()
         )
-        productsBottomSheetDialog.show(
+        eventsBottomSheetDialog.show(
             parentFragmentManager,
             ProductsBottomSheetDialog.TAG
         )
@@ -216,7 +165,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
 
     private fun showPaymentTypeDialog(isHideTill: Boolean = false) {
         choosePaymentTypeBottomSheetDialog =
-            ChoosePaymentTypeBottomSheetDialog(this@MarketFragment, isHideTill)
+            ChoosePaymentTypeBottomSheetDialog(this@MarketEventFragment, isHideTill)
         choosePaymentTypeBottomSheetDialog.show(
             parentFragmentManager,
             ChoosePaymentTypeBottomSheetDialog.TAG
@@ -230,7 +179,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         )
     }
 
-    override fun onProductsSelected(product: Product) {
+    override fun onEventSelected(product: Product) {
         val bundle = bundleOf(
             "item" to ProductItem(
                 product_name = product.product_name.toString(),
@@ -241,26 +190,25 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
                 productBackImage = product.product_image_back_path,
                 productFrontImage = product.product_image_front_path,
                 specialOffer =
-                    if (product.product_stock == Product.SPECIAL_OFFER) {
-                        SpecialOfferProductItem(
-                            product.product_image_sale,
-                            product.product_description_sale
-                        )
-                    } else {
-                        null
-                    }
+                if (product.product_stock == Product.SPECIAL_OFFER) {
+                    SpecialOfferProductItem(
+                        product.product_image_sale,
+                        product.product_description_sale
+                    )
+                } else {
+                    null
+                }
             )
         )
         findNavController().navigate(R.id.market_fragment_to_market_details_fragment, bundle)
     }
 
 
-    override fun onProductsListSelected(product: List<Product>,count:Double) {
-        productsBottomSheetDialog.dismiss()
+    override fun onProductsListSelected(product: Product) {
+        eventsBottomSheetDialog.dismiss()
 
         viewModel.createOrderBuilder.userId = viewModel.getUserId()?.toInt() ?: -1
-        viewModel.createOrderBuilder.products = productsAdapter.getCheckedProducts()
-        viewModel.createOrderBuilder.paymentSum = count
+        viewModel.createOrderBuilder.products = eventsAdapter.getCheckedProducts()
 
         showChooseDeliveryTypeDialog()
     }
@@ -324,12 +272,14 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         cityId: Int,
         countryCode: String
     ) {
-        viewModel.calculateDelivery(CalculateDeliveryUseCase.Request(
-            cityId = cityId,
-            countryCode = countryCode,
-            totalAmount = Product.getTotalSum(productsAdapter.getCheckedProducts()),
-            weight = Product.getTotalWeight(productsAdapter.getCheckedProducts()).toString()
-        ))
+        viewModel.calculateDelivery(
+            CalculateDeliveryUseCase.Request(
+                cityId = cityId,
+                countryCode = countryCode,
+                totalAmount = Product.getTotalSum(eventsAdapter.getCheckedProducts()),
+                weight = Product.getTotalWeight(eventsAdapter.getCheckedProducts()).toString()
+            )
+        )
     }
 
     override fun onDeliveryServiceAddressSelected(
@@ -345,7 +295,7 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             delivery_type_id = deliveryService.deliveryTypeId.orMinusOne(),
             delivery_zone_id = deliveryService.deliveryZoneId.orMinusOne(),
             price = deliveryService.price.orZero(),
-            weight = Product.getTotalWeight(productsAdapter.getCheckedProducts()).toString(),
+            weight = Product.getTotalWeight(eventsAdapter.getCheckedProducts()).toString(),
             city_id = cityId,
             region_id = regionId,
             country_code = countryCode,
@@ -357,21 +307,3 @@ class MarketFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         showPaymentTypeDialog(isHideTill = true)
     }
 }
-
-@Parcelize
-data class ProductItem(
-    val product_name: String,
-    val product_description: String,
-    val product_price_bv: String,
-    val product_price_kzt: String,
-    val product_info: String,
-    val productFrontImage: String?,
-    val productBackImage: String?,
-    val specialOffer: SpecialOfferProductItem?
-) : Parcelable
-
-@Parcelize
-data class SpecialOfferProductItem(
-    val offerImage: String?,
-    val offerDescription: String?
-) : Parcelable

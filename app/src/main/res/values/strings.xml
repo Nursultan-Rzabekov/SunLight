@@ -189,6 +189,9 @@
     <string name="password_two_dots">Пароль:</string>
     <string name="documents_scans">Сканы документов</string>
     <string name="go_to_market">Заказать товар</string>
+    <string name="future_event">Узнайте о предстоящих мероприятиях!</string>
+    <string name="future_events">Предстоящие мероприятия</string>
+    <string name="buy_right_now">Успейте преобрести билеты сейчас!</string>
     <string name="payTo">К оплате: %1$.2fKZT</string>
     <string name="created_at">Дата заказа: %1$s</string>
     <string name="amount">Количество: %1d</string>
@@ -348,4 +351,7 @@
     <string name="basic">Обычная</string>
     <string name="choose_delivery_service">Выберите вид доставки</string>
     <string name="delivery_cost_format">Стоимость доставки %1$s BV или %2$s KZT</string>
+    <string name="adult">Взрослый:</string>
+    <string name="child">Детский:</string>
+    <string name="seat_count">Выберите количество мест:</string>
 </resources>
