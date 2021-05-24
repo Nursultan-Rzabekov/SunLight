@@ -1,12 +1,16 @@
 package com.corp.sunlightdesign.data.source.dataSource.remote.orders
 
+import com.corp.sunlightdesign.data.source.dataSource.CreateEvent
 import com.corp.sunlightdesign.data.source.dataSource.CreateOrderPartner
-import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
 import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.*
 import com.corp.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import kotlinx.coroutines.Deferred
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface OrdersServices {
 
@@ -19,6 +23,9 @@ interface OrdersServices {
     @GET("orders/products-list")
     fun getProductList(): Deferred<OrderProducts>
 
+    @GET("cabinet/events")
+    fun getEventList(): Deferred<OrderEvents>
+
     @GET("orders/product-list/show/{id}")
     fun getProductByID(@Path("id") id: Int)
 
@@ -30,6 +37,12 @@ interface OrdersServices {
     fun storeOrder(
         @Body createOrderPartner: CreateOrderPartner
     ): Deferred<Orders>
+
+    @POST("cabinet/events/store/{id}")
+    fun buyEvent(
+        @Path("id") id: Int,
+        @Body createEvent: CreateEvent
+    ): Deferred<CreateEvent>
 
     @POST("orders/delivery")
     fun storeDelivery(

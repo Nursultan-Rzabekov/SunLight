@@ -5,7 +5,6 @@
     android:id="@+id/event_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dimen_8dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/dimen_5dp"
     app:cardElevation="3dp"
@@ -15,12 +14,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/event_iv"
-            android:layout_width="95dp"
-            android:layout_height="112dp"
+            android:layout_width="match_parent"
+            android:layout_height="166dp"
             android:contentDescription="@string/info_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,29 +29,45 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/event_name_tv"
             style="@style/AppCompatTextView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_12dp"
             android:ellipsize="end"
+            android:layout_marginEnd="@dimen/dimen_10dp"
             android:maxLines="1"
-            android:textAlignment="center"
-            android:textSize="@dimen/dimen_14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toStartOf="@+id/event_date_tv"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/event_iv"
             tools:text="Набор от Clinique" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/event_date_tv"
+            style="@style/AppCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAlignment="textEnd"
+            android:textSize="@dimen/dimen_14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/event_name_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/event_name_tv"
+            app:layout_constraintTop_toTopOf="@+id/event_name_tv"
+            tools:text="25 мая, 18:30" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/event_description_tv"
             style="@style/AppCompatTextViewGray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_12dp"
             android:ellipsize="end"
             android:lines="2"
             android:maxLines="2"
-            android:textAlignment="center"
-            android:textSize="@dimen/dimen_12sp"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/dimen_14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/event_name_tv"
@@ -64,9 +79,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/more_info"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/dimen_12sp"
+            android:textSize="@dimen/dimen_14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/event_description_tv" />
@@ -76,65 +91,101 @@
             android:id="@+id/adult_lv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_12dp"
-            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:gravity="start"
+            android:weightSum="2"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/event_more_info_tv">
 
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/adult_tv"
                 style="@style/AppCompatTextViewGray"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/adult"
-                android:textAlignment="center"
-                android:textSize="@dimen/dimen_12sp" />
+                android:layout_weight="1"
+                android:text="@string/seat_adult"
+                android:textAlignment="textStart"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/adult_product_price_tv"
                 style="@style/AppCompatTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginStart="@dimen/dimen_4dp"
-                android:textAlignment="center"
-                android:textSize="@dimen/dimen_12sp"
-                tools:text="200 BV" />
+                android:textAlignment="textStart"
+                android:textSize="@dimen/dimen_16sp"
+                tools:text="5" />
 
         </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/child_lv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_12dp"
-            android:gravity="center"
+            android:gravity="start"
+            android:weightSum="2"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/adult_lv">
 
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/child_tv"
+                android:layout_weight="1"
                 style="@style/AppCompatTextViewGray"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/child"
-                android:textAlignment="center"
-                android:textSize="@dimen/dimen_12sp" />
+                android:text="@string/child_seat"
+                android:textAlignment="textStart"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/child_product_price_tv"
                 style="@style/AppCompatTextView"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_4dp"
-                android:textAlignment="center"
-                android:textSize="@dimen/dimen_12sp"
-                tools:text="200 BV" />
+                android:textAlignment="textStart"
+                android:textSize="@dimen/dimen_16sp"
+                tools:text="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:gravity="start"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/child_lv">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/comment_tv"
+                android:layout_weight="1"
+                style="@style/AppCompatTextViewGray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/comment"
+                android:textAlignment="textStart"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/comment_title_tv"
+                style="@style/AppCompatTextView"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_4dp"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/dimen_16sp"
+                tools:text="Нет комментарий" />
 
         </LinearLayout>
 

@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.corp.sunlightdesign.R
 import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
+import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.Event
 import com.corp.sunlightdesign.utils.getImageUrl
 import kotlinx.android.synthetic.main.events_market_item.view.*
 
 class EventsMarketRecyclerAdapter(
-    private val items: List<Product>,
+    private val items: List<Event>,
     private val eventMarketItemSelected: EventMarketItemSelected
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -31,39 +32,36 @@ class EventsMarketRecyclerAdapter(
         }
     }
 
-    fun getCheckedProducts(): List<Product> {
-        return items.filter { it.isChecked }
-    }
-
     class EventsViewHolder(
         view: View,
         private val eventMarketItemSelected: EventMarketItemSelected
     ) : RecyclerView.ViewHolder(view) {
-        fun bind(product: Product) {
-            itemView.product_name_tv.text = product.product_name
-            itemView.product_description_tv.text = product.product_short_description
+
+        fun bind(event: Event) {
+            itemView.event_name_tv.text = event.name
+            itemView.event_description_tv.text = event.description
             itemView.child_product_price_tv.text =
-                itemView.context.getString(R.string.amount_kzt, product.product_price)
+                itemView.context.getString(R.string.amount_decimal, event.priceChild)
             itemView.adult_product_price_tv.text =
-                itemView.context.getString(R.string.amount_kzt, product.product_price)
+                itemView.context.getString(R.string.amount_decimal, event.priceAdult)
 
             Glide.with(itemView)
-                .load(getImageUrl(product.product_image_front_path))
+                .load(getImageUrl(event.image))
                 .centerInside()
-                .into(itemView.product_iv)
+                .into(itemView.event_iv)
 
-            itemView.product_more_info_tv.setOnClickListener {
-                eventMarketItemSelected.onEventSelected(product)
+            itemView.event_more_info_tv.setOnClickListener {
+                eventMarketItemSelected.onEventSelected(event)
             }
 
-            itemView.product_card.setOnClickListener {
-                eventMarketItemSelected.setEventState()
+            itemView.event_card.setOnClickListener {
+                eventMarketItemSelected.setEventState(event)
             }
         }
     }
 
     interface EventMarketItemSelected {
-        fun onEventSelected(product: Product)
-        fun setEventState()
+        fun onEventSelected(event: Event)
+        fun setEventState(event: Event)
     }
 }

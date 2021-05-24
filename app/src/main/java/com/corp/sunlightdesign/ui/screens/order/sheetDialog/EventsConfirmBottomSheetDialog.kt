@@ -9,17 +9,17 @@ import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.corp.sunlightdesign.R
 import com.corp.sunlightdesign.data.source.dataSource.TotalEvent
-import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.Event
+import com.corp.sunlightdesign.utils.DateUtils
 import com.corp.sunlightdesign.utils.getImageUrl
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.events_market_item.*
-import kotlinx.android.synthetic.main.repeat_events_bottom_sheet.*
+import kotlinx.android.synthetic.main.confirm_events_bottom_sheet.*
+import kotlinx.android.synthetic.main.new_events_market_item.*
 
-class EventsBottomSheetDialog(
-    private val eventInteraction: EventInteraction,
-    private var event: Event
+class EventsConfirmBottomSheetDialog(
+    private val eventConfirmInteraction: EventConfirmInteraction,
+    private val totalEvent: TotalEvent
 ) : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,70 +32,45 @@ class EventsBottomSheetDialog(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.repeat_events_bottom_sheet, container, false)
+        return inflater.inflate(R.layout.confirm_events_bottom_sheet, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        event_name_tv.text = event.name
-        event_description_tv.text = event.description
-        child_product_price_tv.text =
-            requireContext().getString(R.string.amount_decimal, event.priceChild)
-        adult_product_price_tv.text =
-            requireContext().getString(R.string.amount_decimal, event.priceAdult)
+        event_name_tv.text = totalEvent.event.name
+        event_date_tv.text =
+            totalEvent.event.startedAt?.let {
+                DateUtils.reformatDateString(
+                    it,
+                    DateUtils.PATTERN_DD_MM_YYYY
+                )
+            } ?: "Нет"
+
+        event_description_tv.text = totalEvent.event.description
+        child_product_price_tv.text = totalEvent.child.toString()
+        adult_product_price_tv.text = totalEvent.adult.toString()
+        comment_title_tv.text =
+            if (totalEvent.comment.isNullOrEmpty()) "Нет комментарий" else totalEvent.comment
 
         Glide.with(requireContext())
-            .load(getImageUrl(event.image))
+            .load(getImageUrl(totalEvent.event.image))
             .centerInside()
             .into(event_iv)
 
-
-        var adultTv = adultCountTv.text.toString().toInt()
-        minus_adult_iv.setOnClickListener {
-            if (adultTv > 0) adultTv--
-            adultCountTv.text = adultTv.toString()
-        }
-        plus_adult_iv.setOnClickListener {
-            if (adultTv >= 0) adultTv++
-            adultCountTv.text = adultTv.toString()
-        }
-
-        var childTv = childCountTv.text.toString().toInt()
-        minus_child_iv.setOnClickListener {
-            if (childTv > 0) childTv--
-            childCountTv.text = childTv.toString()
-        }
-        plus_child_iv.setOnClickListener {
-            if (childTv >= 0) childTv++
-            childCountTv.text = childTv.toString()
-
-        }
-
         btn_all_right.setOnClickListener {
-            eventInteraction.onEventListSelected(
-                TotalEvent(
-                    adult = adultTv,
-                    child = childTv,
-                    eventId = event.id ?: 0,
-                    comment = commentEditText.text.toString(),
-                    event = event
-                )
-            )
+            eventConfirmInteraction.onEventConfirmed()
         }
 
         cancel_btn.setOnClickListener {
             dismiss()
         }
+
+
     }
 
-    companion object {
-        const val TAG = "ModalBottomSheet"
-    }
-
-    interface EventInteraction {
-        fun onEventListSelected(totalEvent: TotalEvent)
+    interface EventConfirmInteraction {
+        fun onEventConfirmed()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -118,5 +93,9 @@ class EventsBottomSheetDialog(
         val layoutParams = bottomSheet.layoutParams
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         bottomSheet.layoutParams = layoutParams
+    }
+
+    companion object {
+        const val TAG = "ModalBottomSheet"
     }
 }

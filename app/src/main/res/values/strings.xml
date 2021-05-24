@@ -170,6 +170,7 @@
     <string name="amount_formatted">%1.2f</string>
     <string name="amountText_bv">%1$s BV</string>
     <string name="amount_kzt">%1$.2f KZT</string>
+    <string name="amount_decimal">%1d KZT</string>
     <string name="amountText_kzt">%1$s KZT</string>
     <string name="amount_bv_string">%1$.2s BV</string>
     <string name="income">Доход</string>
@@ -211,6 +212,7 @@
     <string name="reply_order">Повторить заказ</string>
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
     <string name="products_choose">Количество выбранных товаров: %1$d</string>
+    <string name="choose_one_event">Вы выбрали , 1 товар итого к оплате\n %1$s</string>
     <string name="сount_order">Итого к оплате</string>
     <string name="totalAmountOrders">%1$.2f KZT</string>
     <string name="all_right">Все верно</string>
@@ -354,4 +356,14 @@
     <string name="adult">Взрослый:</string>
     <string name="child">Детский:</string>
     <string name="seat_count">Выберите количество мест:</string>
+    <string name="confirm_info">Подтвердите данные:</string>
+    <string name="confirm_payment">Подтвердить и перейти к оплате</string>
+    <string name="child_seat">Количество детских мест: </string>
+    <string name="seat_adult">Количество взрослых мест: </string>
+    <string name="comment">Комментарий</string>
+    <string name="are_u_sure_continue">Убедитесь все ли верно, чтобы продолжить!</string>
+    <string name="success_event_name">Детали заказа вы можете увидеть\nв “Мои заказы”</string>
+    <string name="thanks_order">Спасибо за покупку!</string>
+    <string name="comment_event">Комментарий к покупке:</string>
+    <string name="write_comment">Введите комментарий</string>
 </resources>

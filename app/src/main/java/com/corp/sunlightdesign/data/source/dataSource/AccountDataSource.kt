@@ -1,6 +1,7 @@
 package com.corp.sunlightdesign.data.source.dataSource
 
 import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.*
+import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.Event
 import okhttp3.MultipartBody
 
 interface AccountDataSource {
@@ -63,6 +64,43 @@ data class CreateOrderPartner(
     }
 }
 
+data class CreateEvent(
+    val adult: Int?,
+    val child: Int?,
+    val payment: Int?,
+    val eventId: Int,
+    val office_id: Int?,
+    val comment: String?
+) {
+    class Builder {
+        var adult: Int? = -1
+        var child: Int? = -1
+        var payment: Int? = -1
+        var eventId: Int = -1
+        var officeId: Int? = null
+        var comment: String? = null
+        fun build(): CreateEvent = CreateEvent(
+            adult = adult,
+            child = child,
+            payment = payment,
+            eventId = eventId,
+            office_id = officeId,
+            comment = comment
+        )
+
+    }
+}
+
+data class TotalEvent(
+    val adult: Int? = 0,
+    val child: Int? = 0,
+    val payment: Int? = null,
+    val eventId: Int,
+    val officeId: Int? = null,
+    val comment: String? = null,
+    val event: Event
+)
+
 data class DeliveryInfoRequest(
     var delivery_type_id: Int,
     var delivery_zone_id: Int,
@@ -78,7 +116,7 @@ data class DeliveryInfoRequest(
 
 data class ItemId(
     val id: Int?
-){
+) {
     class Builder {
         var id: Int = -1
 

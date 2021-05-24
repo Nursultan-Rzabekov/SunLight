@@ -2,6 +2,7 @@ package com.corp.sunlightdesign.ui.screens.order
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.corp.sunlightdesign.data.source.dataSource.CreateEvent
 import com.corp.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.CountriesList
 import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.OfficesList
@@ -12,9 +13,11 @@ import com.corp.sunlightdesign.usecase.usercase.SharedUseCase
 import com.corp.sunlightdesign.usecase.usercase.accountUse.get.AccountCountriesUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.get.*
+import com.corp.sunlightdesign.usecase.usercase.orders.post.BuyEventUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 import com.corp.sunlightdesign.usecase.usercase.profileUse.get.ProfileInfoUseCase
+import com.corp.sunlightdesign.utils.ErrorListException
 import timber.log.Timber
 
 
@@ -25,9 +28,11 @@ class OrderViewModel constructor(
     private val sharedUseCase: SharedUseCase,
     private val getOrdersUseCase: GetOrdersUseCase,
     private val getProductListUseCase: GetProductListUseCase,
+    private val getEventListUseCase: GetEventListUseCase,
     private val getOrderByIdUseCase: GetOrderByIdUseCase,
     private val getProductByIdUseCase: GetProductByIdUseCase,
     private val storeOrderUseCase: StoreOrderUseCase,
+    private val createEventUseCase: BuyEventUseCase,
     private val getOfficesListUseCase: GetOfficesListUseCase,
     private val storeDeliveryUseCase: StoreDeliveryUseCase,
     private val accountCountriesUseCase: AccountCountriesUseCase,
@@ -39,14 +44,22 @@ class OrderViewModel constructor(
 
     var createOrderBuilder: CreateOrderPartner.Builder = CreateOrderPartner.Builder()
 
+    var createEvent: CreateEvent.Builder = CreateEvent.Builder()
+
     private var _orders = MutableLiveData<Orders>()
     val orders: LiveData<Orders> get() = _orders
 
     private var _products = MutableLiveData<OrderProducts>()
     val products: LiveData<OrderProducts> get() = _products
 
+    private var _events = MutableLiveData<OrderEvents>()
+    val events: LiveData<OrderEvents> get() = _events
+
     private var _orderState = MutableLiveData<OrderShortResponse>()
     val orderState: LiveData<OrderShortResponse> get() = _orderState
+
+    private var _eventState = MutableLiveData<EventShortResponse>()
+    val eventState: LiveData<EventShortResponse> get() = _eventState
 
     private var _officesList = MutableLiveData<OfficesList>()
     val officesList: LiveData<OfficesList> get() = _officesList
@@ -85,10 +98,30 @@ class OrderViewModel constructor(
 
     fun getProductList() {
         progress.postValue(true)
+
         getProductListUseCase.execute {
             onComplete {
                 progress.postValue(false)
                 _products.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun getEventList() {
+        progress.postValue(true)
+
+        getEventListUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _events.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)
@@ -136,7 +169,7 @@ class OrderViewModel constructor(
     }
 
 
-    fun storeOrder(createOrderPartner: CreateOrderPartner){
+    fun storeOrder(createOrderPartner: CreateOrderPartner) {
         progress.postValue(true)
         storeOrderUseCase.setData(createOrderPartner)
         storeOrderUseCase.execute {
@@ -174,7 +207,48 @@ class OrderViewModel constructor(
     }
 
 
-    fun getOfficesList(){
+    fun buyEvent(createEvent: CreateEvent) {
+        progress.postValue(true)
+        createEventUseCase.setData(createEvent)
+        createEventUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _eventState.postValue(
+                    EventShortResponse(
+                        isSuccess = true,
+                        message = "Детали заказа вы можете увидеть\nв “Мои заказы"
+                    )
+                )
+
+            }
+            onNetworkError {
+                progress.postValue(false)
+                _eventState.postValue(
+                    EventShortResponse(
+                        isSuccess = false,
+                        message = it.message.toString()
+                    )
+                )
+            }
+            onError {
+                progress.postValue(false)
+                when (it) {
+                    is ErrorListException -> {
+                        _eventState.postValue(
+                            EventShortResponse(
+                                isSuccess = false,
+                                message = it.error.toString()
+                            )
+                        )
+                    }
+                    else -> handleError(throwable = it)
+                }
+            }
+        }
+    }
+
+
+    fun getOfficesList() {
         progress.postValue(true)
         getOfficesListUseCase.execute {
             onComplete {
@@ -269,6 +343,11 @@ class OrderViewModel constructor(
     data class OrderShortResponse(
         val orderType: Int,
         val isSuccess: Boolean
+    )
+
+    data class EventShortResponse(
+        val isSuccess: Boolean,
+        val message: String
     )
 }
 

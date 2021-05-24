@@ -6,6 +6,7 @@ import com.corp.sunlightdesign.data.source.repositories.DefaultOrdersRepository
 import com.corp.sunlightdesign.ui.screens.order.OrderViewModel
 import com.corp.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.get.*
+import com.corp.sunlightdesign.usecase.usercase.orders.post.BuyEventUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.post.StoreOrderUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -44,6 +45,12 @@ val ordersModule = module {
     }
 
     factory {
+        GetEventListUseCase(
+            ordersRepository = get()
+        )
+    }
+
+    factory {
         GetOrdersUseCase(
             ordersRepository = get()
         )
@@ -51,6 +58,12 @@ val ordersModule = module {
 
     factory {
         StoreOrderUseCase(
+            ordersRepository = get()
+        )
+    }
+
+    factory {
+        BuyEventUseCase(
             ordersRepository = get()
         )
     }
@@ -80,12 +93,14 @@ val ordersModule = module {
             getOrderByIdUseCase = get(),
             getProductByIdUseCase = get(),
             getProductListUseCase = get(),
+            getEventListUseCase = get(),
             storeOrderUseCase = get(),
             getOfficesListUseCase = get(),
             storeDeliveryUseCase = get(),
             accountCountriesUseCase = get(),
             profileInfoUseCase = get(),
-            calculateDeliveryUseCase = get()
+            calculateDeliveryUseCase = get(),
+            createEventUseCase = get()
         )
     }
 }

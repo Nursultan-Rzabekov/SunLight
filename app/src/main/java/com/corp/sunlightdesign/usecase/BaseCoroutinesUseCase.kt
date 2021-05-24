@@ -47,7 +47,7 @@ abstract class BaseCoroutinesUseCase<T> {
                         val errorResponse =
                             Gson().fromJson(
                                 responseBody.string(),
-                                when(ex.response()?.code()) {
+                                when (ex.response()?.code()) {
                                     401 -> ErrorResponse::class.java
                                     422 -> ErrorListResponse::class.java
                                     else -> DefaultErrorResponse::class.java
@@ -60,7 +60,13 @@ abstract class BaseCoroutinesUseCase<T> {
                         }
 
                         if (errorResponse is ErrorListResponse) {
-                            response(ErrorListException(errorResponse.message, errorResponse.errors))
+                            response(
+                                ErrorListException(
+                                    errorResponse.message,
+                                    errorResponse.errors,
+                                    errorResponse.error
+                                )
+                            )
                             return@launch
                         }
 

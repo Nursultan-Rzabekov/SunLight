@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -33,10 +34,10 @@
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
-        android:weightSum="5">
+        android:weightSum="6">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -45,6 +46,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/adultTv"
             style="@style/AppCompatTextView"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_16dp"
             android:layout_weight="2"
@@ -52,7 +54,8 @@
             android:textSize="@dimen/dimen_20sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/minus_adult_iv"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -61,6 +64,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/adultCountTv"
             style="@style/AppCompatTextView"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_16dp"
             android:layout_weight="1"
@@ -69,7 +73,8 @@
             android:textSize="@dimen/dimen_20sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/plus_adult_iv"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -83,10 +88,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
-        android:weightSum="5">
+        android:weightSum="6">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -95,6 +100,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/childTv"
             style="@style/AppCompatTextView"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_16dp"
             android:layout_weight="2"
@@ -102,7 +108,8 @@
             android:textSize="@dimen/dimen_20sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/minus_child_iv"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -111,6 +118,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/childCountTv"
             style="@style/AppCompatTextView"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_16dp"
             android:layout_weight="1"
@@ -119,7 +127,8 @@
             android:textSize="@dimen/dimen_20sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/plus_child_iv"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -127,6 +136,38 @@
 
 
     </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/AppCompatTextView"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="@dimen/dimen_16dp"
+        android:text="@string/comment_event"
+        android:textSize="@dimen/dimen_16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/commentTv"
+        style="@style/BasicTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/commentEditText"
+            style="@style/BasicEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_editTextColor"
+            android:gravity="start"
+            android:hint="@string/write_comment"
+            android:minHeight="80dp"
+            android:paddingTop="@dimen/dimen_12dp"
+            android:paddingBottom="@dimen/dimen_12dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_all_right"

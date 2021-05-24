@@ -6,5 +6,6 @@ class SessionEndException: Exception()
 
 class ErrorListException(
     val errorMessage: String?,
-    val errorMap: Map<String, List<String>>?
+    val errorMap: Map<String, List<String>>?,
+    val error: String?
 ): Exception()
