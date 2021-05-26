@@ -163,4 +163,7 @@ dependencies {
     implementation 'io.michaelrocks:libphonenumber-android:8.9.0'
 
     implementation 'com.hbb20:ccp:2.5.1'
+
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
 }

@@ -37,7 +37,8 @@ class OrderViewModel constructor(
     private val storeDeliveryUseCase: StoreDeliveryUseCase,
     private val accountCountriesUseCase: AccountCountriesUseCase,
     private val profileInfoUseCase: ProfileInfoUseCase,
-    private val calculateDeliveryUseCase: CalculateDeliveryUseCase
+    private val calculateDeliveryUseCase: CalculateDeliveryUseCase,
+    private val getMyTicketsUseCase: GetMyTicketsUseCase
 ) : StrongViewModel() {
 
     var progress = MutableLiveData<Boolean>(false)
@@ -48,6 +49,9 @@ class OrderViewModel constructor(
 
     private var _orders = MutableLiveData<Orders>()
     val orders: LiveData<Orders> get() = _orders
+
+    private var _tickets = MutableLiveData<MyTickets>()
+    val tickets: LiveData<MyTickets> get() = _tickets
 
     private var _products = MutableLiveData<OrderProducts>()
     val products: LiveData<OrderProducts> get() = _products
@@ -84,6 +88,24 @@ class OrderViewModel constructor(
             onComplete {
                 progress.postValue(false)
                 _orders.postValue(it)
+            }
+            onNetworkError {
+                progress.postValue(false)
+                handleError(errorMessage = it.message)
+            }
+            onError {
+                progress.postValue(false)
+                handleError(throwable = it)
+            }
+        }
+    }
+
+    fun getMyTickets() {
+        progress.postValue(true)
+        getMyTicketsUseCase.execute {
+            onComplete {
+                progress.postValue(false)
+                _tickets.postValue(it)
             }
             onNetworkError {
                 progress.postValue(false)

@@ -33,17 +33,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Набор clinuqu" />
 
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countTextView"
-        style="@style/AppCompatTextViewGray"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="5dp"
-        android:textSize="@dimen/dimen_14sp"
-        app:layout_constraintStart_toEndOf="@+id/productImageView"
-        app:layout_constraintTop_toBottomOf="@+id/orderNameTextView"
-        tools:text="Количество : 1" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/bvTextView"
         style="@style/AppCompatTextView"
@@ -54,11 +43,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="990 BV" />
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
-
+        android:id="@+id/statusLv"
         app:layout_constraintStart_toEndOf="@+id/productImageView"
-        app:layout_constraintTop_toBottomOf="@+id/countTextView"
+        app:layout_constraintTop_toBottomOf="@+id/orderNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -79,5 +67,27 @@
             tools:text="@string/status_format" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/countTextView"
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/dimen_14sp"
+        app:layout_constraintStart_toEndOf="@+id/productImageView"
+        app:layout_constraintTop_toBottomOf="@+id/statusLv"
+        tools:text="Количество : 1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/countChildTextView"
+        android:visibility="gone"
+        style="@style/AppCompatTextViewGray"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/dimen_14sp"
+        app:layout_constraintStart_toEndOf="@+id/productImageView"
+        app:layout_constraintTop_toBottomOf="@+id/countTextView"
+        tools:text="Количество(детский) : 1"
+        tools:visibility="visible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

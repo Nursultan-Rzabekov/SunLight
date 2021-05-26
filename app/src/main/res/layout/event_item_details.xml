@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sunlight_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar_with_back" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            app:cardCornerRadius="@dimen/dimen_5dp"
+            app:cardElevation="@dimen/dimen_0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_16dp">
+
+                <include layout="@layout/sunlight_banner" />
+
+                <ImageView
+                    android:id="@+id/eventImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="176dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.afollestad.viewpagerdots.DotsIndicator
+                    android:id="@+id/imagesDotIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/eventImageView" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_name_tv"
+                    style="@style/AppCompatTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/dimen_14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/data_tv"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imagesDotIndicator"
+                    tools:text="Набор от Clinique" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/date_tv"
+                    style="@style/AppCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:textSize="@dimen/dimen_14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imagesDotIndicator"
+                    tools:text="25 мая, 18:30" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_description_tv"
+                    style="@style/AppCompatTextViewGray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/dimen_12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_name_tv"
+                    tools:text="Сквалан с ретинолом \n 0,5% The Ordinary" />
+
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/product_description_tv" />
+
+
+                <LinearLayout
+                    android:id="@+id/adult_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider8">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/adult_tv"
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/seat_adult"
+                        android:textAlignment="textStart" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/adult_product_price_tv"
+                        style="@style/AppCompatTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_4dp"
+                        android:layout_weight="1"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/dimen_16sp"
+                        tools:text="5" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/child_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/adult_lv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/child_tv"
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/child_seat"
+                        android:textAlignment="textStart" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/child_product_price_tv"
+                        style="@style/AppCompatTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_4dp"
+                        android:layout_weight="1"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/dimen_16sp"
+                        tools:text="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/commentLv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/child_lv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/comment_tv"
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/comment"
+                        android:textAlignment="textStart" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/comment_title_tv"
+                        style="@style/AppCompatTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_4dp"
+                        android:layout_weight="1"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/dimen_16sp"
+                        tools:text="Нет комментарий" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/statusLv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/commentLv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/status_tv"
+                        style="@style/AppCompatTextViewGray"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/status"
+                        android:textAlignment="textStart" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/status_title_tv"
+                        style="@style/AppCompatTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_4dp"
+                        android:layout_weight="1"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/dimen_16sp"
+                        tools:text="@string/paid" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/statusLv" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:visibility="gone"
+                    android:id="@+id/qr_image_view"
+                    android:layout_width="@dimen/dimen_200dp"
+                    android:layout_height="@dimen/dimen_200dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider9" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:visibility="gone"
+                    android:id="@+id/payTextView"
+                    style="@style/AppCompatTextView"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:textSize="@dimen/dimen_20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider9"
+                    tools:text="К оплате 2970 KZT" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

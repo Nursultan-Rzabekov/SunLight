@@ -6,6 +6,7 @@ import com.corp.sunlightdesign.data.source.dataSource.CreateOrderPartner
 import com.corp.sunlightdesign.data.source.dataSource.remote.orders.OrdersServices
 import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliverResponse
 import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.DeliveryServiceListResponse
+import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.MyTickets
 import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.Orders
 import com.corp.sunlightdesign.usecase.usercase.orders.CalculateDeliveryUseCase
 import com.corp.sunlightdesign.usecase.usercase.orders.post.StoreDeliveryUseCase
@@ -16,6 +17,8 @@ class DefaultOrdersRepository constructor(
 ) : OrdersRepository {
 
     override suspend fun getMyOrders(): Orders = ordersServices.getMyOrders().await()
+
+    override suspend fun getMyTicketsList() = ordersServices.getMyTicketsList().await()
 
     override suspend fun getOrderById(id: Int) = ordersServices.getOrderById(id)
 

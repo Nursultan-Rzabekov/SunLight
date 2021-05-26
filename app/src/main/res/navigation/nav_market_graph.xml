@@ -1,68 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/nav_graph"
-        app:startDestination="@id/market_fragment">
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    >
 
-        <fragment
-                android:id="@+id/market_fragment"
-                android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketFragment"
-                android:label="fragment_launcher"
-                tools:layout="@layout/market_products_list" >
+    <fragment
+        android:id="@+id/market_fragment"
+        android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/market_products_list">
 
-                <action
-                    android:id="@+id/market_fragment_to_market_details_fragment"
-                    app:destination="@id/market_details_fragment"
-                    app:enterAnim="@anim/fade_in"
-                    app:exitAnim="@anim/fade_out"
-                    app:popEnterAnim="@anim/fade_in"
-                    app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/market_fragment_to_market_details_fragment"
+            app:destination="@id/market_details_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
 
-                <action
-                    android:id="@+id/market_fragment_to_market_event_fragment"
-                    app:destination="@id/market_event_fragment"
-                    app:enterAnim="@anim/fade_in"
-                    app:exitAnim="@anim/fade_out"
-                    app:popEnterAnim="@anim/fade_in"
-                    app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/market_fragment_to_market_event_fragment"
+            app:destination="@id/market_event_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
 
-        </fragment>
-
-
-        <fragment
-            android:id="@+id/market_event_fragment"
-            android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketEventFragment"
-            android:label="fragment_launcher"
-            tools:layout="@layout/market_products_list" >
-
-                <action
-                    android:id="@+id/market_event_fragment_to_market_event_details_fragment"
-                    app:destination="@id/market_event_details_fragment"
-                    app:enterAnim="@anim/fade_in"
-                    app:exitAnim="@anim/fade_out"
-                    app:popEnterAnim="@anim/fade_in"
-                    app:popExitAnim="@anim/fade_out" />
-
-        </fragment>
+    </fragment>
 
 
-        <fragment
-            android:id="@+id/market_details_fragment"
-            android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
-            android:label="fragment_launcher"
-            tools:layout="@layout/order_item_details" >
+    <fragment
+        android:id="@+id/market_event_fragment"
+        android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketEventFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/market_products_list">
 
-        </fragment>
+        <action
+            android:id="@+id/market_event_fragment_to_market_event_details_fragment"
+            app:destination="@id/market_event_details_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
 
-        <fragment
-            android:id="@+id/market_event_details_fragment"
-            android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketEventDetailFragment"
-            android:label="fragment_launcher"
-            tools:layout="@layout/order_item_details" >
+    </fragment>
 
-        </fragment>
+
+    <fragment
+        android:id="@+id/market_details_fragment"
+        android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketProductDetailFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/order_item_details">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/market_event_details_fragment"
+        android:name="com.corp.sunlightdesign.ui.screens.order.market.MarketEventDetailFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/market_event_products_list">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/myTicketsFragment"
+        android:name="com.corp.sunlightdesign.ui.screens.order.MyTicketsFragment"
+        android:label="@string/home"
+        tools:layout="@layout/tickets_fragment">
+
+        <action
+            android:id="@+id/my_tickets_fragments_to_market_event_fragment"
+            app:destination="@id/market_event_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+
+        <action
+            android:id="@+id/my_tickets_fragments_to_market_event_details_fragment"
+            app:destination="@id/market_event_details_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+
+    </fragment>
 
 
 </navigation>

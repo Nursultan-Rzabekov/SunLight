@@ -57,6 +57,12 @@ val ordersModule = module {
     }
 
     factory {
+        GetMyTicketsUseCase(
+            ordersRepository = get()
+        )
+    }
+
+    factory {
         StoreOrderUseCase(
             ordersRepository = get()
         )
@@ -100,7 +106,8 @@ val ordersModule = module {
             accountCountriesUseCase = get(),
             profileInfoUseCase = get(),
             calculateDeliveryUseCase = get(),
-            createEventUseCase = get()
+            createEventUseCase = get(),
+            getMyTicketsUseCase = get()
         )
     }
 }

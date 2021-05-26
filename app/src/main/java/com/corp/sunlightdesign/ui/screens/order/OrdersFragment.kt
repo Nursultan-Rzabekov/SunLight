@@ -11,10 +11,10 @@ import com.corp.sunlightdesign.R
 import com.corp.sunlightdesign.data.source.dataSource.remote.auth.entity.Product
 import com.corp.sunlightdesign.data.source.dataSource.remote.orders.entity.Order
 import com.corp.sunlightdesign.ui.base.StrongFragment
-import com.corp.sunlightdesign.ui.screens.order.sheetDialog.MyOrdersBottomSheetDialog
 import com.corp.sunlightdesign.ui.screens.order.adapters.OrdersRecyclerAdapter
 import com.corp.sunlightdesign.ui.screens.order.market.MarketActivity
 import com.corp.sunlightdesign.ui.screens.order.sheetDialog.ChoosePaymentTypeBottomSheetDialog
+import com.corp.sunlightdesign.ui.screens.order.sheetDialog.MyOrdersBottomSheetDialog
 import com.corp.sunlightdesign.ui.screens.order.sheetDialog.RepeatsOrdersBottomSheetDialog
 import com.corp.sunlightdesign.ui.screens.order.sheetDialog.SuccessBottomSheetDialog
 import com.corp.sunlightdesign.ui.screens.wallet.WalletViewModel
@@ -31,7 +31,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     ChoosePaymentTypeBottomSheetDialog.ChooseTypeInteraction {
 
     private val ordersRecyclerAdapter: OrdersRecyclerAdapter by lazy {
-        return@lazy OrdersRecyclerAdapter(requireContext(),this)
+        return@lazy OrdersRecyclerAdapter(requireContext(), this)
     }
 
     private lateinit var myOrdersBottomSheetDialog: MyOrdersBottomSheetDialog
@@ -58,7 +58,15 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         viewModel.getMyOrders()
 
         goToMarketLayout.setOnClickListener {
-            startActivity(Intent(requireContext(), MarketActivity::class.java))
+            val intent = Intent(requireContext(), MarketActivity::class.java)
+            intent.putExtra("destination", 1)
+            startActivity(intent)
+        }
+
+        goToTicketLayout.setOnClickListener {
+            val intent = Intent(requireContext(), MarketActivity::class.java)
+            intent.putExtra("destination", 0)
+            startActivity(intent)
         }
 
     }
@@ -106,7 +114,7 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
         }
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         orderRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = ordersRecyclerAdapter
@@ -114,7 +122,8 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     }
 
     override fun onOrderSelected(order: Order) {
-        myOrdersBottomSheetDialog = MyOrdersBottomSheetDialog(replyOrderInteraction = this, order = order)
+        myOrdersBottomSheetDialog =
+            MyOrdersBottomSheetDialog(replyOrderInteraction = this, order = order)
         myOrdersBottomSheetDialog.show(
             parentFragmentManager,
             MyOrdersBottomSheetDialog.TAG
@@ -128,7 +137,8 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
             viewModel.createOrderBuilder.userId = it
         }
 
-        repeatsOrdersBottomSheetDialog = RepeatsOrdersBottomSheetDialog(order = order,repeatsOrderInteraction = this)
+        repeatsOrdersBottomSheetDialog =
+            RepeatsOrdersBottomSheetDialog(order = order, repeatsOrderInteraction = this)
         repeatsOrdersBottomSheetDialog.show(
             parentFragmentManager,
             RepeatsOrdersBottomSheetDialog.TAG
@@ -138,8 +148,8 @@ class OrdersFragment : StrongFragment<OrderViewModel>(OrderViewModel::class),
     override fun onRepeatsOrderSelected(order: Order) {
         repeatsOrdersBottomSheetDialog.dismiss()
 
-        with(order.products){
-            if(!this.isNullOrEmpty()){
+        with(order.products) {
+            if (!this.isNullOrEmpty()) {
                 val products = mutableListOf<Product>()
                 order.products?.forEach {
                     it.product?.let { it1 -> products.add(it1) }

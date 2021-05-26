@@ -68,6 +68,13 @@ class MarketEventFragment : StrongFragment<OrderViewModel>(OrderViewModel::class
         })
 
         events.observe(viewLifecycleOwner, Observer {
+            if (it.events.isNullOrEmpty()) {
+                no_event_iv.visibility = View.VISIBLE
+                no_event_tv.visibility = View.VISIBLE
+            } else {
+                no_event_iv.visibility = View.GONE
+                no_event_tv.visibility = View.GONE
+            }
             initRecycler(it.events ?: listOf())
         })
 

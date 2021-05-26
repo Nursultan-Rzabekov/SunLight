@@ -70,7 +70,7 @@ data class CreateEvent(
     val payment: Int?,
     val eventId: Int,
     val office_id: Int?,
-    val comment: String?
+    val commentary: String?
 ) {
     class Builder {
         var adult: Int? = -1
@@ -85,7 +85,7 @@ data class CreateEvent(
             payment = payment,
             eventId = eventId,
             office_id = officeId,
-            comment = comment
+            commentary = comment
         )
 
     }

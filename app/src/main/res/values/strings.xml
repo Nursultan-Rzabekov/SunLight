@@ -83,6 +83,7 @@
     <string name="shag_two">Шаг 2</string>
     <string name="vybor_paketa">Выбор пакета</string>
     <string name="back"><![CDATA[< Назад]]></string>
+    <string name="detail_ticket">Детали билета</string>
     <string name="step_three">Шаг 3</string>
     <string name="step_four">Шаг 4</string>
     <string name="step_five">Шаг 5</string>
@@ -194,12 +195,17 @@
     <string name="future_events">Предстоящие мероприятия</string>
     <string name="buy_right_now">Успейте преобрести билеты сейчас!</string>
     <string name="payTo">К оплате: %1$.2fKZT</string>
+    <string name="payToBV">К оплате: %1d BV</string>
     <string name="created_at">Дата заказа: %1$s</string>
     <string name="amount">Количество: %1d</string>
     <string name="detail_order">Детали заказа</string>
-
+    <string name="count_adult">Количество(взрослый): %1d</string>
+    <string name="count_child">Количество(детский): %1d</string>
+    <string name="paid">Оплачено</string>
+    <string name="no_paid">Не оплачено</string>
 
     <string name="order_number">Заказ #%1$.0f</string>
+    <string name="ticket_number">Билет #%1d</string>
     <string name="code_order">Код товара: %1$.2f</string>
     <string name="total_amount"><![CDATA[<b>Общая сумма:</b>]]> %1$.2f KZT</string>
     <string name="type_of_payment"><![CDATA[<b>Способ оплаты:</b>]]> %1$s</string>
@@ -366,4 +372,9 @@
     <string name="thanks_order">Спасибо за покупку!</string>
     <string name="comment_event">Комментарий к покупке:</string>
     <string name="write_comment">Введите комментарий</string>
+    <string name="go_to_my_ticket">Мои Билеты</string>
+    <string name="go_market">Маркет</string>
+    <string name="no_event_future">На данный момент мероприятий\nне запланировано!</string>
+    <string name="no_participate_event">Кажется вы не участвовали\nни в одном из мероприятий!</string>
+    <string name="event_hint">Для того что бы купить билет пройдите\nна страницу “Мероприятия”!</string>
 </resources>

@@ -15,6 +15,7 @@ interface OrdersRepository {
     suspend fun getOrderById(id: Int)
     suspend fun getProductList(): OrderProducts
     suspend fun getEventList(): OrderEvents
+    suspend fun getMyTicketsList(): MyTickets
     suspend fun getProductByID(id: Int)
     suspend fun getOfficesList(): OfficesList
     suspend fun storeOrder(createOrderPartner: CreateOrderPartner): Orders

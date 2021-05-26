@@ -26,6 +26,9 @@ interface OrdersServices {
     @GET("cabinet/events")
     fun getEventList(): Deferred<OrderEvents>
 
+    @GET("cabinet/events/my")
+    fun getMyTicketsList(): Deferred<MyTickets>
+
     @GET("orders/product-list/show/{id}")
     fun getProductByID(@Path("id") id: Int)
 

@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/sunlight_background">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <include layout="@layout/toolbar_with_back"/>
+        <include layout="@layout/toolbar_with_back" />
 
         <include
             android:id="@+id/goToMarketLayout"
             layout="@layout/go_to_market" />
 
+        <include
+            android:id="@+id/goToTicketLayout"
+            layout="@layout/go_to_ticket" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orderRecyclerView"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dimen_24dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
             android:overScrollMode="never"
             tools:itemCount="6"
-            tools:listitem="@layout/order_item"
-            />
+            tools:listitem="@layout/order_item" />
 
     </LinearLayout>
 
@@ -38,9 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
