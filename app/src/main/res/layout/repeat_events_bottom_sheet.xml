@@ -1,196 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/arrow_bottom_sheet_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/dimen_16dp"
-        android:src="@drawable/ic_arrow_sheet" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/repeatOrdersSheetTextView"
-        style="@style/AppCompatTextView"
-        android:layout_gravity="start"
-        android:layout_margin="@dimen/dimen_16dp"
-        android:text="@string/seat_count"
-        android:textSize="@dimen/dimen_18sp" />
-
-    <include
-        layout="@layout/events_market_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        android:weightSum="6">
+        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/dimen_0dp"
+        <ImageView
+            android:id="@+id/arrow_bottom_sheet_iv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_adult_icon" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/adultTv"
-            style="@style/AppCompatTextView"
-            android:layout_width="@dimen/dimen_0dp"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_16dp"
-            android:layout_weight="2"
-            android:text="@string/adult"
-            android:textSize="@dimen/dimen_20sp" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/minus_adult_iv"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_minus_circle" />
+            android:src="@drawable/ic_arrow_sheet" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/adultCountTv"
+            android:id="@+id/repeatOrdersSheetTextView"
             style="@style/AppCompatTextView"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_gravity="center"
+            android:layout_gravity="start"
             android:layout_margin="@dimen/dimen_16dp"
-            android:layout_weight="1"
-            android:text="@string/zero"
-            android:textAlignment="center"
-            android:textSize="@dimen/dimen_20sp" />
+            android:text="@string/seat_count"
+            android:textSize="@dimen/dimen_18sp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/plus_adult_iv"
-            android:layout_width="@dimen/dimen_0dp"
+        <include
+            layout="@layout/events_market_item"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_plus_circle" />
-
-    </LinearLayout>
+            android:layout_gravity="center" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        android:weightSum="6">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_child_icon" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/childTv"
-            style="@style/AppCompatTextView"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/dimen_16dp"
-            android:layout_weight="2"
-            android:text="@string/child"
-            android:textSize="@dimen/dimen_20sp" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/minus_child_iv"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_minus_circle" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/childCountTv"
-            style="@style/AppCompatTextView"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/dimen_16dp"
-            android:layout_weight="1"
-            android:text="@string/zero"
-            android:textAlignment="center"
-            android:textSize="@dimen/dimen_20sp" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/plus_child_iv"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_plus_circle" />
-
-
-    </LinearLayout>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        style="@style/AppCompatTextView"
-        android:layout_width="wrap_content"
-        android:layout_gravity="start"
-        android:layout_margin="@dimen/dimen_16dp"
-        android:text="@string/comment_event"
-        android:textSize="@dimen/dimen_16sp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/commentTv"
-        style="@style/BasicTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        app:hintEnabled="false">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/commentEditText"
-            style="@style/BasicEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray_editTextColor"
-            android:gravity="start"
-            android:hint="@string/write_comment"
-            android:minHeight="80dp"
-            android:paddingTop="@dimen/dimen_12dp"
-            android:paddingBottom="@dimen/dimen_12dp" />
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:weightSum="6">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_adult_icon" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_all_right"
-        style="@style/BasicMaterialButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="@dimen/dimen_24dp"
-        android:layout_marginEnd="@dimen/dimen_16dp"
-        android:paddingTop="@dimen/dimen_16dp"
-        android:paddingBottom="@dimen/dimen_16dp"
-        android:text="@string/all_right"
-        android:textSize="@dimen/dimen_16sp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/adultTv"
+                style="@style/AppCompatTextView"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:layout_weight="2"
+                android:text="@string/adult"
+                android:textSize="@dimen/dimen_18sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/cancel_btn"
-        style="@style/BasicTextMaterialButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_16dp"
-        android:gravity="center_horizontal"
-        android:text="@string/text_cancel"
-        android:textAlignment="center"
-        android:textColor="@color/gray_textColor" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/minus_adult_iv"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_minus_circle" />
 
-</LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/adultCountTv"
+                style="@style/AppCompatTextView"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen_16dp"
+                android:layout_weight="1"
+                android:text="@string/zero"
+                android:textAlignment="center"
+                android:textSize="@dimen/dimen_20sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/plus_adult_iv"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_plus_circle" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:weightSum="6">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_child_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/childTv"
+                style="@style/AppCompatTextView"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:singleLine="true"
+                android:text="@string/child"
+                android:textSize="@dimen/dimen_18sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/minus_child_iv"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_minus_circle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/childCountTv"
+                style="@style/AppCompatTextView"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen_16dp"
+                android:layout_weight="1"
+                android:text="@string/zero"
+                android:textAlignment="center"
+                android:textSize="@dimen/dimen_20sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/plus_child_iv"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_plus_circle" />
+
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/AppCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:text="@string/comment_event"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/commentTv"
+            style="@style/BasicTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/commentEditText"
+                style="@style/BasicEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gray_editTextColor"
+                android:gravity="start"
+                android:hint="@string/write_comment"
+                android:minHeight="80dp"
+                android:paddingTop="@dimen/dimen_12dp"
+                android:paddingBottom="@dimen/dimen_12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_all_right"
+            style="@style/BasicMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp"
+            android:text="@string/all_right"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_btn"
+            style="@style/BasicTextMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:gravity="center_horizontal"
+            android:text="@string/text_cancel"
+            android:textAlignment="center"
+            android:textColor="@color/gray_textColor" />
+
+    </LinearLayout>
+
+
+</ScrollView>

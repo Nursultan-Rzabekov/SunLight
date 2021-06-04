@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1574074074074074" />
+        <entry key="app/src/main/res/layout/events_market_item.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/market_event_products_list.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/market_products_list.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/orders_fragment.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/repeat_events_bottom_sheet.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/sunlight_login.xml" value="0.13179347826086957" />
+        <entry key="app/src/main/res/layout/tickets_fragment.xml" value="0.12760416666666666" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
