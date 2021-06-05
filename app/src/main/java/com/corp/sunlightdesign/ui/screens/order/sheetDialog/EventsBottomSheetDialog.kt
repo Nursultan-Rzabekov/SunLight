@@ -42,9 +42,9 @@ class EventsBottomSheetDialog(
         event_name_tv.text = event.name
         event_description_tv.text = event.description
         child_product_price_tv.text =
-            requireContext().getString(R.string.amount_decimal, event.priceChild)
+            requireContext().getString(R.string.amount_decimal_bv, event.priceChild)
         adult_product_price_tv.text =
-            requireContext().getString(R.string.amount_decimal, event.priceAdult)
+            requireContext().getString(R.string.amount_decimal_bv, event.priceAdult)
 
         Glide.with(requireContext())
             .load(getImageUrl(event.image))

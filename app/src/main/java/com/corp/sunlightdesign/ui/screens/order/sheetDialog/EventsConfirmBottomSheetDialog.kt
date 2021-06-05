@@ -50,8 +50,27 @@ class EventsConfirmBottomSheetDialog(
         event_description_tv.text = totalEvent.event.description
         child_product_price_tv.text = totalEvent.child.toString()
         adult_product_price_tv.text = totalEvent.adult.toString()
+
         comment_title_tv.text =
             if (totalEvent.comment.isNullOrEmpty()) "Нет комментарий" else totalEvent.comment
+
+
+        val totalChildPrice = totalEvent.event.priceChild?.let { price ->
+            totalEvent.child?.let { count ->
+                price * count
+            }
+        }
+
+        val totalAdultPrice = totalEvent.event.priceAdult?.let { price ->
+            totalEvent.adult?.let { count ->
+                price * count
+            }
+        }
+
+        if (totalAdultPrice != null && totalChildPrice != null) {
+            countOrderTextView.text =
+                getString(R.string.choose_one_event, totalAdultPrice + totalChildPrice)
+        }
 
         Glide.with(requireContext())
             .load(getImageUrl(totalEvent.event.image))

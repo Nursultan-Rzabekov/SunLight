@@ -48,31 +48,29 @@
                     app:layout_constraintTop_toBottomOf="@id/eventImageView" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/product_name_tv"
-                    style="@style/AppCompatTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_12dp"
-                    android:layout_marginEnd="@dimen/dimen_10dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textSize="@dimen/dimen_14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/data_tv"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imagesDotIndicator"
-                    tools:text="Набор от Clinique" />
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/date_tv"
                     style="@style/AppCompatTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_12dp"
                     android:textSize="@dimen/dimen_14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imagesDotIndicator"
                     tools:text="25 мая, 18:30" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_name_tv"
+                    style="@style/AppCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:textSize="@dimen/dimen_14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/data_tv"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/date_tv"
+                    tools:text="Набор от Clinique" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/product_description_tv"
@@ -122,6 +120,7 @@
                         android:id="@+id/adult_product_price_tv"
                         style="@style/AppCompatTextView"
                         android:layout_width="0dp"
+                        android:textStyle="normal"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_4dp"
                         android:layout_weight="1"
@@ -160,6 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_4dp"
                         android:layout_weight="1"
+                        android:textStyle="normal"
                         android:textAlignment="textStart"
                         android:textSize="@dimen/dimen_16sp"
                         tools:text="2" />
@@ -194,6 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_4dp"
                         android:layout_weight="1"
+                        android:textStyle="normal"
                         android:textAlignment="textStart"
                         android:textSize="@dimen/dimen_16sp"
                         tools:text="Нет комментарий" />
@@ -229,6 +230,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_4dp"
                         android:layout_weight="1"
+                        android:textStyle="normal"
                         android:textAlignment="textStart"
                         android:textSize="@dimen/dimen_16sp"
                         tools:text="@string/paid" />

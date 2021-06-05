@@ -171,7 +171,7 @@
     <string name="amount_formatted">%1.2f</string>
     <string name="amountText_bv">%1$s BV</string>
     <string name="amount_kzt">%1$.2f KZT</string>
-    <string name="amount_decimal">%1d KZT</string>
+    <string name="amount_decimal_bv">%1d BV</string>
     <string name="amountText_kzt">%1$s KZT</string>
     <string name="amount_bv_string">%1$.2s BV</string>
     <string name="income">Доход</string>
@@ -219,6 +219,7 @@
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
     <string name="products_choose">Количество выбранных товаров: %1$d</string>
     <string name="choose_one_event">Вы выбрали , 1 товар итого к оплате\n %1$s</string>
+    <string name="hello_worldRed"><![CDATA[Вы выбрали , 1 товар итого к оплате\n<b><font color=#DE6000>%1$s BV</font></b>]]></string>
     <string name="сount_order">Итого к оплате</string>
     <string name="totalAmountOrders">%1$.2f KZT</string>
     <string name="all_right">Все верно</string>

@@ -41,9 +41,9 @@ class EventsMarketRecyclerAdapter(
             itemView.event_name_tv.text = event.name
             itemView.event_description_tv.text = event.description
             itemView.child_product_price_tv.text =
-                itemView.context.getString(R.string.amount_decimal, event.priceChild)
+                itemView.context.getString(R.string.amount_decimal_bv, event.priceChild)
             itemView.adult_product_price_tv.text =
-                itemView.context.getString(R.string.amount_decimal, event.priceAdult)
+                itemView.context.getString(R.string.amount_decimal_bv, event.priceAdult)
 
             Glide.with(itemView)
                 .load(getImageUrl(event.image))
