@@ -74,8 +74,8 @@ class MarketEventFragment : StrongFragment<OrderViewModel>(OrderViewModel::class
             } else {
                 no_event_iv.visibility = View.GONE
                 no_event_tv.visibility = View.GONE
+                initRecycler(it.events)
             }
-            initRecycler(it.events ?: listOf())
         })
 
         officesList.observe(viewLifecycleOwner, Observer {
@@ -112,7 +112,7 @@ class MarketEventFragment : StrongFragment<OrderViewModel>(OrderViewModel::class
     }
 
     private fun initRecycler(items: List<Event>) {
-        products_recycler_view.apply {
+        products_event_recycler_view.apply {
             eventsAdapter = EventsMarketRecyclerAdapter(items, this@MarketEventFragment)
             val manager = GridLayoutManager(requireContext(), spanCount)
             layoutManager = manager
