@@ -218,8 +218,7 @@
     <string name="reply_order">Повторить заказ</string>
     <string name="repeat_orders">Повтор заказа #%1$.2f</string>
     <string name="products_choose">Количество выбранных товаров: %1$d</string>
-    <string name="choose_one_event">Вы выбрали , 1 товар итого к оплате\n %1$s</string>
-    <string name="hello_worldRed"><![CDATA[Вы выбрали , 1 товар итого к оплате\n<b><font color=#DE6000>%1$s BV</font></b>]]></string>
+    <string name="choose_one_event">Вы выбрали , 1 товар итого к оплате</string>
     <string name="сount_order">Итого к оплате</string>
     <string name="totalAmountOrders">%1$.2f KZT</string>
     <string name="all_right">Все верно</string>

@@ -68,8 +68,8 @@ class EventsConfirmBottomSheetDialog(
         }
 
         if (totalAdultPrice != null && totalChildPrice != null) {
-            countOrderTextView.text =
-                getString(R.string.choose_one_event, totalAdultPrice + totalChildPrice)
+            totalAmountTextView.text =
+                getString(R.string.amount_decimal_bv, totalAdultPrice + totalChildPrice)
         }
 
         Glide.with(requireContext())

@@ -34,10 +34,19 @@
             android:layout_gravity="start"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:layout_marginTop="@dimen/dimen_16dp"
-            tools:text="@string/choose_one_event"
+            android:text="@string/choose_one_event"
             android:textSize="@dimen/dimen_18sp"
             android:textStyle="normal" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalAmountTextView"
+            style="@style/AppCompatTextView"
+            android:layout_gravity="start"
+            android:textColor="@color/sunLightColor"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            tools:text="@string/amount_decimal_bv"
+            android:textSize="@dimen/dimen_18sp"
+            android:textStyle="normal" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AppCompatTextViewGray"

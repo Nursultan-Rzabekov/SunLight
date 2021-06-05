@@ -238,7 +238,7 @@ class OrderViewModel constructor(
                 _eventState.postValue(
                     EventShortResponse(
                         isSuccess = true,
-                        message = "Детали заказа вы можете увидеть\nв “Мои заказы"
+                        message = "Детали заказа вы можете увидеть\nв “Мои заказы“ "
                     )
                 )
 
