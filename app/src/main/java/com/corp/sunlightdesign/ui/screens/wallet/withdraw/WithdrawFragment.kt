@@ -235,7 +235,8 @@ class WithdrawFragment :
     }
 
     override fun onClose() {
-        // finish activity
+        viewModel.clean()
+        findNavController().navigate(R.id.restartWithdrawFragment)
     }
 
     private fun showWithdrawTypeDialog() {

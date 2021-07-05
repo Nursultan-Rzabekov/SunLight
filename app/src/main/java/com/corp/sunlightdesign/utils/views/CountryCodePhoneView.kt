@@ -65,11 +65,7 @@ class CountryCodePhoneView @JvmOverloads constructor(
 
     private fun setDefaultMask() {
         val localeCountryCode = Locale.getDefault().country.toLowerCase(Locale.getDefault())
-        val countryCode = if (localeCountryCode.length == 2) {
-            localeCountryCode
-        } else {
-            DEFAULT_COUNTRY_CODE
-        }
+        val countryCode = DEFAULT_COUNTRY_CODE
         val countryInList = countries.firstOrNull { it.code == countryCode }
         val country = countryInList ?: countries.first { it.code == DEFAULT_COUNTRY_CODE }
 

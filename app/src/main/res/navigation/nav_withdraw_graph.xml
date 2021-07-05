@@ -9,6 +9,10 @@
         <fragment android:id="@+id/withdrawFragment"
             android:name="com.corp.sunlightdesign.ui.screens.wallet.withdraw.WithdrawFragment"
             tools:layout="@layout/fragment_withdraw">
+                <action
+                    android:id="@+id/restartWithdrawFragment"
+                    app:destination="@id/withdrawFragment" />
+
 
                 <action
                     android:id="@+id/action_withdrawFragment_to_editPartnerActivity"

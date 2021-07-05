@@ -106,14 +106,14 @@ class RegisterFragmentStepFive : StrongFragment<ProfileViewModel>(ProfileViewMod
 
     private fun fillFields() {
         incomeAndOutcomeLayout.isVisible = false
-        var totalPrice = .0
-        var totalPriceInBv = .0
-        viewModel.createOrderPartnerBuilder.products.forEach {
-            totalPrice += it.product_price ?: .0
-            totalPriceInBv += it.product_price_in_bv ?: .0
-        }
+//        var totalPrice = .0
+//        var totalPriceInBv = .0
+//        viewModel.createOrderPartnerBuilder.products.forEach {
+//            totalPrice += it.product_price ?: .0
+//            totalPriceInBv += it.product_price_in_bv ?: .0
+//        }
         totalAmountToBuyTextView.text =
-            getString(R.string.itogo_k_oplate, totalPriceInBv, totalPrice)
+            getString(R.string.itogo_k_oplate, viewModel.createOrderPartnerBuilder.paymentSum)
     }
 
     private fun hidePayments() {

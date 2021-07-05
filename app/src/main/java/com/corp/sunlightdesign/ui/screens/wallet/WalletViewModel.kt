@@ -13,6 +13,7 @@ import com.corp.sunlightdesign.usecase.usercase.walletUse.get.WalletGetOfficesUs
 import com.corp.sunlightdesign.usecase.usercase.walletUse.get.WalletInfoUseCase
 import com.corp.sunlightdesign.usecase.usercase.walletUse.post.SetWithdrawal
 import com.corp.sunlightdesign.usecase.usercase.walletUse.post.WalletStoreWithdrawalUseCase
+import com.corp.sunlightdesign.utils.ErrorListException
 
 
 /**
@@ -114,7 +115,13 @@ class WalletViewModel constructor(
             }
             onError {
                 progress.postValue(false)
-                handleError(throwable = it)
+                when (it) {
+                    is ErrorListException -> {
+                        val firstMessage = it.errorMap?.values?.firstOrNull()?.firstOrNull()
+                        handleError(errorMessage = firstMessage.toString())
+                    }
+                    else -> handleError(throwable = it)
+                }
             }
         }
     }
@@ -124,6 +131,15 @@ class WalletViewModel constructor(
         val city_name: String
     ) {
         override fun toString(): String = city_name
+    }
+
+
+    fun clean() {
+        _withdrawReceipt = MutableLiveData()
+        _officesList = MutableLiveData()
+        _calculateInfo = MutableLiveData()
+        _selectedCurrency = MutableLiveData()
+        _walletLiveData = MutableLiveData()
     }
 }
 

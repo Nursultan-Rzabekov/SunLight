@@ -27,11 +27,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/office_image_card"
         app:layout_constraintTop_toTopOf="@id/office_image_card">
 
@@ -55,7 +56,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/office_address_tv"
             style="@style/AppCompatTextViewGray"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:singleLine="false"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_8dp"
             android:textSize="@dimen/dimen_14sp"

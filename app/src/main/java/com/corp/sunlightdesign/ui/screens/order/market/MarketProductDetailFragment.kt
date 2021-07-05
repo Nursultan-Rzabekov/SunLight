@@ -68,7 +68,7 @@ class MarketProductDetailFragment: StrongFragment<OrderViewModel>(OrderViewModel
     }
 
     private fun setListeners() {
-        backBtn.setOnClickListener { findNavController().navigateUp() }
+        backBtn.setOnClickListener { findNavController().popBackStack() }
     }
 
     private fun initViewPager(images: List<String>) {

@@ -92,7 +92,7 @@
     <string name="cposob_oplaty"> Cпособ оплаты</string>
     <string name="available_products_from_">Доступные товары из </string>
     <string name="available_products_from"><b>“%1$s”</b></string>
-    <string name="itogo_k_oplate">Итого к оплате : %1$.2f BV = %2$.2f KZT</string>
+    <string name="itogo_k_oplate">Итого к оплате : %1$.2f KZT</string>
     <string name="vyberıte_blıjaıshıı_sklad">Выберите ближайший склад</string>
 
     <!--Компания-->

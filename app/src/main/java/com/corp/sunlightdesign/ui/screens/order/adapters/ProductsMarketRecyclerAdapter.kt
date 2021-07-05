@@ -67,6 +67,12 @@ class ProductsMarketRecyclerAdapter(
             itemView.product_description_tv.text = product.product_short_description
             itemView.product_price_tv.text = itemView.context.getString(R.string.amount_kzt, product.product_price)
 
+            if(product.isChecked){
+                itemView.productQuantity.text = product.product_quantity.toString()
+                itemView.product_checkbox.isChecked = true
+                itemView.product_card.setStrokeColor(itemView.product_checkbox.setColorState())
+            }
+
             Glide.with(itemView)
                 .load(getImageUrl(product.product_image_front_path))
                 .centerInside()
