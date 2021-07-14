@@ -29,7 +29,7 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         findNavController(R.id.launcher_nav_host_fragment).addOnDestinationChangedListener(this)
         setObservers()

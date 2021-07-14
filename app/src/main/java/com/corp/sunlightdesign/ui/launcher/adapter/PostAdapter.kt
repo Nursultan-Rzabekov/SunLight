@@ -46,7 +46,7 @@ class PostAdapter(
             itemView.title_text_view.text = post.title
             itemView.description_text_view.text = post.description
 
-            val date = DateUtils.convertLongStringToDate(post.created_at)
+            val date = DateUtils.convertLongStringToDate(post.created_at, DateUtils.PATTERN_FULL_DATE)
             itemView.time_text_view.text = DateUtils.convertDateToString(date)
 
             itemView.postLayout.setOnClickListener {

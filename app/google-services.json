@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1084568866584:android:0b121663f41e6b9ed8186d",
         "android_client_info": {
-          "package_name": "com.corp.sunlightdesign"
+          "package_name": "com.corp.sunlightdesignapp"
         }
       },
       "oauth_client": [
@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1084568866584:android:459fbebe4c40d6f3d8186d",
         "android_client_info": {
-          "package_name": "com.example.sunlightdesign"
+          "package_name": "com.corp.sunlightdesignapp"
         }
       },
       "oauth_client": [
