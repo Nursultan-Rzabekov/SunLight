@@ -2,7 +2,6 @@ package com.corp.sunlightdesign.ui.launcher
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricPrompt
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -30,7 +29,7 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         findNavController(R.id.launcher_nav_host_fragment).addOnDestinationChangedListener(this)
         setObservers()

@@ -5,11 +5,19 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        release {
+            keyPassword 'SunLight2021'
+            keyAlias 'SunLight'
+            storePassword 'SunLight2021'
+            storeFile file('/Users/nursultanrzabekov/StudioProjects/SunLight/SunLightKey')
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.corp.sunlightdesign"
+        applicationId "com.corp.sunlight"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
