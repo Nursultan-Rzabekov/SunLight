@@ -34,6 +34,8 @@ class LauncherActivity : StrongActivity(), NavController.OnDestinationChangedLis
 
         findNavController(R.id.launcher_nav_host_fragment).addOnDestinationChangedListener(this)
         setObservers()
+
+        //just do it
     }
 
     private fun setObservers() {
